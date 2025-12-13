@@ -11,7 +11,7 @@
 | **CQPM Pyro** | 23 janv - 24 oct 2026 | À définir | À définir | 9 mois | Planifié |
 | **CQPM Tech Qualité** | 7-8-9 juillet 2026 | Bourges | À définir | 3 jours | Planifié |
 | **Habilitations Nucléaires** | 28-29 janv + 9-10-11 fév 2026 | Ouzouer-sur-Loire | 12 personnes | 5 jours | Planifié |
-| **PRF Bourges** | 2025-2026 | Bourges | 7 personnes | Variable | En cours |
+| **TPFP Bourges** | Janv-Mars 2026 | Bourges | 7 personnes | 5 jours | Planifié |
 
 ---
 
@@ -140,12 +140,14 @@
 
 ---
 
-## 4️⃣ FORMATION PRF - BOURGES
+## 4️⃣ FORMATION TPFP - BOURGES
 
 ### 🎯 QUOI - Nature de la formation
-- **Programme** : PRF (Programme Régional de Formation)
-- **Type** : Formation continue
-- **Modules** : À définir selon planning détaillé
+- **Programme** : TPFP (Titre Professionnel de Formateur Professionnel)
+- **Type** : Formation certifiante dans le cadre du PRF (Programme Régional de Formation)
+- **Modules dispensés par SJ** :
+  - **Organisation Industrielle (OI)** - 2 jours
+  - **Approvisionnement et Calcul MRP (AC/MRP)** - 3 jours
 
 ### 👥 QUI - Participants et intervenants
 - **Formateur** : Stéphane JAUBERT (SJ)
@@ -165,19 +167,25 @@
 - **Centre** : CFAI Centre
 
 ### 📅 QUAND - Calendrier
-- **Période** : 2025-2026
+- **Module OI** : 12-13 janvier 2026 (2 jours)
+- **Module AC/MRP** : 16-17-18 mars 2026 (3 jours)
+- **Durée totale intervention SJ** : 5 jours
 - **Planning** : `PLANNING 2025 2026 PRF Décembre MODIFIE TRE RAN OK POUR NL Bourges.pdf`
 - **Statut** : Planning modifié en décembre, validé
 
 ### 🔧 COMMENT - Modalités pédagogiques
-- **Format** : Formation modulaire
-- **Supports** : Selon modules dispensés
-- **Méthodes** : À définir selon planning
+- **Format** : Formation modulaire en présentiel
+- **Supports** :
+  - Documents Organisation Industrielle
+  - Supports AC/MRP
+  - Jeux pédagogiques (KANBAN, Kaizen, Lean)
+- **Méthodes** : Alternance théorie/pratique, jeux de simulation
 
 ### ❓ POURQUOI - Objectifs
-- Formation continue dans le cadre du PRF
+- Former des professionnels de la formation dans le cadre du TPFP
+- Maîtriser les principes d'Organisation Industrielle
+- Comprendre l'approvisionnement et le calcul des besoins (MRP)
 - Développement des compétences des 7 stagiaires
-- Répondre aux besoins identifiés du territoire
 
 ---
 
@@ -217,13 +225,14 @@
 3. **Habilitations Nucléaires** - 5 jours (janv-fév 2026)
 
 ### Formations par Lieu
-- **Bourges** : CQPM Tech Qualité, PRF
+- **Bourges** : CQPM Tech Qualité, TPFP
 - **Ouzouer-sur-Loire** : Habilitations Nucléaires
 - **À définir** : CQPM Pyro
 
 ### Charge de travail 2026
-- **Janvier** : Démarrage CQPM Pyro + Session 1 Hab Nucléaires (28-29)
+- **Janvier** : TPFP OI (12-13) + Démarrage CQPM Pyro (23) + Session 1 Hab Nucléaires (28-29)
 - **Février** : Session 2 Hab Nucléaires (9-10-11)
+- **Mars** : TPFP AC/MRP (16-17-18)
 - **Juillet** : CQPM Tech Qualité (7-8-9)
 - **Octobre** : Fin CQPM Pyro (24)
 
@@ -236,7 +245,7 @@
 - ⚠️ **CQPM Pyro** : Nombre de stagiaires à définir
 - ⚠️ **CQPM Tech Qualité** : Nombre de stagiaires à définir
 - ✅ **Habilitations Nucléaires** : 12 stagiaires identifiés avec CV
-- ✅ **PRF Bourges** : 7 stagiaires identifiés avec CV
+- ✅ **TPFP Bourges** : 7 stagiaires identifiés avec CV, dates confirmées
 
 ### Thématiques transversales
 Toutes les formations intègrent des modules d'**Organisation Industrielle** et de **Lean Manufacturing**, démontrant une cohérence pédagogique autour de l'amélioration continue et de l'efficacité industrielle.
