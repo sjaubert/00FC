@@ -1,0 +1,21 @@
+title: CFAI Centre - Formations OI
+description: Portail des formations en Organisation Industrielle
+theme: jekyll-theme-cayman
+
+# Markdown settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Include/Exclude
+include:
+  - OI
+
+# Plugins
+plugins:
+  - jekyll-relative-links
+
+relative_links:
+  enabled: true
+  collections: true
