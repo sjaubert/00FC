@@ -11,11 +11,3 @@ kramdown:
 # Include/Exclude
 include:
   - OI
-
-# Plugins
-plugins:
-  - jekyll-relative-links
-
-relative_links:
-  enabled: true
-  collections: true

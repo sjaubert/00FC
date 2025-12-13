@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CFAI Centre - Formations OI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        h3 {
+            color: #764ba2;
+            font-size: 1.3em;
+            margin: 25px 0 15px 0;
+        }
+        
+        .document-link {
+            display: block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            margin: 20px 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        .document-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .formation-card {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+        
+        .formation-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .formation-card ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+        
+        .formation-card ul li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .formation-card ul li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+        
+        footer p {
+            margin: 5px 0;
+        }
+        
+        .emoji {
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><span class="emoji">📚</span> CFAI Centre - Organisation Industrielle</h1>
+            <p>Portail des formations en Organisation Industrielle</p>
+        </header>
+        
+        <div class="content">
+            <h2><span class="emoji">📋</span> Documents disponibles</h2>
+            
+            <a href="OI/SYNTHESE_FORMATIONS_OI_QQOQCP.html" class="document-link">
+                <span class="emoji">📄</span> Synthèse QQOQCP des formations OI
+                <br>
+                <small style="opacity: 0.9;">Vue d'ensemble complète de toutes les formations 2026</small>
+            </a>
+            
+            <h2><span class="emoji">🎓</span> Formations 2026</h2>
+            
+            <div class="formation-card">
+                <h3>CQPM Opérateur de Production en milieu Pyrotechnique</h3>
+                <ul>
+                    <li><strong>Durée</strong> : 9 mois (23 janvier - 24 octobre 2026)</li>
+                    <li><strong>Formateur</strong> : Stéphane JAUBERT (SJ)</li>
+                </ul>
+            </div>
+            
+            <div class="formation-card">
+                <h3>CQPM Technicien Qualité - Bourges</h3>
+                <ul>
+                    <li><strong>Dates</strong> : 7-8-9 juillet 2026</li>
+                    <li><strong>Lieu</strong> : Bourges</li>
+                </ul>
+            </div>
+            
+            <div class="formation-card">
+                <h3>Habilitations Nucléaires - Ouzouer-sur-Loire</h3>
+                <ul>
+                    <li><strong>Dates</strong> : 28-29 janvier + 9-10-11 février 2026</li>
+                    <li><strong>Lieu</strong> : Ouzouer-sur-Loire</li>
+                    <li><strong>Stagiaires</strong> : 12 personnes</li>
+                </ul>
+            </div>
+            
+            <div class="formation-card">
+                <h3>TPFP (Titre Professionnel de Formateur Professionnel) - Bourges</h3>
+                <ul>
+                    <li><strong>Module OI</strong> : 12-13 janvier 2026</li>
+                    <li><strong>Module AC/MRP</strong> : 16-17-18 mars 2026</li>
+                    <li><strong>Formateur</strong> : Stéphane JAUBERT (SJ)</li>
+                    <li><strong>Stagiaires</strong> : 7 personnes</li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer>
+            <p><strong>Responsable</strong> : Stéphane JAUBERT (SJ)</p>
+            <p><strong>Organisme</strong> : CFAI Centre</p>
+        </footer>
+    </div>
+</body>
+</html>
