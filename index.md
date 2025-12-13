@@ -27,9 +27,10 @@ Bienvenue sur le portail des formations en Organisation Industrielle du CFAI Cen
 - **Lieu** : Ouzouer-sur-Loire
 - **Stagiaires** : 12 personnes
 
-### Formation PRF - Bourges
-- **Période** : 2025-2026
-- **Lieu** : Bourges
+### TPFP (Titre Professionnel de Formateur Professionnel) - Bourges
+- **Module OI** : 12-13 janvier 2026
+- **Module AC/MRP** : 16-17-18 mars 2026
+- **Formateur** : Stéphane JAUBERT (SJ)
 - **Stagiaires** : 7 personnes
 
 ---
