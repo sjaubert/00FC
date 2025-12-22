@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice VSM - ABC Emboutissage Ltée</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+        }
+
+        h2 {
+            color: #1e3c72;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #2a5298;
+            margin: 25px 0 15px 0;
+            font-size: 1.5em;
+        }
+
+        h4 {
+            color: #667eea;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #ff6b6b;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .success-box {
+            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #28a745;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #17a2b8;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        ul,
+        ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 10px 0;
+            padding-left: 10px;
+        }
+
+        .process-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 30px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+            margin: 5px;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .process-step:hover {
+            transform: scale(1.05);
+        }
+
+        .arrow {
+            font-size: 2em;
+            color: #667eea;
+            margin: 0 10px;
+        }
+
+        .metric {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .formula {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            overflow-x: auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .icon-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .icon-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.2);
+        }
+
+        .icon-symbol {
+            font-size: 2em;
+            margin-right: 15px;
+            color: #667eea;
+        }
+
+        strong {
+            color: #1e3c72;
+        }
+
+        .reveal-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            margin: 20px 0;
+        }
+
+        .reveal-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        footer {
+            background: #1e3c72;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .process-flow {
+                flex-direction: column;
+            }
+
+            .arrow {
+                transform: rotate(90deg);
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+                <img src="../../logo_uimm_placeholder.jpg" alt="UIMM CVDL" style="height: 80px;">
+                <div style="text-align: right;">
+                    <h3 style="margin: 0; color: white; font-size: 1.2em;">Pôle Formation UIMM CVDL</h3>
+                </div>
+            </div>
+            <h1>Value Stream Mapping (VSM)</h1>
+            <p>Exercice Pratique - ABC Emboutissage Ltée</p>
+        </header>
+
+        <div class="content">
+            <!-- Introduction -->
+            <div class="section">
+                <h2>Introduction : Qu'est-ce que la VSM ?</h2>
+                <p>La <strong>Cartographie de la Chaîne de Valeur</strong> (Value Stream Mapping - VSM) est un outil
+                    essentiel du Lean Manufacturing qui vous permet de :</p>
+                <ul>
+                    <li><strong>Visualiser l'ensemble du flux</strong> de production et d'information</li>
+                    <li><strong>Identifier les gaspillages</strong> (muda) invisibles au quotidien</li>
+                    <li><strong>Créer un langage commun</strong> pour toute l'équipe</li>
+                    <li><strong>Planifier les améliorations</strong> de manière structurée</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Le Secret de la VSM</h4>
+                    <p>Une carte de chaîne de valeur révèle souvent que <strong>plus de 95% du temps de traversée d'un
+                            produit est du gaspillage</strong> (attente, stock, transport) et seulement une infime
+                        partie est du temps à valeur ajoutée réelle.</p>
+                </div>
+            </div>
+
+            <!-- Méthodologie -->
+            <div class="section">
+                <h2>Méthodologie : Les 5 Règles d'Or</h2>
+
+                <ol>
+                    <li><strong>Choisir UNE famille de produits</strong><br>
+                        Ne cartographiez qu'une seule famille de produits à la fois (produits partageant des étapes
+                        similaires).</li>
+
+                    <li><strong>Parcourir le terrain soi-même</strong><br>
+                        L'observation directe est irremplaçable. Marchez le long du flux physique des matières.</li>
+
+                    <li><strong>Commencer par la fin</strong><br>
+                        Débutez à l'expédition et remontez vers les matières premières. Le client est le point de départ
+                        de toute la chaîne.</li>
+
+                    <li><strong>Mesurer avec un chronomètre</strong><br>
+                        Utilisez des données réelles, pas les standards théoriques. Chronométrez vous-même.</li>
+
+                    <li><strong>Dessiner à la main</strong><br>
+                        Pour la première ébauche, utilisez papier et crayon. Pas d'ordinateur ! Cela force la
+                        compréhension.</li>
+                </ol>
+
+                <div class="info-box">
+                    <h4>Note de l'Expert</h4>
+                    <p>Le but n'est PAS de créer de beaux schémas. L'objectif est de <strong>comprendre profondément ce
+                            qui se passe réellement sur le terrain</strong>. Une carte raturée mais juste vaut mieux
+                        qu'un diagramme parfait mais faux.</p>
+                </div>
+            </div>
+
+            <!-- Icônes VSM -->
+            <div class="section">
+                <h2>Langage Visuel de la VSM</h2>
+                <p>Voici les principaux symboles utilisés dans une carte VSM :</p>
+
+                <div class="icon-legend">
+                    <div class="icon-item">
+                        <span class="icon-symbol">□</span>
+                        <div>
+                            <strong>Processus</strong><br>
+                            <small>Boîte de processus de fabrication</small>
+                        </div>
+                    </div>
+                    <div class="icon-item">
+                        <span class="icon-symbol"></span>
+                        <div>
+                            <strong>Usine/Client</strong><br>
+                            <small>Ressource extérieure</small>
+                        </div>
+                    </div>
+                    <div class="icon-item">
+                        <span class="icon-symbol"></span>
+                        <div>
+                            <strong>Données</strong><br>
+                            <small>Case de données (temps, quantités)</small>
+                        </div>
+                    </div>
+                    <div class="icon-item">
+                        <span class="icon-symbol"></span>
+                        <div>
+                            <strong>Inventaire</strong><br>
+                            <small>Stock entre les processus</small>
+                        </div>
+                    </div>
+                    <div class="icon-item">
+                        <span class="icon-symbol"></span>
+                        <div>
+                            <strong>Transport</strong><br>
+                            <small>Expédition/Livraison</small>
+                        </div>
+                    </div>
+                    <div class="icon-item">
+                        <span class="icon-symbol">→</span>
+                        <div>
+                            <strong>Flux Poussé</strong><br>
+                            <small>Production selon calendrier</small>
+                        </div>
+                    </div>
+                    <div class="icon-item">
+                        <span class="icon-symbol"></span>
+                        <div>
+                            <strong>Info Manuel</strong><br>
+                            <small>Fax, papier, téléphone</small>
+                        </div>
+                    </div>
+                    <div class="icon-item">
+                        <span class="icon-symbol"></span>
+                        <div>
+                            <strong>Info Électronique</strong><br>
+                            <small>MRP, EDI, email</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cas d'étude -->
+            <div class="section">
+                <h2>Cas d'Étude : ABC Emboutissage Ltée</h2>
+
+                <h3>Contexte de l'Entreprise</h3>
+                <p>ABC Emboutissage Ltée produit des <strong>supports de tableaux de bord en acier</strong> pour
+                    l'industrie automobile. L'entreprise fabrique deux variantes :</p>
+                <ul>
+                    <li>Version <strong>Gauche (LH)</strong> - Conduite à gauche</li>
+                    <li>Version <strong>Droite (RH)</strong> - Conduite à droite</li>
+                </ul>
+
+                <h3>Données Client (Carbec Ltée)</h3>
+                <table>
+                    <tr>
+                        <th>Paramètre</th>
+                        <th>Valeur</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Demande mensuelle totale</strong></td>
+                        <td>18 400 pièces</td>
+                    </tr>
+                    <tr>
+                        <td>• Version Gauche (LH)</td>
+                        <td>12 000 pièces</td>
+                    </tr>
+                    <tr>
+                        <td>• Version Droite (RH)</td>
+                        <td>6 400 pièces</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Conditionnement</strong></td>
+                        <td>Plateaux de 20 pièces</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Livraison</strong></td>
+                        <td>Quotidienne par camion</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Régime de travail</strong></td>
+                        <td>2 quarts de 8 heures</td>
+                    </tr>
+                </table>
+
+                <h3>Paramètres de Production ABC</h3>
+                <table>
+                    <tr>
+                        <th>Paramètre</th>
+                        <th>Valeur</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Jours travaillés/mois</strong></td>
+                        <td>20 jours</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Temps par quart</strong></td>
+                        <td>8 heures (2 pauses de 10 min)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Temps net par quart</strong></td>
+                        <td>460 minutes (27 600 secondes)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Temps net par jour</strong></td>
+                        <td>920 minutes (55 200 secondes)</td>
+                    </tr>
+                </table>
+
+                <h3>Flux de Production</h3>
+                <div class="process-flow">
+                    <div class="process-step">Emboutissage</div>
+                    <span class="arrow">→</span>
+                    <div class="process-step">Soudage I</div>
+                    <span class="arrow">→</span>
+                    <div class="process-step">Soudage II</div>
+                    <span class="arrow">→</span>
+                    <div class="process-step">Montage I</div>
+                    <span class="arrow">→</span>
+                    <div class="process-step">Montage II</div>
+                    <span class="arrow">→</span>
+                    <div class="process-step">Expédition</div>
+                </div>
+
+                <h3>Données Détaillées des Processus</h3>
+                <table>
+                    <tr>
+                        <th>Étape</th>
+                        <th>Machine</th>
+                        <th>TC (s)</th>
+                        <th>TCF</th>
+                        <th>Fiabilité</th>
+                        <th>Stock LH/RH</th>
+                    </tr>
+                    <tr>
+                        <td><strong>1. Emboutissage</strong></td>
+                        <td>Presse 200t auto</td>
+                        <td>1 s</td>
+                        <td>1 h</td>
+                        <td>85%</td>
+                        <td>4 600 / 2 400</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Soudage I</strong></td>
+                        <td>Manuel (1 op)</td>
+                        <td>39 s</td>
+                        <td>10 min</td>
+                        <td>100%</td>
+                        <td>1 100 / 600</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Soudage II</strong></td>
+                        <td>Manuel (1 op)</td>
+                        <td>46 s</td>
+                        <td>10 min</td>
+                        <td>80%</td>
+                        <td>1 600 / 850</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. Montage I</strong></td>
+                        <td>Manuel (1 op)</td>
+                        <td>62 s</td>
+                        <td>-</td>
+                        <td>100%</td>
+                        <td>1 200 / 640</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. Montage II</strong></td>
+                        <td>Manuel (1 op)</td>
+                        <td>40 s</td>
+                        <td>-</td>
+                        <td>100%</td>
+                        <td>2 700 / 1 440 (PF)</td>
+                    </tr>
+                </table>
+
+                <div class="info-box">
+                    <h4>Légende</h4>
+                    <ul style="margin: 10px 0 0 20px;">
+                        <li><strong>TC</strong> : Temps de Cycle (temps entre 2 pièces consécutives)</li>
+                        <li><strong>TCF</strong> : Temps de Changement de Format</li>
+                        <li><strong>Stock</strong> : Quantité observée en attente avant le processus suivant</li>
+                        <li><strong>PF</strong> : Produits Finis</li>
+                    </ul>
+                </div>
+
+                <h3>Approvisionnement</h3>
+                <p><strong>Fournisseur :</strong> Aciers Ultra Ltée</p>
+                <ul>
+                    <li>Livraisons : Mardis et Jeudis</li>
+                    <li>Stock initial : 5 jours de rouleaux d'acier</li>
+                </ul>
+
+                <h3>Flux d'Information (Contrôle de Production)</h3>
+                <ul>
+                    <li>Reçoit prévisions à 90, 60 et 30 jours du client (MRP)</li>
+                    <li>📤 Envoie prévisions à 6 semaines au fournisseur (MRP)</li>
+                    <li>Passe commandes hebdomadaires au fournisseur par fax</li>
+                    <li>Reçoit commande quotidienne ferme du client</li>
+                    <li>Établit calendrier de production hebdomadaire pour chaque étape</li>
+                    <li>Établit horaire quotidien des livraisons</li>
+                </ul>
+            </div>
+
+            <!-- Exercice -->
+            <div class="section">
+                <h2>Votre Mission</h2>
+
+                <div class="highlight-box">
+                    <h3>Objectif de l'Exercice</h3>
+                    <p>Avec les données fournies ci-dessus, vous devez :</p>
+                    <ol>
+                        <li><strong>Dessiner la carte VSM de l'état actuel</strong> sur une feuille de papier</li>
+                        <li><strong>Calculer le Takt Time</strong> (rythme de demande du client)</li>
+                        <li><strong>Identifier le processus goulot</strong> (processus le plus lent)</li>
+                        <li><strong>Calculer le délai de production total</strong> (Lead Time)</li>
+                        <li><strong>Calculer le temps de traitement total</strong> (temps à valeur ajoutée)</li>
+                    </ol>
+                </div>
+
+                <h3>Étapes de Construction</h3>
+                <ol>
+                    <li><strong>Étape 1 :</strong> Dessinez le client (coin supérieur droit) avec sa case de données
+                    </li>
+                    <li><strong>Étape 2 :</strong> Dessinez les 5 processus de production (de gauche à droite, partie
+                        basse)</li>
+                    <li><strong>Étape 3 :</strong> Ajoutez les cases de données sous chaque processus</li>
+                    <li><strong>Étape 4 :</strong> Ajoutez les triangles de stock entre les processus avec les quantités
+                    </li>
+                    <li><strong>Étape 5 :</strong> Dessinez le fournisseur (coin supérieur gauche)</li>
+                    <li><strong>Étape 6 :</strong> Ajoutez le flux d'information (partie supérieure)</li>
+                    <li><strong>Étape 7 :</strong> Tracez la ligne de temps (partie basse) et calculez les métriques
+                    </li>
+                </ol>
+
+                <button class="reveal-button" onclick="toggleSolution()">Révéler l'Analyse et les Calculs</button>
+            </div>
+
+            <!-- Solution -->
+            <div id="solution" class="section hidden">
+                <h2>Analyse et Solution</h2>
+
+                <h3>1. Calcul du Takt Time</h3>
+                <p>Le <strong>Takt Time</strong> représente le rythme auquel nous devons produire pour satisfaire la
+                    demande client.</p>
+
+                <div class="formula">
+                    <strong>Takt Time = Temps disponible / Demande client</strong>
+
+                    Demande quotidienne = 18 400 pièces / 20 jours = 920 pièces/jour
+                    Temps disponible par jour = 55 200 secondes (920 minutes × 60)
+
+                    <strong>Takt Time = 55 200 s ÷ 920 pièces = 60 secondes/pièce</strong>
+                </div>
+
+                <div class="success-box">
+                    <h4>Interprétation</h4>
+                    <p>Pour satisfaire la demande, ABC Emboutissage doit produire <strong>une pièce toutes les 60
+                            secondes</strong>.</p>
+                </div>
+
+                <h3>2. Identification du Goulot d'Étranglement</h3>
+                <p>Comparons les temps de cycle de chaque processus avec le Takt Time :</p>
+
+                <table>
+                    <tr>
+                        <th>Processus</th>
+                        <th>TC (s)</th>
+                        <th>vs Takt Time (60s)</th>
+                        <th>Statut</th>
+                    </tr>
+                    <tr>
+                        <td>Emboutissage</td>
+                        <td>1 s</td>
+                        <td style="color: green;">✓ OK</td>
+                        <td>Capacité largement suffisante</td>
+                    </tr>
+                    <tr>
+                        <td>Soudage I</td>
+                        <td>39 s</td>
+                        <td style="color: green;">✓ OK</td>
+                        <td>Peut suivre le rythme</td>
+                    </tr>
+                    <tr>
+                        <td>Soudage II</td>
+                        <td>46 s</td>
+                        <td style="color: green;">✓ OK</td>
+                        <td>Peut suivre le rythme</td>
+                    </tr>
+                    <tr style="background-color: #ffe6e6;">
+                        <td><strong>Montage I</strong></td>
+                        <td><strong>62 s</strong></td>
+                        <td style="color: red;"><strong>✗ PROBLÈME</strong></td>
+                        <td><strong>GOULOT</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Montage II</td>
+                        <td>40 s</td>
+                        <td style="color: green;">✓ OK</td>
+                        <td>Peut suivre le rythme</td>
+                    </tr>
+                </table>
+
+                <div class="highlight-box">
+                    <h4>Goulot Identifié : Montage I</h4>
+                    <p>Le <strong>Montage I</strong> (62 secondes) est plus lent que le Takt Time (60 secondes). C'est
+                        le <strong>goulot d'étranglement</strong> qui limite la capacité de production de toute la
+                        chaîne !</p>
+                    <p><strong>Conséquence :</strong> ABC ne peut pas satisfaire la demande actuelle sans amélioration
+                        de ce poste.</p>
+                </div>
+
+                <h3>3. Calcul du Délai de Production (Lead Time)</h3>
+                <p>Le délai de production représente le temps qu'une pièce passe dans l'usine, de la réception des
+                    matières premières à l'expédition.</p>
+
+                <div class="formula">
+                    <strong>Calcul des stocks en jours :</strong>
+
+                    • Stock matière première : 5 jours (rouleaux d'acier)
+                    • Stock après Emboutissage : (4 600 + 2 400) / 920 = 7,6 jours
+                    • Stock après Soudage I : (1 100 + 600) / 920 = 1,8 jours
+                    • Stock après Soudage II : (1 600 + 850) / 920 = 2,7 jours
+                    • Stock après Montage I : (1 200 + 640) / 920 = 2,0 jours
+                    • Stock produits finis : (2 700 + 1 440) / 920 = 4,5 jours
+
+                    <strong>Délai Total = 5 + 7,6 + 1,8 + 2,7 + 2,0 + 4,5 = 23,6 jours</strong>
+                </div>
+
+                <h3>4. Temps de Traitement (Valeur Ajoutée)</h3>
+                <p>Le temps de traitement est la somme des temps de cycle, c'est-à-dire le temps pendant lequel le
+                    produit est réellement transformé.</p>
+
+                <div class="formula">
+                    <strong>Temps de Traitement = Somme des TC</strong>
+
+                    1 s + 39 s + 46 s + 62 s + 40 s = <strong>188 secondes</strong>
+                </div>
+
+                <h3>5. La Révélation Choc</h3>
+                <div class="highlight-box" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
+                    <h4>L'Équation qui Change Tout</h4>
+                    <p style="font-size: 1.3em; text-align: center; margin: 20px 0;">
+                        <strong>23,6 jours</strong> de traversée<br>
+                        pour seulement<br>
+                        <strong>188 secondes</strong> de travail réel
+                    </p>
+                    <p style="text-align: center; font-size: 1.2em;">
+                        Ratio : <strong class="metric">188 s / (23,6 × 16h × 3600s) = 0,014%</strong>
+                    </p>
+                    <p style="text-align: center; margin-top: 20px;">
+                        <strong>Seulement 0,014% du temps apporte de la valeur !</strong><br>
+                        <strong>99,986% du temps est du gaspillage (muda) !</strong>
+                    </p>
+                </div>
+
+                <h3>6. Points d'Amélioration Identifiés</h3>
+                <ol>
+                    <li>
+                        <strong>Goulot d'étranglement (Montage I - URGENT) :</strong>
+                        <ul>
+                            <li>TC = 62s > Takt Time = 60s</li>
+                            <li>Solutions : Ajouter un opérateur, améliorer la méthode, automatiser partiellement</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Stocks excessifs :</strong>
+                        <ul>
+                            <li>7,6 jours après emboutissage (le plus gros stock)</li>
+                            <li>4,5 jours de produits finis</li>
+                            <li>Solution : Implémenter un flux tiré (kanban), réduire les lots</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Flux poussé :</strong>
+                        <ul>
+                            <li>Chaque processus produit selon un calendrier hebdomadaire</li>
+                            <li>Solution : Passer à un système de production tirée (pull)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Fiabilité faible :</strong>
+                        <ul>
+                            <li>Emboutissage : 85% (15% de pannes)</li>
+                            <li>Soudage II : 80% (20% de pannes)</li>
+                            <li>Solution : Maintenance productive totale (TPM)</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="success-box">
+                    <h4>Prochaine Étape : L'État Futur</h4>
+                    <p>Maintenant que vous avez identifié les problèmes, l'étape suivante consiste à <strong>dessiner la
+                            carte de l'état futur</strong> intégrant les améliorations Lean :</p>
+                    <ul style="margin: 10px 0 0 20px;">
+                        <li>Flux tiré avec supermarchés et kanbans</li>
+                        <li>Réduction des lots de production</li>
+                        <li>Pacemaker au niveau du goulot</li>
+                        <li>SMED pour réduire les temps de changement</li>
+                        <li>Cellules de production en flux continu</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Conclusion -->
+            <div class="section">
+                <h2>Points Clés à Retenir</h2>
+
+                <div class="icon-legend">
+                    <div class="info-box">
+                        <h4>La VSM rend visible l'invisible</h4>
+                        <p>La majorité du temps de production est du gaspillage. La VSM le révèle clairement.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Le Takt Time est votre boussole</h4>
+                        <p>C'est le rythme du client. Tous vos processus doivent suivre ce rythme.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Les stocks cachent les problèmes</h4>
+                        <p>Des stocks élevés masquent les pannes, les défauts et les déséquilibres.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Le flux tiré vs flux poussé</h4>
+                        <p>Le flux poussé crée de la surproduction. Le flux tiré synchronise avec la demande réelle.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Observer sur le terrain</h4>
+                        <p>Les données théoriques sont trompeuses. Seule l'observation directe révèle la réalité.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>La VSM est un point de départ</h4>
+                        <p>Elle ne résout pas les problèmes, mais elle les rend impossibles à ignorer.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ressources -->
+            <div class="section">
+                <h2>Pour Aller Plus Loin</h2>
+                <p>Ressources disponibles dans votre répertoire de formation :</p>
+                <ul>
+                    <li><strong>Learning to See</strong> (Mike Rother & John Shook) - Le livre de référence sur la VSM
+                    </li>
+                    <li><strong>L'Art de Voir l'Essentiel</strong> - Guide pratique en français</li>
+                    <li><strong>Value Stream Mapping Mastery</strong> - Techniques avancées</li>
+                    <li><strong>Exercice Industries TWI</strong> - Un second cas pratique à explorer</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>🏆 Challenge</h4>
+                    <p>Maintenant que vous maîtrisez l'exercice ABC Emboutissage, essayez de dessiner la carte VSM pour
+                        <strong>Industries TWI</strong> (exercice dans le guide markdown). C'est un cas plus complexe
+                        avec flux convergents !</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p><strong>Formation Lean Manufacturing - Value Stream Mapping</strong></p>
+            <p>Document pédagogique - ABC Emboutissage Ltée</p>
+            <p style="margin-top: 10px; opacity: 0.8;">"Apprendre à voir, c'est apprendre à améliorer"</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleSolution() {
+            const solution = document.getElementById('solution');
+            const button = document.querySelector('.reveal-button');
+
+            if (solution.classList.contains('hidden')) {
+                solution.classList.remove('hidden');
+                button.textContent = 'Masquer l\'Analyse';
+                solution.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                solution.classList.add('hidden');
+                button.textContent = 'Révéler l\'Analyse et les Calculs';
+            }
+        }
+    </script>
+</body>
+
+</html>
