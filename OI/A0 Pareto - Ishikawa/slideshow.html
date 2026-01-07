@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Formation : Pareto & Ishikawa</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/blood.min.css">
+
+    <style>
+        :root {
+            --r-main-font: 'Inter', system-ui, -apple-system, sans-serif;
+            --r-heading-font: 'Outfit', sans-serif;
+            --r-main-color: #fff;
+            --r-heading-color: #ff2c2d;
+            --r-selection-background: #ff2c2d;
+            --r-link-color: #ff2c2d;
+        }
+
+        .reveal h1, .reveal h2, .reveal h3 {
+            text-transform: none;
+            font-weight: 700;
+        }
+
+        .reveal section img {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            border-radius: 8px;
+        }
+
+        .highlight {
+            color: var(--r-heading-color);
+            font-weight: bold;
+        }
+
+        .slide-footer {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 0.4em;
+            opacity: 0.6;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .m-box {
+            border: 2px solid var(--r-heading-color);
+            padding: 10px;
+            margin: 5px;
+            border-radius: 10px;
+            background: rgba(255, 44, 45, 0.1);
+        }
+
+        .steps {
+            text-align: left;
+            margin-left: 50px;
+        }
+
+        .fishbone-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            margin-top: 20px;
+        }
+
+        .fishbone-main {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 150px;
+            height: 4px;
+            background: var(--r-heading-color);
+        }
+
+        .fishbone-head {
+            position: absolute;
+            top: calc(50% - 30px);
+            right: 0;
+            width: 150px;
+            height: 60px;
+            border: 3px solid var(--r-heading-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50% 10% 10% 50%;
+            background: rgba(255, 44, 45, 0.2);
+        }
+
+        .fish-arrow {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: var(--r-heading-color);
+        }
+
+        .arrow-up { bottom: 50%; transform: rotate(30deg); transform-origin: bottom; }
+        .arrow-down { top: 50%; transform: rotate(-30deg); transform-origin: top; }
+
+        .label { font-size: 0.6em; position: absolute; }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- Slide 1: Titre -->
+            <section data-background-gradient="linear-gradient(to bottom, #2b0303, #000)">
+                <h1 style="font-size: 2.5em;">Pareto & Ishikawa</h1>
+                <h3>Outils de l'Organisation Industrielle</h3>
+                <p>Formation pour les collaborateurs</p>
+                <div style="margin-top: 50px;">
+                    <small>Pôle Formation UIMM - CVDL</small>
+                </div>
+            </section>
+
+            <!-- Slide 2: Introduction -->
+            <section>
+                <h2>Pourquoi ces outils ?</h2>
+                <div class="grid-2">
+                    <div class="fragment" data-fragment-index="1">
+                        <p class="m-box">🎯 <br> <span class="highlight">Cibler</span> les efforts sur ce qui compte vraiment.</p>
+                    </div>
+                    <div class="fragment" data-fragment-index="2">
+                        <p class="m-box">🔍 <br> <span class="highlight">Comprendre</span> les causes racines des problèmes.</p>
+                    </div>
+                </div>
+                <p class="fragment" data-fragment-index="3" style="margin-top: 30px;">
+                    <small>Objectif : Passer d'une culture de la "réaction" à une culture de l'"amélioration continue".</small>
+                </p>
+            </section>
+
+            <!-- Slide 3: La Qualité -->
+            <section>
+                <h2>La Qualité (ISO)</h2>
+                <blockquote>
+                    "Aptitude d'un ensemble de caractéristiques intrinsèques à satisfaire des exigences."
+                </blockquote>
+                <ul class="fragment">
+                    <li>Performance</li>
+                    <li>Sûreté de fonctionnement</li>
+                    <li>Sécurité / Environnement</li>
+                    <li>Disponibilité / Coût</li>
+                </ul>
+            </section>
+
+            <!-- Slide 4: Avant-propos - Brainstorming -->
+            <section>
+                <h2>L'étape cruciale : Le Brainstorming</h2>
+                <p>Réunir un groupe pluridisciplinaire pour collecter des idées.</p>
+                <div class="grid-2">
+                    <ul style="font-size: 0.8em;">
+                        <li class="fragment">✅ Objectif clair</li>
+                        <li class="fragment">🚫 Critique interdite</li>
+                        <li class="fragment">💡 Créativité privilégiée</li>
+                        <li class="fragment">🌊 Déballage d'idées</li>
+                    </ul>
+                    <div class="fragment" style="border-left: 2px solid #ff2c2d; padding-left: 20px;">
+                        <p><small>C'est la "matière première" pour nos outils.</small></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Ishikawa -->
+            <section>
+                <section data-background="#ff2c2d" style="color: white;">
+                    <h1>I. Le Diagramme d'Ishikawa</h1>
+                    <p>Diagramme de cause à effet ou "Arêtes de poisson"</p>
+                </section>
+
+                <section>
+                    <h2>Le principe des 5M (ou 6M)</h2>
+                    <p>Classer les causes par famille :</p>
+                    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+                        <div class="m-box fragment" style="width: 250px;"><strong>Matière</strong><br><small>Pièces, composants, fluides</small></div>
+                        <div class="m-box fragment" style="width: 250px;"><strong>Matériel</strong><br><small>Machines, outils, équipements</small></div>
+                        <div class="m-box fragment" style="width: 250px;"><strong>Main d'œuvre</strong><br><small>Compétences, formation, fatigue</small></div>
+                        <div class="m-box fragment" style="width: 250px;"><strong>Méthodes</strong><br><small>Modes opératoires, réglages</small></div>
+                        <div class="m-box fragment" style="width: 250px;"><strong>Milieu</strong><br><small>Température, bruit, éclairage</small></div>
+                        <div class="m-box fragment" style="width: 250px;"><strong>Mesure</strong><br><small>Fiabilité des données, contrôle</small></div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Exemple : Défaut d'usinage</h2>
+                    <div class="fishbone-container">
+                        <div class="fishbone-main"></div>
+                        <div class="fishbone-head"><strong>Effet :<br>Mauvais état<br>de surface</strong></div>
+                        
+                        <!-- M1 -->
+                        <div class="fish-arrow arrow-up fragment" style="left: 10%;"></div>
+                        <div class="label fragment" style="left: 5%; bottom: 85%;"><strong>Matière</strong><br><small>Nuance métal</small></div>
+                        
+                        <!-- M2 -->
+                        <div class="fish-arrow arrow-down fragment" style="left: 30%;"></div>
+                        <div class="label fragment" style="left: 25%; top: 85%;"><strong>Main d'œuvre</strong><br><small>Fatigue, formation</small></div>
+
+                        <!-- M3 -->
+                        <div class="fish-arrow arrow-up fragment" style="left: 50%;"></div>
+                        <div class="label fragment" style="left: 45%; bottom: 85%;"><strong>Matériel</strong><br><small>Vibrations outil</small></div>
+
+                        <!-- M4 -->
+                        <div class="fish-arrow arrow-down fragment" style="left: 70%;"></div>
+                        <div class="label fragment" style="left: 65%; top: 85%;"><strong>Méthodes</strong><br><small>Avance trop rapide</small></div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>La méthode des "5 Pourquoi"</h2>
+                    <p>Pour remonter à la <span class="highlight">cause racine</span>.</p>
+                    <div class="steps fragment" style="border: 1px solid #444; padding: 20px; border-radius: 10px;">
+                        <ol>
+                            <li>Ma voiture ne démarre pas. <span class="fragment highlight">Pourquoi ?</span></li>
+                            <li>La batterie est à plat. <span class="fragment highlight">Pourquoi ?</span></li>
+                            <li>L'alternateur est HS. <span class="fragment highlight">Pourquoi ?</span></li>
+                            <li>La courroie est cassée. <span class="fragment highlight">Pourquoi ?</span></li>
+                            <li><strong>Le manuel d'entretien n'est pas respecté.</strong> (Cause Racine)</li>
+                        </ol>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Section Pareto -->
+            <section>
+                <section data-background="#2ecc71" style="color: white;">
+                    <h1>II. Le Diagramme de Pareto</h1>
+                    <p>La loi des 80/20 ou l'analyse ABC</p>
+                </section>
+
+                <section>
+                    <h2>Le principe de Pareto</h2>
+                    <div class="grid-2">
+                        <div>
+                            <p class="fragment"><span class="highlight" style="font-size: 2em; color: #2ecc71;">20%</span> des causes</p>
+                            <p class="fragment">produisent</p>
+                            <p class="fragment"><span class="highlight" style="font-size: 2em; color: #f1c40f;">80%</span> des effets</p>
+                        </div>
+                        <div style="font-size: 0.8em; border-left: 2px solid #ccc; padding-left: 20px;">
+                            <p>Exemples :</p>
+                            <ul>
+                                <li>20% d'articles = 80% du CA</li>
+                                <li>20% de types de pannes = 80% du temps d'arrêt</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>L'Analyse ABC</h2>
+                    <table style="font-size: 0.7em;">
+                        <thead>
+                            <tr>
+                                <th>Classe</th>
+                                <th>Actions/Causes</th>
+                                <th>Effet (Cumulé)</th>
+                                <th>Priorité</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="fragment" style="background: rgba(46, 204, 113, 0.2);">
+                                <td>A</td>
+                                <td>~20%</td>
+                                <td>~80%</td>
+                                <td>🚨 Très Forte (Agir ici !)</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td>B</td>
+                                <td>~30%</td>
+                                <td>~15%</td>
+                                <td>Moyenne</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td>C</td>
+                                <td>~50%</td>
+                                <td>~5%</td>
+                                <td>Faible</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section>
+                    <h2>Exemple : Arrêts Machines</h2>
+                    <p><small>Analyse d'un atelier sur un mois</small></p>
+                    <div style="display: flex; gap: 10px; align-items: flex-end; height: 300px; justify-content: center; border-bottom: 2px solid white; padding: 10px;">
+                        <div class="fragment" style="width: 80px; height: 100%; background: #2ecc71; position: relative;">
+                            <span style="position: absolute; top: -30px; width: 100%; text-align: center; font-size: 0.5em;">Défaut Pièce<br>(38%)</span>
+                        </div>
+                        <div class="fragment" style="width: 80px; height: 58%; background: #2ecc71; position: relative;">
+                            <span style="position: absolute; top: -30px; width: 100%; text-align: center; font-size: 0.5em;">Défaut Matière<br>(22%)</span>
+                        </div>
+                        <div class="fragment" style="width: 80px; height: 57%; background: #e67e22; position: relative;">
+                            <span style="position: absolute; top: -30px; width: 100%; text-align: center; font-size: 0.5em;">Panne Machine<br>(22%)</span>
+                        </div>
+                        <div class="fragment" style="width: 80px; height: 20%; background: #95a5a6; position: relative;">
+                            <span style="position: absolute; top: -30px; width: 100%; text-align: center; font-size: 0.5em;">Absence<br>(7%)</span>
+                        </div>
+                        <div class="fragment" style="width: 80px; height: 10%; background: #95a5a6; position: relative;">
+                            <span style="position: absolute; top: -30px; width: 100%; text-align: center; font-size: 0.5em;">Réglage<br>(3%)</span>
+                        </div>
+                    </div>
+                    <p class="fragment" style="margin-top: 20px;"><small>➡️ 82% des arrêts sont causés par les <span class="highlight">3 premiers facteurs</span> sur 7 types recensés.</small></p>
+                </section>
+            </section>
+
+            <!-- Conclusion -->
+            <section data-background-gradient="linear-gradient(to top, #2b0303, #000)">
+                <h2>En résumé...</h2>
+                <div class="grid-2">
+                    <div class="fragment m-box">
+                        <h3>Pareto</h3>
+                        <p><strong>QUOI ?</strong><br>Prioriser les problèmes.</p>
+                    </div>
+                    <div class="fragment m-box">
+                        <h3>Ishikawa</h3>
+                        <p><strong>POURQUOI ?</strong><br>Trouver les causes.</p>
+                    </div>
+                </div>
+                <h4 class="fragment" style="margin-top: 40px; color: #ff2c2d;">L'excellence industrielle passe par la méthode !</h4>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            slideNumber: 'c/t',
+            transition: 'slide'
+        });
+    </script>
+</body>
+</html>
