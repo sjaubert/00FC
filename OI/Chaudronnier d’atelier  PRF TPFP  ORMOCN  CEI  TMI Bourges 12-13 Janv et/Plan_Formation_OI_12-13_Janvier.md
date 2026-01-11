@@ -12,7 +12,7 @@
 ## Informations Générales
 
 - **Dates** : 12 et 13 janvier 2026
-- **Durée** : 2 jours (14 heures)
+- **Durée** : 2 jours
 - **Public** : Groupe de salariés en reconversion - Chaudronnier d'atelier
 - **Formateur** : Stéphane JAUBERT
 
@@ -32,21 +32,21 @@
 ## Programme Prévisionnel
 
 > [!IMPORTANT]
-> **Note importante** : Le déroulement de cette formation est adaptatif. Le contenu et le rythme seront ajustés en fonction du niveau du groupe et de la progression collective. Tous les modules ne seront pas nécessairement abordés.
+> **Note importante** : Le déroulement de cette formation est entièrement adaptatif. Le contenu et le rythme seront ajustés en fonction du niveau du groupe et de la progression collective. Tous les modules ne seront pas nécessairement abordés. Les durées proposées sont indicatives et pourront varier considérablement selon les besoins du groupe.
 
 ---
 
 ### JOUR 1 - Lundi 12 janvier 2026
 
-#### Matin (09h00 - 12h30)
+#### Matin
 
-**Accueil et Présentation (30 min)**
+**Accueil et Présentation**
 
 - Présentation du formateur et des participants
 - Tour de table : parcours, attentes et objectifs personnels
 - Présentation du plan de formation
 
-**Module 1 : Introduction à l'Industrie et au Lean Manufacturing (2h30)**
+**Module 1 : Introduction à l'Industrie et au Lean Manufacturing**
 
 *Objectif* : Poser les bases de la culture industrielle et du Lean
 
@@ -65,13 +65,11 @@ Support pédagogique :
 - Vidéo : "La Philosophie Lean"
 - Échanges et discussions
 
-**Pause (15 min)**
-
 ---
 
-#### Après-midi (13h30 - 17h00)
+#### Après-midi
 
-**Module 2 : Outils d'Analyse Qualité - Pareto & Ishikawa (2h30)**
+**Module 2 : Outils d'Analyse Qualité - Pareto & Ishikawa**
 
 *Objectif* : Maîtriser les outils d'analyse pour identifier et prioriser les problèmes
 
@@ -90,7 +88,7 @@ Activités pratiques :
 - TP : Construction d'un diagramme de Pareto
 - Cas pratiques adaptés au contexte industriel
 
-**Module 3 : Le TRS (Taux de Rendement Synthétique) (1h)**
+**Module 3 : Le TRS (Taux de Rendement Synthétique)**
 
 *Objectif* : Comprendre et calculer le TRS pour mesurer la performance des équipements
 
@@ -106,17 +104,17 @@ Activités pratiques :
 - TP : Analyse de données TRS sur centre d'usinage
 - Calcul du TRS à partir de données réelles
 
-**Synthèse de la journée (15 min)**
+**Synthèse de la journée**
 
 ---
 
 ### JOUR 2 - Mardi 13 janvier 2026
 
-#### Matin (09h00 - 12h30)
+#### Matin
 
-**Rappel Jour 1 et Questions (15 min)**
+**Rappel Jour 1 et Questions**
 
-**Module 4 : La VSM (Value Stream Mapping) (2h45)**
+**Module 4 : La VSM (Value Stream Mapping)**
 
 *Objectif* : Cartographier la chaîne de valeur pour identifier les opportunités d'amélioration
 
@@ -134,13 +132,11 @@ Activités pratiques :
 - Exercice : Cartographie VSM d'un processus d'emboutissage
 - Analyse et amélioration d'une chaîne de valeur
 
-**Pause (15 min)**
-
 ---
 
-#### Après-midi (13h30 - 17h00)
+#### Après-midi
 
-**Module 5 : Gestion des Stocks et Flux (1h)**
+**Module 5 : Gestion des Stocks et Flux**
 
 *Objectif* : Comprendre les enjeux de la gestion des stocks dans la performance industrielle
 
@@ -156,7 +152,7 @@ Support pédagogique :
 - Présentation du circuit complet de production industrielle
 - Exercices sur la gestion de stock
 
-**Module 6 : Jeu du Lean Manufacturing (2h)**
+**Module 6 : Jeu du Lean Manufacturing**
 
 *Objectif* : Mettre en pratique les concepts Lean de manière ludique et immersive
 
@@ -175,7 +171,7 @@ Apprentissages visés :
 - Travailler en équipe sur l'optimisation d'un processus
 - Mesurer l'impact des changements
 
-**Synthèse Générale et Évaluation (30 min)**
+**Synthèse Générale et Évaluation**
 
 - Retour sur les apprentissages des 2 jours
 - Questions / Réponses
