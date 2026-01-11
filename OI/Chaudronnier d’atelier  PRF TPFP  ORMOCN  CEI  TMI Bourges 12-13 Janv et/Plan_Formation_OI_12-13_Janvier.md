@@ -36,7 +36,7 @@
 
 ---
 
-### JOUR 1 - Dimanche 12 janvier 2026
+### JOUR 1 - Lundi 12 janvier 2026
 
 #### Matin (09h00 - 12h30)
 
@@ -110,7 +110,7 @@ Activités pratiques :
 
 ---
 
-### JOUR 2 - Lundi 13 janvier 2026
+### JOUR 2 - Mardi 13 janvier 2026
 
 #### Matin (09h00 - 12h30)
 
