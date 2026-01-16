@@ -246,7 +246,7 @@ En résolvant CE problème, le taux de rebut passerait de :
 
 > **[Photo à révéler SI l'équipe demande à inspecter la cabine]**
 
-![Filtre cabine encrassé](C:/Users/s.jaubert/.gemini/antigravity/brain/3f060e35-bd7e-4c9e-9b49-5fb6a100a168/filtre_cabine_encrasse_1768565140862.png)
+![Filtre cabine encrassé](../Images/filtre_encrasse.png)
 
 **Description** :
 
@@ -263,7 +263,7 @@ En résolvant CE problème, le taux de rebut passerait de :
 
 ## 📸 INDICE 11 : Photo Pièce avec Défaut Poussières
 
-![Défauts peinture poussières](C:/Users/s.jaubert/.gemini/antigravity/brain/3f060e35-bd7e-4c9e-9b49-5fb6a100a168/defauts_peinture_poussieres_1768565155532.png)
+![Défauts peinture poussières](../Images/defauts_peinture.png)
 
 **Description** :
 
