@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outils JdR 3 : 5 Pourquoi</title>
+    <style>
+        :root {
+            --bg: #222;
+            --text: #ddd;
+            --accent: #00b894;
+            --card: #333;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            background: var(--bg);
+            color: var(--text);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: 0.8s;
+            pointer-events: none;
+            background: radial-gradient(circle at center, #2a2a2a 0%, #111 100%);
+        }
+
+        .slide.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        h2 {
+            border-bottom: 2px dashed var(--accent);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 40px;
+            border-radius: 2px;
+            border-left: 10px solid var(--accent);
+            max-width: 800px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .arrow-down {
+            font-size: 2rem;
+            color: var(--accent);
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        button {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 10px 30px;
+            margin: 0 10px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            height: 60px;
+            filter: brightness(0.9);
+        }
+
+        .org-name {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <img src="../../../../logo_uimm_placeholder.jpg" alt="Logo UIMM" class="logo">
+    <div class="org-name">Pôle Formation UIMM-CVDL</div>
+
+    <!-- Slide 1 -->
+    <div class="slide active">
+        <h1>Les 5 Pourquoi</h1>
+        <h2>À la recherche de la Cause Racine</h2>
+    </div>
+
+    <!-- Slide 2: Principe -->
+    <div class="slide">
+        <h2>Le Principe</h2>
+        <div class="card">
+            <p>Un problème n'est souvent que le <strong>symptôme</strong> d'une cause plus profonde.</p>
+            <p>Traiter le symptôme (mettre un pansement) ne guérit pas la maladie.</p>
+            <p>Il faut creuser jusqu'à la <strong>Cause Racine</strong> (Root Cause).</p>
+        </div>
+    </div>
+
+    <!-- Slide 3: Exemple -->
+    <div class="slide">
+        <h2>L'Exemple Classique</h2>
+        <div class="card">
+            <p><strong>Problème :</strong> Il y a de l'huile sur le sol.</p>
+            <div class="arrow-down">⬇️ Pourquoi ?</div>
+            <p>Parce que la machine fuit.</p>
+            <div class="arrow-down">⬇️ Pourquoi ?</div>
+            <p>Parce que le joint est usé.</p>
+            <div class="arrow-down">⬇️ Pourquoi ?</div>
+            <p>Parce qu'on a acheté des joints bas de gamme.</p>
+            <div class="arrow-down">⬇️ Pourquoi ?</div>
+            <p><strong>Cause Racine :</strong> La politique d'achat privilégie le prix sur la qualité.</p>
+        </div>
+    </div>
+
+    <!-- Slide 4: Conseils -->
+    <div class="slide">
+        <h2>Conseils pour le JdR</h2>
+        <div class="card">
+            <ul>
+                <li>🔍 <strong>Allez voir !</strong> Ne faites pas les 5 Pourquoi dans un bureau.</li>
+                <li>🛑 <strong>Arrêtez-vous</strong> quand vous ne contrôlez plus la cause (ex: "C'est la gravité").
+                </li>
+                <li>🔗 <strong>Logique implacable</strong> : On doit pouvoir remonter du bas vers le haut avec
+                    "Donc...".</li>
+                <li>⚠️ <strong>Attention</strong> : Ne blâmez pas les gens ("Erreur opérateur"), cherchez la faille du
+                    système.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button onclick="change(-1)">PRÉCÉDENT</button>
+        <button onclick="change(1)">SUIVANT</button>
+    </div>
+
+    <script>
+        let curr = 0;
+        const slides = document.querySelectorAll('.slide');
+        function change(d) {
+            slides[curr].classList.remove('active');
+            curr = Math.min(Math.max(curr + d, 0), slides.length - 1);
+            slides[curr].classList.add('active');
+        }
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight') change(1);
+            if (e.key === 'ArrowLeft') change(-1);
+        });
+    </script>
+</body>
+
+</html>

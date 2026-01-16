@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outils JdR 4 : Pareto</title>
+    <style>
+        :root {
+            --main: #8e44ad;
+            --light: #f3f3f3;
+            --dark: #2c3e50;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            transform: scale(0);
+            transition: 0.5s;
+        }
+
+        .slide.active {
+            transform: scale(1);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--main);
+        }
+
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            height: 300px;
+            margin-top: 50px;
+        }
+
+        .bar {
+            width: 50px;
+            background: var(--main);
+            transition: height 1s;
+            display: flex;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .bar small {
+            margin-top: -25px;
+            color: var(--dark);
+            font-weight: bold;
+        }
+
+        .box {
+            background: #eee;
+            padding: 2rem;
+            border-left: 5px solid var(--main);
+            max-width: 800px;
+        }
+
+        .nav {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        button {
+            padding: 10px;
+            cursor: pointer;
+            background: var(--main);
+            color: white;
+            border: none;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            height: 60px;
+        }
+
+        .org-name {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .image-container img {
+            max-width: 90%;
+            max-height: 350px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <img src="../../../../logo_uimm_placeholder.jpg" alt="Logo UIMM" class="logo">
+    <div class="org-name">Pôle Formation UIMM-CVDL</div>
+
+    <div class="slide active">
+        <h1>Le Diagramme de Pareto</h1>
+        <h2>La Loi des 80/20</h2>
+    </div>
+
+    <div class="slide">
+        <h2>Le Principe</h2>
+        <div class="box">
+            <p><strong>Vilfredo Pareto (1848-1923)</strong> a observé que 80% des effets sont le produit de 20% des
+                causes.</p>
+            <br>
+            <ul>
+                <li>80% des rebuts viennent de 20% des défauts.</li>
+                <li>80% du chiffre d'affaires vient de 20% des clients.</li>
+            </ul>
+            <p style="margin-top: 1rem; color: var(--main); font-weight: bold;">➡️ Il faut traiter les "Gros Poissons"
+                en premier !</p>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>Le Problème : Défauts Peinture</h2>
+        <div class="image-container">
+            <img src="../Images/defauts_peinture.png" alt="Défauts de peinture">
+            <p style="color: #e74c3c; margin-top: 10px;">12% de rebuts - Il faut prioriser !</p>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>Le Diagramme de Pareto</h2>
+        <div class="image-container">
+            <img src="../Images/diagramme_pareto.png" alt="Diagramme de Pareto">
+            <p style="margin-top: 10px;">On s'attaque aux poussières (75% des défauts) !</p>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>La Cause : Filtre Encrassé</h2>
+        <div class="image-container">
+            <img src="../Images/filtre_encrasse.png" alt="Filtre encrassé">
+            <p style="color: #27ae60; margin-top: 10px;">Maintenance préventive oubliée → 75% des problèmes résolus !
+            </p>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>Comment le construire ?</h2>
+        <div class="box">
+            <ol>
+                <li>📝 <strong>Recueillir</strong> les données (Feuille de relevé).</li>
+                <li>🔢 <strong>Classer</strong> les défauts par fréquence décroissante.</li>
+                <li>📈 <strong>Calculer</strong> le cumul (%).</li>
+                <li>📊 <strong>Tracer</strong> le graphique.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="nav">
+        <button onclick="move(-1)">◀</button>
+        <button onclick="move(1)">▶</button>
+    </div>
+
+    <script>
+        let idx = 0;
+        const s = document.querySelectorAll('.slide');
+        function move(d) {
+            s[idx].classList.remove('active');
+            idx = Math.min(Math.max(idx + d, 0), s.length - 1);
+            s[idx].classList.add('active');
+        }
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight') move(1);
+            if (e.key === 'ArrowLeft') move(-1);
+        });
+    </script>
+</body>
+
+</html>
