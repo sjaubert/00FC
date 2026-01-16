@@ -11,6 +11,8 @@
 
 ## 🚀 Démarrage Rapide
 
+> **💡 Nouveau ?** Lisez d'abord [`GUIDE_NAVIGATION.md`](./GUIDE_NAVIGATION.md) pour comprendre l'organisation des fichiers.
+
 ### Nouveau Formateur ?
 
 1. **Lisez** : `Guide_Formateur_Jeux_de_Role.md` - Méthodologie complète

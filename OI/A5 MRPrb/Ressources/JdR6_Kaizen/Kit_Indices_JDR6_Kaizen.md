@@ -139,7 +139,7 @@ LES 7 MUDA (GASPILLAGES) :
 
 ## 📸 INDICE 4 : Photo Poste de Travail Actuel
 
-![Changement série presse](C:/Users/s.jaubert/.gemini/antigravity/brain/3f060e35-bd7e-4c9e-9b49-5fb6a100a168/changement_serie_presse_1768565325137.png)
+![Changement série presse](../Images/changement_serie.png)
 
 **Observation visible** :
 
@@ -240,7 +240,7 @@ Outils éparpillés partout !
 
 ## 📸 INDICE 9 : Exemple Shadow Board
 
-![Shadow board outils](C:/Users/s.jaubert/.gemini/antigravity/brain/3f060e35-bd7e-4c9e-9b49-5fb6a100a168/shadow_board_outils_1768565310437.png)
+![Shadow board outils](../Images/shadow_board.png)
 
 **Description** :
 
