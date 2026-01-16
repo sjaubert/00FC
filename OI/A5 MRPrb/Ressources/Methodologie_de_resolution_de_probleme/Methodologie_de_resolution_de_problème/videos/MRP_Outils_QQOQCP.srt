@@ -1,0 +1,442 @@
+1
+00:00:00,810 --> 00:00:05,290
+Dans ce cycle sur les méthodes de résolution
+problème il est temps de passer aux premiers
+
+2
+00:00:05,290 --> 00:00:10,050
+outils. Alors qu'est-ce qui peut vous arriver
+de pire quand vous cherchez à résoudre un
+
+3
+00:00:10,050 --> 00:00:15,750
+problème et bien c'est de ne pas réfléchir.
+De faire ce que les Anglais appellent "jumping
+
+4
+00:00:15,750 --> 00:00:21,050
+to conclusion". C'est-à-dire tirer des conclusions
+hâtives et donc se tromper dès le début.
+
+5
+00:00:21,050 --> 00:00:28,050
+Le QQOQCP est justement destiné à éviter
+cela. C'est une sorte de liste raisonnée
+
+6
+00:00:28,550 --> 00:00:34,820
+et un fil rouge, une check-list qui permet
+de guider le premier questionnement que l'on
+
+7
+00:00:34,820 --> 00:00:36,000
+doit avoir.
+
+8
+00:00:36,000 --> 00:00:41,940
+Alors voyons-le ensemble. Donc dans le cycle
+des méthodes de résolution de problèmes,
+
+9
+00:00:41,940 --> 00:00:46,400
+vous le voyez, la première étape, donc c'est
+celle du cadrage que normalement je vous ai
+
+10
+00:00:46,400 --> 00:00:51,960
+présentée dans la vidéo précédente. Le
+but de cette phase est de bien définir le
+
+11
+00:00:51,960 --> 00:00:56,670
+problème. Donc on se doute que c'est à ce
+moment-là qu'il faut utiliser le QQOQCP.
+
+12
+00:00:56,670 --> 00:01:03,670
+Quelle est sa vocation. Donc tout d'abord
+conduire la face préalable lorsque l'on vous
+
+13
+00:01:03,690 --> 00:01:09,869
+saisit d'un problème. Autre utilité, donc
+ça doit être un réflexe, c'est une check-list,
+
+14
+00:01:09,869 --> 00:01:15,259
+donc c'est facile à retenir. Je vous montrerai
+tout à l'heure divers moyens mnémotechniques
+
+15
+00:01:15,259 --> 00:01:22,109
+de le faire. A quoi sert cette démarche.
+Trois utilités : tout d'abord, prend l'habitude
+
+16
+00:01:22,109 --> 00:01:28,060
+donc de réfléchir avant d'agir, ne pas être
+superficiel, ne pas se tromper "ab initio",
+
+17
+00:01:28,060 --> 00:01:33,460
+dès le début. Deuxième bonne habitude à
+prendre, ce que l'on appelle team building
+
+18
+00:01:33,460 --> 00:01:38,520
+c'est-à-dire rassembler l'équipe qui va
+travailler sur la résolution de problèmes
+
+19
+00:01:38,520 --> 00:01:45,520
+et partager les informations. Donc on le voit,
+le QQOQCP est un outil d'animation de réunions.
+
+20
+00:01:45,950 --> 00:01:52,950
+Enfin, troisième utilité, c'est l'exhaustivité.
+C'est le fait de rassembler toutes les informations
+
+21
+00:01:55,490 --> 00:01:59,490
+disponibles, et donc les différentes personnes
+qui viennent à la réunion, vont sans doute
+
+22
+00:01:59,490 --> 00:02:04,590
+chacune pouvoir apporter des éléments. Et
+ces éléments et bien on va les mettre en
+
+23
+00:02:04,590 --> 00:02:09,340
+commun. Il faut savoir aussi qu'il y a certaines
+questions auxquelles on risque de ne pas pouvoir
+
+24
+00:02:09,340 --> 00:02:13,560
+répondre et bien justement cela permet de
+faire l'inventaire de ce que l'on ne sait
+
+25
+00:02:13,560 --> 00:02:18,290
+pas et donc des données et des informations
+qu'il va falloir rechercher.
+
+26
+00:02:18,290 --> 00:02:25,290
+Alors l'origine du QQOQCP en quelques mots.
+Voici un vers latin, donc "Quis, Quid, Quibus
+
+27
+00:02:28,680 --> 00:02:35,680
+auxilliis, Cur, Quomodo et Quando". Si vous
+avez fait du latin, vous voyez, c'est utile.
+
+28
+00:02:35,720 --> 00:02:40,250
+On appelle
+cela l'hexamètre mnémotechnique de Quintilien.
+
+29
+00:02:40,250 --> 00:02:46,530
+En réalité ce n'est pas vraiment Quintilien
+qui l'a inventé. C'est une sorte de figure
+
+30
+00:02:46,530 --> 00:02:52,140
+de rhétorique de discours, permettant par
+exemple de déterminer les circonstances d'un
+
+31
+00:02:52,140 --> 00:02:59,140
+crime. Et donc ce sont les questions que l'enquêteur
+va se poser lorsqu'il arrive sur place. Il
+
+32
+00:02:59,290 --> 00:03:06,290
+y a également une version anglaise : les
+five W. Donc ce sont les 5W du journalisme
+
+33
+00:03:06,910 --> 00:03:11,689
+: "Who did what, where and when, and why".
+Donc là c'est ce qu'on apprend en école
+
+34
+00:03:11,689 --> 00:03:16,629
+de journalisme ou en agence de presse. C'est
+les questions auxquelles on doit répondre
+
+35
+00:03:16,629 --> 00:03:19,010
+par exemple dans une dépêche d'agence.
+
+36
+00:03:19,010 --> 00:03:26,010
+Voyons maintenant de quelles questions il
+s'agit exactement. Voici un tableau détaillé
+
+37
+00:03:26,340 --> 00:03:28,060
+donc QQOQCP.
+
+38
+00:03:28,060 --> 00:03:35,060
+Première question : QUI. Donc là on se demande
+quels sont les acteurs, les responsables,
+
+39
+00:03:37,590 --> 00:03:42,180
+les sujets, les personnes concernées donc
+: De qui ? Avec qui ? Pour le compte de qui
+
+40
+00:03:42,180 --> 00:03:44,950
+? Ca c'est la première question.
+
+41
+00:03:44,950 --> 00:03:51,950
+La deuxième c'est le quoi. Quoi porte plutôt
+sur l'outil, l'objet, avec quoi, en relation
+
+42
+00:03:52,569 --> 00:03:53,030
+avec quoi.
+
+43
+00:03:53,030 --> 00:04:00,030
+Le "où" c'est le "où". Là on s'intéresse
+aux informations géographiques, spatiales
+
+44
+00:04:01,019 --> 00:04:06,689
+: Où ça se passe ? Est-ce que ça se déplace
+? D'où ça vient ? Où ça va ? Qu'est-ce
+
+45
+00:04:06,689 --> 00:04:08,019
+qu'il y a autour ?
+
+46
+00:04:08,019 --> 00:04:15,019
+Le Q suivant, c'est le Q de Quand. Donc là
+on est sur le temporel. Est-ce que c'est un
+
+47
+00:04:15,109 --> 00:04:20,180
+phénomène qui se reproduit de manière cyclique
+? Qui s'arrête un certain moment. Est-ce
+
+48
+00:04:20,180 --> 00:04:25,650
+que il a une durée ? Alors l'élément très
+important souvent en résolution de problèmes
+
+49
+00:04:25,650 --> 00:04:29,319
+quand il y a quelque chose qui ne va pas,
+c'est de savoir quand le problème se déclenche
+
+50
+00:04:29,319 --> 00:04:33,710
+et souvent bien sûr, c'est à ce moment-là
+qui s'est passé quelque chose de notable.
+
+51
+00:04:33,710 --> 00:04:40,710
+Ensuite le C, c'est le C de comment. Donc
+là on s'intéresse aux procédures, aux techniques,
+
+52
+00:04:40,759 --> 00:04:43,120
+aux moyens matériels, procédés.
+
+53
+00:04:43,120 --> 00:04:49,060
+Et puis finalement dernière question, la
+plus délicate, c'est la question du pourquoi.
+
+54
+00:04:49,060 --> 00:04:53,650
+Alors l'idée derrière le pourquoi, c'est
+que les choses existent parce que elles ont
+
+55
+00:04:53,650 --> 00:04:58,610
+une utilité raison d'être. Donc elles répondent
+à des objectifs. C'est ce que l'on appelle
+
+56
+00:04:58,610 --> 00:05:04,550
+une analyse téléologique. Donc on va essayer
+de regarder s'il y a des finalités, des objectifs
+
+57
+00:05:04,550 --> 00:05:06,620
+et des raisons.
+
+58
+00:05:06,620 --> 00:05:13,180
+Dernière chose. En fait je vous ai parlé
+de QQOQCP, mais en réalité ce que je vous
+
+59
+00:05:13,180 --> 00:05:20,180
+recommande d'utiliser ces QQOQCCP et donc
+d'ajouter un C en plus. Qu'est-ce que c'est
+
+60
+00:05:21,560 --> 00:05:28,039
+que ce C en plus ? Eh bien c'est le C de Combien.
+On va reprendre les questions qu'on s'est
+
+61
+00:05:28,039 --> 00:05:33,210
+posée précédemment mais en essayant de
+mesurer. Donc à quelle quantité ? Quelle
+
+62
+00:05:33,210 --> 00:05:39,729
+durée en seconde ? Quelle valeur ? Quelle
+dose ? Quel budget ? Et donc ce combien est
+
+63
+00:05:39,729 --> 00:05:44,199
+extrêmement important parce qu'il permet
+d'attaquer avec rigueur un problème, je vous
+
+64
+00:05:44,199 --> 00:05:48,759
+le présenterai beaucoup plus en détail dans
+l'outil suivant qui est l'outil de collecte
+
+65
+00:05:48,759 --> 00:05:55,759
+de données. Une autre formule mnémotechnique
+pour terminer donc je vous laisse la découvrir
+
+66
+00:05:56,639 --> 00:06:03,639
+ici : CQQCOQP. Voilà c'est une manière de
+retenir les questionnements.
+
+67
+00:06:05,690 --> 00:06:12,690
+Pour terminer, quelques points. Il faut savoir
+contextualiser les questions du QQOQCCP selon
+
+68
+00:06:14,990 --> 00:06:20,069
+que en résolution problème on est tout au
+début, donc dans la phase de cadrage. Donc
+
+69
+00:06:20,069 --> 00:06:25,129
+à ce moment-là le QQOQCCP cherche à s'accorder
+sur un problème à traiter. Donc par exemple
+
+70
+00:06:25,129 --> 00:06:30,349
+on cherchera à interpréter la question comment
+comme : comment a-t-on eu connaissance de
+
+71
+00:06:30,349 --> 00:06:35,099
+ce qui ne va pas ? Par quelle source ? Lorsque
+l'on est en phase d'analyse, on peut faire
+
+72
+00:06:35,099 --> 00:06:41,139
+un QQOQCCP à la fin. Cela permet de faire
+le tour du diagnostic que l'on a fait. Donc
+
+73
+00:06:41,139 --> 00:06:45,729
+que, qu'est-ce qui ne va pas ? A cause de
+quoi précisément ? Quand est-ce que ça
+
+74
+00:06:45,729 --> 00:06:52,129
+commencé ? Etc. Ca c'est un diagnostic. Et
+puis finalement, si vous utilisez le QQOQCCP
+
+75
+00:06:52,129 --> 00:06:57,389
+à la fin de la phase de solution, là on
+va s'en servir pour définir le projet qu'on
+
+76
+00:06:57,389 --> 00:07:01,919
+va lancer. C'est-à-dire l'action d'implantation
+qu'on va mettre en place. Donc par exemple,
+
+77
+00:07:01,919 --> 00:07:06,700
+qui seront les membres de l'équipe ? Combien
+va-t-on leur raccorder au niveau du budget
+
+78
+00:07:06,700 --> 00:07:13,700
+? Etc. On le voit, il est important de savoir
+interpréter ces questions dans leurs contextes.
+
+79
+00:07:14,389 --> 00:07:20,940
+Quelques variantes maintenant pour terminer.
+Ici vous avez un QQOQCP qui se décline en
+
+80
+00:07:20,940 --> 00:07:27,849
+fait sur trois colonnes et quatre lignes.
+Donc vous le voyez, on peut avoir des combinaisons
+
+81
+00:07:27,849 --> 00:07:34,539
+de questions. Donc pourquoi ? Qui est concerné
+? Pourquoi ? Où ça se passe ? Etc.
+
+82
+00:07:34,539 --> 00:07:40,550
+On peut pousser cette logique encore un peu
+plus en avant. Là vous voyez un modèle que
+
+83
+00:07:40,550 --> 00:07:46,379
+vous pouvez télécharger. Qui est extrêmement
+détaillé et qui utilise des hexagones. On
+
+84
+00:07:46,379 --> 00:07:50,819
+s'en doute, une fois qu'on a le principe du
+QQOQCCP, on peut l'utiliser de manière plus
+
+85
+00:07:50,819 --> 00:07:56,759
+ou moins détaillée selon ses besoins, selon
+l'ampleur du problème que l'on souhaite attaquer.
+
+86
+00:07:56,759 --> 00:08:02,460
+Alors j'ai terminé la présentation de cet
+outil. Maintenant quelques points, comme d'habitude,
+
+87
+00:08:02,460 --> 00:08:08,699
+pour approfondir et réfléchir. Alors voici
+un exemple du QQOQQCP en milieu hospitalier.
+
+88
+00:08:08,699 --> 00:08:14,639
+Donc consultez-le, regardez-le, demandez-vous
+comment pourriez l'améliorer. Et voici une
+
+89
+00:08:14,639 --> 00:08:21,030
+autre étude de cas, cette fois-ci, sur un
+cahier de laboratoire. Cette présentation
+
+90
+00:08:21,030 --> 00:08:26,129
+est terminée. Je vous rappelle qu'un quiz
+est disponible sous cette vidéo.
+
