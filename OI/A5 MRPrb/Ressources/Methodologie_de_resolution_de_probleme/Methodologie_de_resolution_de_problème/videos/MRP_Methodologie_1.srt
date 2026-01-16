@@ -1,0 +1,333 @@
+1
+00:00:00,859 --> 00:00:06,700
+La résolution problème et le processus de
+définition, puis de mise en œuvre d'une
+
+2
+00:00:06,720 --> 00:00:12,509
+solution à une difficulté. Alors des difficultés,
+on en rencontre tout le temps. On pourrait
+
+3
+00:00:12,509 --> 00:00:18,160
+même dire que c'est le sens de la vie. En
+tout cas, en entreprise, on rencontre sans
+
+4
+00:00:18,160 --> 00:00:23,720
+arrêt des problèmes et notre travail, eh
+bien c'est d'arriver, sinon à les résoudre,
+
+5
+00:00:23,720 --> 00:00:29,700
+du moins à les limiter de la manière la
+plus efficace possible. Dans cette formation
+
+6
+00:00:29,700 --> 00:00:35,210
+je vous propose d'étudier une méthode simple
+et rigoureuse de résolution de problèmes,
+
+7
+00:00:35,210 --> 00:00:38,620
+complétée par des outils qui ont fait leurs
+preuves sur le terrain.
+
+8
+00:00:38,620 --> 00:00:45,620
+Quelques points avant de commencer. Tout d'abord
+dans ce bandeau, vous trouvez les sujets abordés
+
+9
+00:00:46,040 --> 00:00:53,040
+dans chaque chapitre et une coche vous rappelle
+où on en est. Au niveau de la vidéo je vous
+
+10
+00:00:53,579 --> 00:00:59,739
+recommande d'utiliser le mode haute définition
+en plein écran. Donc voyons comment cela
+
+11
+00:00:59,739 --> 00:01:05,420
+ça fonctionne. Voyez ici vous pouvez régler
+la haute définition. Le plein écran est
+
+12
+00:01:05,420 --> 00:01:11,990
+là. Et Si vous souhaitez faire défiler ce
+cours plus vite, ou au contraire si vous souhaitez
+
+13
+00:01:11,990 --> 00:01:17,330
+aller moins vite pour prendre des notes. Eh
+bien vous pouvez activer la fonction de YouTube
+
+14
+00:01:17,330 --> 00:01:24,330
+qui permet de faire varier la vitesse. Du
+point de vue des diapositives que je présente
+
+15
+00:01:24,690 --> 00:01:31,690
+il est possible sur mon site Web de télécharger
+les originaux et même les vidéos en haute
+
+16
+00:01:32,340 --> 00:01:36,260
+définition et donc avec ces fichiers vous
+pouvez regarder ces vidéos quand vous le
+
+17
+00:01:36,260 --> 00:01:41,090
+voulez. Alors regardons rapidement comment
+cela fonctionne. Quand vous allez sur mon
+
+18
+00:01:41,090 --> 00:01:46,280
+site ici et que vous cliquez sur résolution
+problème, vous allez accéder à cette page
+
+19
+00:01:46,280 --> 00:01:52,030
+où vous allez retrouver toutes les diapositives
+et plus bas vous pourrez donc télécharger
+
+20
+00:01:52,030 --> 00:01:59,030
+toutes les vidéos. Un dernier point à signaler.
+Ce cours est distribué sous licence Creative
+
+21
+00:01:59,460 --> 00:02:04,290
+Commons. C'est-à-dire que vous pouvez le
+réutiliser librement à condition de le partager
+
+22
+00:02:04,290 --> 00:02:10,780
+également et de ne pas en faire une utilisation
+commerciale sans une autorisation préalable.
+
+23
+00:02:10,780 --> 00:02:17,780
+Quels sont les objectifs que je vous propose.
+Au terme de cette formation vous devez être
+
+24
+00:02:20,040 --> 00:02:24,190
+capable tout d'abord de maîtriser des outils
+alors ses outils bien sûrs je vais vous les
+
+25
+00:02:24,190 --> 00:02:30,030
+présenter dans le détail mais vous avez
+le QQOQCP, les feuilles de relevés, le diagramme
+
+26
+00:02:30,030 --> 00:02:35,760
+causes-effets, un autre module de formation
+sur la créativité est également disponible
+
+27
+00:02:35,760 --> 00:02:38,760
+et il porte notamment sur le brainstorming.
+
+28
+00:02:38,760 --> 00:02:45,760
+Deuxième objectif de cette formation : en
+résolution problème il faut savoir travailler
+
+29
+00:02:46,540 --> 00:02:52,420
+avec rigueur et donc je vous encouragerai
+ne pas sauter les étapes et à bien faire
+
+30
+00:02:52,420 --> 00:02:59,420
+ce qu'on appelle un verrouillage à la fin
+de chaque phase du processus. Dernier point
+
+31
+00:03:00,410 --> 00:03:05,269
+: vous devez être capables d'animer un groupe
+de résolutions de problème et pour cela
+
+32
+00:03:05,269 --> 00:03:12,069
+je vous donnerai à la fin de chaque chapitre
+quelques conseils. Dernière chose si vous
+
+33
+00:03:12,069 --> 00:03:18,480
+souhaitez approfondir et vous formez ou MRP,
+aux méthodes de résolution problème, est
+
+34
+00:03:18,480 --> 00:03:24,920
+bien je vous présenterai à la fin de cette
+formation une étude de cas que vous pourrez
+
+35
+00:03:24,920 --> 00:03:31,010
+utiliser et donc moyennant une dizaine d'heures
+vous pourrez parcourir le cycle complet de
+
+36
+00:03:31,010 --> 00:03:31,540
+la méthode.
+
+37
+00:03:31,540 --> 00:03:38,540
+Un point maintenant sur les quatre grandes
+étapes avant de commencer. La première phase
+
+38
+00:03:39,500 --> 00:03:44,409
+en résolution de problèmes s'appelle le
+cadrage. C'est la phase la plus importante
+
+39
+00:03:44,409 --> 00:03:49,580
+parce que c'est celle où on essaie de comprendre
+et surtout de définir à quel problème on
+
+40
+00:03:49,580 --> 00:03:55,459
+va s'attaquer parce que très souvent on en
+a un grand nombre et donc il faut savoir détecter
+
+41
+00:03:55,459 --> 00:04:00,620
+l'intégralité des problèmes mais ensuite
+il faut être capable de prioriser et aussi
+
+42
+00:04:00,620 --> 00:04:02,220
+de fixer des objectifs.
+
+43
+00:04:02,220 --> 00:04:09,220
+Deuxième phase la phase d'analyse donc dans
+cette étape nous allons travailler sur des
+
+44
+00:04:09,830 --> 00:04:14,790
+outils qui nous permettent de trouver les
+causes de ce qui ne va pas. Parce que on ne
+
+45
+00:04:14,790 --> 00:04:19,699
+peut pas résoudre un problème si on ne sait
+pas d'où il vient. Donc ça c'est la deuxième
+
+46
+00:04:19,699 --> 00:04:25,330
+étape qu'il faut arriver à valider avant
+de passer à la troisième qui consiste à
+
+47
+00:04:25,330 --> 00:04:30,819
+trouver et surtout à choisir les solutions.
+Ce qui est particulièrement délicat dans
+
+48
+00:04:30,819 --> 00:04:35,159
+cette troisième phase c'est le fait de choisir
+parce que en fait si on travaille bien on
+
+49
+00:04:35,159 --> 00:04:40,930
+va trouver plusieurs solutions et donc la
+question sera de savoir laquelle on doit appliquer
+
+50
+00:04:40,930 --> 00:04:41,729
+en priorité.
+
+51
+00:04:41,729 --> 00:04:48,729
+Enfin la dernière partie est consacrée à
+l'action donc en fait l'implantation de la
+
+52
+00:04:49,559 --> 00:04:56,559
+solution mais aussi son suivi, son évaluation
+et la capitalisation qui va permettre de généraliser
+
+53
+00:04:56,719 --> 00:05:02,110
+ce que l'on appelle les bonnes pratiques et
+également bien sûr de ne pas retomber dans
+
+54
+00:05:02,110 --> 00:05:06,990
+les mauvaises habitudes et donc de maîtriser
+sur le long terme la solution que l'on a mis
+
+55
+00:05:06,990 --> 00:05:09,069
+en place dernier.
+
+56
+00:05:09,069 --> 00:05:15,080
+Dernier point à signaler il ne faut pas concevoir
+cette méthode de résolution de problèmes
+
+57
+00:05:15,080 --> 00:05:19,869
+comme quelque chose de monolithique que l'on
+utiliserait qu'une seule fois. En réalité
+
+58
+00:05:19,869 --> 00:05:25,319
+on fonctionne sur un principe de cycle de
+résolution de problèmes et donc ce cycle
+
+59
+00:05:25,319 --> 00:05:31,369
+on peut le parcourir à plusieurs reprises
+l'important étant de toujours travailler
+
+60
+00:05:31,369 --> 00:05:31,919
+rigoureusement
+
+61
+00:05:31,919 --> 00:05:38,919
+Un sommaire pour terminer donc dans le chapitre
+suivant je vous présenterai la phase de cadrage
+
+62
+00:05:40,599 --> 00:05:46,389
+avec un certain nombre d'outils, je définirai
+quels sont les livrables de cette phase donc
+
+63
+00:05:46,389 --> 00:05:51,639
+toujours dans la question de travailler avec
+rigueur donc savoir ce que l'on obtient à
+
+64
+00:05:51,639 --> 00:05:58,409
+la fin de cette partie. Et puis je vous donnerai
+quelques conseils. La phase 2 est donc consacrée
+
+65
+00:05:58,409 --> 00:06:04,589
+à l'analyse et à la recherche des causes.
+La phase trois, à trouver et à choisir des
+
+66
+00:06:04,589 --> 00:06:10,830
+solutions. Et pour terminer, nous parlerons
+de la mise en place des solutions. Voilà
+
+67
+00:06:10,830 --> 00:06:16,899
+donc je vous propose maintenant de me rejoindre
+dans le chapitre suivant sur la définition
+
+68
+00:06:16,899 --> 00:06:17,529
+du problème
+

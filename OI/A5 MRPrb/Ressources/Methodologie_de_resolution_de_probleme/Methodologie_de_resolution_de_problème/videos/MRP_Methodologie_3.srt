@@ -1,0 +1,753 @@
+1
+00:00:01,180 --> 00:00:06,660
+Dans la méthodologie de résolution de problèmes
+parlons maintenant, ensemble, de la phase
+
+2
+00:00:06,660 --> 00:00:13,660
+de recherche des causes. Donc je vais vous
+présenter ses objectifs, ses outils, ses
+
+3
+00:00:14,140 --> 00:00:19,600
+livrables. Et puis pour terminer, je vous
+donnerai un certain nombre de conseils pratiques.
+
+4
+00:00:19,600 --> 00:00:26,420
+Alors la recherche des causes, donc, c'est
+la phase 2 de la méthodologie de résolution
+
+5
+00:00:26,420 --> 00:00:33,420
+de problèmes. Un point sur lequel il faut
+que j'insiste c'est la rigueur. En général
+
+6
+00:00:34,070 --> 00:00:38,760
+les gens qui conduisent mal, la méthodologie
+de résolution de problèmes, pensent tout
+
+7
+00:00:38,760 --> 00:00:45,530
+de suite à des solutions. Or dans la phase
+d'analyse, on ne doit pas penser en termes
+
+8
+00:00:45,530 --> 00:00:51,960
+de solutions. On doit avant tout chercher
+à comprendre ce qui ne va pas. Donc quelles
+
+9
+00:00:51,960 --> 00:00:57,510
+sont les choses que l'on va chercher à faire
+? Eh bien, nous allons rechercher toutes les
+
+10
+00:00:57,510 --> 00:01:03,379
+causes possibles, de manière exhaustive.
+Et nous allons également chercher à remonter
+
+11
+00:01:03,379 --> 00:01:09,970
+à ce que l'on appelle la cause racine ou
+les causes principales de ce qui ne va pas.
+
+12
+00:01:09,970 --> 00:01:14,810
+Et ce n'est que une fois que l'on a compris
+ce qui ne va pas que l'on pourra changer de
+
+13
+00:01:14,810 --> 00:01:20,790
+phase et passer aux solutions. Mais attention
+à ne pas sauter les étapes.
+
+14
+00:01:20,790 --> 00:01:27,790
+Quels sont les outils ? Les outils que nous
+utilisons, comme vous le voyez, ce sont des
+
+15
+00:01:28,240 --> 00:01:34,210
+choses qui vont permettre de faire ce que
+l'on appelle de l'investigation. Donc on va
+
+16
+00:01:34,210 --> 00:01:40,950
+tout d'abord ouvrir l'éventail des possibles
+et utiliser un brainstorming avec un groupe
+
+17
+00:01:40,950 --> 00:01:47,860
+bien constitué, dont vous trouverez un module
+entier de formation au brainstorming. Alors
+
+18
+00:01:47,860 --> 00:01:53,820
+celui-ci est assez long donc il n'est pas
+au programme de cette formation. Mais il est
+
+19
+00:01:53,820 --> 00:01:56,720
+à votre disposition si vous souhaitez approfondir.
+
+20
+00:01:56,720 --> 00:02:03,720
+Autre système utile, ce sont les cartes heuristiques.
+Alors 'heuristique', c'est l'art de trouver,
+
+21
+00:02:05,530 --> 00:02:11,620
+de découvrir les choses, et donc à votre
+disposition j'ai un petit chapitre sur le
+
+22
+00:02:11,620 --> 00:02:16,819
+Mind mapping que vous trouverez sur mon site
+Web. Donc vous avez deux chapitres sur les
+
+23
+00:02:16,819 --> 00:02:23,819
+cartes conceptuelles et puis un dernier qui
+porte sur le Mind mapping. Là encore, cette
+
+24
+00:02:24,499 --> 00:02:29,980
+partie n'est pas réellement au programme
+du module de formation, mais bien entendu,
+
+25
+00:02:29,980 --> 00:02:33,689
+elle est extrêmement utile si vous souhaitez
+approfondir.
+
+26
+00:02:33,689 --> 00:02:39,949
+Ensuite, point important, il va donc falloir
+une fois qu'on a trouvé toutes les causes
+
+27
+00:02:39,949 --> 00:02:46,189
+possibles remonter aux causes racines. Et
+pour cela je vous demande de suivre maintenant
+
+28
+00:02:46,189 --> 00:02:52,930
+la formation à l'outil qui s'appelle le diagramme
+causes-effet ou encore le diagramme Ishikawa
+
+29
+00:02:52,930 --> 00:02:57,730
+ou encore diagramme en arête de poisson.
+Je vous présenterai également dans cette
+
+30
+00:02:57,730 --> 00:03:01,089
+formation les 5 P ou les cinq pourquoi.
+
+31
+00:03:01,089 --> 00:03:08,089
+Point suivant, formuler des hypothèses, alors
+là, vous avez déjà vu d'autres formations
+
+32
+00:03:10,609 --> 00:03:16,029
+en recueil de données. Si vous souhaitez
+vraiment approfondir, sachez qu'en Master
+
+33
+00:03:16,029 --> 00:03:22,540
+recherche, je fais un cours sur la formulation
+et le test d'hypothèses. Alors ce cours est
+
+34
+00:03:22,540 --> 00:03:27,729
+d'un niveau assez élevé et vous n'êtes
+pas forcés de le suivre maintenant c'est
+
+35
+00:03:27,729 --> 00:03:34,159
+seulement si vous souhaitez approfondir par
+la suite. Pour terminer et bien la dernière
+
+36
+00:03:34,159 --> 00:03:38,979
+chose que l'on fait c'est tout simplement
+une réunion dans laquelle on va récapituler
+
+37
+00:03:38,979 --> 00:03:44,680
+les causes directes et puis les causes profondes,
+indirectes, on parle également de causes
+
+38
+00:03:44,680 --> 00:03:51,680
+latentes. Alors je vous laisse donc regarder
+maintenant la formation sur le diagramme cause-effet
+
+39
+00:03:51,999 --> 00:03:54,499
+qui fait partie de ce chapitre.
+
+40
+00:03:54,499 --> 00:04:01,499
+Voyons maintenant quelles sont les livrables,
+alors il y a trois grandes catégories de
+
+41
+00:04:01,809 --> 00:04:06,119
+livrables. La première, donc il faut que
+je vous parle de données scientifiques et
+
+42
+00:04:06,119 --> 00:04:12,689
+rigoureuses. C'est-à-dire quand on cherche
+les causes on veut des preuves que on a effectivement
+
+43
+00:04:12,689 --> 00:04:19,400
+trouvé les causes réelles. Deuxième point,
+donc il faut les vraies causes et pas ce que
+
+44
+00:04:19,400 --> 00:04:24,210
+l'on appelle les symptômes. Alors je ne sais
+pas si vous connaissez en médecine, eh bien,
+
+45
+00:04:24,210 --> 00:04:27,970
+par exemple, quelqu'un qui a mal à la tête,
+on peut soigner les symptômes en prenant
+
+46
+00:04:27,970 --> 00:04:34,270
+de l'aspirine mais cela ne dit pas d'où vient
+la maladie. Donc attention de ne pas soigner
+
+47
+00:04:34,270 --> 00:04:40,400
+simplement les symptômes mais de bien conduire
+ce que l'on appelle une analyse exhaustive
+
+48
+00:04:40,400 --> 00:04:42,580
+et donc de ne rien oublier.
+
+49
+00:04:42,580 --> 00:04:49,580
+Point suivant, alors celui-ci est un peu plus
+subtil. Dans les causes, eh bien, vous allez
+
+50
+00:04:50,370 --> 00:04:55,960
+peut-être trouver des causes du problème,
+mais des causes qui ne sont pas actionnables.
+
+51
+00:04:55,960 --> 00:05:02,330
+Alors qu'est-ce que je dire par là ? Eh bien,
+si vous prouvez qu'un problème provient d'une
+
+52
+00:05:02,330 --> 00:05:07,280
+situation sur laquelle vous n'avez pas de
+prise, eh bien, bien sûr si vous voulez faire
+
+53
+00:05:07,280 --> 00:05:13,479
+de la résolution de problème, c'est impossible.
+Et donc, ce qu'il vous faut, c'est des causes,
+
+54
+00:05:13,479 --> 00:05:18,949
+mais des causes actionnables. C'est-à-dire
+sur lesquelles vous pourrez agir. Alors si
+
+55
+00:05:18,949 --> 00:05:25,520
+vous voulez en savoir plus, un module de formation
+complet est disponible sur le sujet de l'analyse
+
+56
+00:05:25,520 --> 00:05:31,560
+stratégique. Alors, il n'est pas au programme
+de ce module court de formation, mais bien
+
+57
+00:05:31,560 --> 00:05:36,699
+sûr, vous pouvez le suivre si vous voulez,
+et vous y verrez, j'explique la notion de
+
+58
+00:05:36,699 --> 00:05:42,120
+zone d'incertitude, qu'il est extrêmement
+important de comprendre. Parce que bien sûr,
+
+59
+00:05:42,120 --> 00:05:45,759
+dans la vie ou en entreprise, y'a des choses
+que l'on peut faire, des choses que l'on ne
+
+60
+00:05:45,759 --> 00:05:51,490
+peut pas faire, et puis parfois, eh bien,
+il faut savoir trouver la bonne personne,
+
+61
+00:05:51,490 --> 00:05:56,979
+le bon acteur, pour pouvoir avoir prise sur
+quelque chose.
+
+62
+00:05:56,979 --> 00:06:03,090
+Suite des livrables maintenant. Il faut savoir
+que s'il y a urgence, alors je vous ai dit
+
+63
+00:06:03,090 --> 00:06:07,340
+qu'il ne fallait pas penser à la solution
+toute suite, là ce qui était important c'était
+
+64
+00:06:07,340 --> 00:06:14,340
+d'analyser, bon, il y a quand même des exceptions,
+notamment quand vous avez un problème grave,
+
+65
+00:06:15,039 --> 00:06:19,530
+on va quand même essayer toute suite de le
+cantonner, et donc ce qu'on fait, c'est arrêter
+
+66
+00:06:19,530 --> 00:06:24,610
+l'hémorragie, en médecine. C'est tout de
+suite, par exemple en production, faire des
+
+67
+00:06:24,610 --> 00:06:31,610
+retouches, faire un contrôle renforcé et
+donc parer au plus urgent. Alors parer au
+
+68
+00:06:32,749 --> 00:06:37,590
+plus urgent, c'est bien, donc vous avez en
+fait un travail en cours, on appelle ça le
+
+69
+00:06:37,590 --> 00:06:42,680
+mode dégradé. C'est-à-dire que par exemple
+vous avait une solution qui marche en attendant,
+
+70
+00:06:42,680 --> 00:06:46,249
+mais dont vous savez qu'elle n'est pas bonne,
+elle vous fait perdre du temps. Elle ne marche
+
+71
+00:06:46,249 --> 00:06:51,919
+pas parfaitement. Alors cette solution en
+mode dégradé, il ne faut pas qu'elle devienne
+
+72
+00:06:51,919 --> 00:06:56,159
+une habitude. Un des risques quand on fait
+la résolution de problème, eh bien, c'est
+
+73
+00:06:56,159 --> 00:07:02,219
+de se contenter de solutions palliatives.
+Donc attention, il ne faut pas vous arrêter
+
+74
+00:07:02,219 --> 00:07:08,139
+à des solutions bricolées-permanentes. Le
+but c'est bien de trouver la vraie cause et
+
+75
+00:07:08,139 --> 00:07:10,400
+puis de trouver une solution durable.
+
+76
+00:07:10,400 --> 00:07:14,669
+Quelques conseils pratiques maintenant.
+
+77
+00:07:14,669 --> 00:07:19,210
+Alors quand il y a quelque chose qui ne va
+pas, le premier réflexe, eh bien, c'est de
+
+78
+00:07:19,210 --> 00:07:24,710
+reproduire le défaut. Si on arrive à reproduire
+le défaut, ça veut dire qu'on peut tout
+
+79
+00:07:24,710 --> 00:07:29,779
+de suite le comprendre. Et au contraire, les
+défauts qu'on ne comprend pas d'où ils viennent,
+
+80
+00:07:29,779 --> 00:07:33,509
+qu'on n'arrive pas reproduire, eh bien ce
+sont les plus embêtants. Donc ça, ce serait
+
+81
+00:07:33,509 --> 00:07:39,029
+mon premier conseil. Quand vous voyez un défaut,
+essayez de le reproduire, et quand vous avez
+
+82
+00:07:39,029 --> 00:07:42,159
+compris ce qu'il le cause, eh bien, vous aurez
+déjà bien avancé.
+
+83
+00:07:42,159 --> 00:07:49,129
+Deuxième conseil pratique. Alors pour faire
+de l'identification des causes, en général
+
+84
+00:07:49,129 --> 00:07:52,759
+on fait des réunions. Mais le problème des
+réunions, eh bien, c'est qu'on est souvent
+
+85
+00:07:52,759 --> 00:07:59,300
+loin du terrain. Alors pensez, par exemple,
+à prélever des échantillons sur place,
+
+86
+00:07:59,300 --> 00:08:04,370
+et éventuellement à vous déplacer pour
+aller, tous, voir ce qu'il ne va pas. Alors,
+
+87
+00:08:04,370 --> 00:08:07,740
+bien sûr, le problème d'aller sur place,
+eh bien, c'est que cela prend beaucoup de
+
+88
+00:08:07,740 --> 00:08:14,740
+temps. Une alternative, eh bien, c'est d'envoyer
+quelqu'un pour rassembler un maximum d'informations.
+
+89
+00:08:15,099 --> 00:08:20,139
+Donc prendre des échantillons, mais aussi
+avoir des photos. Et donc, comme ça, le groupe
+
+90
+00:08:20,139 --> 00:08:25,800
+quand il se réunit à des documents, des
+photos, des échantillons. Et donc, il va
+
+91
+00:08:25,800 --> 00:08:28,800
+pouvoir travailler à partir de ces éléments.
+
+92
+00:08:28,800 --> 00:08:35,800
+Autre conseil pratique. Alors je vous ai présenté
+des outils dans cette phase mais il faut savoir
+
+93
+00:08:36,370 --> 00:08:43,219
+qu'il en existe d'autres. Par exemple, ici,
+vous avez la matrice de déploiement des fonctions
+
+94
+00:08:43,219 --> 00:08:47,699
+de la qualité (quality function deployement).
+C'est un des outils que vous pouvez souhaiter
+
+95
+00:08:47,699 --> 00:08:51,079
+approfondir. Et donc à cet effet je vous
+mets un lien.
+
+96
+00:08:51,079 --> 00:08:58,079
+Autre outil que l'on utilise en suivi des
+causes, c'est la maîtrise statistique des
+
+97
+00:08:58,110 --> 00:09:04,560
+processus. Et donc là aussi vous pouvez approfondir
+si vous le souhaitez. La question qui se pose
+
+98
+00:09:04,560 --> 00:09:09,740
+bien sûr, et de savoir à partir de quand
+une observation est statistiquement significative.
+
+99
+00:09:09,740 --> 00:09:16,360
+Donc voyez ici par exemple quand il y a cinq
+points sur une tendance continue, eh bien,
+
+100
+00:09:16,360 --> 00:09:21,660
+on va considérer que ça veut dire que quelque
+chose qui ne va pas. Et donc c'est prouvé
+
+101
+00:09:21,660 --> 00:09:23,160
+ici statistiquement.
+
+102
+00:09:23,160 --> 00:09:29,320
+Encore dans les conseils pratiques, donc à
+ce stade là, apporter des preuves c'est ce
+
+103
+00:09:29,320 --> 00:09:35,709
+que j'appelle le "Speak with data". Donc il
+faut savoir pour cela prendre de la hauteur.
+
+104
+00:09:35,709 --> 00:09:41,100
+C'est-à-dire, pas se contenter de faire des
+observations en grand nombre, mais avoir des
+
+105
+00:09:41,100 --> 00:09:46,310
+modèles, avoir des théories. Alors mon exemple
+favori, c'est que si vous voulez étudier,
+
+106
+00:09:46,310 --> 00:09:50,540
+par exemple, le phénomène des marées, eh
+bien, vous pouvez simplement mesurer la hauteur
+
+107
+00:09:50,540 --> 00:09:56,500
+d'eau toutes les heures pendant un an. Effectivement
+ça va fonctionner. Mais en réalité, si
+
+108
+00:09:56,500 --> 00:10:00,970
+vous avez une bonne théorie, par exemple
+la théorie de la gravitation universelle,
+
+109
+00:10:00,970 --> 00:10:07,149
+et que vous savez que, en fait, c'est l'attraction,
+la gravitation, qui va causer les marées,
+
+110
+00:10:07,149 --> 00:10:09,959
+eh bien, bien entendu c'est beaucoup plus
+puissant que de faire des mesures pendant
+
+111
+00:10:09,959 --> 00:10:14,730
+un an. Parce que vous avez une bonne théorie
+et un modèle. Ca veut dire, par exemple,
+
+112
+00:10:14,730 --> 00:10:19,120
+que si vous connaissez la théorie de la gravitation
+et son effet sur les marées; eh bien, vous
+
+113
+00:10:19,120 --> 00:10:23,399
+savez que quand la lune et le soleil sont
+alignés, eh bien, c'est ça, qui fait les
+
+114
+00:10:23,399 --> 00:10:28,790
+marées d'équinoxes. Vous le voyez, si vous
+avez une formation scientifique, que ce soit
+
+115
+00:10:28,790 --> 00:10:33,180
+en sciences dures ou en sciences humaines,
+c'est à ce moment-là qu'il faut essayer
+
+116
+00:10:33,180 --> 00:10:35,320
+de la mettre en œuvre.
+
+117
+00:10:35,320 --> 00:10:41,070
+Dernier conseil pratique. Alors le problème
+quand on cherche des causes, c'est que très
+
+118
+00:10:41,070 --> 00:10:48,070
+souvent on a peur, quand on a fait quelque
+chose de mal, de se faire punir. Et donc votre
+
+119
+00:10:48,160 --> 00:10:53,060
+problème à ce stade là, c'est qu'on vous
+dise la vérité. Donc il faut être capable
+
+120
+00:10:53,060 --> 00:10:58,790
+de sécuriser et de rassurer les personnes,
+et de bien comprendre que le fait de trouver
+
+121
+00:10:58,790 --> 00:11:03,730
+la cause d'un problème, ne veut pas dire
+punir ou cherchez quelqu'un qui soit un bouc
+
+122
+00:11:03,730 --> 00:11:09,980
+émissaire. Il faut être dans votre entreprise,
+dans votre organisation, positivement dans
+
+123
+00:11:09,980 --> 00:11:14,490
+l'idée de dire : on regarde ce qui va pas,
+on punit pas, mais on comprend. Et surtout,
+
+124
+00:11:14,490 --> 00:11:15,120
+on progresse.
+
+125
+00:11:15,120 --> 00:11:22,120
+Quelques conseils maintenant, quelques conseils
+pratiques pour terminer. Qui inclure dans
+
+126
+00:11:23,110 --> 00:11:29,480
+l'équipe lorsque vous faites de la recherche
+de causes. Moi ce que je vous conseille, c'est
+
+127
+00:11:29,480 --> 00:11:35,759
+de prendre des gens qui ont de l'expérience.
+Des gens auxquels on va pas pouvoir raconter
+
+128
+00:11:35,759 --> 00:11:41,620
+n'importe quoi. Qu'on va pas pouvoir les balader.
+Ce sont des personnes qui ne se laissent pas
+
+129
+00:11:41,620 --> 00:11:47,050
+abuser. Donc typiquement vous allez prendre
+des experts, des ingénieurs, qui ne vont
+
+130
+00:11:47,050 --> 00:11:53,360
+pas se contenter d'explications superficielles,
+qui vont essayer de remonter au fond du problème
+
+131
+00:11:53,360 --> 00:11:54,360
+pour bien comprendre.
+
+132
+00:11:54,360 --> 00:12:01,009
+Autres personnes à inclure dans l'équipe.
+Eh bien, il ne faut pas être mono disciplinaire.
+
+133
+00:12:01,009 --> 00:12:06,639
+Parce ce que les problèmes viennent en général
+de plusieurs catégories de choses qui ne
+
+134
+00:12:06,639 --> 00:12:12,540
+vont pas. Et donc, il faut rassembler des
+profils variés, et aussi des acteurs de terrain.
+
+135
+00:12:12,540 --> 00:12:17,750
+Donc ces acteurs de terrain, en général,
+ce sont des gens pragmatiques. Et qui peuvent
+
+136
+00:12:17,750 --> 00:12:23,300
+voir ce qui ne va pas de manière globale
+à partir de leur expérience.
+
+137
+00:12:23,300 --> 00:12:29,910
+Je continue sur mes conseils sur les qualités
+des gens qu'il faut inclure dans votre équipe.
+
+138
+00:12:29,910 --> 00:12:35,360
+Ce sera le dernier. Là je pense que le problème,
+quand on fait la recherche des causes, c'est
+
+139
+00:12:35,360 --> 00:12:40,750
+de s'arrêter trop tôt. Et donc, ce que je
+vous conseille, c'est de trouver des gens
+
+140
+00:12:40,750 --> 00:12:47,290
+qui sont têtus. Donc vous voyez, ici, si
+vous connaissez, c'est Colombo. C'est une
+
+141
+00:12:47,290 --> 00:12:54,060
+personnalité très tenace, qui ne s'en va
+pas sans avoir posé une petite dernière
+
+142
+00:12:54,060 --> 00:12:58,579
+question, jusqu'à ce qu'il arrive réellement
+à remonter aux responsables.
+
+143
+00:12:58,579 --> 00:13:05,139
+Voilà, nous avons terminé ce chapitre. Donc
+je vous ai présenté les objectifs de cette
+
+144
+00:13:05,139 --> 00:13:10,579
+phase d'analyse. Nous avons vu les outils.
+Je vous ai donné quelques éléments sur
+
+145
+00:13:10,579 --> 00:13:17,120
+la manière d'obtenir le livrable et puis
+j'ai terminé sur quelques conseils pratiques.
+
+146
+00:13:17,120 --> 00:13:24,120
+Alors une réflexion sur le chapitre, en conclusion,
+pour essayer de le mettre en relation avec
+
+147
+00:13:24,430 --> 00:13:31,430
+votre propre expérience. Voici une question,
+que vous pouvez-vous poser : vous est-il déjà
+
+148
+00:13:32,509 --> 00:13:38,899
+arrivé de tenter de résoudre un problème,
+sans succès. Et est-ce que finalement ce
+
+149
+00:13:38,899 --> 00:13:43,879
+n'était pas parce que vous n'aviez pas trouvé
+sa véritable cause ? Donc en fait vous croyez
+
+150
+00:13:43,879 --> 00:13:48,240
+l'avoir résolu et le problème revient. Bien
+sûr, il va continuer à revenir tant que
+
+151
+00:13:48,240 --> 00:13:50,480
+vous n'avez pas trouvé quelle est sa source.
+
+152
+00:13:50,480 --> 00:13:57,480
+Pour terminer, eh bien, je vous propose de
+vous reporter au quiz, qui est disponible
+
+153
+00:13:57,839 --> 00:14:02,750
+sous cette vidéo et qui vous permettra de
+tester vos connaissances sur ce chapitre.
+
