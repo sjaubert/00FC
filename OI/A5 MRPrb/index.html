@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A5 : MRPrb - Ressources</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .jdr-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+            color: white;
+        }
+
+        .jdr-section h2 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .jdr-link {
+            display: block;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #764ba2;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .jdr-link:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .file-list {
+            list-style: none;
+        }
+
+        .file-list li {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s;
+        }
+
+        .file-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .file-list a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .file-type {
+            font-size: 0.85em;
+            background: #e9ecef;
+            padding: 3px 10px;
+            border-radius: 12px;
+            color: #666;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .description {
+            background: #e3f2fd;
+            padding: 20px;
+            border-left: 4px solid #2196f3;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🔧 A5 : MRPrb (Méthodes de Résolution de Problèmes)</h1>
+        <div class="subtitle">Résolution méthodique de problèmes industriels</div>
+
+        <div class="description">
+            <p><strong>Description :</strong> Formation aux principales méthodes de résolution de problèmes : QRQC, 8D,
+                5 Pourquoi, Pareto, Poka-Yoke, Kaizen.</p>
+            <p style="margin-top: 10px;"><strong>Objectifs :</strong> Maîtriser les outils de résolution de problèmes et
+                développer une démarche d'amélioration continue</p>
+        </div>
+
+        <div class="jdr-section">
+            <h2>🎭 Jeux de Rôle Pédagogiques</h2>
+            <p style="margin-bottom: 15px;">Collection de 6 jeux de rôle pour la formation interactive</p>
+
+            <a href="Ressources/JdR1_QRQC/" class="jdr-link">🎭 JdR n°1 : QRQC ⭐ Débutant</a>
+            <a href="Ressources/JdR2_Methode_8D/" class="jdr-link">🎭 JdR n°2 : Méthode 8D ⭐⭐⭐ Avancé</a>
+            <a href="Ressources/JdR3_5_Pourquoi/" class="jdr-link">🎭 JdR n°3 : 5 Pourquoi ⭐⭐ Intermédiaire</a>
+            <a href="Ressources/JdR4_Pareto/" class="jdr-link">🎭 JdR n°4 : Pareto ⭐⭐ Intermédiaire</a>
+            <a href="Ressources/JdR5_Poka_Yoke/" class="jdr-link">🎭 JdR n°5 : Poka-Yoke ⭐⭐ Intermédiaire</a>
+            <a href="Ressources/JdR6_Kaizen/" class="jdr-link">🎭 JdR n°6 : Kaizen ⭐⭐⭐ Avancé</a>
+        </div>
+
+        <h2 style="color: #764ba2; margin: 30px 0 15px 0;">📚 Documentation Formateur</h2>
+
+        <ul class="file-list">
+            <li><a href="Ressources/Index_Collection_Jeux_de_Role.md"><span>📄 Index Collection Jeux de Rôle</span><span
+                        class="file-type">MD</span></a></li>
+            <li><a href="Ressources/Guide_Formateur_Jeux_de_Role.md"><span>📖 Guide Formateur</span><span
+                        class="file-type">MD</span></a></li>
+            <li><a href="Ressources/Jeux_de_Role_Resolution_Problemes.md"><span>🎯 Descriptions Détaillées
+                        JdR</span><span class="file-type">MD</span></a></li>
+            <li><a href="Ressources/README.md"><span>📋 README Resources</span><span class="file-type">MD</span></a>
+            </li>
+        </ul>
+
+        <a href="../../" class="back-link">← Retour au portail OI</a>
+    </div>
+</body>
+
+</html>
