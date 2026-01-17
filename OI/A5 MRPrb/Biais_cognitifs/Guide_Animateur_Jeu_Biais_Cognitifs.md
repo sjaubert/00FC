@@ -33,7 +33,7 @@
 
 ## 📅 Déroulement de la journée
 
-### **9h00 - 9h30 | Accueil et Introduction (30 min)**
+### **Accueil et Introduction (30 min)**
 
 #### Objectifs
 
@@ -68,7 +68,7 @@
 
 ---
 
-### **9h30 - 10h45 | Phase 1 : Découverte des Catégories (1h15)**
+### **Phase 1 : Découverte des Catégories (1h15)**
 
 #### Objectifs
 
