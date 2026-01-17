@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # 🧠 Les Biais Cognitifs - Le Jeu
 
 ## Règles du jeu pour les participants
@@ -6,7 +11,7 @@
 
 ## 🎯 Objectif de la journée
 
-Bienvenue dans cette formation interactive sur les **biais cognitifs** !
+!
 
 À la fin de cette journée, vous serez capable de :
 
@@ -139,39 +144,38 @@ Les 52 cartes sont classées en 5 familles, chacune avec une **couleur** et un *
 
 ## 📋 Programme de la journée
 
-### **9h00 - 9h30 | Accueil et Ice-breaker**
+
 
 Présentation, formation des équipes, première expérience des biais
 
-### **9h30 - 10h45 | Phase 1 : Découverte des Catégories**
+### **Phase 1 : Découverte des Catégories**
 
 Découvrez les 52 biais et les 5 familles grâce à un quiz interactif
 
-### **10h45 - 11h00 | Pause ☕**
 
-### **11h00 - 12h30 | Phase 2 : Chasseurs de biais**
+
+### **Phase 2 : Chasseurs de biais**
 
 Identifiez les biais dans des scénarios professionnels réels
 
-### **12h30 - 13h30 | Déjeuner 🍽️**
 
-### **13h30 - 15h00 | Phase 3 : Projet Diabolique**
+### **Phase 3 : Projet Diabolique**
 
 Créez l'expérience la plus manipulatrice possible (pour comprendre les mécanismes !)
 
-### **15h00 - 15h15 | Pause ☕**
 
-### **15h15 - 16h30 | Phase 4 : Détox cognitive**
+
+### **Phase 4 : Détox cognitive**
 
 Apprenez à identifier vos biais et découvrez des stratégies anti-biais
 
-### **16h30 - 17h00 | Grand Quiz Final & Proclamation du vainqueur 🏆**
+### **Grand Quiz Final & Proclamation du vainqueur 🏆**
 
 ---
 
 ## 🎲 Détail des activités
 
-### 🔍 Activité 1 : Découverte (9h30 - 10h45)
+### 🔍 Activité 1 : Découverte
 
 #### **Étape 1 : Classification des cartes (15 min)**
 
@@ -192,7 +196,7 @@ Apprenez à identifier vos biais et découvrez des stratégies anti-biais
 
 ---
 
-#### **Étape 2 : Mise en commun (20 min)**
+#### **Étape 2 : Mise en commun**
 
 **Ce que vous allez faire :**
 
@@ -210,7 +214,7 @@ Apprenez à identifier vos biais et découvrez des stratégies anti-biais
 
 ---
 
-#### **Étape 3 : Quiz - "Quelle catégorie ?" (15 min)**
+#### **Étape 3 : Quiz - "Quelle catégorie ?"**
 
 **Ce que vous allez faire :**
 
@@ -228,7 +232,7 @@ Apprenez à identifier vos biais et découvrez des stratégies anti-biais
 
 ---
 
-### 🎯 Activité 2 : Chasseurs de biais (11h00 - 12h30)
+### 🎯 Activité 2 : Chasseurs de biais
 
 #### **Objectif**
 
@@ -236,13 +240,13 @@ Identifier les biais cognitifs cachés dans des scénarios professionnels réels
 
 #### **Comment ça marche ?**
 
-**1. Distribution des scénarios (5 min)**
+**1. Distribution des scénarios**
 
 - Votre équipe reçoit **3 scénarios professionnels**
 - Ce sont des situations du quotidien en entreprise
 - Chaque scénario contient plusieurs biais cachés
 
-**2. Phase d'analyse (40 min)**
+**2. Phase d'analyse**
 Votre mission pour chaque scénario :
 
 - **Lire** attentivement le scénario
@@ -251,7 +255,7 @@ Votre mission pour chaque scénario :
 - **Justifier** pourquoi c'est ce biais
 - **Trouver un exemple** similaire dans votre expérience (bonus)
 
-**3. Présentations (40 min)**
+**3. Présentations**
 
 - Chaque équipe présente 1 de ses scénarios
 - Expliquez les biais identifiés
@@ -276,7 +280,7 @@ Votre mission pour chaque scénario :
 
 ---
 
-### 😈 Activité 3 : Le Projet Diabolique (13h30 - 15h00)
+### 😈 Activité 3 : Le Projet Diabolique
 
 #### **Objectif**
 
@@ -287,12 +291,12 @@ Créer le produit, service ou expérience LA PLUS MANIPULATRICE possible en util
 
 #### **Comment ça marche ?**
 
-**1. Introduction et exemples (10 min)**
+**1. Introduction et exemples**
 
 - L'animateur présente des exemples de "Dark UX" (design manipulateur)
 - Vous comprenez comment les biais peuvent être utilisés pour manipuler
 
-**2. Phase de création (50 min)**
+**2. Phase de création**
 
 **Votre mission :**
 Créez un produit, service, publicité, ou expérience qui utilise **AU MINIMUM 7 biais cognitifs** différents pour manipuler les utilisateurs.
@@ -319,12 +323,12 @@ Créez un produit, service, publicité, ou expérience qui utilise **AU MINIMUM 
 - 🃏 Vos 52 cartes de biais
 - 📋 Liste complète des biais
 
-**3. Présentations "diaboliques" (30 min)**
+**3. Présentations "diaboliques"**
 
 Chaque équipe présente :
 
-- **Description** de votre création (2 min)
-- **Démonstration de chaque biais** utilisé (3 min)
+- **Description** de votre création 
+- **Démonstration de chaque biais** utilisé
   - Quel biais ?
   - Comment il est appliqué ?
   - Quel effet attendu ?
@@ -367,13 +371,13 @@ Chaque équipe présente :
 
 ---
 
-### 🛡️ Activité 4 : Détox Cognitive (15h15 - 16h30)
+### 🛡️ Activité 4 : Détox Cognitive
 
 #### **Objectif**
 
 Apprendre à identifier VOS propres biais et découvrir des stratégies pour les limiter
 
-#### **Partie 1 : Mon profil cognitif (25 min)**
+#### **Partie 1 : Mon profil cognitif **
 
 **Ce que vous allez faire :**
 
@@ -392,7 +396,7 @@ Vous identifiez vos 3-5 biais les plus fréquents. Cette prise de conscience est
 
 ---
 
-#### **Partie 2 : La boîte à outils anti-biais (30 min)**
+#### **Partie 2 : La boîte à outils anti-biais**
 
 **Ce que vous allez apprendre :**
 L'animateur vous présente 7 stratégies concrètes pour limiter l'impact des biais dans vos décisions professionnelles.
@@ -436,7 +440,7 @@ L'animateur vous présente 7 stratégies concrètes pour limiter l'impact des bi
 
 ---
 
-#### **Partie 3 : Plan d'action en équipe (20 min)**
+#### **Partie 3 : Plan d'action en équipe**
 
 **Ce que vous allez faire :**
 Créer un plan concret pour appliquer ce que vous avez appris dans VOTRE contexte professionnel
@@ -474,7 +478,7 @@ INDICATEURS DE SUCCÈS :
 
 ---
 
-### 🏆 Activité 5 : Grand Quiz Final (16h30 - 17h00)
+### 🏆 Activité 5 : Grand Quiz Final
 
 #### **Format**
 
@@ -631,16 +635,6 @@ Quiz de 20 questions style "Qui veut gagner des millions"
 
 ---
 
-## 📞 Besoin d'aide pendant la journée ?
-
-### **Vous pouvez à tout moment :**
-
-- 🙋 Lever la main pour poser une question
-- 💬 Demander une clarification sur un biais
-- ⏸️ Demander une pause si nécessaire
-- 🤝 Solliciter l'animateur pour débloquer votre équipe
-
----
 
 ## ✨ Message final
 

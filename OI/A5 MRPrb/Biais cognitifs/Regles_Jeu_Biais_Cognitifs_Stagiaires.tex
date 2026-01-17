@@ -1,0 +1,1212 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\section{🧠 Les Biais Cognitifs - Le
+Jeu}\label{les-biais-cognitifs---le-jeu}
+
+\subsection{Règles du jeu pour les
+participants}\label{ruxe8gles-du-jeu-pour-les-participants}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{🎯 Objectif de la journée}\label{objectif-de-la-journuxe9e}
+
+!
+
+À la fin de cette journée, vous serez capable de :
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Reconnaître} les principaux biais cognitifs dans votre
+  quotidien professionnel
+\item
+  \textbf{Comprendre} comment ces biais influencent vos décisions
+\item
+  \textbf{Appliquer} des stratégies concrètes pour limiter leur impact
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{🃏 Les 52 cartes : Qu'est-ce qu'un biais cognitif
+?}\label{les-52-cartes-quest-ce-quun-biais-cognitif}
+
+Un \textbf{biais cognitif} est un raccourci mental que notre cerveau
+utilise pour prendre des décisions rapidement.
+
+\subsubsection{Pourquoi notre cerveau fait ça
+?}\label{pourquoi-notre-cerveau-fait-uxe7a}
+
+\begin{itemize}
+\tightlist
+\item
+  Pour \textbf{économiser de l'énergie} (penser demande beaucoup
+  d'énergie !)
+\item
+  Pour \textbf{décider rapidement} face à trop d'informations
+\item
+  C'est un \textbf{mécanisme de survie} développé depuis des millénaires
+\end{itemize}
+
+\subsubsection{Le problème ?}\label{le-probluxe8me}
+
+Ces raccourcis peuvent nous faire :
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Tirer des conclusions erronées}
+\item
+  \textbf{Prendre de mauvaises décisions}
+\item
+  \textbf{Mal interpréter les situations}
+\end{itemize}
+
+\begin{quote}
+{[}!IMPORTANT{]} \textbf{Point clé} : TOUT LE MONDE est sujet aux biais
+cognitifs, même les experts !\\
+Ce n'est pas une faiblesse, c'est le fonctionnement normal du cerveau
+humain.
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{🎨 Les 5 catégories de
+biais}\label{les-5-catuxe9gories-de-biais}
+
+Les 52 cartes sont classées en 5 familles, chacune avec une
+\textbf{couleur} et un \textbf{symbole} :
+
+\subsubsection{1. 🧠 Mémoire \& Souvenirs
+(Violet)}\label{muxe9moire-souvenirs-violet}
+
+\textbf{Ce que c'est :} Biais qui influencent ce dont on se souvient et
+comment on s'en souvient.
+
+\textbf{Exemples :}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Effet de supériorité de l'image} : On se souvient mieux des
+  images que des textes
+\item
+  \textbf{Effet Google} : On oublie ce qu'on peut chercher en ligne
+\item
+  \textbf{Effet de primauté} : On se souvient mieux du début et de la
+  fin
+\end{itemize}
+
+\textbf{Impact professionnel :} Présentations, formations, communication
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{2. 🤔 Raisonnement \& Résolution de problèmes
+(Bleu)}\label{raisonnement-ruxe9solution-de-probluxe8mes-bleu}
+
+\textbf{Ce que c'est :} Biais qui changent notre façon de raisonner et
+de résoudre des problèmes.
+
+\textbf{Exemples :}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Biais de confirmation} : On cherche ce qui confirme nos idées
+\item
+  \textbf{Loi de l'instrument} : ``Quand on a un marteau, tout ressemble
+  à un clou''
+\item
+  \textbf{Biais pro-innovation} : ``Nouveau = forcément mieux''
+\end{itemize}
+
+\textbf{Impact professionnel :} Gestion de projet, innovation, analyse
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{3. ⚡ Prise de décision \& Comportements
+(Vert)}\label{prise-de-duxe9cision-comportements-vert}
+
+\textbf{Ce que c'est :} Biais qui orientent nos choix et nos
+comportements.
+
+\textbf{Exemples :}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Biais d'ancrage} : La première info influence tout le reste
+\item
+  \textbf{Effet par défaut} : On choisit l'option par défaut
+\item
+  \textbf{Effet IKEA} : On surestime la valeur de ce qu'on a créé
+\end{itemize}
+
+\textbf{Impact professionnel :} Achats, stratégie, négociation
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{4. 👥 Travail d'équipe \& Réunions
+(Orange)}\label{travail-duxe9quipe-ruxe9unions-orange}
+
+\textbf{Ce que c'est :} Biais qui influencent la dynamique de groupe.
+
+\textbf{Exemples :}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Effet Dunning-Kruger} : Les incompétents surestiment leurs
+  capacités
+\item
+  \textbf{Planification fallacieuse} : On sous-estime toujours les
+  délais
+\item
+  \textbf{Biais d'autocomplaisance} : Succès = moi, échecs = les autres
+\end{itemize}
+
+\textbf{Impact professionnel :} Management, collaboration, réunions
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{5. 🔍 Interviews \& Tests utilisateur
+(Rose)}\label{interviews-tests-utilisateur-rose}
+
+\textbf{Ce que c'est :} Biais qui affectent la recherche et les
+entretiens.
+
+\textbf{Exemples :}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Effet de courtoisie} : On dit ce qui est poli, pas la vérité
+\item
+  \textbf{Biais rétrospectif} : ``Je le savais depuis le début'' (non !)
+\item
+  \textbf{Biais d'observation} : Le chercheur influence l'expérience
+\end{itemize}
+
+\textbf{Impact professionnel :} Recrutement, tests, études
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{🎮 Les règles
+générales}\label{les-ruxe8gles-guxe9nuxe9rales}
+
+\subsubsection{Formation d'équipe}\label{formation-duxe9quipe}
+
+\begin{itemize}
+\tightlist
+\item
+  La journée se joue en \textbf{équipes de 3-4 personnes}
+\item
+  Chaque équipe reçoit un \textbf{nom d'équipe} et une \textbf{couleur}
+\item
+  Les points sont comptabilisés par équipe
+\end{itemize}
+
+\subsubsection{Principe de scoring}\label{principe-de-scoring}
+
+\begin{itemize}
+\tightlist
+\item
+  Chaque activité rapporte des \textbf{points}
+\item
+  Le \textbf{tableau de score} est mis à jour en temps réel
+\item
+  L'équipe gagnante sera annoncée en fin de journée 🏆
+\end{itemize}
+
+\subsubsection{Esprit du jeu}\label{esprit-du-jeu}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Collaboration} : Travaillez ensemble, partagez vos idées
+\item
+  \textbf{Bienveillance} : Pas de jugement, on apprend tous ensemble
+\item
+  \textbf{Curiosité} : Posez des questions, explorez, expérimentez
+\item
+  \textbf{Honnêteté} : Partagez vos vraies expériences, même les erreurs
+  !
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{📋 Programme de la
+journée}\label{programme-de-la-journuxe9e}
+
+Présentation, formation des équipes, première expérience des biais
+
+\subsubsection{\texorpdfstring{\textbf{Phase 1 : Découverte des
+Catégories}}{Phase 1 : Découverte des Catégories}}\label{phase-1-duxe9couverte-des-catuxe9gories}
+
+Découvrez les 52 biais et les 5 familles grâce à un quiz interactif
+
+\subsubsection{\texorpdfstring{\textbf{Phase 2 : Chasseurs de
+biais}}{Phase 2 : Chasseurs de biais}}\label{phase-2-chasseurs-de-biais}
+
+Identifiez les biais dans des scénarios professionnels réels
+
+\subsubsection{\texorpdfstring{\textbf{Phase 3 : Projet
+Diabolique}}{Phase 3 : Projet Diabolique}}\label{phase-3-projet-diabolique}
+
+Créez l'expérience la plus manipulatrice possible (pour comprendre les
+mécanismes !)
+
+\subsubsection{\texorpdfstring{\textbf{Phase 4 : Détox
+cognitive}}{Phase 4 : Détox cognitive}}\label{phase-4-duxe9tox-cognitive}
+
+Apprenez à identifier vos biais et découvrez des stratégies anti-biais
+
+\subsubsection{\texorpdfstring{\textbf{Grand Quiz Final \& Proclamation
+du vainqueur
+🏆}}{Grand Quiz Final \& Proclamation du vainqueur 🏆}}\label{grand-quiz-final-proclamation-du-vainqueur}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{🎲 Détail des activités}\label{duxe9tail-des-activituxe9s}
+
+\subsubsection{🔍 Activité 1 :
+Découverte}\label{activituxe9-1-duxe9couverte}
+
+\paragraph{\texorpdfstring{\textbf{Étape 1 : Classification des cartes
+(15
+min)}}{Étape 1 : Classification des cartes (15 min)}}\label{uxe9tape-1-classification-des-cartes-15-min}
+
+\textbf{Ce que vous allez faire :}
+
+\begin{itemize}
+\tightlist
+\item
+  Votre équipe reçoit 10-12 cartes de biais cognitifs
+\item
+  Lisez-les ensemble et discutez-en
+\item
+  Classez-les par catégorie (les 5 couleurs)
+\end{itemize}
+
+\textbf{Consignes :}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Lisez chaque carte à voix haute dans l'équipe
+\item
+  Essayez de comprendre chacune avec vos propres mots
+\item
+  Identifiez le symbole et la couleur
+\item
+  Regroupez les cartes par famille
+\end{enumerate}
+
+\textbf{Points} : Participation (pas de scoring compétitif sur cette
+phase)
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\paragraph{\texorpdfstring{\textbf{Étape 2 : Mise en
+commun}}{Étape 2 : Mise en commun}}\label{uxe9tape-2-mise-en-commun}
+
+\textbf{Ce que vous allez faire :}
+
+\begin{itemize}
+\tightlist
+\item
+  Chaque équipe présente 2-3 biais découverts
+\item
+  Expliquez avec vos propres mots ce que vous avez compris
+\item
+  Donnez un exemple personnel si possible
+\end{itemize}
+
+\textbf{Consignes :}
+
+\begin{itemize}
+\tightlist
+\item
+  Désignez un porte-parole par équipe
+\item
+  Soyez concis : 3-4 minutes maximum
+\item
+  Essayez de donner un exemple concret
+\end{itemize}
+
+\textbf{Points} : Pas de points, c'est une phase de découverte
+collaborative
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\paragraph{\texorpdfstring{\textbf{Étape 3 : Quiz - ``Quelle catégorie
+?''}}{Étape 3 : Quiz - ``Quelle catégorie ?''}}\label{uxe9tape-3-quiz---quelle-catuxe9gorie}
+
+\textbf{Ce que vous allez faire :}
+
+\begin{itemize}
+\tightlist
+\item
+  L'animateur lit des situations
+\item
+  Votre équipe identifie la catégorie de biais concernée
+\item
+  Levez votre pancarte avec la couleur correspondante
+\end{itemize}
+
+\textbf{Consignes :}
+
+\begin{itemize}
+\tightlist
+\item
+  Discutez rapidement en équipe (30 secondes max)
+\item
+  Levez votre réponse en même temps que les autres équipes
+\item
+  L'animateur valide ou corrige
+\end{itemize}
+
+\textbf{Barème} : 2 points par bonne réponse
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{🎯 Activité 2 : Chasseurs de
+biais}\label{activituxe9-2-chasseurs-de-biais}
+
+\paragraph{\texorpdfstring{\textbf{Objectif}}{Objectif}}\label{objectif}
+
+Identifier les biais cognitifs cachés dans des scénarios professionnels
+réels
+
+\paragraph{\texorpdfstring{\textbf{Comment ça marche
+?}}{Comment ça marche ?}}\label{comment-uxe7a-marche}
+
+\textbf{1. Distribution des scénarios}
+
+\begin{itemize}
+\tightlist
+\item
+  Votre équipe reçoit \textbf{3 scénarios professionnels}
+\item
+  Ce sont des situations du quotidien en entreprise
+\item
+  Chaque scénario contient plusieurs biais cachés
+\end{itemize}
+
+\textbf{2. Phase d'analyse} Votre mission pour chaque scénario :
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Lire} attentivement le scénario
+\item
+  \textbf{Identifier} TOUS les biais cognitifs présents
+\item
+  \textbf{Utiliser vos cartes} comme aide-mémoire
+\item
+  \textbf{Justifier} pourquoi c'est ce biais
+\item
+  \textbf{Trouver un exemple} similaire dans votre expérience (bonus)
+\end{itemize}
+
+\textbf{3. Présentations}
+
+\begin{itemize}
+\tightlist
+\item
+  Chaque équipe présente 1 de ses scénarios
+\item
+  Expliquez les biais identifiés
+\item
+  Les autres équipes peuvent compléter ou challenger
+\end{itemize}
+
+\textbf{Conseils pour réussir :}
+
+\begin{itemize}
+\tightlist
+\item
+  Ne vous arrêtez pas au premier biais trouvé, cherchez plus loin !
+\item
+  Utilisez vos cartes : relisez-les plusieurs fois
+\item
+  Discutez en équipe : chacun voit des choses différentes
+\item
+  Pensez aux 5 catégories : y a-t-il un biais de chaque famille ?
+\end{itemize}
+
+\textbf{Barème :}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{3 points} par biais correctement identifié et justifié
+\item
+  \textbf{2 points bonus} si vous trouvez TOUS les biais du scénario
+\item
+  \textbf{1 point bonus} si vous donnez un exemple concret de votre
+  entreprise
+\item
+  \textbf{1 point bonus} si une autre équipe complète votre analyse
+\end{itemize}
+
+\begin{quote}
+{[}!TIP{]} \textbf{Astuce} : Certains scénarios peuvent contenir 5 à 7
+biais différents. Ne vous contentez pas des plus évidents !
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{😈 Activité 3 : Le Projet
+Diabolique}\label{activituxe9-3-le-projet-diabolique}
+
+\paragraph{\texorpdfstring{\textbf{Objectif}}{Objectif}}\label{objectif-1}
+
+Créer le produit, service ou expérience LA PLUS MANIPULATRICE possible
+en utilisant les biais cognitifs
+
+\begin{quote}
+{[}!WARNING{]} \textbf{Attention} : Cet exercice est purement
+pédagogique ! L'objectif est de COMPRENDRE les mécanismes de
+manipulation pour mieux s'en protéger, PAS de les appliquer réellement !
+\end{quote}
+
+\paragraph{\texorpdfstring{\textbf{Comment ça marche
+?}}{Comment ça marche ?}}\label{comment-uxe7a-marche-1}
+
+\textbf{1. Introduction et exemples}
+
+\begin{itemize}
+\tightlist
+\item
+  L'animateur présente des exemples de ``Dark UX'' (design manipulateur)
+\item
+  Vous comprenez comment les biais peuvent être utilisés pour manipuler
+\end{itemize}
+
+\textbf{2. Phase de création}
+
+\textbf{Votre mission :} Créez un produit, service, publicité, ou
+expérience qui utilise \textbf{AU MINIMUM 7 biais cognitifs} différents
+pour manipuler les utilisateurs.
+
+\textbf{Contraintes :}
+
+\begin{itemize}
+\tightlist
+\item
+  Utiliser au moins \textbf{1 biais de chaque catégorie} (les 5
+  familles)
+\item
+  \textbf{Documenter} précisément quel biais est utilisé et COMMENT
+\item
+  Créer un support visuel (dessin, storyboard, mockup, pitch)
+\end{itemize}
+
+\textbf{Exemples de créations possibles :}
+
+\begin{itemize}
+\tightlist
+\item
+  Une application mobile addictive
+\item
+  Une publicité ultra-persuasive
+\item
+  Un site e-commerce manipulateur
+\item
+  Une expérience en magasin
+\item
+  Une campagne marketing
+\item
+  Un processus de vente
+\end{itemize}
+
+\textbf{Supports à votre disposition :}
+
+\begin{itemize}
+\tightlist
+\item
+  ✏️ Feuilles A3 et marqueurs
+\item
+  📝 Post-its
+\item
+  🃏 Vos 52 cartes de biais
+\item
+  📋 Liste complète des biais
+\end{itemize}
+
+\textbf{3. Présentations ``diaboliques''}
+
+Chaque équipe présente :
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Description} de votre création
+\item
+  \textbf{Démonstration de chaque biais} utilisé
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Quel biais ?
+  \item
+    Comment il est appliqué ?
+  \item
+    Quel effet attendu ?
+  \end{itemize}
+\item
+  \textbf{Impact} sur l'utilisateur
+\end{itemize}
+
+\textbf{Barème :}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{2 points} par biais correctement appliqué et justifié
+\item
+  \textbf{3 points bonus} pour l'équipe la plus ``diabolique'' (vote des
+  participants)
+\item
+  \textbf{3 points bonus} pour l'équipe la plus créative (vote de
+  l'animateur)
+\end{itemize}
+
+\textbf{Exemples pour vous inspirer :}
+
+\textbf{Exemple 1 : Site de réservation d'hôtel}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Biais d'ancrage} : ``Prix initial 300€'' barré, puis ``150€''
+\item
+  \textbf{Effet par défaut} : Option ``assurance annulation'' pré-cochée
+\item
+  \textbf{Effet de groupe} : ``234 personnes regardent cet hôtel EN CE
+  MOMENT''
+\item
+  \textbf{Actualisation hyperbolique} : ``Réservez maintenant : -20\%
+  expire dans 15 min''
+\item
+  \textbf{Effet de rareté} : ``Plus que 1 chambre disponible !''
+\item
+  \textbf{Biais d'autorité} : ``Recommandé par Le Figaro''
+\item
+  \textbf{Effet de supériorité de l'image} : Photos magnifiques (vs
+  réalité moyenne)
+\end{itemize}
+
+\textbf{Exemple 2 : Application de fitness}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Effet IKEA} : Personnalisation du programme (``VOTRE plan'')
+\item
+  \textbf{Biais d'unité} : ``Vous avez commencé la séance, finissez-la
+  !''
+\item
+  \textbf{Effet de groupe} : ``12 000 membres ont fait cet exercice
+  aujourd'hui''
+\item
+  \textbf{Planification fallacieuse} : ``Objectif : -10kg en 1 mois !''
+  (irréaliste)
+\item
+  \textbf{Biais de confirmation} : Ne montre que les success stories
+\item
+  \textbf{Actualisation hyperbolique} : Récompenses immédiates (badges)
+\item
+  \textbf{Effet de simple exposition} : Notifications quotidiennes
+\end{itemize}
+
+\begin{quote}
+{[}!CAUTION{]} \textbf{Rappel éthique} : Une fois que vous savez comment
+fonctionne la manipulation :
+
+\begin{itemize}
+\tightlist
+\item
+  Protégez-vous en tant que consommateur
+\item
+  Protégez vos utilisateurs en tant que professionnel
+\item
+  Utilisez ces connaissances de manière éthique !
+\end{itemize}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{🛡️ Activité 4 : Détox
+Cognitive}\label{activituxe9-4-duxe9tox-cognitive}
+
+\paragraph{\texorpdfstring{\textbf{Objectif}}{Objectif}}\label{objectif-2}
+
+Apprendre à identifier VOS propres biais et découvrir des stratégies
+pour les limiter
+
+\paragraph{\texorpdfstring{\textbf{Partie 1 : Mon profil cognitif
+}}{Partie 1 : Mon profil cognitif }}\label{partie-1-mon-profil-cognitif}
+
+\textbf{Ce que vous allez faire :}
+
+\begin{itemize}
+\tightlist
+\item
+  Répondre \textbf{individuellement} à un questionnaire de 20 situations
+\item
+  Identifier vos biais dominants
+\item
+  Comprendre vos patterns de pensée
+\end{itemize}
+
+\textbf{Consignes :}
+
+\begin{itemize}
+\tightlist
+\item
+  Soyez \textbf{honnête} avec vous-même (ce n'est pas noté !)
+\item
+  Choisissez la réponse qui correspond à ce que vous faites
+  \textbf{VRAIMENT}, pas ce que vous ``devriez'' faire
+\item
+  Il n'y a pas de bonne ou mauvaise réponse
+\end{itemize}
+
+\textbf{Résultat :} Vous identifiez vos 3-5 biais les plus fréquents.
+Cette prise de conscience est le premier pas pour les limiter !
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\paragraph{\texorpdfstring{\textbf{Partie 2 : La boîte à outils
+anti-biais}}{Partie 2 : La boîte à outils anti-biais}}\label{partie-2-la-bouxeete-uxe0-outils-anti-biais}
+
+\textbf{Ce que vous allez apprendre :} L'animateur vous présente 7
+stratégies concrètes pour limiter l'impact des biais dans vos décisions
+professionnelles.
+
+\textbf{Les 7 stratégies :}
+
+\textbf{1. ⏱️ Ralentir la décision}
+
+\begin{itemize}
+\tightlist
+\item
+  Ne décidez pas sous pression
+\item
+  Technique : Attendre 24h pour les décisions importantes
+\end{itemize}
+
+\textbf{2. 🔄 Chercher la contradiction}
+
+\begin{itemize}
+\tightlist
+\item
+  Activement chercher ce qui contredit votre avis
+\item
+  Technique : ``Et si le contraire était vrai ?''
+\end{itemize}
+
+\textbf{3. 📚 Diversifier les sources}
+
+\begin{itemize}
+\tightlist
+\item
+  Ne pas se fier à une seule source
+\item
+  Technique : Règle des 3 sources minimum
+\end{itemize}
+
+\textbf{4. ✅ Utiliser des checklists}
+
+\begin{itemize}
+\tightlist
+\item
+  Structurer les décisions importantes
+\item
+  Technique : Grille de décision avec critères objectifs
+\end{itemize}
+
+\textbf{5. 👥 Décisions collectives structurées}
+
+\begin{itemize}
+\tightlist
+\item
+  Utiliser des méthodes qui limitent les biais de groupe
+\item
+  Technique : Brainstorming silencieux, vote anonyme
+\end{itemize}
+
+\textbf{6. 🧘 Attention au contexte}
+
+\begin{itemize}
+\tightlist
+\item
+  Ne pas décider si faim, fatigue, stress, émotion forte
+\item
+  Technique : Auto-questionnement ``Suis-je en état de décider ?''
+\end{itemize}
+
+\textbf{7. 📖 Formation continue}
+
+\begin{itemize}
+\tightlist
+\item
+  Rester vigilant et partager avec l'équipe
+\item
+  Technique : ``Biais du mois'' en réunion d'équipe
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\paragraph{\texorpdfstring{\textbf{Partie 3 : Plan d'action en
+équipe}}{Partie 3 : Plan d'action en équipe}}\label{partie-3-plan-daction-en-uxe9quipe}
+
+\textbf{Ce que vous allez faire :} Créer un plan concret pour appliquer
+ce que vous avez appris dans VOTRE contexte professionnel
+
+\textbf{Consignes :}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Choisissez \textbf{1 situation professionnelle récurrente} dans votre
+  entreprise
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Exemples : réunions projet, recrutement, gestion conflit, choix
+    fournisseur
+  \end{itemize}
+\item
+  Identifiez les \textbf{biais qui peuvent affecter} cette situation
+\item
+  Proposez \textbf{3 stratégies concrètes} pour limiter ces biais
+\item
+  Définissez \textbf{comment mesurer} si ça fonctionne
+\end{enumerate}
+
+\textbf{Livrable :} Une fiche action que vous pourrez ramener dans votre
+entreprise
+
+\textbf{Format de la fiche :}
+
+\begin{verbatim}
+SITUATION : [Ex: Réunion de lancement de projet]
+
+BIAIS IDENTIFIÉS :
+- Biais 1 : [Ex: Effet de groupe - tout le monde suit le chef]
+- Biais 2 : [Ex: Loi de l'instrument - on refait toujours pareil]
+- Biais 3 : [Ex: Planification fallacieuse - on sous-estime les délais]
+
+STRATÉGIES CONCRÈTES :
+1. [Ex: Brainstorming silencieux avant discussion]
+2. [Ex: Challenger systématiquement "pourquoi cette méthode ?"]
+3. [Ex: Multiplier les estimations initiales par 1,5]
+
+INDICATEURS DE SUCCÈS :
+- [Ex: Au moins 2 idées nouvelles par réunion]
+- [Ex: Respect des délais dans 80% des cas]
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{🏆 Activité 5 : Grand Quiz
+Final}\label{activituxe9-5-grand-quiz-final}
+
+\paragraph{\texorpdfstring{\textbf{Format}}{Format}}\label{format}
+
+Quiz de 20 questions style ``Qui veut gagner des millions''
+
+\paragraph{\texorpdfstring{\textbf{Types de
+questions}}{Types de questions}}\label{types-de-questions}
+
+\textbf{QCM} : Connaissances sur les biais
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Exemple : ``L'effet IKEA signifie : A) On aime les meubles B) On
+  surestime ce qu'on a créé C) On sous-estime les délais''}
+\end{itemize}
+
+\textbf{Vrai / Faux} : Idées reçues
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Exemple : ``Les experts sont immunisés contre les biais
+  cognitifs'' → FAUX}
+\end{itemize}
+
+\textbf{Catégorisation} : Associer biais et famille
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Exemple : ``Le biais de confirmation appartient à quelle
+  catégorie ?''}
+\end{itemize}
+
+\textbf{Situations} : Identifier le biais dans un mini-cas
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Exemple : ``Marc fait confiance à Google plutôt qu'à sa mémoire.
+  Quel biais ?'' → Effet Google}
+\end{itemize}
+
+\textbf{Application} : Solutions anti-biais
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Exemple : ``Comment contrer le biais d'ancrage ? A) Ignorer la
+  première info B) Chercher plusieurs références C) Décider vite''}
+\end{itemize}
+
+\paragraph{\texorpdfstring{\textbf{Barème}}{Barème}}\label{baruxe8me}
+
+\begin{itemize}
+\tightlist
+\item
+  1 point par bonne réponse
+\item
+  5 points bonus pour l'équipe gagnante du quiz
+\item
+  Le score s'ajoute au score global de la journée
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{🏅 Scoring final et
+vainqueur}\label{scoring-final-et-vainqueur}
+
+\subsubsection{\texorpdfstring{\textbf{Récapitulatif des points de la
+journée}}{Récapitulatif des points de la journée}}\label{ruxe9capitulatif-des-points-de-la-journuxe9e}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Activité & Points maximum \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Quiz ``Quelle catégorie ?'' & \textasciitilde10 points \\
+Chasseurs de biais & \textasciitilde50 points \\
+Projet Diabolique & \textasciitilde20 points \\
+Quiz final & \textasciitilde25 points \\
+\textbf{TOTAL} & \textbf{\textasciitilde105 points} \\
+\end{longtable}
+
+\subsubsection{\texorpdfstring{\textbf{L'équipe gagnante remporte
+:}}{L'équipe gagnante remporte :}}\label{luxe9quipe-gagnante-remporte}
+
+\begin{itemize}
+\tightlist
+\item
+  🏆 Le titre de \textbf{``Chasseurs de biais 2026''}
+\item
+  🎖️ Un certificat d'excellence
+\item
+  🧠 La fierté d'avoir dominé les biais cognitifs !
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{💡 Conseils pour profiter au maximum de la
+formation}\label{conseils-pour-profiter-au-maximum-de-la-formation}
+
+\subsubsection{\texorpdfstring{\textbf{1. Participez
+activement}}{1. Participez activement}}\label{participez-activement}
+
+\begin{itemize}
+\tightlist
+\item
+  Posez des questions
+\item
+  Partagez vos expériences
+\item
+  N'ayez pas peur de vous tromper : on apprend par l'erreur !
+\end{itemize}
+
+\subsubsection{\texorpdfstring{\textbf{2. Soyez
+curieux}}{2. Soyez curieux}}\label{soyez-curieux}
+
+\begin{itemize}
+\tightlist
+\item
+  Explorez toutes les cartes, pas seulement celles de vos scénarios
+\item
+  Cherchez à comprendre le ``pourquoi'' derrière chaque biais
+\item
+  Faites des liens avec votre quotidien
+\end{itemize}
+
+\subsubsection{\texorpdfstring{\textbf{3. Collaborez avec votre
+équipe}}{3. Collaborez avec votre équipe}}\label{collaborez-avec-votre-uxe9quipe}
+
+\begin{itemize}
+\tightlist
+\item
+  Écoutez les points de vue différents
+\item
+  Chacun voit des choses que les autres ne voient pas
+\item
+  La diversité d'opinion est une force contre les biais !
+\end{itemize}
+
+\subsubsection{\texorpdfstring{\textbf{4. Prenez des
+notes}}{4. Prenez des notes}}\label{prenez-des-notes}
+
+\begin{itemize}
+\tightlist
+\item
+  Notez les biais qui vous parlent le plus
+\item
+  Écrivez des exemples personnels pour mieux mémoriser
+\item
+  Gardez votre fiche action pour l'appliquer ensuite
+\end{itemize}
+
+\subsubsection{\texorpdfstring{\textbf{5. Amusez-vous
+!}}{5. Amusez-vous !}}\label{amusez-vous}
+
+\begin{itemize}
+\tightlist
+\item
+  C'est un jeu, avant tout
+\item
+  L'apprentissage est plus efficace quand c'est ludique
+\item
+  Profitez des moments de groupe et d'échanges
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{📝 Ce que vous repartirez
+avec}\label{ce-que-vous-repartirez-avec}
+
+\subsubsection{\texorpdfstring{\textbf{En fin de journée, vous aurez
+:}}{En fin de journée, vous aurez :}}\label{en-fin-de-journuxe9e-vous-aurez}
+
+✅ \textbf{Connaissance} des 52 biais cognitifs et des 5 catégories\\
+✅ \textbf{Exemples concrets} de biais dans des situations
+professionnelles\\
+✅ \textbf{Profil cognitif} : connaissance de vos biais dominants\\
+✅ \textbf{Boîte à outils} : 7 stratégies anti-biais applicables
+immédiatement\\
+✅ \textbf{Plan d'action} personnalisé pour votre contexte
+professionnel\\
+✅ \textbf{Supports de formation} : fiche récapitulative, carte mentale,
+bibliographie
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{🎓 Et après la formation ?}\label{et-apruxe8s-la-formation}
+
+\subsubsection{\texorpdfstring{\textbf{Pour continuer l'apprentissage
+:}}{Pour continuer l'apprentissage :}}\label{pour-continuer-lapprentissage}
+
+\textbf{📚 Lectures recommandées}
+
+\begin{itemize}
+\tightlist
+\item
+  ``Thinking, Fast and Slow'' - Daniel Kahneman
+\item
+  ``Nudge'' - Richard Thaler
+\item
+  ``Predictably Irrational'' - Dan Ariely
+\end{itemize}
+
+\textbf{🌐 Ressources en ligne}
+
+\begin{itemize}
+\tightlist
+\item
+  Sites interactifs sur les biais cognitifs
+\item
+  Vidéos TED Talks
+\item
+  Podcasts sur l'économie comportementale
+\end{itemize}
+
+\textbf{🏢 En entreprise}
+
+\begin{itemize}
+\tightlist
+\item
+  Partagez vos apprentissages avec votre équipe
+\item
+  Mettez en place un rituel ``biais du mois''
+\item
+  Créez une culture de décision réfléchie
+\end{itemize}
+
+\textbf{🔄 Pratique quotidienne}
+
+\begin{itemize}
+\tightlist
+\item
+  Identifiez 1 biais par jour dans votre vie
+\item
+  Testez les stratégies anti-biais
+\item
+  Partagez vos découvertes
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{❓ FAQ}\label{faq}
+
+\subsubsection{\texorpdfstring{\textbf{Q : Est-ce que je peux vraiment
+éliminer mes biais
+?}}{Q : Est-ce que je peux vraiment éliminer mes biais ?}}\label{q-est-ce-que-je-peux-vraiment-uxe9liminer-mes-biais}
+
+\textbf{R :} Non, et ce n'est pas le but ! Les biais font partie du
+fonctionnement normal du cerveau. L'objectif est de les
+\textbf{reconnaître} et de les \textbf{limiter} quand ils peuvent nuire
+à vos décisions importantes.
+
+\subsubsection{\texorpdfstring{\textbf{Q : Avoir des biais, c'est être
+stupide
+?}}{Q : Avoir des biais, c'est être stupide ?}}\label{q-avoir-des-biais-cest-uxeatre-stupide}
+
+\textbf{R :} Absolument pas ! Même les prix Nobel ont des biais. C'est
+un mécanisme d'économie cognitive universel. La stupidité serait de nier
+qu'on en a (c'est le biais de l'angle mort !).
+
+\subsubsection{\texorpdfstring{\textbf{Q : Comment puis-je utiliser ces
+connaissances au travail
+?}}{Q : Comment puis-je utiliser ces connaissances au travail ?}}\label{q-comment-puis-je-utiliser-ces-connaissances-au-travail}
+
+\textbf{R :} Dans plein de situations : recrutement, gestion de projet,
+réunions, vente, marketing, innovation, résolution de conflits, etc.
+Vous verrez rapidement où les appliquer !
+
+\subsubsection{\texorpdfstring{\textbf{Q : C'est éthique d'utiliser les
+biais pour influencer
+?}}{Q : C'est éthique d'utiliser les biais pour influencer ?}}\label{q-cest-uxe9thique-dutiliser-les-biais-pour-influencer}
+
+\textbf{R :} Ça dépend du contexte et de l'intention.
+\textbf{Influencer} positivement (nudge éthique) ≠ \textbf{Manipuler}
+(dark UX). La ligne est fine, d'où l'importance de cette formation !
+
+\subsubsection{\texorpdfstring{\textbf{Q : Puis-je utiliser les cartes
+après la formation
+?}}{Q : Puis-je utiliser les cartes après la formation ?}}\label{q-puis-je-utiliser-les-cartes-apruxe8s-la-formation}
+
+\textbf{R :} Oui ! Vous pouvez les télécharger, les imprimer, les
+utiliser avec vos équipes (licence Creative Commons).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{✨ Message final}\label{message-final}
+
+Les biais cognitifs sont fascinants : ils révèlent comment notre cerveau
+fonctionne réellement, pas comment on croit qu'il fonctionne.
+
+Cette journée est une opportunité unique de :
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Mieux vous connaître}
+\item
+  \textbf{Prendre de meilleures décisions}
+\item
+  \textbf{Comprendre les autres} (qui ont les mêmes biais que vous !)
+\item
+  \textbf{Développer votre esprit critique}
+\end{itemize}
+
+Profitez-en, amusez-vous, et rappelez-vous : \textbf{nous sommes TOUS
+biaisés} ! 🧠
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Bonne formation et que le meilleur chasseur de biais gagne ! 🎯}
+
+\end{document}
