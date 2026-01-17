@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Guide Animateur - Jeu des Biais Cognitifs
 
 ## Formation d'une journée complète
