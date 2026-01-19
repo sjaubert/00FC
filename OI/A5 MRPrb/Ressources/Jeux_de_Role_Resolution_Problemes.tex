@@ -1,0 +1,689 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\section{Jeux de Rôle - Résolution de Problèmes
+Industriels}\label{jeux-de-ruxf4le---ruxe9solution-de-probluxe8mes-industriels}
+
+Collection de jeux de rôle pédagogiques pour former aux méthodes de
+résolution de problèmes en milieu industriel.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Jeu de Rôle n°1 : Le ``QRQC'' de survie (Réaction à
+chaud)}\label{jeu-de-ruxf4le-n1-le-qrqc-de-survie-ruxe9action-uxe0-chaud}
+
+\textbf{Inspiré par :} Le document sur le QRQC (Quick Response Quality
+Control)\\
+\textbf{Objectif :} Pratiquer le ``Genba'' (aller sur le terrain) et
+l'arrêt au premier défaut.
+
+\subsubsection{Le Pitch}\label{le-pitch}
+
+Une ligne d'assemblage de cartes électroniques détecte un composant
+monté à l'envers. Le client attend la livraison pour ce soir. La tension
+monte.
+
+\subsubsection{Les Personnages (4
+joueurs)}\label{les-personnages-4-joueurs}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{L'Opérateur} : Stressé, il veut continuer à produire pour
+  tenir les cadences.
+\item
+  \textbf{Le Chef d'Équipe} : Doit décider s'il arrête la ligne
+  (Auto-Qualité).
+\item
+  \textbf{Le Technicien Qualité} : Armé de sa fiche QQOQCP, il doit
+  caractériser le défaut.
+\item
+  \textbf{Le ``Saboteur'' (Formateur)} : Il donne des informations
+  contradictoires si on ne lui pose pas les bonnes questions sur le
+  terrain.
+\end{enumerate}
+
+\subsubsection{La Règle d'Or (Le
+Piège)}\label{la-ruxe8gle-dor-le-piuxe8ge}
+
+Le Chef d'Équipe est tenté de faire un ``tri'' et de continuer.
+\textbf{Le piège} : Si l'équipe ne fait pas le ``San Gen Shugi'' (Le
+vrai lieu, la vraie pièce, la réalité), ils ne verront pas que le
+détrompeur sur la machine est cassé.
+
+\subsubsection{Outils imposés}\label{outils-imposuxe9s}
+
+\begin{itemize}
+\tightlist
+\item
+  QQOQCP
+\item
+  Principe des 3 réels (Genba, Genbutsu, Genjitsu)
+\end{itemize}
+
+\subsubsection{Kit d'indices}\label{kit-dindices}
+
+\begin{itemize}
+\tightlist
+\item
+  📸 Photos de composants montés correctement et à l'envers
+\item
+  📋 Extrait de la gamme opératoire (version actuelle)
+\item
+  📋 Extrait de gamme opératoire périmée (avec indication différente)
+\item
+  🔍 Photo du détrompeur cassé (à ne révéler que si inspection physique)
+\item
+  📊 Fiche QQOQCP vierge
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Jeu de Rôle n°2 : La ``Méthode 8D'' en crise (Résolution
+structurée)}\label{jeu-de-ruxf4le-n2-la-muxe9thode-8d-en-crise-ruxe9solution-structuruxe9e}
+
+\textbf{Inspiré par :} Méthode 8D (8 Disciplines)\\
+\textbf{Objectif :} Appliquer une démarche structurée face à un problème
+récurrent.
+
+\subsubsection{Le Pitch}\label{le-pitch-1}
+
+Un client majeur retourne pour la 3ème fois en 2 mois des lots de pièces
+usinées avec des côtes hors tolérances (+0.15mm). Le commercial est
+furieux, la production nie toute responsabilité. Le directeur convoque
+une équipe d'urgence.
+
+\subsubsection{Les Personnages (5
+joueurs)}\label{les-personnages-5-joueurs}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Le Leader 8D} : Doit guider l'équipe à travers les 8
+  disciplines sans sauter d'étapes.
+\item
+  \textbf{Le Responsable Production} : Défensif, pense que c'est un
+  problème de réception client.
+\item
+  \textbf{Le Méthodes/Process} : Connaît les réglages machines mais est
+  débordé.
+\item
+  \textbf{Le Qualiticien} : A les données de contrôle mais elles sont
+  parcellaires.
+\item
+  \textbf{Le ``Perturbateur'' (Formateur)} : Pousse l'équipe à vouloir
+  sauter directement aux actions correctives (D6) sans analyse de cause
+  racine (D4-D5).
+\end{enumerate}
+
+\subsubsection{La Règle d'Or (Le
+Piège)}\label{la-ruxe8gle-dor-le-piuxe8ge-1}
+
+L'équipe aura tendance à vouloir « réparer vite » sans analyser.
+\textbf{Le piège} : Les déviations sont intermittentes car l'opérateur
+change de tour (il y en a 3) selon la disponibilité, mais un seul tour a
+un problème de dilatation thermique non compensé.
+
+\subsubsection{Outils imposés}\label{outils-imposuxe9s-1}
+
+\begin{itemize}
+\tightlist
+\item
+  Diagramme des 8D
+\item
+  Ishikawa (5M)
+\item
+  5 Pourquoi
+\item
+  Plan d'actions avec responsables et délais
+\end{itemize}
+
+\subsubsection{Kit d'indices}\label{kit-dindices-1}
+
+\begin{itemize}
+\tightlist
+\item
+  📊 Graphique de contrôle statistique avec points hors limites
+  (intermittents)
+\item
+  📋 Planning d'occupation des 3 tours sur 2 mois
+\item
+  🔧 Fiches de réglage des 3 tours (avec paramètres légèrement
+  différents)
+\item
+  📸 Photos de pièces OK et NOK avec mesures
+\item
+  📋 Réclamations clients (dates et n° de lots)
+\item
+  🌡️ Relevés de température atelier (si demandés)
+\item
+  📋 Fiche 8D vierge
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Jeu de Rôle n°3 : Le ``5 Pourquoi'' du mystère (Recherche de
+cause
+racine)}\label{jeu-de-ruxf4le-n3-le-5-pourquoi-du-mystuxe8re-recherche-de-cause-racine}
+
+\textbf{Inspiré par :} Méthode des 5 Pourquoi\\
+\textbf{Objectif :} Creuser en profondeur pour trouver la vraie cause
+racine.
+
+\subsubsection{Le Pitch}\label{le-pitch-2}
+
+Des arrêts intempestifs d'un convoyeur surviennent de manière aléatoire
+(3-4 fois par semaine). Le service maintenance a déjà changé 2 fois le
+moteur, mais le problème persiste. L'usine perd 2h de production à
+chaque arrêt.
+
+\subsubsection{Les Personnages (4
+joueurs)}\label{les-personnages-4-joueurs-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{L'Animateur 5 Pourquoi} : Doit poser les bonnes questions et
+  ne pas accepter les réponses superficielles.
+\item
+  \textbf{Le Technicien Maintenance} : Frustré d'avoir déjà changé le
+  moteur 2 fois.
+\item
+  \textbf{L'Opérateur Production} : A remarqué que ça arrive souvent
+  après le nettoyage du sol.
+\item
+  \textbf{Le ``Fausseur'' (Formateur)} : Oriente vers des causes
+  techniques complexes (roulements, alignement, etc.).
+\end{enumerate}
+
+\subsubsection{La Règle d'Or (Le
+Piège)}\label{la-ruxe8gle-dor-le-piuxe8ge-2}
+
+L'équipe va naturellement chercher des causes techniques complexes.
+\textbf{Le piège} : La vraie cause racine est simple : l'eau de
+nettoyage s'infiltre dans le coffret électrique mal fermé, créant des
+courts-circuits intermittents.
+
+\subsubsection{Outils imposés}\label{outils-imposuxe9s-2}
+
+\begin{itemize}
+\tightlist
+\item
+  Méthode des 5 Pourquoi (minimum 5 itérations)
+\item
+  Observation terrain obligatoire
+\item
+  Ishikawa (5M) en support
+\end{itemize}
+
+\subsubsection{Kit d'indices}\label{kit-dindices-2}
+
+\begin{itemize}
+\tightlist
+\item
+  📊 Historique des arrêts (dates et heures)
+\item
+  📋 Planning de nettoyage de l'atelier
+\item
+  🔧 Bons de travail maintenance (2 changements moteur)
+\item
+  📸 Photo du coffret électrique (à ne révéler que si demande
+  d'inspection)
+\item
+  📸 Photo de traces d'eau séchée (indices visuels)
+\item
+  ⚡ Schéma électrique du convoyeur
+\item
+  📋 Fiche 5 Pourquoi vierge
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Jeu de Rôle n°4 : Le ``Pareto'' sous pression
+(Priorisation)}\label{jeu-de-ruxf4le-n4-le-pareto-sous-pression-priorisation}
+
+\textbf{Inspiré par :} Diagramme de Pareto (Loi 80/20)\\
+\textbf{Objectif :} Prioriser les actions face à de multiples défauts.
+
+\subsubsection{Le Pitch}\label{le-pitch-3}
+
+Le taux de rebuts de l'atelier peinture a explosé ce mois-ci : 12\% au
+lieu des 3\% habituels. La direction exige un plan d'action pour demain.
+Il y a des défauts partout : coulures, poussières, manques, mauvaises
+teintes, etc.
+
+\subsubsection{Les Personnages (4
+joueurs)}\label{les-personnages-4-joueurs-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Le Responsable Qualité} : Doit construire le Pareto et
+  identifier les 20\% de causes qui génèrent 80\% des rebuts.
+\item
+  \textbf{Le Chef d'atelier Peinture} : Veut tout traiter en même temps,
+  panique.
+\item
+  \textbf{Le Technicien Process} : Connaît les paramètres peinture mais
+  ne voit pas de changement récent.
+\item
+  \textbf{Le ``Brouilleur'' (Formateur)} : Insiste sur des défauts
+  mineurs mais visibles, détourne l'attention.
+\end{enumerate}
+
+\subsubsection{La Règle d'Or (Le
+Piège)}\label{la-ruxe8gle-dor-le-piuxe8ge-3}
+
+L'équipe va vouloir s'attaquer à tous les défauts. \textbf{Le piège} :
+75\% des rebuts sont dus à un seul type de défaut (poussières), causé
+par un filtre de cabine bouché depuis 3 semaines suite à un oubli de
+maintenance préventive.
+
+\subsubsection{Outils imposés}\label{outils-imposuxe9s-3}
+
+\begin{itemize}
+\tightlist
+\item
+  Diagramme de Pareto
+\item
+  Feuille de relevé des défauts
+\item
+  Plan d'action priorisé
+\end{itemize}
+
+\subsubsection{Kit d'indices}\label{kit-dindices-3}
+
+\begin{itemize}
+\tightlist
+\item
+  📊 Liste brute de tous les défauts sur 1 mois (100+ défauts non
+  classés)
+\item
+  📊 Classement des défauts par type (à construire par les joueurs)
+\item
+  📋 Planning de maintenance préventive (avec un oubli surligné)
+\item
+  📸 Photo du filtre encrassé
+\item
+  🔬 Photos de pièces avec différents types de défauts
+\item
+  📈 Graphique d'évolution du taux de rebut (pic récent)
+\item
+  📋 Feuille de relevé vierge
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Jeu de Rôle n°5 : Le ``Poka-Yoke'' salvateur (Détrompeur
+anti-erreur)}\label{jeu-de-ruxf4le-n5-le-poka-yoke-salvateur-duxe9trompeur-anti-erreur}
+
+\textbf{Inspiré par :} Systèmes anti-erreur (Poka-Yoke)\\
+\textbf{Objectif :} Concevoir une solution technique empêchant la
+réapparition du défaut.
+
+\subsubsection{Le Pitch}\label{le-pitch-4}
+
+Sur une ligne de montage de connecteurs, 15\% des pièces arrivent avec
+des joints toriques inversés (couleur rouge au lieu de noir). Le
+contrôle final les détecte, mais c'est du gaspillage pur. Les opérateurs
+sont formés mais l'erreur persiste.
+
+\subsubsection{Les Personnages (4
+joueurs)}\label{les-personnages-4-joueurs-3}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{L'Ingénieur Méthodes} : Doit concevoir un système anti-erreur.
+\item
+  \textbf{L'Opérateur Expérimenté} : Explique que les joints se
+  ressemblent beaucoup, facile de se tromper en cadence.
+\item
+  \textbf{Le Technicien Maintenance} : Doit valider la faisabilité
+  technique du Poka-Yoke.
+\item
+  \textbf{Le ``Minimaliste'' (Formateur)} : Propose des solutions
+  compliquées et coûteuses (capteurs, vision\ldots).
+\end{enumerate}
+
+\subsubsection{La Règle d'Or (Le
+Piège)}\label{la-ruxe8gle-dor-le-piuxe8ge-4}
+
+L'équipe va chercher des solutions high-tech. \textbf{Le piège} : La
+solution optimale est simple et peu coûteuse : des bacs de couleurs
+différentes (rouge pour joints rouges, noir pour joints noirs) avec des
+couvercles rainurés permettant de prendre qu'un joint à la fois.
+
+\subsubsection{Outils imposés}\label{outils-imposuxe9s-4}
+
+\begin{itemize}
+\tightlist
+\item
+  Grille d'analyse Poka-Yoke
+\item
+  Matrice coût/efficacité
+\item
+  Prototype ou schéma de la solution
+\end{itemize}
+
+\subsubsection{Kit d'indices}\label{kit-dindices-4}
+
+\begin{itemize}
+\tightlist
+\item
+  📸 Photos des joints (très similaires visuellement)
+\item
+  📊 Statistiques d'erreurs par poste et par opérateur
+\item
+  🔧 Photos du poste de travail actuel
+\item
+  💡 Exemples de Poka-Yoke simples (inspiration)
+\item
+  📋 Budget disponible pour la solution (500€ max)
+\item
+  📐 Plans du poste de travail
+\item
+  📋 Grille d'analyse vierge
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Jeu de Rôle n°6 : Le ``Kaizen Blitz'' de l'impossible
+(Amélioration continue
+express)}\label{jeu-de-ruxf4le-n6-le-kaizen-blitz-de-limpossible-amuxe9lioration-continue-express}
+
+\textbf{Inspiré par :} Kaizen (Amélioration continue)\\
+\textbf{Objectif :} Réaliser une amélioration rapide avec les moyens du
+bord.
+
+\subsubsection{Le Pitch}\label{le-pitch-5}
+
+Le temps de changement de série (SMED) sur une presse prend 45 minutes.
+C'est inacceptable selon le Lean. L'équipe a 2 heures pour réduire ce
+temps de 50\% avec un budget de 0€ (uniquement réorganisation et
+solutions maison).
+
+\subsubsection{Les Personnages (4-5
+joueurs)}\label{les-personnages-4-5-joueurs}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Le Leader Kaizen} : Anime le Kaizen Blitz, chronomètre en
+  main.
+\item
+  \textbf{Le Régleur} : Celui qui fait habituellement le changement,
+  connaît toutes les étapes.
+\item
+  \textbf{L'Opérateur} : Utilisateur final, a des idées mais n'ose pas
+  les dire.
+\item
+  \textbf{Le Méthodes} : Observe et documente le processus actuel.
+\item
+  \textbf{Le ``Conservateur'' (Formateur)} : Répète ``on a toujours fait
+  comme ça'', résiste au changement.
+\end{enumerate}
+
+\subsubsection{La Règle d'Or (Le
+Piège)}\label{la-ruxe8gle-dor-le-piuxe8ge-5}
+
+L'équipe va vouloir créer des outils complexes. \textbf{Le piège} : 80\%
+du temps est perdu à chercher les outils (non rangés), attendre que la
+presse refroidisse (non anticipé), et ajuster manuellement des cotes
+(pas de gabarit). Solutions : ombre portée pour outils, préchauffage
+pendant production, gabarit de réglage rapide.
+
+\subsubsection{Outils imposés}\label{outils-imposuxe9s-5}
+
+\begin{itemize}
+\tightlist
+\item
+  Chronomètre et découpage opératoire
+\item
+  Diagramme Spaghetti (flux de déplacement)
+\item
+  Matrice actions internes/externes
+\end{itemize}
+
+\subsubsection{Kit d'indices}\label{kit-dindices-5}
+
+\begin{itemize}
+\tightlist
+\item
+  ⏱️ Relevé détaillé des temps (étape par étape)
+\item
+  📸 Photos du poste de travail (désorganisé)
+\item
+  📸 Photos d'exemples de ``shadow board'' (panneaux d'outils)
+\item
+  📋 Procédure SMED actuelle
+\item
+  🎥 Vidéo courte du changement de série (option : enregistrement
+  simulé)
+\item
+  📐 Plan de la zone de travail
+\item
+  📋 Fiche Kaizen vierge
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Structure des Kits d'Indices
+(Template)}\label{structure-des-kits-dindices-template}
+
+Pour chaque jeu de rôle, préparer :
+
+\subsubsection{📸 Visuels}\label{visuels}
+
+\begin{itemize}
+\tightlist
+\item
+  Photos de pièces bonnes/mauvaises
+\item
+  Photos du poste de travail
+\item
+  Photos d'indices cachés (ne révéler que si demande explicite)
+\end{itemize}
+
+\subsubsection{📋 Documents}\label{documents}
+
+\begin{itemize}
+\tightlist
+\item
+  Extraits de gammes opératoires
+\item
+  Procédures (conformes et périmées)
+\item
+  Fiches de données
+\end{itemize}
+
+\subsubsection{📊 Données}\label{donnuxe9es}
+
+\begin{itemize}
+\tightlist
+\item
+  Relevés de mesures
+\item
+  Historiques
+\item
+  Statistiques
+\item
+  Graphiques
+\end{itemize}
+
+\subsubsection{🔧 Ressources terrain}\label{ressources-terrain}
+
+\begin{itemize}
+\tightlist
+\item
+  Plans techniques
+\item
+  Schémas
+\item
+  Fiches de maintenance
+\end{itemize}
+
+\subsubsection{📝 Outils vierges}\label{outils-vierges}
+
+\begin{itemize}
+\tightlist
+\item
+  Fiches QQOQCP
+\item
+  Matrices 8D
+\item
+  Diagrammes Ishikawa
+\item
+  Feuilles de relevé
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Conseils d'Animation}\label{conseils-danimation}
+
+\subsubsection{Pour le Formateur}\label{pour-le-formateur}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Ne jamais donner directement la réponse}
+\item
+  \textbf{Orienter par des questions} : ``Avez-vous regardé\ldots{} ?'',
+  ``Avez-vous vérifié\ldots{} ?''
+\item
+  \textbf{Laisser l'équipe se tromper} puis débriefer
+\item
+  \textbf{Chronométrer} pour mettre la pression (réalisme)
+\item
+  \textbf{Valoriser} les bonnes pratiques (aller sur le terrain, poser
+  des questions, utiliser les outils)
+\end{enumerate}
+
+\subsubsection{Débriefing (15-20 min)}\label{duxe9briefing-15-20-min}
+
+\begin{itemize}
+\tightlist
+\item
+  Qu'avez-vous appris ?
+\item
+  Quelles erreurs avez-vous faites ?
+\item
+  Quels outils ont été efficaces ?
+\item
+  Comment transposer à votre travail ?
+\end{itemize}
+
+\subsubsection{Durée par Jeu}\label{duruxe9e-par-jeu}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Phase jeu} : 30-45 minutes
+\item
+  \textbf{Débriefing} : 15-20 minutes
+\item
+  \textbf{Total} : 45-65 minutes
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Progression Pédagogique
+Recommandée}\label{progression-puxe9dagogique-recommanduxe9e}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{JdR n°1 (QRQC)} : Introduction, réflexe terrain
+\item
+  \textbf{JdR n°3 (5 Pourquoi)} : Approfondir l'analyse causale
+\item
+  \textbf{JdR n°4 (Pareto)} : Prioriser efficacement
+\item
+  \textbf{JdR n°2 (8D)} : Méthodologie complète
+\item
+  \textbf{JdR n°5 (Poka-Yoke)} : Pérenniser les solutions
+\item
+  \textbf{JdR n°6 (Kaizen)} : Culture d'amélioration continue
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\emph{Document créé pour la formation à la résolution de problèmes
+industriels}\\
+\emph{Pôle Formation UIMM - CVDL}
+
+\end{document}

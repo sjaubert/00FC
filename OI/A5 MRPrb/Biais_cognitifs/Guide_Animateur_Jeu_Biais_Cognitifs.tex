@@ -1,0 +1,1935 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\section{Guide Animateur - Jeu des Biais
+Cognitifs}\label{guide-animateur---jeu-des-biais-cognitifs}
+
+\subsection{Formation d'une journée
+complète}\label{formation-dune-journuxe9e-compluxe8te}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{📋 Vue d'ensemble}\label{vue-densemble}
+
+\textbf{Public cible :} Débutants en biais cognitifs\\
+\textbf{Durée totale :} 1 journée (7 heures)\\
+\textbf{Nombre de participants :} 8 à 24 personnes\\
+\textbf{Matériel nécessaire :}
+
+\begin{itemize}
+\tightlist
+\item
+  Jeu de 52 cartes de biais cognitifs (imprimé ou format digital)
+\item
+  Paperboard ou tableau
+\item
+  Post-its et marqueurs
+\item
+  Chronomètre
+\item
+  Badges de couleurs pour les équipes
+\item
+  Tableau de score
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{🎯 Objectifs pédagogiques}\label{objectifs-puxe9dagogiques}
+
+À la fin de la formation, les participants seront capables de :
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Identifier} les 5 catégories principales de biais cognitifs
+\item
+  \textbf{Reconnaître} au moins 15 biais cognitifs dans des situations
+  concrètes
+\item
+  \textbf{Analyser} l'impact des biais sur la prise de décision
+  professionnelle
+\item
+  \textbf{Appliquer} des stratégies pour limiter l'influence des biais
+  dans leur travail
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{📅 Déroulement de la
+journée}\label{duxe9roulement-de-la-journuxe9e}
+
+\subsubsection{\texorpdfstring{\textbf{Accueil et Introduction (30
+min)}}{Accueil et Introduction (30 min)}}\label{accueil-et-introduction-30-min}
+
+\paragraph{Objectifs}\label{objectifs}
+
+\begin{itemize}
+\tightlist
+\item
+  Créer un climat de confiance
+\item
+  Présenter le programme
+\item
+  Évaluer le niveau initial des participants
+\end{itemize}
+
+\paragraph{Déroulé détaillé}\label{duxe9rouluxe9-duxe9tailluxe9}
+
+\textbf{1. Ice-breaker - ``La décision rapide'' (10 min)}
+
+\begin{itemize}
+\tightlist
+\item
+  Posez ces questions aux participants :
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \emph{``Combien de fois levez-vous le bras par jour ?''}
+  \item
+    \emph{``Quel est le nombre de fenêtres dans votre ville ?''}
+  \end{itemize}
+\item
+  Demandez-leur d'écrire leur estimation
+\item
+  \textbf{Révélation} : Personne ne sait ! Mais tout le monde a donné un
+  chiffre → Introduction au concept d'\textbf{ancrage} et
+  d'\textbf{estimation intuitive}
+\end{itemize}
+
+\textbf{2. Sondage initial (10 min)}
+
+\begin{itemize}
+\tightlist
+\item
+  Demandez : \emph{``Qui pense être objectif dans ses décisions ?''}
+\item
+  Notez le pourcentage
+\item
+  \textbf{Révélation} : Introduction au \textbf{biais de l'angle mort}
+  (nous pensons tous être moins biaisés que les autres)
+\end{itemize}
+
+\textbf{3. Présentation du programme (10 min)}
+
+\begin{itemize}
+\tightlist
+\item
+  Expliquer la structure des 5 catégories de biais
+\item
+  Présenter les règles générales du jeu
+\item
+  Former 4 à 6 équipes de 3-4 personnes
+\end{itemize}
+
+\begin{quote}
+{[}!IMPORTANT{]} \textbf{Point clé pour l'animateur} : Insistez dès le
+départ sur le fait que TOUT LE MONDE est sujet aux biais cognitifs, y
+compris vous-même. Ce n'est pas une faiblesse, mais un fonctionnement
+normal du cerveau humain.
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{\texorpdfstring{\textbf{Phase 1 : Découverte des
+Catégories
+(1h15)}}{Phase 1 : Découverte des Catégories (1h15)}}\label{phase-1-duxe9couverte-des-catuxe9gories-1h15}
+
+\paragraph{Objectifs}\label{objectifs-1}
+
+\begin{itemize}
+\tightlist
+\item
+  Découvrir les 5 catégories de biais
+\item
+  Comprendre la différence entre chaque catégorie
+\item
+  Mémoriser les symboles et couleurs
+\end{itemize}
+
+\paragraph{Distribution des cartes (15
+min)}\label{distribution-des-cartes-15-min}
+
+\textbf{Matériel} : Distribuer 10-12 cartes aléatoires par équipe
+
+\textbf{Consigne} : \textgreater{} ``Vous avez 10 minutes pour lire vos
+cartes et les classer par catégorie. Identifiez la couleur et le symbole
+de chaque catégorie.''
+
+\textbf{Les 5 catégories à identifier :}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  🧠 \textbf{Mémoire \& Souvenirs} (Violet)
+\item
+  🤔 \textbf{Raisonnement \& Résolution de problèmes} (Bleu)
+\item
+  ⚡ \textbf{Prise de décision \& Comportements} (Vert)
+\item
+  👥 \textbf{Travail d'équipe \& Réunions} (Orange)
+\item
+  🔍 \textbf{Interviews \& Tests utilisateur} (Rose)
+\end{enumerate}
+
+\paragraph{Mise en commun (20 min)}\label{mise-en-commun-20-min}
+
+Chaque équipe présente :
+
+\begin{itemize}
+\tightlist
+\item
+  Les catégories identifiées
+\item
+  2-3 biais découverts avec leurs propres mots
+\end{itemize}
+
+\textbf{Rôle de l'animateur} :
+
+\begin{itemize}
+\tightlist
+\item
+  Valider ou corriger les catégories
+\item
+  Clarifier les définitions si nécessaire
+\item
+  Donner 1 exemple concret pour chaque catégorie
+\end{itemize}
+
+\paragraph{Quiz rapide - ``Quelle catégorie ?'' (15
+min)}\label{quiz-rapide---quelle-catuxe9gorie-15-min}
+
+Annoncez des situations, les équipes doivent identifier la catégorie :
+
+\textbf{Exemples :}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \emph{``Je me souviens mieux des images que des textes''} → 🧠 Mémoire
+  (Effet de supériorité de l'image)
+\item
+  \emph{``On fait tous comme ça dans l'équipe''} → 👥 Travail d'équipe
+  (Effet de groupe)
+\item
+  \emph{``Je préfère l'option par défaut''} → ⚡ Prise de décision
+  (Effet par défaut)
+\item
+  \emph{``Si c'est nouveau, c'est forcément mieux''} → 🤔 Raisonnement
+  (Biais pro-innovation)
+\item
+  \emph{``Je dis `oui' pour être poli''} → 🔍 Interviews (Effet de
+  courtoisie)
+\end{enumerate}
+
+\textbf{Barème} : 2 points par bonne réponse
+
+\paragraph{Synthèse théorique (25
+min)}\label{synthuxe8se-thuxe9orique-25-min}
+
+\textbf{Présentation PowerPoint ou paperboard} :
+
+\textbf{Slide 1 : Qu'est-ce qu'un biais cognitif ?}
+
+\begin{itemize}
+\tightlist
+\item
+  Raccourci mental que prend notre cerveau
+\item
+  Économie d'énergie cognitive
+\item
+  Peut mener à des erreurs de jugement
+\end{itemize}
+
+\textbf{Slide 2 : Les 5 familles}
+
+\begin{itemize}
+\tightlist
+\item
+  Explication approfondie de chaque catégorie
+\item
+  Exemples dans le monde professionnel
+\end{itemize}
+
+\textbf{Slide 3 : Pourquoi c'est important ?}
+
+\begin{itemize}
+\tightlist
+\item
+  Impact sur la qualité des décisions
+\item
+  Conséquences en entreprise (recrutement, gestion de projet,
+  innovation)
+\end{itemize}
+
+\begin{quote}
+{[}!TIP{]} \textbf{Astuce animateur} : Préparez des exemples tirés du
+secteur d'activité des participants pour maximiser l'engagement.
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{\texorpdfstring{\textbf{10h45 - 11h00 \textbar{} Pause
+(15
+min)}}{10h45 - 11h00 \textbar{} Pause (15 min)}}\label{h45---11h00-pause-15-min}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{\texorpdfstring{\textbf{11h00 - 12h30 \textbar{} Phase 2
+: Jeu ``Chasseurs de biais''
+(1h30)}}{11h00 - 12h30 \textbar{} Phase 2 : Jeu ``Chasseurs de biais'' (1h30)}}\label{h00---12h30-phase-2-jeu-chasseurs-de-biais-1h30}
+
+\paragraph{Objectifs}\label{objectifs-2}
+
+\begin{itemize}
+\tightlist
+\item
+  Identifier des biais dans des situations réelles
+\item
+  Développer l'esprit critique
+\item
+  Apprendre par l'exemple
+\end{itemize}
+
+\paragraph{Règles du jeu (10 min)}\label{ruxe8gles-du-jeu-10-min}
+
+\textbf{Matériel} : 15 scénarios professionnels pré-rédigés (voir Annexe
+A)
+
+\textbf{Déroulement} :
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Chaque équipe reçoit 3 scénarios différents
+\item
+  Pour chaque scénario, identifier \textbf{tous les biais} présents
+\item
+  Utiliser les cartes comme aide-mémoire
+\item
+  Préparer une présentation de 2 minutes
+\end{enumerate}
+
+\textbf{Barème de points} :
+
+\begin{itemize}
+\tightlist
+\item
+  3 points par biais correctement identifié
+\item
+  2 points bonus si tous les biais du scénario sont trouvés
+\item
+  1 point bonus pour un exemple concret similaire dans leur entreprise
+\end{itemize}
+
+\paragraph{Phase de recherche (40 min)}\label{phase-de-recherche-40-min}
+
+\textbf{Consigne aux équipes} : \textgreater{} ``Vous avez 40 minutes
+pour analyser vos 3 scénarios. Utilisez vos cartes, discutez en équipe,
+et préparez votre argumentation.''
+
+\textbf{Rôle de l'animateur pendant ce temps} :
+
+\begin{itemize}
+\tightlist
+\item
+  Circuler entre les équipes
+\item
+  Répondre aux questions
+\item
+  Observer les dynamiques de groupe (vous verrez les biais en action !)
+\item
+  Prendre des notes pour le débriefing
+\end{itemize}
+
+\begin{quote}
+{[}!CAUTION{]} \textbf{Attention} : Certaines équipes peuvent tomber
+dans le \textbf{biais de confirmation} (chercher seulement les biais
+qu'ils connaissent déjà). Encouragez-les à explorer toutes leurs cartes.
+\end{quote}
+
+\paragraph{Présentations et débat (40
+min)}\label{pruxe9sentations-et-duxe9bat-40-min}
+
+Chaque équipe présente 1 scénario (6-7 minutes par équipe) :
+
+\begin{itemize}
+\tightlist
+\item
+  Lecture du scénario
+\item
+  Biais identifiés avec justification
+\item
+  Exemple personnel si disponible
+\end{itemize}
+
+\textbf{Après chaque présentation} :
+
+\begin{itemize}
+\tightlist
+\item
+  Les autres équipes peuvent challenger ou compléter (1 point bonus)
+\item
+  L'animateur valide et ajoute les biais manqués
+\item
+  Discussion collective : ``Comment éviter ce biais ?''
+\end{itemize}
+
+\textbf{Mise à jour du score} en direct sur le tableau
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{\texorpdfstring{\textbf{12h30 - 13h30 \textbar{} Déjeuner
+(1h)}}{12h30 - 13h30 \textbar{} Déjeuner (1h)}}\label{h30---13h30-duxe9jeuner-1h}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{\texorpdfstring{\textbf{13h30 - 15h00 \textbar{} Phase 3
+: ``Dark UX - Le projet diabolique''
+(1h30)}}{13h30 - 15h00 \textbar{} Phase 3 : ``Dark UX - Le projet diabolique'' (1h30)}}\label{h30---15h00-phase-3-dark-ux---le-projet-diabolique-1h30}
+
+\paragraph{Objectifs}\label{objectifs-3}
+
+\begin{itemize}
+\tightlist
+\item
+  Comprendre la manipulation par les biais
+\item
+  Développer la créativité
+\item
+  Renforcer la mémorisation par la pratique active
+\end{itemize}
+
+\paragraph{Introduction (10 min)}\label{introduction-10-min}
+
+\textbf{Explication du concept} : \textgreater{} ``Vous allez maintenant
+utiliser vos connaissances des biais pour créer\ldots{} le produit ou
+service le plus manipulateur possible ! C'est un exercice pour
+comprendre les mécanismes, pas pour les appliquer !''
+
+\textbf{Exemples de Dark UX} à montrer :
+
+\begin{itemize}
+\tightlist
+\item
+  Sites de réservation : ``Plus que 2 chambres !'' (rareté + urgence)
+\item
+  Abonnements : Option premium pré-cochée (effet par défaut)
+\item
+  Publicités : ``9 personnes sur 10 recommandent'' (effet de groupe +
+  biais d'autorité)
+\end{itemize}
+
+\paragraph{Phase de création (50
+min)}\label{phase-de-cruxe9ation-50-min}
+
+\textbf{Consigne} : \textgreater{} ``Créez un produit, service,
+publicité ou expérience en utilisant AU MINIMUM 7 biais cognitifs
+différents. Vous pouvez dessiner, faire un storyboard, ou présenter un
+pitch.''
+
+\textbf{Contraintes} :
+
+\begin{itemize}
+\tightlist
+\item
+  Utiliser au moins 1 biais de chaque grande catégorie
+\item
+  Documenter précisément quel biais est utilisé et comment
+\item
+  Préparer une présentation de 5 minutes
+\end{itemize}
+
+\textbf{Supports fournis} :
+
+\begin{itemize}
+\tightlist
+\item
+  Feuilles A3, marqueurs, post-its
+\item
+  Accès aux 52 cartes de biais
+\item
+  Liste complète des biais (pour inspiration)
+\end{itemize}
+
+\textbf{Rôle de l'animateur} :
+
+\begin{itemize}
+\tightlist
+\item
+  Encourager la créativité
+\item
+  Veiller à ce que les équipes documentent bien leurs choix
+\item
+  Relancer celles qui bloquent avec des suggestions
+\end{itemize}
+
+\begin{quote}
+{[}!WARNING{]} \textbf{Point éthique important} : Rappelez régulièrement
+que c'est un exercice pédagogique. L'objectif est de comprendre pour
+mieux se protéger et protéger les utilisateurs, pas de devenir
+manipulateur.
+\end{quote}
+
+\paragraph{Présentations ``diaboliques'' (30
+min)}\label{pruxe9sentations-diaboliques-30-min}
+
+Chaque équipe présente son projet :
+
+\begin{itemize}
+\tightlist
+\item
+  Description du produit/service
+\item
+  Démonstration de chaque biais utilisé
+\item
+  Impact attendu sur l'utilisateur
+\end{itemize}
+
+\textbf{Scoring} :
+
+\begin{itemize}
+\tightlist
+\item
+  2 points par biais correctement appliqué
+\item
+  3 points bonus pour l'équipe la plus ``diabolique'' (vote des
+  participants)
+\item
+  3 points bonus pour l'équipe la plus créative (vote de l'animateur)
+\end{itemize}
+
+\textbf{Débriefing collectif} (10 min restantes) :
+
+\begin{itemize}
+\tightlist
+\item
+  Comment se sentent-ils après cet exercice ?
+\item
+  Ont-ils reconnu des pratiques existantes ?
+\item
+  Comment se protéger en tant que consommateur/professionnel ?
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{\texorpdfstring{\textbf{15h00 - 15h15 \textbar{} Pause
+(15
+min)}}{15h00 - 15h15 \textbar{} Pause (15 min)}}\label{h00---15h15-pause-15-min}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{\texorpdfstring{\textbf{15h15 - 16h30 \textbar{} Phase 4
+: ``Détox cognitive'' - Stratégies anti-biais
+(1h15)}}{15h15 - 16h30 \textbar{} Phase 4 : ``Détox cognitive'' - Stratégies anti-biais (1h15)}}\label{h15---16h30-phase-4-duxe9tox-cognitive---stratuxe9gies-anti-biais-1h15}
+
+\paragraph{Objectifs}\label{objectifs-4}
+
+\begin{itemize}
+\tightlist
+\item
+  Apprendre à identifier ses propres biais
+\item
+  Découvrir des techniques de mitigation
+\item
+  Créer un plan d'action personnel
+\end{itemize}
+
+\paragraph{Atelier - ``Mon profil cognitif'' (25
+min)}\label{atelier---mon-profil-cognitif-25-min}
+
+\textbf{Matériel} : Questionnaire individuel (voir Annexe B)
+
+\textbf{Consigne} : \textgreater{} ``Répondez individuellement à ces 20
+situations professionnelles. Identifiez vos biais dominants.''
+
+\textbf{Questions types} :
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \emph{Lors d'un recrutement, vous êtes influencé par :}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \begin{enumerate}
+    \def\labelenumii{\alph{enumii})}
+    \tightlist
+    \item
+      La première impression (ancrage)
+    \end{enumerate}
+  \item
+    \begin{enumerate}
+    \def\labelenumii{\alph{enumii})}
+    \setcounter{enumii}{1}
+    \tightlist
+    \item
+      La ressemblance avec vous (biais de similarité)
+    \end{enumerate}
+  \item
+    \begin{enumerate}
+    \def\labelenumii{\alph{enumii})}
+    \setcounter{enumii}{2}
+    \tightlist
+    \item
+      Le prestige de l'école (effet de halo)
+    \end{enumerate}
+  \end{itemize}
+\end{enumerate}
+
+\textbf{Résultats} : Chacun identifie ses 3-5 biais les plus fréquents
+
+\paragraph{Présentation - ``La boîte à outils anti-biais'' (30
+min)}\label{pruxe9sentation---la-bouxeete-uxe0-outils-anti-biais-30-min}
+
+\textbf{L'animateur présente les stratégies principales} :
+
+\textbf{1. Ralentir la décision}
+
+\begin{itemize}
+\tightlist
+\item
+  Prendre le temps de réfléchir
+\item
+  Éviter les décisions sous pression
+\item
+  Technique : Attendre 24h pour les décisions importantes
+\end{itemize}
+
+\textbf{2. Chercher la contradiction}
+
+\begin{itemize}
+\tightlist
+\item
+  Activement chercher des contre-arguments
+\item
+  Assigner un ``avocat du diable'' dans les réunions
+\item
+  Technique : ``Et si le contraire était vrai ?''
+\end{itemize}
+
+\textbf{3. Diversifier les sources}
+
+\begin{itemize}
+\tightlist
+\item
+  Ne pas se fier à une seule source d'information
+\item
+  Consulter des avis divergents
+\item
+  Technique : Règle des 3 sources
+\end{itemize}
+
+\textbf{4. Utiliser des checklists}
+
+\begin{itemize}
+\tightlist
+\item
+  Structurer la prise de décision
+\item
+  Évaluation systématique des critères
+\item
+  Technique : Grille de décision multicritères
+\end{itemize}
+
+\textbf{5. Décisions collectives structurées}
+
+\begin{itemize}
+\tightlist
+\item
+  Brainstorming silencieux (évite l'effet de groupe)
+\item
+  Vote anonyme
+\item
+  Technique : Méthode Delphi
+\end{itemize}
+
+\textbf{6. Attention aux contextes}
+
+\begin{itemize}
+\tightlist
+\item
+  Ne pas décider quand on a faim, soif, fatigue
+\item
+  Être conscient de son état émotionnel
+\item
+  Technique : Auto-questionnement avant décision
+\end{itemize}
+
+\textbf{7. Formation continue}
+
+\begin{itemize}
+\tightlist
+\item
+  Rester vigilant
+\item
+  Partager ses découvertes avec l'équipe
+\item
+  Technique : Rituel mensuel ``biais du mois''
+\end{itemize}
+
+\begin{quote}
+{[}!TIP{]} \textbf{Pour l'animateur} : Illustrez chaque stratégie avec
+un cas concret du monde professionnel des participants.
+\end{quote}
+
+\paragraph{Atelier en équipe - ``Plan d'action'' (20
+min)}\label{atelier-en-uxe9quipe---plan-daction-20-min}
+
+\textbf{Consigne} : \textgreater{} ``En équipe, choisissez 1 situation
+professionnelle récurrente dans votre entreprise et proposez 3
+stratégies concrètes pour limiter les biais.''
+
+\textbf{Exemples de situations} :
+
+\begin{itemize}
+\tightlist
+\item
+  Réunions de lancement de projet
+\item
+  Processus de recrutement
+\item
+  Évaluation des performances
+\item
+  Choix de fournisseurs
+\item
+  Gestion de conflit
+\end{itemize}
+
+\textbf{Livrable} : Fiche action avec :
+
+\begin{itemize}
+\tightlist
+\item
+  Situation ciblée
+\item
+  Biais identifiés
+\item
+  3 stratégies concrètes
+\item
+  Indicateurs de succès
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{\texorpdfstring{\textbf{16h30 - 17h00 \textbar{} Phase 5
+: Grand Quiz Final \& Clôture (30
+min)}}{16h30 - 17h00 \textbar{} Phase 5 : Grand Quiz Final \& Clôture (30 min)}}\label{h30---17h00-phase-5-grand-quiz-final-cluxf4ture-30-min}
+
+\paragraph{Grand Quiz (20 min)}\label{grand-quiz-20-min}
+
+\textbf{Format} : 20 questions rapides - mode ``Qui veut gagner des
+millions''
+
+\textbf{Types de questions} :
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{QCM} : ``L'effet IKEA, c'est\ldots{}''
+\item
+  \textbf{Vrai/Faux} : ``Les experts sont immunisés contre les biais''
+\item
+  \textbf{Catégorisation} : ``À quelle famille appartient le biais de
+  confirmation ?''
+\item
+  \textbf{Situation} : ``Dans ce cas, quel biais est en jeu ?''
+\item
+  \textbf{Application} : ``Comment contrer le biais d'ancrage ?''
+\end{enumerate}
+
+\textbf{Barème} : 1 point par question, 5 points bonus pour l'équipe
+gagnante
+
+\textbf{Proclamation de l'équipe gagnante !} 🏆
+
+\paragraph{Bilan et clôture (10 min)}\label{bilan-et-cluxf4ture-10-min}
+
+\textbf{Tour de table express} :
+
+\begin{itemize}
+\tightlist
+\item
+  ``Quel est LE biais que vous retiendrez aujourd'hui ?''
+\item
+  ``Quelle action allez-vous mettre en place dès demain ?''
+\end{itemize}
+
+\textbf{Remise des supports} :
+
+\begin{itemize}
+\tightlist
+\item
+  Fiche récapitulative des 52 biais
+\item
+  Carte mentale des 5 catégories
+\item
+  Bibliographie et ressources complémentaires
+\end{itemize}
+
+\textbf{Évaluation de la formation} :
+
+\begin{itemize}
+\tightlist
+\item
+  Questionnaire de satisfaction (2 minutes)
+\item
+  Photo de groupe (optionnel)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{📊 Annexe A : Scénarios pour ``Chasseurs de
+biais''}\label{annexe-a-scuxe9narios-pour-chasseurs-de-biais}
+
+\subsubsection{Scénario 1 : Le recrutement
+précipité}\label{scuxe9nario-1-le-recrutement-pruxe9cipituxe9}
+
+\emph{``Sarah recrute un développeur. Le premier candidat arrive avec 15
+minutes de retard et s'excuse en expliquant qu'il a eu un accident de
+métro. Sarah trouve cela suspect. Le deuxième candidat, très bien
+habillé, arrive à l'heure et mentionne qu'il a fait Polytechnique. Sarah
+est impressionnée et décide de l'embaucher sans rencontrer d'autres
+candidats, bien que sa maîtrise technique soit moyenne.''}
+
+\textbf{Biais présents :}
+
+\begin{itemize}
+\tightlist
+\item
+  Biais de négativité (se souvient du retard)
+\item
+  Effet de halo (prestige de l'école)
+\item
+  Biais d'ancrage (première impression)
+\item
+  Biais de confirmation (cherche à confirmer sa première impression)
+\item
+  Effet de courtoisie (le candidat a peut-être menti)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Scénario 2 : La réunion
+projet}\label{scuxe9nario-2-la-ruxe9union-projet}
+
+\emph{``En réunion de lancement, Marc, le chef de projet très
+expérimenté, propose d'utiliser la même méthodologie que sur le projet
+précédent qui a été un succès. Personne n'ose remettre en question cette
+approche, même Julie qui pense qu'une méthode agile serait plus adaptée.
+L'équipe approuve rapidement et passe à l'organisation.''}
+
+\textbf{Biais présents :}
+
+\begin{itemize}
+\tightlist
+\item
+  Biais d'autorité (Marc est expérimenté)
+\item
+  Effet de groupe (personne n'ose contredire)
+\item
+  Loi de l'instrument (réutiliser ce qu'on connaît)
+\item
+  Biais de confirmation (Marc ne cherche pas d'alternative)
+\item
+  Réactance (Julie ne s'exprime pas)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Scénario 3 : L'achat de
+logiciel}\label{scuxe9nario-3-lachat-de-logiciel}
+
+\emph{``L'entreprise doit choisir un nouveau logiciel de gestion. Le
+commercial du Logiciel A propose une démo gratuite de 30 jours. Le
+Logiciel B coûte 10 000€, le Logiciel C coûte 50 000€. Face à ces prix,
+le Logiciel B semble raisonnable. Le commercial dit aussi : `Plus de 500
+entreprises nous font confiance !' L'équipe choisit le Logiciel B sans
+tester réellement les fonctionnalités dont elle a besoin.''}
+
+\textbf{Biais présents :}
+
+\begin{itemize}
+\tightlist
+\item
+  Effet de simple exposition (démo gratuite = familiarité)
+\item
+  Biais d'ancrage (50 000€ rend 10 000€ attractif)
+\item
+  Effet de groupe (500 entreprises)
+\item
+  Biais d'information (trop d'infos tuent l'info)
+\item
+  Actualisation hyperbolique (gain immédiat : démo gratuite)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Scénario 4 : Le test
+utilisateur}\label{scuxe9nario-4-le-test-utilisateur}
+
+\emph{``Thomas teste un nouveau site e-commerce. La designeuse, Sophie,
+lui pose des questions : `Tu trouves que le bouton ``Acheter'' est bien
+visible, non ?' Thomas répond `oui' par politesse, alors qu'il l'a
+cherché 30 secondes. Sophie conclut que le design est parfait car Thomas
+a validé.''}
+
+\textbf{Biais présents :}
+
+\begin{itemize}
+\tightlist
+\item
+  Effet de courtoisie (Thomas est poli)
+\item
+  Biais de confirmation (Sophie cherche la validation)
+\item
+  Biais d'observation (Sophie influence l'expérience)
+\item
+  Illusion de validité (Sophie surinteprète les données)
+\item
+  Biais de l'angle mort (Sophie ne voit pas ses propres biais)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Scénario 5 : L'innovation
+bloquée}\label{scuxe9nario-5-linnovation-bloquuxe9e}
+
+\emph{``L'équipe marketing propose d'utiliser TikTok pour toucher les
+jeunes. Bernard, 55 ans, directeur commercial, répond : `On a toujours
+fait de la publicité TV et ça marche. Les réseaux sociaux, c'est pas
+pour notre cible.' Une collègue mentionne qu'un concurrent a doublé ses
+ventes grâce à TikTok, mais Bernard maintient sa position : 'C'est un
+coup de chance, ça ne durera pas.''}
+
+\textbf{Biais présents :}
+
+\begin{itemize}
+\tightlist
+\item
+  Biais de statu quo (résistance au changement)
+\item
+  Loi de l'instrument (TV = outil familier)
+\item
+  Biais de confirmation (rejette les contre-exemples)
+\item
+  Dévaluation réactive (idée vient des ``jeunes'', pas de lui)
+\item
+  Malédiction de la connaissance (Bernard ne comprend pas la nouvelle
+  génération)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Scénario 6 : L'estimation
+projet}\label{scuxe9nario-6-lestimation-projet}
+
+\emph{``Julie, cheffe de projet, estime qu'un développement prendra 2
+semaines. Son équipe, pourtant expérimentée, approuve. Après 2 semaines,
+seulement 40\% est terminé. Julie dit : `On a eu des imprévus, personne
+ne pouvait prévoir.' En réalité, TOUS leurs projets précédents ont
+dépassé les délais initiaux.''}
+
+\textbf{Biais présents :}
+
+\begin{itemize}
+\tightlist
+\item
+  Planification fallacieuse (sous-estimer les délais)
+\item
+  Biais d'autocomplaisance (blâmer les ``imprévus'')
+\item
+  Biais rétrospectif (auraient dû le prévoir)
+\item
+  Effet de groupe (l'équipe suit sans question)
+\item
+  Illusion de validité (confiance excessive en l'estimation)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Scénario 7 : Le feedback
+client}\label{scuxe9nario-7-le-feedback-client}
+
+\emph{``Après le lancement d'un nouveau produit, l'équipe reçoit 3 avis
+clients très négatifs sur Twitter. Paniqués, ils organisent une réunion
+de crise et décident de tout modifier. Pendant ce temps, 500 clients
+satisfaits ne laissent aucun commentaire.''}
+
+\textbf{Biais présents :}
+
+\begin{itemize}
+\tightlist
+\item
+  Biais de négativité (focus sur le négatif)
+\item
+  Biais de disponibilité (les tweets sont immédiatement visibles)
+\item
+  Effet de bizarrerie (les retours négatifs marquent plus)
+\item
+  Actualisation hyperbolique (réaction immédiate)
+\item
+  Biais d'information (ignorer les 500 clients silencieux)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Scénario 8 : La formation
+obligatoire}\label{scuxe9nario-8-la-formation-obligatoire}
+
+\emph{``L'entreprise impose une formation de 2 jours sur un nouveau
+logiciel. Les employés rechignent : `Encore une formation inutile
+imposée d'en haut !' Certains arrivent en retard, consultent leurs
+téléphones. Pourtant, le contenu est pertinent et le formateur
+excellent. À la fin, beaucoup admettent que c'était utile, mais
+continuent à critiquer la direction pour `l'avoir imposée'.''}
+
+\textbf{Biais présents :}
+
+\begin{itemize}
+\tightlist
+\item
+  Réactance (résistance car imposé)
+\item
+  Biais de statu quo (préfèrent leurs habitudes)
+\item
+  Dévaluation réactive (vient de la direction = mauvais)
+\item
+  Biais de confirmation (cherchent ce qui ne va pas)
+\item
+  Théorie de justification du système (critiquent pour maintenir leur
+  vision)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Scénario 9 : Le CV
+prestigieux}\label{scuxe9nario-9-le-cv-prestigieux}
+
+\emph{``Antoine, responsable RH, reçoit un CV d'un candidat ayant
+travaillé chez Google, McKinsey et Harvard. Impressionné, il l'invite en
+entretien sans vérifier les références. En entretien, le candidat donne
+des réponses vagues, mais Antoine se dit : `Il a travaillé chez Google,
+il doit être compétent.' Il l'embauche. Trois mois plus tard, les
+performances sont médiocres.''}
+
+\textbf{Biais présents :}
+
+\begin{itemize}
+\tightlist
+\item
+  Biais d'autorité (prestige des entreprises)
+\item
+  Effet de halo (Google = compétent partout)
+\item
+  Biais de confirmation (cherche ce qui valide sa première impression)
+\item
+  Illusion de validité (données prestigieuses = prédiction fiable)
+\item
+  Biais d'ancrage (première info : CV prestigieux)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Scénario 10 : L'échec
+collectif}\label{scuxe9nario-10-luxe9chec-collectif}
+
+\emph{``Après un trimestre catastrophique, le comité de direction
+analyse les résultats. Le PDG explique : `La crise économique nous a
+pénalisés, nos concurrents aussi.' Le directeur marketing ajoute : `Les
+clients sont devenus irrationnels.' La DRH : `Il y a eu beaucoup de
+burn-out, c'est la faute au télétravail.' Personne ne mentionne la
+stratégie commerciale hasardeuse décidée 6 mois plus tôt.''}
+
+\textbf{Biais présents :}
+
+\begin{itemize}
+\tightlist
+\item
+  Biais d'autocomplaisance (causes externes pour les échecs)
+\item
+  Biais d'attribution de groupe (tout le groupe se protège)
+\item
+  Biais de l'angle mort (ne voient pas leur responsabilité)
+\item
+  Théorie de justification du système (défendent leurs décisions)
+\item
+  Stéréotype (« les clients sont irrationnels »)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Scénario 11 : Le collègue
+sympathique}\label{scuxe9nario-11-le-colluxe8gue-sympathique}
+
+\emph{``Laura et Thomas candidatent pour le même poste de manager. Laura
+est compétente mais réservée. Thomas est moins expérimenté mais très
+sociable, il fait rire toute l'équipe et organise souvent des pots.
+L'équipe vote pour Thomas comme futur manager. Six mois plus tard,
+l'équipe souffre d'un manque d'organisation et de vision stratégique.''}
+
+\textbf{Biais présents :}
+
+\begin{itemize}
+\tightlist
+\item
+  Effet de simple exposition (familiarité avec Thomas)
+\item
+  Effet pom-pom girl (Thomas paraît mieux en groupe)
+\item
+  Biais de disponibilité (souvenirs positifs de Thomas immédiatement
+  accessibles)
+\item
+  Effet de halo (sympathie → compétence supposée)
+\item
+  Biais de statu quo (veulent garder l'ambiance actuelle)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Scénario 12 : Le nouveau produit
+innovant}\label{scuxe9nario-12-le-nouveau-produit-innovant}
+
+\emph{``StartupTech lance SmartWidget, un objet connecté révolutionnaire
+avec IA intégrée. Le marketing met en avant `Intelligence Artificielle',
+`Innovation', `Futur'. Les investisseurs se bousculent. Personne ne
+demande à quoi ça sert vraiment. Le produit se vend mal car les
+consommateurs ne comprennent pas l'utilité. L'équipe est stupéfaite :
+`Mais c'est tellement innovant !'\,''}
+
+\textbf{Biais présents :}
+
+\begin{itemize}
+\tightlist
+\item
+  Biais pro-innovation (nouveau = forcément mieux)
+\item
+  Effet de vérité illusoire (répéter ``IA'' rend ça vrai)
+\item
+  Biais d'information (trop de buzzwords, peu de clarté)
+\item
+  Malédiction de la connaissance (comprennent le produit, oublient que
+  les autres non)
+\item
+  Effet Dunning-Kruger potentiel (surestiment leur compréhension du
+  marché)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Scénario 13 : Le tableau Excel
+complexe}\label{scuxe9nario-13-le-tableau-excel-complexe}
+
+\emph{``Michel présente son analyse dans un tableau Excel de 150 lignes
+avec 12 graphiques et 8 onglets. Il a passé 3 semaines dessus. La
+direction, impressionnée par le travail, approuve sa recommandation sans
+vraiment analyser les données. En réalité, l'analyse repose sur une
+hypothèse de départ erronée, mais personne ne l'a remarqué.''}
+
+\textbf{Biais présents :}
+
+\begin{itemize}
+\tightlist
+\item
+  Effet IKEA (Michel valorise son effort)
+\item
+  Biais d'autorité (travail complexe = compétent)
+\item
+  Biais d'information (trop de données tue l'analyse)
+\item
+  Biais de confirmation (Michel cherche ce qui valide son hypothèse)
+\item
+  Biais d'automatisation (confiance excessive dans Excel)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Scénario 14 : L'annonce
+surprise}\label{scuxe9nario-14-lannonce-surprise}
+
+\emph{``Lors d'une réunion mensuelle habituelle, le directeur annonce
+soudainement : `Nous sommes rachetés par le groupe XYZ !' Les employés
+sont choqués. Trois mois plus tard, lors d'une enquête, 80\% des
+employés disent : `On le savait, les signes étaient évidents.' Pourtant,
+avant l'annonce, personne n'en parlait.''}
+
+\textbf{Biais présents :}
+
+\begin{itemize}
+\tightlist
+\item
+  Biais rétrospectif (``je le savais'')
+\item
+  Illusion de validité (réinterprétation des signes passés)
+\item
+  Biais de confirmation rétrospectif (reconstruction de la mémoire)
+\item
+  Effet verbatim (se souviennent de ``l'essence'' déformée)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{Scénario 15 : La présentation du
+lundi}\label{scuxe9nario-15-la-pruxe9sentation-du-lundi}
+
+\emph{``Pierre présente des résultats lundi matin. Il commence par 15
+minutes de contexte ennuyeux, puis présente les chiffres clés, et
+termine par une conclusion spectaculaire avec une vidéo inspirante. Une
+semaine plus tard, l'équipe se souvient principalement de la vidéo et de
+la conclusion, mais a oublié la majorité des chiffres présentés au
+milieu.''}
+
+\textbf{Biais présents :}
+
+\begin{itemize}
+\tightlist
+\item
+  Effet de primauté et de récence (début et fin mieux retenus)
+\item
+  Effet de supériorité de l'image (vidéo \textgreater{} chiffres)
+\item
+  Règle du pic et de la fin (souvenir basé sur le moment fort)
+\item
+  Effet de bizarrerie (vidéo = inhabituel)
+\item
+  Effet d'humour potentiel (si vidéo drôle)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{📊 Annexe B : Questionnaire ``Mon profil
+cognitif''}\label{annexe-b-questionnaire-mon-profil-cognitif}
+
+\textbf{Instructions} : Pour chaque situation, cochez la réponse qui
+vous correspond le PLUS souvent. Soyez honnête !
+
+\subsubsection{Section 1 : Prise de
+décision}\label{section-1-prise-de-duxe9cision}
+
+\textbf{1. Lors d'un achat important, vous :}
+
+\begin{itemize}
+\tightlist
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \tightlist
+  \item
+    Choisissez rapidement ce qui vous plaît au premier coup d'œil
+    \emph{(Ancrage)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    Prenez l'option recommandée par le vendeur \emph{(Autorité)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    Choisissez l'option par défaut ou moyenne \emph{(Défaut / Ancrage)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{3}
+  \tightlist
+  \item
+    Comparez systématiquement toutes les options \emph{(Stratégie
+    rationnelle)}
+  \end{enumerate}
+\end{itemize}
+
+\textbf{2. Face à un nouveau projet, vous :}
+
+\begin{itemize}
+\tightlist
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \tightlist
+  \item
+    Réutilisez les méthodes qui ont déjà fonctionné \emph{(Loi de
+    l'instrument)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    Cherchez ce que font les autres entreprises \emph{(Effet de groupe)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    Privilégiez les solutions innovantes même risquées \emph{(Biais
+    pro-innovation)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{3}
+  \tightlist
+  \item
+    Analysez les besoins avant de choisir la méthode \emph{(Stratégie
+    rationnelle)}
+  \end{enumerate}
+\end{itemize}
+
+\textbf{3. Quand quelqu'un vous contredit, vous :}
+
+\begin{itemize}
+\tightlist
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \tightlist
+  \item
+    Cherchez des arguments pour confirmer votre position
+    \emph{(Confirmation)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    Défendez votre point de vue avec énergie \emph{(Réactance)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    Accordez plus de poids à vos arguments qu'aux leurs
+    \emph{(Autocomplaisance)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{3}
+  \tightlist
+  \item
+    Écoutez et évaluez objectivement \emph{(Stratégie rationnelle)}
+  \end{enumerate}
+\end{itemize}
+
+\subsubsection{Section 2 : Travail
+d'équipe}\label{section-2-travail-duxe9quipe}
+
+\textbf{4. En réunion, vous :}
+
+\begin{itemize}
+\tightlist
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \tightlist
+  \item
+    Suivez l'avis majoritaire pour éviter les conflits \emph{(Effet de
+    groupe)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    Ne partagez pas votre désaccord pour rester poli \emph{(Courtoisie)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    Pensez que votre expertise vous rend plus objectif que les autres
+    \emph{(Angle mort)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{3}
+  \tightlist
+  \item
+    Exprimez votre position même si elle diverge \emph{(Stratégie
+    rationnelle)}
+  \end{enumerate}
+\end{itemize}
+
+\textbf{5. Face à une idée d'un concurrent, vous :}
+
+\begin{itemize}
+\tightlist
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \tightlist
+  \item
+    La critiquez automatiquement \emph{(Dévaluation réactive)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    Préférez les idées développées en interne \emph{(NIH)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    L'évaluez selon qui la propose \emph{(Autorité)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{3}
+  \tightlist
+  \item
+    L'analysez sur ses mérites propres \emph{(Stratégie rationnelle)}
+  \end{enumerate}
+\end{itemize}
+
+\textbf{6. Lorsque votre équipe réussit, c'est grâce à :}
+
+\begin{itemize}
+\tightlist
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \tightlist
+  \item
+    Vos efforts et compétences \emph{(Autocomplaisance)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    La synergie d'équipe \emph{(Attribution groupe)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    Les bonnes méthodes que vous utilisez \emph{(Justification système)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{3}
+  \tightlist
+  \item
+    Un mix de compétences, efforts et circonstances \emph{(Vision
+    équilibrée)}
+  \end{enumerate}
+\end{itemize}
+
+\subsubsection{Section 3 : Mémoire et
+information}\label{section-3-muxe9moire-et-information}
+
+\textbf{7. Vous retenez surtout :}
+
+\begin{itemize}
+\tightlist
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \tightlist
+  \item
+    Les informations récentes et disponibles \emph{(Disponibilité)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    Ce qui confirme vos croyances \emph{(Confirmation)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    Les événements marquants et inhabituels \emph{(Bizarrerie)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{3}
+  \tightlist
+  \item
+    Vous prenez des notes pour tout \emph{(Stratégie rationnelle)}
+  \end{enumerate}
+\end{itemize}
+
+\textbf{8. Face à un problème, vous cherchez des informations :}
+
+\begin{itemize}
+\tightlist
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \tightlist
+  \item
+    Jusqu'à être certain d'avoir tout \emph{(Biais d'information)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    Seulement ce qui confirme votre intuition \emph{(Confirmation)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    Sur Google, c'est plus rapide \emph{(Effet Google)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{3}
+  \tightlist
+  \item
+    Suffisamment pour décider, pas plus \emph{(Stratégie rationnelle)}
+  \end{enumerate}
+\end{itemize}
+
+\subsubsection{Section 4 : Évaluation des
+autres}\label{section-4-uxe9valuation-des-autres}
+
+\textbf{9. Lors d'un recrutement, vous êtes influencé par :}
+
+\begin{itemize}
+\tightlist
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \tightlist
+  \item
+    La première impression \emph{(Ancrage / Primauté)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    Le prestige de la formation \emph{(Autorité / Halo)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    La ressemblance avec vous \emph{(Similarité)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{3}
+  \tightlist
+  \item
+    Uniquement les compétences vérifiées \emph{(Stratégie rationnelle)}
+  \end{enumerate}
+\end{itemize}
+
+\textbf{10. Vous évaluez la performance d'un collègue sur :}
+
+\begin{itemize}
+\tightlist
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \tightlist
+  \item
+    Ses dernières actions \emph{(Disponibilité / Récence)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    Votre relation personnelle avec lui \emph{(Halo)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    Les moments forts, bons ou mauvais \emph{(Pic et fin)}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{3}
+  \tightlist
+  \item
+    Une évaluation continue sur toute l'année \emph{(Stratégie
+    rationnelle)}
+  \end{enumerate}
+\end{itemize}
+
+\subsubsection{Interprétation}\label{interpruxe9tation}
+
+\textbf{Comptez vos réponses a, b, c, d} :
+
+\begin{itemize}
+\item
+  \textbf{Majorité de a, b ou c} : Vous êtes comme tout le monde ! Les
+  biais sont actifs. Identifiez vos patterns (a = ancrage, b =
+  autorité/groupe, c = confirmation/innovation).
+\item
+  \textbf{Majorité de d} : Soit vous êtes très conscient des biais et
+  appliquez déjà des stratégies rationnelles, soit vous êtes victime du
+  \textbf{biais d'angle mort} (vous pensez être plus rationnel que vous
+  ne l'êtes réellement) ! 😊
+\end{itemize}
+
+\textbf{Profil dominant} :
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Si beaucoup de ``a''} → Tendance \textbf{Ancrage /
+  Disponibilité} : Vous privilégiez les premières informations
+\item
+  \textbf{Si beaucoup de ``b''} → Tendance \textbf{Autorité / Groupe} :
+  Vous êtes influencé par les autres
+\item
+  \textbf{Si beaucoup de ``c''} → Tendance \textbf{Confirmation /
+  Innovation} : Vous cherchez ce qui valide vos croyances
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{📚 Annexe C : Ressources
+complémentaires}\label{annexe-c-ressources-compluxe9mentaires}
+
+\subsubsection{Livres recommandés}\label{livres-recommanduxe9s}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{``Thinking, Fast and Slow''} - Daniel Kahneman
+\item
+  \textbf{``Nudge''} - Richard Thaler \& Cass Sunstein
+\item
+  \textbf{``Predictably Irrational''} - Dan Ariely
+\item
+  \textbf{``The Art of Thinking Clearly''} - Rolf Dobelli
+\end{itemize}
+
+\subsubsection{Sites web}\label{sites-web}
+
+\begin{itemize}
+\tightlist
+\item
+  \url{https://www.cognitive-biases.org} - Carte interactive
+\item
+  \url{https://thedecisionlab.com} - Bibliothèque de biais
+\item
+  Codex des biais cognitifs
+\end{itemize}
+
+\subsubsection{Vidéos pédagogiques}\label{viduxe9os-puxe9dagogiques}
+
+\begin{itemize}
+\tightlist
+\item
+  TED Talks : chercher ``cognitive bias'', ``Daniel Kahneman'',
+  ``behavioral economics''
+\item
+  Chaîne YouTube : ``Veritasium'' (biais scientifiques)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{✅ Checklist de préparation pour
+l'animateur}\label{checklist-de-pruxe9paration-pour-lanimateur}
+
+\subsubsection{\texorpdfstring{\textbf{1 semaine avant
+:}}{1 semaine avant :}}\label{semaine-avant}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Imprimer ou préparer les 52 cartes de biais (1 jeu par équipe + 1 pour
+  l'animateur)
+\item[$\square$]
+  Préparer les 15 scénarios ``Chasseurs de biais'' (3 par équipe)
+\item[$\square$]
+  Créer le support de présentation (slides)
+\item[$\square$]
+  Imprimer les questionnaires ``Mon profil cognitif''
+\item[$\square$]
+  Préparer le tableau de score
+\item[$\square$]
+  Réserver la salle et vérifier l'équipement (vidéoprojecteur,
+  paperboard)
+\end{itemize}
+
+\subsubsection{\texorpdfstring{\textbf{La veille
+:}}{La veille :}}\label{la-veille}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Photocopier les documents participants (règles, fiches récap)
+\item[$\square$]
+  Préparer le matériel créatif (marqueurs, post-its, feuilles A3)
+\item[$\square$]
+  Tester le vidéoprojecteur et le chronomètre
+\item[$\square$]
+  Préparer les badges d'équipe (optionnel)
+\item[$\square$]
+  Prévoir des récompenses symboliques pour l'équipe gagnante
+\end{itemize}
+
+\subsubsection{\texorpdfstring{\textbf{Le jour J
+:}}{Le jour J :}}\label{le-jour-j}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Arriver 30 min avant pour installer
+\item[$\square$]
+  Mettre en place les tables en îlots (1 par équipe)
+\item[$\square$]
+  Disposer le matériel sur chaque table
+\item[$\square$]
+  Afficher le programme de la journée
+\item[$\square$]
+  Prévoir eau, café, collations si possible
+\item[$\square$]
+  Avoir votre propre jeu de cartes pour démonstration
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{💡 Conseils d'animation}\label{conseils-danimation}
+
+\subsubsection{\texorpdfstring{\textbf{Gérer les participants
+sceptiques}}{Gérer les participants sceptiques}}\label{guxe9rer-les-participants-sceptiques}
+
+Certains peuvent penser être ``immunisés'' contre les biais
+(\textbf{biais de l'angle mort} !).
+
+\begin{itemize}
+\tightlist
+\item
+  Désamorcez avec humour : ``Si vous pensez ne pas avoir de biais, vous
+  avez le biais de l'angle mort !''
+\item
+  Utilisez des démonstrations visuelles (illusions d'optique = biais
+  visuel)
+\item
+  Partagez vos propres erreurs liées aux biais
+\end{itemize}
+
+\subsubsection{\texorpdfstring{\textbf{Maintenir
+l'énergie}}{Maintenir l'énergie}}\label{maintenir-luxe9nergie}
+
+\begin{itemize}
+\tightlist
+\item
+  Variez les formats : individuel, binôme, équipe, collectif
+\item
+  Utilisez le mouvement : faites lever les participants pour voter
+\item
+  Célébrez les bonnes réponses avec enthousiasme
+\item
+  Utilisez des exemples drôles ou surprenants
+\end{itemize}
+
+\subsubsection{\texorpdfstring{\textbf{Gérer le
+timing}}{Gérer le timing}}\label{guxe9rer-le-timing}
+
+\begin{itemize}
+\tightlist
+\item
+  Utilisez un chronomètre visible pour les exercices
+\item
+  Prévoyez 10\% de marge sur chaque activité
+\item
+  Si vous êtes en retard : supprimez plutôt un exemple qu'une activité
+  entière
+\item
+  Les phases de présentation peuvent déborder : soyez flexible
+\end{itemize}
+
+\subsubsection{\texorpdfstring{\textbf{Adapter au
+niveau}}{Adapter au niveau}}\label{adapter-au-niveau}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Si le groupe est très avancé} : Ajoutez des biais
+  supplémentaires, proposez des cas plus complexes
+\item
+  \textbf{Si le groupe est en difficulté} : Simplifiez les scénarios,
+  donnez plus d'indices, réduisez le nombre de biais par exercice
+\end{itemize}
+
+\subsubsection{\texorpdfstring{\textbf{Créer une dynamique
+positive}}{Créer une dynamique positive}}\label{cruxe9er-une-dynamique-positive}
+
+\begin{itemize}
+\tightlist
+\item
+  Évitez le jugement : ``C'est normal d'avoir des biais''
+\item
+  Valorisez la prise de conscience : ``Bravo d'avoir identifié ce biais
+  chez vous''
+\item
+  Encouragez le partage d'expériences personnelles
+\item
+  Terminez sur une note positive et actionnable
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{🎯 Indicateurs de succès de la
+formation}\label{indicateurs-de-succuxe8s-de-la-formation}
+
+\subsubsection{Pendant la formation}\label{pendant-la-formation}
+
+\begin{itemize}
+\tightlist
+\item
+  ✅ Participation active de tous les membres
+\item
+  ✅ Questions pertinentes posées
+\item
+  ✅ Exemples personnels partagés spontanément
+\item
+  ✅ Débats constructifs entre participants
+\item
+  ✅ Rires et bonne ambiance
+\end{itemize}
+
+\subsubsection{Après la formation}\label{apruxe8s-la-formation}
+
+\begin{itemize}
+\tightlist
+\item
+  ✅ Score moyen au quiz final \textgreater{} 70\%
+\item
+  ✅ Satisfaction générale \textgreater{} 4/5
+\item
+  ✅ Chaque participant identifie au moins 3 actions concrètes
+\item
+  ✅ Demandes de ressources complémentaires
+\item
+  ✅ Application des concepts dans les semaines suivantes (à suivre en
+  questionnaire J+30)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Bonne animation ! 🎉}
+
+N'oubliez pas : En tant qu'animateur, vous êtes aussi sujet aux biais
+cognitifs. Restez humble, curieux, et amusez-vous !
+
+\end{document}

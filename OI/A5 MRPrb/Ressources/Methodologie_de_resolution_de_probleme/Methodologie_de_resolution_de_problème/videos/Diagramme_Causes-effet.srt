@@ -1,0 +1,739 @@
+1
+00:00:00,900 --> 00:00:05,890
+Une fois que vous avez identifié un problème
+ou un défaut, comment retrouver sa cause
+
+2
+00:00:05,890 --> 00:00:08,929
+? Comment remonter à son origine ?
+
+3
+00:00:08,929 --> 00:00:14,809
+C'est ce que nous allons regarder ensemble.
+Donc le principe est de rechercher l'origine
+
+4
+00:00:14,809 --> 00:00:21,230
+d'un problème. Pour ça, je vais vous proposer
+trois démarches. La première, c'est le diagramme
+
+5
+00:00:21,230 --> 00:00:28,230
+causes-effet, également appelé le diagramme
+de Ishikawa. La deuxième est plutôt une
+
+6
+00:00:28,289 --> 00:00:32,509
+méthode, c'est la méthode des "cinq pourquoi",
+qui vise à retrouver ce que l'on appelle
+
+7
+00:00:32,509 --> 00:00:39,509
+la 'cause racine'. Et puis finalement, pour
+les cas complexes et les accidents, on utilise
+
+8
+00:00:39,640 --> 00:00:41,820
+plutôt la méthode de l'arbre des causes.
+
+9
+00:00:41,820 --> 00:00:48,820
+Commençons donc par le diagramme d'Ishikawa.
+Voici Monsieur Ishikawa, donc il s'agit d'un
+
+10
+00:00:49,640 --> 00:00:56,640
+universitaire et ingénieur japonais qui,
+dans les chantiers navals de Kawasaki, a mis
+
+11
+00:00:56,890 --> 00:01:03,890
+en place dans les années 60 cette démarche
+ainsi que d'autres outils de qualité. Ce
+
+12
+00:01:04,619 --> 00:01:10,590
+diagramme s'appelle également diagramme causes-effet,
+diagramme 6M ou on verra pourquoi : Fishbone
+
+13
+00:01:10,590 --> 00:01:11,860
+diagram.
+
+14
+00:01:11,860 --> 00:01:18,640
+Le principe est le suivant. A partir d'un
+effet connu, on va rechercher en remontant
+
+15
+00:01:18,640 --> 00:01:24,890
+quelles sont les grandes catégories de causes
+que l'on peut incriminer. L'idée, c'est qu'il
+
+16
+00:01:24,890 --> 00:01:31,890
+en existe six d'où le nom de 6M. Les voici
+donc : Matière, Machine, Milieu, Management
+
+17
+00:01:34,180 --> 00:01:39,550
+ou Main-d'œuvre, Mesure et Méthode. Regardons-le
+maintenant en détail.
+
+18
+00:01:39,550 --> 00:01:46,550
+La matière c'est tout ce qui concerne les
+'inputs' du processus. Par exemple le fournisseur
+
+19
+00:01:47,770 --> 00:01:53,930
+change sans prévenir la qualité de l'acier.
+Un autre 'input' du processus, c'est l'énergie
+
+20
+00:01:53,930 --> 00:02:00,909
+donc par exemple des variations de voltage
+du courant. Lorsque vous assemblez un objet,
+
+21
+00:02:00,909 --> 00:02:07,060
+eh bien, imaginons que le fournisseur a changé
+ses boulons, qui n'ont plus le même pas de
+
+22
+00:02:07,060 --> 00:02:14,060
+vis, etc. Donc matière c'est tout ce qui
+rentre, tout ce qui est consommé par le processus.
+
+23
+00:02:14,469 --> 00:02:20,659
+Deuxième M, ce sont les machines. Donc vous
+l'avez compris, ce sont les moyens techniques
+
+24
+00:02:20,659 --> 00:02:27,069
+que l'on utilise. Par exemple, on peut imaginer
+une machine-outil qui ne peut pas usiner à
+
+25
+00:02:27,069 --> 00:02:32,779
+la tolérance nécessaire, des camions de
+taille trop petite ou alors de plus en plus
+
+26
+00:02:32,779 --> 00:02:39,159
+dans notre société informatisée, un virus
+ou bien encore un réseau informatique en
+
+27
+00:02:39,159 --> 00:02:45,139
+panne. Donc on le voit les machines, c'est
+tout ce qui permet la production mais qui
+
+28
+00:02:45,139 --> 00:02:47,730
+n'est pas consommé dans celle-ci comme pour
+la matière.
+
+29
+00:02:47,730 --> 00:02:54,730
+M suivant, c'est le Milieu. C'est l'environnement.
+Donc ici on a l'exemple d'une canicule qui
+
+30
+00:02:56,049 --> 00:03:01,159
+à cause de la chaleur pourrait dérégler
+les machines. Dans un processus logistique,
+
+31
+00:03:01,159 --> 00:03:07,680
+on va penser, par exemple, aux bouchons routiers,
+c'est la milieu. Si on fait de la viticulture,
+
+32
+00:03:07,680 --> 00:03:13,120
+on peut évoquer une pluie un peu trop forte
+ou une grêle qui va endommager les raisins,
+
+33
+00:03:13,120 --> 00:03:19,999
+etc. Alors le milieu ce peut être aussi le
+client puisque n'est pas dans l'entreprise.
+
+34
+00:03:19,999 --> 00:03:24,609
+Donc c'est un partenaire extérieur, il fait
+partie du milieu, et qui n'aurait par exemple
+
+35
+00:03:24,609 --> 00:03:27,359
+pas communiqué une information utile.
+
+36
+00:03:27,359 --> 00:03:34,359
+Le suivant donc c'est Main-d'œuvre ou Management.
+Donc là vous l'avez compris, il s'agit de
+
+37
+00:03:35,239 --> 00:03:39,999
+questions, qui sont des questions humaines.Donc
+par exemple un opérateur qui n'a pas été
+
+38
+00:03:39,999 --> 00:03:46,329
+bien formé, un sabotage intentionnel, un
+manque de communication entre les personnes.
+
+39
+00:03:46,329 --> 00:03:51,790
+On a également le management. Donc par exemple
+le responsable hiérarchique n'a pas bien
+
+40
+00:03:51,790 --> 00:03:56,730
+fait son travail. Ca peut être également
+d'autres problèmes comme des problèmes de
+
+41
+00:03:56,730 --> 00:04:03,089
+motivation ou de salaire ou d'autres choses.
+Mais là, dans ces causes, on va mettre tous
+
+42
+00:04:03,089 --> 00:04:04,510
+les facteurs humains.
+
+43
+00:04:04,510 --> 00:04:10,430
+M suivant. C'est les Méthodes. Qu'est-ce
+que c'est que les méthodes ? Eh bien, ce
+
+44
+00:04:10,430 --> 00:04:17,220
+sont les processus que l'on utilise, (il s'agit
+ici) de la manière dont ils ont été conçus.
+
+45
+00:04:17,220 --> 00:04:23,099
+Par exemple, on fait cuire un biscuit et le
+temps de cuisson est trop long. Donc forcément
+
+46
+00:04:23,099 --> 00:04:27,789
+il va risquer d'être brûlé : la machine
+est bonne, la matière est bonne mais c'est
+
+47
+00:04:27,789 --> 00:04:34,759
+les méthodes qui ne sont pas au point. Autre
+exemple, un chariot qui a été mal conçu,
+
+48
+00:04:34,759 --> 00:04:39,889
+et donc il ne peut pas fonctionner convenablement
+ou en tout cas rendre le service qu'on attend.
+
+49
+00:04:39,889 --> 00:04:45,590
+Pas assez d'espace de stockage, donc là c'est
+la conception de l'entrepôt. Ou un planning
+
+50
+00:04:45,590 --> 00:04:51,240
+de livraison mal conçu. Donc on peut avoir
+un bon camion, pas de problème d'embouteillage
+
+51
+00:04:51,240 --> 00:04:56,370
+mais comme on travaille d'une mauvaise manière,
+eh bien, on va avoir des problèmes.
+
+52
+00:04:56,370 --> 00:05:03,370
+Dernier M. C'est le M de la Mesure. Vous vous
+souvenez peut-être que je vous ai parlé
+
+53
+00:05:03,720 --> 00:05:08,610
+de GIGO. Garbage In, Garbage Out. Eh bien,
+c'est un peu ça le principe. C'est qu'il
+
+54
+00:05:08,610 --> 00:05:13,229
+faut toujours se demander quand on observe
+quelque chose, si ce que l'on observait est
+
+55
+00:05:13,229 --> 00:05:17,970
+bien réel. Si ce n'est pas ce que l'on appelle
+un artefact : quelque chose qui créé par
+
+56
+00:05:17,970 --> 00:05:23,840
+une fausse mesure. Par exemple, on a diagnostiqué
+un problème à partir de fiches de non-conformité.
+
+57
+00:05:23,840 --> 00:05:28,990
+Ces fiches était-elle réellement bien remplie
+? Est-ce que certaines d'entre-elles ont été
+
+58
+00:05:28,990 --> 00:05:35,439
+perdues ? On a fait un calcul de prix de revient
+à partir d'une base de données de pièces
+
+59
+00:05:35,439 --> 00:05:40,759
+consommées, est-ce que finalement la personne
+qui renseignait, qui mettait les informations,
+
+60
+00:05:40,759 --> 00:05:45,900
+a bien mis la réalité ? Ou est-ce que pour
+gagner du temps il a rempli un peu n'importe
+
+61
+00:05:45,900 --> 00:05:51,939
+quoi ? On fait une mesure, par exemple avec
+un voltmètre, eh bien, est-ce que le voltmètre
+
+62
+00:05:51,939 --> 00:05:55,330
+est réellement bien étalonné ? Sinon bien
+sûr la mesurée est fausse.
+
+63
+00:05:55,330 --> 00:06:01,469
+Alors résumons-nous. Donc le principe est
+le suivant : on a un effet et cet effet est
+
+64
+00:06:01,469 --> 00:06:08,469
+connu. A partir de là, Ishikawa nous dit
+qu'il y a six types de problèmes ou de sources
+
+65
+00:06:09,560 --> 00:06:16,560
+de domaines qui peuvent être sources de défauts
+: la matière, les machines, le milieu, la
+
+66
+00:06:19,000 --> 00:06:26,000
+main-d'œuvre ou le management, les méthodes
+et puis enfin la mesure elle-même.
+
+67
+00:06:26,110 --> 00:06:32,849
+Il y a des variantes diagramme des six M.
+Notamment, Ishikawa, à l'époque utilisait
+
+68
+00:06:32,849 --> 00:06:38,719
+un diagramme 5M donc matière, machine, milieu,
+main-d'œuvre, méthodes mais ils négligeaint
+
+69
+00:06:38,719 --> 00:06:44,930
+les problèmes de mesures qui sont pourtant
+extrêmement importants. Donc, c'est pour
+
+70
+00:06:44,930 --> 00:06:48,990
+ça que je recommande d'utiliser un diagramme
+6M si possible.
+
+71
+00:06:48,990 --> 00:06:55,990
+En anglais on parle de 'Fishbone diagram'.
+Je suppose que vous voyez pourquoi. Et donc
+
+72
+00:06:56,400 --> 00:07:03,139
+les 5M ou 6M sont les suivants : Machine,
+Methods, Materials, Mother nature pour l'environnement,
+
+73
+00:07:03,139 --> 00:07:09,479
+Man or Management, et puis finalement Measurement.
+Bien sûr, vous le voyez, il a parfois des
+
+74
+00:07:09,479 --> 00:07:14,280
+variantes dans la manière d'énumérer ses
+différents M.
+
+75
+00:07:14,280 --> 00:07:21,280
+Il existe également une variante qui consiste
+à mettre 7M avec un M, le dernier M, s'appelle
+
+76
+00:07:21,900 --> 00:07:26,030
+monnaie. Alors pour moi ce n''est pas une
+bonne idée, parce que l'argent n'est pas
+
+77
+00:07:26,030 --> 00:07:31,979
+un facteur causal en lui-même. Donc par exemple,
+si un problème d'argent, parce que une prime
+
+78
+00:07:31,979 --> 00:07:36,590
+n'a pas été versée, c'est un problème
+de motivation. Des machines inefficaces on
+
+79
+00:07:36,590 --> 00:07:40,770
+pourra dire c'est de l'argent. Mais c'est
+un investissement faible. Mais en fait, ce
+
+80
+00:07:40,770 --> 00:07:46,300
+sont bien des machines. Donc on le voit, ce
+n'est pas forcément une bonne idée de prendre
+
+81
+00:07:46,300 --> 00:07:50,580
+le problème de ce point de vue là, parce
+que l'argent ça veut tout dire et rien dire.
+
+82
+00:07:50,580 --> 00:07:57,580
+Maintenant je propose de passer à une deuxième
+manière de faire de la recherche des causes.
+
+83
+00:07:58,509 --> 00:08:05,039
+C'est la méthode des 'cinq pourquoi'. La
+méthode des 'cinq pourquoi' commence par
+
+84
+00:08:05,039 --> 00:08:10,050
+l'énoncé d'un problème. Donc pareil, c'est
+un système qui permet de remonter aux causes.
+
+85
+00:08:10,050 --> 00:08:15,780
+Mais là, cette fois-ci, on a par exemple
+le cas où ma voiture ne démarre pas. Pourquoi
+
+86
+00:08:15,780 --> 00:08:21,590
+? Et bien parce que quand je tourne la clé
+je vois que la batterie n'est pas chargée.
+
+87
+00:08:21,590 --> 00:08:26,990
+Si je m'arrête à cette analyse, eh bien,
+je vais tout simplement changer de batterie
+
+88
+00:08:26,990 --> 00:08:32,910
+ou la recharger. L'idée de la méthode des
+cinq pourquoi c'est de continuer à chercher
+
+89
+00:08:32,910 --> 00:08:37,440
+à creuser. Donc on demande une deuxième
+fois pourquoi. Eh bien, la batterie n'est
+
+90
+00:08:37,440 --> 00:08:42,690
+pas chargée parce que l'alternateur ne fonctionne
+pas. Donc on le voit si on recharge la batterie,
+
+91
+00:08:42,690 --> 00:08:46,470
+de toute façon, le problème ne sera pas
+réellement résolu puisqu'elle se déchargera
+
+92
+00:08:46,470 --> 00:08:52,290
+à nouveau. Et puis on continue : pourquoi
+l'alternateur ne fonctionne-t-il pas ? On
+
+93
+00:08:52,290 --> 00:08:58,470
+repose la question pourquoi une troisième
+fois. Parce que sa courroie est cassée. Est-ce
+
+94
+00:08:58,470 --> 00:09:03,440
+qu'on s'arrête là ? Non, on continue une
+quatrième fois. Pourquoi la courroie était-elle
+
+95
+00:09:03,440 --> 00:09:08,620
+cassée. Eh bien, elle était de toute façon
+usée. Et pourquoi, était-t-elle usée ? Parce
+
+96
+00:09:08,620 --> 00:09:14,710
+que je n'ai pas respecté le manuel d'entretien.
+On le voit, on dit cinq pourquoi, mais on
+
+97
+00:09:14,710 --> 00:09:20,600
+va poser la question pourquoi aussi longtemps
+que nécessaire pour remonter à la cause
+
+98
+00:09:20,600 --> 00:09:27,010
+racine. Donc celle qui va permettre de résoudre
+le problème sur le long terme. Donc on parle
+
+99
+00:09:27,010 --> 00:09:29,010
+aussi de causes latentes.
+
+100
+00:09:29,010 --> 00:09:36,010
+Un exemple. Voici un formulaire utilisé en
+entreprise qui utilise donc les cinq pourquoi,
+
+101
+00:09:36,690 --> 00:09:42,760
+en version anglaise, avec l'idée de retrouver
+donc cette fameuse cause-racine, de prendre
+
+102
+00:09:42,760 --> 00:09:48,230
+des contre-mesures, de vérifier que ça fonctionne
+bien et de généraliser la solution si c'est
+
+103
+00:09:48,230 --> 00:09:50,260
+une solution intéressante.
+
+104
+00:09:50,260 --> 00:09:56,620
+Maintenant dernière question : qu'est-ce
+que l'on fait lorsqu'on est confronté à
+
+105
+00:09:56,620 --> 00:10:03,620
+des causes complexes ? Donc on est plus juste
+dans un diagramme avec six catégories. On
+
+106
+00:10:03,630 --> 00:10:07,850
+n'est plus juste dans l'idée qu'on va creuser
+en posant la même question pourquoi. Mais
+
+107
+00:10:07,850 --> 00:10:13,010
+on va essayer de découvrir toutes les raisons
+d'un effet observé. Le postulat derrière,
+
+108
+00:10:13,010 --> 00:10:18,310
+c'est que finalement il n'y a pas forcément
+de cause simple et unique. Ce qui est important,
+
+109
+00:10:18,310 --> 00:10:20,890
+c'est la combinaison de différents facteurs.
+
+110
+00:10:20,890 --> 00:10:27,160
+Pour cela donc on utilise un arbre des causes.
+Très souvent cet arbre des causes est utilisé
+
+111
+00:10:27,160 --> 00:10:32,220
+en accidentologie. C'est-à-dire qu'après
+un accident, il y a des contraintes légales
+
+112
+00:10:32,220 --> 00:10:38,130
+d'ailleurs qui font que on est forcé d'enquêter
+sur ce qui s'est passé. Et bien souvent ce
+
+113
+00:10:38,130 --> 00:10:42,720
+qu'on découvre, eh bien, est plus complexe
+que ce qu'on peut avoir avec les deux premiers
+
+114
+00:10:42,720 --> 00:10:47,780
+outils. Pour bien utiliser un arbre des causes,
+il y a trois points de vigilance.
+
+115
+00:10:47,780 --> 00:10:54,690
+D'abord il faut recueillir le plus vite possible
+d'effets. Donc se rendre sur place, prendre
+
+116
+00:10:54,690 --> 00:10:57,170
+des photos, interroger les gens, garder les
+échantillons.
+
+117
+00:10:57,170 --> 00:11:04,060
+Deuxièmement, il faut travailler très méthodiquement.
+On le verra dans la construction de l'arbre.
+
+118
+00:11:04,060 --> 00:11:09,930
+Il faut s'intéresser en priorité à ce qui
+est inhabituel puisqu'en général c'est de
+
+119
+00:11:09,930 --> 00:11:11,640
+là que viennent les accidents.
+
+120
+00:11:11,640 --> 00:11:18,640
+Troisième chose. Lorsqu'on fait une enquête
+sur un accident, on se base sur des faits
+
+121
+00:11:18,760 --> 00:11:24,470
+précis, avérés. Donc pas sur des opinions,
+pas sur des jugements, pas sur des interprétations.
+
+122
+00:11:24,470 --> 00:11:31,470
+On va classer les causes donc en 2 grand type
+de causes. Des causes directes, donc celles
+
+123
+00:11:31,640 --> 00:11:36,490
+qui sont à la source du déclenchement du
+problème. Mais on va aussi remonter pour
+
+124
+00:11:36,490 --> 00:11:41,980
+trouver les causes-racines. On parle aussi
+de causes secondaires, indirectes ou latentes.
+
+125
+00:11:41,980 --> 00:11:48,810
+Le but étant bien sûr de trouver quels sont
+les actions correctives appropriées parce
+
+126
+00:11:48,810 --> 00:11:51,020
+qu'il y en a souvent plusieurs.
+
+127
+00:11:51,020 --> 00:11:58,020
+Voyons ensemble un exemple d'arbre des causes.
+Une personne s'est coupée la main. La question
+
+128
+00:12:01,430 --> 00:12:06,350
+qu'on va se poser, c'est qu'a-t-il fallu pour
+cela. Chaque cause était-elle suffisante
+
+129
+00:12:06,350 --> 00:12:13,230
+en elle-même ? Ou y en avait-il plusieurs
+? Ici, il en a fallu trois. Donc que la personne
+
+130
+00:12:13,230 --> 00:12:19,210
+utilise un couteau électrique. On en profite
+pour utiliser les 6M. Donc c'était une machine.
+
+131
+00:12:19,210 --> 00:12:23,420
+Qu'il travaille sur un poste de découpage
+des volailles, C'est le milieu qui l'entourait.
+
+132
+00:12:23,420 --> 00:12:30,050
+Et puis que l'animal glisse. Donc là c'est
+la matière. Ce que l'on fait ensuite, c'est
+
+133
+00:12:30,050 --> 00:12:35,760
+qu'on étudie, à nouveau, chacune des branches
+de l'arbre. Par exemple, pour qu'il dispose
+
+134
+00:12:35,760 --> 00:12:40,000
+d'un couteau qu'a-t-il fallu ? Eh bien, deux
+choses. Que la machine à découper soit en
+
+135
+00:12:40,000 --> 00:12:45,820
+panne. Et puis qu'il y est une commande urgente
+d'un client à préparer. C'est le milieu.
+
+136
+00:12:45,820 --> 00:12:52,820
+On le voit au total, nous allons obtenir tout
+un arbre des causes. Donc on a ici, l'effet
+
+137
+00:12:53,300 --> 00:12:59,680
+qui est connu, puis on remonte à trois causes
+qui se sont, en fait, additionnées, qui sont
+
+138
+00:12:59,680 --> 00:13:06,680
+rentrées en conjonction. Et ensuite, on va
+chercher pour chacune des causes à remonter
+
+139
+00:13:06,990 --> 00:13:12,820
+aux faits anormaux. Et donc c'est à partir
+du traitement de ces faits, de ces causes
+
+140
+00:13:12,820 --> 00:13:16,940
+racines, que l'on va pouvoir prévenir les
+accidents futurs.
+
+141
+00:13:16,940 --> 00:13:23,940
+Une petite synthèse de nos trois outils.
+Donc à partir d'un effet qui est connu, on
+
+142
+00:13:24,540 --> 00:13:31,540
+cherche à remonter aux causes. Pour cela,
+on peut utiliser le diagramme d'Ishikawa,
+
+143
+00:13:32,070 --> 00:13:39,070
+la méthode des cinq pourquoi ou enfin rechercher
+la cause racine, les causes racines avec un
+
+144
+00:13:40,720 --> 00:13:41,810
+arbre des causes.
+
+145
+00:13:41,810 --> 00:13:48,810
+Quelques réflexions et questions pour terminer.
+Avez-vous déjà été en retard sur un travail
+
+146
+00:13:50,390 --> 00:13:56,640
+? Pour cela, eh bien, je vous propose de l'expliquer
+en répondant à la question pourquoi cinq
+
+147
+00:13:56,640 --> 00:14:03,250
+fois. Autre exemple d'applications. Avez-vous
+jeté de la nourriture à la poubelle ? Pour
+
+148
+00:14:03,250 --> 00:14:08,560
+essayer de comprendre pourquoi : faites un
+diagramme d'Ishikawa. Vous le voyez, ce n''est
+
+149
+00:14:08,560 --> 00:14:15,560
+pas dur de trouver dans votre vie quotidienne
+des occasions pour utiliser ces outils. Pour
+
+150
+00:14:16,400 --> 00:14:19,940
+terminer je vous rappelle qu'un quiz est disponible
+sous cette vidéo.
+

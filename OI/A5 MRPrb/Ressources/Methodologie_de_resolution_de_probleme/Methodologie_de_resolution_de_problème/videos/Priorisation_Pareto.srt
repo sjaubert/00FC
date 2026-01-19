@@ -1,0 +1,350 @@
+1
+00:00:01,040 --> 00:00:06,980
+Quand on a plein de problèmes comment fait-on
+pour savoir ceux dont il faut s'occuper en
+
+2
+00:00:06,980 --> 00:00:11,240
+premier. Eh bien ! c'est ce dont nous allons
+parler maintenant.
+
+3
+00:00:11,240 --> 00:00:18,240
+Je vous présenterais cela en trois parties.
+Tout d'abord un positionnement de la problématique
+
+4
+00:00:18,560 --> 00:00:24,610
+autour de la notion de criticité. En deuxième
+lieu, je vous présenterai le principe de
+
+5
+00:00:24,610 --> 00:00:30,290
+Pareto, puis je terminerai sur quelques éléments
+de mise en œuvre concrète.
+
+6
+00:00:30,290 --> 00:00:37,290
+Tout d'abord du point de vue des méthodes
+de résolution de problèmes, la priorisation
+
+7
+00:00:38,250 --> 00:00:43,940
+est décisive dans la phase de cadrage, parce
+que c'est à ce moment-là que l'on doit décider
+
+8
+00:00:43,940 --> 00:00:50,260
+quelle est problème et donc quel est le problème
+auquel on doit s'attaquer en priorité. Et
+
+9
+00:00:50,260 --> 00:00:54,690
+ça c'est justement, une question de priorisation.
+
+10
+00:00:54,690 --> 00:01:01,690
+Donc dans la vie comme en entreprise, on a
+tout un tas de problèmes. Notre question
+
+11
+00:01:02,310 --> 00:01:07,370
+ici c'est de savoir comment reconnaître ceux
+dont il faut s'occuper.
+
+12
+00:01:07,370 --> 00:01:14,370
+Comment prioriser donc ? Eh bien en gestion
+des risques on utilise le concept de criticité
+
+13
+00:01:15,540 --> 00:01:21,030
+donc on va chercher à détecter les problèmes
+critiques. Si vous voulez en savoir plus sur
+
+14
+00:01:21,030 --> 00:01:28,030
+ce thème, un cours complet est disponible.
+L'idée pour résumer, c'est que les problèmes
+
+15
+00:01:28,340 --> 00:01:35,340
+critiques portent sur des ressources qui sont
+vulnérables donc qui sont fréquemment touchées
+
+16
+00:01:36,090 --> 00:01:41,680
+d'une part, et d'autre part que ces ressources
+sont névralgiques c'est-à-dire que lorsqu'elles
+
+17
+00:01:41,680 --> 00:01:47,299
+sont touchées, eh bien, c'est grave. Qu'est-ce
+que c'est que la criticité. Eh bien c'est
+
+18
+00:01:47,299 --> 00:01:54,299
+tout simplement le produit de la gravité
+par la fréquence. Ceci étant dit tout le
+
+19
+00:01:54,740 --> 00:02:01,049
+problème pour nous, est de savoir comment
+est-ce qu'on estime concrètement la criticité.
+
+20
+00:02:01,049 --> 00:02:08,049
+Pour cela c'est tout simple. On va d'abord
+devoir estimer la fréquence d'un problème,
+
+21
+00:02:08,330 --> 00:02:13,349
+c'est le moins compliqué. Pour estimer la
+fréquence par exemple, on utilise des feuilles
+
+22
+00:02:13,349 --> 00:02:18,709
+de relevés. On fait de la collecte de données,
+des mesures. Parfois lorsque l'on ne peut
+
+23
+00:02:18,709 --> 00:02:25,709
+pas tout mesurer, on va extrapoler à partir
+d'un échantillon. Et donc tout cela va permettre
+
+24
+00:02:26,609 --> 00:02:32,309
+la connaissance précise par exemple du nombre
+d'occurrences du problème.
+
+25
+00:02:32,309 --> 00:02:39,309
+Maintenant un peu plus compliqué, comment
+fait-on pour estimer la gravité. Pour estimer
+
+26
+00:02:40,569 --> 00:02:46,930
+la gravité alors qu'est-ce que c'est que
+la gravité eh bien c'est du temps perdu lorsque
+
+27
+00:02:46,930 --> 00:02:51,609
+par exemple on s'intéresse au fonctionnement
+d'un magasin, c'est des clients perdus, du
+
+28
+00:02:51,609 --> 00:02:56,999
+chiffre d'affaires perdu et donc de la marge
+perdue, du bénéfice perdu. Dans une usine,
+
+29
+00:02:56,999 --> 00:03:03,999
+c'est des produits gaspillés. Et donc la
+meilleure manière d'estimer la gravité c'est
+
+30
+00:03:04,120 --> 00:03:10,999
+de tenter de la chiffrer de manière monétaire,
+en euros. C'est-à-dire de la ramener à une
+
+31
+00:03:10,999 --> 00:03:17,590
+perte financière. Ce n''est pas toujours
+facile de le faire. Par contre l'avantage
+
+32
+00:03:17,590 --> 00:03:23,129
+de faire un chiffrage financier, eh bien c'est
+qu'il va permettre de consolider. Donc par
+
+33
+00:03:23,129 --> 00:03:29,069
+exemple une perte de temps des employés va
+correspondre à du salaire donc on les paye
+
+34
+00:03:29,069 --> 00:03:33,189
+sans qu'il travaille de manière efficace
+donc on peut l'estimer. Si on perd des clients,
+
+35
+00:03:33,189 --> 00:03:37,540
+donc c'est une perte de marge, si on gaspille
+des produits, eh bien on peut évaluer leurs
+
+36
+00:03:37,540 --> 00:03:43,779
+valeurs. Donc on le voit le chiffrage en euros
+va permettre de consolider la gravité de
+
+37
+00:03:43,779 --> 00:03:46,760
+toutes les conséquences d'un problème.
+
+38
+00:03:46,760 --> 00:03:53,760
+Continuons maintenant sur le principe de Pareto.
+Pareto le voici c'était un mathématicien
+
+39
+00:03:55,499 --> 00:04:02,469
+et économiste italien et donc il a mis au
+point des lois mathématiques. Ce que dit
+
+40
+00:04:02,469 --> 00:04:07,799
+la loi de Pareto ou plutôt les lois de Pareto,
+c'est la chose suivante, c'est que lorsque
+
+41
+00:04:07,799 --> 00:04:13,430
+l'on fait le total de la criticité, par exemple
+le total des pertes financières dues à tous
+
+42
+00:04:13,430 --> 00:04:19,440
+les problèmes, eh bien, on va s'apercevoir
+que certains problèmes sont beaucoup plus
+
+43
+00:04:19,440 --> 00:04:26,440
+importants que d'autres. On peut les classer
+dans un histogramme. On va mettre ici la cause
+
+44
+00:04:28,400 --> 00:04:34,190
+qui correspond au maximum de criticité. Ensuite
+la deuxième, la troisième. Et vous le voyez,
+
+45
+00:04:34,190 --> 00:04:39,680
+on a rapidement une saturation. Et donc le
+pourcentage cumulé se rapproche très vite
+
+46
+00:04:39,680 --> 00:04:40,560
+de 100 %.
+
+47
+00:04:40,560 --> 00:04:47,560
+Qu'est-ce que ça veut dire ? En résolution
+problème c'est une excellente nouvelle. Cela
+
+48
+00:04:48,200 --> 00:04:55,200
+veut dire que vous devez cibler en premier
+les 20 % de cause qui font 80 % des effets
+
+49
+00:04:56,620 --> 00:05:03,620
+: c'est la loi du 80 / 20. Avec 20% d'efforts,
+on a tout de suite 80% de résultats. Et donc
+
+50
+00:05:06,000 --> 00:05:09,870
+ainsi on a les causes à traiter en priorité.
+
+51
+00:05:09,870 --> 00:05:16,870
+Quelques variantes maintenant pour terminer.
+L'effet observé, peut être monétaire mais
+
+52
+00:05:17,220 --> 00:05:22,320
+pas seulement. Il peut aussi correspondre
+à une vitesse de rotation des stocks. Donc
+
+53
+00:05:22,320 --> 00:05:28,370
+ce qu'on utilise avec la loi du 80 / 20, par
+exemple pour faire la conception d'un entrepôt
+
+54
+00:05:28,370 --> 00:05:35,020
+de stockage. Eh bien, on va diviser les produits
+en trois classes. Les produits de classe A
+
+55
+00:05:35,020 --> 00:05:39,450
+qui accumulent 80% de l'effet observé. Ici
+ce sont les choses qui entrent et qui sortent
+
+56
+00:05:39,450 --> 00:05:45,590
+de l'inventaire. Par exemple, c'est des choses
+qui sont très fréquemment vendues. B c'est
+
+57
+00:05:45,590 --> 00:05:51,680
+la classe qui comporte les 15 % suivants et
+C les 5% restants. Autrement dit quand on
+
+58
+00:05:51,680 --> 00:05:58,200
+va essayer d'optimiser son magasin d'entreposage,
+on va mettre les produits de classe A à proximité
+
+59
+00:05:58,200 --> 00:06:03,200
+du comptoir, pour pouvoir les trouver très
+vite. Les produits de classe B à mi-chemin,
+
+60
+00:06:03,200 --> 00:06:07,310
+et puis les produits de classe C, tout en
+haut au fond l'entrepôt puisque ils ont une
+
+61
+00:06:07,310 --> 00:06:14,310
+vitesse de rotation lente. Autres variantes
+possibles, travailler sur la facilité de
+
+62
+00:06:14,890 --> 00:06:20,310
+détection du problème. Je vous en parle
+sur mon cours de gestion des risques. L'idée
+
+63
+00:06:20,310 --> 00:06:27,310
+est d'ajouter le facteur 'difficulté de détection'
+au calcul. Voilà, à noter que dans la réalité,
+
+64
+00:06:30,620 --> 00:06:35,940
+il ne faut pas vous attendre à retrouver
+exactement 80% et 20%.
+
+65
+00:06:35,940 --> 00:06:42,940
+Justement, terminons sur quelques questions
+et réflexions pour appliquer de votre point
+
+66
+00:06:42,950 --> 00:06:48,950
+de vue la priorisation. Alors en voici deux.
+Si vous prenez la facture détaillée de vos
+
+67
+00:06:48,950 --> 00:06:55,950
+consommations téléphoniques, avez-vous l'impression
+qu'elle suit le principe de Pareto ? Imaginons
+
+68
+00:06:56,220 --> 00:07:01,690
+que vous avez des problèmes récurrents d'argent
+à la fin du mois. Comment est-ce que vous
+
+69
+00:07:01,690 --> 00:07:07,230
+utiliseriez les 80-20 pour essayer de prioriser
+la solution.
+
+70
+00:07:07,230 --> 00:07:14,230
+La présentation de cet outil est terminé.
+Je vous invite maintenant à passer au quiz
+
+71
+00:07:15,310 --> 00:07:17,310
+qui est disponible sous cette vidéo.
+

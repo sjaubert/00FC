@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Formation - Organisation Industrielle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #003d7a 0%, #0066cc 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #e63946 0%, #f77f00 100%);
+        }
+
+        .logo {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header h2 {
+            font-size: 1.5em;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .header .organization {
+            font-size: 1.2em;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+
+        .header .trainer {
+            font-size: 0.9em;
+            font-style: italic;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4e9f2 100%);
+            border-left: 5px solid #0066cc;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+
+        .info-box h3 {
+            color: #003d7a;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .info-item strong {
+            color: #0066cc;
+            margin-right: 8px;
+            min-width: 80px;
+        }
+
+        .objectives {
+            background: #f9fafb;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            border: 2px solid #e5e7eb;
+        }
+
+        .objectives h3 {
+            color: #003d7a;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .objectives ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .objectives li {
+            padding: 10px 0 10px 30px;
+            position: relative;
+            line-height: 1.8;
+        }
+
+        .objectives li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #0066cc;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .alert {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+
+        .alert strong {
+            color: #856404;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .day-section {
+            margin: 40px 0;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .day-header {
+            background: linear-gradient(135deg, #0066cc 0%, #003d7a 100%);
+            color: white;
+            padding: 25px;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+
+        .session {
+            padding: 25px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .session:last-child {
+            border-bottom: none;
+        }
+
+        .session-time {
+            background: #003d7a;
+            color: white;
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .module {
+            background: #f9fafb;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #0066cc;
+        }
+
+        .module-title {
+            color: #003d7a;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .module-objective {
+            font-style: italic;
+            color: #0066cc;
+            margin: 10px 0;
+            padding-left: 15px;
+            border-left: 3px solid #0066cc;
+        }
+
+        .module-content {
+            margin-top: 15px;
+        }
+
+        .module-content h4 {
+            color: #003d7a;
+            margin: 15px 0 10px 0;
+            font-size: 1.05em;
+        }
+
+        .module-content ul {
+            margin-left: 20px;
+            color: #555;
+        }
+
+        .module-content li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        .section {
+            margin: 40px 0;
+        }
+
+        .section h3 {
+            color: #003d7a;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #0066cc;
+        }
+
+        .pedagogy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .pedagogy-item {
+            background: linear-gradient(135deg, #f9fafb 0%, #e8f4f8 100%);
+            padding: 20px;
+            border-radius: 8px;
+            border-top: 4px solid #0066cc;
+        }
+
+        .pedagogy-item h4 {
+            color: #003d7a;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .note-box {
+            background: #e8f4f8;
+            border-left: 5px solid #0066cc;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+
+        .note-box strong {
+            color: #003d7a;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .note-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .note-box li {
+            margin: 8px 0;
+        }
+
+        .footer {
+            background: #f9fafb;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            border-top: 3px solid #0066cc;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .header h2 {
+                font-size: 1.2em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logo_uimm.jpg" alt="Logo UIMM" class="logo">
+            <h1>PLAN DE FORMATION</h1>
+            <h2>Organisation Industrielle</h2>
+            <div class="organization">Pôle Formation UIMM-CVDL</div>
+            <div class="trainer">S. Jaubert</div>
+        </div>
+
+        <div class="content">
+            <!-- Informations Générales -->
+            <div class="info-box">
+                <h3>Informations Générales</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>Dates :</strong>
+                        <span>12 et 13 janvier 2026</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Durée :</strong>
+                        <span>2 jours</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Public :</strong>
+                        <span>Salariés en reconversion - Chaudronnier d'atelier</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Formateur :</strong>
+                        <span>Stéphane JAUBERT</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objectifs -->
+            <div class="objectives">
+                <h3>Objectifs de la Formation</h3>
+                <p style="margin-bottom: 15px;">À l'issue de cette formation, les participants seront capables de :</p>
+                <ul>
+                    <li>Comprendre les principes fondamentaux de l'organisation industrielle</li>
+                    <li>Identifier les sources de gaspillage dans un processus de production</li>
+                    <li>Utiliser des outils d'analyse et d'amélioration continue (Pareto, Ishikawa, TRS, VSM)</li>
+                    <li>Appliquer les concepts du Lean Manufacturing dans leur environnement professionnel</li>
+                </ul>
+            </div>
+
+            <!-- Note importante -->
+            <div class="alert">
+                <strong>Note importante</strong>
+                Le déroulement de cette formation est entièrement adaptatif. Le contenu et le rythme seront ajustés en
+                fonction du niveau du groupe et de la progression collective. Tous les modules ne seront pas
+                nécessairement abordés. Les durées proposées sont indicatives et pourront varier considérablement selon
+                les besoins du groupe.
+            </div>
+
+            <!-- JOUR 1 -->
+            <div class="day-section">
+                <div class="day-header">JOUR 1 - Lundi 12 janvier 2026</div>
+
+                <!-- Matin -->
+                <div class="session">
+                    <div class="session-time">Matin</div>
+
+                    <div class="module">
+                        <div class="module-title">Accueil et Présentation</div>
+                        <div class="module-content">
+                            <ul>
+                                <li>Présentation du formateur et des participants</li>
+                                <li>Tour de table : parcours, attentes et objectifs personnels</li>
+                                <li>Présentation du plan de formation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="module">
+                        <div class="module-title">Module 1 : Introduction à l'Industrie et au Lean Manufacturing</div>
+                        <div class="module-objective">Objectif : Poser les bases de la culture industrielle et du Lean
+                        </div>
+                        <div class="module-content">
+                            <h4>Contenus abordés :</h4>
+                            <ul>
+                                <li>Qu'est-ce qu'une entreprise industrielle ?</li>
+                                <li>Évolution historique de l'industrie</li>
+                                <li>Introduction au Lean Manufacturing et Six Sigma</li>
+                                <li>La Maison Lean : principes fondamentaux</li>
+                                <li>Les 7 types de gaspillages (MUDA)</li>
+                                <li>Méthodes de résolution de problèmes</li>
+                            </ul>
+                            <h4>Support pédagogique :</h4>
+                            <ul>
+                                <li>Présentation interactive</li>
+                                <li>Vidéo : "La Philosophie Lean"</li>
+                                <li>Échanges et discussions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Après-midi -->
+                <div class="session">
+                    <div class="session-time">Après-midi</div>
+
+                    <div class="module">
+                        <div class="module-title">Module 2 : Outils d'Analyse Qualité - Pareto & Ishikawa</div>
+                        <div class="module-objective">Objectif : Maîtriser les outils d'analyse pour identifier et
+                            prioriser les problèmes</div>
+                        <div class="module-content">
+                            <h4>Contenus abordés :</h4>
+                            <ul>
+                                <li><strong>Le diagramme de Pareto (loi des 80/20)</strong>
+                                    <ul>
+                                        <li>Principe et construction</li>
+                                        <li>Identification des problèmes prioritaires</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Le diagramme d'Ishikawa (5M)</strong>
+                                    <ul>
+                                        <li>Analyse des causes racines</li>
+                                        <li>Méthode des 5 Pourquoi</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <h4>Activités pratiques :</h4>
+                            <ul>
+                                <li>Exercice guidé sur le diagramme d'Ishikawa</li>
+                                <li>TP : Construction d'un diagramme de Pareto</li>
+                                <li>Cas pratiques adaptés au contexte industriel</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="module">
+                        <div class="module-title">Module 3 : Le TRS (Taux de Rendement Synthétique)</div>
+                        <div class="module-objective">Objectif : Comprendre et calculer le TRS pour mesurer la
+                            performance des équipements</div>
+                        <div class="module-content">
+                            <h4>Contenus abordés :</h4>
+                            <ul>
+                                <li>Définition et importance du TRS</li>
+                                <li>Les 3 composantes : Disponibilité, Performance, Qualité</li>
+                                <li>Calcul et interprétation du TRS</li>
+                                <li>Identification des pertes de productivité</li>
+                            </ul>
+                            <h4>Activités pratiques :</h4>
+                            <ul>
+                                <li>TP : Analyse de données TRS sur centre d'usinage</li>
+                                <li>Calcul du TRS à partir de données réelles</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="module" style="background: #f0f9ff; border-left-color: #0066cc;">
+                        <div class="module-title">Synthèse de la journée</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JOUR 2 -->
+            <div class="day-section">
+                <div class="day-header">JOUR 2 - Mardi 13 janvier 2026</div>
+
+                <!-- Matin -->
+                <div class="session">
+                    <div class="session-time">Matin</div>
+
+                    <div class="module">
+                        <div class="module-title">Rappel Jour 1 et Questions</div>
+                    </div>
+
+                    <div class="module">
+                        <div class="module-title">Module 4 : La VSM (Value Stream Mapping)</div>
+                        <div class="module-objective">Objectif : Cartographier la chaîne de valeur pour identifier les
+                            opportunités d'amélioration</div>
+                        <div class="module-content">
+                            <h4>Contenus abordés :</h4>
+                            <ul>
+                                <li>Qu'est-ce que la VSM ?</li>
+                                <li>Cartographie de l'état actuel</li>
+                                <li>Identification des flux de valeur et des gaspillages</li>
+                                <li>Construction d'une VSM future (état idéal)</li>
+                                <li>Symboles et conventions VSM</li>
+                            </ul>
+                            <h4>Activités pratiques :</h4>
+                            <ul>
+                                <li>Étude de cas : Industries TWI</li>
+                                <li>Exercice : Cartographie VSM d'un processus d'emboutissage</li>
+                                <li>Analyse et amélioration d'une chaîne de valeur</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Après-midi -->
+                <div class="session">
+                    <div class="session-time">Après-midi</div>
+
+                    <div class="module">
+                        <div class="module-title">Module 5 : Gestion des Stocks et Flux</div>
+                        <div class="module-objective">Objectif : Comprendre les enjeux de la gestion des stocks dans la
+                            performance industrielle</div>
+                        <div class="module-content">
+                            <h4>Contenus abordés (selon niveau du groupe) :</h4>
+                            <ul>
+                                <li>Types de stocks et leur impact</li>
+                                <li>Le système Kanban</li>
+                                <li>Flux tirés vs flux poussés</li>
+                                <li>Optimisation des approvisionnements</li>
+                            </ul>
+                            <h4>Support pédagogique :</h4>
+                            <ul>
+                                <li>Présentation du circuit complet de production industrielle</li>
+                                <li>Exercices sur la gestion de stock</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="module">
+                        <div class="module-title">Module 6 : Jeu du Lean Manufacturing</div>
+                        <div class="module-objective">Objectif : Mettre en pratique les concepts Lean de manière ludique
+                            et immersive</div>
+                        <div class="module-content">
+                            <h4>Déroulement :</h4>
+                            <ul>
+                                <li>Présentation du jeu et des règles</li>
+                                <li>Mise en situation : "Le sauvetage de l'usine PALEO"</li>
+                                <li>Simulation de production en plusieurs rounds</li>
+                                <li>Observation et analyse des améliorations progressives</li>
+                                <li>Débriefing collectif</li>
+                            </ul>
+                            <h4>Apprentissages visés :</h4>
+                            <ul>
+                                <li>Identifier concrètement les gaspillages</li>
+                                <li>Comprendre l'amélioration continue (Kaizen)</li>
+                                <li>Travailler en équipe sur l'optimisation d'un processus</li>
+                                <li>Mesurer l'impact des changements</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="module" style="background: #f0f9ff; border-left-color: #0066cc;">
+                        <div class="module-title">Synthèse Générale et Évaluation</div>
+                        <div class="module-content">
+                            <ul>
+                                <li>Retour sur les apprentissages des 2 jours</li>
+                                <li>Questions / Réponses</li>
+                                <li>Tour de table : ce que chacun retient et compte appliquer</li>
+                                <li>Évaluation de la formation</li>
+                                <li>Remise des supports pédagogiques</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Méthodes pédagogiques -->
+            <div class="section">
+                <h3>Méthodes Pédagogiques</h3>
+                <p style="margin-bottom: 20px;">La formation alternera :</p>
+                <div class="pedagogy-grid">
+                    <div class="pedagogy-item">
+                        <h4>Apports théoriques</h4>
+                        <p>Présentations interactives avec supports visuels</p>
+                    </div>
+                    <div class="pedagogy-item">
+                        <h4>Études de cas</h4>
+                        <p>Situations réelles du monde industriel</p>
+                    </div>
+                    <div class="pedagogy-item">
+                        <h4>Travaux pratiques</h4>
+                        <p>Exercices individuels et en groupe</p>
+                    </div>
+                    <div class="pedagogy-item">
+                        <h4>Jeu de simulation</h4>
+                        <p>Apprentissage par l'expérience</p>
+                    </div>
+                    <div class="pedagogy-item">
+                        <h4>Échanges</h4>
+                        <p>Partage d'expériences entre participants</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Évaluation -->
+            <div class="section">
+                <h3>Évaluation</h3>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>Évaluation formative tout au long de la formation (exercices, études de cas)</li>
+                    <li>Participation active aux ateliers et au jeu de simulation</li>
+                    <li>Questionnaire de satisfaction en fin de formation</li>
+                </ul>
+            </div>
+
+            <!-- Ressources -->
+            <div class="section">
+                <h3>Ressources Documentaires</h3>
+                <p style="margin-bottom: 15px;">Les participants recevront :</p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>Support de présentation (format PDF)</li>
+                    <li>Fiches pratiques sur les outils (Pareto, Ishikawa, TRS, VSM)</li>
+                    <li>Modèles et templates</li>
+                    <li>Bibliographie pour approfondir</li>
+                </ul>
+            </div>
+
+            <!-- Modalités pratiques -->
+            <div class="section">
+                <h3>Modalités Pratiques</h3>
+                <div class="info-grid" style="margin-top: 15px;">
+                    <div class="info-item">
+                        <strong>Horaires :</strong>
+                        <span>9h00 - 12h30 / 13h30 - 17h00</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Pauses :</strong>
+                        <span>Matin et après-midi selon les besoins du groupe</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Matériel :</strong>
+                        <span>Fourni par le centre de formation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Note finale -->
+            <div class="note-box">
+                <strong>Note importante</strong>
+                <p>Ce programme est indicatif et pourra être adapté en fonction :</p>
+                <ul>
+                    <li>Du niveau et des besoins spécifiques du groupe</li>
+                    <li>De la vitesse de progression collective</li>
+                    <li>Des questions et centres d'intérêt des participants</li>
+                    <li>Des contraintes de temps</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong style="color: #0066cc; display: inline;">L'objectif principal est
+                        la compréhension et l'appropriation des concepts, pas la couverture exhaustive du
+                        programme.</strong></p>
+            </div>
+        </div>
+
+        <div class="footer">
+            Document créé le 11 janvier 2026<br>
+            Pôle Formation UIMM-CVDL - Stéphane JAUBERT
+        </div>
+    </div>
+</body>
+
+</html>

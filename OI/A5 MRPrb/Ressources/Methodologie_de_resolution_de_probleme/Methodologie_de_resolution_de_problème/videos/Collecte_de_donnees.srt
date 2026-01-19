@@ -1,0 +1,801 @@
+1
+00:00:01,100 --> 00:00:08,100
+Comment agir sur la base d'informations fiables
+? Je vous propose dans les minutes qui viennent
+
+2
+00:00:08,490 --> 00:00:15,490
+de parcourir avec moi quelques méthodes de
+recueils, d'analyse et de traitement de données.
+
+3
+00:00:15,860 --> 00:00:21,660
+L'objectif est donc dans un premier temps
+de collecter des informations qualitatives
+
+4
+00:00:21,660 --> 00:00:27,780
+et quantitatives. Dans un deuxième temps,
+de les traiter, et puis enfin de les partager,
+
+5
+00:00:27,780 --> 00:00:34,190
+notamment à travers des visualisations graphiques.
+L'objectif de cette formation n'est pas de
+
+6
+00:00:34,190 --> 00:00:40,379
+traiter en détail de ce sujet qui est très
+vaste. Mais de vous permettre d'aller à l'essentiel
+
+7
+00:00:40,379 --> 00:00:43,479
+lorsque vous avez à conduire la résolution
+d'un problème.
+
+8
+00:00:43,479 --> 00:00:50,479
+Tout d'abord, la vocation de ce que l'on appelle
+le diagramme de relevé, alors nous le verrons,
+
+9
+00:00:51,030 --> 00:00:57,089
+en fait un diagramme de relevé peut s'entendre
+au sens large, mais tout d'abord c'est essentiellement
+
+10
+00:00:57,089 --> 00:01:02,870
+au stade du cadrage que on va l'utiliser,
+le mettre en œuvre pour la première fois.
+
+11
+00:01:02,870 --> 00:01:08,950
+Donc le relevé de données, en première
+approximation, c'est un document permettant
+
+12
+00:01:08,950 --> 00:01:14,969
+de recueillir des données fiables et précises
+en relation avec un objectif bien défini.
+
+13
+00:01:14,969 --> 00:01:21,969
+Regardons un exemple donc de la collecte à
+l'exploitation. Alors sur le protocole de
+
+14
+00:01:22,990 --> 00:01:28,909
+collecte, je vous propose de vous parler de
+ce que vous voyez ici. C'est une feuille de
+
+15
+00:01:28,909 --> 00:01:33,780
+présence. Et donc sur cette feuille de présence,
+en fait, c'est une feuille de relevé mais
+
+16
+00:01:33,780 --> 00:01:38,280
+on voit qu'elle est associée à un protocole.
+Donc par exemple : fait-t-on circuler cette
+
+17
+00:01:38,280 --> 00:01:42,829
+feuille au début du cours ? A la fin du cours
+? Est-ce qu'on demande aux étudiants de la
+
+18
+00:01:42,829 --> 00:01:48,520
+signer ? On le voit ça pose déjà pas mal
+de questions et selon la manière dont on
+
+19
+00:01:48,520 --> 00:01:51,310
+va la mettre en œuvre eh bien on ne va pas
+avoir les mêmes données.
+
+20
+00:01:51,310 --> 00:01:57,590
+Autres questions. La question du stockage.
+Après avoir collecté ces informations et
+
+21
+00:01:57,590 --> 00:02:02,359
+bien il faut les stocker, il faut les partager.
+Lorsqu'il s'agit de mettre des notes, il va
+
+22
+00:02:02,359 --> 00:02:07,409
+falloir calculer des moyennes. Et vous le
+voyez ici une des solutions, par exemple,
+
+23
+00:02:07,409 --> 00:02:13,890
+c'est une feuille de calcul partagée. Donc
+on le voit dès le début de la collecte,
+
+24
+00:02:13,890 --> 00:02:19,780
+il va falloir prendre en compte tout le cycle,
+donc l'accès aux données, leur traitement
+
+25
+00:02:19,780 --> 00:02:21,920
+et puis finalement leur archivage.
+
+26
+00:02:21,920 --> 00:02:28,920
+Quelques points maintenant sur la méthodologie
+de collecte. Donc on a un certain nombre d'étapes
+
+27
+00:02:30,220 --> 00:02:34,270
+que je vous propose de parcourir avec moi.
+La première, c'est de savoir ce que l'on
+
+28
+00:02:34,270 --> 00:02:40,250
+veut. Donc c'est déterminer les éléments
+à relever. La deuxième, c'est l'élaboration
+
+29
+00:02:40,250 --> 00:02:45,790
+précise de la fiche de relevés que l'on
+va utiliser. Par fiche de relevés, en fait,
+
+30
+00:02:45,790 --> 00:02:51,870
+on peut entendre beaucoup de choses : un tableau,
+des cases à cocher, ce qu'on appelle une
+
+31
+00:02:51,870 --> 00:02:56,570
+main courante (par exemple quand vous allez
+au commissariat pour signaler quelque chose
+
+32
+00:02:56,570 --> 00:03:02,060
+eh bien la main courante c'est un carnet sur
+lequel on note de manière chronologique tous
+
+33
+00:03:02,060 --> 00:03:08,850
+les événements de la journée), un questionnaire
+ou encore même, un système d'enregistrement
+
+34
+00:03:08,850 --> 00:03:09,580
+automatique.
+
+35
+00:03:09,580 --> 00:03:16,580
+Voilà un exemple, ici vous avez un manchot,
+donc on veut étudier par exemple l'effet
+
+36
+00:03:17,250 --> 00:03:23,290
+du changement climatique sur la santé des
+manchots. Ici une petite porte et chaque fois
+
+37
+00:03:23,290 --> 00:03:28,900
+qu'ils passent, ils se font peser et donc
+on a un système de collecte automatique de
+
+38
+00:03:28,900 --> 00:03:35,900
+données. Attention à penser à la mémorisation
+: tout ce qui n'est pas mesuré et perdu.
+
+39
+00:03:36,010 --> 00:03:42,230
+Et donc, on ne pourra plus travailler dessus
+ultérieurement. Il faut enfin déterminer
+
+40
+00:03:42,230 --> 00:03:48,910
+la période,et le lieu de collecte, former
+les enquêteurs, avant de lancer la phase
+
+41
+00:03:48,910 --> 00:03:55,850
+de collecte. Ensuite eh bien ce n'est toujours
+pas fini, à la fin de cette période de collecte,
+
+42
+00:03:55,850 --> 00:04:00,870
+on va garder les données mais on va aussi
+établir un compte-rendu de la campagne pour
+
+43
+00:04:00,870 --> 00:04:06,810
+préciser exactement ce qui s'est passé autour
+de cette collecte. Quels ont été les événements,
+
+44
+00:04:06,810 --> 00:04:10,820
+qui par exemple peuvent affecter la validité
+des données.
+
+45
+00:04:10,820 --> 00:04:15,960
+Un principe important lorsque on est dans
+cette phase de collecte et de traitement,
+
+46
+00:04:15,960 --> 00:04:21,160
+c'est le GIGO : garbage in, garbage out. Je
+vais vous présenter cela d'une manière un
+
+47
+00:04:21,160 --> 00:04:26,820
+peu plus précise. Imaginons donc que vous
+collectiez de mauvaises données après ces
+
+48
+00:04:26,820 --> 00:04:31,180
+données vous allez devoir les traiter à
+travers un modèle. Par exemple calculer la
+
+49
+00:04:31,180 --> 00:04:36,220
+moyenne, l'écart-type, l'évolution saisonnière
+du poids des pingouins. Et vous le voyez,
+
+50
+00:04:36,220 --> 00:04:40,220
+même si votre modèle est parfait, si vous
+avez des mauvaises données, vos données
+
+51
+00:04:40,220 --> 00:04:43,810
+finalement à l'arrivée les résultats eh
+bien, ils sont bons à mettre à la poubelle.
+
+52
+00:04:43,810 --> 00:04:50,750
+Autre cas de figure, vous collectez des données
+parfaitement valides mais vous n'avez pas
+
+53
+00:04:50,750 --> 00:04:55,930
+le bon modèle pour les traiter. Il faut savoir
+par exemple que dans les questionnaires, c'est
+
+54
+00:04:55,930 --> 00:05:00,780
+très facile par exemple de demander aux gens
+de classer par ordre de préférence ou de
+
+55
+00:05:00,780 --> 00:05:04,820
+répondre sur ce qu'on appelle des Likert,
+êtes-vous un peu d'accord, moyennement d'accord,
+
+56
+00:05:04,820 --> 00:05:10,620
+très d'accord. Mais en fait cela pose des
+problèmes mathématiques. Parce que par exemple
+
+57
+00:05:10,620 --> 00:05:15,500
+les Likert sont des données ordinales et
+on n'a pas le droit de calculer des moyennes.
+
+58
+00:05:15,500 --> 00:05:21,430
+Donc de ce fait quand on est dans cette situation
+de données valides et de modèle erroné,
+
+59
+00:05:21,430 --> 00:05:27,120
+à l'arrivée les résultats sont également
+bons à mettre à la poubelle. Donc faire
+
+60
+00:05:27,120 --> 00:05:32,530
+très attention à ce principe, ne pas poser
+de questions qu'on ne puissent pas traiter
+
+61
+00:05:32,530 --> 00:05:38,170
+avec un modèle mathématique. Et puis, bien
+sûr, veillez à collecter des données valides.
+
+62
+00:05:38,170 --> 00:05:44,550
+Quand collecter les données du point de vue
+de la méthodologie de résolution problème.
+
+63
+00:05:44,550 --> 00:05:50,050
+Eh bien, en fait, pratiquement à toutes les
+étapes. Donc lors de la formulation du problème,
+
+64
+00:05:50,050 --> 00:05:56,830
+on va avoir besoin d'essayer de diagnostiquer
+ce qu'on appelle les effets, pouvoir prioriser.
+
+65
+00:05:56,830 --> 00:06:01,070
+Qu'est-ce-qu'il y à traiter en premier ? Fixer
+les objectifs.
+
+66
+00:06:01,070 --> 00:06:06,080
+Dans la phase de recherche des causes, on
+va chercher à quantifier et à tester des
+
+67
+00:06:06,080 --> 00:06:12,530
+hypothèses. Lorsqu'on travaille sur les solutions,
+on pourra être tenté de vouloir valider
+
+68
+00:06:12,530 --> 00:06:16,900
+les solutions. En tout cas préparer ce dont
+on a besoin pour vérifier qu'elles marchent.
+
+69
+00:06:16,900 --> 00:06:22,960
+Puis finalement dans le suivi, il faudra mettre
+en place des dispositifs de monitoring, de
+
+70
+00:06:22,960 --> 00:06:28,930
+veille. Par exemple, pour découvrir tout
+de suite les des anomalies. Ici vous voyez
+
+71
+00:06:28,930 --> 00:06:33,990
+le cycle de Deming, le Plan, Do, Check et
+Act. Et donc la collecte de données s'applique
+
+72
+00:06:33,990 --> 00:06:40,270
+pratiquement à toutes les étapes mais pas
+de la même manière. Donc Plan, fixer les
+
+73
+00:06:40,270 --> 00:06:46,060
+objectifs, une étude qui va permettre de
+faire des diagnostics sur des Pareto et de
+
+74
+00:06:46,060 --> 00:06:51,889
+juger du résultat qu'on peut espérer atteindre.
+Dans le Do et bien au fur et à mesure qu'on
+
+75
+00:06:51,889 --> 00:06:56,290
+avance, on essaie d'observer ce qui se passe.
+Le Check c'est le fait de vérifier que l'on
+
+76
+00:06:56,290 --> 00:07:02,449
+a atteint ses objectifs. Et le Act, eh bien
+c'est le fait de généraliser, de surveiller
+
+77
+00:07:02,449 --> 00:07:05,669
+et donc de reboucler sur un nouveau cycle
+d'actions.
+
+78
+00:07:05,669 --> 00:07:12,669
+Parlons maintenant de la présentation visuelle
+des données. Elle est extrêmement importante,
+
+79
+00:07:13,530 --> 00:07:18,370
+car en fait, le partage des résultats c'est
+ce qui permet de mener à l'action. Je vais
+
+80
+00:07:18,370 --> 00:07:22,730
+vous présenter trois choses. Des éléments
+de visualisation, je vous montrerai quelques
+
+81
+00:07:22,730 --> 00:07:29,730
+exemples historiques célèbres, des exemples
+pratiques et puis enfin les outils que vous
+
+82
+00:07:29,830 --> 00:07:31,230
+pouvez utiliser.
+
+83
+00:07:31,230 --> 00:07:38,230
+Un exemple tout d'abord, donc ici vous avez
+un diagramme circulaire établi par Florence
+
+84
+00:07:40,760 --> 00:07:47,760
+Nightingale en 1858. De quoi s'agit-il ? Eh
+bien Florence Nightingale s'intéressait aux
+
+85
+00:07:48,699 --> 00:07:55,000
+morts à la guerre lors de la guerre de Crimée.
+Donc elle a décidé de reporter pour chaque
+
+86
+00:07:55,000 --> 00:08:02,000
+mois, le nombre de soldats victimes et donc
+mort. Soit qu'ils étaient morts de blessures.
+
+87
+00:08:03,610 --> 00:08:08,479
+C'est ce que vous voyez dans les secteurs
+rouge. Soit ils étaient morts lors d'autres
+
+88
+00:08:08,479 --> 00:08:14,130
+événements par exemple des naufrages. Soit
+ils mourraient, mais en fait à l'arrière
+
+89
+00:08:14,130 --> 00:08:20,930
+des lignes par exemple de maladies. Ce qui
+est très intéressant dans ce diagramme,
+
+90
+00:08:20,930 --> 00:08:25,620
+c'est que Florence Nightingale, a su en fait
+grâce à ce diagramme interpeller l'opinion
+
+91
+00:08:25,620 --> 00:08:31,490
+publique. Il a été publié dans les journaux,
+les gens en ont parlé. Et cela bien sûr
+
+92
+00:08:31,490 --> 00:08:36,349
+a permis de mettre en évidence que lorsque
+l'on voulait réduire le nombre de victimes
+
+93
+00:08:36,349 --> 00:08:40,709
+de la guerre. Eh bien, ce n'était pas sur
+le champ de bataille qu'il fallait agir mais
+
+94
+00:08:40,709 --> 00:08:44,709
+avant tout par exemple d'améliorer les hôpitaux
+et le traitement des blessés.
+
+95
+00:08:44,709 --> 00:08:51,709
+Autre exemple de relevé célèbre, il s'agit
+de John Snow qui étudie une maladie terrible,
+
+96
+00:08:53,610 --> 00:08:57,579
+qui est le choléra. Le choléra, lorsque
+l'on n'est pas en bonne santé, il peut vous
+
+97
+00:08:57,579 --> 00:09:04,579
+tuer en quelques heures par déshydratation.
+Donc en 1854, une épidémie de choléra sévit
+
+98
+00:09:05,189 --> 00:09:12,189
+à Londres. Et la théorie dominante à l'époque
+et que ces maladies se propagent par les miasmes.
+
+99
+00:09:13,180 --> 00:09:17,730
+Autrement dit, pour s'en protéger, il faut
+porter des masques, pour se protéger des
+
+100
+00:09:17,730 --> 00:09:24,730
+odeurs. L'idée de John Snow est d'enquêter,
+c'est-à-dire de visiter chaque maison et
+
+101
+00:09:24,949 --> 00:09:31,949
+pour chaque victime de faire une petite barre.
+Ensuite il utilise comme feuille de relevé,
+
+102
+00:09:32,139 --> 00:09:38,970
+non pas un tableau, mais un plan du quartier.
+Puis finalement il a l'idée de placer également
+
+103
+00:09:38,970 --> 00:09:45,970
+sur le plan, les pompes où les gens s'approvisionnent
+en eau. Et ce que va permettre de montrer
+
+104
+00:09:46,600 --> 00:09:52,379
+John Snow, c'est qu'en fait, le choléra ne
+se propage pas par l'air, mais par l'eau,
+
+105
+00:09:52,379 --> 00:09:58,480
+par une bactérie. On le voit, le fait de
+bien penser un relevé peut être extrêmement
+
+106
+00:09:58,480 --> 00:09:58,970
+utile.
+
+107
+00:09:58,970 --> 00:10:05,970
+Quelques exemples maintenant des outils de
+visualisation que vous pouvez utiliser. Tout
+
+108
+00:10:06,439 --> 00:10:11,439
+d'abord l'histogramme alors ici nous avons
+des données, donc par exemple des échanges
+
+109
+00:10:11,439 --> 00:10:17,149
+et des cours de bourse. A partir de là, ce
+que l'on peut faire, c'est une représentation
+
+110
+00:10:17,149 --> 00:10:22,600
+graphique donc dans le temps. Donc ça c'est
+un histogramme.
+
+111
+00:10:22,600 --> 00:10:28,720
+Autre possibilité le diagramme bâton. Donc
+on prend ici des données démographiques
+
+112
+00:10:28,720 --> 00:10:34,980
+: année de naissance, nombre de personnes
+de sexe masculin et de sexe féminin et donc
+
+113
+00:10:34,980 --> 00:10:41,980
+on va reporter ces informations sur un graphique.
+Vous avez ici une pyramide des âges. Elle
+
+114
+00:10:42,939 --> 00:10:48,499
+va permettre de visualiser facilement, par
+exemple l'effet des guerres ou les problèmes
+
+115
+00:10:48,499 --> 00:10:53,089
+de santé des hommes après la retraite qui
+sont plus importants que pour les femmes.
+
+116
+00:10:53,089 --> 00:10:59,179
+On le voit, on a là aussi, un outil de communication
+et de partage d'information très important
+
+117
+00:10:59,179 --> 00:11:03,589
+donc il ne suffit pas d'avoir les données
+brutes, il faut aussi avoir la bonne manière
+
+118
+00:11:03,589 --> 00:11:04,740
+de les partager.
+
+119
+00:11:04,740 --> 00:11:11,740
+Revenons sur le diagramme circulaire. Pas
+de manière aussi sophistiquée que Florence
+
+120
+00:11:12,009 --> 00:11:17,050
+Nightingale l'a fait. On peut regarder simplement
+les résultats d'une élection et des groupes
+
+121
+00:11:17,050 --> 00:11:23,589
+de partis dans le Parlement. Donc ce que l'on
+va faire. Ici pour des élections au parlement
+
+122
+00:11:23,589 --> 00:11:29,639
+européen, eh bien c'est représenter des
+proportions. Donc ici vous voyez très rapidement,
+
+123
+00:11:29,639 --> 00:11:33,360
+d'un coup d'œil, l'importance de chaque groupe
+politique.
+
+124
+00:11:33,360 --> 00:11:40,360
+Une carte, donc là on reprend les thématiques
+de John Snow mais de manière plus simple.
+
+125
+00:11:41,749 --> 00:11:48,749
+Ici vous reconnaissez peut-être la carte
+des participants au MOOC gestion projet troisième
+
+126
+00:11:49,699 --> 00:11:56,579
+édition. On a demandé aux volontaires de
+s'inscrire sur une carte en mettant pour chacun
+
+127
+00:11:56,579 --> 00:12:02,679
+leur position. Ce qui se passe, c'est lorsqu'il
+y a trop de personnes sur une zone donnée,
+
+128
+00:12:02,679 --> 00:12:09,679
+eh bien automatiquement la carte fait un résumé
+avec une coloration plus ou moins chaude selon
+
+129
+00:12:10,410 --> 00:12:12,679
+la densité de personnes.
+
+130
+00:12:12,679 --> 00:12:19,679
+Dernier exemple matrice de classements. C'est
+ce qu'on utilise pour prioriser. Donc nous
+
+131
+00:12:20,379 --> 00:12:26,540
+reviendrons dessus. Ici vous avez une matrice
+qui sert en gestion des risques. On va travailler
+
+132
+00:12:26,540 --> 00:12:31,339
+sur la notion de criticité à partir de la
+fréquence et de la gravité de chaque risque.
+
+133
+00:12:31,339 --> 00:12:37,389
+Et donc vous le voyez on va très facilement
+détecter les risques qui sont prioritaires.
+
+134
+00:12:37,389 --> 00:12:44,389
+Terminons maintenant sur l'outil que vous
+pouvez utiliser. Par excellence, c'est le
+
+135
+00:12:45,610 --> 00:12:50,889
+tableur. Donc le tableur c'est un système
+qui va permettre de produire des résultats
+
+136
+00:12:50,889 --> 00:12:57,189
+sous forme graphique. Ici vous avez une cartographie
+en trois dimensions. Le tableur permet aussi
+
+137
+00:12:57,189 --> 00:13:02,619
+de traiter des données. Donc des listes de
+personnes, de les filtrer, de faire des calculs.
+
+138
+00:13:02,619 --> 00:13:08,480
+Donc ici vous avez un diagramme circulaire
+et puis également d'automatiser la collecte.
+
+139
+00:13:08,480 --> 00:13:13,420
+Dans certains cas on peut écrire des macros
+qui vont récupérer des données à intervalles
+
+140
+00:13:13,420 --> 00:13:16,600
+réguliers et directement les stocker.
+
+141
+00:13:16,600 --> 00:13:23,600
+Quelques réflexions sur ce chapitre pour
+terminer. Un exemple familial, lorsque vos
+
+142
+00:13:25,619 --> 00:13:30,629
+enfants étaient petits, avez-vous reporté
+leur taille sur une toise. Du point de vue
+
+143
+00:13:30,629 --> 00:13:35,379
+d'un carnet de santé, quelles sont les données
+qui sont collectées ? Vous le verrez, il
+
+144
+00:13:35,379 --> 00:13:41,220
+y a des données quantitatives : poids, taille,
+indice de masse corporelle. Et puis aussi
+
+145
+00:13:41,220 --> 00:13:48,039
+des données qualitatives : dates des vaccins.
+Quels sont les outils de représentation utilisés
+
+146
+00:13:48,039 --> 00:13:48,289
+?
+
+147
+00:13:48,040 --> 00:13:54,379
+Pour terminer, et si vous souhaitez aller
+plus loin. Je peux vous recommander deux pistes.
+
+148
+00:13:54,379 --> 00:14:00,709
+Mon cours de recueil et analyse de données
+et une carte interactive qui montre un bel
+
+149
+00:14:00,709 --> 00:14:07,189
+exemple de ce que l'on peut faire en visualisation
+lorsque l'on utilise l'informatique. Regardons
+
+150
+00:14:07,189 --> 00:14:12,819
+rapidement, donc ici vous avez mon cours.
+Donc c'est un cours de Master. Vous avez ici
+
+151
+00:14:12,819 --> 00:14:19,689
+un panorama des méthodes de recueil de données.
+Une formation sur la conception de questionnaires.
+
+152
+00:14:19,689 --> 00:14:25,170
+Ici sur la conduite d'entretien et puis quelques
+cours de méthodologie : la question de qu'est-ce
+
+153
+00:14:25,170 --> 00:14:30,319
+que c'est que la science, la différence entre
+validité et fiabilité, une introduction
+
+154
+00:14:30,319 --> 00:14:37,319
+aux tests d'hypothèses et puis enfin l'explication
+du mapping avec l'analyse factorielle des
+
+155
+00:14:37,899 --> 00:14:42,589
+correspondances. Au niveau de la carte que
+je vous ai montrée, vous avez, par exemple,
+
+156
+00:14:42,589 --> 00:14:49,179
+ici une carte de Paris qui découpe les quartiers
+ou même ici les stations de métro selon
+
+157
+00:14:49,179 --> 00:14:53,999
+les opinions politiques et donc on peut se
+déplacer sur la carte interactive. Et vous
+
+158
+00:14:53,999 --> 00:14:57,730
+voyez elle est interactive, c'est-à-dire
+qu'on va pouvoir, selon l'endroit où l'on
+
+159
+00:14:57,730 --> 00:15:04,519
+met son curseur, avoir des informations plus
+détaillées ou regardez par exemple d'autres
+
+160
+00:15:04,519 --> 00:15:11,519
+informations, comme ici la proportion de retraités
+dans la population parisienne. Merci de votre
+
+161
+00:15:11,699 --> 00:15:17,899
+attention donc nous avons fini ce chapitre.
+Je vous propose maintenant de passer un petit
+
+162
+00:15:17,899 --> 00:15:20,979
+quiz pour vérifier votre compréhension.
+

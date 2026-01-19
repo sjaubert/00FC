@@ -1,0 +1,7 @@
+les fichiers srt contiennent les sous-titres de la vidéo correspondante.
+
+avec la plupart des lecteurs de vidéos, ils s'afficheront automatiquement 
+si le fichier srt est dans le même repertoire que la vidéo et s'il a le même nom.
+
+pour ne pas afficher les sous-titres, il suffit de supprimer ou de renommer ce fichier 
+ou de régler votre lecteur vidéo pour qu'il n'affiche pas les ST

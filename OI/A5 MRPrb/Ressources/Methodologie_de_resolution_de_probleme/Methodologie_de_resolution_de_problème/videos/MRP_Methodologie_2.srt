@@ -1,0 +1,432 @@
+1
+00:00:01,240 --> 00:00:06,580
+Parlons ensemble de la première chose qu'il
+faut faire en méthodologie de résolution
+
+2
+00:00:06,580 --> 00:00:11,959
+de problème : c'est la définition. Je vais
+donc vous présenter maintenant la phase de
+
+3
+00:00:11,959 --> 00:00:15,900
+cadrage avec quatre sujets abordés. Tout
+d'abord je vais vous présenter ses objectifs.
+
+4
+00:00:15,900 --> 00:00:22,900
+Ensuite les outils que l'on utilise. Je terminerai
+sur les livrables de cette phase. Ce que l'on
+
+5
+00:00:23,929 --> 00:00:30,529
+produit pour la valider. Et puis finalement,
+je vous donnerai quelques conseils pratiques
+
+6
+00:00:30,529 --> 00:00:37,529
+si vous souhaitez vous-mêmes, animer un groupe
+de résolutions de problème à cette étape.
+
+7
+00:00:37,860 --> 00:00:44,860
+Donc premier point. Définir le problème.
+Alors cette phase, la plus importante. C'est
+
+8
+00:00:45,380 --> 00:00:52,380
+la première phase que l'on appelle la phase
+de cadrage. Son premier objectif est de comprendre
+
+9
+00:00:53,320 --> 00:00:59,080
+la situation et pour cela de rassembler toutes
+les informations nécessaires.
+
+10
+00:00:59,080 --> 00:01:05,390
+Deuxième objectif. Parmi tout ce qui ne va
+pas, eh bien, il va falloir être capable
+
+11
+00:01:05,390 --> 00:01:12,390
+de prioriser. Et donc de trouver le problème
+pertinent. C'est-à-dire le problème que
+
+12
+00:01:12,520 --> 00:01:17,570
+l'on doit résoudre en premier afin d'avoir
+toute suite le maximum de résultats.
+
+13
+00:01:17,570 --> 00:01:24,570
+Enfin troisième point. Cette phase ne résout
+pas ce qui ne va pas. Mais elle permet de
+
+14
+00:01:25,270 --> 00:01:32,270
+fixer des objectifs, et donc, c'est particulièrement
+important d'être capable à la fin de cette
+
+15
+00:01:32,520 --> 00:01:39,009
+partie de savoir ce que l'on attend en termes
+de résultats : quel est le budget qu'il va
+
+16
+00:01:39,009 --> 00:01:41,319
+falloir mobiliser, etc.
+
+17
+00:01:41,319 --> 00:01:48,319
+Voyons maintenant les phases et les outils.
+Tout d'abord il faut travailler sur ce que
+
+18
+00:01:49,369 --> 00:01:56,310
+l'on appelle la définition initiale. Ensuite,
+eh bien, je vous présenterai des moyens de
+
+19
+00:01:56,310 --> 00:02:03,310
+mesurer rigoureusement les problèmes que
+l'on rencontre. Ce qui ne va pas. Troisième
+
+20
+00:02:03,630 --> 00:02:10,630
+partie. La priorisation. Donc regardez ce
+qui est important et puis enfin on termine
+
+21
+00:02:10,869 --> 00:02:15,470
+sur la capacité à fixer des objectifs et
+un plan de travail.
+
+22
+00:02:15,470 --> 00:02:22,470
+Première phase donc. Définir. Donc pour
+cela, il existe un outil que je vous présente
+
+23
+00:02:23,360 --> 00:02:30,360
+dans une petite formation d'une dizaine de
+minutes qui s'appellent le QQOQCP. Deuxième
+
+24
+00:02:31,120 --> 00:02:38,120
+partie la mesure. Donc pour cela, reportez-vous
+à la vidéo sur la collecte et la visualisation
+
+25
+00:02:39,360 --> 00:02:46,360
+de données. Pour la priorisation, on utilise
+un outil que l'on appelle le diagramme de
+
+26
+00:02:46,490 --> 00:02:51,840
+Pareto. Puis finalement, le plan travail.
+Eh bien, il y a deux choses dans un plan de
+
+27
+00:02:51,840 --> 00:02:58,400
+travail. Tout d'abord on refait un QQOQCP
+pour bien fixer tout ce que l'on veut obtenir.
+
+28
+00:02:58,400 --> 00:03:03,950
+Et puis on doit être capable, à ce stade,
+de présenter des objectifs et de demander
+
+29
+00:03:03,950 --> 00:03:09,830
+un budget. Alors avant de passer à la suite,
+ce que je vous recommande maintenant, c'est
+
+30
+00:03:09,830 --> 00:03:16,830
+d'interrompre cette vidéo et de regarder
+les formations. D'abord celle sur le QQOQCP,
+
+31
+00:03:17,480 --> 00:03:24,010
+ensuite celle sur la collecte et la visualisation
+de données, et finalement la formation au
+
+32
+00:03:24,010 --> 00:03:30,120
+diagramme de Pareto. Et donc ensuite, reprenez
+cette vidéo, puis passer aux conseils.
+
+33
+00:03:30,120 --> 00:03:37,120
+Les livrables. Donc si vous avez regardé
+les outils, vous savez maintenant, donc les
+
+34
+00:03:38,960 --> 00:03:45,480
+mettre en œuvre. Il va falloir pour terminer,
+organiser une réunion de démarrage. Cette
+
+35
+00:03:45,480 --> 00:03:51,650
+réunion présentera une synthèse de ce que
+vous avez trouvé grâce au QQOQCP, au système
+
+36
+00:03:51,650 --> 00:03:56,720
+de collecte et de représentation de données,
+et finalement au Pareto qui vous a permis
+
+37
+00:03:56,720 --> 00:03:57,550
+de prioriser.
+
+38
+00:03:57,550 --> 00:04:04,550
+Cette synthèse doit vous amener à formuler
+des objectifs. Objectifs pour lesquels je
+
+39
+00:04:05,640 --> 00:04:11,270
+vous conseille de suivre la méthodologie
+'caméra'. Les objectifs doivent être Cadrés,
+
+40
+00:04:11,270 --> 00:04:16,239
+Approuvés, Mesurables, avec une Échéance
+dans le temps, et puis à la fois Réaliste
+
+41
+00:04:16,239 --> 00:04:20,650
+et Ambitieux. Alors pour cela, on utilise
+aussi un autre acronyme en anglais c'est le
+
+42
+00:04:20,650 --> 00:04:27,590
+Smart. Autre point. La réunion de démarrage
+doit dire finalement comment est-ce qu'on
+
+43
+00:04:27,590 --> 00:04:33,340
+va pouvoir confirmer que l'on a bien réussi
+et pour cela mettre au point des indicateurs.
+
+44
+00:04:33,340 --> 00:04:39,740
+Alors je vous propose sur mon site de cours
+un module de formation à l'évaluation projet.
+
+45
+00:04:39,740 --> 00:04:46,379
+Mais nous reviendrons dessus dans la dernière
+phase de la méthodologie.
+
+46
+00:04:46,379 --> 00:04:52,240
+Toujours les livrables. Un point extrêmement
+important c'est d'obtenir, une fois qu'on
+
+47
+00:04:52,240 --> 00:04:58,120
+a défini le problème, des moyens. Donc il
+va falloir pouvoir déclencher la décision
+
+48
+00:04:58,120 --> 00:05:03,550
+donnant le financement dont on va avoir besoin
+pour conduire la résolution du problème.
+
+49
+00:05:03,550 --> 00:05:10,550
+Quelques conseils pratiques maintenant. Tout
+d'abord, nous avons fixé des objectifs. Eh
+
+50
+00:05:12,139 --> 00:05:18,860
+bien, vérifiez que ses objectifs sont réellement
+datés, réalistes, clairs et négociés.
+
+51
+00:05:18,860 --> 00:05:24,849
+Si vous voulez en savoir plus vous pouvez
+vous reporter à mon cours sur les outils
+
+52
+00:05:24,849 --> 00:05:29,960
+d'organisation de projet. Mais à ce stade
+la, eh bien, il ne faut pas avoir des objectifs
+
+53
+00:05:29,960 --> 00:05:34,889
+flous. Il faut savoir où l'on va. Alors on
+est confronté à un paradoxe. C'est que l'on
+
+54
+00:05:34,889 --> 00:05:40,210
+doit pouvoir fixer des objectifs, demander
+un budget, mais en même temps on ne connaît
+
+55
+00:05:40,210 --> 00:05:45,210
+pas encore la solution, bien entendu, puisque
+le but de la méthodologie c'est de la trouver.
+
+56
+00:05:45,210 --> 00:05:52,210
+Quelques conseils pratiques encore. Qui faut-il
+intégrer dans votre équipe à ce moment-là
+
+57
+00:05:53,039 --> 00:06:00,039
+? Premier point. Il ne faut pas vous tromper
+de problème, il faut être capable de fixer
+
+58
+00:06:01,590 --> 00:06:07,650
+une cible réaliste. Cela est extrêmement
+difficile parce que il faut avoir de l'expérience.
+
+59
+00:06:07,650 --> 00:06:13,870
+Donc je vous recommande, si vous animez un
+groupe à cette étape, d'essayer de mobiliser
+
+60
+00:06:13,870 --> 00:06:20,150
+des gens ayant beaucoup d'expérience. Et
+donc ce que l'on appelle des décideurs, donc
+
+61
+00:06:20,150 --> 00:06:25,460
+vont être capables assez vite de voir le
+bon, non pas le bon chemin à suivre, mais
+
+62
+00:06:25,460 --> 00:06:27,550
+en tout cas de trouver le bon problème
+
+63
+00:06:27,550 --> 00:06:34,550
+Autre type de personne à inclure dans l'équipe
+ou dans la décision : ce sont les gens qui
+
+64
+00:06:35,460 --> 00:06:41,509
+vont nous permettre de ne pas être à court
+de supports ou de moyens. Autrement dit, au
+
+65
+00:06:41,509 --> 00:06:47,139
+moment où vous voulez lancer un projet, vous
+avez besoin de l'approbation du client qui
+
+66
+00:06:47,139 --> 00:06:53,529
+sera aussi votre financeur. Et donc, il faut
+absolument que dans cette phase, il soit impliqué,
+
+67
+00:06:53,529 --> 00:06:57,419
+et qu'il soit prêt à vous donner les ressources
+dont vous aurez besoin.
+
+68
+00:06:57,419 --> 00:07:04,419
+Voilà donc, je vous ai donc présenté tout
+d'abord les objectifs de la phase de cadrage.
+
+69
+00:07:04,969 --> 00:07:10,479
+Nous avons vu différents outils. Je vous
+ai présenté les livrables et puis enfin,
+
+70
+00:07:10,479 --> 00:07:14,699
+nous avons passé en revue quelques conseils
+pratiques.
+
+71
+00:07:14,699 --> 00:07:21,150
+Pour terminer quelques sujets de réflexion.
+Alors mon objectif ici, est d'essayer de mettre
+
+72
+00:07:21,150 --> 00:07:26,419
+en rapport ce que je vous présente dans cette
+formation et ce que vous avez pu vivre. Voici
+
+73
+00:07:26,419 --> 00:07:33,419
+un exemple de question de réflexion. A votre
+avis pour qu'une sanction soit juste, est-ce
+
+74
+00:07:33,860 --> 00:07:40,149
+qu'il ne faudrait pas commencer par comprendre
+ce qui ne va pas ? Donc avez-vous de l'expérience
+
+75
+00:07:40,149 --> 00:07:43,639
+? Est-ce que vous avez déjà reçu des sanctions
+dont vous vous êtes dit qu'elles étaient
+
+76
+00:07:43,639 --> 00:07:48,080
+injustes. Et finalement, pourquoi était-elle
+injuste ? Est-ce que ce n'était pas par hasard
+
+77
+00:07:48,080 --> 00:07:53,610
+parce qu'on avait mal défini le problème
+? Je vous laisse réfléchir là-dessus.
+
+78
+00:07:53,610 --> 00:08:00,610
+Autre sujet de réflexion que je vous propose
+pour boucler cette partie. Vous est-il déjà
+
+79
+00:08:00,930 --> 00:08:06,229
+arrivé de commencer quelque chose sans pouvoir
+aller au bout ? Alors est-ce que par hasard
+
+80
+00:08:06,229 --> 00:08:12,449
+ce ne serait pas dû à un manque de ressources,
+et donc finalement vous n'aviez pas bien défini
+
+81
+00:08:12,449 --> 00:08:17,689
+ou rassembler les moyens dont vous aviez besoin
+? Donc ces ressources, bien ça peut être
+
+82
+00:08:17,689 --> 00:08:22,610
+des ressources en termes de motivation bien
+sûr. Ou alors tout simplement le problème
+
+83
+00:08:22,610 --> 00:08:26,050
+peut venir du fait que vous étiez trompés
+d'objectifs.
+
+84
+00:08:26,050 --> 00:08:33,050
+Ce chapitre est terminé. Ce que je vous propose,
+c'est de regarder sous cette vidéo le petit
+
+85
+00:08:34,409 --> 00:08:38,630
+quiz qui vous permettra de vérifier que vous
+avez bien compris.
+
+86
+00:08:38,630 --> 00:08:45,630
+Voilà donc retour au sommaire. Je vous propose
+maintenant de suivre dans le chapitre 2 dans
+
+87
+00:08:46,279 --> 00:08:49,149
+lequel nous traiterons de la recherche des
+causes.
+

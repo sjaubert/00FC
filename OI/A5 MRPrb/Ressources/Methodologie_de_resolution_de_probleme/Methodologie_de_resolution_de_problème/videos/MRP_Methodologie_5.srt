@@ -1,0 +1,692 @@
+1
+00:00:00,849 --> 00:00:05,270
+Dernière étape dans la méthodologie de
+résolution de problème, je vais maintenant
+
+2
+00:00:05,270 --> 00:00:12,050
+vous présenter la mise en place des solutions.
+Comme d'habitude je vous présenterai les
+
+3
+00:00:12,050 --> 00:00:16,910
+objectifs, les outils, les livrables. Je donnerai
+quelques conseils et je passerai un peu de
+
+4
+00:00:16,910 --> 00:00:21,750
+temps à élargir sur les autres démarches
+des MRP.
+
+5
+00:00:21,750 --> 00:00:27,869
+Récapitulons pour commencer. Donc je vous
+rappelle que nous avons vu que pour résoudre
+
+6
+00:00:27,869 --> 00:00:34,300
+un problème, il fallait tout d'abord le cadrer,
+fixer des priorités et des objectifs, ensuite
+
+7
+00:00:34,300 --> 00:00:40,729
+analyser. Par la suite, chercher des solutions
+et puis finalement, et bien, le temps est
+
+8
+00:00:40,729 --> 00:00:46,109
+venu maintenant de l'implantation. C'est-à-dire
+de la mise en place des solutions. Mais non
+
+9
+00:00:46,109 --> 00:00:50,050
+seulement il faut mettre en place les solutions,
+mais il faut aussi être capable de les suivre,
+
+10
+00:00:50,050 --> 00:00:53,839
+de les évaluer et de faire ce que l'on appelle
+de la capitalisation.
+
+11
+00:00:53,839 --> 00:01:00,839
+Première chose à faire, donc, mettre en
+place les actions que l'on a décidées. Pour
+
+12
+00:01:00,889 --> 00:01:06,509
+cela, vous allez le voir ce que l'on fait.
+C'est essentiellement de la gestion de projet.
+
+13
+00:01:06,509 --> 00:01:12,189
+Autre point important, il va falloir obtenir
+des résultats, mais aussi les valider et
+
+14
+00:01:12,189 --> 00:01:18,450
+les pérenniser. C'est-à-dire que on ait
+une situation qui soit satisfaisante et durable
+
+15
+00:01:18,450 --> 00:01:18,990
+dans le temps.
+
+16
+00:01:18,990 --> 00:01:25,990
+Alors pour mettre en place la solution, voyons
+ensemble les outils. Donc tout, d'abord, vous
+
+17
+00:01:27,240 --> 00:01:32,009
+voyez pour cadrer le projet, nous avons besoin,
+par exemple, d'un cahier des charges ou d'un
+
+18
+00:01:32,009 --> 00:01:39,009
+PDCA. Pour planifier, nous pouvons faire un
+diagramme des tâches, une matrice RACI, un
+
+19
+00:01:40,130 --> 00:01:46,539
+Gantt ou des jalons. Ce qu'il faut savoir
+c'est qu'il faut adapter les outils que vous
+
+20
+00:01:46,539 --> 00:01:51,719
+utilisez à la taille du projet. Vous n'allez
+pas forcément faire un cahier des charges
+
+21
+00:01:51,719 --> 00:01:57,420
+avec une analyse fonctionnelle dans tous les
+cas. Il faut savoir alléger votre gestion
+
+22
+00:01:57,420 --> 00:02:04,069
+de projet selon les besoins. Ensuite, il faut
+suivre l'avancement. Donc pour cela vous avez
+
+23
+00:02:04,069 --> 00:02:09,790
+notamment des indicateurs. Et puis finalement,
+vérifier que les résultats sont atteints.
+
+24
+00:02:09,790 --> 00:02:15,000
+Donc pour cela, je parlerai d'évaluation
+projet, de visualisation, de capitalisation.
+
+25
+00:02:15,000 --> 00:02:21,830
+Donc vous le voyez les phases ici de cadrage
+et de planification font l'objet de cours
+
+26
+00:02:21,830 --> 00:02:27,490
+spécifiques, donc ici, par exemple, un cours
+sur les outils basiques de gestion de projet,
+
+27
+00:02:27,490 --> 00:02:34,220
+d'organisation. Ici un cours sur les outils
+avancés. Et donc vous avez peut-être déjà
+
+28
+00:02:34,220 --> 00:02:38,930
+une formation en gestion projet, donc, dans
+ce cas-là, eh bien, vous pouvez vous référer
+
+29
+00:02:38,930 --> 00:02:40,680
+à ce que vous connaissez.
+
+30
+00:02:40,680 --> 00:02:47,680
+Quels sont les livrables de cette phase. Alors
+évidemment, le premier livrable, c'est la
+
+31
+00:02:48,330 --> 00:02:53,810
+résolution du problème. Alors ce qu'il faut
+savoir, c'est qu'on ne résout pas forcément
+
+32
+00:02:53,810 --> 00:02:58,900
+100 % de ce qui ne va pas. En fait, ça n'arrive
+jamais de résoudre 100 % des problèmes ou
+
+33
+00:02:58,900 --> 00:03:04,170
+qui s'agit d'une résolution totale ou partielle.
+Ce qui est important par contre c'est que
+
+34
+00:03:04,170 --> 00:03:09,480
+dans la dynamique de votre groupe et bien,
+il faut essayer d'avoir rapidement des premiers
+
+35
+00:03:09,480 --> 00:03:16,480
+succès. Parce que ces premiers succès vont
+vous permettre d'avoir une situation positive,
+
+36
+00:03:16,510 --> 00:03:22,100
+une dynamique de progrès. Donc essayez dans
+votre déroulé de projet d'avoir de premiers
+
+37
+00:03:22,100 --> 00:03:26,950
+résultats rapides, mais bien entendu de ne
+pas vous arrêter parce que le but d'avoir
+
+38
+00:03:26,950 --> 00:03:32,280
+des résultats rapides ces de continuer. Ensuite
+il faut vérifier que les résultats sont
+
+39
+00:03:32,280 --> 00:03:37,950
+atteints. Ca c'est un peu compliqué. Si vous
+souhaitez approfondir vous avez un module
+
+40
+00:03:37,950 --> 00:03:43,020
+de formation à l'évaluation d'impact. Alors
+il faut savoir que pour vérifier que les
+
+41
+00:03:43,020 --> 00:03:46,690
+résultats sont atteints, vous pouvez tout
+simplement faire une nouvelle collecte de
+
+42
+00:03:46,690 --> 00:03:51,880
+données comme ce que nous avons vu dans l'étape
+1 de la méthodologie.
+
+43
+00:03:51,880 --> 00:03:57,930
+Toujours dans les livrables, une chose très
+importante, c'est de communiquer. Vous avez
+
+44
+00:03:57,930 --> 00:04:04,230
+obtenu des financements, vous avez obtenu
+du temps. Il faut savoir rendre des comptes.
+
+45
+00:04:04,230 --> 00:04:09,590
+Et donc cela fait parti des livrables. Donc
+notamment des objectifs ont été fixés,
+
+46
+00:04:09,590 --> 00:04:14,260
+et on fait ce que l'on appelle une analyse
+d'écarts. C'est-à-dire on regarde, on compare,
+
+47
+00:04:14,260 --> 00:04:20,850
+les objectifs fixés et ce qui a été réalisé.
+A cette étape, là, vous devez aussi rendre
+
+48
+00:04:20,850 --> 00:04:27,850
+des comptes. Par moment, cela veut dire justifier
+vos dépenses et archiver des pièces comptables
+
+49
+00:04:28,660 --> 00:04:32,690
+qui vont permettre de certifier que vous avez
+bien géré votre budget.
+
+50
+00:04:32,690 --> 00:04:38,590
+Un point important pour communiquer, c'est
+le management visuel. Si vous souhaitez en
+
+51
+00:04:38,590 --> 00:04:44,590
+savoir plus vous avez ici un lien vers des
+diapositives. Vous le voyez, le management
+
+52
+00:04:44,590 --> 00:04:51,400
+visuel, consiste à avoir des tableaux accessibles,
+faciles à regarder et qui vont permettre
+
+53
+00:04:51,400 --> 00:04:54,350
+de faire un suivi et de la communication.
+
+54
+00:04:54,350 --> 00:05:00,560
+Toujours dans les conseils pratiques, un point
+important, c'est pas seulement d'obtenir les
+
+55
+00:05:00,560 --> 00:05:05,810
+résultats, c'est de les verrouiller. Pour
+cela il faut mettre en place une surveillance
+
+56
+00:05:05,810 --> 00:05:12,520
+et un monitoring Parce que il est très très
+facile de retomber dans les mauvaises habitudes.
+
+57
+00:05:12,520 --> 00:05:16,600
+Par exemple, si vous avez une personne qui
+change de poste, eh bien, son remplaçant
+
+58
+00:05:16,600 --> 00:05:21,840
+va pas savoir forcément comment faire. Et
+donc, si vous n'avez pas mis en place un système
+
+59
+00:05:21,840 --> 00:05:25,340
+de surveillance, eh bien, le problème risque
+de revenir.
+
+60
+00:05:25,340 --> 00:05:32,120
+N'oubliez pas non plus de capitaliser avant
+de clore le projet. Alors avant de dissoudre
+
+61
+00:05:32,120 --> 00:05:36,510
+l'équipe projet, il faut savoir faire une
+réunion de bilan que l'on appelle une réunion
+
+62
+00:05:36,510 --> 00:05:42,420
+de post-mortem. Donc une réunion après la
+fin du projet. Donc ça, c'est une bonne pratique.
+
+63
+00:05:42,420 --> 00:05:48,840
+Si vous le voulez vous avez ici une check-list,
+des questions, qu'il faut envoyer avant la
+
+64
+00:05:48,840 --> 00:05:54,090
+réunion. Et donc avant la réunion, demander
+aux gens qu'est-ce qui a bien marché ? Qu'est-ce-qui
+
+65
+00:05:54,090 --> 00:05:59,050
+a mal marché ? Si jamais il fallait refaire
+le projet, qu'est-ce que vous feriez différemment
+
+66
+00:05:59,050 --> 00:06:05,000
+? Et tout cela, eh bien, va vous permettre
+d'apprendre et de faire mieux la prochaine
+
+67
+00:06:05,000 --> 00:06:05,250
+fois.
+
+68
+00:06:05,220 --> 00:06:11,900
+La documentation est également importante.
+Comme c'est maintenant la phase de bouclage,
+
+69
+00:06:11,900 --> 00:06:16,950
+eh bien, il faut laisser des choses derrière
+vous qui puissent être réutilisables. Donc
+
+70
+00:06:16,950 --> 00:06:22,520
+archiver les choses, les rendre accessibles.
+Bien les indexer. Donc ça veut dire, avoir
+
+71
+00:06:22,520 --> 00:06:27,690
+un endroit où on a rassemblé toutes les
+données, les indicateurs, les comptes-rendus.
+
+72
+00:06:27,690 --> 00:06:33,550
+Parce que tout cela pourra resservir par la
+suite. Donc on entre ici dans ce que l'on
+
+73
+00:06:33,550 --> 00:06:39,300
+appelle KM, le Knowledge Management. Et la
+question de l'organisation-apprenant. C'est-à-dire
+
+74
+00:06:39,300 --> 00:06:44,760
+une organisation doit sans arrêt mémoriser
+les choses pour pouvoir progresser.
+
+75
+00:06:44,760 --> 00:06:51,760
+Un dernier conseil pratique, eh bien, c'est
+de faire la fête. Vous avez obtenu des résultats
+
+76
+00:06:52,060 --> 00:06:58,310
+parce que des gens vous ont aidé et il ne
+faut surtout pas oublier de les remercier.
+
+77
+00:06:58,310 --> 00:07:04,560
+Donc voici une petite statue de la victoire.
+On peut distribuer des médailles, mais on
+
+78
+00:07:04,560 --> 00:07:09,460
+peut aussi tout simplement faire un petit
+compte rendu, pour le journal de l'entreprise,
+
+79
+00:07:09,460 --> 00:07:14,310
+en montrant comment on a réussi à surmonter
+un problème. On peut faire un pot ou pour
+
+80
+00:07:14,310 --> 00:07:18,540
+une petite fête. En tout cas n'oubliez pas
+de remercier toutes les personnes qui ont
+
+81
+00:07:18,540 --> 00:07:24,000
+contribué, et pas seulement les gens qui
+ont participé à la phase 4. Par exemple
+
+82
+00:07:24,000 --> 00:07:28,180
+dans la phase de recherche des causes, eh
+bien, vous avez des gens qui vous ont informé,
+
+83
+00:07:28,180 --> 00:07:32,389
+c'est le moment de retourner les voir et de
+leur dire : voilà grâce aux informations
+
+84
+00:07:32,389 --> 00:07:36,620
+et à l'aide que vous nous avez apportée,
+nous avons résolu le problème, merci.
+
+85
+00:07:36,620 --> 00:07:43,620
+En conclusion, je vous présenterai quelques
+autres démarches. Ici ce que je vous ai montré,
+
+86
+00:07:44,800 --> 00:07:50,270
+c'est le système global de résolution de
+problème. Mais dans la mise en œuvre, eh
+
+87
+00:07:50,270 --> 00:07:57,270
+bien, les entreprises utilisent des variantes.
+Un exemple de variante, c'est la méthode
+
+88
+00:07:57,680 --> 00:08:04,440
+CRIMES. Alors CRIMES, ici vous le voyez, ce
+sont les initiales de : Caractériser la situation,
+
+89
+00:08:04,440 --> 00:08:09,380
+pour nous c'est la phase de cadrage. Réglé
+provisoirement, donc celle-ci … je vais
+
+90
+00:08:09,380 --> 00:08:14,620
+revenir dessus. Identifier la cause racine,
+donc c'est la phase de recherche des causes.
+
+91
+00:08:14,620 --> 00:08:19,490
+Mener les actions correctives, donc là, on
+a sauté la phase de recherche des solutions.
+
+92
+00:08:19,490 --> 00:08:26,080
+Évaluer le résultat et Suivre dans le temps.
+Alors cette méthode est très utile. Par
+
+93
+00:08:26,080 --> 00:08:29,490
+exemple lorsque vous êtes sur une chaîne
+de production, lorsque vous avez une chaîne
+
+94
+00:08:29,490 --> 00:08:33,919
+de production qui tourne et qu'elle s'arrête
+à cause d'un problème, la méthode CRIME
+
+95
+00:08:33,919 --> 00:08:39,009
+va mettre en priorité le redémarrage, le
+fait de régler provisoirement. Et ensuite,
+
+96
+00:08:39,009 --> 00:08:43,459
+une fois que cette étape de redémarrage
+est réalisée, on est dans une procédure
+
+97
+00:08:43,459 --> 00:08:49,149
+MRP classique sauf que, ici, je reprocherais
+à la méthode crime de pas avoir vraiment
+
+98
+00:08:49,149 --> 00:08:52,410
+de phase de recherche de solutions.
+
+99
+00:08:52,410 --> 00:08:59,410
+La méthode de résolution de problème la
+plus connue s'appelle le 8D pour 8 Do, 8 Actions.
+
+100
+00:08:59,790 --> 00:09:02,860
+Alors ce que je propose c'est de la regarder
+rapidement.
+
+101
+00:09:02,860 --> 00:09:09,860
+Donc voici un formulaire 8D. Donc, voyez,
+le D1, c'est réunir l'équipe. Le D2, c'est
+
+102
+00:09:10,579 --> 00:09:16,309
+définir le problème avec un QQOQCP et des
+collectes de données. Mettre en place des
+
+103
+00:09:16,309 --> 00:09:20,300
+mesures de sécurisation immédiate, donc
+comme sur la méthode CRIMES. Voyez qu'on
+
+104
+00:09:20,300 --> 00:09:24,930
+est sur des méthodes de production, donc
+on cherche toujours à trouver une première
+
+105
+00:09:24,930 --> 00:09:25,869
+solution rapide.
+
+106
+00:09:25,869 --> 00:09:31,589
+Ensuite une fois que la chaîne est remise
+en route, on s'arrête pas, on continue de
+
+107
+00:09:31,589 --> 00:09:36,350
+travailler pour chercher la cause d'apparition
+de problèmes. Éventuellement pourquoi on
+
+108
+00:09:36,350 --> 00:09:42,129
+ne l'a pas détecté. Ensuite, on met en place
+les actions correctives, des actions préventives
+
+109
+00:09:42,129 --> 00:09:48,529
+et on standardise et on clôture. Donc, vous
+le voyez, on reconnaît dans la méthode 8D,
+
+110
+00:09:48,529 --> 00:09:51,459
+certaines des étapes que je vous ai présentées.
+
+111
+00:09:51,459 --> 00:09:58,050
+Autre exemple, voici un formulaire de MRP
+utilisé en production. Voyez, la description
+
+112
+00:09:58,050 --> 00:10:03,660
+du problème, pris en compte de pièces similaires.
+Là on essaie de comprendre si le défaut
+
+113
+00:10:03,660 --> 00:10:10,189
+peut se reproduire, analyse initiale, solution
+corrective temporaire, cause réelle, solution
+
+114
+00:10:10,189 --> 00:10:16,119
+définitive, confirmation, mise à jour et
+bilan. Vous le voyez, ce formulaire là, et
+
+115
+00:10:16,119 --> 00:10:20,249
+aussi intéressant. Il met aussi en valeur
+des étapes différentes.
+
+116
+00:10:20,249 --> 00:10:27,249
+Si vous souhaitez maintenant vous former à
+la résolution problème. Sachez que une étude
+
+117
+00:10:27,279 --> 00:10:30,949
+de cas est disponible. Que vous pouvez télécharger
+ici.
+
+118
+00:10:30,949 --> 00:10:37,790
+Donc cette étude de cas, étudie la situation
+d'un restaurant, il s'appelle 'one minute
+
+119
+00:10:37,790 --> 00:10:44,050
+restaurant'. Et dont vous trouverez quelques
+diapositives vous présentant la situation.
+
+120
+00:10:44,050 --> 00:10:50,689
+Et également un modèle de réponses. Alors
+ce ne sont pas des réponses correctes, ça
+
+121
+00:10:50,689 --> 00:10:56,300
+n'est pas un corrigé. Le corrigé n'est disponible
+que pour les animateurs de formation. Mais
+
+122
+00:10:56,300 --> 00:10:58,369
+là, ce sont des feuilles de réponses.
+
+123
+00:10:58,369 --> 00:11:05,369
+Voilà donc nous avons terminé. Donc, je
+rappelle rapidement tout ce que nous avons
+
+124
+00:11:05,850 --> 00:11:11,319
+vu. Donc vous avez ici une mind map détaillée.
+Ce que je vous conseille, c'est de mettre
+
+125
+00:11:11,319 --> 00:11:16,139
+cette vidéo en pause, et de prendre le temps
+de la regarder point par point.
+
+126
+00:11:16,139 --> 00:11:21,009
+Mais nous allons, pour l'instant, terminer
+sur une dernière phase de réflexion globale.
+
+127
+00:11:21,009 --> 00:11:27,319
+Alors première question, quels sont vos propres
+processus de résolution de problème. Dans
+
+128
+00:11:27,319 --> 00:11:32,410
+votre entreprise, par , est-ce que vous avez
+une méthodologie ? Cette méthodologie comment
+
+129
+00:11:32,410 --> 00:11:38,429
+se compare-t-elle a celle que je viens de
+vous présenter avec quatre grandes étapes.
+
+130
+00:11:38,429 --> 00:11:45,290
+Autre question. Dans votre organisation est-ce
+que l'on progresse durablement ? Ou est-ce
+
+131
+00:11:45,290 --> 00:11:50,300
+que les mauvaises habitudes reviennent ? Alors
+c'est fréquemment le cas. Si les mauvaises
+
+132
+00:11:50,300 --> 00:11:57,300
+habitudes reviennent et bien comment faire
+? Dernier sujet de réflexion, est-ce qui
+
+133
+00:11:57,619 --> 00:12:01,119
+vous est déjà arrivé d'aider quelqu'un,
+puis d'être frustré parce ce qu'on avait
+
+134
+00:12:01,119 --> 00:12:06,369
+pas reboucler avec vous à la fin. Ou d'avoir
+bien travaillé et d'avoir l'impression de
+
+135
+00:12:06,369 --> 00:12:12,179
+ne pas être félicité. Et vous, est-ce que
+vous prenez bien le temps de remercier les
+
+136
+00:12:12,179 --> 00:12:18,290
+personnes qui vous ont aidé à la fin d'un
+projet, sans en oublier ? Voilà donc, c'est
+
+137
+00:12:18,290 --> 00:12:21,970
+là-dessus que je terminerai. Vous pouvez
+prendre le temps bien sûr de réfléchir
+
+138
+00:12:21,970 --> 00:12:28,970
+à ces questions, ou alors répondre au petit
+quiz qui se situe sous cette vidéo.
+
+139
+00:12:29,559 --> 00:12:34,999
+Voilà donc, merci de votre attention tout
+au long de cette formation. Et bien sûr,
+
+140
+00:12:34,999 --> 00:12:40,509
+je vous souhaite une bonne application des
+méthodes de résolution de problème.
+

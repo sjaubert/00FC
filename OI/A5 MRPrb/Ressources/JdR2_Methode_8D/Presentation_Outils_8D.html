@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outils JdR 2 : 8D</title>
+    <style>
+        :root {
+            --primary: #2980b9;
+            --secondary: #3498db;
+            --accent: #ecf0f1;
+            --text: #ffffff;
+            --bg: #2c3e50;
+            --card-bg: #34495e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            padding: 2rem;
+            pointer-events: none;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .slide.prev {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: var(--accent);
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--secondary);
+            padding-bottom: 10px;
+        }
+
+        .content-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 5px;
+            width: 85%;
+            max-width: 1000px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            margin: 8px 0;
+            font-size: 1.1rem;
+        }
+
+        li strong {
+            color: var(--secondary);
+        }
+
+        .controls {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid var(--secondary);
+            border-radius: 3px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: var(--secondary);
+        }
+
+        .step-badge {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: var(--secondary);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            height: 60px;
+        }
+
+        .org-name {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 0.9rem;
+            color: #95a5a6;
+        }
+
+        .image-container {
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 250px;
+            border-radius: 5px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <img src="../../../../logo_uimm_placeholder.jpg" alt="Logo UIMM" class="logo">
+    <div class="org-name">Pôle Formation UIMM-CVDL</div>
+
+    <!-- Slide 1 -->
+    <div class="slide active">
+        <h1>JdR n°2 : Méthode 8D</h1>
+        <h2>La Résolution Structurée et Complète</h2>
+    </div>
+
+    <!-- Slide 2: Visuel Problème -->
+    <div class="slide">
+        <h2>Le Problème : Pièces Hors Tolérance</h2>
+        <div class="content-card">
+            <div class="full-width image-container">
+                <img src="../Images/pieces_hors_tolerance.png" alt="Pièces hors tolérance">
+                <p style="color: #e74c3c; margin-top: 10px;">3ème retour client - Il faut une méthode rigoureuse !</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: D1-D3 -->
+    <div class="slide">
+        <h2>Phase 1 : Contenir l'Urgence</h2>
+        <div class="content-card">
+            <div>
+                <h3>Initialisation</h3>
+                <ul>
+                    <li><span class="step-badge">D1</span><strong>Constituer l'équipe</strong><br>Multidisciplinaire
+                        (Prod, Qualité, Méthodes)</li>
+                    <li><span class="step-badge">D2</span><strong>Décrire le problème</strong><br>QQOQCP précis (Pas de
+                        "Ça marche pas")</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Sécurisation</h3>
+                <ul>
+                    <li><span class="step-badge">D3</span><strong>Actions Immédiates</strong><br>Stopper l'hémorragie
+                        (Tri, Mur qualité).<br><em>Le client ne doit plus recevoir de défauts.</em></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: D4-D5 -->
+    <div class="slide">
+        <h2>Phase 2 : Trouver la Cause Racine</h2>
+        <div class="content-card">
+            <div class="full-width">
+                <p>C'est le cœur de la méthode. Ne pas sauter aux solutions !</p>
+                <br>
+            </div>
+            <div>
+                <h3>Analyse</h3>
+                <ul>
+                    <li><span class="step-badge">D4</span><strong>Identifier les Causes Racines</strong><br>Utiliser
+                        Ishikawa (5M) et 5 Pourquoi.</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Validation</h3>
+                <ul>
+                    <li><span class="step-badge">D5</span><strong>Choisir/Valider Actions</strong><br>Prouver que
+                        l'action supprime la cause.<br>(Essais, tests)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: D6-D8 -->
+    <div class="slide">
+        <h2>Phase 3 : Pérenniser et Clôturer</h2>
+        <div class="content-card">
+            <div>
+                <h3>Mise en œuvre</h3>
+                <ul>
+                    <li><span class="step-badge">D6</span><strong>Implémenter Actions</strong><br>Suivre le planning.
+                    </li>
+                    <li><span class="step-badge">D7</span><strong>Prévenir la Récidive</strong><br>Mise à jour
+                        documentaire, extension.</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Fin</h3>
+                <ul>
+                    <li><span class="step-badge">D8</span><strong>Féliciter l'équipe</strong><br>Reconnaître le travail
+                        accompli.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Ishikawa -->
+    <div class="slide">
+        <h2>Outil : Ishikawa (5M)</h2>
+        <div class="content-card">
+            <div class="full-width">
+                <p>Pour ne rien oublier dans la recherche des causes possibles (D4) :</p>
+            </div>
+            <ul>
+                <li>🧱 <strong>Matière</strong> (Composants, bruts...)</li>
+                <li>🤖 <strong>Matériel</strong> (Machines, outils...)</li>
+                <li>🖐️ <strong>Main d'œuvre</strong> (Compétences, fatigue...)</li>
+            </ul>
+            <ul>
+                <li>📝 <strong>Méthode</strong> (Gammes, procédures...)</li>
+                <li>🌍 <strong>Milieu</strong> (Température, éclairage...)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button onclick="prev()">❮ Précédent</button>
+        <button onclick="next()">Suivant ❯</button>
+    </div>
+
+    <script>
+        let current = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function update() {
+            slides.forEach((s, i) => {
+                s.className = 'slide' + (i === current ? ' active' : i < current ? ' prev' : '');
+            });
+        }
+
+        function next() { if (current < slides.length - 1) { current++; update(); } }
+        function prev() { if (current > 0) { current--; update(); } }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight') next();
+            if (e.key === 'ArrowLeft') prev();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A4 : Capabilité & Cartes de Contrôle - Ressources</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .file-list {
+            list-style: none;
+        }
+
+        .file-list li {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s;
+        }
+
+        .file-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .file-list a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .file-type {
+            font-size: 0.85em;
+            background: #e9ecef;
+            padding: 3px 10px;
+            border-radius: 12px;
+            color: #666;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .description {
+            background: #e3f2fd;
+            padding: 20px;
+            border-left: 4px solid #2196f3;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>📈 A4 : Capabilité & Cartes de Contrôle</h1>
+        <div class="subtitle">Maîtrise statistique des procédés (MSP)</div>
+
+        <div class="description">
+            <p><strong>Description :</strong> Cartes de Shewhart, cartes de contrôle aux mesures et aux attributs,
+                indices de capabilité Cp/Cpk pour la maîtrise de la qualité.</p>
+            <p style="margin-top: 10px;"><strong>Objectifs :</strong> Construire et interpréter des cartes de contrôle,
+                calculer les indices de capabilité</p>
+        </div>
+
+        <h2 style="color: #764ba2; margin: 30px 0 15px 0;">📁 Ressources Pédagogiques</h2>
+
+        <ul class="file-list">
+            <li><a href="CFAI%20COURS%20MSP.pdf"><span>📘 CFAI - Cours MSP</span><span class="file-type">PDF</span></a>
+            </li>
+            <li><a href="Pilotage_Qualité_Cartes_de_Contrôle_et_Capabilité.pdf"><span>📚 Pilotage Qualité - Cartes et
+                        Capabilité</span><span class="file-type">PDF</span></a></li>
+            <li><a href="Bachelor%20-%20Cartes%20Controle-Attributs.pdf"><span>📄 Cartes Contrôle -
+                        Attributs</span><span class="file-type">PDF</span></a></li>
+            <li><a href="Exercices-%20cartes%20de%20Shewhart.pdf"><span>✏️ Exercices - Cartes de Shewhart</span><span
+                        class="file-type">PDF</span></a></li>
+            <li><a href="TP%20Controle%20statistique%20Butee%20diametre.pdf"><span>🔬 TP Contrôle Statistique -
+                        Butée</span><span class="file-type">PDF</span></a></li>
+            <li><a href="TP%20Butées%20-%20correction.xlsx"><span>✅ TP Butées - Correction</span><span
+                        class="file-type">XLSX</span></a></li>
+            <li><a href="TP_cartes_Shewhart%20corrigé.pdf"><span>✅ TP Cartes Shewhart - Corrigé</span><span
+                        class="file-type">PDF</span></a></li>
+            <li><a href="infographie.png"><span>🖼️ Infographie MSP</span><span class="file-type">PNG</span></a></li>
+        </ul>
+
+        <h3 style="color: #764ba2; margin: 20px 0 10px 0;">📊 Données d'Exercices (CSV)</h3>
+
+        <ul class="file-list">
+            <li><a href="SPC-1-inspection.csv"><span>SPC-1 Inspection</span><span class="file-type">CSV</span></a></li>
+            <li><a href="SPC-2-pression.csv"><span>SPC-2 Pression</span><span class="file-type">CSV</span></a></li>
+            <li><a href="SPC-4-silice.csv"><span>SPC-4 Silice</span><span class="file-type">CSV</span></a></li>
+            <li><a href="SPC-5-ohm.csv"><span>SPC-5 Ohm</span><span class="file-type">CSV</span></a></li>
+            <li><a href="SPC-9-remplissage.csv"><span>SPC-9 Remplissage</span><span class="file-type">CSV</span></a>
+            </li>
+            <li><a href="SPC-10-dimension.csv"><span>SPC-10 Dimension</span><span class="file-type">CSV</span></a></li>
+        </ul>
+
+        <a href="../../" class="back-link">← Retour au portail OI</a>
+    </div>
+</body>
+
+</html>
