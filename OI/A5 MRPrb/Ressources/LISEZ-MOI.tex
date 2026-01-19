@@ -1,0 +1,212 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\section{📚 Collection Jeux de Rôle - Résolution de
+Problèmes}\label{collection-jeux-de-ruxf4le---ruxe9solution-de-probluxe8mes}
+
+\textbf{6 jeux de rôle complets pour la formation aux méthodes de
+résolution de problèmes industriels}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{📖 COMPRENDRE
+L'ORGANISATION}\label{comprendre-lorganisation}
+
+Cette collection contient \textbf{2 types de fichiers} :
+
+\subsubsection{1. Documentation Générale (À LA
+RACINE)}\label{documentation-guxe9nuxe9rale-uxe0-la-racine}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2195}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3171}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4634}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Fichier
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Quand l'utiliser ?
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\href{./GUIDE_NAVIGATION.md}{\texttt{GUIDE\_NAVIGATION.md}}} 🔑
+& \textbf{COMMENCEZ ICI !} Guide pour comprendre l'organisation &
+Première lecture \\
+\href{./README.md}{\texttt{README.md}} & Vue d'ensemble de la collection
+& Vue d'ensemble rapide \\
+\href{./Jeux_de_Role_Resolution_Problemes.md}{\texttt{Jeux\_de\_Role\_Resolution\_Problemes.md}}
+& \textbf{Descriptions des 6 scénarios} en 1 fichier & Découvrir les 6
+jeux \\
+\href{./Guide_Formateur_Jeux_de_Role.md}{\texttt{Guide\_Formateur\_Jeux\_de\_Role.md}}
+& Méthodologie d'animation & Apprendre à animer \\
+\href{./Index_Collection_Jeux_de_Role.md}{\texttt{Index\_Collection\_Jeux\_de\_Role.md}}
+& Catalogue détaillé & Comparer et choisir \\
+\end{longtable}
+
+\subsubsection{2. Kits de Jeu (DANS LES
+DOSSIERS)}\label{kits-de-jeu-dans-les-dossiers}
+
+Chaque jeu de rôle a son propre dossier avec tout le matériel nécessaire
+:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2727}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2727}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4545}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Dossier
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Contenu
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Kit complet ?
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\href{./JdR1_QRQC/}{\texttt{JdR1\_QRQC/}} & QRQC de survie & ✅ OUI \\
+\href{./JdR2_Methode_8D/}{\texttt{JdR2\_Methode\_8D/}} & Méthode 8D en
+crise & ✅ OUI \\
+\href{./JdR3_5_Pourquoi/}{\texttt{JdR3\_5\_Pourquoi/}} & 5 Pourquoi du
+mystère & ✅ OUI \\
+\href{./JdR4_Pareto/}{\texttt{JdR4\_Pareto/}} & Pareto sous pression &
+✅ OUI \\
+\href{./JdR5_Poka_Yoke/}{\texttt{JdR5\_Poka\_Yoke/}} & Poka-Yoke
+salvateur & ✅ OUI \\
+\href{./JdR6_Kaizen/}{\texttt{JdR6\_Kaizen/}} & Kaizen Blitz & ✅ OUI \\
+\end{longtable}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{🚀 DÉMARRAGE RAPIDE}\label{duxe9marrage-rapide}
+
+\subsubsection{Option A : Je découvre la
+collection}\label{option-a-je-duxe9couvre-la-collection}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Lisez \href{./GUIDE_NAVIGATION.md}{\texttt{GUIDE\_NAVIGATION.md}} ←
+  \textbf{Commencez ICI}
+\item
+  Parcourez
+  \href{./Jeux_de_Role_Resolution_Problemes.md}{\texttt{Jeux\_de\_Role\_Resolution\_Problemes.md}}
+  pour voir les 6 scénarios
+\item
+  Consultez
+  \href{./Guide_Formateur_Jeux_de_Role.md}{\texttt{Guide\_Formateur\_Jeux\_de\_Role.md}}
+  pour la méthodologie
+\end{enumerate}
+
+\subsubsection{Option B : Je veux animer un jeu spécifique (ex:
+QRQC)}\label{option-b-je-veux-animer-un-jeu-spuxe9cifique-ex-qrqc}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Ouvrez le dossier \href{./JdR1_QRQC/}{\texttt{JdR1\_QRQC/}}
+\item
+  Lisez \texttt{README.md} (résumé du scénario)
+\item
+  Imprimez \texttt{Kit\_Indices\_JDR1\_QRQC.md} (tous les indices +
+  solution)
+\item
+  Animez !
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{📞 Contact}\label{contact}
+
+\textbf{Auteur} : S. Jaubert\\
+\textbf{Organisation} : Pôle Formation UIMM - Centre-Val de Loire\\
+\textbf{Date} : Janvier 2026
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\emph{Cette collection est prête à l'emploi pour la formation !} 🎭✨
+
+\end{document}

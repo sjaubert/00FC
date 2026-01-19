@@ -1,0 +1,654 @@
+Les biais cognitifs
+Le jeu de 52 Cartes UX
+Qu'est ce que c'est ?
+Les biais cognitifs sont des mécanismes de pensée qui poussent le cerveau humain à tirer des conclusions incorrectes.
+Pour le meilleur ou pour le pire, nous pouvons les utiliser de différentes manières pour influencer le comportement des utilisatrices sur nos sites web et nos applications. Ces biais vont également impacter la collaboration entre les membres de vos équipes, les réunions et les comportements durant vos tests utilisateur.
+Les cartes sont disponibles à l'adresse suivante :
+
+Qui a créé ces cartes ?
+La liste des biais cognitifs est longue et peut sembler effrayante. Pour les rendre plus digestes, Laurence Vagner et Stéphanie Walter ont sélectionné 52 biais cognitifs sur l'ensemble de la liste et les ont classés en 5 catégories.
+
+
+Les cartes
+Nous avons classé les cartes en 5 catégories. Chaque catégorie est représentée par une couleur et un symbole.
+Prise de décision et comportement
+Raisonnement et résolution de problème
+Mémoire et souvenirs
+
+	Interview et test utilisateur 	Travail d'équipe et réunion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Cette œuvre est mise à disposition selon les termes de la Licence Creative Commons Attribution
+- Pas d'Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International.
+
+
+Comment les utiliser ?
+Ces cartes ont été conçues à des fins d'apprentissage. Elles permettent aux équipes de conception de prendre conscience de leurs biais et de leurs conséquences, intentionnelles ou inconscientes, sur les utilisatrices et utilisateurs.
+Elles servent d'aide-mémoire et de rappel. Vous pouvez les utiliser pour sensibiliser vos équipes dans des petites ateliers.
+
+1. Découvrir
+1.1 Découverte :
+Distribuez les cartes à des groupes (ou individus) et demandez aux personnes du groupe de trouver ensemble des exemples de projets ou d'interfaces où elles auraient été confrontées à ces biais. (10 minutes)
+1.2 Mise en commun :
+Chaque groupe (ou individus) présente plusieurs des biais et leurs exemples à l'ensemble des personnes participant à l'atelier. (2-3 minutes par groupe)
+
+
+Comment les utiliser ?
+
+
+2. Construire
+2.1 Soyez diaboliques (un peu) :
+Chaque groupe (ou individus) va imaginer l'expérience la plus manipulatrice possible en se servant des biais découverts sur leurs cartes et biais déjàa connus. (ou de la liste complète en anglais : uxinlux.github.io/cognitive-biases). Vous pouvez demander à construire une interface, mais également une expérience non numérique, voire faire une publicité, un spot T.V., etc. (15/20 minutes)
+2.2 Mise en commun :
+Chaque groupe (ou individus) présente son expérience en listant les différents biais utilisés. Comptez les points et découvrez quel est le groupe ou personne le/ la plus diabolique !
+
+
+Biais d'information	Paréidolie
+
+
+La tendance à rechercher d'avantage d'informations en pensant que cela nous mènera à prendre de meilleures décisions, même quand cela ne peut pas affecter l'action.
+
+Un stimulus vague et aléatoire souvent une image ou un son est perçu comme significatif. Par exemple, voir des images d'animaux ou de visages dans des nuages, etc.
+
+
+
+
+
+
+
+
+
+MÉMOIRE & SOUVENIRS	MÉMOIRE & SOUVENIRS
+
+
+
+
+Effet de bizarrerie	Effet de contexte
+
+
+Un élément bizarre est mieux retenu qu'un élément commun.
+
+La mémoire dépend du contexte. Les souvenirs hors contexte sont plus difficiles à récupérer que les souvenirs en contexte. Par exemple, le temps de rappel et la précision d'une mémoire liée au travail seront plus faibles à la maison.
+
+
+
+
+
+
+
+
+MÉMOIRE & SOUVENIRS	MÉMOIRE & SOUVENIRS
+
+
+
+
+Effet Google	Effet d'humour
+
+
+La tendance à oublier des informations facilement accessibles en ligne grâce aux moteurs de recherche Internet.
+
+On se souvient plus facilement des éléments humoristiques que des éléments non-humoristiques.
+
+
+
+
+
+
+
+
+
+
+
+MÉMOIRE & SOUVENIRS	MÉMOIRE & SOUVENIRS
+
+
+
+
+
+
+
+
+
+
+
+
+Effet de supériorité de l'image
+Les concepts appris en visionnant des images sont rappelés plus facilement et plus fréquemment que les concepts appris en visionnant leurs contreparties sous forme écrite. Les stimuli visuels ont un impact émotionnel bien plus important et restent bien plus longtemps à l'esprit que les textes.
+
+Effet de primauté
+Il est plus facile de se souvenir des éléments situés au début et à la fin d'une séquence ; les éléments au milieu sont les moins susceptibles d'être retenus.
+
+
+
+
+MÉMOIRE & SOUVENIRS	MÉMOIRE & SOUVENIRS
+
+
+
+
+Effet d'espacement	Effet verbatim
+
+
+Il est plus efficace de se rappeler une information si son exposition est répétée sur une longue période et espacée dans le temps plutôt que concentrée sur une courte durée.
+
+La tendance à se souvenir mieux de " l'essentiel " de ce que quelqu'un a dit que la formulation textuelle exacte. En effet, les souvenirs sont des représentations et non des copies exactes.
+
+
+
+
+
+
+
+
+
+MÉMOIRE & SOUVENIRS	MÉMOIRE & SOUVENIRS
+
+
+
+
+
+
+
+
+
+
+
+
+Effet d'isolation (Von Restorff)
+La tendance à mieux se remémorer celui qui diffère le plus des autres lors d'une exposition à plusieurs objets similaires.
+
+
+ Mémoire & souvenirs
+
+
+Ces biais peuvent influencer des choix en faisant appel à la mémoire ou aux souvenirs de la personne concernée.
+
+
+
+
+MÉMOIRE & SOUVENIRS
+
+
+
+
+
+
+Biais d'automatisation
+La tendance à privilégier les résultats des systèmes automatisés au dépend de ceux générés par des systèmes
+non-automatisés. Elle peut conduire à des informations automatisées erronées, annulant les décisions correctes qui auraient été prises par des systèmes non automatisés.
+
+Effet de groupe
+La tendance à faire (ou à croire) des choses parce que beaucoup d'autres personnes font (ou croient) la même chose. Relatif à la pensée de groupe et au comportement du troupeau.
+
+
+
+
+
+RAISONNEMENT & RÉSOLUTION DE PROBLÈMES	RAISONNEMENT & RÉSOLUTION DE PROBLÈMES
+
+
+
+
+
+
+
+
+
+
+
+Biais de confirmation
+La tendance à rechercher, à interpréter, à privilégier et à mémoriser les informations qui confirment ses idées préconçues ou ses propres hypothèses et à accorder moins de poids aux autres.
+
+Malédiction
+de la connaissance
+La tendance des personnes expertes dans un domaine à perdre la capacité à transmettre leur savoir et à se mettre à la place des non-initiées au fur et à mesure de l'accroissement de leur savoir dans ce domaine.
+
+
+
+
+
+
+
+RAISONNEMENT & RÉSOLUTION DE PROBLÈMES	RAISONNEMENT & RÉSOLUTION DE PROBLÈMES
+
+
+
+
+
+Actualisation hyperbolique
+La tendance à préférer davantage les gains immédiats par rapport aux gains ultérieurs. Lorsque la personne a le choix entre deux récompenses, elle aura tendance à préférer celle qu'elle peut recevoir tout de suite, même si sa valeur est inférieure à l'autre récompense.
+
+Loi de l'instrument
+La confiance excessive dans un outil ou des méthodes familières, ignorant ou sous-estimant les approches alternatives. "Si tout ce que vous avez est un marteau, tout ressemble à un clou."
+
+
+
+
+
+
+RAISONNEMENT & RÉSOLUTION DE PROBLÈMES	RAISONNEMENT & RÉSOLUTION DE PROBLÈMES
+
+
+
+
+
+
+
+
+
+
+
+Biais pro-innovation
+La tendance à avoir un optimisme excessif ou préférence à l'égard d'une option ou invention du simple fait de son caractère novateur, sans en identifier les limites et les faiblesses.
+
+Effet de rime
+La tendance à percevoir les dictons et aphorismes comme plus précis et véridiques lorsqu'ils riment. " Blanc sur rouge rien ne bouge, rouge sur blanc, tout fout l'camp "
+
+
+
+
+
+
+
+
+
+RAISONNEMENT & RÉSOLUTION DE PROBLÈMES	RAISONNEMENT & RÉSOLUTION DE PROBLÈMES
+
+
+
+
+
+
+Loi Weber - Fechner
+La difficulté à comparer de petites différences en grandes quantités. Le changement est perceptible selon l'importance/la magnitude qu'avait cette chose originellement. Par exemple, une accélération du temps de chargement sur un site lent de 10% seulement permet de percevoir le site comme plus performant.
+
+
+
+   Raisonnement & résolution de problème
+Ces biais peuvent changer la manière de raisonner ou de résoudre des problèmes et mener les personnes à des conclusions erronées.
+
+
+
+
+
+RAISONNEMENT & RÉSOLUTION DE PROBLÈMES
+
+
+
+
+
+
+Biais d'ancrage
+La tendance à s'appuyer trop lourdement (ou à "ancrer") sur un trait ou une information pour prendre des décisions. C'est généralement sur la première information acquise sur ce sujet.
+
+Biais de disponibilité
+La tendance à privilégier et surestimer les informations immédiatement disponibles à notre mémoire, en particulier lorsqu'elles sont stéréotypées. Les personnes s'abstiennent de rechercher de nouvelles informations qui pourraient éclairer la question sous un autre jour, de manière plus générale, plus rationnelle, plus objective
+
+
+
+
+PRISE DE DÉCISION & COMPORTEMENTS	PRISE DE DÉCISION & COMPORTEMENTS
+
+
+
+
+
+
+
+
+
+
+
+
+Effet par défaut
+Lorsqu'on a le choix le choix entre plusieurs options, la tendance à privilégier celle par défaut.
+
+Effet de dénomination
+La tendance à dépenser plus d'argent quand il est libellé en petites quantités (pièces de monnaie, petits billets) plutôt que de grandes quantités (gros billets, factures).
+
+
+
+
+
+
+
+
+
+PRISE DE DÉCISION & COMPORTEMENTS	PRISE DE DÉCISION & COMPORTEMENTS
+
+
+
+
+
+
+Aversion
+à la dépossession
+
+La tendance à exiger beaucoup plus d'abandonner un objet possédé qu'on ne serait prêts à payer pour l'acquérir. Son corollaire: la tendance à attribuer une plus grande valeur à un objet que l'on possède, qu'à un même objet que l'on ne possède pas.
+
+Effet Forer / Barnum
+La tendance des individus à croire que des descriptions de la personnalité s'appliquent et ont spécialement été conçues pour eux. Ces descriptions sont en fait suffisamment vagues et générales pour s'appliquer à un large éventail de personnes. (s'applique à l'astrologie, la divination, et certains types de tests de personnalité).
+
+
+
+
+PRISE DE DÉCISION & COMPORTEMENTS	PRISE DE DÉCISION & COMPORTEMENTS
+
+
+
+
+
+
+
+
+
+
+
+
+Effet IKEA
+La tendance à accorder une valeur démesurée aux objets qu'on a partiellement assemblé, tels que les meubles IKEA, quelle que soit la qualité du résultat final.
+
+Effet de vérité illusoire
+La tendance à croire qu'un énoncé est vrai s'il est plus facile à traiter ou s'il a été énoncé plusieurs fois, quelle que soit sa véracité réelle.
+
+
+
+
+
+
+
+
+
+PRISE DE DÉCISION & COMPORTEMENTS	PRISE DE DÉCISION & COMPORTEMENTS
+
+
+
+
+
+
+Effet
+de simple exposition
+
+La tendance à exprimer un sentiment positif ou une attirance pour les choses simplement par familiarité avec celles-ci.
+
+Illusion monétaire
+La tendance à se concentrer sur la valeur nominale (valeur faciale) de la monnaie plutôt que sur sa valeur en termes de pouvoir d'achat.
+
+
+
+
+
+
+
+
+
+PRISE DE DÉCISION & COMPORTEMENTS	PRISE DE DÉCISION & COMPORTEMENTS
+
+
+
+
+
+
+
+
+
+
+
+
+Biais de statu quo
+La résistance au changement et attitude mentale dans laquelle toute nouveauté est perçue comme engendrant plus de risques que d'avantages. En conséquence les individus aiment que les choses restent relativement les mêmes ou évoluent le moins possible.
+
+Biais d'unité
+La tendance à vouloir absolument finir les tâches commencées. Cette logique s'applique au cinéma mais également pour les portions de plat : la taille d'une portion est perçue comme appropriée, poussant les personnes à " finir leur assiette " même si c'est trop pour elles.
+
+
+
+
+
+
+PRISE DE DÉCISION & COMPORTEMENTS	PRISE DE DÉCISION & COMPORTEMENTS
+
+
+
+
+
+
+Biais d'autorité
+La tendance à surévaluer ou attribuer une plus grande précision à l'opinion d'une figure faisant office d'autorité sur un sujet et à être plus influencée par cette opinion.
+
+
+Prise de décision & comportement
+
+Ces biais peuvent orienter la prise de décision ou le comportement de la personne, en se basant sur les choix proposés ou des informations mises en valeurs.
+
+
+
+
+PRISE DE DÉCISION & COMPORTEMENTS
+
+
+
+
+Effet Dunning - Kruger	Effet de cadrage
+
+
+La tendance des personnes non-qualifiées à surestimer leurs propres capacitées et celle des personnes expertes à sous-estimer les leurs
+
+La tendance à tirer des conclusions différentes de la même information, en fonction de la manière dont cette information est présentée.
+
+
+
+
+
+
+
+
+
+
+TRAVAIL D'ÉQUIPE &RÉUNIONS	TRAVAIL D'ÉQUIPE &RÉUNIONS
+
+
+
+
+
+"Not invented here" NIH	Planification fallacieuse
+
+
+L'aversion pour le contact ou l'utilisation de produits, recherches, technologies, normes ou connaissances développées en dehors d'un groupe et de son contrôle. (littéralement " pas inventé ici ").
+
+La tendance à sous-estimer les délais d'exécution de ses propres tâches à accomplir, quel que soit son niveau de compétence dans le domaine. Ne s'applique qu'à l'auto-estimation de ses tâches, pas à l'estimation externe.
+
+
+
+
+
+
+
+TRAVAIL D'ÉQUIPE &RÉUNIONS	TRAVAIL D'ÉQUIPE &RÉUNIONS
+
+
+
+
+Réactance	Dévaluation réactive
+
+
+La réaction négative et mécanisme de défense psychologique mis en place pour résister à une tentative perçue de restreindre des liberté et choix d'un individu. (Psychologie inversée).
+
+La tendance à dévaluer des propositions uniquement parce qu'elles sont supposées provenir d'un adversaire.
+
+
+
+
+
+
+
+
+
+TRAVAIL D'ÉQUIPE &RÉUNIONS	TRAVAIL D'ÉQUIPE &RÉUNIONS
+
+
+
+
+
+
+
+
+
+
+
+
+        Biais d'attribution de groupe
+La tendance à croire que les caractéristiques d'un membre du groupe individuel reflètent le groupe dans son ensemble ou la tendance à supposer que les résultats de la décision du groupe reflètent les préférences des membres du groupe, même lorsque des informations suggèrent clairement le contraire.
+
+Biais d'autocomplaisance
+La tendance à attribuer nos réussites à nos qualités propres (causes internes) et nos échecs à des facteurs ne dépendant pas de nous (causes externes), afin de maintenir une image positive de soi.
+
+
+
+TRAVAIL D'ÉQUIPE &RÉUNIONS	TRAVAIL D'ÉQUIPE &RÉUNIONS
+
+
+
+
+
+
+     Théorie de la justification du système
+La tendance à défendre et à justifier l'ordre établi même lorsque celui-ci est injuste. Les arrangements sociaux, économiques et politiques existants ont tendance à être préférés et les alternatives décriées, parfois même au détriment des intérêts personnels et collectifs.
+
+Effet pom-pom girl
+La tendance des personnes/élements à paraître plus attrayantes dans un groupe que de manière isolée.
+
+
+
+TRAVAIL D'ÉQUIPE & RÉUNIONS	TRAVAIL D'ÉQUIPE & RÉUNIONS
+
+
+
+
+
+Travail d'équipe & réunions
+
+Ces biais peuvent modifier la façon dont des groupes de personnes vont travailler collectivement et interagir en influençant leurs choix, que ce soit dans une salle de réunion ou dans leur vie quotidienne en général
+
+
+
+Biais de l'angle mort	Biais de congruence
+
+
+La tendance à se considérer moins biaisé que les autres, ou à identifier plus de biais cognitifs chez les autres que chez soi.
+
+La tendance à vouloir tester exclusivement une hypothèse sans tester les hypothèses alternatives. Dans une expérience, un sujet testera sa propre hypothèse au lieu d'essayer de la réfuter.
+
+
+
+
+
+
+
+
+
+INTERVIEWS & TEST UTILISATEUR	INTERVIEWS & TEST UTILISATEUR
+
+
+
+
+L'effet de courtoisie	Biais rétrospectif
+
+
+La tendance à donner une opinion plus correcte sur le plan social que sa véritable opinion, afin d'éviter d'offenser qui que ce soit.
+
+Parfois appelée l'effet " je savais tout ", la tendance à voir les événements passés comme prévisibles au moment où ils se sont produits.
+
+
+
+
+
+
+
+
+
+
+INTERVIEWS & TEST UTILISATEUR	INTERVIEWS & TEST UTILISATEUR
+
+
+
+Illusion de validité	Biais de négativité
+
+
+La tendance à surestimer sa capacité d'interpréter et prédire avec précision le résultat d'une analyse, en particulier lorsque les informations disponibles sont cohérentes ou corrélées et que les données " racontent une histoire cohérente ".
+
+Phénomène psychologique par lequel les humains se souviennent davantage des souvenirs déplaisants que des souvenirs positifs.
+
+
+
+
+
+
+
+INTERVIEWS & TEST UTILISATEUR	INTERVIEWS & TEST UTILISATEUR
+
+
+
+
+Biais d'observation	Stéréotype
+
+
+La tendance des chercheurs à manipuler inconsciemment une expérience ou interprète de manière erronée les données afin d'atteindre ce résultat spécifique attendu au départ.
+
+La tendance à croire qu'un membre d'un groupe présente certaines caractéristiques perçues comme communes à ce groupe sans disposer d'informations réelles sur cet individu.
+
+
+
+
+
+
+
+
+
+INTERVIEWS & TEST UTILISATEUR	INTERVIEWS & TEST UTILISATEUR
+
+
+
+
+
+Règle du pic et de la fin
+La tendance à juger une expérience en grande partie basée sur la façon dont on se sentait à son apogée (son point le plus intense) et à sa fin, plutôt que sur la somme totale ou moyenne de chaque moment de l'expérience.
+
+
+  Interview & test utilisateur
+Ces biais peuvent vous influencer directement en tant que designer, lors de vos entretiens ou tests, et risquent de modifier le résultat de votre recherche. Ils influencent les personnes que vous allez interviewer ou qui vont tester vos produits et services.
+
+
+
+INTERVIEWS & TEST UTILISATEUR
+
+

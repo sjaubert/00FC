@@ -1,0 +1,29 @@
+ce fichier au format .zip contient
+
+Les diapositives du cours 
+1/ en version pdf
+2/ en version powerpoint
+le répertoire "vidéo" reprend celles de tous les chapitres et leurs sous-titre
+
+Les mises à jour des formations sont fréquentes : pour télécharger les toutes dernières versions 
+des diapositives, utilisez la page du cours sur le site http://gestiondeprojet.pm/
+
+
+=========
+Licence 
+=========
+
+Ces formations sont sous licence Creative Commons « Non Commercial » (cc-by-SA-NC plus précisément).
+
+Elles sont donc gratuites pour votre usage personnel ou dans un cadre 100% bénévole, mais si le formateur 
+est rémunéré ou le cours dispensé par une université, vous devez obtenir l’autorisation avant 
+de les intégrer dans votre cursus de formation.
+
+Les tarifs pour une formation varient de 20€/personne formée (pour les entreprises) à 5€/personne 
+(pour les étudiants des universités publiques), avec une dégressivité selon le nombre d’apprenants.
+
+* Vous êtes professionnel en formation ou étudiant ? Vérifiez http://goo.gl/s2yRtv que votre organisation 
+est dans la légalité en vous demandant de suivre ce cours. Si ce n'est pas le cas, n'hésitez pas à nous le 
+signaler ainsi qu'au directeur de votre établissement
+
+* Vous êtes RH ou formateur ? Précisez http://goo.gl/2uGj8s vos besoins, nous vous enverrons un devis.
