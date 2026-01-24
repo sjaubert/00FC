@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12 Cartes - Classification des Industries</title>
+    <style>
+        @media print {
+            @page {
+                size: A4;
+                margin: 10mm;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .instructions {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .instructions h3 {
+            margin-top: 0;
+            color: #1976d2;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10mm;
+            margin-top: 20px;
+        }
+        
+        .card {
+            border: 2px dashed #666;
+            border-radius: 8px;
+            padding: 15px;
+            background: white;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            position: relative;
+        }
+        
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .card-number {
+            position: absolute;
+            top: 5px;
+            left: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #999;
+        }
+        
+        .card.base {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .card.transformation {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border-color: #f093fb;
+        }
+        
+        .card.pointe {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border-color: #4facfe;
+        }
+        
+        .company-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .company-activity {
+            font-size: 13px;
+            opacity: 0.95;
+            line-height: 1.3;
+        }
+        
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 8px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .legend-color {
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            border: 2px solid #ddd;
+        }
+        
+        .legend-color.base {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .legend-color.transformation {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .legend-color.pointe {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .legend-text {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .print-button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .print-button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏭 Classification des Industries - 12 Cartes</h1>
+        
+        <div class="instructions no-print">
+            <h3>📋 Instructions de préparation :</h3>
+            <ul>
+                <li>Imprimer cette page en couleur sur papier cartonné (200-250g)</li>
+                <li>Découper les cartes le long des lignes pointillées</li>
+                <li>Les participants devront classer ces 12 cartes en 3 catégories</li>
+                <li>Répartir en 3 équipes de participants</li>
+            </ul>
+            <button class="print-button" onclick="window.print()">🖨️ Imprimer les cartes</button>
+        </div>
+        
+        <div class="cards-grid">
+            <!-- INDUSTRIE DE BASE -->
+            <div class="card base">
+                <span class="card-number">1</span>
+                <div class="company-name">EDF</div>
+                <div class="company-activity">Production d'électricité<br>(nucléaire, hydraulique)</div>
+            </div>
+            
+            <div class="card base">
+                <span class="card-number">2</span>
+                <div class="company-name">TOTAL ENERGIES</div>
+                <div class="company-activity">Extraction et raffinage<br>pétrole/gaz</div>
+            </div>
+            
+            <div class="card base">
+                <span class="card-number">3</span>
+                <div class="company-name">ARCELORMITTAL</div>
+                <div class="company-activity">Sidérurgie<br>(production acier)</div>
+            </div>
+            
+            <div class="card base">
+                <span class="card-number">4</span>
+                <div class="company-name">LAFARGE</div>
+                <div class="company-activity">Cimenterie et matériaux<br>de construction</div>
+            </div>
+            
+            <!-- INDUSTRIE DE TRANSFORMATION -->
+            <div class="card transformation">
+                <span class="card-number">5</span>
+                <div class="company-name">RENAULT</div>
+                <div class="company-activity">Assemblage<br>automobile</div>
+            </div>
+            
+            <div class="card transformation">
+                <span class="card-number">6</span>
+                <div class="company-name">L'ORÉAL</div>
+                <div class="company-activity">Cosmétiques et<br>produits de beauté</div>
+            </div>
+            
+            <div class="card transformation">
+                <span class="card-number">7</span>
+                <div class="company-name">LACTALIS</div>
+                <div class="company-activity">Agroalimentaire<br>(transformation lait)</div>
+            </div>
+            
+            <div class="card transformation">
+                <span class="card-number">8</span>
+                <div class="company-name">MICHELIN</div>
+                <div class="company-activity">Fabrication<br>de pneumatiques</div>
+            </div>
+            
+            <!-- INDUSTRIE DE POINTE -->
+            <div class="card pointe">
+                <span class="card-number">9</span>
+                <div class="company-name">THALÈS</div>
+                <div class="company-activity">Électronique de défense<br>et aérospatiale</div>
+            </div>
+            
+            <div class="card pointe">
+                <span class="card-number">10</span>
+                <div class="company-name">DASSAULT AVIATION</div>
+                <div class="company-activity">Avions de combat et<br>jets d'affaires</div>
+            </div>
+            
+            <div class="card pointe">
+                <span class="card-number">11</span>
+                <div class="company-name">STMICRO-<br>ELECTRONICS</div>
+                <div class="company-activity">Semi-conducteurs et<br>puces électroniques</div>
+            </div>
+            
+            <div class="card pointe">
+                <span class="card-number">12</span>
+                <div class="company-name">SAFRAN</div>
+                <div class="company-activity">Moteurs d'avion et<br>équipements aéronautiques</div>
+            </div>
+        </div>
+        
+        <div class="legend no-print">
+            <div class="legend-item">
+                <div class="legend-color base"></div>
+                <div class="legend-text">Industrie de BASE<br><small>(lourde)</small></div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color transformation"></div>
+                <div class="legend-text">Industrie de<br>TRANSFORMATION</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color pointe"></div>
+                <div class="legend-text">Industrie de<br>POINTE</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
