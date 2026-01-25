@@ -1,10 +1,10 @@
-# Guide de Référence Rapide VSM
+﻿# Guide de Référence Rapide VSM
 
 ## Symboles et Formules Essentiels
 
 ---
 
-## 🔣 Symboles VSM
+## Symboles VSM
 
 ### Flux de Matières
 
@@ -14,7 +14,7 @@
 │                                                 │
 │     ┌──────┐                                    │
 │     │      │  Usine ou Entreprise               │
-│     │ 🏭   │                                    │
+│     │    │                                    │
 │     └──────┘                                    │
 └─────────────────────────────────────────────────┘
 
@@ -38,7 +38,7 @@
 ┌─────────────────────────────────────────────────┐
 │ TRANSPORT                                       │
 │                                                 │
-│     🚚  ─────▶  Camion avec flèche              │
+│       ─────▶  Camion avec flèche              │
 │                                                 │
 └─────────────────────────────────────────────────┘
 
@@ -63,7 +63,7 @@
 ┌─────────────────────────────────────────────────┐
 │ INFORMATION ÉLECTRONIQUE                        │
 │                                                 │
-│     ⚡─────▶    Éclair (EDI, Email, ERP)        │
+│     ─────▶    Éclair (EDI, Email, ERP)        │
 │                                                 │
 └─────────────────────────────────────────────────┘
 
@@ -124,7 +124,7 @@
 ┌─────────────────────────────────────────────────┐
 │ ÉCLAIR KAIZEN                                   │
 │                                                 │
-│       ⚡                                         │
+│                                                │
 │     KAIZEN     Marque une amélioration          │
 │               nécessaire                        │
 └─────────────────────────────────────────────────┘
@@ -132,14 +132,16 @@
 ┌─────────────────────────────────────────────────┐
 │ OPÉRATEUR                                       │
 │                                                 │
-│       👤       Icône d'opérateur                │
+│              Icône d'opérateur                │
 │                                                 │
 └─────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 📐 Formules Essentielles
+<div style="page-break-after: always;"></div>
+
+## Formules Essentielles
 
 ### 1. Takt Time (Le Métronome de l'Usine)
 
@@ -302,9 +304,11 @@ TRS = Disponibilité × Performance × Qualité
 
 ---
 
-## ⚠️ Règles d'Or VSM
+<div style="page-break-after: always;"></div>
 
-### À FAIRE ✅
+## ️ Règles d'Or VSM
+
+### À FAIRE
 
 1. **Toujours dessiner à la main** (crayon + papier)
 2. **Commencer par le client** (en haut à droite)
@@ -314,32 +318,32 @@ TRS = Disponibilité × Performance × Qualité
 6. **Calculer le Takt Time en premier**
 7. **Créer un plan d'action** après la VSM
 
-### À NE PAS FAIRE ❌
+### À NE PAS FAIRE
 
-1. ❌ Utiliser un ordinateur pour dessiner l'état actuel
-2. ❌ Modifier le Takt Time pour l'adapter aux machines
-3. ❌ Dessiner sans aller voir le processus réel
-4. ❌ Oublier les flux d'information
-5. ❌ Négliger la ligne de temps
-6. ❌ Créer une VSM sans plan d'action
-7. ❌ Tout vouloir améliorer en même temps
-
----
-
-## 🎯 Les 8 Questions de l'État Futur
-
-1. ✓ Quel est le Takt Time ?
-2. ✓ Produisons-nous sur stock ou à la commande ?
-3. ✓ Où peut-on créer du flux continu ?
-4. ✓ Où placer des supermarchés ?
-5. ✓ Quel est le processus régulateur (Pacemaker) ?
-6. ✓ Comment niveler la production ?
-7. ✓ Quel incrément de travail au Pacemaker ?
-8. ✓ Quels chantiers Kaizen sont nécessaires ?
+1. Utiliser un ordinateur pour dessiner l'état actuel
+2. Modifier le Takt Time pour l'adapter aux machines
+3. Dessiner sans aller voir le processus réel
+4. Oublier les flux d'information
+5. Négliger la ligne de temps
+6. Créer une VSM sans plan d'action
+7. Tout vouloir améliorer en même temps
 
 ---
 
-## 📊 Boîte de Données Type
+## Les 8 Questions de l'État Futur
+
+1. Quel est le Takt Time ?
+2. Produisons-nous sur stock ou à la commande ?
+3. Où peut-on créer du flux continu ?
+4. Où placer des supermarchés ?
+5. Quel est le processus régulateur (Pacemaker) ?
+6. Comment niveler la production ?
+7. Quel incrément de travail au Pacemaker ?
+8. Quels chantiers Kaizen sont nécessaires ?
+
+---
+
+## Boîte de Données Type
 
 ```
 ┌─────────────────────┐
@@ -356,9 +360,9 @@ TRS = Disponibilité × Performance × Qualité
 
 ---
 
-## 🚦 Seuils d'Alerte
+## Seuils d'Alerte
 
-| Indicateur | 🟢 Bon | 🟡 Attention | 🔴 Critique |
+| Indicateur |  Bon |  Attention |  Critique |
 |------------|--------|--------------|-------------|
 | Ratio de tension | < 10 | 10 - 100 | > 100 |
 | Lead Time | < 1 jour | 1 - 5 jours | > 5 jours |
@@ -368,7 +372,9 @@ TRS = Disponibilité × Performance × Qualité
 
 ---
 
-## 📝 Checklist VSM
+<div style="page-break-after: always;"></div>
+
+## Checklist VSM
 
 ### État Actuel
 
@@ -402,4 +408,4 @@ TRS = Disponibilité × Performance × Qualité
 
 ---
 
-**📌 Imprimez ce guide et gardez-le avec vous lors de vos cartographies VSM !**
+**Imprimez ce guide et gardez-le avec vous lors de vos cartographies VSM !**

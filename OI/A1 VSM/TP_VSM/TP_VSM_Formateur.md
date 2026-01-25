@@ -55,6 +55,8 @@ Ratio de Tension = Temps de Traversée (Lead Time) / Temps de Valeur Ajoutée
 
 ---
 
+<div style="page-break-after: always;"></div>
+
 ## TP 1 : Cartographie de l'État Actuel
 
 ### Objectif
@@ -146,6 +148,8 @@ Seulement 0,1% du temps est à valeur ajoutée !
 ```
 
 ---
+
+<div style="page-break-after: always;"></div>
 
 ## TP 2 : Calcul du Takt Time et Dimensionnement
 
@@ -284,6 +288,8 @@ Résultat : 4 opérateurs nécessaires
 
 ---
 
+<div style="page-break-after: always;"></div>
+
 ## TP 3 : Identification des Gaspillages (Mudas)
 
 ### Objectif
@@ -378,6 +384,8 @@ Apprendre à identifier les 7+1 gaspillages dans un processus réel.
 </details>
 
 ---
+
+<div style="page-break-after: always;"></div>
 
 ## TP 4 : Conception de l'État Futur
 
@@ -483,6 +491,8 @@ Réduction de 87% !
 | Points de planification | 4 | 1 | **-75%** |
 
 ---
+
+<div style="page-break-after: always;"></div>
 
 ## TP 5 : Mise en Place du Management Visuel Kanban
 
@@ -724,6 +734,8 @@ A - B - A - C - A - B - A - A - B - C
 </details>
 
 ---
+
+<div style="page-break-after: always;"></div>
 
 ## Cas Pratique Intégral : Usine ABC
 
@@ -997,6 +1009,8 @@ Ratio = 850 000 / 155 = 5 484
 </details>
 
 ---
+
+<div style="page-break-after: always;"></div>
 
 ## Annexes : Symboles et Formules
 
