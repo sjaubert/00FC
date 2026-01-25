@@ -1,0 +1,39 @@
+\babel@toc {french}{}\relax 
+\contentsline {section}{\numberline {1}Introduction à la correction}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Symboles VSM utilisés}{3}{subsection.1.1}%
+\contentsline {section}{\numberline {2}TP 1 : Cartographie de l'État Actuel - Flash-Metal}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Données de l'exercice - Rappel}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Étape 1 : Calcul du Takt Time}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Étape 2 : Calcul des jours de stock}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Étape 3 : Calcul des temps et du Lead Time}{5}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Cartographie VSM État Actuel}{5}{subsection.2.5}%
+\contentsline {section}{\numberline {3}TP 2 : Calcul du Takt Time et Dimensionnement}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Exercice 1A : Usine ABC}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Exercice 1B : Changement de demande}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Exercice 2 : Dimensionnement des ressources}{6}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Exercice 3 : Résoudre un goulot d'étranglement}{7}{subsection.3.4}%
+\contentsline {section}{\numberline {4}TP 3 : Identification des Gaspillages (Mudas)}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Exercice : Chasse aux Mudas}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Exercice : Impact financier}{8}{subsection.4.2}%
+\contentsline {section}{\numberline {5}TP 4 : Conception de l'État Futur}{9}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Les 8 questions structurantes appliquées à Flash-Metal}{9}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Schéma VSM État Futur}{10}{subsection.5.2}%
+\contentsline {section}{\numberline {6}TP 5 : Mise en Place du Management Visuel Kanban}{11}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Exercice : Dimensionner un système Kanban}{11}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Exercice : Concevoir un tableau Heijunka}{11}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Cas Pratique Intégral : Usine ABC}{13}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Mission 1 : Analyse État Actuel}{13}{subsection.7.1}%
+\contentsline {subsubsection}{\numberline {7.1.1}1. Calcul du Takt Time}{13}{subsubsection.7.1.1}%
+\contentsline {subsubsection}{\numberline {7.1.2}2. Jours de stock}{13}{subsubsection.7.1.2}%
+\contentsline {subsubsection}{\numberline {7.1.3}3. Temps de valeur ajoutée}{13}{subsubsection.7.1.3}%
+\contentsline {subsubsection}{\numberline {7.1.4}4. Ratio de tension}{13}{subsubsection.7.1.4}%
+\contentsline {subsection}{\numberline {7.2}Mission 2 : Conception État Futur}{13}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Mission 3 : Quantification des gains}{14}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Mission 4 : Plan d'Action Kaizen}{15}{subsection.7.4}%
+\contentsline {section}{\numberline {8}Synthèse et Points Clés}{16}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Les 10 commandements de la VSM}{16}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Erreurs fréquentes à éviter}{16}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Formules à retenir absolument}{17}{subsection.8.3}%
+\contentsline {section}{\numberline {9}Conclusion}{18}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Ce qu'il faut retenir}{18}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Pour aller plus loin}{18}{subsection.9.2}%
