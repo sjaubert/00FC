@@ -1,10 +1,10 @@
-# Travaux Pratiques VSM - Value Stream Mapping
+﻿# Travaux Pratiques VSM - Value Stream Mapping
 
 ## Formation Complète avec Exemples Pratiques
 
 ---
 
-## 📋 Table des Matières
+## Table des Matières
 
 1. [Introduction à la VSM](#1-introduction-à-la-vsm)
 2. [TP 1 : Cartographie de l'État Actuel](#tp-1--cartographie-de-létat-actuel)
@@ -36,8 +36,8 @@ La **Value Stream Mapping** (Cartographie de la Chaîne de Valeur) est un outil 
 
 **Exemples :**
 
-- ✅ **Valeur Ajoutée** : Souder deux pièces, peindre, assembler
-- ❌ **Non-Valeur Ajoutée** : Attendre, transporter, stocker, retoucher
+- **Valeur Ajoutée** : Souder deux pièces, peindre, assembler
+- **Non-Valeur Ajoutée** : Attendre, transporter, stocker, retoucher
 
 #### Le Ratio de Tension
 
@@ -57,11 +57,11 @@ Ratio de Tension = Temps de Traversée (Lead Time) / Temps de Valeur Ajoutée
 
 ## TP 1 : Cartographie de l'État Actuel
 
-### 🎯 Objectif
+### Objectif
 
 Apprendre à dessiner une VSM de l'état actuel en utilisant les symboles standards.
 
-### 📝 Cas d'Étude : "Flash-Metal"
+### Cas d'Étude : "Flash-Metal"
 
 **Contexte :**
 Flash-Metal fabrique des supports métalliques pour l'industrie automobile. Le processus comprend 4 étapes principales.
@@ -94,7 +94,7 @@ Flash-Metal fabrique des supports métalliques pour l'industrie automobile. Le p
 - Le client envoie une prévision mensuelle (par email)
 - Le planning de production envoie un ordre hebdomadaire à chaque poste (par papier)
 
-### 🛠️ Exercice Pratique
+### ️ Exercice Pratique
 
 **Matériel nécessaire :**
 
@@ -122,7 +122,7 @@ Flash-Metal fabrique des supports métalliques pour l'industrie automobile. Le p
    - Exemple : 1200 pcs / 480 pcs/jour = 2,5 jours
    - VA (Valeur Ajoutée) = somme des temps de cycle
 
-### ✅ Corrigé
+### Corrigé
 
 **Calculs de la ligne de temps :**
 
@@ -149,19 +149,19 @@ Seulement 0,1% du temps est à valeur ajoutée !
 
 ## TP 2 : Calcul du Takt Time et Dimensionnement
 
-### 🎯 Objectif
+### Objectif
 
 Maîtriser le calcul du Takt Time et dimensionner les ressources en conséquence.
 
-### 📐 Formule du Takt Time
+### Formule du Takt Time
 
 ```
 Takt Time = Temps Disponible / Demande Client
 ```
 
-> **⚠️ Règle d'Or** : Le Takt Time est la voix du client, il ne se négocie JAMAIS !
+> **️ Règle d'Or** : Le Takt Time est la voix du client, il ne se négocie JAMAIS !
 
-### 📝 Exercice 1 : Calculs de Base
+### Exercice 1 : Calculs de Base
 
 **Situation A - Usine ABC**
 
@@ -173,7 +173,7 @@ Takt Time = Temps Disponible / Demande Client
 **Question :** Quel est le Takt Time ?
 
 <details>
-<summary>💡 Réponse</summary>
+<summary> Réponse</summary>
 
 ```
 Takt Time = 54 000 s / 450 pcs = 120 secondes
@@ -193,7 +193,7 @@ Takt Time = 54 000 s / 450 pcs = 120 secondes
 **Question :** Quel est le nouveau Takt Time ?
 
 <details>
-<summary>💡 Réponse</summary>
+<summary> Réponse</summary>
 
 ```
 Takt Time = 54 000 s / 600 pcs = 90 secondes
@@ -205,7 +205,7 @@ Takt Time = 54 000 s / 600 pcs = 90 secondes
 
 ---
 
-### 📝 Exercice 2 : Dimensionnement des Ressources
+### Exercice 2 : Dimensionnement des Ressources
 
 **Contexte :** Vous créez une cellule de montage en flux continu.
 
@@ -216,45 +216,45 @@ Takt Time = 54 000 s / 600 pcs = 90 secondes
 
 **Question :** Combien d'opérateurs sont nécessaires ?
 
-### 🧮 Formule de Dimensionnement
+### Formule de Dimensionnement
 
 ```
 Nombre d'Opérateurs = Temps de Cycle Total / Takt Time
 ```
 
 <details>
-<summary>💡 Réponse Détaillée</summary>
+<summary> Réponse Détaillée</summary>
 
 ```
 Nombre d'opérateurs = 187 s / 60 s = 3,11
 
-⚠️ On arrondit TOUJOURS à l'entier supérieur
+️ On arrondit TOUJOURS à l'entier supérieur
 
 Résultat : 4 opérateurs nécessaires
 ```
 
 **Vérification :**
 
-- Avec 4 opérateurs : 187 / 4 = 46,75 s par opérateur ✅ (< 60s)
-- Avec 3 opérateurs : 187 / 3 = 62,3 s par opérateur ❌ (> 60s → goulot !)
+- Avec 4 opérateurs : 187 / 4 = 46,75 s par opérateur  (< 60s)
+- Avec 3 opérateurs : 187 / 3 = 62,3 s par opérateur  (> 60s → goulot !)
 
 </details>
 
 ---
 
-### 📝 Exercice 3 : Résoudre un Goulot d'Étranglement
+### Exercice 3 : Résoudre un Goulot d'Étranglement
 
 **Situation Critique :**
 
 - Takt Time : 60 secondes
 - Temps de cycle de la machine de peinture : 75 secondes
 
-**❌ Problème** : TC > TT → Vous ne pouvez pas satisfaire la demande !
+**Problème** : TC > TT → Vous ne pouvez pas satisfaire la demande !
 
 **Question :** Quelles sont les 4 solutions possibles, classées par priorité Lean ?
 
 <details>
-<summary>💡 Solutions</summary>
+<summary> Solutions</summary>
 
 ### 1. **Kaizen (Amélioration Continue)** - PRIORITÉ 1
 
@@ -278,7 +278,7 @@ Résultat : 4 opérateurs nécessaires
 ### 4. **Heures Supplémentaires** - SOLUTION TEMPORAIRE
 
 - **Action** : Augmenter le temps disponible
-- **⚠️ Attention** : Coûteux et ne résout pas le problème de fond
+- **️ Attention** : Coûteux et ne résout pas le problème de fond
 
 </details>
 
@@ -286,15 +286,15 @@ Résultat : 4 opérateurs nécessaires
 
 ## TP 3 : Identification des Gaspillages (Mudas)
 
-### 🎯 Objectif
+### Objectif
 
 Apprendre à identifier les 7+1 gaspillages dans un processus réel.
 
-### 📚 Les 8 Gaspillages (Mudas)
+### Les 8 Gaspillages (Mudas)
 
 | Muda | Description | Impact |
 |------|-------------|---------|
-| **1. Surproduction** | Produire plus ou plus tôt que nécessaire | 👑 Le PIRE des gaspillages |
+| **1. Surproduction** | Produire plus ou plus tôt que nécessaire |  Le PIRE des gaspillages |
 | **2. Stocks** | Matières premières, en-cours, produits finis excessifs | Immobilise du cash |
 | **3. Attentes** | Opérateur ou machine inactifs | Gaspille du temps |
 | **4. Transports** | Déplacements inutiles de matières | Risque de dommages |
@@ -303,7 +303,7 @@ Apprendre à identifier les 7+1 gaspillages dans un processus réel.
 | **7. Défauts** | Rebuts, retouches, contrôles | Coût de non-qualité |
 | **8. Potentiel humain** | Compétences non utilisées | Démotivation |
 
-### 📝 Exercice : Chasse aux Mudas
+### Exercice : Chasse aux Mudas
 
 **Contexte :** Atelier de fabrication de châssis métalliques
 
@@ -321,22 +321,22 @@ Apprendre à identifier les 7+1 gaspillages dans un processus réel.
 **Question :** Identifiez le type de Muda pour chaque observation.
 
 <details>
-<summary>💡 Réponses</summary>
+<summary> Réponses</summary>
 
-1. ➡️ **Mouvements** inutiles
+1. ️ **Mouvements** inutiles
 2. ⏱️ **Attentes** (stock en-cours)
-3. 📦 **Surproduction** (et génère du stock)
-4. ✘ **Défauts** (rebuts)
-5. 🧠 **Potentiel humain** inexploité
-6. 🚚 **Transports** inutiles
-7. ⚙️ **Surtraitement**
+3. **Surproduction** (et génère du stock)
+4. **Défauts** (rebuts)
+5. **Potentiel humain** inexploité
+6. **Transports** inutiles
+7. ️ **Surtraitement**
 8. ⏱️ **Attentes** (panne machine)
 
 </details>
 
 ---
 
-### 📝 Exercice : Calculez l'Impact Financier
+### Exercice : Calculez l'Impact Financier
 
 **Données :**
 
@@ -348,7 +348,7 @@ Apprendre à identifier les 7+1 gaspillages dans un processus réel.
 **Question :** Quel est le coût mensuel de ces gaspillages (20 jours ouvrés) ?
 
 <details>
-<summary>💡 Calcul</summary>
+<summary> Calcul</summary>
 
 **Surproduction :**
 
@@ -381,11 +381,11 @@ Apprendre à identifier les 7+1 gaspillages dans un processus réel.
 
 ## TP 4 : Conception de l'État Futur
 
-### 🎯 Objectif
+### Objectif
 
 Transformer un flux "poussé" en flux "tiré" optimisé.
 
-### 📋 Les 8 Questions Structurantes
+### Les 8 Questions Structurantes
 
 Pour concevoir l'état futur, répondez systématiquement à ces questions :
 
@@ -400,7 +400,7 @@ Pour concevoir l'état futur, répondez systématiquement à ces questions :
 
 ---
 
-### 📝 Exercice : Transformation de Flash-Metal
+### Exercice : Transformation de Flash-Metal
 
 **Reprenez le cas Flash-Metal du TP 1**
 
@@ -413,7 +413,7 @@ Pour concevoir l'état futur, répondez systématiquement à ces questions :
 - Les opérations de Soudure et Peinture peuvent être regroupées
 
 <details>
-<summary>💡 Réponses Guidées</summary>
+<summary> Réponses Guidées</summary>
 
 **1. Takt Time :**
 
@@ -452,14 +452,14 @@ Pitch de 20 minutes (= environ 20 pièces)
 
 **Changements à représenter :**
 
-✅ **Ajouts :**
+ **Ajouts :**
 
 - Symbole de flux continu entre Soudure et Peinture
 - Symbole de supermarché après Pliage
 - Boîte de lissage (Heijunka) au Pacemaker
 - Éclairs "Kaizen" sur les améliorations
 
-❌ **Suppressions :**
+ **Suppressions :**
 
 - 2 des 3 stocks (remplacés par flux continu)
 - Les ordres de fabrication multiples (un seul au Pacemaker)
@@ -473,7 +473,7 @@ Réduction de 87% !
 
 ---
 
-### 📝 Exercice : Comparaison Avant/Après
+### Exercice : Comparaison Avant/Après
 
 | Indicateur | État Actuel | État Futur | Gain |
 |------------|-------------|------------|------|
@@ -486,11 +486,11 @@ Réduction de 87% !
 
 ## TP 5 : Mise en Place du Management Visuel Kanban
 
-### 🎯 Objectif
+### Objectif
 
 Concevoir et organiser physiquement un système Kanban efficace.
 
-### 📚 Les 3 Types de Kanban
+### Les 3 Types de Kanban
 
 #### 1. Le Supermarché de Pièces
 
@@ -503,23 +503,23 @@ Concevoir et organiser physiquement un système Kanban efficace.
 │     SUPERMARCHÉ EMBOUTISSAGE        │
 │                                     │
 │  [Bac A] [Bac B] [Bac C]           │
-│  🏷️     🏷️     🏷️                │
+│  ️     ️     ️                │
 │                                     │
 │  [Bac D] [Bac E] [Bac F]           │
-│  🏷️     🏷️     🏷️                │
+│  ️     ️     ️                │
 │                                     │
-│  📮 Boîte aux Lettres Kanban        │
+│   Boîte aux Lettres Kanban        │
 └─────────────────────────────────────┘
 ```
 
 **Contenu de la Carte Kanban :**
 
-- 📸 Photo de la pièce
-- 🔢 Référence : REF-12345
-- 📦 Quantité par bac : 50 pièces
-- 🏭 Fournisseur : Emboutissage
-- 🎯 Client : Soudure
-- 📍 Adresse : Allée B - Étagère 3
+- Photo de la pièce
+- Référence : REF-12345
+- Quantité par bac : 50 pièces
+- Fournisseur : Emboutissage
+- Client : Soudure
+- Adresse : Allée B - Étagère 3
 
 **Fonctionnement :**
 
@@ -552,13 +552,13 @@ BOÎTE DE LISSAGE - ASSEMBLAGE FINAL
 ┌───────┬──────┬──────┬──────┬──────┬──────┐
 │Produit│ 8h00 │ 8h20 │ 8h40 │ 9h00 │ 9h20 │
 ├───────┼──────┼──────┼──────┼──────┼──────┤
-│Bras G │ 🟢   │ 🟢   │      │ 🟢   │      │
+│Bras G │    │    │      │    │      │
 ├───────┼──────┼──────┼──────┼──────┼──────┤
-│Bras D │      │ 🔴   │ 🔴   │      │ 🔴   │
+│Bras D │      │    │    │      │    │
 └───────┴──────┴──────┴──────┴──────┴──────┘
 
-🟢 = Carte Kanban Bras Gauche
-🔴 = Carte Kanban Bras Droit
+ = Carte Kanban Bras Gauche
+ = Carte Kanban Bras Droit
 ```
 
 **Avantage Visuel :**
@@ -581,7 +581,7 @@ STOCK PRESSE - PIÈCE A
 │ ███████████████    │  ← Stock actuel
 │ ███████████████    │
 │ ███████████████    │
-│ 🚩 POINT DE        │  ← Triangle de signalisation
+│  POINT DE        │  ← Triangle de signalisation
 │    COMMANDE        │
 │                    │
 └────────────────────┘
@@ -598,15 +598,15 @@ Quand le stock descend au triangle :
 ┌─────────────────────────────────┐
 │  PLANNING PRESSE - ORDRE PROD   │
 ├─────────────────────────────────┤
-│  1. 🚩 Pièce C (prioritaire)    │
-│  2. 🚩 Pièce A                  │
-│  3. 🚩 Pièce F                  │
+│  1.  Pièce C (prioritaire)    │
+│  2.  Pièce A                  │
+│  3.  Pièce F                  │
 └─────────────────────────────────┘
 ```
 
 ---
 
-### 📝 Exercice Pratique : Dimensionner un Système Kanban
+### Exercice Pratique : Dimensionner un Système Kanban
 
 **Contexte :** Supermarché entre Emboutissage et Soudure
 
@@ -622,7 +622,7 @@ Quand le stock descend au triangle :
 **1. Quelle est la consommation pendant le Lead Time ?**
 
 <details>
-<summary>💡 Réponse</summary>
+<summary> Réponse</summary>
 
 ```
 Consommation horaire = 480 pcs / 8h = 60 pcs/h
@@ -634,7 +634,7 @@ Consommation pendant LT = 60 × 2h = 120 pièces
 **2. Quel est le stock de sécurité ?**
 
 <details>
-<summary>💡 Réponse</summary>
+<summary> Réponse</summary>
 
 ```
 Stock de sécurité = 120 × 10% = 12 pièces
@@ -645,7 +645,7 @@ Stock de sécurité = 120 × 10% = 12 pièces
 **3. Combien de cartes Kanban sont nécessaires ?**
 
 <details>
-<summary>💡 Réponse</summary>
+<summary> Réponse</summary>
 
 **Formule :**
 
@@ -662,13 +662,13 @@ Arrondi supérieur : 3 cartes Kanban
 
 - 3 cartes × 60 pcs = 180 pièces en circulation
 - Stock nominal : 120 pcs
-- Marge : 60 pcs (50% de sécurité) ✅
+- Marge : 60 pcs (50% de sécurité)
 
 </details>
 
 ---
 
-### 📝 Exercice : Concevoir un Tableau Heijunka
+### Exercice : Concevoir un Tableau Heijunka
 
 **Situation :**
 
@@ -682,7 +682,7 @@ Arrondi supérieur : 3 cartes Kanban
 **1. Quel est le Pitch ?**
 
 <details>
-<summary>💡 Réponse</summary>
+<summary> Réponse</summary>
 
 ```
 Pitch = 45s × 20 pcs = 900 secondes = 15 minutes
@@ -693,7 +693,7 @@ Pitch = 45s × 20 pcs = 900 secondes = 15 minutes
 **2. Combien de colonnes (intervalles) dans la journée ?**
 
 <details>
-<summary>💡 Réponse</summary>
+<summary> Réponse</summary>
 
 ```
 Nombre d'intervalles = 480 min / 15 min = 32 colonnes
@@ -704,7 +704,7 @@ Nombre d'intervalles = 480 min / 15 min = 32 colonnes
 **3. Répartition des produits sur 10 intervalles consécutifs :**
 
 <details>
-<summary>💡 Réponse</summary>
+<summary> Réponse</summary>
 
 **Calcul :**
 
@@ -718,8 +718,8 @@ A - B - A - C - A - B - A - A - B - C
 
 **Comparaison :**
 
-- ❌ **Mauvais** : A-A-A-A-A-B-B-B-C-C (lots = stock)
-- ✅ **Bon** : A-B-A-C-A-B-A-A-B-C (lissé)
+- **Mauvais** : A-A-A-A-A-B-B-B-C-C (lots = stock)
+- **Bon** : A-B-A-C-A-B-A-A-B-C (lissé)
 
 </details>
 
@@ -727,7 +727,7 @@ A - B - A - C - A - B - A - A - B - C
 
 ## Cas Pratique Intégral : Usine ABC
 
-### 📋 Présentation de l'Entreprise
+### Présentation de l'Entreprise
 
 **ABC Emboutissage** fabrique des supports de suspension pour l'industrie automobile.
 
@@ -739,7 +739,7 @@ A - B - A - C - A - B - A - A - B - C
 4. **Assemblage final**
 5. **Expédition**
 
-### 📊 Données Complètes
+### Données Complètes
 
 #### Demande Client
 
@@ -780,7 +780,7 @@ A - B - A - C - A - B - A - A - B - C
 - Chaque chef de poste décide de l'ordre de lancement
 - Aucune synchronisation entre postes
 
-### 🎯 Missions du TP Intégral
+### Missions du TP Intégral
 
 #### Mission 1 : Analyser l'État Actuel
 
@@ -793,7 +793,7 @@ A - B - A - C - A - B - A - A - B - C
 5. Identifier les 8 gaspillages présents
 
 <details>
-<summary>💡 Corrigé Mission 1</summary>
+<summary> Corrigé Mission 1</summary>
 
 **1. Takt Time :**
 
@@ -854,7 +854,7 @@ Ratio = 850 000 / 155 = 5 484
 **Q1 : Quel processus doit être le Pacemaker ?**
 
 <details>
-<summary>💡 Réponse</summary>
+<summary> Réponse</summary>
 
 **L'Assemblage final** doit être le Pacemaker car :
 
@@ -867,7 +867,7 @@ Ratio = 850 000 / 155 = 5 484
 **Q2 : Où peut-on créer du flux continu ?**
 
 <details>
-<summary>💡 Réponse</summary>
+<summary> Réponse</summary>
 
 **Entre Soudure et Assemblage :**
 
@@ -882,7 +882,7 @@ Ratio = 850 000 / 155 = 5 484
 **Q3 : Où placer des supermarchés ?**
 
 <details>
-<summary>💡 Réponse</summary>
+<summary> Réponse</summary>
 
 **Supermarché 1 :** Après Emboutissage
 
@@ -901,7 +901,7 @@ Ratio = 850 000 / 155 = 5 484
 **Q4 : L'Usinage est-il un goulot ?**
 
 <details>
-<summary>💡 Réponse</summary>
+<summary> Réponse</summary>
 
 **Calcul :**
 
@@ -916,7 +916,7 @@ Ratio = 850 000 / 155 = 5 484
 **Q5 : Comment niveler la production ?**
 
 <details>
-<summary>💡 Réponse</summary>
+<summary> Réponse</summary>
 
 **Heijunka Box à l'Assemblage :**
 
@@ -939,7 +939,7 @@ Ratio = 850 000 / 155 = 5 484
 **Calculez les gains de l'état futur :**
 
 <details>
-<summary>💡 Réponse Mission 3</summary>
+<summary> Réponse Mission 3</summary>
 
 | Indicateur | Avant | Après | Gain | Impact € |
 |------------|-------|-------|------|----------|
@@ -966,7 +966,7 @@ Ratio = 850 000 / 155 = 5 484
 **Découpez en boucles Kaizen :**
 
 <details>
-<summary>💡 Réponse Mission 4</summary>
+<summary> Réponse Mission 4</summary>
 
 **Boucle 1 : Pacemaker (Semaines 1-4)**
 
@@ -1000,23 +1000,23 @@ Ratio = 850 000 / 155 = 5 484
 
 ## Annexes : Symboles et Formules
 
-### 🔣 Symboles VSM Essentiels
+### Symboles VSM Essentiels
 
 | Symbole | Nom | Utilisation |
 |---------|-----|-------------|
-| 🏭 | Usine/Client | Fournisseur externe ou client |
-| 📦 | Processus | Étape de transformation |
+|  | Usine/Client | Fournisseur externe ou client |
+|  | Processus | Étape de transformation |
 | ▽ | Stock | Stock physique (en jours ou pièces) |
-| 🚚 | Transport | Camion, livraison |
-| ➡️ | Flux poussé | Production sans signal du client |
-| ⚡ | Flux électronique | Email, EDI, système informatique |
+|  | Transport | Camion, livraison |
+| ️ | Flux poussé | Production sans signal du client |
+|  | Flux électronique | Email, EDI, système informatique |
 | → | Flux manuel | Information papier |
 | OXOX | Flux continu | Production pièce à pièce |
-| 🏪 | Supermarché | Stock contrôlé avec Kanban |
-| ⚡KAIZEN | Éclair Kaizen | Amélioration nécessaire |
+|  | Supermarché | Stock contrôlé avec Kanban |
+| KAIZEN | Éclair Kaizen | Amélioration nécessaire |
 | ⏱️ | Boîte données | TC, Taux disponibilité, rebuts... |
 
-### 📐 Formules Clés
+### Formules Clés
 
 #### 1. Takt Time
 
@@ -1072,7 +1072,7 @@ TRS = 85% × 90% × 97% = 74,2%
 
 ---
 
-### 📚 Glossaire
+### Glossaire
 
 | Terme | Définition |
 |-------|------------|
@@ -1090,7 +1090,7 @@ TRS = 85% × 90% × 97% = 74,2%
 
 ---
 
-### 📋 Checklist Finale
+### Checklist Finale
 
 Avant de considérer votre VSM comme terminée, vérifiez :
 
@@ -1123,7 +1123,7 @@ Avant de considérer votre VSM comme terminée, vérifiez :
 
 ---
 
-## 🎓 Pour Aller Plus Loin
+## Pour Aller Plus Loin
 
 ### Exercices Complémentaires
 
@@ -1159,10 +1159,10 @@ Avant de considérer votre VSM comme terminée, vérifiez :
 
 ---
 
-**📌 Version du document :** 1.0  
-**📅 Date de création :** 24 janvier 2026  
-**✍️ Formateur :** Formation VSM - Pôle UIMM CVDL
+**Version du document :** 1.0  
+**Date de création :** 24 janvier 2026  
+**️ Formateur :** Formation VSM - Pôle UIMM CVDL
 
 ---
 
-**Bonne formation ! 🚀**
+**Bonne formation !**
