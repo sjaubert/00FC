@@ -1,0 +1,964 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+
+\usetikzlibrary{shapes.geometric, arrows, positioning, calc, decorations.pathmorphing, patterns, shapes}
+
+\geometry{margin=2cm, headheight=15pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Correction TP VSM}
+\lhead{Pôle Formation UIMM-CVDL}
+\cfoot{\thepage}
+
+\definecolor{uimmblue}{RGB}{0,51,102}
+\definecolor{uimmred}{RGB}{204,0,0}
+\definecolor{lightgray}{RGB}{240,240,240}
+
+\tcbset{
+    pedagogique/.style={
+        colback=blue!5!white,
+        colframe=uimmblue,
+        fonttitle=\bfseries,
+        title=Explication Pédagogique
+    }
+}
+
+\title{\textbf{\Huge Correction Détaillée}\\[0.5cm]
+\textbf{\Large Travaux Pratiques VSM}\\[0.3cm]
+Value Stream Mapping}
+\author{Pôle Formation UIMM - Centre-Val de Loire}
+\date{Version 1.0 - Janvier 2026}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction à la correction}
+
+Ce document présente les \textbf{corrections détaillées et pédagogiques} de tous les exercices du TP VSM. Pour chaque exercice, vous trouverez :
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{La démarche de résolution} pas à pas
+    \item \textbf{Les calculs commentés} avec toutes les étapes intermédiaires
+    \item \textbf{Les schémas VSM} avec les symboles normalisés
+    \item \textbf{Des explications pédagogiques} sur les concepts clés
+    \item \textbf{Les erreurs fréquentes} à éviter
+\end{itemize}
+
+\subsection{Symboles VSM utilisés}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    % Client/Fournisseur
+    \node[draw, minimum width=3cm, minimum height=1.5cm] at (0,0) {Client};
+    \node[below] at (0,-1) {\small Usine/Client};
+    
+    % Processus
+    \draw[thick] (5,0.5) rectangle (8,-0.5);
+    \node at (6.5,0) {Processus};
+    \node[below] at (6.5,-1) {\small Étape de transformation};
+    
+    % Stock
+    \node at (10,0) {\Large $\triangledown$};
+    \node[below] at (10,-1) {\small Stock};
+    
+    % Flux poussé
+    \draw[->,very thick,line width=2pt] (0,-3) -- (3,-3);
+    \node[below] at (1.5,-3.3) {\small Flux poussé};
+    
+    % Flux tiré
+    \draw[->,dashed,thick] (5,-3) -- (8,-3);
+    \node[below] at (6.5,-3.3) {\small Flux tiré};
+    
+    % Kanban
+    \draw[thick,fill=yellow!30] (10,-3.5) rectangle (11,-2.5);
+    \node at (10.5,-3) {\tiny K};
+    \node[below] at (10.5,-3.8) {\small Kanban};
+\end{tikzpicture}
+\end{center}
+
+\newpage
+
+\section{TP 1 : Cartographie de l'État Actuel - Flash-Metal}
+
+\subsection{Données de l'exercice - Rappel}
+
+\begin{tcolorbox}[colback=lightgray,colframe=black,title=Données Flash-Metal]
+\textbf{Client :} Renault - Demande : 480 pcs/jour\\
+\textbf{Temps disponible :} 450 min = 27\,000 secondes/jour\\[0.3cm]
+
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Étape} & \textbf{TC (s)} & \textbf{Changement} & \textbf{Rebut} \\
+\midrule
+1. Découpe & 30 & 10 min & 2\% \\
+2. Pliage & 45 & 5 min & 1\% \\
+3. Soudure & 60 & 15 min & 3\% \\
+4. Peinture & 40 & 20 min & 1\% \\
+\bottomrule
+\end{tabular}\\[0.3cm]
+
+\textbf{Stocks intermédiaires :}
+\begin{itemize}[nosep]
+    \item Entre Découpe-Pliage : 1200 pcs
+    \item Entre Pliage-Soudure : 800 pcs
+    \item Entre Soudure-Peinture : 600 pcs
+    \item Produits finis : 400 pcs
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Étape 1 : Calcul du Takt Time}
+
+\begin{tcolorbox}[pedagogique]
+Le \textbf{Takt Time} est le rythme auquel nous devons produire pour satisfaire exactement la demande client. C'est la « voix du client » qui dicte le tempo de production.
+\end{tcolorbox}
+
+\textbf{Formule :}
+\begin{equation}
+    \text{Takt Time} = \frac{\text{Temps disponible}}{\text{Demande client}}
+\end{equation}
+
+\textbf{Application numérique :}
+\begin{align*}
+    \text{Takt Time} &= \frac{27\,000 \text{ secondes}}{480 \text{ pièces}} \\
+    &= 56{,}25 \text{ secondes/pièce}
+\end{align*}
+
+\textbf{Interprétation :} Nous devons produire une pièce toutes les 56,25 secondes pour satisfaire la demande sans surproduction ni retard.
+
+\subsection{Étape 2 : Calcul des jours de stock}
+
+Pour chaque stock intermédiaire, nous calculons combien de jours de consommation il représente :
+
+\begin{equation}
+    \text{Jours de stock} = \frac{\text{Quantité en stock}}{\text{Demande quotidienne}}
+\end{equation}
+
+\textbf{Calculs détaillés :}
+
+\begin{align*}
+    \text{Stock 1 (Découpe-Pliage)} &= \frac{1200}{480} = 2{,}5 \text{ jours} \\[0.3cm]
+    \text{Stock 2 (Pliage-Soudure)} &= \frac{800}{480} = 1{,}67 \text{ jours} \\[0.3cm]
+    \text{Stock 3 (Soudure-Peinture)} &= \frac{600}{480} = 1{,}25 \text{ jours} \\[0.3cm]
+    \text{Stock 4 (Produits finis)} &= \frac{400}{480} = 0{,}83 \text{ jours}
+\end{align*}
+
+\subsection{Étape 3 : Calcul des temps et du Lead Time}
+
+\textbf{Temps de Valeur Ajoutée (VA) :}
+\begin{align*}
+    \text{VA} &= 30 + 45 + 60 + 40 \\
+    &= 175 \text{ secondes}
+\end{align*}
+
+\textbf{Lead Time total :}
+\begin{align*}
+    \text{Lead Time} &= 2{,}5 + 1{,}67 + 1{,}25 + 0{,}83 \\
+    &= 6{,}25 \text{ jours}
+\end{align*}
+
+Conversion en secondes : $6{,}25 \times 27\,000 = 168\,750$ secondes
+
+\textbf{Ratio de Tension :}
+\begin{align*}
+    \text{Ratio} &= \frac{\text{Lead Time}}{\text{VA}} \\
+    &= \frac{168\,750}{175} \\
+    &= \textbf{964{,}3}
+\end{align*}
+
+\begin{tcolorbox}[pedagogique]
+\textbf{Analyse du ratio de tension :} Un ratio de 964 signifie que seulement $\frac{1}{964} = 0{,}104\%$ du temps est à valeur ajoutée ! La pièce passe 99,9\% de son temps à attendre dans des stocks. C'est un indicateur typique d'un flux « poussé » inefficace.
+\end{tcolorbox}
+
+\subsection{Cartographie VSM État Actuel}
+
+\begin{center}
+\begin{tikzpicture}[
+    process/.style={rectangle, draw, thick, minimum width=2.5cm, minimum height=1.5cm, align=center},
+    stock/.style={isosceles triangle, draw, thick, minimum width=1cm, minimum height=0.8cm, shape border rotate=90},
+    data/.style={rectangle, draw, dashed, minimum width=2cm, minimum height=1cm, font=\tiny, align=center},
+    client/.style={rectangle, draw, thick, minimum width=2cm, minimum height=1cm, align=center},
+    arrow/.style={->, thick},
+    info/.style={->, thick, >=stealth}
+]
+
+% Client
+\node[client] (client) at (12,8) {Client\\Renault};
+\node[below=0.1cm of client, font=\tiny] {480 pcs/jour};
+
+% Processus (de droite à gauche)
+\node[process] (peinture) at (10,4) {Peinture\\P4};
+\node[process] (soudure) at (7,4) {Soudure\\P3};
+\node[process] (pliage) at (4,4) {Pliage\\P2};
+\node[process] (decoupe) at (1,4) {Découpe\\P1};
+
+% Boîtes de données
+\node[data, below=0.2cm of peinture] (data4) {TC=40s\\CO=20min\\Rebut=1\%};
+\node[data, below=0.2cm of soudure] (data3) {TC=60s\\CO=15min\\Rebut=3\%};
+\node[data, below=0.2cm of pliage] (data2) {TC=45s\\CO=5min\\Rebut=1\%};
+\node[data, below=0.2cm of decoupe] (data1) {TC=30s\\CO=10min\\Rebut=2\%};
+
+% Stocks
+\node[stock, fill=gray!20] (stock3) at (8.5,4) {};
+\node[below=0.1cm of stock3, font=\tiny] {600 pcs\\1,25 j};
+
+\node[stock, fill=gray!20] (stock2) at (5.5,4) {};
+\node[below=0.1cm of stock2, font=\tiny] {800 pcs\\1,67 j};
+
+\node[stock, fill=gray!20] (stock1) at (2.5,4) {};
+\node[below=0.1cm of stock1, font=\tiny] {1200 pcs\\2,5 j};
+
+\node[stock, fill=gray!20] (stock4) at (11.5,4) {};
+\node[below=0.1cm of stock4, font=\tiny] {400 pcs\\0,83 j};
+
+% Flux matière
+\draw[arrow] (decoupe) -- (stock1);
+\draw[arrow] (stock1) -- (pliage);
+\draw[arrow] (pliage) -- (stock2);
+\draw[arrow] (stock2) -- (soudure);
+\draw[arrow] (soudure) -- (stock3);
+\draw[arrow] (stock3) -- (peinture);
+\draw[arrow] (peinture) -- (stock4);
+\draw[arrow] (stock4) -- (client);
+
+% Planning
+\node[client] (planning) at (6,8) {Planning\\Production};
+
+% Flux information
+\draw[info] (client) -- node[right, font=\tiny] {Prévision\\mensuelle} (planning);
+\draw[info] (planning) -- (peinture);
+\draw[info] (planning) -- (soudure);
+\draw[info] (planning) -- (pliage);
+\draw[info] (planning) -- (decoupe);
+
+% Timeline
+\draw[very thick] (0,1) -- (13,1);
+\node[above, font=\small] at (1,1) {30s};
+\node[above, font=\small] at (2.5,1) {2,5j};
+\node[above, font=\small] at (4,1) {45s};
+\node[above, font=\small] at (5.5,1) {1,67j};
+\node[above, font=\small] at (7,1) {60s};
+\node[above, font=\small] at (8.5,1) {1,25j};
+\node[above, font=\small] at (10,1) {40s};
+\node[above, font=\small] at (11.5,1) {0,83j};
+
+\node[below, font=\footnotesize\bfseries] at (6.5,0.5) {VA = 175s \quad Lead Time = 6,25 jours \quad Ratio = 964};
+
+% Takt Time
+\node[draw, thick, fill=yellow!20, font=\bfseries] at (12,6) {TT = 56,25s};
+
+\end{tikzpicture}
+\end{center}
+
+\newpage
+
+\section{TP 2 : Calcul du Takt Time et Dimensionnement}
+
+\subsection{Exercice 1A : Usine ABC}
+
+\textbf{Données :}
+\begin{itemize}
+    \item Demande : 450 pièces/jour
+    \item Temps de travail : 2 équipes × 8h = 16h
+    \item Pauses totales : 2 × 30 min/équipe = 1h
+\end{itemize}
+
+\textbf{Calcul du temps disponible :}
+\begin{align*}
+    \text{Temps disponible} &= 16h - 1h = 15h \\
+    &= 15 \times 3600 = 54\,000 \text{ secondes}
+\end{align*}
+
+\textbf{Takt Time :}
+\begin{equation*}
+    \boxed{\text{TT} = \frac{54\,000}{450} = 120 \text{ secondes/pièce}}
+\end{equation*}
+
+\subsection{Exercice 1B : Changement de demande}
+
+Nouvelle demande : 600 pièces/jour (même temps disponible)
+
+\begin{equation*}
+    \boxed{\text{TT} = \frac{54\,000}{600} = 90 \text{ secondes/pièce}}
+\end{equation*}
+
+\begin{tcolorbox}[pedagogique]
+\textbf{Observation importante :} Le Takt Time a \textbf{diminué} de 120s à 90s. Cela signifie que nous devons produire \textbf{plus vite}. Le processus doit s'accélérer ou nous devons ajouter des ressources.
+\end{tcolorbox}
+
+\subsection{Exercice 2 : Dimensionnement des ressources}
+
+\textbf{Données :}
+\begin{itemize}
+    \item Takt Time : 60 secondes
+    \item Temps de cycle total : 187 secondes
+\end{itemize}
+
+\textbf{Formule de dimensionnement :}
+\begin{equation}
+    \text{Nombre d'opérateurs} = \left\lceil \frac{\text{TC total}}{\text{Takt Time}} \right\rceil
+\end{equation}
+
+\textbf{Calcul :}
+\begin{align*}
+    \text{Nb opérateurs} &= \left\lceil \frac{187}{60} \right\rceil \\
+    &= \left\lceil 3{,}12 \right\rceil \\
+    &= \boxed{4 \text{ opérateurs}}
+\end{align*}
+
+\begin{tcolorbox}[pedagogique]
+\textbf{Pourquoi arrondir au supérieur ?} Avec 3 opérateurs, nous ne pourrions traiter que $3 \times 60 = 180$ secondes de travail, ce qui est insuffisant. Le 4ème opérateur n'est utilisé qu'à $\frac{187-180}{60} = 11{,}7\%$, ce qui crée un déséquilibre. Il faudrait rééquilibrer les tâches pour mieux utiliser les 4 opérateurs.
+\end{tcolorbox}
+
+\subsection{Exercice 3 : Résoudre un goulot d'étranglement}
+
+\textbf{Problème :}
+\begin{itemize}
+    \item Takt Time requis : 60 secondes
+    \item Temps de cycle machine peinture : 75 secondes
+    \item $\Rightarrow$ TC > TT : \textcolor{red}{\textbf{GOULOT !}}
+\end{itemize}
+
+\textbf{Les 4 solutions par ordre de priorité Lean :}
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Améliorer le processus existant (KAIZEN)}
+    \begin{itemize}
+        \item Réduire les temps de changement de série (SMED)
+        \item Éliminer les micro-arrêts
+        \item Améliorer la disponibilité de la machine
+        \item \textcolor{uimmblue}{$\Rightarrow$ Priorité 1 : pas d'investissement}
+    \end{itemize}
+    
+    \item \textbf{Réorganiser le travail}
+    \begin{itemize}
+        \item Ajouter des heures supplémentaires sur ce poste uniquement
+        \item Créer un stock tampon avant le goulot
+        \item \textcolor{orange}{$\Rightarrow$ Solution temporaire}
+    \end{itemize}
+    
+    \item \textbf{Ajouter une machine en parallèle}
+    \begin{itemize}
+        \item Capacité : $2 \times 60 = 120$ pièces/heure
+        \item Utilisation : $\frac{60}{75} = 80\%$ par machine
+        \item \textcolor{orange}{$\Rightarrow$ Investissement moyen}
+    \end{itemize}
+    
+    \item \textbf{Remplacer par une machine plus rapide}
+    \begin{itemize}
+        \item Investissement important
+        \item Risque de sur-capacité
+        \item \textcolor{red}{$\Rightarrow$ Dernier recours}
+    \end{itemize}
+\end{enumerate}
+
+\newpage
+
+\section{TP 3 : Identification des Gaspillages (Mudas)}
+
+\subsection{Exercice : Chasse aux Mudas}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{8cm}|p{3cm}|p{2cm}|}
+\hline
+\textbf{Observation} & \textbf{Type de Muda} & \textbf{Priorité} \\
+\hline
+1. Opérateur marche 15m pour chercher ses outils & Mouvement & Moyenne \\
+\hline
+2. Pièces attendent 2h entre découpe et pliage & Attente & Haute \\
+\hline
+3. Lots de 500 pcs produits alors que demande = 100/j & Surproduction & \textcolor{red}{\textbf{CRITIQUE}} \\
+\hline
+4. 5\% des pièces refusées au contrôle & Défauts & Haute \\
+\hline
+5. Amélioration proposée jamais mise en œuvre & Potentiel humain & Moyenne \\
+\hline
+6. Pièces transportées 3 fois avant expédition & Transport & Moyenne \\
+\hline
+7. Polissage d'une zone non visible & Surtraitement & Haute \\
+\hline
+8. Soudeur attend 20 min/jour (pannes) & Attente & Haute \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{tcolorbox}[pedagogique]
+\textbf{La surproduction est le pire des gaspillages} car elle :
+\begin{itemize}
+    \item Génère tous les autres gaspillages (stocks, transports, etc.)
+    \item Immobilise du capital
+    \item Masque les problèmes de qualité
+    \item Consomme de l'espace
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Exercice : Impact financier}
+
+\textbf{1. Coût de la surproduction :}
+\begin{align*}
+    \text{Surproduction mensuelle} &= 400 \text{ pcs/jour} \times 20 \text{ jours} = 8000 \text{ pcs} \\
+    \text{Coût stockage} &= 8000 \times 0{,}50\text{€} = \boxed{4000\text{€/mois}}
+\end{align*}
+
+\textbf{2. Coût des défauts :}
+\begin{align*}
+    \text{Défauts mensuels} &= 480 \times 5\% \times 20 = 480 \text{ pcs} \\
+    \text{Coût matière perdue} &= 480 \times 8\text{€} = \boxed{3840\text{€/mois}}
+\end{align*}
+
+\textbf{3. Coût temps d'attente :}
+\begin{align*}
+    \text{Attente mensuelle} &= 20 \text{ min/jour} \times 20 \text{ jours} = 400 \text{ min} = 6{,}67 \text{ h} \\
+    \text{Coût main d'œuvre} &= 6{,}67 \times 42\text{€} = \boxed{280\text{€/mois}}
+\end{align*}
+
+\textbf{Coût total mensuel :}
+\begin{equation*}
+    \boxed{\text{Total} = 4000 + 3840 + 280 = 8120\text{€/mois} = 97\,440\text{€/an}}
+\end{equation*}
+
+\newpage
+
+\section{TP 4 : Conception de l'État Futur}
+
+\subsection{Les 8 questions structurantes appliquées à Flash-Metal}
+
+\textbf{Question 1 : Quel est le Takt Time ?}
+
+Déjà calculé dans TP1 : \boxed{\text{TT} = 56{,}25 \text{ secondes}}
+
+\medskip
+
+\textbf{Question 2 : Production pour supermarché ou à la commande ?}
+
+\textit{Réponse :} Production pour un \textbf{supermarché de produits finis} car :
+\begin{itemize}
+    \item Le client demande des livraisons quotidiennes
+    \item Il y a un mix de produits (60\% Modèle A, 40\% Modèle B)
+    \item Le Lead Time actuel (6,25 jours) est trop long pour du flux direct
+\end{itemize}
+
+\medskip
+
+\textbf{Question 3 : Où peut-on mettre du flux continu ?}
+
+\textbf{Analyse des temps de cycle :}
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Processus & TC (s) & TC < TT ? \\
+\midrule
+Découpe & 30 & \checkmark Oui \\
+Pliage & 45 & \checkmark Oui \\
+Soudure & 60 & \checkmark Oui (juste) \\
+Peinture & 40 & \checkmark Oui \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textit{Réponse :} Flux continu possible entre \textbf{Soudure et Peinture} (proximité physique possible selon l'énoncé).
+
+\medskip
+
+\textbf{Question 4 : Où a-t-on besoin d'un supermarché ?}
+
+\textit{Réponse :} Un supermarché après le \textbf{Pliage} car :
+\begin{itemize}
+    \item Changement de série nécessaire au pliage (5 min)
+    \item Mix produit nécessite de la flexibilité
+    \item Permet de découpler les processus amont et aval
+\end{itemize}
+
+\medskip
+
+\textbf{Question 5 : Quel est le processus régulateur (Pacemaker) ?}
+
+\textit{Réponse :} \textbf{Assemblage (Peinture)} car :
+\begin{itemize}
+    \item C'est le processus le plus proche du client
+    \item Il « tire » toute la chaîne en amont
+    \item C'est là qu'on programme le mix produit
+\end{itemize}
+
+\medskip
+
+\textbf{Question 6 : Comment niveler la production (Heijunka) ?}
+
+\textit{Réponse :} Utiliser une \textbf{Heijunka Box} au Pacemaker avec :
+\begin{align*}
+    \text{Pitch} &= \text{TT} \times \text{Qté conteneur} \\
+    &= 56{,}25 \times 20 = 1125 \text{ s} \approx 19 \text{ minutes}
+\end{align*}
+
+Planning alterné : A-A-B-A-A-B...
+
+\medskip
+
+\textbf{Question 7 : Quel incrément de travail au Pacemaker ?}
+
+\textit{Réponse :} Un conteneur de \textbf{20 pièces} toutes les 19 minutes.
+
+\medskip
+
+\textbf{Question 8 : Quelles améliorations Kaizen ?}
+
+\begin{enumerate}
+    \item SMED sur les changements de série (réduire de 50\%)
+    \item Rapprocher Soudure et Peinture (supprimer 50m de transport)
+    \item Formation qualité pour réduire les rebuts
+    \item Améliorer la disponibilité des machines
+\end{enumerate}
+
+\subsection{Schéma VSM État Futur}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.85,
+    process/.style={rectangle, draw, thick, minimum width=2.5cm, minimum height=1.5cm, align=center},
+    supermarket/.style={rectangle, draw, thick, minimum width=1.5cm, minimum height=1cm, fill=orange!20, align=center},
+    continuous/.style={rectangle, draw, thick, fill=green!10, minimum width=2.5cm, minimum height=1.5cm, align=center},
+    heijunka/.style={rectangle, draw, thick, fill=yellow!30, minimum width=2cm, minimum height=1cm, align=center}
+]
+
+% Client
+\node[process] (client) at (12,8) {Client\\Renault};
+
+% Processus améliorés
+\node[continuous] (soudure-peinture) at (9,4) {Soudure +\\Peinture\\Flux continu};
+\node[process] (pliage) at (4,4) {Pliage};
+\node[process] (decoupe) at (1,4) {Découpe};
+
+% Supermarché
+\node[supermarket] (super1) at (6.5,4) {SM};
+\node[below=0.1cm of super1, font=\tiny] {300 pcs\\0,62 j};
+
+% Stock PF réduit
+\node[supermarket] (super2) at (11,4) {SM\\PF};
+\node[below=0.1cm of super2, font=\tiny] {200 pcs\\0,42 j};
+
+% Heijunka Box
+\node[heijunka] (heijunka) at (9,7) {Heijunka\\Box};
+
+% Flux matière
+\draw[->, thick] (decoupe) -- (pliage);
+\draw[->, thick] (pliage) -- (super1);
+\draw[->, dashed, thick, red] (super1) -- node[above, font=\tiny] {signal Kanban} (soudure-peinture);
+\draw[->, thick] (soudure-peinture) -- (super2);
+\draw[->, thick] (super2) -- (client);
+
+% Flux information
+\draw[->, thick, blue] (client) -- node[right, font=\tiny] {Commande} (heijunka);
+\draw[->, thick, blue] (heijunka) -- node[right, font=\tiny, align=center] {Planning} (soudure-peinture);
+
+% Kanban
+\draw[->, dashed, thick, red] (soudure-peinture) to[bend left=40] node[above, font=\tiny] {Retrait Kanban} (super1);
+\draw[->, dashed, thick, red] (super1) to[bend left=30] (pliage);
+
+% Kaizen bursts
+\node[star, star points=7, draw, thick, fill=yellow, minimum size=0.8cm] at (3,5.5) {\tiny SMED};
+\node[star, star points=7, draw, thick, fill=yellow, minimum size=0.8cm] at (8,5.5) {\tiny 5S};
+
+% Timeline améliorée
+\draw[very thick, green!50!black] (0,1) -- (13,1);
+\node[above, font=\small] at (2,1) {30s};
+\node[above, font=\small] at (4,1) {45s};
+\node[above, font=\small] at (6.5,1) {0,62j};
+\node[above, font=\small] at (9,1) {100s};
+\node[above, font=\small] at (11,1) {0,42j};
+
+\node[below, font=\footnotesize\bfseries, text=green!50!black] at (6.5,0.5) {VA = 175s \quad Lead Time = 1,04 jours \quad Ratio = 162};
+
+\node[draw, thick, fill=yellow!20, font=\bfseries] at (12,6) {TT = 56,25s};
+
+\end{tikzpicture}
+\end{center}
+
+\begin{tcolorbox}[colback=green!10, colframe=green!50!black, title=Gains de l'État Futur]
+\textbf{Lead Time :} 6,25 jours $\rightarrow$ 1,04 jours = \textbf{-83\% !}\\
+\textbf{Ratio de tension :} 964 $\rightarrow$ 162 = \textbf{-83\%}\\
+\textbf{Stocks :} 3000 pcs $\rightarrow$ 500 pcs = \textbf{-83\%}\\
+\textbf{Réactivité client :} De 1 semaine à 1 jour !
+\end{tcolorbox}
+
+\newpage
+
+\section{TP 5 : Mise en Place du Management Visuel Kanban}
+
+\subsection{Exercice : Dimensionner un système Kanban}
+
+\textbf{Données :}
+\begin{itemize}
+    \item Demande : 480 pcs/jour
+    \item Temps disponible : 450 min/jour
+    \item Lead Time réapprovisionnement : 2 heures
+    \item Stock de sécurité : 10\%
+    \item Capacité conteneur : 60 pcs
+\end{itemize}
+
+\textbf{Question 1 : Consommation pendant le Lead Time}
+
+\begin{align*}
+    \text{Consommation horaire} &= \frac{480}{450/60} = \frac{480}{7{,}5} = 64 \text{ pcs/h} \\[0.3cm]
+    \text{Consommation pendant 2h} &= 64 \times 2 = \boxed{128 \text{ pièces}}
+\end{align*}
+
+\textbf{Question 2 : Stock de sécurité}
+
+\begin{align*}
+    \text{Stock sécurité} &= 128 \times 10\% = \boxed{12{,}8 \approx 13 \text{ pièces}}
+\end{align*}
+
+\textbf{Question 3 : Nombre de cartes Kanban}
+
+\begin{align*}
+    \text{Besoin total} &= 128 + 13 = 141 \text{ pcs} \\[0.3cm]
+    \text{Nombre de Kanban} &= \left\lceil \frac{141}{60} \right\rceil = \left\lceil 2{,}35 \right\rceil = \boxed{3 \text{ cartes}}
+\end{align*}
+
+\begin{tcolorbox}[pedagogique]
+\textbf{Interprétation :} Le supermarché contiendra en permanence 3 bacs de 60 pièces = 180 pièces maximum. Quand un bac est consommé, sa carte Kanban déclenche la fabrication d'un nouveau bac.
+\end{tcolorbox}
+
+\subsection{Exercice : Concevoir un tableau Heijunka}
+
+\textbf{Données :}
+\begin{itemize}
+    \item Takt Time : 45 s
+    \item Conteneur : 20 pcs
+    \item Mix : 50\% A, 30\% B, 20\% C
+    \item Production : 480 min
+\end{itemize}
+
+\textbf{Question 1 : Pitch}
+
+\begin{equation*}
+    \text{Pitch} = 45 \times 20 = 900 \text{ s} = \boxed{15 \text{ minutes}}
+\end{equation*}
+
+\textbf{Question 2 : Nombre d'intervalles}
+
+\begin{equation*}
+    \text{Intervalles} = \frac{480}{15} = \boxed{32 \text{ colonnes}}
+\end{equation*}
+
+\textbf{Question 3 : Répartition sur 10 intervalles}
+
+Sur 10 intervalles : 5A, 3B, 2C
+
+\textbf{Séquence lissée :}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} \\
+\hline
+A & B & A & C & A & B & A & C & A & B \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{tcolorbox}[pedagogique]
+\textbf{Principe du lissage :} On alterne les produits pour éviter de produire tous les A d'un coup, puis tous les B, etc. Cela :
+\begin{itemize}
+    \item Réduit les stocks de chaque référence
+    \item Augmente la flexibilité
+    \item Détecte plus vite les problèmes
+\end{itemize}
+\end{tcolorbox}
+
+\newpage
+
+\section{Cas Pratique Intégral : Usine ABC}
+
+\subsection{Mission 1 : Analyse État Actuel}
+
+\subsubsection{1. Calcul du Takt Time}
+
+\begin{align*}
+    \text{Temps disponible} &= 15h = 54\,000 \text{ s} \\
+    \text{Demande} &= 540 \text{ pcs/jour} \\[0.3cm]
+    \boxed{\text{Takt Time} = \frac{54\,000}{540} = 100 \text{ secondes/pièce}}
+\end{align*}
+
+\subsubsection{2. Jours de stock}
+
+\begin{align*}
+    \text{Stock 1} &= \frac{3500}{540} = 6{,}48 \text{ j} \\
+    \text{Stock 2} &= \frac{2100}{540} = 3{,}89 \text{ j} \\
+    \text{Stock 3} &= \frac{1800}{540} = 3{,}33 \text{ j} \\
+    \text{Stock 4} &= \frac{1100}{540} = 2{,}04 \text{ j} \\[0.3cm]
+    \boxed{\text{Lead Time total} = 15{,}74 \text{ jours}}
+\end{align*}
+
+\subsubsection{3. Temps de valeur ajoutée}
+
+\begin{equation*}
+    \text{VA} = 20 + 35 + 45 + 55 = \boxed{155 \text{ secondes}}
+\end{equation*}
+
+\subsubsection{4. Ratio de tension}
+
+\begin{align*}
+    \text{Lead Time en secondes} &= 15{,}74 \times 54\,000 = 849\,960 \text{ s} \\
+    \text{Ratio} &= \frac{849\,960}{155} = \boxed{5483}
+\end{align*}
+
+\begin{tcolorbox}[colback=red!10, colframe=red!50!black]
+\textbf{Constat alarmant :} Seulement 0,018\% du temps est à valeur ajoutée ! Plus de 15 jours de stock pour 155 secondes de travail effectif !
+\end{tcolorbox}
+
+\subsection{Mission 2 : Conception État Futur}
+
+\textbf{Q1 : Processus Pacemaker}
+
+\textit{Réponse :} \textbf{Assemblage final} car :
+\begin{itemize}
+    \item Dernier processus avant le client
+    \item Temps de cycle (55s) < Takt Time (100s) : OK
+    \item Aucun changement de série : idéal pour le pilotage
+\end{itemize}
+
+\textbf{Q2 : Flux continu}
+
+\textbf{Analyse des goulots :}
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Processus & TC & TT & Goulot ? \\
+\midrule
+Emboutissage & 20s & 100s & Non \\
+Usinage & 35s & 100s & Non \\
+Soudure & 45s & 100s & Non \\
+Assemblage & 55s & 100s & Non \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textit{Réponse :} Flux continu entre \textbf{Soudure et Assemblage} (proximité possible).
+
+\textbf{Q3 : Supermarchés}
+
+\textit{Réponse :} 
+\begin{enumerate}
+    \item Après \textbf{Emboutissage} (changement série 60 min $\Rightarrow$ production par lots)
+    \item Après \textbf{Usinage} (changement série 15 min)
+\end{enumerate}
+
+\textbf{Q4 : Usinage goulot ?}
+
+\begin{align*}
+    \text{Capacité théorique} &= \frac{54\,000}{35} = 1543 \text{ pcs/jour} \\
+    \text{Capacité réelle (dispo 95\%)} &= 1543 \times 0{,}95 = 1466 \text{ pcs/jour} \\
+    \text{Demande} &= 540 \text{ pcs/jour}
+\end{align*}
+
+\textit{Réponse :} \textbf{Non}, large marge de capacité (1466 vs 540).
+
+\textbf{Q5 : Nivellement production}
+
+\textit{Réponse :} Heijunka Box à l'Assemblage :
+\begin{itemize}
+    \item Pitch = 100s × 30 pcs = 3000s = 50 min
+    \item Alternance Bras G / Bras D toutes les 50 min
+\end{itemize}
+
+\subsection{Mission 3 : Quantification des gains}
+
+\textbf{État Futur proposé :}
+
+\begin{itemize}
+    \item Stock après Emboutissage : 1000 pcs (1,85 j)
+    \item Stock après Usinage : 500 pcs (0,93 j)
+    \item Stock PF : 300 pcs (0,56 j)
+    \item Soudure-Assemblage en flux continu : 0 stock
+\end{itemize}
+
+\textbf{Nouveau Lead Time :}
+\begin{equation*}
+    \text{LT futur} = 1{,}85 + 0{,}93 + 0{,}56 = \boxed{3{,}34 \text{ jours}}
+\end{equation*}
+
+\textbf{Gains mesurables :}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{lccl}
+\toprule
+\textbf{Indicateur} & \textbf{Actuel} & \textbf{Futur} & \textbf{Gain} \\
+\midrule
+Lead Time & 15,74 j & 3,34 j & -79\% \\
+Stocks totaux & 8500 pcs & 1800 pcs & -79\% \\
+Ratio tension & 5483 & 1166 & -79\% \\
+Valeur stock (20€/pc) & 170 k€ & 36 k€ & -134 k€ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Mission 4 : Plan d'Action Kaizen}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|c|p{5cm}|c|c|p{3cm}|}
+\hline
+\textbf{Boucle} & \textbf{Amélioration} & \textbf{Durée} & \textbf{Responsable} & \textbf{Indicateur} \\
+\hline
+1 & Rapprocher Soudure-Assemblage (flux continu) & 2 sem & Chef prod. & Stock 3 = 0 \\
+\hline
+2 & SMED sur Emboutissage (60 min → 30 min) & 4 sem & Maintenance & TC changement \\
+\hline
+3 & Implanter supermarché Usinage + Kanban & 3 sem & Logistique & Stock 2 < 500 \\
+\hline
+4 & Former opérateurs au management visuel & 2 sem & RH & Taux formation \\
+\hline
+5 & Mettre en place Heijunka Box & 1 sem & Méthodes & Respect planning \\
+\hline
+6 & Standardiser le travail & 3 sem & Tous & % respect std \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Planning :} 12 semaines (3 mois) pour transformation complète.
+
+\newpage
+
+\section{Synthèse et Points Clés}
+
+\subsection{Les 10 commandements de la VSM}
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Toujours commencer par le client} - Le Takt Time est roi
+    \item \textbf{Dessiner au crayon} - La VSM est un outil Gemba
+    \item \textbf{Mesurer le ratio de tension} - Il doit choquer !
+    \item \textbf{La surproduction est l'ennemi n°1} - Elle génère tous les autres mudas
+    \item \textbf{Le flux continu d'abord} - Supprimer les stocks avant tout
+    \item \textbf{Un seul Pacemaker} - Un point de pilotage unique
+    \item \textbf{Tirer, ne pas pousser} - Kanban et supermarchés
+    \item \textbf{Lisser la production} - Heijunka pour la stabilité
+    \item \textbf{Pas de VSM sans plan d'action} - Traduire en boucles Kaizen
+    \item \textbf{PDCA permanent} - La VSM n'est jamais terminée
+\end{enumerate}
+
+\subsection{Erreurs fréquentes à éviter}
+
+\begin{tcolorbox}[colback=orange!10, colframe=orange!70!black, title=Pièges classiques]
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Confondre TT et TC} : Le Takt Time est imposé par le client, le Temps de Cycle est notre performance
+    \item \textbf{Oublier les pauses} dans le calcul du temps disponible
+    \item \textbf{Arrondir le nb d'opérateurs à l'inférieur} : Toujours arrondir au supérieur !
+    \item \textbf{Mettre le client à gauche} : Convention VSM = client à droite
+    \item \textbf{Ne pas différencier flux manuel/électronique} : Important pour l'analyse
+    \item \textbf{Calculer le Lead Time en secondes directement} : Passer par les jours d'abord
+    \item \textbf{État futur trop ambitieux} : Viser -50\% de LT, pas -99\%
+    \item \textbf{VSM sans Kaizen} : Une carte sans action ne sert à rien
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Formules à retenir absolument}
+
+\begin{tcolorbox}[colback=uimmblue!10, colframe=uimmblue, title=Formulaire VSM]
+
+\textbf{1. Takt Time}
+\begin{equation*}
+    TT = \frac{\text{Temps disponible (s)}}{\text{Demande client (pcs)}} \quad [\text{s/pièce}]
+\end{equation*}
+
+\textbf{2. Dimensionnement}
+\begin{equation*}
+    N_{\text{op}} = \left\lceil \frac{\sum TC}{\text{TT}} \right\rceil
+\end{equation*}
+
+\textbf{3. Jours de stock}
+\begin{equation*}
+    \text{Jours} = \frac{\text{Stock (pcs)}}{\text{Demande quotidienne (pcs/j)}}
+\end{equation*}
+
+\textbf{4. Ratio de tension}
+\begin{equation*}
+    R = \frac{\text{Lead Time}}{\text{Valeur Ajoutée}}
+\end{equation*}
+
+\textbf{5. Nombre de Kanban}
+\begin{equation*}
+    N_K = \left\lceil \frac{D \times LT \times (1 + SS)}{Q} \right\rceil
+\end{equation*}
+où $D$ = demande, $LT$ = lead time, $SS$ = \% stock sécurité, $Q$ = quantité/conteneur
+
+\textbf{6. Pitch}
+\begin{equation*}
+    \text{Pitch (s)} = \text{TT (s)} \times Q_{\text{conteneur}}
+\end{equation*}
+
+\end{tcolorbox}
+
+\newpage
+
+\section{Conclusion}
+
+La Value Stream Mapping n'est pas qu'un simple outil de cartographie, c'est une \textbf{démarche de transformation} qui permet de :
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Visualiser} l'invisible (les attentes, les stocks cachés)
+    \item \textbf{Quantifier} les gaspillages de manière irréfutable
+    \item \textbf{Mobiliser} les équipes autour d'un constat partagé
+    \item \textbf{Agir} de manière structurée et progressive
+\end{itemize}
+
+\subsection{Ce qu'il faut retenir}
+
+\begin{tcolorbox}[colback=green!5, colframe=green!50!black, title=Messages clés]
+\begin{enumerate}[leftmargin=*]
+    \item La VSM se fait \textbf{sur le terrain}, pas dans un bureau
+    \item Le ratio de tension typique avant amélioration : \textbf{500 à 5000}
+    \item Un bon état futur réduit le Lead Time de \textbf{50 à 80\%}
+    \item La surproduction est le \textbf{pire des gaspillages}
+    \item Le Takt Time est la \textbf{voix du client} - il ne se négocie pas
+    \item Un seul Pacemaker pour piloter toute la chaîne
+    \item Le flux continu est \textbf{toujours préférable} au flux tiré par Kanban
+    \item Une VSM sans plan d'action Kaizen est \textbf{inutile}
+\end{enumerate}
+\end{tcolorbox}
+
+\subsection{Pour aller plus loin}
+
+\textbf{Prochaines étapes :}
+\begin{enumerate}
+    \item Appliquer la VSM à votre propre flux de production
+    \item Mesurer votre ratio de tension actuel
+    \item Identifier vos 3 premiers chantiers Kaizen
+    \item Former vos équipes au management visuel
+    \item Mettre en place un cycle PDCA hebdomadaire
+\end{enumerate}
+
+\vfill
+
+\begin{center}
+\fbox{\parbox{0.8\textwidth}{\centering
+\textbf{\Large Félicitations !}\\[0.3cm]
+Vous maîtrisez maintenant les fondamentaux de la VSM.\\
+\textit{« Le voyage de mille lieues commence par un premier pas. »}\\
+-- Lao Tseu
+}}
+\end{center}
+
+\end{document}
