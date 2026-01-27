@@ -1,4 +1,5 @@
 # Scénario Détaillé : Atelier Cocotte LEAN - "L'Excellence par le Flux"
+
 ## Formation d'une Journée pour Salariés d'Entreprise
 
 > [!IMPORTANT]
@@ -28,6 +29,7 @@
 ### **Phase 1 : Accueil & Brise-glace "La Cocotte Agile"** ⏱️ 09h00 - 09h30 (30 min)
 
 #### Objectifs Pédagogiques
+
 - Créer un climat de confiance et de convivialité
 - Tester le niveau initial de dextérité des participants
 - Recueillir les attentes et identifier les compétences présentes
@@ -35,16 +37,19 @@
 #### Déroulé Détaillé
 
 **09h00 - 09h10** | Accueil et installation
+
 - Accueil café/thé
 - Installation des participants en îlots (tables rondes ou en U)
 - Distribution du badge nominatif et du kit matériel individuel
 
 **09h10 - 09h20** | Activité cocotte individuelle
+
 - Chaque participant fabrique SA première cocotte en papier
 - Instruction: "Faites au mieux, sans consigne précise"
 - Pendant la fabrication, noter mentalement les difficultés
 
 **09h20 - 09h30** | Partage des attentes
+
 - Les participants écrivent à l'intérieur de leur cocotte:
   - **Volet 1**: Une attente pour la journée
   - **Volet 2**: Une compétence qu'ils apportent au groupe
@@ -53,6 +58,7 @@
 - Tour de table express: chacun tire au hasard un volet et le partage (2 min par personne)
 
 #### Observation Formateur
+
 Noter discrètement: temps de fabrication, qualité visuelle, hésitations. Ces données serviront de référence pour la suite.
 
 ---
@@ -60,6 +66,7 @@ Noter discrètement: temps de fabrication, qualité visuelle, hésitations. Ces 
 ### **Phase 2 : Les Fondamentaux du LEAN** ⏱️ 09h30 - 10h15 (45 min)
 
 #### Objectifs Pédagogiques
+
 - Comprendre la philosophie LEAN et son origine (Système de Production Toyota)
 - Différencier valeur ajoutée et gaspillages
 - Identifier les 3 démons de l'industrie
@@ -67,11 +74,13 @@ Noter discrètement: temps de fabrication, qualité visuelle, hésitations. Ces 
 #### Déroulé Détaillé
 
 **09h30 - 09h45** | Introduction à la philosophie LEAN
+
 - **Définition**: "Créer plus de valeur avec moins de ressources"
 - **Question provocatrice**: "Dans votre journée de travail, combien de temps créez-vous VRAIMENT de la valeur pour le client?"
 - Échanges en binômes puis partage collectif (5 min)
 
 **09h45 - 10h00** | Les 3 Démons (Muda, Muri, Mura)
+
 - **MUDA** (Gaspillages): Tout ce qui n'apporte pas de valeur au client
   - Présentation visuelle des **8 gaspillages**:
     1. Surproduction
@@ -87,12 +96,14 @@ Noter discrètement: temps de fabrication, qualité visuelle, hésitations. Ces 
 - **MURA** (Variabilité): Irrégularité dans le flux de travail
 
 **10h00 - 10h15** | Concepts clés
+
 - **Valeur ajoutée**: Ce pour quoi le client est prêt à payer
 - **Lead Time**: Temps total de traversée d'un produit dans le système
 - **Takt Time**: Rythme de production nécessaire pour satisfaire la demande client
 - **Citation de Taiichi Ohno**: *"Là où il n'y a pas de standard, il ne peut y avoir de Kaizen (amélioration)"*
 
 #### Support Visuel
+
 Projection d'une courte vidéo (3-4 min) montrant un atelier LEAN en action dans une usine Toyota.
 
 ---
@@ -100,6 +111,7 @@ Projection d'une courte vidéo (3-4 min) montrant un atelier LEAN en action dans
 ### **Phase 3 : La Standardisation (Phase 0)** ⏱️ 10h15 - 10h45 (30 min)
 
 #### Objectifs Pédagogiques
+
 - Comprendre qu'aucune amélioration n'est possible sans standard
 - Établir collectivement le processus de fabrication
 - Découper le travail en postes équilibrés
@@ -107,6 +119,7 @@ Projection d'une courte vidéo (3-4 min) montrant un atelier LEAN en action dans
 #### Déroulé Détaillé
 
 **10h15 - 10h25** | Définition du Standard "Cocotte Parfaite"
+
 - Présentation de la **Fiche d'Instruction au Poste (FIP)** au format affiche
 - Démonstration en direct par le formateur:
   1. **Préparation**: Formation du carré (210x210mm)
@@ -118,6 +131,7 @@ Projection d'une courte vidéo (3-4 min) montrant un atelier LEAN en action dans
   7. **Étape 6**: L'ouverture (mise en volume)
 
 **10h25 - 10h35** | Critères de Qualité
+
 - Discussion collective: "Qu'est-ce qu'une cocotte conforme?"
 - Établissement des **3 critères de validation**:
   1. **Symétrie**: Pointes de même hauteur
@@ -125,6 +139,7 @@ Projection d'une courte vidéo (3-4 min) montrant un atelier LEAN en action dans
   3. **Propreté**: Absence de déchirures ou traces excessives
 
 **10h35 - 10h45** | Organisation des Postes
+
 - Division du groupe en équipes (2 lignes de production de 4-6 personnes)
 - Découpage du processus en **5 postes de travail**:
   - **Poste 1**: Formation du carré
@@ -143,6 +158,7 @@ Projection d'une courte vidéo (3-4 min) montrant un atelier LEAN en action dans
 ### **Phase 4 : Round 1 - Le Flux Poussé "L'Usine à Stocks"** ⏱️ 11h00 - 12h00 (1h00)
 
 #### Objectifs Pédagogiques
+
 - Expérimenter les limites du flux poussé
 - Constater l'accumulation d'en-cours (WIP)
 - Mesurer les conséquences: stress, défauts détectés tard, Lead Time élevé
@@ -151,6 +167,7 @@ Projection d'une courte vidéo (3-4 min) montrant un atelier LEAN en action dans
 
 > [!WARNING]
 > **Mode Production de Masse**
+>
 > - Travail par **lots de 10 cocottes**
 > - Chaque poste produit **au maximum de sa capacité**
 > - **Communication interdite** entre les postes
@@ -159,12 +176,14 @@ Projection d'une courte vidéo (3-4 min) montrant un atelier LEAN en action dans
 #### Déroulé Détaillé
 
 **11h00 - 11h05** | Briefing
+
 - Explication des règles (affichées au mur)
 - Chaque poste reçoit son stock initial de matière
 - Installation des chronomètres et tableaux de bord
 - Question: "Qui pense que cette méthode est efficace?" (vote à main levée)
 
 **11h05 - 11h25** | Production (20 minutes chrono)
+
 - **TOP Départ!**
 - Le formateur observe sans intervenir:
   - Accumulation d'en-cours entre les postes
@@ -174,6 +193,7 @@ Projection d'une courte vidéo (3-4 min) montrant un atelier LEAN en action dans
 - À mi-parcours (10 min), demander: "Qui est débordé? Qui attend?"
 
 **11h25 - 11h35** | Comptage et mesures
+
 - Arrêt de la production
 - Comptage:
   - Nombre de cocottes terminées
@@ -185,12 +205,14 @@ Projection d'une courte vidéo (3-4 min) montrant un atelier LEAN en action dans
 **11h35 - 12h00** | Débriefing approfondi (25 min)
 
 ##### Questions au Groupe
+
 1. "Comment vous êtes-vous senti pendant la production?"
 2. "Qu'avez-vous observé?"
 3. "Où étaient les stocks?"
 4. "Quand avez-vous détecté les défauts?"
 
 ##### Analyse Formateur
+
 - Faire identifier les **8 gaspillages** présents:
   - Surproduction (lots de 10)
   - Attentes (postes lents bloqués)
@@ -225,11 +247,13 @@ Projection d'une courte vidéo (3-4 min) montrant un atelier LEAN en action dans
 ### **Phase 5 : Round 2 - Le Flux Tiré & One Piece Flow** ⏱️ 13h00 - 14h15 (1h15)
 
 #### Objectifs Pédagogiques
+
 - Expérimenter le flux tiré (Pull vs Push)
 - Comprendre le système Kanban
 - Mesurer l'impact du flux pièce à pièce sur le Lead Time
 
 #### Concepts Introduits
+
 - **Flux Tiré**: On produit uniquement ce qui est demandé
 - **Kanban**: Signal visuel de déclenchement de production
 - **One Piece Flow**: Fabrication pièce par pièce
@@ -239,6 +263,7 @@ Projection d'une courte vidéo (3-4 min) montrant un atelier LEAN en action dans
 
 > [!TIP]
 > **Mode Flux Tiré**
+>
 > - Production **pièce à pièce** uniquement
 > - On ne produit que si le **poste suivant** (le "client") demande (Kanban)
 > - **Communication autorisée** et encouragée
@@ -247,6 +272,7 @@ Projection d'une courte vidéo (3-4 min) montrant un atelier LEAN en action dans
 #### Déroulé Détaillé
 
 **13h00 - 13h15** | Briefing et préparation
+
 - Explication du flux tiré avec schéma au tableau
 - Démonstration du système Kanban:
   - **Carte rouge**: Poste occupé
@@ -255,10 +281,12 @@ Projection d'une courte vidéo (3-4 min) montrant un atelier LEAN en action dans
 - Réorganisation physique: postes rapprochés pour minimiser transports
 
 **13h15 - 13h20** | Essai à blanc (5 min)
+
 - Test du système Kanban sur 5 cocottes
 - Ajustements et questions
 
 **13h20 - 13h40** | Production Round 2 (20 minutes chrono)
+
 - **TOP Départ!**
 - Observations formateur:
   - Fluidité du flux
@@ -267,6 +295,7 @@ Projection d'une courte vidéo (3-4 min) montrant un atelier LEAN en action dans
   - Détection précoce des défauts
 
 **13h40 - 13h50** | Comptage et mesures
+
 - Nombre de cocottes terminées
 - WIP résiduel (devrait être minimal)
 - Lead Time moyen
@@ -275,12 +304,14 @@ Projection d'une courte vidéo (3-4 min) montrant un atelier LEAN en action dans
 **13h50 - 14h15** | Débriefing Round 2 (25 min)
 
 ##### Questions au Groupe
+
 1. "Quelle différence avec le Round 1?"
 2. "Quand avez-vous détecté les défauts?"
 3. "Comment était votre niveau de stress?"
 4. "Quelle était l'ambiance de travail?"
 
 ##### Démonstration de la Loi de Little
+
 - Calcul au tableau:
   - **Lead Time = WIP / Débit**
   - Exemple: Si WIP passe de 50 à 5 cocottes, et débit constant = 1 cocotte/minute
@@ -301,12 +332,14 @@ Projection d'une courte vidéo (3-4 min) montrant un atelier LEAN en action dans
 ### **Phase 6 : Round 3 - Équilibrage et Kaizen** ⏱️ 14h15 - 15h45 (1h30)
 
 #### Objectifs Pédagogiques
+
 - Équilibrer les charges de travail entre postes
 - Calculer et appliquer le Takt Time
 - Mettre en place le 5S
 - Pratiquer l'amélioration continue (Kaizen)
 
 #### Concepts Introduits
+
 - **Takt Time**: Temps disponible / Demande client
 - **Yamazumi**: Diagramme d'équilibrage des charges
 - **5S**: Système de rangement et d'organisation (Seiri, Seiton, Seiso, Seiketsu, Shitsuke)
@@ -314,6 +347,7 @@ Projection d'une courte vidéo (3-4 min) montrant un atelier LEAN en action dans
 #### Déroulé Détaillé
 
 **14h15 - 14h30** | Atelier Yamazumi
+
 - Chronométrage de chaque opération par poste (3 cycles)
 - Construction du diagramme Yamazumi sur paperboard:
   - Axe vertical: Temps (secondes)
@@ -337,12 +371,14 @@ Temps (sec)
 ```
 
 **14h30 - 14h45** | Calcul du Takt Time
+
 - **Demande client**: 100 cocottes en 1 heure = 1,67 cocotte/min
 - **Temps disponible**: 60 minutes
 - **Takt Time** = 60 min / 100 cocottes = **36 secondes/cocotte**
 - Objectif: Chaque poste doit prendre ≤ 36 secondes
 
 **14h45 - 15h00** | Réorganisation des tâches
+
 - Identification du goulot (ex: Poste 3 = 55 secondes)
 - Brainstorming en équipe: "Comment réduire ce temps?"
   - Redistribuer certaines opérations
@@ -351,6 +387,7 @@ Temps (sec)
 - Nouveau découpage: fusionner ou diviser les postes si nécessaire
 
 **15h00 - 15h10** | Mise en place du 5S
+
 - **Seiri** (Trier): Retirer le matériel inutile des tables
 - **Seiton** (Ranger): Placer chaque outil à portée de main (zone de préhension)
 - **Seiso** (Nettoyer): Remettre les tables en ordre
@@ -358,11 +395,13 @@ Temps (sec)
 - **Shitsuke** (Respecter): S'engager à maintenir
 
 **15h10 - 15h30** | Production Round 3 (20 minutes chrono)
+
 - Application des améliorations
 - Production avec nouveau layout et tâches équilibrées
 - Objectif: Qualité maximale + respect du Takt Time
 
 **15h30 - 15h45** | Comptage final et débriefing express
+
 - Mesures finales
 - Ressenti de l'équipe: "Avez-vous senti la différence?"
 
@@ -375,6 +414,7 @@ Temps (sec)
 ### **Phase 7 : Synthèse Finale & Calcul du TRS** ⏱️ 16h00 - 16h45 (45 min)
 
 #### Objectifs Pédagogiques
+
 - Comparer les 3 rounds avec données chiffrées
 - Introduire le TRS (Taux de Rendement Synthétique)
 - Créer le plan de transposition vers le quotidien
@@ -398,7 +438,7 @@ Temps (sec)
 
 **Formule du TRS:**
 
-$$TRS = Disponibilité \times Performance \times Qualité$$
+**TRS = Disponibilité × Performance × Qualité**
 
 **Exemple de calcul pour Round 3:**
 
@@ -412,7 +452,7 @@ $$TRS = Disponibilité \times Performance \times Qualité$$
   - Production théorique (Takt Time 36s) = 1200/36 = 33 cocottes
   - **Performance = 68/33 = 206%** → Plafonné à 100% (on a visiblement optimisé!)
   - Recalcul: Si on produit 68 en 1200s → cadence réelle = 17,6s/cocotte
-  - Vs Takt demandé = 36s → **Performance = 36/17,6 = 204%** 
+  - Vs Takt demandé = 36s → **Performance = 36/17,6 = 204%**
   - *Note formateur: expliquer qu'ici on dépasse le Takt, donc on est très performant*
 
 - **Qualité**: Pièces bonnes / Pièces produites
@@ -422,13 +462,16 @@ $$TRS = Disponibilité \times Performance \times Qualité$$
 **TRS Round 3 = 95,8% × 100% × 95,6% = 91,5%** ✅ *Classe mondiale!*
 
 Comparaison:
+
 - **TRS Round 1** ≈ 45% (typique d'une production de masse désorganisée)
 - **TRS Round 3** ≈ 91% (excellence opérationnelle)
 
 **16h30 - 16h45** | Transposition au quotidien
 
 ##### Exercice en Sous-groupes (3-4 personnes)
+
 "Identifiez dans VOTRE travail quotidien:"
+
 1. **Un flux poussé** (exemple: emails envoyés en masse)
 2. **Un stock inutile** (exemple: dossiers en attente)
 3. **Un goulot** (exemple: validation qui bloque tout)
@@ -441,16 +484,18 @@ Partage en plénière (2 min par groupe).
 ### **Phase 8 : Clôture & Plan d'Action** ⏱️ 16h45 - 17h00 (15 min)
 
 #### Objectifs
+
 - Ancrer les apprentissages
 - Engager l'action post-formation
 
 #### Déroulé Détaillé
 
 **16h45 - 16h55** | Tour de cocotte final
+
 - Chaque participant reprend la cocotte du matin
 - Retour sur les attentes: "Ont-elles été satisfaites?"
 - Chacun écrit sur un nouveau volet: **"Mon engagement LEAN pour demain"**
-- Exemples: 
+- Exemples:
   - "Limiter mes emails en brouillon à 5 maximum"
   - "Faire un 5S de mon bureau"
   - "Proposer un flux tiré pour les demandes de congés"
@@ -459,7 +504,7 @@ Partage en plénière (2 min par groupe).
 
 > [!NOTE]
 > **Le LEAN n'est pas une méthode pour travailler plus vite, mais pour travailler mieux en supprimant ce qui ne sert à rien.**
-> 
+>
 > Citation finale de Taiichi Ohno:  
 > *"Le pire gaspillage, c'est de faire efficacement quelque chose qui ne devrait pas être fait du tout."*
 
@@ -485,6 +530,7 @@ Partage en plénière (2 min par groupe).
 ### Grille d'Observation des Comportements
 
 Pendant les rounds, observer:
+
 - **Poussé (R1)**: Individualisme, frustration, recherche de coupables
 - **Tiré (R2)**: Début de communication, entraide ponctuelle
 - **Optimisé (R3)**: Esprit d'équipe, problème = opportunité, sourires
@@ -492,14 +538,17 @@ Pendant les rounds, observer:
 ### Variantes Pédagogiques
 
 **Pour un public confirmé:**
+
 - Ajouter un Round 4 avec introduction du **Heijunka** (lissage de production)
 - Simuler des pannes machine ou variations de demande client
 
 **Pour un public débutant:**
+
 - Simplifier le calcul du TRS
 - Focus uniquement sur Round 1 vs Round 2
 
 **Pour un format demi-journée:**
+
 - Supprimer le Round 3
 - Synthèse directe après Round 2
 
@@ -521,15 +570,18 @@ Pendant les rounds, observer:
 ## 📚 Ressources Complémentaires
 
 ### Lectures Recommandées
+
 - *Le système de production Toyota* - Taiichi Ohno
 - *Lean Thinking* - James Womack & Daniel Jones
 - *The Goal* - Eliyahu Goldratt (roman didactique sur la théorie des contraintes)
 
 ### Vidéos Pédagogiques
+
 - Documentaire "La révolution LEAN" (France 5)
 - Visite virtuelle d'une usine Toyota
 
 ### Outils Digitaux
+
 - Application de simulation LEAN (Gemba Walk)
 - Templates Yamazumi et Kanban (Excel/PowerPoint)
 

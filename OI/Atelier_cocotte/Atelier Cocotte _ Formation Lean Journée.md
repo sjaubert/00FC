@@ -115,7 +115,7 @@ Plaintext
 
    |   /     \\   | (Retourner) |   /     \\   |            (\_\_\_\_)
 
-   |\_\_/\_\_\_\_\_\_\_\\\_\_|           |\_\_/\_\_\_\_\_\_\_\\\_\_|           
+   |\_\_/\_\_\_\_\_\_\_\\\_\_|           |\_\_/\_\_\_\_\_\_\_\\\_\_|
 
   (Coins au centre)         (Coins au centre)        (Mise en volume)
 
@@ -136,4 +136,3 @@ Pour être déclarée **"Conforme"**, la cocotte doit passer le contrôle suivan
 Pour votre atelier, je vous suggère d'imprimer ce standard et de le scotcher directement sur la table. Lors du **Round 1**, vous verrez que personne ne le regarde. C'est lors du débriefing que vous pourrez dire : *"Le standard était sous vos yeux, pourquoi ne l'avez-vous pas suivi ?"*. C'est le meilleur moyen d'introduire la notion de **discipline opérationnelle**.
 
 Souhaitez-vous que je vous prépare une **grille d'analyse des défauts** (Matrice de Qualité) pour que votre "Contrôleur Qualité" puisse trier les cocottes durant le jeu ?
-
