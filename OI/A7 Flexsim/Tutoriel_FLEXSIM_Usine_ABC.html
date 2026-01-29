@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel FLEXSIM - Modélisation Usine ABC</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .header-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+        }
+
+        h2 {
+            color: #1e3c72;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #2a5298;
+            margin: 25px 0 15px 0;
+            font-size: 1.5em;
+        }
+
+        h4 {
+            color: #667eea;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #ff6b6b;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .success-box {
+            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #28a745;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #17a2b8;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fff5ba 0%, #ffe44d 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #ffc107;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        ul,
+        ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 10px 0;
+            padding-left: 10px;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-right: 15px;
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .step-title {
+            display: flex;
+            align-items: center;
+            margin: 30px 0 15px 0;
+        }
+
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            overflow-x: auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .param-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .param-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .param-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.2);
+        }
+
+        .param-label {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .param-value {
+            font-size: 1.3em;
+            color: #1e3c72;
+        }
+
+        strong {
+            color: #1e3c72;
+        }
+
+        .diagram {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            margin: 20px 0;
+        }
+
+        footer {
+            background: #1e3c72;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .toc {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .toc-title {
+            font-size: 1.5em;
+            color: #1e3c72;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .toc-list {
+            list-style: none;
+            margin: 0;
+        }
+
+        .toc-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .toc-list li:last-child {
+            border-bottom: none;
+        }
+
+        .toc-list a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .toc-list a:hover {
+            color: #1e3c72;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .param-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="header-info">
+                <img src="../../logo_uimm_placeholder.jpg" alt="UIMM CVDL" style="height: 80px;">
+                <div style="text-align: right;">
+                    <h3 style="margin: 0; color: white; font-size: 1.2em;">Pôle Formation UIMM CVDL</h3>
+                    <p style="margin: 5px 0 0 0; opacity: 0.9;">Organisation Industrielle</p>
+                </div>
+            </div>
+            <h1>📊 Tutoriel FLEXSIM</h1>
+            <p>Modélisation de l'Usine ABC Emboutissage Ltée</p>
+            <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">Reproduire l'État Initial depuis l'Étude VSM</p>
+        </header>
+
+        <div class="content">
+            <!-- Table des Matières -->
+            <div class="toc">
+                <div class="toc-title">📑 Table des Matières</div>
+                <ul class="toc-list">
+                    <li><a href="#introduction">1. Introduction et Objectifs</a></li>
+                    <li><a href="#donnees">2. Données de l'Usine ABC</a></li>
+                    <li><a href="#preparation">3. Préparation du Modèle</a></li>
+                    <li><a href="#modelisation">4. Modélisation des Processus</a></li>
+                    <li><a href="#configuration">5. Configuration des Paramètres</a></li>
+                    <li><a href="#flux">6. Connexions et Flux</a></li>
+                    <li><a href="#execution">7. Exécution et Analyse</a></li>
+                    <li><a href="#exercices">8. Exercices de Validation</a></li>
+                    <li><a href="#faq">9. FAQ et Dépannage</a></li>
+                </ul>
+            </div>
+
+            <!-- Section 1: Introduction -->
+            <div id="introduction" class="section">
+                <h2>1. Introduction et Objectifs</h2>
+
+                <h3>🎯 Objectif du Tutoriel</h3>
+                <p>Ce tutoriel vous guide <strong>pas à pas</strong> dans la création d'un modèle FLEXSIM de l'usine <strong>ABC Emboutissage Ltée</strong>, basé sur les données de l'étude VSM (Value Stream Mapping).</p>
+
+                <div class="success-box">
+                    <h4>Ce que vous allez apprendre</h4>
+                    <ul style="margin: 10px 0 0 20px;">
+                        <li>Créer un modèle de simulation de production avec FLEXSIM</li>
+                        <li>Configurer des processus avec temps de cycle, changements de format et pannes</li>
+                        <li>Modéliser des stocks intermédiaires entre processus</li>
+                        <li>Analyser les goulots d'étranglement et le Lead Time</li>
+                        <li>Valider les résultats par rapport aux calculs VSM</li>
+                    </ul>
+                </div>
+
+                <h3>📋 Prérequis</h3>
+                <ul>
+                    <li><strong>Logiciel :</strong> FLEXSIM 24.0 ou version ultérieure installé</li>
+                    <li><strong>Connaissances :</strong> Notions de base en simulation (interface FLEXSIM)</li>
+                    <li><strong>Temps estimé :</strong> 2-3 heures pour la modélisation complète</li>
+                    <li><strong>Documents :</strong> Étude VSM ABC Emboutissage (pour référence)</li>
+                </ul>
+
+                <div class="info-box">
+                    <h4>💡 Note Pédagogique</h4>
+                    <p>Ce tutoriel se concentre sur la modélisation de l'<strong>état initial</strong> de l'usine (avant améliorations Lean). Cela permet de visualiser les problèmes identifiés dans la VSM et de tester ensuite des scénarios d'amélioration.</p>
+                </div>
+            </div>
+
+            <!-- Section 2: Données -->
+            <div id="donnees" class="section">
+                <h2>2. Données de l'Usine ABC</h2>
+
+                <h3>🏭 Contexte de Production</h3>
+                <p>ABC Emboutissage Ltée fabrique des <strong>supports de tableaux de bord en acier</strong> pour l'industrie automobile. L'usine produit deux variantes :</p>
+                <ul>
+                    <li><strong>Version Gauche (LH)</strong> : 12 000 pièces/mois (65%)</li>
+                    <li><strong>Version Droite (RH)</strong> : 6 400 pièces/mois (35%)</li>
+                </ul>
+
+                <img src="flux_production_abc_1769713035277.png" alt="Flux de production ABC" class="diagram">
+
+                <h3>📊 Paramètres Globaux</h3>
+                <div class="param-grid">
+                    <div class="param-card">
+                        <div class="param-label">Demande Totale Mensuelle</div>
+                        <div class="param-value">18 400 pièces</div>
+                    </div>
+                    <div class="param-card">
+                        <div class="param-label">Demande Quotidienne</div>
+                        <div class="param-value">920 pièces/jour</div>
+                    </div>
+                    <div class="param-card">
+                        <div class="param-label">Takt Time</div>
+                        <div class="param-value">60 secondes/pièce</div>
+                    </div>
+                    <div class="param-card">
+                        <div class="param-label">Régime de Travail</div>
+                        <div class="param-value">2 × 8h = 16h/jour</div>
+                    </div>
+                    <div class="param-card">
+                        <div class="param-label">Temps Net par Jour</div>
+                        <div class="param-value">920 minutes</div>
+                    </div>
+                    <div class="param-card">
+                        <div class="param-label">Jours Travaillés/Mois</div>
+                        <div class="param-value">20 jours</div>
+                    </div>
+                </div>
+
+                <h3>⚙️ Processus de Production</h3>
+                <table>
+                    <tr>
+                        <th>Processus</th>
+                        <th>Machine</th>
+                        <th>TC (s)</th>
+                        <th>TCF</th>
+                        <th>Fiabilité</th>
+                        <th>Stock Sortie</th>
+                    </tr>
+                    <tr>
+                        <td><strong>1. Emboutissage</strong></td>
+                        <td>Presse 200t automatique</td>
+                        <td>1</td>
+                        <td>1 heure</td>
+                        <td>85%</td>
+                        <td>7 000 pièces (4 600 LH + 2 400 RH)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Soudage I</strong></td>
+                        <td>Manuel (1 opérateur)</td>
+                        <td>39</td>
+                        <td>10 min</td>
+                        <td>100%</td>
+                        <td>1 700 pièces (1 100 LH + 600 RH)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Soudage II</strong></td>
+                        <td>Manuel (1 opérateur)</td>
+                        <td>46</td>
+                        <td>10 min</td>
+                        <td>80%</td>
+                        <td>2 450 pièces (1 600 LH + 850 RH)</td>
+                    </tr>
+                    <tr style="background-color: #ffe6e6;">
+                        <td><strong>4. Montage I</strong></td>
+                        <td>Manuel (1 opérateur)</td>
+                        <td><strong>62 ⚠️ GOULOT</strong></td>
+                        <td>-</td>
+                        <td>100%</td>
+                        <td>1 840 pièces (1 200 LH + 640 RH)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. Montage II</strong></td>
+                        <td>Manuel (1 opérateur)</td>
+                        <td>40</td>
+                        <td>-</td>
+                        <td>100%</td>
+                        <td>4 140 pièces (2 700 LH + 1 440 RH)</td>
+                    </tr>
+                </table>
+
+                <div class="highlight-box">
+                    <h4>⚠️ Point Critique Identifié</h4>
+                    <p>Le <strong>Montage I</strong> a un temps de cycle de <strong>62 secondes</strong>, ce qui est supérieur au Takt Time de <strong>60 secondes</strong>. C'est le <strong>goulot d'étranglement</strong> qui limite la capacité de toute la chaîne de production !</p>
+                </div>
+
+                <h3>📦 Approvisionnement</h3>
+                <ul>
+                    <li><strong>Fournisseur :</strong> Aciers Ultra Ltée</li>
+                    <li><strong>Livraisons :</strong> Mardis et Jeudis (2×/semaine)</li>
+                    <li><strong>Stock matière première :</strong> 5 jours de rouleaux d'acier</li>
+                </ul>
+            </div>
+
+            <!-- Section 3: Préparation -->
+            <div id="preparation" class="section">
+                <h2>3. Préparation du Modèle FLEXSIM</h2>
+
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    <h3 style="margin: 0;">Créer un Nouveau Modèle</h3>
+                </div>
+
+                <ol>
+                    <li>Lancez <strong>FLEXSIM 24.0</strong></li>
+                    <li>Cliquez sur <strong>File → New Model</strong></li>
+                    <li>Enregistrez immédiatement : <strong>File → Save As...</strong>
+                        <ul>
+                            <li>Nom : <code>ABC_Emboutissage_Etat_Initial.fsm</code></li>
+                            <li>Emplacement : dans votre dossier de travail</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="step-title">
+                    <span class="step-number">2</span>
+                    <h3 style="margin: 0;">Configurer les Paramètres Globaux</h3>
+                </div>
+
+                <ol>
+                    <li>Allez dans <strong>Tools → Global Preferences</strong></li>
+                    <li>Onglet <strong>Units</strong> :
+                        <ul>
+                            <li>Time Units : <strong>Seconds</strong></li>
+                            <li>Distance Units : <strong>Meters</strong></li>
+                        </ul>
+                    </li>
+                    <li>Configurez les paramètres de simulation :
+                        <ul>
+                            <li>Menu : <strong>Model → Properties</strong></li>
+                            <li>Warmup Time : <strong>0</strong> secondes</li>
+                            <li>Run Time : <strong>1728000</strong> secondes (20 jours × 16h × 3600)</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="info-box">
+                    <h4>💡 Pourquoi 20 jours × 16h ?</h4>
+                    <p>Nous simulons <strong>un mois de production</strong> (20 jours ouvrés) avec <strong>2 quarts de 8 heures chacun</strong> (16h/jour), ce qui correspond au régime de travail d'ABC Emboutissage.</p>
+                </div>
+
+                <div class="step-title">
+                    <span class="step-number">3</span>
+                    <h3 style="margin: 0;">Préparer l'Espace de Travail</h3>
+                </div>
+
+                <ol>
+                    <li>Dans la <strong>Library</strong> (panneau de gauche), repérez les objets dont vous aurez besoin :
+                        <ul>
+                            <li><strong>Source</strong> (arrivée des matières premières)</li>
+                            <li><strong>Processor</strong> (machines de transformation)</li>
+                            <li><strong>Queue</strong> (files d'attente / stocks)</li>
+                            <li><strong>Sink</strong> (expédition client)</li>
+                        </ul>
+                    </li>
+                    <li>Configurez la vue : utilisez la molette de la souris pour zoomer/dézoomer</li>
+                    <li>Activez la grille : <strong>View → Show Grid</strong></li>
+                </ol>
+            </div>
+
+            <!-- Section 4: Modélisation -->
+            <div id="modelisation" class="section">
+                <h2>4. Modélisation des Processus</h2>
+
+                <p>Nous allons créer le flux de production de gauche à droite, en suivant le flux physique des matières.</p>
+
+                <div class="step-title">
+                    <span class="step-number">4</span>
+                    <h3 style="margin: 0;">Créer la Source (Matières Premières)</h3>
+                </div>
+
+                <ol>
+                    <li>Glissez-déposez un objet <strong>Source</strong> depuis la Library vers le modèle</li>
+                    <li>Positionnez-le à gauche de l'espace de travail</li>
+                    <li>Double-cliquez sur la Source pour ouvrir ses propriétés</li>
+                    <li>Renommez-la : <strong>"MP_Acier"</strong> (Matière Première Acier)</li>
+                    <li>Configuration de l'arrivée :
+                        <ul>
+                            <li>Onglet <strong>Flow</strong></li>
+                            <li>Arrival Style : <strong>Arrival at time 0</strong></li>
+                            <li>Max Arrivals : <strong>Unlimited</strong></li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="info-box">
+                    <h4>💡 Pourquoi "Arrival at time 0" ?</h4>
+                    <p>Nous supposons que les <strong>5 jours de stock de matière première</strong> sont déjà présents en début de simulation. Les pièces seront "tirées" par les processus selon leurs besoins.</p>
+                </div>
+
+                <div class="step-title">
+                    <span class="step-number">5</span>
+                    <h3 style="margin: 0;">Créer le Processus Emboutissage</h3>
+                </div>
+
+                <ol>
+                    <li>Glissez-déposez un <strong>Processor</strong> à droite de la Source</li>
+                    <li>Renommez-le : <strong>"Emboutissage"</strong></li>
+                    <li>Changez sa couleur (clic droit → Edit Visual) pour le distinguer (ex: bleu foncé)</li>
+                </ol>
+
+                <div class="step-title">
+                    <span class="step-number">6</span>
+                    <h3 style="margin: 0;">Créer le Stock après Emboutissage</h3>
+                </div>
+
+                <ol>
+                    <li>Glissez-déposez une <strong>Queue</strong> à droite de l'Emboutissage</li>
+                    <li>Renommez-la : <strong>"Stock_Emboutissage"</strong></li>
+                    <li>Changez son apparence : clic droit → <strong>Edit Visual</strong>
+                        <ul>
+                            <li>Augmentez la taille de la zone de stockage pour visualiser 7000 pièces</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="step-title">
+                    <span class="step-number">7</span>
+                    <h3 style="margin: 0;">Créer les Autres Processus</h3>
+                </div>
+
+                <p>Répétez les étapes 5 et 6 pour créer la chaîne complète :</p>
+
+                <table>
+                    <tr>
+                        <th>Ordre</th>
+                        <th>Objet FLEXSIM</th>
+                        <th>Nom</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Processor</td>
+                        <td>Soudage_I</td>
+                        <td>Couleur verte</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Queue</td>
+                        <td>Stock_Soudage_I</td>
+                        <td>Capacité 1 700 pièces</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Processor</td>
+                        <td>Soudage_II</td>
+                        <td>Couleur verte claire</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Queue</td>
+                        <td>Stock_Soudage_II</td>
+                        <td>Capacité 2 450 pièces</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Processor</td>
+                        <td>Montage_I</td>
+                        <td>Couleur rouge (GOULOT !)</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Queue</td>
+                        <td>Stock_Montage_I</td>
+                        <td>Capacité 1 840 pièces</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Processor</td>
+                        <td>Montage_II</td>
+                        <td>Couleur orange</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Queue</td>
+                        <td>Stock_PF</td>
+                        <td>Produits Finis - 4 140 pièces</td>
+                    </tr>
+                </table>
+
+                <div class="step-title">
+                    <span class="step-number">8</span>
+                    <h3 style="margin: 0;">Créer le Sink (Expédition Client)</h3>
+                </div>
+
+                <ol>
+                    <li>Glissez-déposez un <strong>Sink</strong> à l'extrémité droite</li>
+                    <li>Renommez-le : <strong>"Client_Carbec"</strong></li>
+                </ol>
+
+                <div class="success-box">
+                    <h4>✅ Vérification Visuelle</h4>
+                    <p>Vous devriez maintenant avoir une ligne horizontale :</p>
+                    <p><strong>MP_Acier → Emboutissage → Stock_Emboutissage → Soudage_I → Stock_Soudage_I → Soudage_II → Stock_Soudage_II → Montage_I → Stock_Montage_I → Montage_II → Stock_PF → Client_Carbec</strong></p>
+                </div>
+            </div>
+
+            <!-- Section 5: Configuration -->
+            <div id="configuration" class="section">
+                <h2>5. Configuration des Paramètres</h2>
+
+                <div class="warning-box">
+                    <h4>⚠️ Attention aux Unités</h4>
+                    <p>FLEXSIM utilise les <strong>secondes</strong> comme unité de temps par défaut. Tous les temps de cycle doivent être en secondes !</p>
+                </div>
+
+                <div class="step-title">
+                    <span class="step-number">9</span>
+                    <h3 style="margin: 0;">Configurer Emboutissage</h3>
+                </div>
+
+                <ol>
+                    <li>Double-cliquez sur le processeur <strong>Emboutissage</strong></li>
+                    <li>Onglet <strong>Process Time</strong> :
+                        <ul>
+                            <li>Distribution : <strong>Constant</strong></li>
+                            <li>Value : <strong>1</strong> (seconde)</li>
+                        </ul>
+                    </li>
+                    <li>Onglet <strong>Setup Time</strong> (Temps de Changement de Format) :
+                        <ul>
+                            <li>Activez le Setup Time</li>
+                            <li>Distribution : <strong>Constant</strong></li>
+                            <li>Value : <strong>3600</strong> (1 heure = 3600 secondes)</li>
+                        </ul>
+                    </li>
+                    <li>Onglet <strong>State</strong> (Pannes / Fiabilité 85%) :
+                        <ul>
+                            <li>Cliquez sur <strong>Add State Profile</strong></li>
+                            <li>Type : <strong>Time Based</strong></li>
+                            <li>Mean Time Between Failures (MTBF) : <strong>calculé pour 85% de fiabilité</strong>
+                                <ul>
+                                    <li>Si 85% de disponibilité, alors 15% d'indisponibilité</li>
+                                    <li>Pour simplifier : MTBF = 10000 s, MTTR = 1765 s (pour obtenir ~85%)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="step-title">
+                    <span class="step-number">10</span>
+                    <h3 style="margin: 0;">Configurer Soudage I</h3>
+                </div>
+
+                <ol>
+                    <li>Double-cliquez sur <strong>Soudage_I</strong></li>
+                    <li>Process Time : <strong>39</strong> secondes (Constant)</li>
+                    <li>Setup Time : <strong>600</strong> secondes (10 min)</li>
+                    <li>State : Pas de pannes (Fiabilité 100%)</li>
+                </ol>
+
+                <div class="step-title">
+                    <span class="step-number">11</span>
+                    <h3 style="margin: 0;">Configurer Soudage II</h3>
+                </div>
+
+                <ol>
+                    <li>Process Time : <strong>46</strong> secondes</li>
+                    <li>Setup Time : <strong>600</strong> secondes</li>
+                    <li>State : Pannes pour 80% de fiabilité
+                        <ul>
+                            <li>MTBF = 8000 s, MTTR = 2000 s (pour obtenir ~80%)</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="step-title">
+                    <span class="step-number">12</span>
+                    <h3 style="margin: 0;">Configurer Montage I (GOULOT)</h3>
+                </div>
+
+                <ol>
+                    <li>Process Time : <strong>62</strong> secondes ⚠️</li>
+                    <li>Setup Time : Aucun (pas de TCF)</li>
+                    <li>State : Pas de pannes (100%)</li>
+                </ol>
+
+                <div class="highlight-box">
+                    <h4>🔴 Goulot d'Étranglement</h4>
+                    <p>Avec un temps de cycle de <strong>62 secondes</strong> supérieur au Takt Time de <strong>60 secondes</strong>, ce processus ne pourra jamais suivre la demande client sans amélioration !</p>
+                </div>
+
+                <div class="step-title">
+                    <span class="step-number">13</span>
+                    <h3 style="margin: 0;">Configurer Montage II</h3>
+                </div>
+
+                <ol>
+                    <li>Process Time : <strong>40</strong> secondes</li>
+                    <li>Setup Time : Aucun</li>
+                    <li>State : Pas de pannes (100%)</li>
+                </ol>
+
+                <div class="step-title">
+                    <span class="step-number">14</span>
+                    <h3 style="margin: 0;">Configurer les Stocks Initiaux</h3>
+                </div>
+
+                <p>Pour chaque <strong>Queue</strong>, configurez le stock initial :</p>
+
+                <ol>
+                    <li>Double-cliquez sur la Queue</li>
+                    <li>Onglet <strong>Initial Content</strong></li>
+                    <li>Ajoutez le nombre de pièces initiales :
+                        <ul>
+                            <li>Stock_Emboutissage : <strong>7000</strong></li>
+                            <li>Stock_Soudage_I : <strong>1700</strong></li>
+                            <li>Stock_Soudage_II : <strong>2450</strong></li>
+                            <li>Stock_Montage_I : <strong>1840</strong></li>
+                            <li>Stock_PF : <strong>4140</strong></li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="info-box">
+                    <h4>💡 Stocks Initiaux</h4>
+                    <p>Ces stocks représentent l'état observé lors de l'étude VSM. Ils permettent de démarrer la simulation dans les conditions réelles de l'usine.</p>
+                </div>
+            </div>
+
+            <!-- Section 6: Flux -->
+            <div id="flux" class="section">
+                <h2>6. Connexions et Flux</h2>
+
+                <div class="step-title">
+                    <span class="step-number">15</span>
+                    <h3 style="margin: 0;">Créer les Connexions</h3>
+                </div>
+
+                <ol>
+                    <li>Sélectionnez l'icône <strong>Connect Objects (A)</strong> dans la barre d'outils</li>
+                    <li>Créez les connexions dans l'ordre :
+                        <ol type="a">
+                            <li>MP_Acier → Emboutissage</li>
+                            <li>Emboutissage → Stock_Emboutissage</li>
+                            <li>Stock_Emboutissage → Soudage_I</li>
+                            <li>Soudage_I → Stock_Soudage_I</li>
+                            <li>Stock_Soudage_I → Soudage_II</li>
+                            <li>Soudage_II → Stock_Soudage_II</li>
+                            <li>Stock_Soudage_II → Montage_I</li>
+                            <li>Montage_I → Stock_Montage_I</li>
+                            <li>Stock_Montage_I → Montage_II</li>
+                            <li>Montage_II → Stock_PF</li>
+                            <li>Stock_PF → Client_Carbec</li>
+                        </ol>
+                    </li>
+                </ol>
+
+                <div class="step-title">
+                    <span class="step-number">16</span>
+                    <h3 style="margin: 0;">Configurer la Demande Client</h3>
+                </div>
+
+                <ol>
+                    <li>Double-cliquez sur <strong>Client_Carbec</strong> (Sink)</li>
+                    <li>Configuration de la demande :
+                        <ul>
+                            <li>Nous devons simuler une demande de <strong>920 pièces par jour</strong></li>
+                            <li>Avec 2 quarts de 8h, cela donne un rythme constant</li>
+                        </ul>
+                    </li>
+                    <li>Pour simplifier, le Sink accepte toutes les pièces qui arrivent</li>
+                </ol>
+
+                <div class="info-box">
+                    <h4>💡 Modélisation Simplifiée</h4>
+                    <p>Pour ce modèle initial, nous simulons un <strong>flux poussé</strong> où chaque processus produit en continu. Dans un modèle avancé, on pourrait ajouter un système de contrôle de production (MRP) et des commandes quotidiennes.</p>
+                </div>
+            </div>
+
+            <!-- Section 7: Exécution -->
+            <div id="execution" class="section">
+                <h2>7. Exécution et Analyse</h2>
+
+                <div class="step-title">
+                    <span class="step-number">17</span>
+                    <h3 style="margin: 0;">Préparer les Statistiques</h3>
+                </div>
+
+                <ol>
+                    <li>Ajoutez un <strong>Dashboard</strong> pour visualiser les résultats</li>
+                    <li>Créez des graphiques pour :
+                        <ul>
+                            <li><strong>État des processus</strong> (occupé, en panne, idle)</li>
+                            <li><strong>Niveaux de stocks</strong> dans chaque Queue</li>
+                            <li><strong>Throughput</strong> (nombre de pièces produites)</li>
+                            <li><strong>Cycle Time</strong> moyen</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="step-title">
+                    <span class="step-number">18</span>
+                    <h3 style="margin: 0;">Lancer la Simulation</h3>
+                </div>
+
+                <ol>
+                    <li>Vérifiez que tous les objets sont bien connectés</li>
+                    <li>Cliquez sur le bouton <strong>Reset</strong> (icône de rafraîchissement) pour réinitialiser</li>
+                    <li>Cliquez sur <strong>Run</strong> (icône de lecture)</li>
+                    <li>Observez la simulation :
+                        <ul>
+                            <li>Les pièces se déplacent entre les processus</li>
+                            <li>Les stocks évoluent</li>
+                            <li>Le goulot <strong>Montage_I</strong> devrait créer une accumulation en amont</li>
+                        </ul>
+                    </li>
+                    <li>Laissez la simulation tourner jusqu'à la fin (1 728 000 secondes = 20 jours)</li>
+                </ol>
+
+                <div class="warning-box">
+                    <h4>⏱️ Temps de Simulation</h4>
+                    <p>La simulation peut prendre plusieurs minutes selon votre ordinateur. Vous pouvez augmenter la vitesse avec le curseur <strong>Speed</strong>.</p>
+                </div>
+
+                <div class="step-title">
+                    <span class="step-number">19</span>
+                    <h3 style="margin: 0;">Analyser les Résultats</h3>
+                </div>
+
+                <p>Après la simulation, consultez les statistiques :</p>
+
+                <h4>📊 Indicateurs Clés à Vérifier</h4>
+                <table>
+                    <tr>
+                        <th>Indicateur</th>
+                        <th>Comment le Trouver</th>
+                        <th>Valeur Attendue</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Throughput Total</strong></td>
+                        <td>Sink → Statistics → Output</td>
+                        <td>~18 400 pièces (ou moins à cause du goulot)</td>
+                    </tr>
+                    <tr style="background-color: #ffe6e6;">
+                        <td><strong>Utilisation Montage_I</strong></td>
+                        <td>Processor → State Bar</td>
+                        <td>~100% (SATURÉ)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Niveau Stock_Emboutissage</strong></td>
+                        <td>Queue → Content Graph</td>
+                        <td>Augmente continuellement (processus trop rapide)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lead Time Moyen</strong></td>
+                        <td>Dashboard → Average Staytime</td>
+                        <td>~23,6 jours (correspondance VSM)</td>
+                    </tr>
+                </table>
+
+                <div class="success-box">
+                    <h4>✅ Validation VSM</h4>
+                    <p>Si vos résultats correspondent approximativement aux calculs VSM (goulot à Montage I, stocks élevés, Lead Time ~23-24 jours), votre modèle est <strong>validé</strong> ! 🎉</p>
+                </div>
+            </div>
+
+            <!-- Section 8: Exercices -->
+            <div id="exercices" class="section">
+                <h2>8. Exercices de Validation</h2>
+
+                <h3>📝 Exercice 1 : Vérifier le Goulot</h3>
+                <div class="highlight-box">
+                    <p><strong>Question :</strong> Confirmez que Montage_I est bien le goulot en observant :</p>
+                    <ol style="margin: 10px 0 0 20px;">
+                        <li>Son taux d'utilisation (doit être proche de 100%)</li>
+                        <li>L'accumulation de stock en amont (Stock_Montage_I doit augmenter)</li>
+                        <li>La famine en aval (Stock_PF devrait diminuer si le goulot ne suit pas)</li>
+                    </ol>
+                </div>
+
+                <h3>📝 Exercice 2 : Calculer le Taux de Production Réel</h3>
+                <div class="highlight-box">
+                    <p><strong>Consigne :</strong> Avec un temps de cycle de 62s à Montage_I, calculez :</p>
+                    <ul style="margin: 10px 0 0 20px;">
+                        <li>Combien de pièces peuvent être produites par jour ?</li>
+                        <li>Quelle est la capacité mensuelle (20 jours) ?</li>
+                        <li>Quel est le déficit par rapport à la demande de 18 400 pièces/mois ?</li>
+                    </ul>
+                    <p><strong>Réponse attendue :</strong></p>
+                    <ul style="margin: 10px 0 0 20px;">
+                        <li>Pièces/jour = 55 200 s ÷ 62 s = <strong>890 pièces/jour</strong></li>
+                        <li>Capacité mensuelle = 890 × 20 = <strong>17 800 pièces/mois</strong></li>
+                        <li>Déficit = 18 400 - 17 800 = <strong>600 pièces/mois</strong> ⚠️</li>
+                    </ul>
+                </div>
+
+                <h3>📝 Exercice 3 : Tester une Amélioration</h3>
+                <div class="success-box">
+                    <p><strong>Scénario :</strong> Proposez et testez une amélioration pour éliminer le goulot.</p>
+                    <p><strong>Suggestions :</strong></p>
+                    <ul style="margin: 10px 0 0 20px;">
+                        <li><strong>Option A :</strong> Ajouter un 2ème opérateur à Montage_I (dupliquer le processeur)</li>
+                        <li><strong>Option B :</strong> Réduire le temps de cycle de Montage_I à 58s (amélioration méthode)</li>
+                        <li><strong>Option C :</strong> Accepter les heures supplémentaires (augmenter temps disponible)</li>
+                    </ul>
+                    <p><strong>Défi :</strong> Créez une nouvelle version du modèle avec votre amélioration et comparez les résultats !</p>
+                </div>
+
+                <h3>📝 Exercice 4 : Analyser l'Impact des Pannes</h3>
+                <div class="info-box">
+                    <p><strong>Question :</strong> Les processus Emboutissage (85%) et Soudage II (80%) ont des pannes.</p>
+                    <ol style="margin: 10px 0 0 20px;">
+                        <li>Observez l'évolution des stocks en amont et en aval de ces processus</li>
+                        <li>Les pannes créent-elles des goulots temporaires ?</li>
+                        <li>Quel serait l'impact d'améliorer la fiabilité à 95% ?</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Section 9: FAQ -->
+            <div id="faq" class="section">
+                <h2>9. FAQ et Dépannage</h2>
+
+                <h3>❓ Les pièces ne se déplacent pas dans la simulation</h3>
+                <p><strong>Solution :</strong></p>
+                <ul>
+                    <li>Vérifiez que tous les objets sont correctement connectés (flèches visibles)</li>
+                    <li>Vérifiez que la Source génère bien des pièces (clic droit → Quick Properties)</li>
+                    <li>Réinitialisez et relancez : bouton <strong>Reset</strong> puis <strong>Run</strong></li>
+                </ul>
+
+                <h3>❓ La simulation est très lente</h3>
+                <p><strong>Solution :</strong></p>
+                <ul>
+                    <li>Augmentez le curseur <strong>Speed</strong> en haut de l'écran</li>
+                    <li>Désactivez les animations 3D : <strong>View → Disable 3D</strong></li>
+                    <li>Réduisez la durée de simulation pour les tests (ex: 5 jours au lieu de 20)</li>
+                </ul>
+
+                <h3>❓ Les résultats ne correspondent pas aux calculs VSM</h3>
+                <p><strong>Vérifications :</strong></p>
+                <ul>
+                    <li>Les temps de cycle sont-ils en <strong>secondes</strong> ?</li>
+                    <li>Les stocks initiaux sont-ils correctement configurés ?</li>
+                    <li>La durée de simulation est-elle de 1 728 000 secondes (20 jours × 16h) ?</li>
+                    <li>Les pannes (MTBF/MTTR) sont-elles configurées pour Emboutissage et Soudage II ?</li>
+                </ul>
+
+                <h3>❓ Quel niveau de détail pour un modèle réaliste ?</h3>
+                <p><strong>Réponse :</strong></p>
+                <p>Ce tutoriel présente un modèle <strong>de niveau intermédiaire</strong>. Pour aller plus loin :</p>
+                <ul>
+                    <li><strong>Niveau avancé :</strong> Ajouter les 2 variantes (LH/RH), les changements de format, les opérateurs, les convoyeurs</li>
+                    <li><strong>Niveau expert :</strong> Modéliser le contrôle de production (MRP), les commandes quotidiennes, les livraisons fournisseur, les calendriers de pause</li>
+                </ul>
+
+                <h3>❓ Comment sauvegarder et exporter les résultats ?</h3>
+                <p><strong>Méthodes :</strong></p>
+                <ul>
+                    <li><strong>Statistiques :</strong> Clic droit sur un graphique → <strong>Export Data</strong> (Excel)</li>
+                    <li><strong>Captures d'écran :</strong> <strong>File → Export View → Image</strong></li>
+                    <li><strong>Rapport :</strong> <strong>Tools → Experimenter</strong> pour générer des rapports automatiques</li>
+                </ul>
+
+                <div class="success-box">
+                    <h4>🎓 Ressources Complémentaires</h4>
+                    <p>Pour approfondir FLEXSIM, consultez :</p>
+                    <ul style="margin: 10px 0 0 20px;">
+                        <li><strong>FlexSim Primer 2020</strong> (dans le dossier Supports_Enseignement)</li>
+                        <li><strong>Formation FlexSim 24.0.pdf</strong> (tutoriels officiels)</li>
+                        <li><strong>FlexSim User Manual</strong> : Help → User Manual dans FLEXSIM</li>
+                        <li><strong>FlexSim Community</strong> : forum.flexsim.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Conclusion -->
+            <div class="section">
+                <h2>🎯 Conclusion</h2>
+
+                <div class="success-box">
+                    <h3>Félicitations ! 🎉</h3>
+                    <p>Vous avez créé votre premier modèle FLEXSIM de l'usine ABC Emboutissage et reproduit l'état initial de l'étude VSM.</p>
+                    
+                    <h4>Ce que vous avez appris :</h4>
+                    <ul style="margin: 10px 0 0 20px;">
+                        <li>✅ Structurer un flux de production dans FLEXSIM</li>
+                        <li>✅ Configurer des processus avec temps de cycle, changements de format et pannes</li>
+                        <li>✅ Modéliser des stocks intermédiaires</li>
+                        <li>✅ Identifier les goulots d'étranglement par simulation</li>
+                        <li>✅ Valider un modèle par comparaison avec les calculs VSM</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>🚀 Prochaines Étapes</h4>
+                    <p>Pour continuer votre apprentissage :</p>
+                    <ol>
+                        <li><strong>Expérimentez</strong> avec différents scénarios d'amélioration</li>
+                        <li><strong>Créez l'état futur</strong> en appliquant les principes Lean (flux tiré, kanban, nivellement)</li>
+                        <li><strong>Comparez</strong> l'état initial et l'état futur (Lead Time, stocks, throughput)</li>
+                        <li><strong>Présentez</strong> vos résultats avec des graphiques et dashboards</li>
+                    </ol>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>💡 Point Clé</h4>
+                    <p style="font-size: 1.1em;">La simulation FLEXSIM permet de <strong>tester des améliorations sans risque</strong> avant de les implémenter dans la réalité. C'est un outil puissant pour le Lean Manufacturing et l'amélioration continue !</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p><strong>Tutoriel FLEXSIM - Modélisation Usine ABC Emboutissage</strong></p>
+            <p>Pôle Formation UIMM CVDL - Organisation Industrielle</p>
+            <p style="margin-top: 10px; opacity: 0.8;">"Simuler pour mieux comprendre, comprendre pour mieux améliorer"</p>
+        </footer>
+    </div>
+</body>
+
+</html>
