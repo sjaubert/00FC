@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activite 4 : Detox Cognitive</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid #003366;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header img {
+            height: 80px;
+        }
+
+        .header-text {
+            text-align: right;
+        }
+
+        .header-text h1 {
+            color: #003366;
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+
+        .header-text p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        h2 {
+            color: #003366;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        h3 {
+            color: #0066cc;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .objectifs {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-left: 4px solid #0066cc;
+            margin: 20px 0;
+        }
+
+        .partie {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .partie h3 {
+            margin-top: 0;
+            color: #003366;
+        }
+
+        .consignes-box {
+            background-color: #fff9e6;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+
+        .question {
+            background-color: #fafafa;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 3px solid #0066cc;
+        }
+
+        .strategie-card {
+            background-color: #e8f5e9;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #4caf50;
+        }
+
+        .strategie-card h4 {
+            color: #2e7d32;
+            margin-top: 0;
+        }
+
+        .fiche-action {
+            background-color: #fff;
+            border: 2px solid #0066cc;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .fiche-action h4 {
+            color: #003366;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        .fiche-action textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .ressources-box {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-left: 4px solid #4caf50;
+            margin: 20px 0;
+        }
+
+        .duree {
+            display: inline-block;
+            background-color: #0066cc;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .radio-options {
+            margin-left: 20px;
+        }
+
+        .radio-options label {
+            display: block;
+            margin: 8px 0;
+        }
+
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="../../../logo_uimm_placeholder.jpg" alt="Logo UIMM">
+            <div class="header-text">
+                <h1>Activite 4 : Detox Cognitive</h1>
+                <p>Pole Formation UIMM-CVDL</p>
+            </div>
+        </div>
+
+        <div class="objectifs">
+            <h3>Objectifs de l'activite</h3>
+            <ul>
+                <li>Apprendre a identifier <strong>VOS</strong> propres biais</li>
+                <li>Decouvrir des <strong>strategies</strong> pour les limiter</li>
+                <li>Creer un <strong>plan d'action</strong> personnel</li>
+            </ul>
+        </div>
+
+        <h2>Deroulement de l'activite</h2>
+
+        <span class="duree">Duree totale : 1h15</span>
+
+        <div class="partie">
+            <h3>Partie 1 : Mon profil cognitif</h3>
+            <span class="duree">25 minutes</span>
+
+            <div class="consignes-box">
+                <strong>Consigne :</strong> Repondez INDIVIDUELLEMENT a ces 10 situations professionnelles. Soyez
+                honnete avec vous-meme (ce n'est pas note !). Choisissez la reponse qui correspond a ce que vous faites
+                VRAIMENT, pas ce que vous "devriez" faire.
+            </div>
+
+            <p><strong>Il n'y a pas de bonne ou mauvaise reponse.</strong> L'objectif est d'identifier vos biais
+                dominants.</p>
+
+            <h4>Section 1 : Prise de decision</h4>
+
+            <div class="question">
+                <p><strong>1. Lors d'un achat important, vous :</strong></p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q1"> a) Choisissez rapidement ce qui vous plait au premier coup
+                        d'oeil</label>
+                    <label><input type="radio" name="q1"> b) Prenez l'option recommandee par le vendeur</label>
+                    <label><input type="radio" name="q1"> c) Choisissez l'option par defaut ou moyenne</label>
+                    <label><input type="radio" name="q1"> d) Comparez systematiquement toutes les options</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p><strong>2. Face a un nouveau projet, vous :</strong></p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q2"> a) Reutilisez les methodes qui ont deja fonctionne</label>
+                    <label><input type="radio" name="q2"> b) Cherchez ce que font les autres entreprises</label>
+                    <label><input type="radio" name="q2"> c) Privilegiez les solutions innovantes meme risquees</label>
+                    <label><input type="radio" name="q2"> d) Analysez les besoins avant de choisir la methode</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p><strong>3. Quand quelqu'un vous contredit, vous :</strong></p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q3"> a) Cherchez des arguments pour confirmer votre
+                        position</label>
+                    <label><input type="radio" name="q3"> b) Defendez votre point de vue avec energie</label>
+                    <label><input type="radio" name="q3"> c) Accordez plus de poids a vos arguments qu'aux leurs</label>
+                    <label><input type="radio" name="q3"> d) Ecoutez et evaluez objectivement</label>
+                </div>
+            </div>
+
+            <h4>Section 2 : Travail d'equipe</h4>
+
+            <div class="question">
+                <p><strong>4. En reunion, vous :</strong></p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q4"> a) Suivez l'avis majoritaire pour eviter les conflits</label>
+                    <label><input type="radio" name="q4"> b) Ne partagez pas votre desaccord pour rester poli</label>
+                    <label><input type="radio" name="q4"> c) Pensez que votre expertise vous rend plus objectif que les
+                        autres</label>
+                    <label><input type="radio" name="q4"> d) Exprimez votre position meme si elle diverge</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p><strong>5. Face a une idee d'un concurrent, vous :</strong></p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q5"> a) La critiquez automatiquement</label>
+                    <label><input type="radio" name="q5"> b) Preferez les idees developpees en interne</label>
+                    <label><input type="radio" name="q5"> c) L'evaluez selon qui la propose</label>
+                    <label><input type="radio" name="q5"> d) L'analysez sur ses merites propres</label>
+                </div>
+            </div>
+
+            <h4>Section 3 : Memoire et information</h4>
+
+            <div class="question">
+                <p><strong>6. Vous retenez surtout :</strong></p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q6"> a) Les informations recentes et disponibles</label>
+                    <label><input type="radio" name="q6"> b) Ce qui confirme vos croyances</label>
+                    <label><input type="radio" name="q6"> c) Les evenements marquants et inhabituels</label>
+                    <label><input type="radio" name="q6"> d) Vous prenez des notes pour tout</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p><strong>7. Face a un probleme, vous cherchez des informations :</strong></p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q7"> a) Jusqu'a etre certain d'avoir tout</label>
+                    <label><input type="radio" name="q7"> b) Seulement ce qui confirme votre intuition</label>
+                    <label><input type="radio" name="q7"> c) Sur Google, c'est plus rapide</label>
+                    <label><input type="radio" name="q7"> d) Suffisamment pour decider, pas plus</label>
+                </div>
+            </div>
+
+            <h4>Section 4 : Evaluation des autres</h4>
+
+            <div class="question">
+                <p><strong>8. Lors d'un recrutement, vous etes influence par :</strong></p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q8"> a) La premiere impression</label>
+                    <label><input type="radio" name="q8"> b) Le prestige de la formation</label>
+                    <label><input type="radio" name="q8"> c) La ressemblance avec vous</label>
+                    <label><input type="radio" name="q8"> d) Uniquement les competences verifiees</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p><strong>9. Vous evaluez la performance d'un collegue sur :</strong></p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q9"> a) Ses dernieres actions</label>
+                    <label><input type="radio" name="q9"> b) Votre relation personnelle avec lui</label>
+                    <label><input type="radio" name="q9"> c) Les moments forts, bons ou mauvais</label>
+                    <label><input type="radio" name="q9"> d) Une evaluation continue sur toute l'annee</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p><strong>10. Lorsque votre equipe reussit, c'est grace a :</strong></p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q10"> a) Vos efforts et competences</label>
+                    <label><input type="radio" name="q10"> b) La synergie d'equipe</label>
+                    <label><input type="radio" name="q10"> c) Les bonnes methodes que vous utilisez</label>
+                    <label><input type="radio" name="q10"> d) Un mix de competences, efforts et circonstances</label>
+                </div>
+            </div>
+
+            <h4>Interpretation (l'animateur vous guidera)</h4>
+            <p>Comptez vos reponses a, b, c, d. Vous identifierez vos 3-5 biais les plus frequents.</p>
+        </div>
+
+        <div class="partie">
+            <h3>Partie 2 : La boite a outils anti-biais</h3>
+            <span class="duree">30 minutes</span>
+
+            <p>L'animateur vous presente 7 strategies concretes pour limiter l'impact des biais dans vos decisions
+                professionnelles.</p>
+
+            <h4>Les 7 strategies :</h4>
+
+            <div class="strategie-card">
+                <h4>1. Ralentir la decision</h4>
+                <p><strong>Principe :</strong> Ne decidez pas sous pression. Prendre le temps de reflechir.</p>
+                <p><strong>Technique concrete :</strong> Attendre 24h pour les decisions importantes</p>
+            </div>
+
+            <div class="strategie-card">
+                <h4>2. Chercher la contradiction</h4>
+                <p><strong>Principe :</strong> Activement chercher ce qui contredit votre avis</p>
+                <p><strong>Technique concrete :</strong> Se poser la question "Et si le contraire etait vrai ?"</p>
+            </div>
+
+            <div class="strategie-card">
+                <h4>3. Diversifier les sources</h4>
+                <p><strong>Principe :</strong> Ne pas se fier a une seule source d'information</p>
+                <p><strong>Technique concrete :</strong> Regle des 3 sources minimum</p>
+            </div>
+
+            <div class="strategie-card">
+                <h4>4. Utiliser des checklists</h4>
+                <p><strong>Principe :</strong> Structurer les decisions importantes</p>
+                <p><strong>Technique concrete :</strong> Grille de decision avec criteres objectifs</p>
+            </div>
+
+            <div class="strategie-card">
+                <h4>5. Decisions collectives structurees</h4>
+                <p><strong>Principe :</strong> Utiliser des methodes qui limitent les biais de groupe</p>
+                <p><strong>Technique concrete :</strong> Brainstorming silencieux, vote anonyme</p>
+            </div>
+
+            <div class="strategie-card">
+                <h4>6. Attention au contexte</h4>
+                <p><strong>Principe :</strong> Ne pas decider si faim, fatigue, stress, emotion forte</p>
+                <p><strong>Technique concrete :</strong> Auto-questionnement "Suis-je en etat de decider ?"</p>
+            </div>
+
+            <div class="strategie-card">
+                <h4>7. Formation continue</h4>
+                <p><strong>Principe :</strong> Rester vigilant et partager avec l'equipe</p>
+                <p><strong>Technique concrete :</strong> Rituel mensuel "biais du mois"</p>
+            </div>
+        </div>
+
+        <div class="partie">
+            <h3>Partie 3 : Plan d'action en equipe</h3>
+            <span class="duree">20 minutes</span>
+
+            <div class="consignes-box">
+                <strong>Consigne :</strong> En equipe, choisissez 1 situation professionnelle recurrente dans votre
+                entreprise et proposez 3 strategies concretes pour limiter les biais.
+            </div>
+
+            <h4>Exemples de situations :</h4>
+            <ul>
+                <li>Reunions de lancement de projet</li>
+                <li>Processus de recrutement</li>
+                <li>Evaluation des performances</li>
+                <li>Choix de fournisseurs</li>
+                <li>Gestion de conflit</li>
+            </ul>
+
+            <h4>Livrable : Fiche action</h4>
+            <p>Remplissez cette fiche que vous pourrez ramener dans votre entreprise :</p>
+
+            <div class="fiche-action">
+                <h4>SITUATION CIBLEE :</h4>
+                <textarea placeholder="Ex: Reunion de lancement de projet"></textarea>
+
+                <h4>BIAIS IDENTIFIES :</h4>
+                <p>Biais 1 :</p>
+                <textarea placeholder="Ex: Effet de groupe - tout le monde suit le chef"></textarea>
+
+                <p>Biais 2 :</p>
+                <textarea placeholder="Ex: Loi de l'instrument - on refait toujours pareil"></textarea>
+
+                <p>Biais 3 :</p>
+                <textarea placeholder="Ex: Planification fallacieuse - on sous-estime les delais"></textarea>
+
+                <h4>STRATEGIES CONCRETES :</h4>
+                <p>Strategie 1 :</p>
+                <textarea placeholder="Ex: Brainstorming silencieux avant discussion"></textarea>
+
+                <p>Strategie 2 :</p>
+                <textarea placeholder="Ex: Challenger systematiquement 'pourquoi cette methode ?'"></textarea>
+
+                <p>Strategie 3 :</p>
+                <textarea placeholder="Ex: Multiplier les estimations initiales par 1,5"></textarea>
+
+                <h4>INDICATEURS DE SUCCES :</h4>
+                <textarea
+                    placeholder="Ex: Au moins 2 idees nouvelles par reunion, Respect des delais dans 80% des cas"></textarea>
+            </div>
+        </div>
+
+        <div class="ressources-box">
+            <h3>Ressources necessaires</h3>
+            <ul>
+                <li>Questionnaire "Mon profil cognitif" (imprime ou affiche)</li>
+                <li>Fiche action (imprimee ou feuille vierge)</li>
+                <li>Support de presentation pour les 7 strategies (anime par le formateur)</li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+
+</html>

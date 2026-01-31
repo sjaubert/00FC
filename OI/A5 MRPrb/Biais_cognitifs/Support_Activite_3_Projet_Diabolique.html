@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activite 3 : Projet Diabolique</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid #003366;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header img {
+            height: 80px;
+        }
+
+        .header-text {
+            text-align: right;
+        }
+
+        .header-text h1 {
+            color: #003366;
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+
+        .header-text p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        h2 {
+            color: #003366;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        h3 {
+            color: #0066cc;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .objectifs {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-left: 4px solid #0066cc;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background-color: #fff3e0;
+            border: 2px solid #ff9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box h3 {
+            color: #e65100;
+            margin-top: 0;
+        }
+
+        .consignes-box {
+            background-color: #fff9e6;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+
+        .contraintes {
+            background-color: #fce4ec;
+            padding: 15px;
+            border-left: 4px solid #e91e63;
+            margin: 15px 0;
+        }
+
+        .grille-documentation {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .grille-documentation th,
+        .grille-documentation td {
+            border: 1px solid #333;
+            padding: 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .grille-documentation th {
+            background-color: #0066cc;
+            color: white;
+        }
+
+        .bareme-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .bareme-table th,
+        .bareme-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .bareme-table th {
+            background-color: #003366;
+            color: white;
+        }
+
+        .bareme-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .ressources-box {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-left: 4px solid #4caf50;
+            margin: 20px 0;
+        }
+
+        .duree {
+            display: inline-block;
+            background-color: #0066cc;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="../../../logo_uimm_placeholder.jpg" alt="Logo UIMM">
+            <div class="header-text">
+                <h1>Activite 3 : Projet Diabolique</h1>
+                <p>Pole Formation UIMM-CVDL</p>
+            </div>
+        </div>
+
+        <div class="objectifs">
+            <h3>Objectif de l'activite</h3>
+            <p>Creer le produit, service ou experience <strong>LA PLUS MANIPULATRICE</strong> possible en utilisant les
+                biais cognitifs</p>
+        </div>
+
+        <div class="warning-box">
+            <h3>ATTENTION - Point ethique important</h3>
+            <p>Cet exercice est <strong>purement pedagogique</strong> !</p>
+            <p>L'objectif est de <strong>COMPRENDRE</strong> les mecanismes de manipulation pour mieux s'en
+                <strong>PROTEGER</strong>, PAS de les appliquer reellement !</p>
+            <p>Une fois que vous savez comment fonctionne la manipulation :</p>
+            <ul>
+                <li>Protegez-vous en tant que consommateur</li>
+                <li>Protegez vos utilisateurs en tant que professionnel</li>
+                <li>Utilisez ces connaissances de maniere ethique !</li>
+            </ul>
+        </div>
+
+        <h2>Deroulement de l'activite</h2>
+
+        <span class="duree">Duree totale : 1h30</span>
+
+        <h3>Phase 1 : Introduction (10 minutes)</h3>
+        <p>L'animateur presente des exemples de "Dark UX" (design manipulateur) pour vous aider a comprendre comment les
+            biais peuvent etre utilises pour manipuler.</p>
+
+        <h3>Phase 2 : Creation (50 minutes)</h3>
+        <span class="duree">50 minutes</span>
+
+        <div class="consignes-box">
+            <strong>Consigne :</strong> Creez un produit, service, publicite ou experience qui utilise AU MINIMUM 7
+            biais cognitifs differents pour manipuler les utilisateurs.
+        </div>
+
+        <div class="contraintes">
+            <h4>Contraintes obligatoires :</h4>
+            <ol>
+                <li>Utiliser au moins <strong>7 biais cognitifs</strong> differents</li>
+                <li>Utiliser au moins <strong>1 biais de chaque categorie</strong> (les 5 familles)</li>
+                <li><strong>Documenter precisement</strong> quel biais est utilise et COMMENT</li>
+                <li>Creer un <strong>support visuel</strong> (dessin, storyboard, mockup, pitch)</li>
+            </ol>
+        </div>
+
+        <h4>Exemples de creations possibles :</h4>
+        <ul>
+            <li>Une application mobile addictive</li>
+            <li>Une publicite ultra-persuasive</li>
+            <li>Un site e-commerce manipulateur</li>
+            <li>Une experience en magasin</li>
+            <li>Une campagne marketing</li>
+            <li>Un processus de vente</li>
+        </ul>
+
+        <h3>Phase 3 : Presentations "diaboliques" (30 minutes)</h3>
+        <span class="duree">30 minutes</span>
+
+        <p>Chaque equipe presente son projet (environ 5 minutes par equipe)</p>
+
+        <h4>Format de presentation :</h4>
+        <ol>
+            <li><strong>Description</strong> de votre creation</li>
+            <li><strong>Demonstration de chaque biais</strong> utilise :
+                <ul>
+                    <li>Quel biais ?</li>
+                    <li>Comment il est applique dans votre projet ?</li>
+                    <li>Quel effet attendu sur l'utilisateur ?</li>
+                </ul>
+            </li>
+            <li><strong>Impact</strong> global sur l'utilisateur</li>
+        </ol>
+
+        <h2>Grille de documentation des biais</h2>
+
+        <p>Remplissez cette grille pour documenter les biais utilises dans votre projet :</p>
+
+        <table class="grille-documentation">
+            <thead>
+                <tr>
+                    <th>Biais utilise</th>
+                    <th>Categorie</th>
+                    <th>Comment il est applique dans votre projet</th>
+                    <th>Effet attendu</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1.<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                </tr>
+                <tr>
+                    <td>2.<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                </tr>
+                <tr>
+                    <td>3.<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                </tr>
+                <tr>
+                    <td>4.<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                </tr>
+                <tr>
+                    <td>5.<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                </tr>
+                <tr>
+                    <td>6.<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                </tr>
+                <tr>
+                    <td>7.<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                </tr>
+                <tr>
+                    <td>8. (bonus)<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                    <td>&nbsp;<br><br></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Bareme de points</h2>
+
+        <table class="bareme-table">
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Biais correctement applique et justifie</td>
+                    <td>2 points</td>
+                </tr>
+                <tr>
+                    <td>Bonus : Equipe la plus "diabolique" (vote des participants)</td>
+                    <td>+3 points</td>
+                </tr>
+                <tr>
+                    <td>Bonus : Equipe la plus creative (vote de l'animateur)</td>
+                    <td>+3 points</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Rappel des 5 categories</h2>
+
+        <p>Assurez-vous d'utiliser au moins 1 biais de chaque categorie :</p>
+
+        <ol>
+            <li><strong>Memoire et Souvenirs</strong> (Violet)</li>
+            <li><strong>Raisonnement et Resolution de problemes</strong> (Bleu)</li>
+            <li><strong>Prise de decision et Comportements</strong> (Vert)</li>
+            <li><strong>Travail d'equipe et Reunions</strong> (Orange)</li>
+            <li><strong>Interviews et Tests utilisateur</strong> (Rose)</li>
+        </ol>
+
+        <div class="ressources-box">
+            <h3>Ressources necessaires</h3>
+            <ul>
+                <li><strong>Jeu de 52 cartes de biais cognitifs (version anonyme)</strong>
+                    <br>Fichier PDF : 52-cartes-biais-cognitifs_hanonymes.pdf
+                    <br>Pour inspiration et reference
+                </li>
+                <li>Feuilles A3 pour dessiner / creer des mockups</li>
+                <li>Marqueurs de couleurs</li>
+                <li>Post-its</li>
+            </ul>
+        </div>
+
+        <h2>Conseils pour reussir</h2>
+
+        <ul>
+            <li><strong>Soyez creatifs :</strong> Laissez libre cours a votre imagination</li>
+            <li><strong>Pensez "utilisateur" :</strong> Comment chaque biais va influencer le comportement</li>
+            <li><strong>Documentez bien :</strong> La grille est importante pour la presentation</li>
+            <li><strong>Verifiez la couverture :</strong> Avez-vous bien 1 biais de chaque categorie ?</li>
+            <li><strong>Preparez votre pitch :</strong> 5 minutes pour convaincre que votre projet est le plus
+                manipulateur</li>
+        </ul>
+
+    </div>
+</body>
+
+</html>

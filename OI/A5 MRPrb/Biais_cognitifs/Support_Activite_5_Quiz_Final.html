@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activite 5 : Quiz Final</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid #003366;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header img {
+            height: 80px;
+        }
+
+        .header-text {
+            text-align: right;
+        }
+
+        .header-text h1 {
+            color: #003366;
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+
+        .header-text p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        h2 {
+            color: #003366;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        h3 {
+            color: #0066cc;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .objectifs {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-left: 4px solid #0066cc;
+            margin: 20px 0;
+        }
+
+        .format-box {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .type-question {
+            background-color: #fafafa;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 3px solid #0066cc;
+        }
+
+        .type-question h4 {
+            color: #003366;
+            margin-top: 0;
+        }
+
+        .exemple {
+            background-color: #e8f5e9;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-style: italic;
+        }
+
+        .bareme-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .bareme-table th,
+        .bareme-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .bareme-table th {
+            background-color: #003366;
+            color: white;
+        }
+
+        .bareme-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .winner-box {
+            background-color: #fff9c4;
+            border: 3px solid #fbc02d;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .winner-box h3 {
+            color: #f57f17;
+            font-size: 1.5em;
+            margin-top: 0;
+        }
+
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .duree {
+            display: inline-block;
+            background-color: #0066cc;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="../../../logo_uimm_placeholder.jpg" alt="Logo UIMM">
+            <div class="header-text">
+                <h1>Activite 5 : Grand Quiz Final</h1>
+                <p>Pole Formation UIMM-CVDL</p>
+            </div>
+        </div>
+
+        <div class="objectifs">
+            <h3>Objectif de l'activite</h3>
+            <p>Valider vos connaissances acquises pendant la journee et designer l'equipe gagnante !</p>
+        </div>
+
+        <h2>Format du quiz</h2>
+
+        <span class="duree">Duree : 20 minutes</span>
+
+        <div class="format-box">
+            <h3>Format : "Qui veut gagner des millions"</h3>
+            <ul>
+                <li><strong>20 questions</strong> au total</li>
+                <li>Questions posees oralement par l'animateur</li>
+                <li>Temps de reflexion en equipe : <strong>30 secondes par question</strong></li>
+                <li>Reponse simultanee de toutes les equipes</li>
+                <li>Validation immediate par l'animateur</li>
+            </ul>
+        </div>
+
+        <h2>Types de questions</h2>
+
+        <p>Le quiz contient 5 types de questions differents :</p>
+
+        <div class="type-question">
+            <h4>Type 1 : QCM - Connaissances sur les biais</h4>
+            <p>Questions a choix multiples pour tester votre comprehension des biais.</p>
+            <div class="exemple">
+                <strong>Exemple :</strong> "L'effet IKEA signifie :<br>
+                A) On aime les meubles<br>
+                B) On surestime ce qu'on a cree<br>
+                C) On sous-estime les delais"<br>
+                <em>Reponse : B</em>
+            </div>
+        </div>
+
+        <div class="type-question">
+            <h4>Type 2 : Vrai / Faux - Idees recues</h4>
+            <p>Affirmations sur les biais cognitifs, a valider ou invalider.</p>
+            <div class="exemple">
+                <strong>Exemple :</strong> "Les experts sont immunises contre les biais cognitifs"<br>
+                <em>Reponse : FAUX</em>
+            </div>
+        </div>
+
+        <div class="type-question">
+            <h4>Type 3 : Categorisation - Associer biais et famille</h4>
+            <p>Identifier a quelle categorie appartient un biais donne.</p>
+            <div class="exemple">
+                <strong>Exemple :</strong> "Le biais de confirmation appartient a quelle categorie ?<br>
+                A) Memoire<br>
+                B) Raisonnement<br>
+                C) Decision<br>
+                D) Equipe<br>
+                E) Interview"<br>
+                <em>Reponse : B - Raisonnement</em>
+            </div>
+        </div>
+
+        <div class="type-question">
+            <h4>Type 4 : Situations - Identifier le biais dans un mini-cas</h4>
+            <p>Situation concrete, vous devez identifier le biais en jeu.</p>
+            <div class="exemple">
+                <strong>Exemple :</strong> "Marc fait confiance a Google plutot qu'a sa memoire. Quel biais ?<br>
+                A) Effet Google<br>
+                B) Biais de confirmation<br>
+                C) Effet d'ancrage"<br>
+                <em>Reponse : A - Effet Google</em>
+            </div>
+        </div>
+
+        <div class="type-question">
+            <h4>Type 5 : Application - Solutions anti-biais</h4>
+            <p>Questions sur les strategies pour contrer les biais.</p>
+            <div class="exemple">
+                <strong>Exemple :</strong> "Comment contrer le biais d'ancrage ?<br>
+                A) Ignorer la premiere information<br>
+                B) Chercher plusieurs references<br>
+                C) Decider vite"<br>
+                <em>Reponse : B</em>
+            </div>
+        </div>
+
+        <h2>Regles du jeu</h2>
+
+        <ol>
+            <li>L'animateur lit une question a voix haute</li>
+            <li>Les equipes ont <strong>30 secondes pour deliberer</strong></li>
+            <li>A la fin du compte a rebours :
+                <ul>
+                    <li>Pour les QCM : Chaque equipe leve sa pancarte avec la lettre de la reponse (A, B, C, D, E)</li>
+                    <li>Pour les Vrai/Faux : Levez la pancarte VRAI ou FAUX</li>
+                    <li>Pour les autres : Ecrivez votre reponse sur une ardoise</li>
+                </ul>
+            </li>
+            <li>L'animateur valide les reponses et attribue les points</li>
+            <li>Le tableau de score est mis a jour en temps reel</li>
+        </ol>
+
+        <h2>Bareme de points</h2>
+
+        <table class="bareme-table">
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Bonne reponse</td>
+                    <td>1 point</td>
+                </tr>
+                <tr>
+                    <td>Bonus : Equipe gagnante du quiz</td>
+                    <td>+5 points</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><strong>Note :</strong> Le score du quiz s'ajoute au score global de la journee pour designer l'equipe
+            championne !</p>
+
+        <div class="winner-box">
+            <h3>Proclamation de l'equipe gagnante</h3>
+            <p>A la fin du quiz, les scores de TOUTE la journee sont additionnes :</p>
+            <ul style="text-align: left; display: inline-block;">
+                <li>Quiz "Quelle categorie ?" (Activite 1)</li>
+                <li>Chasseurs de biais (Activite 2)</li>
+                <li>Projet Diabolique (Activite 3)</li>
+                <li>Quiz final (Activite 5)</li>
+            </ul>
+            <p><strong>L'equipe avec le score total le plus eleve remporte le titre de "Chasseurs de biais 2026"
+                    !</strong></p>
+        </div>
+
+        <h2>Conseils pour reussir le quiz</h2>
+
+        <ul>
+            <li><strong>Utilisez votre temps :</strong> 30 secondes, c'est court mais suffisant</li>
+            <li><strong>Mobilisez toute l'equipe :</strong> Chacun peut se souvenir de choses differentes</li>
+            <li><strong>Faites confiance a votre comprehension :</strong> Vous avez appris toute la journee</li>
+            <li><strong>Pas de stress :</strong> C'est avant tout un moment ludique de validation</li>
+            <li><strong>Amusez-vous !</strong> C'est la fin de la journee, celebrez vos apprentissages</li>
+        </ul>
+
+        <h2>Apres le quiz : Bilan et cloture</h2>
+
+        <span class="duree">10 minutes</span>
+
+        <h3>Tour de table express</h3>
+        <p>Chaque participant partage :</p>
+        <ul>
+            <li>"Quel est LE biais que vous retiendrez aujourd'hui ?"</li>
+            <li>"Quelle action allez-vous mettre en place des demain ?"</li>
+        </ul>
+
+        <h3>Remise des supports</h3>
+        <p>Vous repartirez avec :</p>
+        <ul>
+            <li>Fiche recapitulative des 52 biais</li>
+            <li>Carte mentale des 5 categories</li>
+            <li>Votre fiche action personnalisee (Detox Cognitive)</li>
+            <li>Bibliographie et ressources complementaires</li>
+        </ul>
+
+    </div>
+</body>
+
+</html>
