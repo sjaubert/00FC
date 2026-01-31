@@ -174,6 +174,63 @@
         .radio-options label {
             display: block;
             margin: 8px 0;
+            cursor: pointer;
+        }
+
+        .calculate-btn {
+            background-color: #0066cc;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 20px 0;
+            display: block;
+            width: 100%;
+        }
+
+        .calculate-btn:hover {
+            background-color: #003366;
+        }
+
+        .results-box {
+            display: none;
+            background-color: #e8f4f8;
+            border: 3px solid #0066cc;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .results-box h3 {
+            color: #003366;
+            margin-top: 0;
+        }
+
+        .bias-item {
+            background-color: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #ff9800;
+            border-radius: 4px;
+        }
+
+        .bias-item h4 {
+            color: #e65100;
+            margin-top: 0;
+        }
+
+        .warning-message {
+            background-color: #fff3e0;
+            border: 2px solid #ff9800;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: #e65100;
+            font-weight: bold;
+            text-align: center;
         }
 
         @media print {
@@ -186,6 +243,10 @@
                 box-shadow: none;
                 padding: 20px;
             }
+
+            .calculate-btn {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -197,6 +258,7 @@
             <div class="header-text">
                 <h1>Activite 4 : Detox Cognitive</h1>
                 <p>Pole Formation UIMM-CVDL</p>
+                <p style="font-size: 0.9em; color: #888; margin-top: 5px;">S. Jaubert</p>
             </div>
         </div>
 
@@ -211,11 +273,11 @@
 
         <h2>Deroulement de l'activite</h2>
 
-        <span class="duree">Duree totale : 1h15</span>
+
 
         <div class="partie">
             <h3>Partie 1 : Mon profil cognitif</h3>
-            <span class="duree">25 minutes</span>
+
 
             <div class="consignes-box">
                 <strong>Consigne :</strong> Repondez INDIVIDUELLEMENT a ces 10 situations professionnelles. Soyez
@@ -226,236 +288,338 @@
             <p><strong>Il n'y a pas de bonne ou mauvaise reponse.</strong> L'objectif est d'identifier vos biais
                 dominants.</p>
 
-            <h4>Section 1 : Prise de decision</h4>
+            <form id="quizForm">
+                <h4>Section 1 : Prise de decision</h4>
 
-            <div class="question">
-                <p><strong>1. Lors d'un achat important, vous :</strong></p>
-                <div class="radio-options">
-                    <label><input type="radio" name="q1" value="a"> a) Choisissez rapidement ce qui vous plait au
-                        premier coup
-                        d'oeil</label>
-                    <label><input type="radio" name="q1" value="b"> b) Prenez l'option recommandee par le
-                        vendeur</label>
-                    <label><input type="radio" name="q1"> c) Choisissez l'option par defaut ou moyenne</label>
-                    <label><input type="radio" name="q1"> d) Comparez systematiquement toutes les options</label>
+                <div class="question">
+                    <p><strong>1. Lors d'un achat important, vous :</strong></p>
+                    <div class="radio-options">
+                        <label><input type="radio" name="q1" value="a"> a) Choisissez rapidement ce qui vous plait au
+                            premier coup d'oeil</label>
+                        <label><input type="radio" name="q1" value="b"> b) Prenez l'option recommandee par le
+                            vendeur</label>
+                        <label><input type="radio" name="q1" value="c"> c) Choisissez l'option par defaut ou
+                            moyenne</label>
+                        <label><input type="radio" name="q1" value="d"> d) Comparez systematiquement toutes les
+                            options</label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="question">
-                <p><strong>2. Face a un nouveau projet, vous :</strong></p>
-                <div class="radio-options">
-                    <label><input type="radio" name="q2"> a) Reutilisez les methodes qui ont deja fonctionne</label>
-                    <label><input type="radio" name="q2"> b) Cherchez ce que font les autres entreprises</label>
-                    <label><input type="radio" name="q2"> c) Privilegiez les solutions innovantes meme risquees</label>
-                    <label><input type="radio" name="q2"> d) Analysez les besoins avant de choisir la methode</label>
+                <div class="question">
+                    <p><strong>2. Face a un nouveau projet, vous :</strong></p>
+                    <div class="radio-options">
+                        <label><input type="radio" name="q2" value="a"> a) Reutilisez les methodes qui ont deja
+                            fonctionne</label>
+                        <label><input type="radio" name="q2" value="b"> b) Cherchez ce que font les autres
+                            entreprises</label>
+                        <label><input type="radio" name="q2" value="c"> c) Privilegiez les solutions innovantes meme
+                            risquees</label>
+                        <label><input type="radio" name="q2" value="d"> d) Analysez les besoins avant de choisir la
+                            methode</label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="question">
-                <p><strong>3. Quand quelqu'un vous contredit, vous :</strong></p>
-                <div class="radio-options">
-                    <label><input type="radio" name="q3"> a) Cherchez des arguments pour confirmer votre
-                        position</label>
-                    <label><input type="radio" name="q3"> b) Defendez votre point de vue avec energie</label>
-                    <label><input type="radio" name="q3"> c) Accordez plus de poids a vos arguments qu'aux leurs</label>
-                    <label><input type="radio" name="q3"> d) Ecoutez et evaluez objectivement</label>
+                <div class="question">
+                    <p><strong>3. Quand quelqu'un vous contredit, vous :</strong></p>
+                    <div class="radio-options">
+                        <label><input type="radio" name="q3" value="a"> a) Cherchez des arguments pour confirmer votre
+                            position</label>
+                        <label><input type="radio" name="q3" value="b"> b) Defendez votre point de vue avec
+                            energie</label>
+                        <label><input type="radio" name="q3" value="c"> c) Accordez plus de poids a vos arguments qu'aux
+                            leurs</label>
+                        <label><input type="radio" name="q3" value="d"> d) Ecoutez et evaluez objectivement</label>
+                    </div>
                 </div>
-            </div>
 
-            <h4>Section 2 : Travail d'equipe</h4>
+                <h4>Section 2 : Travail d'equipe</h4>
 
-            <div class="question">
-                <p><strong>4. En reunion, vous :</strong></p>
-                <div class="radio-options">
-                    <label><input type="radio" name="q4"> a) Suivez l'avis majoritaire pour eviter les conflits</label>
-                    <label><input type="radio" name="q4"> b) Ne partagez pas votre desaccord pour rester poli</label>
-                    <label><input type="radio" name="q4"> c) Pensez que votre expertise vous rend plus objectif que les
-                        autres</label>
-                    <label><input type="radio" name="q4"> d) Exprimez votre position meme si elle diverge</label>
+                <div class="question">
+                    <p><strong>4. En reunion, vous :</strong></p>
+                    <div class="radio-options">
+                        <label><input type="radio" name="q4" value="a"> a) Suivez l'avis majoritaire pour eviter les
+                            conflits</label>
+                        <label><input type="radio" name="q4" value="b"> b) Ne partagez pas votre desaccord pour rester
+                            poli</label>
+                        <label><input type="radio" name="q4" value="c"> c) Pensez que votre expertise vous rend plus
+                            objectif que les autres</label>
+                        <label><input type="radio" name="q4" value="d"> d) Exprimez votre position meme si elle
+                            diverge</label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="question">
-                <p><strong>5. Face a une idee d'un concurrent, vous :</strong></p>
-                <div class="radio-options">
-                    <label><input type="radio" name="q5"> a) La critiquez automatiquement</label>
-                    <label><input type="radio" name="q5"> b) Preferez les idees developpees en interne</label>
-                    <label><input type="radio" name="q5"> c) L'evaluez selon qui la propose</label>
-                    <label><input type="radio" name="q5"> d) L'analysez sur ses merites propres</label>
+                <div class="question">
+                    <p><strong>5. Face a une idee d'un concurrent, vous :</strong></p>
+                    <div class="radio-options">
+                        <label><input type="radio" name="q5" value="a"> a) La critiquez automatiquement</label>
+                        <label><input type="radio" name="q5" value="b"> b) Preferez les idees developpees en
+                            interne</label>
+                        <label><input type="radio" name="q5" value="c"> c) L'evaluez selon qui la propose</label>
+                        <label><input type="radio" name="q5" value="d"> d) L'analysez sur ses merites propres</label>
+                    </div>
                 </div>
-            </div>
 
-            <h4>Section 3 : Memoire et information</h4>
+                <h4>Section 3 : Memoire et information</h4>
 
-            <div class="question">
-                <p><strong>6. Vous retenez surtout :</strong></p>
-                <div class="radio-options">
-                    <label><input type="radio" name="q6"> a) Les informations recentes et disponibles</label>
-                    <label><input type="radio" name="q6"> b) Ce qui confirme vos croyances</label>
-                    <label><input type="radio" name="q6"> c) Les evenements marquants et inhabituels</label>
-                    <label><input type="radio" name="q6"> d) Vous prenez des notes pour tout</label>
+                <div class="question">
+                    <p><strong>6. Vous retenez surtout :</strong></p>
+                    <div class="radio-options">
+                        <label><input type="radio" name="q6" value="a"> a) Les informations recentes et
+                            disponibles</label>
+                        <label><input type="radio" name="q6" value="b"> b) Ce qui confirme vos croyances</label>
+                        <label><input type="radio" name="q6" value="c"> c) Les evenements marquants et
+                            inhabituels</label>
+                        <label><input type="radio" name="q6" value="d"> d) Vous prenez des notes pour tout</label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="question">
-                <p><strong>7. Face a un probleme, vous cherchez des informations :</strong></p>
-                <div class="radio-options">
-                    <label><input type="radio" name="q7"> a) Jusqu'a etre certain d'avoir tout</label>
-                    <label><input type="radio" name="q7"> b) Seulement ce qui confirme votre intuition</label>
-                    <label><input type="radio" name="q7"> c) Sur Google, c'est plus rapide</label>
-                    <label><input type="radio" name="q7"> d) Suffisamment pour decider, pas plus</label>
+                <div class="question">
+                    <p><strong>7. Face a un probleme, vous cherchez des informations :</strong></p>
+                    <div class="radio-options">
+                        <label><input type="radio" name="q7" value="a"> a) Jusqu'a etre certain d'avoir tout</label>
+                        <label><input type="radio" name="q7" value="b"> b) Seulement ce qui confirme votre
+                            intuition</label>
+                        <label><input type="radio" name="q7" value="c"> c) Sur Google, c'est plus rapide</label>
+                        <label><input type="radio" name="q7" value="d"> d) Suffisamment pour decider, pas plus</label>
+                    </div>
                 </div>
-            </div>
 
-            <h4>Section 4 : Evaluation des autres</h4>
+                <h4>Section 4 : Evaluation des autres</h4>
 
-            <div class="question">
-                <p><strong>8. Lors d'un recrutement, vous etes influence par :</strong></p>
-                <div class="radio-options">
-                    <label><input type="radio" name="q8"> a) La premiere impression</label>
-                    <label><input type="radio" name="q8"> b) Le prestige de la formation</label>
-                    <label><input type="radio" name="q8"> c) La ressemblance avec vous</label>
-                    <label><input type="radio" name="q8"> d) Uniquement les competences verifiees</label>
+                <div class="question">
+                    <p><strong>8. Lors d'un recrutement, vous etes influence par :</strong></p>
+                    <div class="radio-options">
+                        <label><input type="radio" name="q8" value="a"> a) La premiere impression</label>
+                        <label><input type="radio" name="q8" value="b"> b) Le prestige de la formation</label>
+                        <label><input type="radio" name="q8" value="c"> c) La ressemblance avec vous</label>
+                        <label><input type="radio" name="q8" value="d"> d) Uniquement les competences verifiees</label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="question">
-                <p><strong>9. Vous evaluez la performance d'un collegue sur :</strong></p>
-                <div class="radio-options">
-                    <label><input type="radio" name="q9"> a) Ses dernieres actions</label>
-                    <label><input type="radio" name="q9"> b) Votre relation personnelle avec lui</label>
-                    <label><input type="radio" name="q9"> c) Les moments forts, bons ou mauvais</label>
-                    <label><input type="radio" name="q9"> d) Une evaluation continue sur toute l'annee</label>
+                <div class="question">
+                    <p><strong>9. Vous evaluez la performance d'un collegue sur :</strong></p>
+                    <div class="radio-options">
+                        <label><input type="radio" name="q9" value="a"> a) Ses dernieres actions</label>
+                        <label><input type="radio" name="q9" value="b"> b) Votre relation personnelle avec lui</label>
+                        <label><input type="radio" name="q9" value="c"> c) Les moments forts, bons ou mauvais</label>
+                        <label><input type="radio" name="q9" value="d"> d) Une evaluation continue sur toute
+                            l'annee</label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="question">
-                <p><strong>10. Lorsque votre equipe reussit, c'est grace a :</strong></p>
-                <div class="radio-options">
-                    <label><input type="radio" name="q10"> a) Vos efforts et competences</label>
-                    <label><input type="radio" name="q10"> b) La synergie d'equipe</label>
-                    <label><input type="radio" name="q10"> c) Les bonnes methodes que vous utilisez</label>
-                    <label><input type="radio" name="q10"> d) Un mix de competences, efforts et circonstances</label>
+                <div class="question">
+                    <p><strong>10. Lorsque votre equipe reussit, c'est grace a :</strong></p>
+                    <div class="radio-options">
+                        <label><input type="radio" name="q10" value="a"> a) Vos efforts et competences</label>
+                        <label><input type="radio" name="q10" value="b"> b) La synergie d'equipe</label>
+                        <label><input type="radio" name="q10" value="c"> c) Les bonnes methodes que vous
+                            utilisez</label>
+                        <label><input type="radio" name="q10" value="d"> d) Un mix de competences, efforts et
+                            circonstances</label>
+                    </div>
                 </div>
-            </div>
 
-            <h4>Interpretation (l'animateur vous guidera)</h4>
-            <p>Comptez vos reponses a, b, c, d. Vous identifierez vos 3-5 biais les plus frequents.</p>
+                <button type="button" class="calculate-btn" onclick="calculateProfile()">🧠 CALCULER MON PROFIL
+                    COGNITIF</button>
+            </form>
+
+            <div id="resultsBox" class="results-box">
+                <h3>🎯 VOTRE PROFIL COGNITIF</h3>
+                <div id="resultsContent"></div>
+            </div>
         </div>
 
         <div class="partie">
             <h3>Partie 2 : La boite a outils anti-biais</h3>
-            <span class="duree">30 minutes</span>
 
-            <p>L'animateur vous presente 7 strategies concretes pour limiter l'impact des biais dans vos decisions
-                professionnelles.</p>
 
-            <h4>Les 7 strategies :</h4>
+            <p><strong>Maintenant que vous connaissez vos biais dominants, voici 7 strategies concretes pour les limiter
+                    au quotidien.</strong></p>
 
-            <div class="strategie-card">
-                <h4>1. Ralentir la decision</h4>
-                <p><strong>Principe :</strong> Ne decidez pas sous pression. Prendre le temps de reflechir.</p>
-                <p><strong>Technique concrete :</strong> Attendre 24h pour les decisions importantes</p>
-            </div>
+            <p>Lisez ces strategies et identifiez celles qui correspondent le mieux aux biais que vous avez identifies
+                dans la Partie 1.</p>
+
+            <h4>Les 7 strategies anti-biais :</h4>
 
             <div class="strategie-card">
-                <h4>2. Chercher la contradiction</h4>
-                <p><strong>Principe :</strong> Activement chercher ce qui contredit votre avis</p>
-                <p><strong>Technique concrete :</strong> Se poser la question "Et si le contraire etait vrai ?"</p>
-            </div>
-
-            <div class="strategie-card">
-                <h4>3. Diversifier les sources</h4>
-                <p><strong>Principe :</strong> Ne pas se fier a une seule source d'information</p>
-                <p><strong>Technique concrete :</strong> Regle des 3 sources minimum</p>
+                <h4>1. Ralentir la decision ⏸️</h4>
+                <p><strong>Le probleme :</strong> Vous decidez trop vite sous pression ou par impulsion.</p>
+                <p><strong>La solution :</strong> Attendez 24h avant toute decision importante (accepter un poste,
+                    acheter quelque chose de couteux, etc.)</p>
+                <p><strong>Exemple concret :</strong> Un recruteur vous met la pression "il faut repondre aujourd'hui".
+                    Dites : "Je vous confirme demain matin" et prenez le temps de reflechir.</p>
             </div>
 
             <div class="strategie-card">
-                <h4>4. Utiliser des checklists</h4>
-                <p><strong>Principe :</strong> Structurer les decisions importantes</p>
-                <p><strong>Technique concrete :</strong> Grille de decision avec criteres objectifs</p>
+                <h4>2. Chercher la contradiction 🔍</h4>
+                <p><strong>Le probleme :</strong> Vous cherchez seulement ce qui confirme votre opinion.</p>
+                <p><strong>La solution :</strong> Forcez-vous a chercher des elements qui CONTREDISENT votre position.
+                </p>
+                <p><strong>Exemple concret :</strong> Vous pensez qu'une entreprise est parfaite ? Cherchez activement
+                    des avis negatifs d'anciens employes sur internet.</p>
             </div>
 
             <div class="strategie-card">
-                <h4>5. Decisions collectives structurees</h4>
-                <p><strong>Principe :</strong> Utiliser des methodes qui limitent les biais de groupe</p>
-                <p><strong>Technique concrete :</strong> Brainstorming silencieux, vote anonyme</p>
+                <h4>3. Diversifier les sources 📚</h4>
+                <p><strong>Le probleme :</strong> Vous vous fiez a une seule source d'information.</p>
+                <p><strong>La solution :</strong> Regle des 3 sources minimum avant de vous faire une opinion.</p>
+                <p><strong>Exemple concret :</strong> Avant de postuler, consultez : 1) le site de l'entreprise, 2) des
+                    avis d'employes (Glassdoor, Indeed), 3) des articles de presse sur l'entreprise.</p>
             </div>
 
             <div class="strategie-card">
-                <h4>6. Attention au contexte</h4>
-                <p><strong>Principe :</strong> Ne pas decider si faim, fatigue, stress, emotion forte</p>
-                <p><strong>Technique concrete :</strong> Auto-questionnement "Suis-je en etat de decider ?"</p>
+                <h4>4. Utiliser des checklists ✅</h4>
+                <p><strong>Le probleme :</strong> Vous decidez "au feeling" sans methode.</p>
+                <p><strong>La solution :</strong> Creez une grille de criteres objectifs pour vos decisions importantes.
+                </p>
+                <p><strong>Exemple concret :</strong> Avant d'accepter un poste, notez sur 10 : salaire, trajet,
+                    missions, evolution, ambiance (d'apres l'entretien), valeurs de l'entreprise.</p>
             </div>
 
             <div class="strategie-card">
-                <h4>7. Formation continue</h4>
-                <p><strong>Principe :</strong> Rester vigilant et partager avec l'equipe</p>
-                <p><strong>Technique concrete :</strong> Rituel mensuel "biais du mois"</p>
-            </div>
-        </div>
-
-        <div class="partie">
-            <h3>Partie 3 : Plan d'action en equipe</h3>
-            <span class="duree">20 minutes</span>
-
-            <div class="consignes-box">
-                <strong>Consigne :</strong> En equipe, choisissez 1 situation professionnelle recurrente dans votre
-                entreprise et proposez 3 strategies concretes pour limiter les biais.
+                <h4>5. Demander un avis externe 👥</h4>
+                <p><strong>Le probleme :</strong> Vous restez enferme dans votre point de vue.</p>
+                <p><strong>La solution :</strong> Demandez l'avis d'une personne de confiance qui n'a PAS les memes
+                    biais que vous.</p>
+                <p><strong>Exemple concret :</strong> Avant un entretien important, demandez a un ami de jouer le role
+                    du recruteur et de vous poser des questions pieges.</p>
             </div>
 
-            <h4>Exemples de situations :</h4>
-            <ul>
-                <li>Reunions de lancement de projet</li>
-                <li>Processus de recrutement</li>
-                <li>Evaluation des performances</li>
-                <li>Choix de fournisseurs</li>
-                <li>Gestion de conflit</li>
-            </ul>
+            <div class="strategie-card">
+                <h4>6. Attention au contexte 🧘</h4>
+                <p><strong>Le probleme :</strong> Vous decidez quand vous etes fatigue, stresse ou sous le coup d'une
+                    emotion.</p>
+                <p><strong>La solution :</strong> Demandez-vous "Suis-je en etat de decider maintenant ?"</p>
+                <p><strong>Exemple concret :</strong> Apres un entetien rate, ne postulez pas immediatement ailleurs
+                    sous le coup de la frustration. Prenez une pause.</p>
+            </div>
 
-            <h4>Livrable : Fiche action</h4>
-            <p>Remplissez cette fiche que vous pourrez ramener dans votre entreprise :</p>
+            <div class="strategie-card">
+                <h4>7. Tenir un journal 📝</h4>
+                <p><strong>Le probleme :</strong> Vous oubliez vos erreurs passees et les repetez.</p>
+                <p><strong>La solution :</strong> Notez vos decisions importantes et leurs resultats pour apprendre.</p>
+                <p><strong>Exemple concret :</strong> Apres chaque entretien, notez : ce qui s'est bien passe, vos
+                    erreurs, ce que vous feriez differemment la prochaine fois.</p>
+            </div>
 
-            <div class="fiche-action">
-                <h4>SITUATION CIBLEE :</h4>
-                <textarea placeholder="Ex: Reunion de lancement de projet"></textarea>
-
-                <h4>BIAIS IDENTIFIES :</h4>
-                <p>Biais 1 :</p>
-                <textarea placeholder="Ex: Effet de groupe - tout le monde suit le chef"></textarea>
-
-                <p>Biais 2 :</p>
-                <textarea placeholder="Ex: Loi de l'instrument - on refait toujours pareil"></textarea>
-
-                <p>Biais 3 :</p>
-                <textarea placeholder="Ex: Planification fallacieuse - on sous-estime les delais"></textarea>
-
-                <h4>STRATEGIES CONCRETES :</h4>
-                <p>Strategie 1 :</p>
-                <textarea placeholder="Ex: Brainstorming silencieux avant discussion"></textarea>
-
-                <p>Strategie 2 :</p>
-                <textarea placeholder="Ex: Challenger systematiquement 'pourquoi cette methode ?'"></textarea>
-
-                <p>Strategie 3 :</p>
-                <textarea placeholder="Ex: Multiplier les estimations initiales par 1,5"></textarea>
-
-                <h4>INDICATEURS DE SUCCES :</h4>
-                <textarea
-                    placeholder="Ex: Au moins 2 idees nouvelles par reunion, Respect des delais dans 80% des cas"></textarea>
+            <div style="background-color: #e8f4f8; padding: 20px; margin-top: 20px; border-left: 4px solid #0066cc;">
+                <h4 style="margin-top: 0; color: #003366;">💡 A retenir :</h4>
+                <p>Vous n'avez PAS besoin d'utiliser les 7 strategies. Choisissez celles qui correspondent a VOS biais
+                    identifies dans la Partie 1, et appliquez-les progressivement.</p>
             </div>
         </div>
 
         <div class="ressources-box">
-            <h3>Ressources necessaires</h3>
+            <h3>Pour aller plus loin</h3>
+            <p><strong>Maintenant que vous connaissez vos biais dominants et les strategies pour les contrer, a vous de
+                    jouer !</strong></p>
             <ul>
-                <li>Questionnaire "Mon profil cognitif" (imprime ou affiche)</li>
-                <li>Fiche action (imprimee ou feuille vierge)</li>
-                <li>Support de presentation pour les 7 strategies (anime par le formateur)</li>
+                <li><strong>Relisez votre profil cognitif</strong> (Partie 1) regulierement pour rester vigilant</li>
+                <li><strong>Choisissez 2-3 strategies</strong> (Partie 2) qui correspondent le mieux a vos biais
+                    identifies</li>
+                <li><strong>Testez-les dans votre quotidien</strong> pendant 2-3 semaines</li>
+                <li><strong>Partagez avec d'autres</strong> : discuter de vos biais avec d'autres personnes aide a en
+                    prendre conscience</li>
+                <li><strong>Soyez patient avec vous-meme</strong> : changer ses habitudes prend du temps. Le simple fait
+                    d'avoir conscience de vos biais est deja un enorme progres !</li>
             </ul>
         </div>
 
     </div>
+
+    <script>
+        function calculateProfile() {
+            const form = document.getElementById('quizForm');
+            const formData = new FormData(form);
+
+            // Verifier que toutes les questions sont repondues
+            const totalQuestions = 10;
+            let answeredQuestions = 0;
+            for (let i = 1; i <= totalQuestions; i++) {
+                if (formData.get('q' + i)) {
+                    answeredQuestions++;
+                }
+            }
+
+            if (answeredQuestions < totalQuestions) {
+                alert('Veuillez repondre a toutes les questions avant de calculer votre profil !');
+                return;
+            }
+
+            // Compter les reponses a, b, c, d
+            let counts = { a: 0, b: 0, c: 0, d: 0 };
+            for (let i = 1; i <= totalQuestions; i++) {
+                const answer = formData.get('q' + i);
+                if (answer) {
+                    counts[answer]++;
+                }
+            }
+
+            // Mappage des reponses vers les biais
+            const biasMapping = {
+                a: [
+                    { name: "Biais de disponibilite", description: "Vous vous basez sur ce qui est immediatement accessible (premiere impression, information recente).", strategy: "Prenez le temps de chercher des donnees plus larges avant de decider." },
+                    { name: "Effet de recence", description: "Vous accordez trop d'importance aux informations les plus recentes.", strategy: "Gardez une trace ecrite de toutes les informations sur la duree." },
+                    { name: "Biais d'ancrage", description: "Vous etes influence par la premiere information recue.", strategy: "Cherchez plusieurs points de reference avant de juger." }
+                ],
+                b: [
+                    { name: "Biais d'autorite", description: "Vous faites confiance aux experts ou aux sources prestigieuses sans questionnement critique.", strategy: "Demandez toujours 'pourquoi ?' meme aux experts." },
+                    { name: "Biais de confirmation", description: "Vous recherchez ce qui confirme vos croyances existantes.", strategy: "Cherchez activement des informations qui contredisent votre position." },
+                    { name: "Effet de groupe", description: "Vous suivez l'opinion majoritaire pour eviter le conflit.", strategy: "Utilisez des techniques de vote anonyme ou brainstorming silencieux." }
+                ],
+                c: [
+                    { name: "Biais de statu quo", description: "Vous preferez l'option par defaut ou ce qui est familier.", strategy: "Forcez-vous a considerer au moins 2 alternatives nouvelles." },
+                    { name: "Biais d'autocomplaisance", description: "Vous vous attribuez les succes et blâmez les circonstances pour les echecs.", strategy: "Demandez un feedback externe objectif." },
+                    { name: "Effet de bizarrerie", description: "Vous retenez surtout les evenements inhabituels ou marquants.", strategy: "Tenez un journal regulier pour capturer le quotidien aussi." }
+                ],
+                d: [
+                    { name: "Approche equilibree", description: "Vos reponses montrent une bonne conscience des pieges cognitifs.", strategy: "Continuez a rester vigilant et partagez vos methodes avec votre equipe !" }
+                ]
+            };
+
+            // Identifier les biais dominants
+            let dominantBiases = [];
+
+            // Trier par nombre de reponses
+            let sortedCounts = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+
+            // Generer le contenu des resultats
+            let resultsHTML = '<p style="margin-bottom: 20px;"><strong>Repartition de vos reponses :</strong> A=' + counts.a + ', B=' + counts.b + ', C=' + counts.c + ', D=' + counts.d + '</p>';
+
+            if (counts.d >= 7) {
+                resultsHTML += '<div class="bias-item" style="border-left-color: #4caf50;"><h4 style="color: #2e7d32;">✅ Excellent profil cognitif !</h4>';
+                resultsHTML += '<p>Vous faites preuve d\'une excellente conscience des biais cognitifs. Continuez a rester vigilant et partagez vos bonnes pratiques avec votre equipe !</p></div>';
+            } else {
+                resultsHTML += '<h4>Vos biais cognitifs dominants :</h4>';
+
+                // Afficher jusqu'a 3 types de biais dominants
+                let shown = 0;
+                for (let [letter, count] of sortedCounts) {
+                    if (count > 0 && letter !== 'd' && shown < 3) {
+                        const biases = biasMapping[letter];
+                        const randomBias = biases[Math.floor(Math.random() * biases.length)];
+
+                        resultsHTML += '<div class="bias-item">';
+                        resultsHTML += '<h4>' + randomBias.name + ' (' + count + ' reponse(s))</h4>';
+                        resultsHTML += '<p><strong>Ce que cela signifie :</strong> ' + randomBias.description + '</p>';
+                        resultsHTML += '<p><strong>💡 Strategie :</strong> ' + randomBias.strategy + '</p>';
+                        resultsHTML += '</div>';
+
+                        shown++;
+                    }
+                }
+
+                resultsHTML += '<div class="warning-message">⚠️ Ces biais sont universels ! Nous en avons TOUS. L\'important est d\'en avoir conscience.</div>';
+            }
+
+            // Afficher les resultats
+            document.getElementById('resultsContent').innerHTML = resultsHTML;
+            document.getElementById('resultsBox').style.display = 'block';
+
+            // Scroll vers les resultats
+            document.getElementById('resultsBox').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
 </body>
 
 </html>

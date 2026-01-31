@@ -21,7 +21,7 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
             background-color: white;
             padding: 40px;
@@ -64,12 +64,6 @@
             border-bottom: 2px solid #e0e0e0;
         }
 
-        h3 {
-            color: #0066cc;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-
         .objectifs {
             background-color: #e8f4f8;
             padding: 20px;
@@ -77,79 +71,101 @@
             margin: 20px 0;
         }
 
-        .format-box {
+        .question {
             background-color: #f9f9f9;
             padding: 20px;
             margin: 20px 0;
             border-radius: 8px;
-            border: 1px solid #ddd;
+            border-left: 4px solid #0066cc;
         }
 
-        .type-question {
-            background-color: #fafafa;
-            padding: 15px;
-            margin: 15px 0;
-            border-left: 3px solid #0066cc;
-        }
-
-        .type-question h4 {
+        .question h3 {
             color: #003366;
             margin-top: 0;
-        }
-
-        .exemple {
-            background-color: #e8f5e9;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 4px;
-            font-style: italic;
-        }
-
-        .bareme-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        .bareme-table th,
-        .bareme-table td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-
-        .bareme-table th {
-            background-color: #003366;
-            color: white;
-        }
-
-        .bareme-table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        .winner-box {
-            background-color: #fff9c4;
-            border: 3px solid #fbc02d;
-            padding: 20px;
-            margin: 20px 0;
-            text-align: center;
-            border-radius: 8px;
-        }
-
-        .winner-box h3 {
-            color: #f57f17;
-            font-size: 1.5em;
-            margin-top: 0;
-        }
-
-        ul,
-        ol {
-            margin-left: 25px;
             margin-bottom: 15px;
         }
 
-        li {
-            margin-bottom: 8px;
+        .radio-options label {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: white;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .radio-options label:hover {
+            background-color: #e8f4f8;
+            border-color: #0066cc;
+        }
+
+        .radio-options input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            background-color: #0066cc;
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 30px 0;
+            display: block;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #003366;
+        }
+
+        .results-box {
+            display: none;
+            background-color: #fff;
+            border: 3px solid #0066cc;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .results-box h2 {
+            color: #003366;
+            margin-top: 0;
+            font-size: 2em;
+        }
+
+        .score-display {
+            font-size: 3em;
+            font-weight: bold;
+            color: #0066cc;
+            margin: 20px 0;
+        }
+
+        .feedback {
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .feedback.excellent {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .feedback.good {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .feedback.medium {
+            background-color: #fff3e0;
+            color: #e65100;
         }
 
         .duree {
@@ -172,6 +188,10 @@
                 box-shadow: none;
                 padding: 20px;
             }
+
+            .submit-btn {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -181,178 +201,288 @@
         <div class="header">
             <img src="../../../logo_uimm_placeholder.jpg" alt="Logo UIMM">
             <div class="header-text">
-                <h1>Activite 5 : Grand Quiz Final</h1>
+                <h1>Activite 5 : Quiz Final</h1>
                 <p>Pole Formation UIMM-CVDL</p>
+                <p style="font-size: 0.9em; color: #888; margin-top: 5px;">S. Jaubert</p>
             </div>
         </div>
 
         <div class="objectifs">
-            <h3>Objectif de l'activite</h3>
-            <p>Valider vos connaissances acquises pendant la journee et designer l'equipe gagnante !</p>
+            <h3>Objectif</h3>
+            <p>Testez vos connaissances sur les biais cognitifs ! Ce quiz reprend tous les concepts vus pendant la
+                formation.</p>
         </div>
 
-        <h2>Format du quiz</h2>
 
-        <span class="duree">Duree : 20 minutes</span>
 
-        <div class="format-box">
-            <h3>Format : "Qui veut gagner des millions"</h3>
-            <ul>
-                <li><strong>20 questions</strong> au total</li>
-                <li>Questions posees oralement par l'animateur</li>
-                <li>Temps de reflexion en equipe : <strong>30 secondes par question</strong></li>
-                <li>Reponse simultanee de toutes les equipes</li>
-                <li>Validation immediate par l'animateur</li>
-            </ul>
-        </div>
+        <h2>Instructions</h2>
+        <ul>
+            <li>Lisez attentivement chaque question</li>
+            <li>Choisissez la reponse qui vous semble la meilleure</li>
+            <li>Une seule reponse correcte par question</li>
+            <li>Cliquez sur "VOIR MON SCORE" a la fin pour obtenir votre resultat</li>
+        </ul>
 
-        <h2>Types de questions</h2>
-
-        <p>Le quiz contient 5 types de questions differents :</p>
-
-        <div class="type-question">
-            <h4>Type 1 : QCM - Connaissances sur les biais</h4>
-            <p>Questions a choix multiples pour tester votre comprehension des biais.</p>
-            <div class="exemple">
-                <strong>Exemple :</strong> "L'effet IKEA signifie :<br>
-                A) On aime les meubles<br>
-                B) On surestime ce qu'on a cree<br>
-                C) On sous-estime les delais"<br>
-                <em>Reponse : B</em>
+        <form id="quizForm">
+            <div class="question">
+                <h3>Question 1 : Definition</h3>
+                <p>Qu'est-ce qu'un biais cognitif ?</p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q1" value="a"> a) Une erreur volontaire de raisonnement</label>
+                    <label><input type="radio" name="q1" value="b"> b) Un raccourci mental automatique qui peut nous
+                        tromper</label>
+                    <label><input type="radio" name="q1" value="c"> c) Une maladie mentale</label>
+                    <label><input type="radio" name="q1" value="d"> d) Une technique de manipulation</label>
+                </div>
             </div>
-        </div>
 
-        <div class="type-question">
-            <h4>Type 2 : Vrai / Faux - Idees recues</h4>
-            <p>Affirmations sur les biais cognitifs, a valider ou invalider.</p>
-            <div class="exemple">
-                <strong>Exemple :</strong> "Les experts sont immunises contre les biais cognitifs"<br>
-                <em>Reponse : FAUX</em>
+            <div class="question">
+                <h3>Question 2 : L'effet IKEA</h3>
+                <p>L'effet IKEA signifie :</p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q2" value="a"> a) On prefere les meubles suedois</label>
+                    <label><input type="radio" name="q2" value="b"> b) On surestime la valeur de ce qu'on a cree ou
+                        assemble soi-meme</label>
+                    <label><input type="radio" name="q2" value="c"> c) On sous-estime les delais de montage</label>
+                    <label><input type="radio" name="q2" value="d"> d) On achete trop de choses inutiles</label>
+                </div>
             </div>
-        </div>
 
-        <div class="type-question">
-            <h4>Type 3 : Categorisation - Associer biais et famille</h4>
-            <p>Identifier a quelle categorie appartient un biais donne.</p>
-            <div class="exemple">
-                <strong>Exemple :</strong> "Le biais de confirmation appartient a quelle categorie ?<br>
-                A) Memoire<br>
-                B) Raisonnement<br>
-                C) Decision<br>
-                D) Equipe<br>
-                E) Interview"<br>
-                <em>Reponse : B - Raisonnement</em>
+            <div class="question">
+                <h3>Question 3 : Categories</h3>
+                <p>Combien y a-t-il de grandes categories de biais cognitifs presentees dans cette formation ?</p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q3" value="a"> a) 3 categories</label>
+                    <label><input type="radio" name="q3" value="b"> b) 5 categories</label>
+                    <label><input type="radio" name="q3" value="c"> c) 7 categories</label>
+                    <label><input type="radio" name="q3" value="d"> d) 10 categories</label>
+                </div>
             </div>
-        </div>
 
-        <div class="type-question">
-            <h4>Type 4 : Situations - Identifier le biais dans un mini-cas</h4>
-            <p>Situation concrete, vous devez identifier le biais en jeu.</p>
-            <div class="exemple">
-                <strong>Exemple :</strong> "Marc fait confiance a Google plutot qu'a sa memoire. Quel biais ?<br>
-                A) Effet Google<br>
-                B) Biais de confirmation<br>
-                C) Effet d'ancrage"<br>
-                <em>Reponse : A - Effet Google</em>
+            <div class="question">
+                <h3>Question 4 : Vrai ou Faux</h3>
+                <p>Les experts sont immunises contre les biais cognitifs.</p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q4" value="vrai"> Vrai</label>
+                    <label><input type="radio" name="q4" value="faux"> Faux</label>
+                </div>
             </div>
-        </div>
 
-        <div class="type-question">
-            <h4>Type 5 : Application - Solutions anti-biais</h4>
-            <p>Questions sur les strategies pour contrer les biais.</p>
-            <div class="exemple">
-                <strong>Exemple :</strong> "Comment contrer le biais d'ancrage ?<br>
-                A) Ignorer la premiere information<br>
-                B) Chercher plusieurs references<br>
-                C) Decider vite"<br>
-                <em>Reponse : B</em>
+            <div class="question">
+                <h3>Question 5 : Biais de confirmation</h3>
+                <p>Le biais de confirmation, c'est quand :</p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q5" value="a"> a) On cherche seulement les informations qui
+                        confirment notre opinion</label>
+                    <label><input type="radio" name="q5" value="b"> b) On confirme toujours ce que disent les
+                        autres</label>
+                    <label><input type="radio" name="q5" value="c"> c) On verifie systematiquement toutes les
+                        informations</label>
+                    <label><input type="radio" name="q5" value="d"> d) On doute de tout</label>
+                </div>
             </div>
-        </div>
 
-        <h2>Regles du jeu</h2>
+            <div class="question">
+                <h3>Question 6 : Effet de groupe</h3>
+                <p>Dans une reunion, tout le monde suit l'avis du chef sans oser contredire. Quel biais ?</p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q6" value="a"> a) Biais d'ancrage</label>
+                    <label><input type="radio" name="q6" value="b"> b) Effet de groupe (conformisme)</label>
+                    <label><input type="radio" name="q6" value="c"> c) Biais de statu quo</label>
+                    <label><input type="radio" name="q6" value="d"> d) Effet Google</label>
+                </div>
+            </div>
 
-        <ol>
-            <li>L'animateur lit une question a voix haute</li>
-            <li>Les equipes ont <strong>30 secondes pour deliberer</strong></li>
-            <li>A la fin du compte a rebours :
-                <ul>
-                    <li>Pour les QCM : Chaque equipe leve sa pancarte avec la lettre de la reponse (A, B, C, D, E)</li>
-                    <li>Pour les Vrai/Faux : Levez la pancarte VRAI ou FAUX</li>
-                    <li>Pour les autres : Ecrivez votre reponse sur une ardoise</li>
-                </ul>
-            </li>
-            <li>L'animateur valide les reponses et attribue les points</li>
-            <li>Le tableau de score est mis a jour en temps reel</li>
-        </ol>
+            <div class="question">
+                <h3>Question 7 : Effet d'ancrage</h3>
+                <p>L'effet d'ancrage se produit quand :</p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q7" value="a"> a) On est influence par la premiere information
+                        recue</label>
+                    <label><input type="radio" name="q7" value="b"> b) On refuse de changer d'avis</label>
+                    <label><input type="radio" name="q7" value="c"> c) On suit l'avis majoritaire</label>
+                    <label><input type="radio" name="q7" value="d"> d) On prend trop de temps pour decider</label>
+                </div>
+            </div>
 
-        <h2>Bareme de points</h2>
+            <div class="question">
+                <h3>Question 8 : Planification fallacieuse</h3>
+                <p>Vous sous-estimez toujours le temps necessaire pour realiser vos projets. Quel biais ?</p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q8" value="a"> a) Biais d'optimisme</label>
+                    <label><input type="radio" name="q8" value="b"> b) Planification fallacieuse</label>
+                    <label><input type="radio" name="q8" value="c"> c) Effet de recence</label>
+                    <label><input type="radio" name="q8" value="d"> d) Biais retrospectif</label>
+                </div>
+            </div>
 
-        <table class="bareme-table">
-            <thead>
-                <tr>
-                    <th>Action</th>
-                    <th>Points</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Bonne reponse</td>
-                    <td>1 point</td>
-                </tr>
-                <tr>
-                    <td>Bonus : Equipe gagnante du quiz</td>
-                    <td>+5 points</td>
-                </tr>
-            </tbody>
-        </table>
+            <div class="question">
+                <h3>Question 9 : Effet Google</h3>
+                <p>L'effet Google designe :</p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q9" value="a"> a) On fait trop confiance a Internet</label>
+                    <label><input type="radio" name="q9" value="b"> b) On ne retient plus les informations car on sait
+                        qu'on peut les retrouver facilement</label>
+                    <label><input type="radio" name="q9" value="c"> c) On cherche tout sur Google</label>
+                    <label><input type="radio" name="q9" value="d"> d) On prefere Google aux autres moteurs de
+                        recherche</label>
+                </div>
+            </div>
 
-        <p><strong>Note :</strong> Le score du quiz s'ajoute au score global de la journee pour designer l'equipe
-            championne !</p>
+            <div class="question">
+                <h3>Question 10 : Biais d'autorite</h3>
+                <p>Vous acceptez l'avis d'un expert sans le questionner. Quel biais ?</p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q10" value="a"> a) Biais de confirmation</label>
+                    <label><input type="radio" name="q10" value="b"> b) Biais d'autorite</label>
+                    <label><input type="radio" name="q10" value="c"> c) Effet de groupe</label>
+                    <label><input type="radio" name="q10" value="d"> d) Biais de statu quo</label>
+                </div>
+            </div>
 
-        <div class="winner-box">
-            <h3>Proclamation de l'equipe gagnante</h3>
-            <p>A la fin du quiz, les scores de TOUTE la journee sont additionnes :</p>
-            <ul style="text-align: left; display: inline-block;">
-                <li>Quiz "Quelle categorie ?" (Activite 1)</li>
-                <li>Chasseurs de biais (Activite 2)</li>
-                <li>Projet Diabolique (Activite 3)</li>
-                <li>Quiz final (Activite 5)</li>
-            </ul>
-            <p><strong>L'equipe avec le score total le plus eleve remporte le titre de "Chasseurs de biais 2026"
+            <div class="question">
+                <h3>Question 11 : Strategie anti-biais</h3>
+                <p>Comment contrer le biais d'ancrage ?</p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q11" value="a"> a) Ignorer completement la premiere
+                        information</label>
+                    <label><input type="radio" name="q11" value="b"> b) Chercher plusieurs references avant de
+                        decider</label>
+                    <label><input type="radio" name="q11" value="c"> c) Decider le plus vite possible</label>
+                    <label><input type="radio" name="q11" value="d"> d) Faire confiance a son intuition</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>Question 12 : Biais de disponibilite</h3>
+                <p>Apres avoir vu 3 avis negatifs sur Twitter, vous jugez qu'un produit est mauvais (alors que 500
+                    clients satisfaits n'ont rien dit). Quel biais ?</p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q12" value="a"> a) Biais de disponibilite</label>
+                    <label><input type="radio" name="q12" value="b"> b) Biais de confirmation</label>
+                    <label><input type="radio" name="q12" value="c"> c) Effet de recence</label>
+                    <label><input type="radio" name="q12" value="d"> d) Biais retrospectif</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>Question 13 : Biais de statu quo</h3>
+                <p>Le biais de statu quo signifie :</p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q13" value="a"> a) On prefere ne rien changer et garder les
+                        habitudes</label>
+                    <label><input type="radio" name="q13" value="b"> b) On cherche toujours a innover</label>
+                    <label><input type="radio" name="q13" value="c"> c) On suit toujours l'avis du groupe</label>
+                    <label><input type="radio" name="q13" value="d"> d) On se souvient mieux du debut et de la
+                        fin</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>Question 14 : Ralentir la decision</h3>
+                <p>Pourquoi est-il conseille d'attendre 24h avant une decision importante ?</p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q14" value="a"> a) Pour eviter de decider par impulsion ou sous
+                        pression</label>
+                    <label><input type="radio" name="q14" value="b"> b) Pour oublier le sujet</label>
+                    <label><input type="radio" name="q14" value="c"> c) Pour demander l'avis de tout le monde</label>
+                    <label><input type="radio" name="q14" value="d"> d) C'est une obligation legale</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>Question 15 : Vrai ou Faux</h3>
+                <p>On peut eliminer completement tous nos biais cognitifs avec de l'entrainement.</p>
+                <div class="radio-options">
+                    <label><input type="radio" name="q15" value="vrai"> Vrai</label>
+                    <label><input type="radio" name="q15" value="faux"> Faux</label>
+                </div>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="calculateScore()">🏆 VOIR MON SCORE</button>
+        </form>
+
+        <div id="resultsBox" class="results-box">
+            <h2>🎯 Votre Score</h2>
+            <div id="scoreDisplay" class="score-display"></div>
+            <div id="feedbackText" class="feedback"></div>
+            <p style="margin-top: 20px;"><strong>Felicitations d'avoir complete cette formation sur les biais cognitifs
                     !</strong></p>
         </div>
 
-        <h2>Conseils pour reussir le quiz</h2>
-
-        <ul>
-            <li><strong>Utilisez votre temps :</strong> 30 secondes, c'est court mais suffisant</li>
-            <li><strong>Mobilisez toute l'equipe :</strong> Chacun peut se souvenir de choses differentes</li>
-            <li><strong>Faites confiance a votre comprehension :</strong> Vous avez appris toute la journee</li>
-            <li><strong>Pas de stress :</strong> C'est avant tout un moment ludique de validation</li>
-            <li><strong>Amusez-vous !</strong> C'est la fin de la journee, celebrez vos apprentissages</li>
-        </ul>
-
-        <h2>Apres le quiz : Bilan et cloture</h2>
-
-        <span class="duree">10 minutes</span>
-
-        <h3>Tour de table express</h3>
-        <p>Chaque participant partage :</p>
-        <ul>
-            <li>"Quel est LE biais que vous retiendrez aujourd'hui ?"</li>
-            <li>"Quelle action allez-vous mettre en place des demain ?"</li>
-        </ul>
-
-        <h3>Remise des supports</h3>
-        <p>Vous repartirez avec :</p>
-        <ul>
-            <li>Fiche recapitulative des 52 biais</li>
-            <li>Carte mentale des 5 categories</li>
-            <li>Votre fiche action personnalisee (Detox Cognitive)</li>
-            <li>Bibliographie et ressources complementaires</li>
-        </ul>
-
     </div>
+
+    <script>
+        const correctAnswers = {
+            q1: 'b',
+            q2: 'b',
+            q3: 'b',
+            q4: 'faux',
+            q5: 'a',
+            q6: 'b',
+            q7: 'a',
+            q8: 'b',
+            q9: 'b',
+            q10: 'b',
+            q11: 'b',
+            q12: 'a',
+            q13: 'a',
+            q14: 'a',
+            q15: 'faux'
+        };
+
+        function calculateScore() {
+            const form = document.getElementById('quizForm');
+            const formData = new FormData(form);
+
+            // Verifier que toutes les questions sont repondues
+            const totalQuestions = Object.keys(correctAnswers).length;
+            let answeredQuestions = 0;
+            for (let i = 1; i <= totalQuestions; i++) {
+                if (formData.get('q' + i)) {
+                    answeredQuestions++;
+                }
+            }
+
+            if (answeredQuestions < totalQuestions) {
+                alert('Veuillez repondre a toutes les questions avant de voir votre score !');
+                return;
+            }
+
+            // Calculer le score
+            let score = 0;
+            for (let [question, correctAnswer] of Object.entries(correctAnswers)) {
+                const userAnswer = formData.get(question);
+                if (userAnswer === correctAnswer) {
+                    score++;
+                }
+            }
+
+            // Afficher le score
+            const percentage = Math.round((score / totalQuestions) * 100);
+            document.getElementById('scoreDisplay').textContent = score + ' / ' + totalQuestions + ' (' + percentage + '%)';
+
+            // Feedback personnalise
+            const feedbackDiv = document.getElementById('feedbackText');
+            if (percentage >= 90) {
+                feedbackDiv.className = 'feedback excellent';
+                feedbackDiv.innerHTML = '<strong>🌟 Excellent !</strong><br>Vous avez parfaitement assimile les concepts sur les biais cognitifs. Vous etes pret(e) a les identifier et les contrer au quotidien !';
+            } else if (percentage >= 70) {
+                feedbackDiv.className = 'feedback good';
+                feedbackDiv.innerHTML = '<strong>✅ Tres bien !</strong><br>Vous avez une bonne comprehension des biais cognitifs. Continuez a pratiquer pour renforcer vos connaissances.';
+            } else if (percentage >= 50) {
+                feedbackDiv.className = 'feedback medium';
+                feedbackDiv.innerHTML = '<strong>👍 Pas mal !</strong><br>Vous avez compris les bases. N\'hesitez pas a relire les supports pour approfondir certains concepts.';
+            } else {
+                feedbackDiv.className = 'feedback medium';
+                feedbackDiv.innerHTML = '<strong>💪 Continuez vos efforts !</strong><br>Les biais cognitifs sont complexes. Prenez le temps de reviser les differentes categories et n\'hesitez pas a refaire le quiz.';
+            }
+
+            // Afficher les resultats et scroller
+            document.getElementById('resultsBox').style.display = 'block';
+            document.getElementById('resultsBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
 </body>
 
 </html>
