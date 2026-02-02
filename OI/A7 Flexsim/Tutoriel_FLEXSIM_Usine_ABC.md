@@ -97,12 +97,12 @@ ABC Emboutissage Ltée fabrique des **supports de tableaux de bord en acier** po
 
 ### Étape 2 : Configurer les Paramètres Globaux
 
-1. Allez dans **Tools → Global Preferences**
-2. Onglet **Units** :
+1. Allez dans **File → Global Preferences** (ou raccourci clavier)
+2. Section **Units** :
    - Time Units : **Seconds**
    - Distance Units : **Meters**
 3. Configurez les paramètres de simulation :
-   - Menu : **Model → Properties**
+   - Clic droit sur le fond du modèle → **Model Properties**
    - Warmup Time : **0** secondes
    - Run Time : **1728000** secondes (20 jours × 16h × 3600)
 
@@ -128,12 +128,11 @@ ABC Emboutissage Ltée fabrique des **supports de tableaux de bord en acier** po
 2. Positionnez-le à gauche de l'espace de travail
 3. Double-cliquez sur la Source pour ouvrir ses propriétés
 4. Renommez-la : **"MP_Acier"** (Matière Première Acier)
-5. Configuration de l'arrivée :
-   - Onglet **Flow**
-   - Arrival Style : **Arrival at time 0**
-   - Max Arrivals : **Unlimited**
+5. Configuration de l'arrivée dans le panneau de propriétés :
+   - Section **Source** : Inter-Arrival Time = **0** (arrivée immédiate)
+   - Ou utilisez une distribution pour modéliser un flux d'approvisionnement réaliste
 
-> **💡 Pourquoi "Arrival at time 0" ?** Nous supposons que les **5 jours de stock de matière première** sont déjà présents en début de simulation. Les pièces seront "tirées" par les processus selon leurs besoins.
+> **💡 Configuration simplifiée :** Pour ce modèle initial, nous supposons que les **5 jours de stock de matière première** sont déjà présents. La Source crée des pièces à la demande des processus aval.
 
 ### Étape 5 : Créer le Processus Emboutissage
 
@@ -184,54 +183,80 @@ Stock_PF → Client_Carbec
 
 ### Étape 9 : Configurer Emboutissage
 
-1. Double-cliquez sur le processeur **Emboutissage**
-2. Onglet **Process Time** :
-   - Distribution : **Constant**
-   - Value : **1** (seconde)
-3. Onglet **Setup Time** (Temps de Changement de Format) :
-   - Activez le Setup Time
-   - Distribution : **Constant**
-   - Value : **3600** (1 heure = 3600 secondes)
-4. Onglet **State** (Pannes / Fiabilité 85%) :
-   - Cliquez sur **Add State Profile**
-   - Type : **Time Based**
-   - MTBF = 10000 s, MTTR = 1765 s (pour obtenir ~85% de disponibilité)
+1. Double-cliquez sur le processeur **Emboutissage** pour ouvrir ses propriétés
+2. Dans le panneau de propriétés, configurez :
+   - **Process Time** : Distribution **Constant**, valeur **1** seconde
+   - **Setup Time** : **Laissez désactivé** (voir note ci-dessous)
+3. Cliquez sur **Apply** pour valider
+
+> **⚠️ IMPORTANT - Setup Time vs Changement de Série :**  
+> Dans FlexSim, le **Setup Time** s'applique **avant CHAQUE pièce traitée**, pas seulement lors d'un changement de série !  
+> Le **temps de changement de format (TCF)** de la VSM (1h pour l'Emboutissage, 10 min pour les Soudages) doit être modélisé différemment :  
+>
+> - Soit via un **Process Flow** avec une logique de détection de changement de type (LH → RH)  
+> - Soit en simplifiant le modèle initial sans les changements de série  
+> Pour ce tutoriel d'initiation, nous ignorons les changements de série.
 
 ### Étape 10 : Configurer Soudage I
 
 1. Double-cliquez sur **Soudage_I**
-2. Process Time : **39** secondes (Constant)
-3. Setup Time : **600** secondes (10 min)
-4. State : Pas de pannes (Fiabilité 100%)
+2. Configurez les propriétés :
+   - **Process Time** : **39** secondes (Constant)
+   - **Setup Time** : Désactivé
 
 ### Étape 11 : Configurer Soudage II
 
-1. Process Time : **46** secondes
-2. Setup Time : **600** secondes
-3. State : Pannes pour 80% de fiabilité
-   - MTBF = 8000 s, MTTR = 2000 s (pour obtenir ~80%)
+1. Double-cliquez sur **Soudage_II**
+2. Configurez les propriétés :
+   - **Process Time** : **46** secondes (Constant)
+   - **Setup Time** : Désactivé
 
 ### Étape 12 : Configurer Montage I (GOULOT)
 
-1. Process Time : **62** secondes ⚠️
-2. Setup Time : Aucun (pas de TCF)
-3. State : Pas de pannes (100%)
+1. Double-cliquez sur **Montage_I**
+2. Configurez les propriétés :
+   - **Process Time** : **62** secondes ⚠️
+   - **Setup Time** : Désactivé
 
 > **🔴 Goulot d'Étranglement :** Avec un temps de cycle de **62 secondes** supérieur au Takt Time de **60 secondes**, ce processus ne pourra jamais suivre la demande client sans amélioration !
 
 ### Étape 13 : Configurer Montage II
 
-1. Process Time : **40** secondes
-2. Setup Time : Aucun
-3. State : Pas de pannes (100%)
+1. Double-cliquez sur **Montage_II**
+2. Configurez les propriétés :
+   - **Process Time** : **40** secondes (Constant)
+   - **Setup Time** : Désactivé
 
-### Étape 14 : Configurer les Stocks Initiaux
+### Étape 14 : Configurer les Pannes (MTBF/MTTR)
 
-Pour chaque **Queue**, configurez le stock initial :
+Pour modéliser la fiabilité des machines, utilisez des **objets MTBF/MTTR** depuis la **Toolbox** :
+
+1. Allez dans la **Toolbox** (onglet à côté de la Library)
+2. Recherchez et glissez un objet **MTBF/MTTR** dans le modèle
+3. Renommez-le : **"Pannes_Emboutissage"**
+4. **Connectez l'objet MTBF/MTTR au Processor** :
+   - Maintenez la touche **S** enfoncée
+   - Cliquez-glissez de l'objet MTBF/MTTR vers **Emboutissage**
+5. Double-cliquez sur l'objet MTBF/MTTR et configurez :
+   - **Up Time** (temps de fonctionnement) : Distribution Exponential, moyenne **10000** secondes
+   - **Down Time** (temps de panne) : Distribution Exponential, moyenne **1765** secondes
+   - Cela donne une disponibilité d'environ **85%**
+
+6. Répétez pour **Soudage II** (80% de fiabilité) :
+   - Créez un nouvel objet MTBF/MTTR : **"Pannes_Soudage_II"**
+   - Connectez-le via **S-Connect** à Soudage_II
+   - **Up Time** : moyenne **8000** secondes
+   - **Down Time** : moyenne **2000** secondes
+
+> **💡 Calcul Fiabilité :** Disponibilité = MTBF / (MTBF + MTTR). Par exemple : 10000 / (10000 + 1765) ≈ 85%
+
+### Étape 15 : Configurer les Stocks Initiaux
+
+Pour chaque **Queue**, configurez le stock initial dans les propriétés :
 
 1. Double-cliquez sur la Queue
-2. Onglet **Initial Content**
-3. Ajoutez le nombre de pièces initiales :
+2. Dans la section **On Reset** ou via les propriétés de contenu initial
+3. Définissez le nombre de flowitems à créer au démarrage :
    - Stock_Emboutissage : **7000**
    - Stock_Soudage_I : **1700**
    - Stock_Soudage_II : **2450**
@@ -244,23 +269,25 @@ Pour chaque **Queue**, configurez le stock initial :
 
 ## 6. Connexions et Flux
 
-### Étape 15 : Créer les Connexions
+### Étape 16 : Créer les Connexions (A-Connect)
 
-1. Sélectionnez l'icône **Connect Objects (A)** dans la barre d'outils
+1. **Maintenez la touche A enfoncée**, puis cliquez-glissez de l'objet source vers l'objet destination
 2. Créez les connexions dans l'ordre :
-   a. MP_Acier → Emboutissage
-   b. Emboutissage → Stock_Emboutissage
-   c. Stock_Emboutissage → Soudage_I
-   d. Soudage_I → Stock_Soudage_I
-   e. Stock_Soudage_I → Soudage_II
-   f. Soudage_II → Stock_Soudage_II
-   g. Stock_Soudage_II → Montage_I
-   h. Montage_I → Stock_Montage_I
-   i. Stock_Montage_I → Montage_II
-   j. Montage_II → Stock_PF
-   k. Stock_PF → Client_Carbec
+   - MP_Acier → Emboutissage
+   - Emboutissage → Stock_Emboutissage
+   - Stock_Emboutissage → Soudage_I
+   - Soudage_I → Stock_Soudage_I
+   - Stock_Soudage_I → Soudage_II
+   - Soudage_II → Stock_Soudage_II
+   - Stock_Soudage_II → Montage_I
+   - Montage_I → Stock_Montage_I
+   - Stock_Montage_I → Montage_II
+   - Montage_II → Stock_PF
+   - Stock_PF → Client_Carbec
 
-### Étape 16 : Configurer la Demande Client
+> **💡 Astuce :** La touche **A** crée une connexion de type A-Connect (ports Input/Output) pour le flux des pièces. La touche **S** crée une connexion centrale (S-Connect) pour lier des opérateurs ou des objets MTBF/MTTR.
+
+### Étape 17 : Configurer la Demande Client
 
 1. Double-cliquez sur **Client_Carbec** (Sink)
 2. Configuration de la demande :
@@ -274,7 +301,7 @@ Pour chaque **Queue**, configurez le stock initial :
 
 ## 7. Exécution et Analyse
 
-### Étape 17 : Préparer les Statistiques
+### Étape 18 : Préparer les Statistiques
 
 1. Ajoutez un **Dashboard** pour visualiser les résultats
 2. Créez des graphiques pour :
@@ -374,7 +401,7 @@ Après la simulation, consultez les statistiques :
 **Solution :**
 
 - Augmentez le curseur **Speed** en haut de l'écran
-- Désactivez les animations 3D : **View → Disable 3D**
+- Pour accélérer, désactivez l'animation : **Model → Simulation Options** ou **Disable Animation** dans les préférences graphiques
 - Réduisez la durée de simulation pour les tests (ex: 5 jours au lieu de 20)
 
 ### ❓ Les résultats ne correspondent pas aux calculs VSM
