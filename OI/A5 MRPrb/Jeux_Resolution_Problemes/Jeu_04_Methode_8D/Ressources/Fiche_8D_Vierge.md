@@ -1,6 +1,6 @@
 ![Logo UIMM](../../logo_uimm.jpg)
 
-# Pole Formation UIMM-CVDL
+# Pôle Formation UIMM-CVDL
 
 ---
 
@@ -8,39 +8,39 @@
 
 ---
 
-## INFORMATIONS GENERALES
+## INFORMATIONS GÉNÉRALES
 
 | Champ | Information |
 |-------|-------------|
-| Numero 8D | |
+| Numéro 8D | |
 | Date ouverture | |
 | Client | |
-| Reference produit | |
-| Numero de lot | |
-| Quantite concernee | |
+| Référence produit | |
+| Numéro de lot | |
+| Quantité concernée | |
 | Pilote 8D | |
-| Date cloture prevue | |
+| Date clôture prévue | |
 
 ---
 
-## D0 - PREPARATION
+## D0 - PRÉPARATION
 
-### Evaluation de l'urgence
+### Évaluation de l'urgence
 
-| Critere | Evaluation | Score |
+| Critère | Évaluation | Score |
 |---------|------------|-------|
-| Impact securite | [ ] OUI [ ] NON | |
-| Arret client | [ ] OUI [ ] NON | |
-| Risque financier | [ ] Faible [ ] Moyen [ ] Eleve | |
-| Risque image | [ ] Faible [ ] Moyen [ ] Eleve | |
+| Impact sécurité | [ ] OUI [ ] NON | |
+| Arrêt client | [ ] OUI [ ] NON | |
+| Risque financier | [ ] Faible [ ] Moyen [ ] Élevé | |
+| Risque image | [ ] Faible [ ] Moyen [ ] Élevé | |
 
-**Priorite globale** : [ ] CRITIQUE [ ] HAUTE [ ] MOYENNE [ ] BASSE
+**Priorité globale** : [ ] CRITIQUE [ ] HAUTE [ ] MOYENNE [ ] BASSE
 
 ---
 
-## D1 - FORMATION DE L'EQUIPE
+## D1 - FORMATION DE L'ÉQUIPE
 
-| Nom | Fonction | Role | Signature |
+| Nom | Fonction | Rôle | Signature |
 |-----|----------|------|-----------|
 | | | Pilote | |
 | | | Membre | |
@@ -50,15 +50,15 @@
 
 ---
 
-## D2 - DESCRIPTION DU PROBLEME
+## D2 - DESCRIPTION DU PROBLÈME
 
 ### QQOQCP
 
-| Question | Reponse |
+| Question | Réponse |
 |----------|---------|
 | QUOI ? | |
 | QUI ? | |
-| OU ? | |
+| OÙ ? | |
 | QUAND ? | |
 | COMMENT ? | |
 | COMBIEN ? | |
@@ -68,7 +68,7 @@
 | Aspect | IS (Est) | IS NOT (N'est pas) |
 |--------|----------|-------------------|
 | Quoi | | |
-| Ou | | |
+| Où | | |
 | Quand | | |
 | Combien | | |
 
@@ -76,9 +76,9 @@
 
 ## D3 - ACTIONS CONSERVATOIRES
 
-**Objectif** : Proteger le client dans les 24 heures
+**Objectif** : Protéger le client dans les 24 heures
 
-| N. | Action | Responsable | Delai | Statut |
+| N° | Action | Responsable | Délai | Statut |
 |----|--------|-------------|-------|--------|
 | 1 | | | | [ ] |
 | 2 | | | | [ ] |
@@ -86,7 +86,7 @@
 | 4 | | | | [ ] |
 | 5 | | | | [ ] |
 
-**Verification efficacite D3** : ________________________________
+**Vérification efficacité D3** : ________________________________
 
 ---
 
@@ -95,18 +95,18 @@
 ### Diagramme Ishikawa
 
 ```
-            MAIN D'OEUVRE             MATIERE
+            MAIN D'ŒUVRE             MATIÈRE
                   |                      |
     +-------------+                      +-------------+
     |                                                  |
     |                                                  |
-    |                   PROBLEME :                     |
+    |                   PROBLÈME :                     |
     |               ________________                   |
     |                                                  |
     |                                                  |
     +-------------+                      +-------------+
                   |                      |
-              METHODE                  MACHINE
+              MÉTHODE                  MACHINE
                   |                      |
                   +----------+-----------+
                              |
@@ -115,7 +115,7 @@
 
 ### 5 Pourquoi - Cause d'OCCURRENCE
 
-| N. | Pourquoi ? | Reponse |
+| N° | Pourquoi ? | Réponse |
 |----|------------|---------|
 | 1 | | |
 | 2 | | |
@@ -125,9 +125,9 @@
 
 **CAUSE RACINE D'OCCURRENCE** :
 
-### 5 Pourquoi - Cause de NON-DETECTION
+### 5 Pourquoi - Cause de NON-DÉTECTION
 
-| N. | Pourquoi ? | Reponse |
+| N° | Pourquoi ? | Réponse |
 |----|------------|---------|
 | 1 | | |
 | 2 | | |
@@ -135,13 +135,13 @@
 | 4 | | |
 | 5 | | |
 
-**CAUSE RACINE DE NON-DETECTION** :
+**CAUSE RACINE DE NON-DÉTECTION** :
 
 ---
 
-## D5 - SELECTION DES ACTIONS CORRECTIVES
+## D5 - SÉLECTION DES ACTIONS CORRECTIVES
 
-| N. | Cause | Action corrective | Efficacite | Faisabilite | Retenue |
+| N° | Cause | Action corrective | Efficacité | Faisabilité | Retenue |
 |----|-------|-------------------|------------|-------------|---------|
 | 1 | | | /5 | /5 | [ ] |
 | 2 | | | /5 | /5 | [ ] |
@@ -150,56 +150,56 @@
 
 ---
 
-## D6 - MISE EN OEUVRE ET VALIDATION
+## D6 - MISE EN ŒUVRE ET VALIDATION
 
-| N. | Action | Responsable | Delai | Verification | Statut |
+| N° | Action | Responsable | Délai | Vérification | Statut |
 |----|--------|-------------|-------|--------------|--------|
 | 1 | | | | | [ ] |
 | 2 | | | | | [ ] |
 | 3 | | | | | [ ] |
 | 4 | | | | | [ ] |
 
-**Verification efficacite D6** : ________________________________
+**Vérification efficacité D6** : ________________________________
 
 ---
 
-## D7 - PREVENTION DE LA RECURRENCE
+## D7 - PRÉVENTION DE LA RÉCURRENCE
 
-| Type | Action | Responsable | Delai | Statut |
+| Type | Action | Responsable | Délai | Statut |
 |------|--------|-------------|-------|--------|
 | AMDEC | | | | [ ] |
-| Procedure | | | | [ ] |
+| Procédure | | | | [ ] |
 | Formation | | | | [ ] |
 | Poka-Yoke | | | | [ ] |
 | Autre | | | | [ ] |
 
 ---
 
-## D8 - RECONNAISSANCE ET CLOTURE
+## D8 - RECONNAISSANCE ET CLÔTURE
 
-### Lecons apprises
+### Leçons apprises
 
 1. ________________________________
 2. ________________________________
 3. ________________________________
 
-### Felicitations
+### Félicitations
 
-Membres de l'equipe a feliciter : ________________________________
+Membres de l'équipe à féliciter : ________________________________
 
 ### Validation
 
-| Role | Nom | Date | Signature |
+| Rôle | Nom | Date | Signature |
 |------|-----|------|-----------|
 | Pilote 8D | | | |
-| Responsable Qualite | | | |
+| Responsable Qualité | | | |
 | Direction | | | |
 | Client | | | |
 
 ---
 
-**Date de cloture** : ________________
+**Date de clôture** : ________________
 
 ---
 
-**Document Pole Formation UIMM-CVDL**
+**Document Pôle Formation UIMM-CVDL**

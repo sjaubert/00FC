@@ -1,187 +1,187 @@
 ![Logo UIMM](../../logo_uimm.jpg)
 
-# Pole Formation UIMM-CVDL
+# Pôle Formation UIMM-CVDL
 
 ---
 
-# DOSSIER SCENARIO - RECLAMATION CLIENT
+# DOSSIER SCÉNARIO - RÉCLAMATION CLIENT
 
-## METALUX SAS - Reference SUP-FRE-2847
+## METALUX SAS - Référence SUP-FRE-2847
 
 ---
 
-## 1. RECLAMATION CLIENT STELLANTIS
+## 1. RÉCLAMATION CLIENT STELLANTIS
 
-**De** : Service Qualite Fournisseurs - Stellantis Sochaux  
-**A** : Direction Qualite METALUX SAS  
+**De** : Service Qualité Fournisseurs - Stellantis Sochaux  
+**À** : Direction Qualité METALUX SAS  
 **Date** : 15 janvier 2026  
-**Objet** : Reclamation qualite urgente - Lot L2401-2847
+**Objet** : Réclamation qualité urgente - Lot L2401-2847
 
 ---
 
 Messieurs,
 
-Nous vous informons de la detection de non-conformites sur votre livraison de supports de fixation reference SUP-FRE-2847.
+Nous vous informons de la détection de non-conformités sur votre livraison de supports de fixation référence SUP-FRE-2847.
 
-**Faits constates :**
+**Faits constatés :**
 
-- 12 pieces presentent des defauts de soudure visibles (porosite)
-- Arret de notre ligne d'assemblage pendant 2 heures
-- Pieces concernees : lot L2401-2847
+- 12 pièces présentent des défauts de soudure visibles (porosité)
+- Arrêt de notre ligne d'assemblage pendant 2 heures
+- Pièces concernées : lot L2401-2847
 
 **Nos exigences :**
 
-1. Actions de confinement immediates (24h)
+1. Actions de confinement immédiates (24h)
 2. Rapport 8D sous 48 heures
 3. Analyse cause racine et plan d'actions correctives
 
-En l'absence de reponse satisfaisante, nous nous reservons le droit d'appliquer les penalites prevues au contrat et de reconsiderer notre relation commerciale.
+En l'absence de réponse satisfaisante, nous nous réservons le droit d'appliquer les pénalités prévues au contrat et de reconsidérer notre relation commerciale.
 
 Cordialement,
 
 **Jean-Pierre MARTIN**  
-Responsable Qualite Fournisseurs  
+Responsable Qualité Fournisseurs  
 Stellantis - Site de Sochaux
 
 ---
 
 ## 2. FICHE PRODUIT
 
-| Caracteristique | Valeur |
+| Caractéristique | Valeur |
 |-----------------|--------|
-| Reference | SUP-FRE-2847 |
-| Designation | Support de fixation etrier de frein |
+| Référence | SUP-FRE-2847 |
+| Désignation | Support de fixation étrier de frein |
 | Client | Stellantis |
-| Application | Vehicules plateforme EMP2 |
-| Materiau | Acier S355 |
-| Epaisseur | 4 mm |
-| Traitement surface | Cataphorese |
-| Classification securite | Piece de securite (PS) |
+| Application | Véhicules plateforme EMP2 |
+| Matériau | Acier S355 |
+| Épaisseur | 4 mm |
+| Traitement surface | Cataphorèse |
+| Classification sécurité | Pièce de sécurité (PS) |
 
 ---
 
-## 3. SPECIFICATION SOUDURE
+## 3. SPÉCIFICATION SOUDURE
 
-| Critere | Specification | Tolerance |
+| Critère | Spécification | Tolérance |
 |---------|---------------|-----------|
 | Type de soudure | MIG/MAG | - |
 | Fil | 1.0 mm acier | - |
 | Gaz | Argon 80% / CO2 20% | +/- 2% |
-| Penetration | 80% minimum | - |
-| Porosite | 2% maximum | - |
+| Pénétration | 80% minimum | - |
+| Porosité | 2% maximum | - |
 | Cordon | 5 mm +/- 0.5 mm | - |
 
 ---
 
-## 4. PLAN DE CONTROLE ACTUEL
+## 4. PLAN DE CONTRÔLE ACTUEL
 
-| Operation | Frequence | Methode | Critere | Responsable |
+| Opération | Fréquence | Méthode | Critère | Responsable |
 |-----------|-----------|---------|---------|-------------|
-| Aspect visuel soudure | 100% | Visuel | Pas de defaut apparent | Operateur |
-| Dimension cordon | 1/100 | Pied a coulisse | 5mm +/- 0.5 | Operateur |
-| Controle ressuage | 1/500 | Ressuage | Pas de porosite >2% | Qualite |
-| Coupe metallographique | 1/2000 | Coupe + micro | Penetration >80% | Labo externe |
+| Aspect visuel soudure | 100% | Visuel | Pas de défaut apparent | Opérateur |
+| Dimension cordon | 1/100 | Pied à coulisse | 5mm +/- 0.5 | Opérateur |
+| Contrôle ressuage | 1/500 | Ressuage | Pas de porosité >2% | Qualité |
+| Coupe métallographique | 1/2000 | Coupe + micro | Pénétration >80% | Labo externe |
 | Essai traction | 1/5000 | Traction | >400 MPa | Labo externe |
 
 ---
 
-## 5. DONNEES DE PRODUCTION
+## 5. DONNÉES DE PRODUCTION
 
-### Lot concerne : L2401-2847
+### Lot concerné : L2401-2847
 
-| Date | Equipe | Operateur | Machine | Quantite |
+| Date | Équipe | Opérateur | Machine | Quantité |
 |------|--------|-----------|---------|----------|
 | 08/01/2026 | Matin | Martin D. | Robot KUKA KR16 | 2500 |
 | 09/01/2026 | Matin | Thomas L. | Robot KUKA KR16 | 2500 |
 
-### Parametres machine enregistres
+### Paramètres machine enregistrés
 
-| Parametre | Spec | 08/01 | 09/01 |
+| Paramètre | Spec | 08/01 | 09/01 |
 |-----------|------|-------|-------|
-| Intensite (A) | 180 +/- 10 | 178 | 175 |
+| Intensité (A) | 180 +/- 10 | 178 | 175 |
 | Tension (V) | 22 +/- 1 | 21.8 | 21.5 |
 | Vitesse fil (m/min) | 8 +/- 0.5 | 7.9 | 7.8 |
-| Debit gaz (L/min) | 15 +/- 2 | 14 | 13 |
+| Débit gaz (L/min) | 15 +/- 2 | 14 | 13 |
 
 ---
 
 ## 6. HISTORIQUE MACHINE
 
-**Robot de soudure : KUKA KR 16 - Numero serie K16-2019-4587**
+**Robot de soudure : KUKA KR 16 - Numéro série K16-2019-4587**
 
-| Date | Evenement | Intervenant |
+| Date | Événement | Intervenant |
 |------|-----------|-------------|
-| 02/01/2026 | Reprise apres vacances | - |
-| 05/01/2026 | Maintenance preventive | Technicien Maint. |
-| 07/01/2026 | Signalement operateur : "soudure moins brillante" | Martin D. |
-| 08/01/2026 | Changement bobine fil (nouvelle ref) | Cariste |
-| 09/01/2026 | Intervention operateur sur devidoir | Thomas L. |
+| 02/01/2026 | Reprise après vacances | - |
+| 05/01/2026 | Maintenance préventive | Technicien Maint. |
+| 07/01/2026 | Signalement opérateur : "soudure moins brillante" | Martin D. |
+| 08/01/2026 | Changement bobine fil (nouvelle réf) | Cariste |
+| 09/01/2026 | Intervention opérateur sur dévidoir | Thomas L. |
 
 ---
 
-## 7. TEMOIGNAGES
+## 7. TÉMOIGNAGES
 
-### Martin D. (Operateur CDI, 5 ans)
+### Martin D. (Opérateur CDI, 5 ans)
 
-> "Le 7 janvier, j'ai trouve que les soudures etaient moins brillantes que d'habitude. J'ai prevenu le chef d'equipe mais il m'a dit que c'etait normal en hiver avec le froid. Le 8, on a change la bobine de fil, ca avait l'air d'aller mieux."
+> "Le 7 janvier, j'ai trouvé que les soudures étaient moins brillantes que d'habitude. J'ai prévenu le chef d'équipe mais il m'a dit que c'était normal en hiver avec le froid. Le 8, on a changé la bobine de fil, ça avait l'air d'aller mieux."
 
-### Thomas L. (Operateur interim, 2 semaines)
+### Thomas L. (Opérateur intérim, 2 semaines)
 
-> "Le 9 janvier, le fil avait du mal a sortir du devidoir. Ca faisait des a-coups. J'ai mis un peu de WD-40 sur l'axe du devidoir et apres ca tournait mieux. Personne ne m'avait dit qu'il ne fallait pas faire ca."
+> "Le 9 janvier, le fil avait du mal à sortir du dévidoir. Ça faisait des à-coups. J'ai mis un peu de WD-40 sur l'axe du dévidoir et après ça tournait mieux. Personne ne m'avait dit qu'il ne fallait pas faire ça."
 
 ### Cariste logistique
 
-> "La nouvelle bobine de fil est arrivee le 6 janvier. Il n'y avait plus de place dans le magasin, je l'ai stockee dans le couloir pres de la porte du quai. Il faisait super froid cette semaine, -5 degres la nuit."
+> "La nouvelle bobine de fil est arrivée le 6 janvier. Il n'y avait plus de place dans le magasin, je l'ai stockée dans le couloir près de la porte du quai. Il faisait super froid cette semaine, -5 degrés la nuit."
 
 ---
 
 ## 8. BON DE LIVRAISON FIL DE SOUDURE
 
 **Fournisseur** : FILSOUD EUROPE  
-**Date reception** : 06/01/2026  
-**Reference** : FS-MIG-1.0-S355  
+**Date réception** : 06/01/2026  
+**Référence** : FS-MIG-1.0-S355  
 **Lot** : FE-2401-0892  
-**Quantite** : 1 bobine 15 kg  
-**Certificat matiere** : Conforme
+**Quantité** : 1 bobine 15 kg  
+**Certificat matière** : Conforme
 
-**Conditions de stockage recommandees** (notice) :  
-"Stocker dans un local sec, temperature >10C, humidite <60%"
+**Conditions de stockage recommandées** (notice) :  
+"Stocker dans un local sec, température >10°C, humidité <60%"
 
 ---
 
-## 9. ANALYSE LABORATOIRE (pieces defectueuses)
+## 9. ANALYSE LABORATOIRE (pièces défectueuses)
 
 **Date analyse** : 16/01/2026  
 **Laboratoire** : QUALITEC Centre
 
-**Resultats :**
+**Résultats :**
 
-- Taux de porosite mesure : 8 a 12% (spec max 2%)
-- Penetration : 65% (spec min 80%)
-- Traces d'humidite dans la zone de fusion
-- Fil de soudure : traces d'oxydation superficielle detectees
-- Presence de residus organiques (type lubrifiant) dans la zone affectee thermiquement
+- Taux de porosité mesuré : 8 à 12% (spec max 2%)
+- Pénétration : 65% (spec min 80%)
+- Traces d'humidité dans la zone de fusion
+- Fil de soudure : traces d'oxydation superficielle détectées
+- Présence de résidus organiques (type lubrifiant) dans la zone affectée thermiquement
 
-**Conclusion du labo** : Les defauts sont caracteristiques d'une contamination du fil de soudure (humidite et/ou huile).
+**Conclusion du labo** : Les défauts sont caractéristiques d'une contamination du fil de soudure (humidité et/ou huile).
 
 ---
 
-## 10. STOCK ET EXPEDITIONS
+## 10. STOCK ET EXPÉDITIONS
 
 ### Stock actuel METALUX
 
-| Localisation | Quantite | Lot | Statut |
+| Localisation | Quantité | Lot | Statut |
 |--------------|----------|-----|--------|
-| Magasin produits finis | 1200 | L2401-2847 | BLOQUE |
-| En-cours expedition | 0 | - | - |
+| Magasin produits finis | 1200 | L2401-2847 | BLOQUÉ |
+| En-cours expédition | 0 | - | - |
 
-### Expeditions recentes
+### Expéditions récentes
 
-| Date | Client | Quantite | Lot |
+| Date | Client | Quantité | Lot |
 |------|--------|----------|-----|
 | 12/01/2026 | Stellantis Sochaux | 5000 | L2401-2847 |
 | 05/01/2026 | Stellantis Rennes | 3000 | L2401-2845 |
 
 ---
 
-**Document Pole Formation UIMM-CVDL**
+**Document Pôle Formation UIMM-CVDL**
