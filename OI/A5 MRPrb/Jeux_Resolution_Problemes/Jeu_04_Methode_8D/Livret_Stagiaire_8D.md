@@ -1,131 +1,128 @@
 ![Logo UIMM](../logo_uimm.jpg)
 
-# Pole Formation UIMM-CVDL
+# Pôle Formation UIMM-CVDL
 
 ---
 
-# METHODE 8D - LIVRET STAGIAIRE
+# MÉTHODE 8D - LIVRET STAGIAIRE
 
-## Jeu de Role : Investigation d'une Reclamation Client
+## Jeu de Rôle : Investigation d'une Réclamation Client
 
-**Duree** : 4 heures  
-**Votre role** : Membre de l'equipe de resolution de problemes
+**Votre rôle** : Membre de l'équipe de résolution de problèmes
 
 ---
 
 ## CONTEXTE
 
-Vous travaillez chez **METALUX SAS**, equipementier automobile de rang 1. Ce matin, vous recevez une reclamation urgente de votre client principal.
+Vous travaillez chez **METALUX SAS**, équipementier automobile de rang 1. Ce matin, vous recevez une réclamation urgente de votre client principal.
 
 ---
 
-## LA RECLAMATION
+## LA RÉCLAMATION
 
-**De** : Stellantis - Usine de Sochaux  
-**Date** : Lundi 15 janvier 2026, 8h00  
-**Objet** : URGENT - Defaut de soudure reference SUP-FRE-2847
+**De** : Stellantis - Usine de Sochaux**Date** : Lundi 15 janvier 2026, 8h00**Objet** : URGENT - Défaut de soudure référence SUP-FRE-2847
 
-> "Nous avons detecte sur notre ligne d'assemblage 12 supports de fixation presentant un defaut de soudure. Les soudures sont poreuses et ne respectent pas les specifications. Nous avons du arreter notre ligne pendant 2 heures. Nous vous demandons un rapport 8D sous 48 heures avec actions de confinement immediates."
+> "Nous avons détecté sur notre ligne d'assemblage 12 supports de fixation présentant un défaut de soudure. Les soudures sont poreuses et ne respectent pas les spécifications. Nous avons dû arrêter notre ligne pendant 2 heures. Nous vous demandons un rapport 8D sous 48 heures avec actions de confinement immédiates."
 
-**Donnees du lot** :
+**Données du lot** :
 
-- Reference : SUP-FRE-2847
-- Quantite livree : 5000 pieces
-- Numero de lot : L2401-2847
+- Référence : SUP-FRE-2847
+- Quantité livrée : 5000 pièces
+- Numéro de lot : L2401-2847
 - Dates fabrication : 8-9 janvier 2026
 
 ---
 
-## VOTRE EQUIPE
+## VOTRE ÉQUIPE
 
 ### Nom : _________________________________
 
-### Role dans l'equipe (cochez)
+### Rôle dans l'équipe (cochez)
 
-- [ ] **Pilote 8D** : Animation, redaction du rapport
+- [ ] **Pilote 8D** : Animation, rédaction du rapport
 - [ ] **Expert Production** : Connaissance du process de fabrication
-- [ ] **Expert Qualite** : Maitrise des outils qualite, specifications
-- [ ] **Expert Maintenance** : Connaissance des equipements
+- [ ] **Expert Qualité** : Maîtrise des outils qualité, spécifications
+- [ ] **Expert Maintenance** : Connaissance des équipements
 
 ---
 
-## LA METHODE 8D
+## LA MÉTHODE 8D
 
-| D | Etape | A faire |
-|---|-------|---------|
-| D0 | Preparation | Evaluer l'urgence |
-| D1 | Equipe | Former l'equipe |
-| D2 | Description | Decrire le probleme |
-| D3 | Conservatoire | Proteger le client |
-| D4 | Causes | Trouver la cause racine |
-| D5 | Correctives | Choisir les solutions |
-| D6 | Deploiement | Mettre en oeuvre |
-| D7 | Prevention | Eviter la recurrence |
-| D8 | Cloture | Feliciter, archiver |
-
----
-
-## D0 - PREPARATION
-
-### Evaluation de l'urgence
-
-| Critere | Niveau | Score |
-|---------|--------|-------|
-| Impact securite | OUI / NON | |
-| Arret client | OUI / NON | |
-| Risque financier | FAIBLE / MOYEN / ELEVE | |
-| Risque image | FAIBLE / MOYEN / ELEVE | |
-
-### Priorite : [ ] CRITIQUE [ ] HAUTE [ ] MOYENNE [ ] BASSE
+| D  | Étape        | À faire                |
+| -- | ------------- | ----------------------- |
+| D0 | Préparation  | Évaluer l'urgence      |
+| D1 | Équipe       | Former l'équipe        |
+| D2 | Description   | Décrire le problème   |
+| D3 | Conservatoire | Protéger le client     |
+| D4 | Causes        | Trouver la cause racine |
+| D5 | Correctives   | Choisir les solutions   |
+| D6 | Déploiement  | Mettre en œuvre        |
+| D7 | Prévention   | Éviter la récurrence  |
+| D8 | Clôture      | Féliciter, archiver    |
 
 ---
 
-## D1 - FORMATION DE L'EQUIPE
+## D0 - PRÉPARATION
 
-| Nom | Fonction | Role dans l'equipe |
-|-----|----------|-------------------|
-| | | Pilote |
-| | | |
-| | | |
-| | | |
+### Évaluation de l'urgence
+
+| Critère          | Niveau                   | Score |
+| ----------------- | ------------------------ | ----- |
+| Impact sécurité | OUI / NON                |       |
+| Arrêt client     | OUI / NON                |       |
+| Risque financier  | FAIBLE / MOYEN / ÉLEVÉ |       |
+| Risque image      | FAIBLE / MOYEN / ÉLEVÉ |       |
+
+### Priorité : [ ] CRITIQUE [ ] HAUTE [ ] MOYENNE [ ] BASSE
 
 ---
 
-## D2 - DESCRIPTION DU PROBLEME
+## D1 - FORMATION DE L'ÉQUIPE
 
-### Methode QQOQCP
+| Nom | Fonction | Rôle dans l'équipe |
+| --- | -------- | -------------------- |
+|     |          | Pilote               |
+|     |          |                      |
+|     |          |                      |
+|     |          |                      |
 
-| Question | Reponse |
-|----------|---------|
-| **QUOI** - Quel est le probleme ? | |
-| **QUI** - Qui a detecte ? Qui est concerne ? | |
-| **OU** - Ou le probleme a-t-il ete detecte ? | |
-| **QUAND** - Quand le probleme est-il apparu ? | |
-| **COMMENT** - Comment se manifeste-t-il ? | |
-| **COMBIEN** - Quelle est l'ampleur ? | |
+---
+
+## D2 - DESCRIPTION DU PROBLÈME
+
+### Méthode QQOQCP
+
+| Question                                                  | Réponse |
+| --------------------------------------------------------- | -------- |
+| **QUOI** - Quel est le problème ?                  |          |
+| **QUI** - Qui a détecté ? Qui est concerné ?     |          |
+| **OÙ** - Où le problème a-t-il été détecté ? |          |
+| **QUAND** - Quand le problème est-il apparu ?      |          |
+| **COMMENT** - Comment se manifeste-t-il ?           |          |
+| **COMBIEN** - Quelle est l'ampleur ?                |          |
 
 ### Matrice IS / IS NOT
 
-| Aspect | EST (IS) | N'EST PAS (IS NOT) |
-|--------|---------|-------------------|
-| Quoi | | |
-| Ou | | |
-| Quand | | |
-| Combien | | |
+| Aspect  | EST (IS) | N'EST PAS (IS NOT) |
+| ------- | -------- | ------------------ |
+| Quoi    |          |                    |
+| Où     |          |                    |
+| Quand   |          |                    |
+| Combien |          |                    |
 
 ---
 
 ## D3 - ACTIONS CONSERVATOIRES
 
-### Objectif : Proteger le client IMMEDIATEMENT (24h)
+### Objectif : Protéger le client IMMÉDIATEMENT (24h)
 
-| Action | Responsable | Delai | Statut |
-|--------|-------------|-------|--------|
-| | | | [ ] |
-| | | | [ ] |
-| | | | [ ] |
-| | | | [ ] |
-| | | | [ ] |
+| Action | Responsable | Délai | Statut |
+| ------ | ----------- | ------ | ------ |
+|        |             |        | [ ]    |
+|        |             |        | [ ]    |
+|        |             |        | [ ]    |
+|        |             |        | [ ]    |
+|        |             |        | [ ]    |
 
 ---
 
@@ -134,15 +131,15 @@ Vous travaillez chez **METALUX SAS**, equipementier automobile de rang 1. Ce mat
 ### Diagramme d'Ishikawa (5M)
 
 ```
-                            MAIN D'OEUVRE
+                            MAIN D'ŒUVRE
                                  |
                     +------------+------------+
                     |                         |
-            METHODE |                         | MATIERE
+            MÉTHODE |                         | MATIÈRE
                     |                         |
         +-----------+                         +-----------+
         |                                                 |
-        |                   PROBLEME                      |
+        |                   PROBLÈME                      |
         |                      |                          |
         +-----------+                         +-----------+
                     |                         |
@@ -154,109 +151,113 @@ Vous travaillez chez **METALUX SAS**, equipementier automobile de rang 1. Ce mat
 
 ### Les 5 Pourquoi - Cause d'OCCURRENCE
 
-**Question de depart** : Pourquoi le defaut est-il apparu ?
+**Question de départ** : Pourquoi le défaut est-il apparu ?
 
-| N. | Pourquoi ? | Reponse |
-|----|------------|---------|
-| 1 | Pourquoi ? | |
-| 2 | Pourquoi ? | |
-| 3 | Pourquoi ? | |
-| 4 | Pourquoi ? | |
-| 5 | Pourquoi ? | |
+| N° | Pourquoi ? | Réponse |
+| --- | ---------- | -------- |
+| 1   | Pourquoi ? |          |
+| 2   | Pourquoi ? |          |
+| 3   | Pourquoi ? |          |
+| 4   | Pourquoi ? |          |
+| 5   | Pourquoi ? |          |
 
 **CAUSE RACINE D'OCCURRENCE** :
-_______________________________________________
 
-### Les 5 Pourquoi - Cause de NON-DETECTION
+---
 
-**Question de depart** : Pourquoi le defaut n'a-t-il pas ete detecte ?
+### Les 5 Pourquoi - Cause de NON-DÉTECTION
 
-| N. | Pourquoi ? | Reponse |
-|----|------------|---------|
-| 1 | Pourquoi ? | |
-| 2 | Pourquoi ? | |
-| 3 | Pourquoi ? | |
+**Question de départ** : Pourquoi le défaut n'a-t-il pas été détecté ?
 
-**CAUSE RACINE DE NON-DETECTION** :
-_______________________________________________
+| N° | Pourquoi ? | Réponse |
+| --- | ---------- | -------- |
+| 1   | Pourquoi ? |          |
+| 2   | Pourquoi ? |          |
+| 3   | Pourquoi ? |          |
+
+**CAUSE RACINE DE NON-DÉTECTION** :
+
+---
 
 ---
 
 ## D5 - CHOIX DES ACTIONS CORRECTIVES
 
-| Cause a traiter | Action proposee | Efficacite (1-5) | Faisabilite (1-5) | Score |
-|-----------------|-----------------|------------------|-------------------|-------|
-| | | | | |
-| | | | | |
-| | | | | |
-| | | | | |
+| Cause à traiter | Action proposée | Efficacité (1-5) | Faisabilité (1-5) | Score |
+| ---------------- | ---------------- | ----------------- | ------------------ | ----- |
+|                  |                  |                   |                    |       |
+|                  |                  |                   |                    |       |
+|                  |                  |                   |                    |       |
+|                  |                  |                   |                    |       |
 
 ---
 
-## D6 - MISE EN OEUVRE
+## D6 - MISE EN ŒUVRE
 
-| Action retenue | Responsable | Delai | Verification |
-|----------------|-------------|-------|--------------|
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-
----
-
-## D7 - PREVENTION DE LA RECURRENCE
-
-### Actions pour eviter que le probleme se reproduise
-
-| Type | Action | Responsable |
-|------|--------|-------------|
-| AMDEC | | |
-| Procedure | | |
-| Formation | | |
-| Poka-Yoke | | |
+| Action retenue | Responsable | Délai | Vérification |
+| -------------- | ----------- | ------ | ------------- |
+|                |             |        |               |
+|                |             |        |               |
+|                |             |        |               |
+|                |             |        |               |
 
 ---
 
-## D8 - RECONNAISSANCE ET CLOTURE
+## D7 - PRÉVENTION DE LA RÉCURRENCE
 
-### Lecons apprises
+### Actions pour éviter que le problème se reproduise
 
-1. _______________________________________________
+| Type       | Action | Responsable |
+| ---------- | ------ | ----------- |
+| AMDEC      |        |             |
+| Procédure |        |             |
+| Formation  |        |             |
+| Poka-Yoke  |        |             |
 
-2. _______________________________________________
+---
 
-3. _______________________________________________
+## D8 - RECONNAISSANCE ET CLÔTURE
+
+### Leçons apprises
+
+1. ---
+2. ---
+3. ---
 
 ### Validation client
 
-- [ ] Rapport 8D envoye au client
+- [ ] Rapport 8D envoyé au client
 - [ ] Client satisfait des actions
-- [ ] Probleme clos
+- [ ] Problème clos
 
 ---
 
-## SYNTHESE 8D
+## SYNTHÈSE 8D
 
-### Resume en une page
+### Résumé en une page
 
-**Probleme** :
-_______________________________________________
+**Problème** :
+
+---
 
 **Cause d'occurrence** :
-_______________________________________________
 
-**Cause de non-detection** :
-_______________________________________________
+---
+
+**Cause de non-détection** :
+
+---
 
 **Actions principales** :
 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+1. ---
+2. ---
+3. ---
 
-**Prevention** :
-_______________________________________________
+**Prévention** :
 
 ---
 
-**Document Pole Formation UIMM-CVDL**
+---
+
+**Document Pôle Formation UIMM-CVDL**

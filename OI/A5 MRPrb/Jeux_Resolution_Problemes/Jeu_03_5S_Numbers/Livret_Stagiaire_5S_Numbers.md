@@ -1,3 +1,9 @@
+---
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+---
 ![Logo UIMM](../logo_uimm.jpg)
 
 # Pole Formation UIMM-CVDL

@@ -8,9 +8,8 @@
 
 ## Simulation de Chaine d'Approvisionnement
 
-**Duree totale** : 4 heures  
-**Nombre de participants** : 8 a 16 personnes (equipes de 4)  
-**Niveau** : Bachelor / BTS  
+**Duree totale** : 4 heures
+**Nombre de participants** : 8 a 16 personnes (equipes de 4)
 **Materiel necessaire** : Jetons ou pieces, fiches de commande, tableaux de suivi, calculatrices
 
 ---
@@ -24,7 +23,7 @@
 5. [Deroulement detaille](#deroulement-detaille)
 6. [Animation et observation](#animation-et-observation)
 7. [Debriefing et analyse](#debriefing-et-analyse)
-8. [Transfert vers l'entreprise](#transfert-vers-lentreprise)
+8. [Transfert vers l&#39;entreprise](#transfert-vers-lentreprise)
 
 ---
 
@@ -52,8 +51,8 @@ Le Beer Game (Jeu de la Biere) a ete cree au MIT Sloan School of Management dans
 Une brasserie fabrique et distribue de la biere a travers une chaine logistique a 4 niveaux :
 
 - **Usine** : Produit la biere
-- **Distributeur** : Stocke et distribue a grande echelle
-- **Grossiste** : Approvisionne les detaillants regionaux
+- **Distributeur** : Stocke et distribue à grande echelle
+- **Grossiste** : Approvisionne les détaillants regionaux
 - **Detaillant** : Vend au consommateur final
 
 Un phenomene mysterieux va perturber la demande du consommateur final (publicite, evenement sportif, meteo...) et les joueurs devront reagir.
@@ -89,15 +88,15 @@ Un phenomene mysterieux va perturber la demande du consommateur final (publicite
 
 ### 3.2 Materiel par poste
 
-| Element | Quantite par poste | Total (4 postes) |
-|---------|-------------------|------------------|
-| Jetons (caisses de biere) | 50 | 200 |
-| Fiche de decisions | 1 | 4 |
-| Tableau de suivi (40 semaines) | 1 | 4 |
-| Stylo | 1 | 4 |
-| Calculatrice | 1 | 4 |
-| Bons de commande (pile) | 40 | 160 |
-| Bons de livraison (pile) | 40 | 160 |
+| Element                        | Quantite par poste | Total (4 postes) |
+| ------------------------------ | ------------------ | ---------------- |
+| Jetons (caisses de biere)      | 50                 | 200              |
+| Fiche de decisions             | 1                  | 4                |
+| Tableau de suivi (40 semaines) | 1                  | 4                |
+| Stylo                          | 1                  | 4                |
+| Calculatrice                   | 1                  | 4                |
+| Bons de commande (pile)        | 40                 | 160              |
+| Bons de livraison (pile)       | 40                 | 160              |
 
 ### 3.3 Configuration initiale
 
@@ -129,10 +128,10 @@ Entre chaque poste, prevoir 2 zones physiques :
 
 ### 4.2 Couts
 
-| Type de cout | Montant | Explication |
-|--------------|---------|-------------|
-| Stockage | 0,50 EUR / caisse / semaine | Chaque caisse en stock coute |
-| Rupture | 1,00 EUR / caisse manquante / semaine | Chaque commande non honoree coute le double |
+| Type de cout | Montant                               | Explication                                 |
+| ------------ | ------------------------------------- | ------------------------------------------- |
+| Stockage     | 0,50 EUR / caisse / semaine           | Chaque caisse en stock coute                |
+| Rupture      | 1,00 EUR / caisse manquante / semaine | Chaque commande non honoree coute le double |
 
 ### 4.3 Sequence d'un tour (1 semaine)
 
@@ -160,27 +159,27 @@ Entre chaque poste, prevoir 2 zones physiques :
 
 ### 5.1 Planning de la session
 
-| Horaire | Phase | Duree | Contenu |
-|---------|-------|-------|---------|
-| 0:00 | Introduction | 30 min | Contexte, regles, attribution roles |
-| 0:30 | Phase de jeu (S1-S20) | 60 min | Premieres 20 semaines |
-| 1:30 | Pause/Premiers constats | 15 min | Reactions a chaud |
-| 1:45 | Phase de jeu (S21-S40) | 45 min | 20 dernieres semaines |
-| 2:30 | Compilation resultats | 20 min | Graphiques, calcul couts |
-| 2:50 | **PAUSE** | 15 min | - |
-| 3:05 | Debriefing | 40 min | Analyse effet coup de fouet |
-| 3:45 | Transfert | 15 min | Solutions industrielles |
-| 4:00 | **FIN** | - | - |
+| Horaire | Phase                   | Duree  | Contenu                             |
+| ------- | ----------------------- | ------ | ----------------------------------- |
+| 0:00    | Introduction            | 30 min | Contexte, regles, attribution roles |
+| 0:30    | Phase de jeu (S1-S20)   | 60 min | Premieres 20 semaines               |
+| 1:30    | Pause/Premiers constats | 15 min | Reactions a chaud                   |
+| 1:45    | Phase de jeu (S21-S40)  | 45 min | 20 dernieres semaines               |
+| 2:30    | Compilation resultats   | 20 min | Graphiques, calcul couts            |
+| 2:50    | **PAUSE**         | 15 min | -                                   |
+| 3:05    | Debriefing              | 40 min | Analyse effet coup de fouet         |
+| 3:45    | Transfert               | 15 min | Solutions industrielles             |
+| 4:00    | **FIN**           | -      | -                                   |
 
 ### 5.2 Demande du consommateur (a lire par le formateur)
 
 **CONFIDENTIEL - NE PAS MONTRER AUX PARTICIPANTS**
 
-| Semaine | Demande (caisses) | Observation |
-|---------|-------------------|-------------|
-| 1-4 | 4 | Demande stable |
-| 5 | 8 | Doublement soudain |
-| 6-40 | 8 | Demande stable mais doublee |
+| Semaine | Demande (caisses) | Observation                 |
+| ------- | ----------------- | --------------------------- |
+| 1-4     | 4                 | Demande stable              |
+| 5       | 8                 | Doublement soudain          |
+| 6-40    | 8                 | Demande stable mais doublee |
 
 **Explication cachee** : Une publicite televisee a double la demande a partir de la semaine 5. La demande se stabilise ensuite a 8 caisses par semaine.
 
@@ -211,13 +210,13 @@ Entre chaque poste, prevoir 2 zones physiques :
 
 ### 6.2 Pieges typiques des joueurs
 
-| Piege | Description | Semaine typique |
-|-------|-------------|-----------------|
-| Surreaction | Commander beaucoup plus que necessaire | S6-S10 |
-| Effet de panique | Doubler les commandes car "ca n'arrive pas" | S8-S15 |
-| Annulation mentale | Vouloir annuler les commandes passees | S15-S25 |
-| Blame des autres | "L'usine ne livre pas assez vite" | S10-S20 |
-| Resignation | "De toute facon, on ne peut rien faire" | S25-S40 |
+| Piege              | Description                                 | Semaine typique |
+| ------------------ | ------------------------------------------- | --------------- |
+| Surreaction        | Commander beaucoup plus que necessaire      | S6-S10          |
+| Effet de panique   | Doubler les commandes car "ca n'arrive pas" | S8-S15          |
+| Annulation mentale | Vouloir annuler les commandes passees       | S15-S25         |
+| Blame des autres   | "L'usine ne livre pas assez vite"           | S10-S20         |
+| Resignation        | "De toute facon, on ne peut rien faire"     | S25-S40         |
 
 ### 6.3 Interventions du formateur
 
@@ -290,13 +289,13 @@ Legende:
 
 ### 7.3 Phase analytique - Causes du Bullwhip Effect (10 min)
 
-| Cause | Explication | Solution |
-|-------|-------------|----------|
+| Cause                | Explication                            | Solution               |
+| -------------------- | -------------------------------------- | ---------------------- |
 | Delais d'information | 2 semaines entre commande et livraison | Reduire les lead times |
-| Batching | Tendance a commander par gros lots | Flux continu |
-| Anticipation | "Je commande plus car ca va manquer" | Partage d'information |
-| Promotions | Variation artificielle de demande | EDLP (prix stable) |
-| Isolement | Chaque maillon ne voit que son voisin | VMI, CPFR |
+| Batching             | Tendance a commander par gros lots     | Flux continu           |
+| Anticipation         | "Je commande plus car ca va manquer"   | Partage d'information  |
+| Promotions           | Variation artificielle de demande      | EDLP (prix stable)     |
+| Isolement            | Chaque maillon ne voit que son voisin  | VMI, CPFR              |
 
 ### 7.4 Revele final
 
@@ -308,13 +307,13 @@ Legende:
 
 ### 8.1 Solutions industrielles
 
-| Solution | Description | Exemple |
-|----------|-------------|---------|
-| **VMI** (Vendor Managed Inventory) | Le fournisseur gere le stock du client | Procter & Gamble avec Walmart |
-| **EDI** (Echange Donnees Informatise) | Partage electronique des donnees | Commandes automatiques |
-| **CPFR** (Collaborative Planning) | Planification collaborative | Previsions partagees |
-| **Reduction des delais** | Lead times plus courts | Livraison J+1 |
-| **Cross-docking** | Pas de stockage intermediaire | Flux direct usine-magasin |
+| Solution                                    | Description                            | Exemple                       |
+| ------------------------------------------- | -------------------------------------- | ----------------------------- |
+| **VMI** (Vendor Managed Inventory)    | Le fournisseur gere le stock du client | Procter & Gamble avec Walmart |
+| **EDI** (Echange Donnees Informatise) | Partage electronique des donnees       | Commandes automatiques        |
+| **CPFR** (Collaborative Planning)     | Planification collaborative            | Previsions partagees          |
+| **Reduction des delais**              | Lead times plus courts                 | Livraison J+1                 |
+| **Cross-docking**                     | Pas de stockage intermediaire          | Flux direct usine-magasin     |
 
 ### 8.2 Questions de transfert
 
@@ -337,13 +336,13 @@ A photocopier pour chaque joueur (voir Livret Stagiaire).
 
 ### Annexe B : Tableau recapitulatif des couts
 
-| Poste | Stock total (cumule) | Arrieres total (cumule) | Cout stockage | Cout rupture | TOTAL |
-|-------|---------------------|------------------------|---------------|--------------|-------|
-| Detaillant | | | | | |
-| Grossiste | | | | | |
-| Distributeur | | | | | |
-| Usine | | | | | |
-| **TOTAL CHAINE** | | | | | |
+| Poste                  | Stock total (cumule) | Arrieres total (cumule) | Cout stockage | Cout rupture | TOTAL |
+| ---------------------- | -------------------- | ----------------------- | ------------- | ------------ | ----- |
+| Detaillant             |                      |                         |               |              |       |
+| Grossiste              |                      |                         |               |              |       |
+| Distributeur           |                      |                         |               |              |       |
+| Usine                  |                      |                         |               |              |       |
+| **TOTAL CHAINE** |                      |                         |               |              |       |
 
 ### Annexe C : Resultats types
 
@@ -356,5 +355,5 @@ A photocopier pour chaque joueur (voir Livret Stagiaire).
 
 ---
 
-**Document cree par Pole Formation UIMM-CVDL**  
+**Document cree par Pole Formation UIMM-CVDL**
 **Version 1.0 - Fevrier 2026**
