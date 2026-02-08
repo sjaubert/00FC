@@ -1,0 +1,193 @@
+﻿Résolution de Problèmes en Milieu Industriel pour les Niveaux BTS et Bachelor
+Fondements Méthodologiques de la Résolution de Problèmes Industriels
+Avant d'intégrer un jeu, il est impératif de définir les protocoles de résolution de problèmes qu'il doit illustrer. En milieu industriel, ces méthodes sont des structures rigoureuses visant à éliminer les causes racines et non seulement à traiter les symptômes.13
+L'Approche Structurée : La Méthode 8D (Eight Disciplines)
+La méthode 8D est le standard par excellence dans les secteurs de l'automobile et de l'aéronautique pour traiter les non-conformités critiques.14 Sa structure se prête particulièrement bien à des scénarios de jeux de rôle complexes où les étudiants doivent collaborer en équipes pluridisciplinaires.16
+
+
+Discipline
+	Intitulé et Objectif
+	Outils associés
+	D0
+	Préparation : Identifier l'urgence et évaluer l'impact sur le client.18
+	Matrice d'urgence, Pareto.14
+	D1
+	Formation de l'équipe : Choisir un pilote (facilitateur) et des experts métiers.15
+	Team Building, Rôles RASI.14
+	D2
+	Description du problème : Définir précisément ce qui "est" et ce qui "n'est pas".16
+	QQOQCP, Matrice IS/IS NOT.15
+	D3
+	Mesures conservatoires : Mettre en place des actions de confinement sous 24 heures.15
+	Tri de stock, Contrôle 100%.20
+	D4
+	Analyse des causes racines : Rechercher le pourquoi technique et managérial.14
+	5 Pourquoi, Ishikawa, FTA.19
+	D5
+	Choix des actions correctives : Vérifier l'efficacité avant le déploiement massif.15
+	Plan d'expériences, Tests.18
+	D6
+	Mise en œuvre et Validation : Supprimer définitivement la cause racine.19
+	Standardisation, Audit.15
+	D7
+	Prévention de la récurrence : Modifier les systèmes et procédures pour l'avenir.15
+	AMDEC, Poka-Yoke.14
+	D8
+	Reconnaissance : Féliciter l'équipe et archiver les leçons apprises.15
+	Célébration, Base de connaissances.15
+	L'analyse de la cause racine (D4) est le pivot de la résolution de problèmes. Elle doit distinguer la cause de l'occurrence (pourquoi le défaut est apparu) et la cause de non-détection (pourquoi le système n'a pas arrêté le défaut).20 Cette dualité est un concept clé à enseigner au niveau Bachelor, car elle introduit la notion de perméabilité du système qualité.20
+________________
+Simulations Majeures : Le Jeu de l'Avion en Papier (Lean Manufacturing)
+Le jeu de l'avion en papier est l'un des outils les plus documentés et les plus efficaces pour enseigner les principes du Lean Manufacturing et la résolution de problèmes de flux.24 Il est particulièrement adapté aux étudiants de BTS qui doivent comprendre l'organisation physique d'un atelier et la gestion des en-cours (WIP).25
+Objectifs Pédagogiques et Mécanismes de Transition
+L'objectif central est de démontrer le passage d'une production de masse (flux poussé) à une production agile (flux tiré), tout en identifiant les gaspillages (Muda).24 Les participants apprennent que l'efficacité ne dépend pas de la vitesse individuelle, mais de l'équilibre de la ligne (Yamazumi).23
+Structure des Rôles et Responsabilités
+Une simulation efficace nécessite environ 10 participants pour couvrir l'ensemble de la chaîne de valeur.24
+* Opérateurs (4 à 6) : Responsables du pliage selon des instructions de travail standardisées.23
+* Contrôleur Qualité / Client : Définit les critères d'acceptation et rejette les produits non conformes.25
+* Manutentionnaire (Material Handler) : Déplace les pièces entre les postes en respectant les règles de transfert (lots ou pièce à pièce).25
+* Chronométreur / Wasteologist : Collecte les données de temps et observe les gaspillages (déplacements inutiles, attentes).25
+* Manager de Production : Analyse les indicateurs et guide l'équipe dans la résolution de problèmes entre les rounds.25
+Déroulement des Séquences et Évolution du Système
+Le jeu se divise généralement en trois ou quatre rounds, chacun introduisant une amélioration méthodologique majeure.23
+1. Round 1 : Le Chaos du Flux Poussé (Push System). Les opérateurs produisent le plus vite possible par lots de 3 ou 5. On observe une accumulation massive d'en-cours sur les tables, des goulots d'étranglement évidents et un temps de traversée (Lead Time) très long.24 Les opérateurs sont payés au "boni de production individuelle", ce qui aggrave le déséquilibre.25
+2. Round 2 : Introduction du Flux Tiré (Pull System). Mise en œuvre de supermarchés ou de boucles Kanban. On ne produit une pièce que si le poste suivant l'a consommée. Les en-cours diminuent, mais la production totale peut chuter si la ligne n'est pas équilibrée.24
+3. Round 3 : Équilibrage et Standardisation. Analyse du temps de cycle par poste (Takt Time). L'équipe redéfinit les tâches pour que chaque poste ait une charge de travail similaire. On introduit des gabarits de pliage (jigs) pour réduire la variabilité.23
+4. Round 4 : Flux Pièce à Pièce (One-Piece Flow). Les tables sont disposées en "U" pour minimiser les déplacements du manutentionnaire. Le Lead Time atteint son minimum, et la qualité s'améliore car les défauts sont détectés immédiatement après leur création.23
+Mesure de la Performance et Analyse des Résultats (KPI)
+Le débriefing repose sur la comparaison rigoureuse des indicateurs entre chaque round. Cette approche factuelle est essentielle pour les niveaux Bachelor qui doivent justifier leurs choix techniques par des chiffres.18
+
+
+Indicateur (KPI)
+	Mode de calcul
+	Impact sur la Résolution de Problèmes
+	Lead Time
+	Temps écoulé entre le début de la première étape et la livraison.25
+	Révèle l'inefficacité des flux et l'excès d'inventaire.26
+	WIP (Work In Process)
+	Nombre d'avions partiellement assemblés sur la ligne à la fin du round.25
+	Indicateur direct du gaspillage d'inventaire et des problèmes de synchronisation.26
+	Taux de Qualité
+	(Nombre de pièces acceptées / Nombre total produites) x 100.23
+	Permet d'identifier les postes nécessitant une aide au travail ou un Poka-Yoke.19
+	Productivité Globale
+	Nombre de pièces conformes livrées par unité de temps.24
+	Démontre l'efficacité de la collaboration sur l'effort individuel brut.26
+	Gestion des Stocks et Effets Systémiques : Le Beer Game
+Le Beer Game est la simulation de référence pour comprendre les problèmes de gestion de l'information dans une chaîne d'approvisionnement complexe.29 Bien que d'apparence logistique, il s'agit d'un excellent exercice de résolution de problèmes de type "systémique" pour les niveaux Bachelor.
+Mécanisme et Rôles de la Simulation
+La chaîne est composée de quatre acteurs : le Détaillant, le Grossiste, le Distributeur et l'Usine.29 Chaque acteur doit décider de la quantité à commander auprès de son fournisseur pour répondre à la demande de son client, tout en minimisant ses coûts de stockage (0,50€ par caisse) et de rupture de stock (1,00€ par caisse manquante).29
+Les Contraintes du Système
+Le jeu impose deux règles critiques qui reproduisent la réalité industrielle :
+* Délais de livraison (Lead Times) : Il faut généralement deux semaines pour qu'une commande arrive et deux semaines pour que le produit soit livré.29
+* Isolation de l'Information : Les acteurs ne peuvent pas communiquer entre eux. Ils ne voient que les bons de commande qu'ils reçoivent de leur client immédiat.29
+Analyse de l'Effet Coup de Fouet (Bullwhip Effect)
+L'enseignement majeur réside dans l'observation de l'amplification de la variabilité. Une légère fluctuation de la demande chez le détaillant (par exemple, passage de 4 à 8 caisses) provoque des réactions disproportionnées en amont, l'usine finissant souvent par produire des centaines de caisses alors que la demande s'est stabilisée.29
+Pour la résolution de problèmes, cet exercice force les étudiants à comprendre que le comportement irrationnel du système ne vient pas de l'incompétence des individus (les joueurs), mais de la structure même du système de communication.29 La solution réside dans la transparence des données (VMI, EDI) et la réduction des délais, des thèmes centraux en Bachelor industriel.29
+Organisation de l'Environnement de Travail : Les Simulations 5S
+Le 5S (Trier, Ranger, Nettoyer, Standardiser, Suivre) est souvent mal compris comme une simple opération de ménage. Les jeux pédagogiques permettent de démontrer son impact direct sur la productivité et la sécurité.13
+Le "5S Numbers Game"
+Ce jeu "Print and Play" consiste à demander aux participants de barrer des chiffres de 1 à 49 sur une feuille éparpillée de manière chaotique.31
+* Round 1 (État initial) : Les chiffres sont mélangés, de tailles différentes, certains sont superposés. Le temps nécessaire est long, et le stress est élevé.31
+* Round 2 (Après Tri - Seiri) : Les chiffres inutiles (50 à 90) sont supprimés. La recherche devient plus aisée.31
+* Round 3 (Après Rangement - Seiton) : On installe une grille logique. Le chiffre 1 est en bas à gauche, le 2 en bas au milieu, etc. Le score s'améliore de manière spectaculaire.31
+* Round 4 (Standardisation - Seiketsu) : Les chiffres sont tous de la même police et couleur. Toute anomalie (un chiffre manquant) saute aux yeux en moins de deux secondes.32
+Le "5S Puzzle Game"
+Dans le secteur du bâtiment (Bachelor Lean Construction), on utilise des puzzles pour illustrer les mêmes concepts. Les étudiants doivent assembler un puzzle complexe. On retire des pièces, on en mélange d'autres provenant d'un puzzle différent. L'exercice démontre que sans un environnement standardisé, la résolution de problèmes techniques est ralentie par des gaspillages de recherche et de confusion.34
+________________
+Simulations d'Agilité et de Variabilité : Lego Lean et Penny Game
+Le "Penny Game" (Jeu des Pièces)
+Ce jeu est crucial pour enseigner l'impact de la taille des lots sur le Lead Time.36 On demande à une équipe de retourner 20 pièces de monnaie d'une face sur l'autre et de les passer au collègue suivant.
+1. Lot de 20 : Le premier opérateur retourne les 20 pièces avant de les passer. Le dernier opérateur attend très longtemps avant de recevoir la première pièce.36
+2. Lot de 5 : Le transfert se fait par petits paquets. Le Lead Time total diminue drastiquement.36
+3. Lot de 1 : C'est le flux optimal. Le client reçoit la première pièce presque instantanément après le début du processus.36
+Le "Lego Lean Game"
+L'utilisation de briques Lego permet de simuler des processus d'assemblage complexes incluant des notions de gestion de projet agile. Les participants doivent estimer le temps nécessaire pour construire une structure, s'engager sur un résultat (commitment) et gérer les changements de spécifications du client en cours de route.37 Ce jeu est particulièrement efficace pour les Bachelor car il introduit la dimension contractuelle et la gestion de l'incertitude dans la résolution de problèmes.37
+________________
+Maintenance Industrielle et Diagnostic de Pannes
+Pour les niveaux BTS Maintenance des Systèmes (MS), la résolution de problèmes se concentre sur le diagnostic technique et la remise en état des équipements.39
+TutoPrév' Interactif : Sécurité et Diagnostic
+L'INRS propose des outils interactifs permettant de simuler des interventions sur des lignes automatisées.39 L'étudiant doit identifier les risques, consigner la machine et diagnostiquer la cause de l'arrêt. C'est une ressource libre précieuse qui combine la résolution de problèmes techniques avec les impératifs de sécurité.39
+Mallette Pédagogique et Maintenance Totale (TPM)
+Le jeu de la maintenance initiation permet de découvrir les principes de la TPM, notamment le calcul du Taux de Rendement Global (TRG) et la distinction entre maintenance curative et préventive.40
+* Calculs Clés : MTBF (Moyenne des temps de bon fonctionnement) et MTTR (Moyenne des temps de réparation).40
+* Dilemmes de Production : Les étudiants doivent choisir entre continuer à produire sur une machine dégradée (risque de panne majeure) ou s'arrêter pour une maintenance préventive (perte de production immédiate mais gain de fiabilité).40
+________________
+Ingénierie Pédagogique : De la Simulation au Transfert de Compétences
+La réussite d'une formation par le jeu repose sur une structure d'animation rigoureuse. L'enseignant ne doit pas être un simple arbitre mais un coach en résolution de problèmes.
+La Méthodologie du Débriefing
+Le débriefing est la phase où l'apprentissage se cristallise. Il doit suivre une progression logique pour assurer le transfert des savoirs.2
+1. Phase Émotionnelle : "Comment vous êtes-vous senti lors du premier round?" (Généralement : stress, frustration, sentiment d'injustice).2
+2. Phase Factuelle : "Que disent les indicateurs (KPI)? Où sont les goulots d'étranglement?".25
+3. Phase Analytique : "Quelle méthode de résolution de problèmes avons-nous appliquée entre les rounds? Pourquoi le 5 Pourquoi a-t-il été efficace ici?".21
+4. Phase de Transfert : "Dans vos stages ou futurs métiers, où voyez-vous des situations similaires? Comment pourriez-vous appliquer le Kanban ou le 8D dans votre entreprise?".29
+Adaptation aux Publics Cibles (BTS vs Bachelor)
+
+
+Dimension
+	Approche BTS (Niveau 5)
+	Approche Bachelor (Niveau 6)
+	Complexité
+	Focus sur une seule méthode (ex: 5S ou Ishikawa).40
+	Intégration de multiples méthodes (ex: 8D complet avec AMDEC).2
+	Indicateurs
+	Indicateurs physiques simples (nb de pièces, taux de rebut).25
+	Indicateurs économiques et financiers (ROI des améliorations, coût d'obtention de la qualité).2
+	Autonomie
+	Le formateur guide chaque étape de la résolution.40
+	L'équipe est autonome, le formateur n'intervient que comme "Client" exigeant.2
+	Environnement
+	Poste de travail fixe ou ligne de production stable.43
+	Supply chain globale, interactions entre services (Maintenance, Achats, Qualité).2
+	Synthèse des Ressources et Portails d'Accès
+L'accès à ces jeux et aux guides d'animation complets est facilité par plusieurs portails dédiés aux Ressources Éducatives Libres.
+* Portail UNIT : C'est la bibliothèque de référence pour les sciences de l'ingénieur en France. Elle propose des modules complets sur la gestion de production, incluant des simulateurs numériques et des guides pour jeux de plateau.8
+* Thot Cursus : Répertoire canadien très riche en ressources francophones sur la gamification et les objets d'apprentissage.12
+* PRODPILOT : Initiative européenne fournissant des guides d'animation extrêmement détaillés (en français) pour les ateliers de productivité, notamment le jeu de l'avion en papier.24
+* Sillages.info : Plateforme axée sur l'ouverture de l'accès aux grandes écoles, proposant des cours de haut niveau sous licences CC.12
+Conclusion sur l'Efficacité des Dispositifs Ludiques Libres
+L'intégration de jeux pédagogiques libres de droits pour la formation à la résolution de problèmes industriels répond à un double impératif de modernité pédagogique et de responsabilité institutionnelle. En utilisant des simulations éprouvées comme le jeu de l'avion en papier, le Beer Game ou le 5S Numbers Game, les enseignants en BTS et Bachelor offrent à leurs étudiants une expérience immersive irremplaçable. Ces outils ne se contentent pas d'enseigner des outils (Kanban, 8D, Ishikawa), ils forgent des comportements : l'esprit d'équipe, la rigueur de l'analyse factuelle et l'humilité face à la complexité systémique.1 Le passage par le cadre des REL garantit que ces méthodes restent vivantes, adaptables et accessibles à l'ensemble de la communauté éducative, favorisant ainsi une montée en compétences globale de la future main-d'œuvre industrielle.4 L'avenir de cette pédagogie réside sans doute dans l'hybridation croissante entre les simulations physiques et les outils numériques, permettant de simuler des usines virtuelles de plus en plus réalistes tout en conservant la richesse de l'interaction humaine directe.
+Sources des citations
+1. Des jeux utiles pour résoudre des problèmes sérieux - Éductive, consulté le février 5, 2026, https://eductive.ca/ressource/des-jeux-utiles-pour-resoudre-des-problemes-serieux/
+2. 9.2 Les jeux sérieux et la ludification – L'enseignement à l'ère numérique, consulté le février 5, 2026, https://pressbooks.bccampus.ca/tiada3french/chapter/8-7-emerging-technologies/
+3. Serious Games for Lean Manufacturing: The 5S Game - ResearchGate, consulté le février 5, 2026, https://www.researchgate.net/publication/260720771_Serious_Games_for_Lean_Manufacturing_The_5S_Game
+4. Ressources Éducatives Libres (REL) | UNIT - Fondation UNIT, consulté le février 5, 2026, https://unit.eu/nos-ressources/ressources-educatives-libres
+5. Les ressources éducatives libres (REL) | Teacher Education Resource Hub - Scarfe Sandbox - The University of British Columbia, consulté le février 5, 2026, https://scarfedigitalsandbox.teach.educ.ubc.ca/les-ressources-educatives-libres-rel/
+6. Les ressources éducatives libres | UNESCO, consulté le février 5, 2026, https://www.unesco.org/fr/open-educational-resources
+7. Licences Creatives Commons - HEP Vaud, consulté le février 5, 2026, https://www.hepl.ch/accueil/recherche/soutien-et-accompagnement/open-science/licences-creatives-commons.html
+8. Utiliser des Ressources Éducatives UNIT, consulté le février 5, 2026, https://unit.eu/nos-ressources/utiliser-des-rel-unit
+9. Œuvres sous licence Creative Commons | Bureau du droit d'auteur - Université Laval, consulté le février 5, 2026, https://www.bda.ulaval.ca/utilisation-libre/oeuvres-sous-licence-creative-commons/
+10. Connaître et utiliser les licences Creative Commons - CoopIST, consulté le février 5, 2026, https://coop-ist.cirad.fr/etre-auteur/utiliser-les-licences-creative-commons/3-les-licences-creative-commons-cc-generalites
+11. Présentation des licences Creative Commons | Enseignement des ARTS PLASTIQUES, consulté le février 5, 2026, https://pedagogie.ac-toulouse.fr/arts-plastiques/presentation-des-licences-creative-commons
+12. 7 - Sélection de répertoires ou portails de REL en français pour l'enseignement supérieur / Les Ressources Éducatives Libres - Coopérer en information scientifique et technique - Cirad, consulté le février 5, 2026, https://coop-ist.cirad.fr/bibliotheques/les-ressources-educatives-libres/7-selection-de-repertoires-ou-portails-de-rel-en-francais-pour-l-enseignement-superieur
+13. Module 3 5S | PDF | Business - Scribd, consulté le février 5, 2026, https://www.scribd.com/document/469302988/Module-3-5S
+14. Résolution de problèmes 8D : Le guide complet - innovation.world, consulté le février 5, 2026, https://innovation.world/fr/8d-resolution-de-problemes/
+15. The 8D (Disciplines) Problem Solving Process - Operational Excellence Consulting LLC, consulté le février 5, 2026, https://www.operational-excellence-consulting.com/opex-articles/8d-problem-solving-process
+16. 8D Problem Solving | PDF - Scribd, consulté le février 5, 2026, https://www.scribd.com/document/583786157/8D-Problem-Solving
+17. Transform Your Classroom Problem-Solving with This Proven 8-Step Method - Teach Find, consulté le février 5, 2026, https://teachfind.com/future-workforce-skills/transform-your-classroom-problem-solving-with-this-proven-8-step-method/
+18. Méthode 8D : résolution de problèmes - Manager GO!, consulté le février 5, 2026, https://www.manager-go.com/management-de-la-qualite/dossiers-methodes/la-methode-8d
+19. Problem Solving The 8D Approach Course - Advanced Learning Singapore, consulté le février 5, 2026, https://advancedlearningsg.com/soft-skills-courses/8d-problem-solving/
+20. EXPLICATION RÉSOLUTION DE PROBLÉME 8D – PORTAIL SNMS - TE Supplier Portal, consulté le février 5, 2026, https://supplier.te.com/web/supplier-portal/training-material?p_p_id=training_WAR_espwebportlet&p_p_lifecycle=2&p_p_state=normal&p_p_mode=view&p_p_cacheability=cacheLevelPage&p_p_col_id=column-1&p_p_col_count=1&_training_WAR_espwebportlet_javax.portlet.action=download&_training_WAR_espwebportlet_trainingId=132&_training_WAR_espwebportlet_trainingFileName=EXPLICATION+R%C3%89SOLUTION+DE+PROBL%C3%89ME+8D.pdf&_training_WAR_espwebportlet_trainingToken=1582263951267
+21. 8D PROCESS, consulté le février 5, 2026, https://www.mahle.com/media/global/purchasing/supplier-portal/8d-e-learning/manual_8d-process_en-ex.pdf
+22. Serious Games For Lean Manufacturing The 5S Game | PDF | Prototype | Computer File, consulté le février 5, 2026, https://www.scribd.com/document/466948327/Serious-Games-for-Lean-Manufacturing-The-5S-Game
+23. Lean game air plane | PDF - Slideshare, consulté le février 5, 2026, https://www.slideshare.net/slideshow/lean-game-air-plane/43530032
+24. Productivity-Game-Workshop - PRODPILOT, consulté le février 5, 2026, https://www.prodpilot.eu/fr/workshop/PRODPILOT_Workshop_Anleitung_FR.pdf
+25. Lean Six Sigma Paper Airplane Game | PDF - Scribd, consulté le février 5, 2026, https://www.scribd.com/document/469436251/2A-Lean-Six-Sigma-Airplane-Simulation-pdf
+26. Paper Airplane Lean Principles Activity - The Ohio Manufacturers' Association, consulté le février 5, 2026, https://www.ohiomfg.com/wp-content/uploads/2025/11/MakingOhio_GroupActivity_PaperAirplaneLeanPrinciples.pdf
+27. 7 Wastes 5s Lean | PDF | Lean Manufacturing | Inventory - Scribd, consulté le février 5, 2026, https://www.scribd.com/document/556934907/7-Wastes-5s-Lean
+28. LEAN Paper Airplane Game Round #1 and Round #2 - YouTube, consulté le février 5, 2026, https://www.youtube.com/watch?v=EjrBHARcZY0
+29. Le guide ultime du Beer Game pour la formation en Supply Chain, consulté le février 5, 2026, https://beergameapp.com/fr/guide-ultime-jeu-biere-formation-supply-chain/
+30. International Journal of Quality & Reliability Management 5s -a quality improvement tool for sustainable performance: literature review and directions JUGRAJ SINGH RANDHAWA Inderpreet Singh Ahuja - Academia.edu, consulté le février 5, 2026, https://www.academia.edu/37176651/International_Journal_of_Quality_and_Reliability_Management_5s_a_quality_improvement_tool_for_sustainable_performance_literature_review_and_directions_JUGRAJ_SINGH_RANDHAWA_Inderpreet_Singh_Ahuja
+31. 5S Numbers Game Training Guide | PDF - Scribd, consulté le février 5, 2026, https://www.scribd.com/document/821165526/2016-Lean-Production-5s-Numbers-Game
+32. 5S Training Game for Teams | PDF | Business - Scribd, consulté le février 5, 2026, https://www.scribd.com/presentation/121446632/5S-Numbers-Game
+33. 5S PPT by Shailesh | PDF | Safety | Economies - Scribd, consulté le février 5, 2026, https://www.scribd.com/presentation/481947419/5S-PPT-by-shailesh-pptx
+34. Development and Testing of the 5S Puzzle Game | Request PDF - ResearchGate, consulté le février 5, 2026, https://www.researchgate.net/publication/367856739_Development_and_Testing_of_the_5S_Puzzle_Game
+35. Serious games: evolution of applications as a teaching technique for the Lean Construction community - Lume - UFRGS, consulté le février 5, 2026, https://lume.ufrgs.br/bitstream/handle/10183/274383/001199201.pdf?sequence=1&isAllowed=y
+36. Variété et apports des jeux agiles à l'innovation ... - ISTE OpenScience, consulté le février 5, 2026, https://openscience.fr/IMG/pdf/iste_techinn25v10n3_4.pdf
+37. Creating game-like activities in agile software engineering education - Dr David Parsons, consulté le février 5, 2026, http://davidparsons.ac.nz/papers/Creating%20game-like%20activities%20in%20agile%20software%20engineering%20education.pdf
+38. (PDF) The Principles of Distributed Innovation - ResearchGate, consulté le février 5, 2026, https://www.researchgate.net/publication/24090028_The_Principles_of_Distributed_Innovation
+39. TutoPrév' accueil - Maintenance industrielle - Outil - INRS, consulté le février 5, 2026, https://www.inrs.fr/media.html?refINRS=outil117
+40. Jeu de la maintenance - Initiation - CIPE, consulté le février 5, 2026, https://www.cipe.fr/jeux/le-jeu-de-la-maintenance-initiation/
+41. Stratégie - Jeu de la maintenance industrielle - CIPE, consulté le février 5, 2026, https://www.cipe.fr/jeux/maintenance-strategie/
+42. Serious Games - Topla, consulté le février 5, 2026, https://playtopla.com/en/pages/serious-games
+43. Ressource pédagogique - Contenus de la formation par type - éduscol STI, consulté le février 5, 2026, https://sti.eduscol.education.fr/sti/contenus/formation/2457?type=ressource_pedagogique&items_per_page=All
