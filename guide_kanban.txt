@@ -1,0 +1,13 @@
+﻿python : Traceback (most recent call last):
+Au caractère Ligne:1 : 1
++ python -c "import fitz; doc = fitz.open(r'c:\Users\s.jaubert\OneDrive ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "<string>", line 1, in <module>
+  File "C:\Users\s.jaubert\AppData\Local\Programs\Python\Python312\Lib\site-packages\pymupdf\__init__.py", line 3006, 
+in __init__
+    raise FileNotFoundError(f"no such file: '{filename}'")
+pymupdf.FileNotFoundError: no such file: 'c:\Users\s.jaubert\OneDrive - CFAI Centre\00FC\OI\Jeu du KANBAN\clÚ USB Jeu 
+du Kanban\Animation\Guide danimation.pdf'
