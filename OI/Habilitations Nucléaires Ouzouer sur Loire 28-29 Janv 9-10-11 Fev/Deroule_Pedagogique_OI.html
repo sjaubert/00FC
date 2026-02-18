@@ -150,7 +150,7 @@
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
         }
 
-        thead th {
+        th {
             background: #1e293b;
             color: white;
             padding: 9px 10px;
@@ -168,6 +168,10 @@
 
         thead th:last-child {
             border-radius: 0 10px 0 0;
+        }
+
+        tbody th {
+            border-radius: 0;
         }
 
         tbody td {
@@ -381,7 +385,7 @@
             .legend-dot,
             .section-row td,
             .pause-row td,
-            thead th {
+            th {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
@@ -396,6 +400,18 @@
             margin-bottom: 2px;
         }
 
+        td a {
+            color: #2563eb;
+            text-decoration: none;
+            border-bottom: 1px dotted #93c5fd;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        td a:hover {
+            color: #1d4ed8;
+            border-bottom-style: solid;
+        }
+
         .intro-note {
             font-size: 9pt;
             color: #64748b;
@@ -408,14 +424,13 @@
 
 <body>
     <div class="page-header">
-        <h1>📋 Déroulé Pédagogique – Organisation Industrielle</h1>
-        <div class="subtitle">Module OI – Formation Habilitations Nucléaires</div>
+        <img src="../../logo_uimm_placeholder.jpg" alt="Logo UIMM" style="height:60px; margin-bottom:10px;">
+        <h1>Déroulé Pédagogique "Théorique" sur 3 jours – Organisation Industrielle</h1>
         <div class="meta">
-            <span>👤 <strong>Formateur :</strong> Stéphane JAUBERT</span>
-            <span>🏫 <strong>Organisme :</strong> CFAI Centre – Pôle Formation UIMM-CVDL</span>
-            <span>📍 <strong>Lieu :</strong> Ouzouer-sur-Loire</span>
-            <span>📅 <strong>Dates :</strong> 28-29 janvier &amp; 9 février 2026</span>
-            <span>⏱️ <strong>Volume :</strong> 21h (3 jours)</span>
+            <span>Stéphane JAUBERT</span>
+            <span> CFAI Centre – Pôle Formation UIMM-CVDL</span>
+
+
         </div>
     </div>
 
@@ -443,14 +458,10 @@
             identifiées ici par domaine pour assurer la traçabilité des compétences abordées.
         </p>
 
-        <!-- ═══════════════════════════════════════════════ -->
-        <!-- JOUR 1 : 28 JANVIER – FONDAMENTAUX + LEAN + VSM -->
-        <!-- ═══════════════════════════════════════════════ -->
 
         <table>
             <thead>
                 <tr>
-                    <th style="width:55px;">Horaire</th>
                     <th style="width:45px;">Durée</th>
                     <th style="width:60px;">Domaine</th>
                     <th style="width:160px;">Module / Séquence</th>
@@ -463,12 +474,11 @@
 
                 <!-- ── JOUR 1 ── -->
                 <tr class="section-row">
-                    <td colspan="7">📅 JOUR 1 – Mardi 28 janvier 2026 – Fondamentaux de l'OI &amp; Introduction au Lean
+                    <td colspan="6">JOUR 1 – Fondamentaux de l'OI &amp; Introduction au Lean
                     </td>
                 </tr>
 
                 <tr>
-                    <td class="col-horaire">09h00</td>
                     <td class="col-duree">30 min</td>
                     <td class="col-domaine"><span class="badge badge-oi">OI</span></td>
                     <td class="col-module">Accueil &amp; brise-glace<br><em style="font-weight:400;font-size:8.5pt;">"Le
@@ -479,7 +489,6 @@
                 </tr>
 
                 <tr>
-                    <td class="col-horaire">09h30</td>
                     <td class="col-duree">1h00</td>
                     <td class="col-domaine"><span class="badge badge-oi">OI</span></td>
                     <td class="col-module">L'entreprise industrielle &amp; ses services</td>
@@ -493,21 +502,21 @@
                     <td>
                         <ul>
                             <li>Définition participative</li>
-                            <li>Jeu de classification (12 cartes entreprises)</li>
+                            <li><a href="../00 LEAN SS/Cartes_12_Entreprises_Classification.html">Jeu de classification
+                                    (12 cartes entreprises)</a></li>
                             <li>Exercice "organigramme vivant" (post-its)</li>
                         </ul>
                     </td>
-                    <td>Cartes 12 entreprises, post-its, paperboard, Diapo CFAI_LSS</td>
-                </tr>
-
-                <tr class="pause-row">
-                    <td>10h30</td>
-                    <td>15 min</td>
-                    <td colspan="5">☕ Pause</td>
+                    <td>
+                        <a href="../00 LEAN SS/Cartes_12_Entreprises_Classification.html">Cartes 12 entreprises</a>,
+                        post-its, paperboard,
+                        <a href="../00 LEAN SS/CFAI_LSS.pdf">Diapo CFAI_LSS</a>,
+                        <a href="../00 LEAN SS/Support_Formation_Organisation_Industrielle.html">Support Formation
+                            OI</a>
+                    </td>
                 </tr>
 
                 <tr>
-                    <td class="col-horaire">10h45</td>
                     <td class="col-duree">45 min</td>
                     <td class="col-domaine"><span class="badge badge-oi">OI</span></td>
                     <td class="col-module">Relation Client &amp; Performance QCD</td>
@@ -519,15 +528,18 @@
                     </td>
                     <td>
                         <ul>
-                            <li>Jeu de rôle client interne (chaîne de production vélo)</li>
-                            <li>Exercice "Triptyque impossible"</li>
+                            <li><a href="../00 LEAN SS/Support_Formation_Organisation_Industrielle.html">Jeu de rôle
+                                    client interne</a> (chaîne de production vélo)</li>
+                            <li><a href="../00 LEAN SS/Support_Formation_Organisation_Industrielle.html">Exercice
+                                    "Triptyque impossible"</a></li>
                         </ul>
                     </td>
-                    <td>Cartes de rôle, schéma triangle QCD</td>
+                    <td>Cartes de rôle, schéma triangle QCD, <a
+                            href="../00 LEAN SS/Support_Formation_Organisation_Industrielle.html">Support Formation
+                            OI</a></td>
                 </tr>
 
                 <tr>
-                    <td class="col-horaire">11h30</td>
                     <td class="col-duree">1h00</td>
                     <td class="col-domaine"><span class="badge badge-ac">AC</span></td>
                     <td class="col-module">Processus, Valeur Ajoutée &amp; 7 gaspillages</td>
@@ -540,21 +552,18 @@
                     </td>
                     <td>
                         <ul>
-                            <li>Démonstration avion en papier</li>
-                            <li>Chasse aux gaspillages sur photos industrielles (3 groupes)</li>
+                            <li><a href="../00 LEAN SS/Support_Formation_Organisation_Industrielle.html">Démonstration
+                                    avion en papier</a></li>
+                            <li><a href="../00 LEAN SS/Support_Formation_Organisation_Industrielle.html">Chasse aux
+                                    gaspillages</a> sur photos industrielles (3 groupes)</li>
                         </ul>
                     </td>
-                    <td>Photos ateliers (avant/après), post-its 3 couleurs</td>
-                </tr>
-
-                <tr class="pause-row">
-                    <td>12h30</td>
-                    <td>1h00</td>
-                    <td colspan="5">🍽️ Pause déjeuner</td>
+                    <td>Photos ateliers (avant/après), post-its 3 couleurs, <a
+                            href="../00 LEAN SS/Support_Formation_Organisation_Industrielle.html">Support Formation
+                            OI</a></td>
                 </tr>
 
                 <tr>
-                    <td class="col-horaire">13h30</td>
                     <td class="col-duree">1h30</td>
                     <td class="col-domaine"><span class="badge badge-ac">AC</span></td>
                     <td class="col-module">Lean Manufacturing &amp; 5S pratique</td>
@@ -567,22 +576,20 @@
                     </td>
                     <td>
                         <ul>
-                            <li>Storytelling Toyota</li>
-                            <li><strong>Atelier 5S sur table</strong> (30 min – manipulatoire)</li>
+                            <li><a href="../00 LEAN SS/La_Philosophie_Lean.mp4">Storytelling Toyota</a></li>
+                            <li><strong><a href="../00 LEAN SS/Support_Formation_Organisation_Industrielle.html">Atelier
+                                        5S sur table</a></strong> (30 min – manipulatoire)</li>
                             <li>Photos avant/après 5S industrielles</li>
                         </ul>
                     </td>
-                    <td>Matériel 5S (stylos, feuilles, etc.), photos management visuel, Diapo CFAI_LSS</td>
-                </tr>
-
-                <tr class="pause-row">
-                    <td>15h00</td>
-                    <td>15 min</td>
-                    <td colspan="5">☕ Pause</td>
+                    <td>Matériel 5S, photos management visuel,
+                        <a href="../00 LEAN SS/CFAI_LSS.pdf">Diapo CFAI_LSS</a>,
+                        <a href="../00 LEAN SS/Support_Formation_Organisation_Industrielle.html">Support Formation
+                            OI</a>
+                    </td>
                 </tr>
 
                 <tr>
-                    <td class="col-horaire">15h15</td>
                     <td class="col-duree">1h15</td>
                     <td class="col-domaine"><span class="badge badge-ac">AC</span></td>
                     <td class="col-module">Introduction VSM &amp; Symboles</td>
@@ -593,12 +600,14 @@
                             <li>Calculer Lead Time vs temps de VA</li>
                         </ul>
                     </td>
-                    <td>Présentation interactive des symboles, exercices de lecture de carte VSM</td>
-                    <td>Icônes VSM (PDF), Guide VSM, Infographie VSM</td>
+                    <td><a href="../00 LEAN SS/Support_Formation_Organisation_Industrielle.html">Présentation
+                            interactive</a> des symboles, exercices de lecture de carte VSM</td>
+                    <td><a href="../A1 VSM/icones.pdf">Icônes VSM</a>, <a
+                            href="../A1 VSM/Dessiner Votre Premi%C3%A8re Carte de la Cha%C3%AEne de Valeur Un Guide %C3%89tape par %C3%89tape.pdf">Guide
+                            VSM</a>, <a href="../A1 VSM/infographie.png">Infographie VSM</a></td>
                 </tr>
 
                 <tr>
-                    <td class="col-horaire">16h30</td>
                     <td class="col-duree">15 min</td>
                     <td class="col-domaine"><span class="badge badge-oi">OI</span></td>
                     <td class="col-module">Synthèse J1</td>
@@ -608,12 +617,19 @@
                 </tr>
 
                 <!-- ── JOUR 2 ── -->
+                <tr>
+                    <th>Durée</th>
+                    <th>Domaine</th>
+                    <th>Module / Séquence</th>
+                    <th>Objectifs pédagogiques</th>
+                    <th>Méthodes &amp; Activités</th>
+                    <th>Supports / Outils</th>
+                </tr>
                 <tr class="section-row">
-                    <td colspan="7">📅 JOUR 2 – Mercredi 29 janvier 2026 – VSM, TRS &amp; Gestion des Stocks</td>
+                    <td colspan="6">JOUR 2 – VSM, TRS &amp; Gestion des Stocks</td>
                 </tr>
 
                 <tr>
-                    <td class="col-horaire">09h00</td>
                     <td class="col-duree">15 min</td>
                     <td class="col-domaine"><span class="badge badge-oi">OI</span></td>
                     <td class="col-module">Rappels J1</td>
@@ -623,24 +639,17 @@
                 </tr>
 
                 <tr>
-                    <td class="col-horaire">09h15</td>
                     <td class="col-duree">1h45</td>
                     <td class="col-domaine"><span class="badge badge-ac">AC</span></td>
                     <td class="col-module">TP VSM – ABC Emboutissage</td>
                     <td>Réaliser une VSM complète ; identifier goulots et gaspillages ; calculer les indicateurs</td>
                     <td>Travail en sous-groupes : construction carte état actuel, calcul Lead Time, taux de VA,
-                        restitution</td>
-                    <td>Exercice VSM ABC (HTML), Corrigé (DOCX)</td>
-                </tr>
-
-                <tr class="pause-row">
-                    <td>11h00</td>
-                    <td>15 min</td>
-                    <td colspan="5">☕ Pause</td>
+                        restitution (<a href="../A1 VSM/index.html">Ressources VSM</a>)</td>
+                    <td><a href="../A1 VSM/Exercice_VSM_ABC_Emboutissage.html">Exercice VSM ABC</a>, <a
+                            href="../A1 VSM/Corrig%C3%A9 de l'%C3%89tude VSM _ Usine ABC.docx">Corrigé ABC</a></td>
                 </tr>
 
                 <tr>
-                    <td class="col-horaire">11h15</td>
                     <td class="col-duree">1h15</td>
                     <td class="col-domaine"><span class="badge badge-ac">AC</span></td>
                     <td class="col-module">TRS – Théorie &amp; Calcul</td>
@@ -651,34 +660,27 @@
                             <li>Identifier les leviers d'amélioration</li>
                         </ul>
                     </td>
-                    <td>Exposé interactif, exercices de calcul progressifs</td>
-                    <td>Fiche calcul TRS (PDF), Diapo TRS</td>
+                    <td>Exposé interactif, exercices de calcul progressifs (<a href="../A2 TRS/index.html">Ressources
+                            TRS</a>)</td>
+                    <td><a href="../A2 TRS/APP Fiche - calcul du TRS.pdf">Fiche calcul TRS</a>, <a
+                            href="../A2 TRS/Diapo_Taux_de_Rendement_Synth%C3%A9tique_Calcul_et_Am%C3%A9lioration.pdf">Diapo
+                            TRS</a></td>
                 </tr>
 
-                <tr class="pause-row">
-                    <td>12h30</td>
-                    <td>1h00</td>
-                    <td colspan="5">🍽️ Pause déjeuner</td>
-                </tr>
 
                 <tr>
-                    <td class="col-horaire">13h30</td>
                     <td class="col-duree">1h00</td>
                     <td class="col-domaine"><span class="badge badge-ac">AC</span></td>
                     <td class="col-module">TP Analyse TRS</td>
                     <td>Analyser les données TRS d'un centre d'usinage, proposer des actions correctives</td>
-                    <td>Travail sur tableur en sous-groupes, restitution</td>
-                    <td>TP Analyse TRS (PDF), Données TRS (XLSX), Corrigés (XLSX)</td>
-                </tr>
-
-                <tr class="pause-row">
-                    <td>14h30</td>
-                    <td>15 min</td>
-                    <td colspan="5">☕ Pause</td>
+                    <td>Travail sur tableur en sous-groupes, restitution (<a href="../A2 TRS/index.html">Ressources
+                            TRS</a>)</td>
+                    <td><a href="../A2 TRS/TP_Analyse_TRS.pdf">TP Analyse TRS</a>, <a
+                            href="../A2 TRS/donnees_TRS_1.xlsx">Données TRS</a>, <a
+                            href="../A2 TRS/Correction_ TP_Analyse_TRSdonnees_TRS.xlsx">Corrigé TRS</a></td>
                 </tr>
 
                 <tr>
-                    <td class="col-horaire">14h45</td>
                     <td class="col-duree">1h15</td>
                     <td class="col-domaine"><span class="badge badge-oi">OI</span></td>
                     <td class="col-module">Gestion des Stocks – Fondamentaux</td>
@@ -688,28 +690,38 @@
                             <li>Calculer stock de sécurité et point de commande</li>
                         </ul>
                     </td>
-                    <td>Cours interactif, exercices de calcul, ECI Gestion Stock</td>
-                    <td>Cours Gestion Stock (PDF), Diapo Stocks, ECI n°17 (PDF)</td>
+                    <td>Cours interactif, exercices de calcul, <a href="../A3 Stock/ECI n%C2%B017 GesStock.pdf">ECI
+                            Gestion Stock</a></td>
+                    <td><a href="../A3 Stock/COURS_Gestion Stock.pdf">Cours Gestion Stock</a>, <a
+                            href="../A3 Stock/Diapo_Ma%C3%AEtriser_les_Stocks_Levier_Strat%C3%A9gique_Performance.pdf">Diapo
+                            Stocks</a>, <a href="../A3 Stock/ECI n%C2%B017 GesStock.pdf">ECI n°17</a></td>
                 </tr>
 
                 <tr>
-                    <td class="col-horaire">16h00</td>
                     <td class="col-duree">45 min</td>
                     <td class="col-domaine"><span class="badge badge-oi">OI</span></td>
                     <td class="col-module">Kanban – Concepts &amp; lien avec les stocks</td>
                     <td>Comprendre le système Kanban comme outil de pilotage du flux tiré</td>
-                    <td>Présentation interactive, lien avec les concepts de stock vus précédemment</td>
-                    <td>Approche Lean Toyota (PDF)</td>
+                    <td><a href="../Jeu du KANBAN/Approche Lean_Toyota Production System KANBAN.pdf">Présentation
+                            interactive</a>, lien avec les concepts de stock vus précédemment</td>
+                    <td><a href="../Jeu du KANBAN/Approche Lean_Toyota Production System KANBAN.pdf">Approche Lean
+                            Toyota</a></td>
                 </tr>
 
                 <!-- ── JOUR 3 ── -->
+                <tr>
+                    <th>Durée</th>
+                    <th>Domaine</th>
+                    <th>Module / Séquence</th>
+                    <th>Objectifs pédagogiques</th>
+                    <th>Méthodes &amp; Activités</th>
+                    <th>Supports / Outils</th>
+                </tr>
                 <tr class="section-row">
-                    <td colspan="7">📅 JOUR 3 – Lundi 9 février 2026 – Jeux pédagogiques, AMDEC &amp; Résolution de
-                        Problèmes</td>
+                    <td colspan="6">JOUR 3 – Jeux pédagogiques, AMDEC &amp; Résolution de Problèmes</td>
                 </tr>
 
                 <tr>
-                    <td class="col-horaire">09h00</td>
                     <td class="col-duree">15 min</td>
                     <td class="col-domaine"><span class="badge badge-oi">OI</span></td>
                     <td class="col-module">Rappels J1-J2</td>
@@ -719,13 +731,12 @@
                 </tr>
 
                 <tr>
-                    <td class="col-horaire">09h15</td>
                     <td class="col-duree">2h45</td>
                     <td class="col-domaine">
                         <span class="badge badge-jeu">JEU</span><br>
                         <span class="badge badge-ac" style="margin-top:3px;">AC</span>
                     </td>
-                    <td class="col-module">🎲 Jeu du KANBAN<br><em style="font-weight:400;font-size:8.5pt;">Simulation
+                    <td class="col-module">Jeu du KANBAN<br><em style="font-weight:400;font-size:8.5pt;">Simulation
                             flux poussé vs tiré</em></td>
                     <td>
                         <ul>
@@ -742,39 +753,34 @@
                             <li>Débriefing comparatif</li>
                         </ul>
                     </td>
-                    <td>Présentation Jeu du Kanban (DOCX), matériel jeu, Feedback (HTML)</td>
+                    <td><a href="../Jeu du KANBAN/Pr%C3%A9sentation Jeu du Kanban.docx">Présentation Jeu du Kanban</a>,
+                        matériel jeu, <a href="../Jeu du KANBAN/Feedback_Semaine1.html">Feedback</a></td>
                 </tr>
 
-                <tr class="pause-row">
-                    <td>12h00</td>
-                    <td>1h00</td>
-                    <td colspan="5">🍽️ Pause déjeuner</td>
-                </tr>
+
 
                 <tr>
-                    <td class="col-horaire">13h00</td>
                     <td class="col-duree">1h00</td>
                     <td class="col-domaine"><span class="badge badge-mrp">MRP</span></td>
                     <td class="col-module">Résolution de Problèmes<br><em style="font-weight:400;font-size:8.5pt;">5
-                            Pourquoi &amp; QRQC</em></td>
+                            Pourquoi &amp; Kaizen</em></td>
                     <td>
                         <ul>
                             <li>Comprendre l'esprit Kaizen</li>
                             <li>Maîtriser les 5 Pourquoi</li>
-                            <li>Découvrir le QRQC</li>
                         </ul>
                     </td>
                     <td>
                         <ul>
-                            <li>Cas pratique "Pièces défectueuses" (3 équipes)</li>
-                            <li>Roleplay QRQC (3 min chrono)</li>
+                            <li><a href="../A5 MRPrb/Jeux_Resolution_Problemes/index.html">Cas pratique "Pièces
+                                    défectueuses"</a> (3 équipes)</li>
+                            <li>Analyse de causes racines en sous-groupes</li>
                         </ul>
                     </td>
                     <td>Fiche cas pratique, minuteur, paperboard</td>
                 </tr>
 
                 <tr>
-                    <td class="col-horaire">14h00</td>
                     <td class="col-duree">1h30</td>
                     <td class="col-domaine"><span class="badge badge-mrp">MRP</span></td>
                     <td class="col-module">AMDEC – Théorie &amp; TP</td>
@@ -787,22 +793,21 @@
                     </td>
                     <td>
                         <ul>
-                            <li>Exposé interactif + exemple machine à café</li>
-                            <li>TP en sous-groupes sur cas flexographie</li>
+                            <li>Exposé interactif + <a
+                                    href="../A6 AMDEC/exemple AMDEC Machine %C3%A0 caf%C3%A9.pdf">exemple machine à
+                                    café</a></li>
+                            <li>TP en sous-groupes sur <a href="../A6 AMDEC/ECI N%C2%B038 flexographie.pdf">cas
+                                    flexographie</a></li>
                             <li>Restitution et débriefing</li>
                         </ul>
                     </td>
-                    <td>Diapo AMDEC (PPT), Cours AMDEC (DOCX), Exemple machine à café, ECI N°38 Flexographie</td>
-                </tr>
-
-                <tr class="pause-row">
-                    <td>15h30</td>
-                    <td>15 min</td>
-                    <td colspan="5">☕ Pause</td>
+                    <td><a href="../A6 AMDEC/13 - AMDEC.ppt">Diapo AMDEC</a>, <a
+                            href="../A6 AMDEC/COURS APP AMDEC.docx">Cours AMDEC</a>, <a
+                            href="../A6 AMDEC/exemple AMDEC Machine %C3%A0 caf%C3%A9.pdf">Exemple machine à café</a>, <a
+                            href="../A6 AMDEC/ECI N%C2%B038 flexographie.pdf">ECI N°38 Flexographie</a></td>
                 </tr>
 
                 <tr>
-                    <td class="col-horaire">15h45</td>
                     <td class="col-duree">1h00</td>
                     <td class="col-domaine">
                         <span class="badge badge-oi">OI</span>
@@ -810,19 +815,21 @@
                     <td class="col-module">Synthèse globale &amp; Évaluation</td>
                     <td>
                         <ul>
-                            <li>Relier tous les outils (VSM, TRS, Kanban, AMDEC, 5 Pourquoi)</li>
+                            <li>Relier tous les outils (VSM, TRS, Kanban, AMDEC, 5 Pourquoi)</li>
                             <li>Évaluer les acquis</li>
                         </ul>
                     </td>
                     <td>
                         <ul>
-                            <li>Construction collective "Maison Lean"</li>
+                            <li>Construction collective "<a href="../00 LEAN SS/Maison LEAN.pdf"></a>Maison Lean</a>"
+                            </li>
                             <li>Quiz final</li>
                             <li>Tour de table, plan d'action personnel</li>
                             <li>Questionnaire satisfaction</li>
                         </ul>
                     </td>
-                    <td>Maison LEAN (PDF), quiz, fiche plan d'action, questionnaire satisfaction</td>
+                    <td><a href="../00 LEAN SS/Maison LEAN.pdf">Maison LEAN</a>, quiz, fiche plan d'action,
+                        questionnaire satisfaction</td>
                 </tr>
             </tbody>
         </table>
@@ -857,9 +864,9 @@
                 </tr>
                 <tr>
                     <td><span class="badge badge-mrp">MRP</span> Méthode de Résolution de Problèmes</td>
-                    <td>5 Pourquoi, QRQC, AMDEC</td>
-                    <td style="text-align:center;font-weight:600;">~3h</td>
-                    <td>5 Pourquoi, QRQC, AMDEC (G×O×D), analyse de cause racine</td>
+                    <td>5 Pourquoi, AMDEC</td>
+                    <td style="text-align:center;font-weight:600;">~2h30</td>
+                    <td>5 Pourquoi, AMDEC (G×O×D), analyse de cause racine, esprit Kaizen</td>
                 </tr>
             </tbody>
         </table>
@@ -915,9 +922,9 @@
         <!-- ═══════════════════════════════════════════════ -->
 
         <div class="footer">
-            <strong>Stéphane JAUBERT</strong> – Formateur Organisation Industrielle<br>
+
             CFAI Centre – Pôle Formation UIMM Centre-Val de Loire<br>
-            <em>Février 2026 – Module OI dans le cadre de la formation Habilitations Nucléaires (Ouzouer-sur-Loire)</em>
+            <em>18 Février 2026 – Module OI</em>
         </div>
 
     </div>
