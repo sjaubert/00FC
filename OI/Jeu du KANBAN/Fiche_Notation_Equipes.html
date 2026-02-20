@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu du Kanban - Fiche de Notation des Équipes</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        :root {
+            --primary: #1e3a5f;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --light: #f0f4f8;
+            --dark: #2c3e50;
+            --border: #d1d9e6;
+            --note-max: 4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
+            background: #eef2f7;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        /* ===== ÉCRAN : style de présentation ===== */
+        .page-container {
+            max-width: 210mm;
+            margin: 20px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+        }
+
+        /* En-tête */
+        .header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2980b9 100%);
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left h1 {
+            font-size: 1.4em;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .header-left .subtitle {
+            font-size: 0.85em;
+            opacity: 0.85;
+            margin-top: 2px;
+            font-weight: 300;
+        }
+
+        .header-right {
+            text-align: right;
+            font-size: 0.8em;
+        }
+
+        .header-right .field-label {
+            opacity: 0.7;
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header-right .field-value {
+            border-bottom: 1.5px solid rgba(255, 255, 255, 0.5);
+            display: inline-block;
+            min-width: 150px;
+            padding: 2px 4px;
+            margin-top: 2px;
+        }
+
+        /* Infos équipe */
+        .team-info {
+            padding: 15px 30px;
+            background: var(--light);
+            border-bottom: 2px solid var(--border);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .team-field {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .team-field label {
+            font-weight: 600;
+            font-size: 0.8em;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+
+        .team-field .input-line {
+            flex: 1;
+            border-bottom: 1.5px solid var(--border);
+            min-height: 20px;
+        }
+
+        .participants-section {
+            padding: 12px 30px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .participants-section h3 {
+            font-size: 0.8em;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .participants-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px 15px;
+        }
+
+        .participant-slot {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8em;
+        }
+
+        .participant-slot .num {
+            background: var(--primary);
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7em;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .participant-slot .name-line {
+            flex: 1;
+            border-bottom: 1.5px solid var(--border);
+            min-height: 18px;
+        }
+
+        /* Légende de notation */
+        .legend {
+            padding: 8px 30px;
+            background: #fefce8;
+            border-bottom: 2px solid #fde68a;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 0.75em;
+        }
+
+        .legend-title {
+            font-weight: 700;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+
+        .legend-items {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .legend-badge {
+            width: 22px;
+            height: 22px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85em;
+            color: white;
+        }
+
+        .badge-0 {
+            background: #ef4444;
+        }
+
+        .badge-1 {
+            background: #f97316;
+        }
+
+        .badge-2 {
+            background: #eab308;
+        }
+
+        .badge-3 {
+            background: #22c55e;
+        }
+
+        .badge-4 {
+            background: #0ea5e9;
+        }
+
+        /* Grille de notation */
+        .scoring-body {
+            padding: 10px 20px 15px;
+        }
+
+        .criteria-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.78em;
+        }
+
+        .criteria-table th {
+            background: var(--primary);
+            color: white;
+            padding: 7px 10px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .criteria-table th:last-child {
+            text-align: center;
+            width: 55px;
+        }
+
+        .criteria-table th.col-semaine {
+            text-align: center;
+            width: 45px;
+        }
+
+        .category-row td {
+            background: linear-gradient(90deg, #e0e7ff 0%, #eff2ff 100%);
+            padding: 6px 10px;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.95em;
+            border-top: 2px solid var(--primary);
+        }
+
+        .category-row td .cat-icon {
+            margin-right: 6px;
+        }
+
+        .criteria-table tbody tr:not(.category-row) td {
+            padding: 5px 10px;
+            border-bottom: 1px solid #e8ecf1;
+            vertical-align: middle;
+        }
+
+        .criteria-table tbody tr:not(.category-row):hover {
+            background: #f8fafd;
+        }
+
+        .criteria-name {
+            font-weight: 500;
+            color: #334155;
+        }
+
+        .criteria-desc {
+            font-size: 0.88em;
+            color: #64748b;
+            font-style: italic;
+        }
+
+        .score-cell {
+            text-align: center;
+            width: 45px;
+            min-width: 45px;
+        }
+
+        .score-box {
+            width: 32px;
+            height: 26px;
+            border: 1.5px solid var(--border);
+            border-radius: 4px;
+            display: inline-block;
+            background: #fafbfc;
+        }
+
+        /* Zone commentaires */
+        .comments-section {
+            padding: 10px 30px 15px;
+        }
+
+        .comments-section h3 {
+            font-size: 0.8em;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .comments-box {
+            width: 100%;
+            min-height: 55px;
+            border: 1.5px solid var(--border);
+            border-radius: 6px;
+            background: #fafbfc;
+        }
+
+        /* Total */
+        .total-section {
+            padding: 10px 30px 15px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .total-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .total-label {
+            font-weight: 700;
+            font-size: 0.85em;
+            color: var(--primary);
+        }
+
+        .total-box {
+            width: 60px;
+            height: 32px;
+            border: 2px solid var(--primary);
+            border-radius: 6px;
+            background: #fafbfc;
+            display: inline-block;
+        }
+
+        /* Pied de page */
+        .footer {
+            background: var(--light);
+            padding: 10px 30px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7em;
+            color: #94a3b8;
+        }
+
+        /* ===== IMPRESSION ===== */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 8mm;
+            }
+
+            body {
+                background: white;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .page-container {
+                box-shadow: none;
+                border-radius: 0;
+                margin: 0;
+                max-width: none;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            .header {
+                padding: 15px 20px;
+            }
+
+            .criteria-table tbody tr:not(.category-row):hover {
+                background: transparent;
+            }
+        }
+
+        /* Bouton impression (écran uniquement) */
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2980b9 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(30, 58, 95, 0.35);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 100;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 58, 95, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <!-- En-tête -->
+        <div class="header">
+            <div class="header-left" style="display: flex; align-items: center; gap: 18px;">
+                <img src="../../logo_uimm_placeholder.jpg" alt="Logo UIMM"
+                    style="height: 60px; border-radius: 6px; background: white; padding: 4px;">
+                <div>
+                    <h1>🏭 Jeu du Kanban</h1>
+                    <div class="subtitle">Fiche de Notation des Équipes — Évaluation Comportementale</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div>
+                    <span class="field-label">Date</span><br>
+                    <span class="field-value">&nbsp;</span>
+                </div>
+                <div style="margin-top: 6px;">
+                    <span class="field-label">Animateur</span><br>
+                    <span class="field-value">&nbsp;</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info équipe -->
+        <div class="team-info">
+            <div class="team-field">
+                <label>Équipe :</label>
+                <div class="input-line"></div>
+            </div>
+            <div class="team-field">
+                <label>Couleur :</label>
+                <div class="input-line"></div>
+            </div>
+        </div>
+
+        <!-- Participants -->
+        <div class="participants-section">
+            <h3>👥 Participants</h3>
+            <div class="participants-grid">
+                <div class="participant-slot"><span class="num">1</span>
+                    <div class="name-line"></div>
+                </div>
+                <div class="participant-slot"><span class="num">2</span>
+                    <div class="name-line"></div>
+                </div>
+                <div class="participant-slot"><span class="num">3</span>
+                    <div class="name-line"></div>
+                </div>
+                <div class="participant-slot"><span class="num">4</span>
+                    <div class="name-line"></div>
+                </div>
+                <div class="participant-slot"><span class="num">5</span>
+                    <div class="name-line"></div>
+                </div>
+                <div class="participant-slot"><span class="num">6</span>
+                    <div class="name-line"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Légende -->
+        <div class="legend">
+            <span class="legend-title">Barème :</span>
+            <div class="legend-items">
+                <div class="legend-item"><span class="legend-badge badge-0">0</span> Insuffisant</div>
+                <div class="legend-item"><span class="legend-badge badge-1">1</span> À améliorer</div>
+                <div class="legend-item"><span class="legend-badge badge-2">2</span> Correct</div>
+                <div class="legend-item"><span class="legend-badge badge-3">3</span> Bien</div>
+                <div class="legend-item"><span class="legend-badge badge-4">4</span> Excellent</div>
+            </div>
+        </div>
+
+        <!-- Grille de notation -->
+        <div class="scoring-body">
+            <table class="criteria-table">
+                <thead>
+                    <tr>
+                        <th>Critère d'évaluation</th>
+                        <th class="col-semaine">S1</th>
+                        <th class="col-semaine">S2</th>
+                        <th class="col-semaine">S3</th>
+                        <th class="col-semaine">S4</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Catégorie 1 : Travail d'équipe -->
+                    <tr class="category-row">
+                        <td colspan="5"><span class="cat-icon">🤝</span>Travail d'Équipe & Entente</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="criteria-name">Cohésion d'équipe</div>
+                            <div class="criteria-desc">Entraide, écoute mutuelle, ambiance positive</div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="criteria-name">Répartition des rôles</div>
+                            <div class="criteria-desc">Chacun connaît et tient son rôle, pas de confusion</div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="criteria-name">Communication interne</div>
+                            <div class="criteria-desc">Dialogue constructif, partage d'informations, coordination
+                            </div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="criteria-name">Gestion des désaccords</div>
+                            <div class="criteria-desc">Capacité à débattre sans conflit, décisions collectives</div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                    </tr>
+
+                    <!-- Catégorie 2 : Gestion de la table de jeu -->
+                    <tr class="category-row">
+                        <td colspan="5"><span class="cat-icon">🎲</span>Organisation de la Table de Jeu</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="criteria-name">Ordre et rangement</div>
+                            <div class="criteria-desc">Table bien organisée, pièces rangées, zone de travail claire
+                            </div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="criteria-name">Gestion des flux physiques</div>
+                            <div class="criteria-desc">Circulation fluide des pièces entre postes, pas de mélange
+                            </div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="criteria-name">Gestion des tickets Kanban</div>
+                            <div class="criteria-desc">Manipulation correcte, rangement sur le tableau, respect des
+                                règles</div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                    </tr>
+
+                    <!-- Catégorie 3 : Rigueur administrative -->
+                    <tr class="category-row">
+                        <td colspan="5"><span class="cat-icon">📋</span>Rigueur des Feuilles de Suivi</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="criteria-name">Tenue du planning de production</div>
+                            <div class="criteria-desc">Saisie à jour, lisible, sans ratures excessives</div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="criteria-name">Suivi des incidents</div>
+                            <div class="criteria-desc">Incidents notés, conséquences reportées correctement</div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="criteria-name">Relevé des indicateurs</div>
+                            <div class="criteria-desc">Calculs justes, données cohérentes, pas d'oubli</div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                    </tr>
+
+                    <!-- Catégorie 4 : Réflexion stratégique -->
+                    <tr class="category-row">
+                        <td colspan="5"><span class="cat-icon">🧠</span>Réflexion & Prise de Décision</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="criteria-name">Analyse et adaptation</div>
+                            <div class="criteria-desc">Capacité à tirer des leçons et ajuster la stratégie</div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="criteria-name">Choix des progrès</div>
+                            <div class="criteria-desc">Pertinence des progrès choisis, justification argumentée
+                            </div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="criteria-name">Implication et sérieux</div>
+                            <div class="criteria-desc">Engagement dans le jeu, respect des consignes et du rythme
+                            </div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box"></div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr style="border-top: 2px solid var(--primary);">
+                        <td style="padding: 8px 10px; font-weight: 700; color: var(--primary); font-size: 0.95em;">
+                            Sous-total par semaine <span
+                                style="font-weight:400; color: #64748b; font-size:0.88em;">(/56)</span>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box" style="border-color: var(--primary); border-width: 2px;"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box" style="border-color: var(--primary); border-width: 2px;"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box" style="border-color: var(--primary); border-width: 2px;"></div>
+                        </td>
+                        <td class="score-cell">
+                            <div class="score-box" style="border-color: var(--primary); border-width: 2px;"></div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <!-- Total général + appréciation -->
+        <div class="total-section">
+            <div class="total-item">
+                <span class="total-label">Note Globale Comportementale</span>
+                <div class="total-box"></div>
+                <span style="font-size: 0.8em; color: #64748b;">/224</span>
+            </div>
+        </div>
+
+        <!-- Commentaires -->
+        <div class="comments-section">
+            <h3>💬 Observations de l'animateur</h3>
+            <div class="comments-box"></div>
+        </div>
+
+        <!-- Pied de page -->
+        <div class="footer">
+            <span>Jeu du Kanban®</span>
+            <span>Pôle Formation UIMM-CVDL — S. Jaubert</span>
+        </div>
+    </div>
+
+    <!-- Bouton impression -->
+    <button class="print-btn no-print" onclick="window.print()">
+        🖨️ Imprimer la fiche
+    </button>
+</body>
+
+</html>
