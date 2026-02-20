@@ -30,7 +30,7 @@
             font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
             background: #eef2f7;
             color: #333;
-            line-height: 1.4;
+            line-height: 1.2;
         }
 
         /* ===== ÉCRAN : style de présentation ===== */
@@ -47,22 +47,22 @@
         .header {
             background: linear-gradient(135deg, #1e3a5f 0%, #2980b9 100%);
             color: white;
-            padding: 20px 30px;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .header-left h1 {
-            font-size: 1.4em;
+            font-size: 1.1em;
             font-weight: 800;
             letter-spacing: -0.5px;
         }
 
         .header-left .subtitle {
-            font-size: 0.85em;
+            font-size: 0.75em;
             opacity: 0.85;
-            margin-top: 2px;
+            margin-top: 1px;
             font-weight: 300;
         }
 
@@ -88,12 +88,12 @@
 
         /* Infos équipe */
         .team-info {
-            padding: 15px 30px;
+            padding: 6px 20px;
             background: var(--light);
-            border-bottom: 2px solid var(--border);
+            border-bottom: 1px solid var(--border);
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 4px;
         }
 
         .team-field {
@@ -104,7 +104,7 @@
 
         .team-field label {
             font-weight: 600;
-            font-size: 0.8em;
+            font-size: 0.75em;
             color: var(--primary);
             white-space: nowrap;
         }
@@ -112,45 +112,45 @@
         .team-field .input-line {
             flex: 1;
             border-bottom: 1.5px solid var(--border);
-            min-height: 20px;
+            min-height: 16px;
         }
 
         .participants-section {
-            padding: 12px 30px;
-            border-bottom: 2px solid var(--border);
+            padding: 5px 20px;
+            border-bottom: 1px solid var(--border);
         }
 
         .participants-section h3 {
-            font-size: 0.8em;
+            font-size: 0.7em;
             color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 8px;
+            margin-bottom: 3px;
         }
 
         .participants-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 6px 15px;
+            gap: 2px 10px;
         }
 
         .participant-slot {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 0.8em;
+            gap: 4px;
+            font-size: 0.7em;
         }
 
         .participant-slot .num {
             background: var(--primary);
             color: white;
-            width: 18px;
-            height: 18px;
+            width: 15px;
+            height: 15px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.7em;
+            font-size: 0.6em;
             font-weight: 700;
             flex-shrink: 0;
         }
@@ -158,18 +158,18 @@
         .participant-slot .name-line {
             flex: 1;
             border-bottom: 1.5px solid var(--border);
-            min-height: 18px;
+            min-height: 14px;
         }
 
         /* Légende de notation */
         .legend {
-            padding: 8px 30px;
+            padding: 4px 20px;
             background: #fefce8;
-            border-bottom: 2px solid #fde68a;
+            border-bottom: 1px solid #fde68a;
             display: flex;
             align-items: center;
-            gap: 20px;
-            font-size: 0.75em;
+            gap: 12px;
+            font-size: 0.68em;
         }
 
         .legend-title {
@@ -191,14 +191,14 @@
         }
 
         .legend-badge {
-            width: 22px;
-            height: 22px;
-            border-radius: 4px;
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 0.85em;
+            font-size: 0.75em;
             color: white;
         }
 
@@ -224,22 +224,22 @@
 
         /* Grille de notation */
         .scoring-body {
-            padding: 10px 20px 15px;
+            padding: 4px 15px 4px;
         }
 
         .criteria-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.78em;
+            font-size: 0.72em;
         }
 
         .criteria-table th {
             background: var(--primary);
             color: white;
-            padding: 7px 10px;
+            padding: 3px 8px;
             text-align: left;
             font-weight: 600;
-            font-size: 0.85em;
+            font-size: 0.8em;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -256,10 +256,10 @@
 
         .category-row td {
             background: linear-gradient(90deg, #e0e7ff 0%, #eff2ff 100%);
-            padding: 6px 10px;
+            padding: 2px 8px;
             font-weight: 700;
             color: var(--primary);
-            font-size: 0.95em;
+            font-size: 0.88em;
             border-top: 2px solid var(--primary);
         }
 
@@ -268,7 +268,7 @@
         }
 
         .criteria-table tbody tr:not(.category-row) td {
-            padding: 5px 10px;
+            padding: 2px 8px;
             border-bottom: 1px solid #e8ecf1;
             vertical-align: middle;
         }
@@ -283,73 +283,74 @@
         }
 
         .criteria-desc {
-            font-size: 0.88em;
+            font-size: 0.82em;
             color: #64748b;
             font-style: italic;
+            line-height: 1.1;
         }
 
         .score-cell {
             text-align: center;
-            width: 45px;
-            min-width: 45px;
+            width: 38px;
+            min-width: 38px;
         }
 
         .score-box {
-            width: 32px;
-            height: 26px;
+            width: 26px;
+            height: 20px;
             border: 1.5px solid var(--border);
-            border-radius: 4px;
+            border-radius: 3px;
             display: inline-block;
             background: #fafbfc;
         }
 
         /* Zone commentaires */
         .comments-section {
-            padding: 10px 30px 15px;
+            padding: 4px 20px 6px;
         }
 
         .comments-section h3 {
-            font-size: 0.8em;
+            font-size: 0.7em;
             color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 6px;
+            margin-bottom: 3px;
         }
 
         .comments-box {
             width: 100%;
-            min-height: 55px;
+            min-height: 32px;
             border: 1.5px solid var(--border);
-            border-radius: 6px;
+            border-radius: 4px;
             background: #fafbfc;
         }
 
         /* Total */
         .total-section {
-            padding: 10px 30px 15px;
+            padding: 4px 20px 6px;
             display: flex;
             justify-content: flex-end;
-            gap: 25px;
+            gap: 15px;
             align-items: center;
         }
 
         .total-item {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .total-label {
             font-weight: 700;
-            font-size: 0.85em;
+            font-size: 0.78em;
             color: var(--primary);
         }
 
         .total-box {
-            width: 60px;
-            height: 32px;
+            width: 50px;
+            height: 24px;
             border: 2px solid var(--primary);
-            border-radius: 6px;
+            border-radius: 4px;
             background: #fafbfc;
             display: inline-block;
         }
@@ -357,11 +358,11 @@
         /* Pied de page */
         .footer {
             background: var(--light);
-            padding: 10px 30px;
+            padding: 4px 20px;
             border-top: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
-            font-size: 0.7em;
+            font-size: 0.65em;
             color: #94a3b8;
         }
 
@@ -369,13 +370,15 @@
         @media print {
             @page {
                 size: A4 portrait;
-                margin: 8mm;
+                margin: 6mm;
             }
 
             body {
                 background: white;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
+                font-size: 11px;
+                line-height: 1.15;
             }
 
             .page-container {
@@ -390,7 +393,64 @@
             }
 
             .header {
-                padding: 15px 20px;
+                padding: 8px 15px;
+            }
+
+            .header-left h1 {
+                font-size: 1em;
+            }
+
+            .team-info {
+                padding: 4px 15px;
+            }
+
+            .participants-section {
+                padding: 3px 15px;
+            }
+
+            .legend {
+                padding: 3px 15px;
+            }
+
+            .scoring-body {
+                padding: 2px 10px 2px;
+            }
+
+            .criteria-table {
+                font-size: 0.7em;
+            }
+
+            .criteria-table th {
+                padding: 2px 6px;
+            }
+
+            .category-row td {
+                padding: 2px 6px;
+            }
+
+            .criteria-table tbody tr:not(.category-row) td {
+                padding: 1px 6px;
+            }
+
+            .score-box {
+                width: 22px;
+                height: 16px;
+            }
+
+            .comments-section {
+                padding: 3px 15px 4px;
+            }
+
+            .comments-box {
+                min-height: 25px;
+            }
+
+            .total-section {
+                padding: 3px 15px 4px;
+            }
+
+            .footer {
+                padding: 3px 15px;
             }
 
             .criteria-table tbody tr:not(.category-row):hover {
@@ -432,7 +492,7 @@
         <div class="header">
             <div class="header-left" style="display: flex; align-items: center; gap: 18px;">
                 <img src="../../logo_uimm_placeholder.jpg" alt="Logo UIMM"
-                    style="height: 100px; border-radius: 6px; background: white; padding: 4px;">
+                    style="height: 100px; border-radius: 4px; background: white; padding: 2px;">
                 <div>
                     <h1>🏭 Jeu du Kanban</h1>
                     <div class="subtitle">Fiche de Notation des Équipes — Évaluation Comportementale</div>
