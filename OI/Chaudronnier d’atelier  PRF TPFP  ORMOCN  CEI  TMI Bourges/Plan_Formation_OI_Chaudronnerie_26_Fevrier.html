@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Formation - Organisation Industrielle (Chaudronnerie)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #003d7a 0%, #0066cc 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #e63946 0%, #f77f00 100%);
+        }
+
+        .logo {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header h2 {
+            font-size: 1.5em;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .header .organization {
+            font-size: 1.2em;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+
+        .header .trainer {
+            font-size: 0.9em;
+            font-style: italic;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4e9f2 100%);
+            border-left: 5px solid #0066cc;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+
+        .info-box h3 {
+            color: #003d7a;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .info-item strong {
+            color: #0066cc;
+            margin-right: 8px;
+            min-width: 100px;
+        }
+
+        .objectives {
+            background: #f9fafb;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            border: 2px solid #e5e7eb;
+        }
+
+        .objectives h3 {
+            color: #003d7a;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .objectives ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .objectives li {
+            padding: 10px 0 10px 30px;
+            position: relative;
+            line-height: 1.8;
+        }
+
+        .objectives li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #0066cc;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .alert {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+
+        .alert strong {
+            color: #856404;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .alert p {
+            margin-bottom: 8px;
+        }
+
+        .day-section {
+            margin: 40px 0;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .session {
+            padding: 25px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .session:last-child {
+            border-bottom: none;
+        }
+
+        .session-time {
+            background: #003d7a;
+            color: white;
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .module {
+            background: #f9fafb;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #0066cc;
+        }
+
+        .module-title {
+            color: #003d7a;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .module-objective {
+            font-style: italic;
+            color: #0066cc;
+            margin: 10px 0;
+            padding-left: 15px;
+            border-left: 3px solid #0066cc;
+        }
+
+        .module-content {
+            margin-top: 15px;
+        }
+
+        .resource-link {
+            display: inline-block;
+            margin: 5px 0;
+            padding: 5px 12px;
+            background: #eef2f7;
+            border: 1px solid #cfdceb;
+            border-radius: 4px;
+            color: #0055aa;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+
+        .resource-link:hover {
+            background: #0066cc;
+            color: white;
+            border-color: #0066cc;
+        }
+
+        .module-content h4 {
+            color: #003d7a;
+            margin: 15px 0 10px 0;
+            font-size: 1.05em;
+        }
+
+        .module-content ul {
+            margin-left: 20px;
+            color: #555;
+        }
+
+        .module-content li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        .footer {
+            background: #f9fafb;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            border-top: 3px solid #0066cc;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+
+            .resource-link {
+                border: none;
+                background: none;
+                padding: 0;
+                text-decoration: underline;
+                color: #333;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logo_uimm.jpg" alt="Logo UIMM" class="logo">
+            <h1>PLAN DE FORMATION</h1>
+            <h2>Organisation Industrielle</h2>
+            <div class="organization">Pôle Formation UIMM-CVDL</div>
+            <div class="trainer">S. Jaubert</div>
+        </div>
+
+        <div class="content">
+            <!-- Informations Générales -->
+            <div class="info-box">
+                <h3>Informations Générales</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>Date :</strong>
+                        <span>26 février 2026</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Durée :</strong>
+                        <span>1 jour (7h)</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Public :</strong>
+                        <span>Groupe de 6 salariés en reconversion - Chaudronnier d'atelier (public peu diplômé)</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Formateur :</strong>
+                        <span>Stéphane JAUBERT</span>
+                    </div>
+                    <div class="info-item" style="grid-column: 1 / -1;">
+                        <strong>Philosophie :</strong>
+                        <span>"Faire pour Comprendre". Ancrage terrain fort, approche ludique, zéro mathématiques
+                            complexes. L'objectif est de leur montrer que l'organisation sert à travailler plus
+                            facilement et en sécurité.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objectifs -->
+            <div class="objectives">
+                <h3>Objectifs de la Formation</h3>
+                <p style="margin-bottom: 15px;">À l'issue de cette journée, les participants comprendront :</p>
+                <ul>
+                    <li>Que l'organisation industrielle améliore leurs conditions de travail (moins de fatigue, plus de
+                        sécurité).</li>
+                    <li>Comment identifier les principaux gaspillages (Mudas) dans un atelier de chaudronnerie.</li>
+                    <li>L'intérêt des bases du rangement et du management visuel (5S) pour éviter la frustration.</li>
+                    <li>Comment analyser un problème terrain de manière logique (Ishikawa).</li>
+                </ul>
+            </div>
+
+            <!-- Note importante -->
+            <div class="alert">
+                <strong>Note pour l'animation</strong>
+                <p>Le vocabulaire doit rester "atelier" (racks, pont roulant, servante, meuleuse).</p>
+                <p>On limite le jargon japonais aux termes incontournables (Mudas, 5S, Kaizen).</p>
+            </div>
+
+            <!-- PROGRAMME -->
+            <div class="day-section">
+                <!-- Matin -->
+                <div class="session">
+                    <div class="session-time">MATIN : Le déclic par l'action (3h30)</div>
+
+                    <div class="module">
+                        <div class="module-title">1. Accueil et "Briser la glace" (30 min)</div>
+                        <div class="module-content">
+                            <ul>
+                                <li>Tour de table très concret : <em>"Quelle est votre expérience passée la plus
+                                        frustrante au travail à cause d'une mauvaise organisation ?"</em></li>
+                                <li>Objectifs : Comprendre comment une usine fonctionne pour y trouver sa place
+                                    sereinement.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="module">
+                        <div class="module-title">2. L'Atelier Cocotte (L'organisation Lean par la pratique) (2h00)
+                        </div>
+                        <div class="module-content">
+                            <h4>Ressources :</h4>
+                            <div>
+                                <a href="file:///c:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/Atelier_cocotte/scenario_atelier_lean_cocotte_1jour.html"
+                                    class="resource-link" target="_blank">📄 Scénario de l'Atelier Cocotte</a><br>
+                                <a href="file:///c:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/Atelier_cocotte/Atelier-Cocotte-_-Formation-Lean-Journ%C3%A9e.html"
+                                    class="resource-link" target="_blank">📄 Déroulé de la Formation Lean
+                                    Cocotte</a><br>
+                                <a href="https://www.youtube.com/watch?v=uDnsW-WEXpU" class="resource-link"
+                                    target="_blank"
+                                    style="background-color: #ffeaea; border-color: #ffcccc; color: #cc0000;">▶️ Vidéo :
+                                    Le Lean en action (Toyota Valenciennes)</a>
+                            </div>
+                            <h4>Déroulement :</h4>
+                            <ul>
+                                <li>Parfait pour comprendre de manière très concrète (par le geste) la différence entre
+                                    un flux poussé et un flux continu.</li>
+                                <li>Les stagiaires plient des cocottes en papier à la chaîne, chacun ayant une tâche
+                                    (pliage A, pliage B, contrôle).</li>
+                                <li>On constate l'engorgement (stocks intermédiaires, attente) en flux poussé.</li>
+                                <li>On réorganise la ligne pour lisser la production (flux tiré/unitaire). Très parlant
+                                    pour un public manuel.</li>
+                                <li><strong>Conclusion visuelle</strong> : Projection de la vidéo Toyota (3 min)
+                                    montrant que l'Atelier Cocotte fonctionne à l'identique dans une vraie usine.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="module">
+                        <div class="module-title">3. Débriefing : Les 7 Gaspillages / Mudas (1h00)</div>
+                        <div class="module-content">
+                            <h4>Ressources :</h4>
+                            <div>
+                                <a href="file:///c:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00%20LEAN%20SS/INTRODUCTION%20AU%20LEAN%20SIGMA.pdf"
+                                    class="resource-link" target="_blank">📄 Introduction au Lean Sigma</a><br>
+                                <a href="file:///c:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00%20LEAN%20SS/La_Philosophie_Lean.mp4"
+                                    class="resource-link" target="_blank">🎥 La Philosophie Lean (Vidéo)</a>
+                            </div>
+                            <h4>Activité :</h4>
+                            <ul>
+                                <li>Plaquer la théorie des 7 gaspillages sur ce qu'ils viennent de vivre.</li>
+                            </ul>
+                            <h4>Transposition Chaudronnerie :</h4>
+                            <ul>
+                                <li><strong>Mouvements inutiles</strong> : Chercher l'outillage (meuleuse, pince étau).
+                                </li>
+                                <li><strong>Transports inutiles</strong> : Déplacer la tôle avec le pont roulant 3 fois
+                                    pour rien.</li>
+                                <li><strong>Sur-qualité</strong> : Meuler un cordon de soudure là où ce n'est pas
+                                    demandé (pièce cachée).</li>
+                                <li><strong>Attente</strong> : Attendre la validation du contrôleur, ou que le pont
+                                    roulant se libère.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Après-midi -->
+                <div class="session">
+                    <div class="session-time">APRÈS-MIDI : La boîte à outils de l'ouvrier (3h30)</div>
+
+                    <div class="module">
+                        <div class="module-title">4. Ranger pour gagner du temps : Le 5S et le Management Visuel (1h30)
+                        </div>
+                        <div class="module-objective">Pourquoi ? Une servante mal rangée = de l'énervement.</div>
+                        <div class="module-content">
+                            <h4>Ressources :</h4>
+                            <div>
+                                <a href="file:///c:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00%20LEAN%20SS/Les%20fondamentaux%20de%20l'Organisation%20Industrielle%20-%20Formation%20Interactive.pdf"
+                                    class="resource-link" target="_blank">📄 Les fondamentaux de l'organisation
+                                    industrielle</a>
+                            </div>
+                            <h4>Activité :</h4>
+                            <ul>
+                                <li>Le "Jeu des nombres de 1 à 49" (trouver les numéros sur une feuille chaotique, puis
+                                    sur une feuille organisée type 5S) -> Effet "Wahou".</li>
+                            </ul>
+                            <h4>Visuels :</h4>
+                            <ul>
+                                <li>Montrer des photos de panneaux d'outils "shadow board".</li>
+                                <li>Montrer des zones peintes au sol pour les racks de ferraille.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="module">
+                        <div class="module-title">5. Résolution de problème "Terrain" (1h30)</div>
+                        <div class="module-objective">Version ultra-allégée. Pas de Pareto, on se concentre sur Ishikawa
+                            (5M) et les 5 Pourquoi.</div>
+                        <div class="module-content">
+                            <h4>Ressources :</h4>
+                            <div>
+                                <a href="file:///c:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/A0%20Pareto%20-%20Ishikawa/Diapo_Analyse_Action_Qualit%C3%A9_Ishikawa_Pareto.pdf"
+                                    class="resource-link" target="_blank">📄 Diapositive Analyse Action Qualité
+                                    Ishikawa</a>
+                            </div>
+                            <h4>Cas d'école Chaudronnerie :</h4>
+                            <ul>
+                                <li><em>"Une pièce pliée sur la presse plieuse est hors tolérance et part au
+                                        rebut"</em>.</li>
+                                <li>Exemple 5 Pourquoi : <em>C'est plié de travers -> Mauvaise butée -> L'opérateur
+                                        s'est trompé -> La consigne était illisible -> L'imprimante n'avait plus d'encre
+                                        (cause racine).</em></li>
+                            </ul>
+                            <h4>Activité :</h4>
+                            <ul>
+                                <li>Résolution d'un cas pratique choisi par les stagiaires (en 2 groupes de 3).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="module" style="background: #f0f9ff; border-left-color: #0066cc;">
+                        <div class="module-title">6. Bilan à Chaud (30 min)</div>
+                        <div class="module-content">
+                            <ul>
+                                <li>Ce qu'ils vont retenir de la journée.</li>
+                                <li><em>"Si demain vous arrivez dans un atelier, quel est le premier truc que vous allez
+                                        regarder d'un œil critique ?"</em></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            Document créé le 22 février 2026<br>
+            Adapté pour la session PRF RM du 26 Février par Pôle Formation UIMM-CVDL - Stéphane JAUBERT
+        </div>
+    </div>
+</body>
+
+</html>
