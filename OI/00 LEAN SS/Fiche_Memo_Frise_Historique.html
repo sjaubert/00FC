@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche Mémo — Frise Historique de l'Industrie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent-pre: #f59e0b;
+            --accent-1: #ef4444;
+            --accent-2: #3b82f6;
+            --accent-3: #8b5cf6;
+            --accent-4: #10b981;
+            --accent-5: #06b6d4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 1rem 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .top-bar-logo {
+            height: 70px;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .top-bar-org {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        .top-bar-org small {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        .top-bar-trainer {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-align: right;
+        }
+
+        .top-bar-trainer strong {
+            display: block;
+            color: var(--text);
+            font-size: 1.05rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-4), var(--accent-5));
+            margin: 1.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f8fafc, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            font-weight: 300;
+        }
+
+        .timeline {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .era {
+            border-left: 4px solid var(--era-color, #475569);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .era::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: var(--era-color, #475569);
+            border-radius: 50%;
+            border: 3px solid var(--bg);
+        }
+
+        .era-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .era-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--era-color, #e2e8f0);
+        }
+
+        .era-period {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .era-origin {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .category {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .category:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .cat-icon {
+            font-size: 1.1rem;
+            margin-right: 0.4rem;
+        }
+
+        .cat-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--era-color, #94a3b8);
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .cat-content {
+            font-size: 0.88rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .cat-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cat-content li {
+            padding: 0.3rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .cat-content li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--era-color, #64748b);
+            font-weight: bold;
+        }
+
+        .date {
+            font-weight: 600;
+            color: var(--era-color, #e2e8f0);
+        }
+
+        .highlight {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .key-figure {
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: #1a1a1a;
+                padding: 1rem;
+            }
+
+            .top-bar {
+                background: #f8f9fa;
+                border-color: #ddd;
+            }
+
+            .top-bar-org,
+            .top-bar-trainer strong {
+                color: #1a1a1a;
+            }
+
+            .top-bar-org small,
+            .top-bar-trainer {
+                color: #555;
+            }
+
+            .era {
+                border-left-color: #333 !important;
+            }
+
+            .era::before {
+                background: #333 !important;
+                border-color: white !important;
+            }
+
+            .category {
+                border-color: #ddd;
+                background: #fafafa;
+            }
+
+            .era-title,
+            .cat-title,
+            .date {
+                color: #1a1a1a !important;
+                -webkit-text-fill-color: initial !important;
+            }
+
+            h1 {
+                -webkit-text-fill-color: #1a1a1a !important;
+            }
+
+            .cat-content,
+            .cat-content li {
+                color: #333 !important;
+            }
+
+            .cat-content li::before {
+                color: #666 !important;
+            }
+
+            .header::after {
+                background: #333;
+            }
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .categories {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <img src="../../logo_uimm_placeholder.jpg" alt="Logo UIMM" class="top-bar-logo">
+            <div class="top-bar-org">
+                UIMM Pôle Formation CVDL
+                <small>La Fabrique de l'Avenir</small>
+            </div>
+        </div>
+        <div class="top-bar-trainer">
+            Formateur
+            <strong>S. JAUBERT</strong>
+        </div>
+    </div>
+
+    <div class="header">
+        <h1>📜 Frise Historique de l'Industrie</h1>
+        <p class="subtitle">Fiche mémo — Dates et événements essentiels</p>
+    </div>
+
+    <div class="timeline">
+
+        <!-- ÈRE PRÉ-INDUSTRIELLE -->
+        <section class="era" style="--era-color: var(--accent-pre);">
+            <div class="era-header">
+                <span class="era-title">Ère Pré-industrielle</span>
+                <span class="era-period">~ 500 000 ans</span>
+            </div>
+            <div class="categories">
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">⚡</span> Énergie</div>
+                    <div class="cat-content">Musculaire &amp; mécanique</div>
+                </div>
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">💡</span> Inventions clés</div>
+                    <div class="cat-content">
+                        <ul>
+                            <li>Maîtrise du feu, pierre taillée/polie, début de la métallurgie</li>
+                            <li><span class="date">~2000 av. J-C</span> — La roue (Sumer)</li>
+                            <li><span class="date">Vᵉ av. J-C</span> — Le miracle grec : brouette, grue, charrue, moulin
+                                à eau/vent, haut fourneau</li>
+                            <li>Imprimerie, soierie, métier à tisser</li>
+                            <li><span class="date">1610</span> — Naissance de la science moderne (Galilée)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">🏭</span> Production</div>
+                    <div class="cat-content">
+                        <ul>
+                            <li><span class="date">Néolithique (~8000 av. J-C)</span> — L'homme passe de
+                                cueilleur-prédateur à travailleur bâtisseur, agriculteur</li>
+                            <li>Naissance de l'industrie textile (Moyen Âge)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">✅</span> Qualité</div>
+                    <div class="cat-content">
+                        <ul>
+                            <li>Traces d'évaluation en Égypte ancienne et en Grèce</li>
+                            <li>Les Anglais contrôlent par échantillonnage (poids, titre des monnaies)</li>
+                            <li><span class="key-figure">Colbert</span> présente un rapport à Louis XIV : <em>« Si nos
+                                    fabriques imposent la qualité supérieure de nos produits, les étrangers trouveront
+                                    avantage à se fournir en France… »</em></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">👥</span> Management &amp; Société</div>
+                    <div class="cat-content">
+                        <ul>
+                            <li>Corporations avec étalonnage propre ; cahiers des charges des mécènes</li>
+                            <li>Apogée du mouvement compagnonnique</li>
+                            <li>Réforme protestante (Luther, Calvin) → émergence de la bourgeoisie</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1ère RÉVOLUTION INDUSTRIELLE -->
+        <section class="era" style="--era-color: var(--accent-1);">
+            <div class="era-header">
+                <span class="era-title">1ʳᵉ Révolution Industrielle</span>
+                <span class="era-period">~ 150 ans</span>
+                <span class="era-origin">Angleterre, France, Allemagne — puis US (fin XIXᵉ)</span>
+            </div>
+            <div class="categories">
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">⚡</span> Énergie</div>
+                    <div class="cat-content">Mécanique : <strong>Vapeur / Charbon</strong> → puis <strong>Pétrole, Gaz,
+                            Électricité</strong></div>
+                </div>
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">💡</span> Inventions clés</div>
+                    <div class="cat-content">
+                        <ul>
+                            <li><span class="date">1769</span> — Machine à vapeur (<span class="key-figure">Watt</span>)
+                            </li>
+                            <li><span class="date">1775</span> — Machine à aléser, technique du laminoir</li>
+                            <li><span class="date">1784</span> — Puddlage (fonte → acier par décarburation)</li>
+                            <li><span class="date">1825</span> — Locomotive (<span class="key-figure">Stephenson</span>)
+                                → 1ʳᵉ ligne de chemin de fer</li>
+                            <li><span class="date">1859</span> — Premier puits de pétrole par forage (<span
+                                    class="key-figure">E. Drake</span>)</li>
+                            <li>Moteur à explosion (<span class="key-figure">Lenoir</span>), téléphone (<span
+                                    class="key-figure">Bell</span>), dynamo</li>
+                            <li><span class="date">1879</span> — Ampoule électrique (<span
+                                    class="key-figure">Edison</span>), début de la TSF</li>
+                            <li><span class="date">1886</span> — 1ʳᵉ automobile (<span class="key-figure">Carl
+                                    Benz</span>)</li>
+                            <li><span class="date">1903</span> — Premier vol motorisé (<span class="key-figure">Frères
+                                    Wright</span>)</li>
+                            <li>Alternateurs → réseaux électriques (<span class="key-figure">Tesla</span>)</li>
+                            <li>Découverte du radium (<span class="key-figure">Marie Curie</span>)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">🏭</span> Production &amp; Organisation</div>
+                    <div class="cat-content">
+                        <ul>
+                            <li><strong>Mécanisation</strong> de la production</li>
+                            <li>Le chemin de fer donne naissance à des entreprises d'une taille et complexité inédites
+                            </li>
+                            <li>Début de l'impérialisme colonial ; vague d'innovations financée par l'initiative privée
+                            </li>
+                            <li>Premiers réseaux d'éclairage public (<span class="date">~1880</span>, États-Unis)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">✅</span> Qualité</div>
+                    <div class="cat-content">Contrôle <em>a posteriori</em></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2ème RÉVOLUTION INDUSTRIELLE -->
+        <section class="era" style="--era-color: var(--accent-2);">
+            <div class="era-header">
+                <span class="era-title">2ᵉ Révolution Industrielle</span>
+                <span class="era-period">~ 60 ans</span>
+            </div>
+            <div class="categories">
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">⚡</span> Énergie</div>
+                    <div class="cat-content">Maîtrise de l'<strong>électricité</strong> et de
+                        l'<strong>électromagnétisme</strong></div>
+                </div>
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">💡</span> Inventions clés</div>
+                    <div class="cat-content">
+                        <ul>
+                            <li>Théorie de la relativité générale (<span class="key-figure">Einstein</span>)</li>
+                            <li>Naissance de la <strong>physique quantique</strong></li>
+                            <li>Naissance de la <strong>cybernétique</strong> (<span class="key-figure">Wiener</span>)
+                            </li>
+                            <li><span class="key-figure">Alonzo Church</span> invente le lambda-calcul</li>
+                            <li><strong>Machine de Turing</strong> — IBM construit le <strong>Mark I</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">🏭</span> Production &amp; Organisation</div>
+                    <div class="cat-content">
+                        <ul>
+                            <li><strong>Production de masse — Standardisation — Chaîne de production</strong></li>
+                            <li><strong>Taylorisme / Fordisme</strong> : tâches simples et répétitives, personnel peu
+                                qualifié</li>
+                            <li>Intégration verticale, économies d'échelle (début XXᵉ)</li>
+                            <li>Économies d'envergure (années <span class="date">1920</span>) : extension de gamme</li>
+                            <li>Crise économique de <span class="date">1929</span></li>
+                            <li>Essor du secteur tertiaire, de la publicité</li>
+                            <li>La 1ʳᵉ Guerre mondiale accélère la rationalisation du travail</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">✅</span> Qualité</div>
+                    <div class="cat-content">
+                        <ul>
+                            <li><span class="key-figure">Student</span> publie <em>« Méthodes statistiques pour
+                                    l'industrie »</em></li>
+                            <li><span class="key-figure">Fischer</span> met au point les <strong>plans
+                                    d'expérience</strong></li>
+                            <li>Diagramme de <span class="key-figure">Pareto</span> (classification des défauts)</li>
+                            <li><span class="date">1924</span> — <span class="key-figure">Shewart</span> élabore les
+                                <strong>cartes de contrôle</strong>
+                            </li>
+                            <li><span class="date">~1940</span> — Procédures <em>Military Standard</em> (armée US) →
+                                accélération de la qualité</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">👥</span> Management</div>
+                    <div class="cat-content">
+                        <ul>
+                            <li><strong>Organisation personnalisée</strong> : autorité concentrée, structure en « soleil
+                                »</li>
+                            <li><strong>Organisation pyramidale</strong> : autorité déléguée, cascade de responsabilités
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3ème RÉVOLUTION INDUSTRIELLE -->
+        <section class="era" style="--era-color: var(--accent-3);">
+            <div class="era-header">
+                <span class="era-title">3ᵉ Révolution Industrielle</span>
+                <span class="era-period">~ 50 ans</span>
+                <span class="era-origin">US — Japon puis Europe</span>
+            </div>
+            <div class="categories">
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">⚡</span> Énergie</div>
+                    <div class="cat-content"><strong>Énergie nucléaire</strong></div>
+                </div>
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">💡</span> Inventions clés</div>
+                    <div class="cat-content">
+                        <ul>
+                            <li><span class="date">1947</span> — <strong>Transistor</strong> (Lab Bell)</li>
+                            <li><span class="date">1950</span> — Test de Turing ; langage assembleur</li>
+                            <li><span class="date">1956</span> — Conférence de Dartmouth (naissance de
+                                l'<strong>IA</strong>)</li>
+                            <li><span class="date">1957</span> — <strong>Spoutnik</strong></li>
+                            <li><span class="date">1958</span> — <strong>Circuit intégré</strong></li>
+                            <li><span class="date">1969</span> — Premier lien <strong>ARPANET</strong> ; premiers pas
+                                sur la Lune</li>
+                            <li><span class="date">1989</span> — <strong>World Wide Web</strong> (<span
+                                    class="key-figure">Tim Berners-Lee</span>)</li>
+                            <li><span class="date">1995</span> — Apparition de la <strong>2G</strong>, boom de la
+                                téléphonie mobile</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">🏭</span> Production &amp; Organisation</div>
+                    <div class="cat-content">
+                        <ul>
+                            <li><strong>Automatisation — Robotisation</strong></li>
+                            <li>Trente Glorieuses (<span class="date">1945–1975</span>) : démocratisation de la voiture
+                            </li>
+                            <li>Années <span class="date">1960</span> : organisation matricielle (projets × fonctions)
+                            </li>
+                            <li>Fin XXᵉ : entreprise en réseau, externalisation, chaînes de sous-traitance</li>
+                            <li>Effondrement de l'URSS — Fin de la Guerre froide</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">✅</span> Qualité</div>
+                    <div class="cat-content">
+                        <ul>
+                            <li><span class="key-figure">Feigenbaum</span> publie <em>« Quality as a Management »</em>
+                            </li>
+                            <li><span class="key-figure">Deming</span> visite le Japon (plan MacArthur)</li>
+                            <li><strong>JUSE</strong> créé par <span class="key-figure">Ishikawa</span></li>
+                            <li>Concept <strong>TQC</strong> (Feigenbaum) ; <em>Quality Control Handbook</em> (<span
+                                    class="key-figure">Juran</span>)</li>
+                            <li>Mise au point de l'<strong>AMDEC</strong></li>
+                            <li>Diffusion de la carte de contrôle au Japon (Ishikawa)</li>
+                            <li>Méthode <strong>« 0 défaut »</strong></li>
+                            <li>Création de la <strong>TPM</strong> (Total Productive Maintenance)</li>
+                            <li>Publication des normes <strong>ISO 9000</strong></li>
+                            <li>Système de production <strong>Toyota (TPS)</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4ème RÉVOLUTION INDUSTRIELLE -->
+        <section class="era" style="--era-color: var(--accent-4);">
+            <div class="era-header">
+                <span class="era-title">4ᵉ Révolution Industrielle</span>
+                <span class="era-period">~ 20 ans</span>
+                <span class="era-origin">Chine (BATX) — US (GAFAM)</span>
+            </div>
+            <div class="categories">
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">⚡</span> Énergie</div>
+                    <div class="cat-content">Développement des <strong>énergies renouvelables</strong> (solaire,
+                        biomasse, hydrogène)</div>
+                </div>
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">💡</span> Technologies clés</div>
+                    <div class="cat-content">
+                        <ul>
+                            <li><strong>IoT</strong> — Cobotique — Réalité augmentée — Impression 3D</li>
+                            <li><strong>IA</strong> — Smart Building — <strong>Big Data</strong> — <strong>5G</strong>
+                            </li>
+                            <li>200 milliards d'objets connectés en <span class="date">2020</span></li>
+                            <li>90 % des données mondiales créées au cours des 2 dernières années (<span
+                                    class="date">2024</span>)</li>
+                            <li>Maîtrise du moteur à hydrogène</li>
+                            <li>Projet <strong>ITER</strong> (<span class="date">08/2020</span> : lancement de
+                                l'assemblage du tokamak — fusion nucléaire)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">🏭</span> Production &amp; Organisation</div>
+                    <div class="cat-content">
+                        <ul>
+                            <li>Le numérique intégré à la conception et aux moyens de production</li>
+                            <li>Convergence monde virtuel / monde réel</li>
+                            <li>Modes de production plus flexibles et complexes</li>
+                            <li>Avec Internet, les connexions entre personnes, entreprises et objets explosent</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">✅</span> Qualité</div>
+                    <div class="cat-content">
+                        <ul>
+                            <li>Révisions des normes <strong>ISO 9000 / 9001</strong></li>
+                            <li>Le concept de <strong>Lean Management</strong> est remis à l'ordre du jour</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">👥</span> Management &amp; Société</div>
+                    <div class="cat-content">
+                        <ul>
+                            <li>Organisation du travail de plus en plus <strong>flexible</strong> (temps et espace)</li>
+                            <li>Opérations numérisées, affranchissement des hiérarchies</li>
+                            <li>Crises de plus en plus fréquentes : économiques, sanitaires, climatiques, géopolitiques…
+                            </li>
+                            <li>La Chine passe de la 30ᵉ à la 2ᵉ place économique mondiale en 40 ans</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5ème RÉVOLUTION ? -->
+        <section class="era" style="--era-color: var(--accent-5);">
+            <div class="era-header">
+                <span class="era-title">5ᵉ Révolution… ?</span>
+                <span class="era-period">2020 → …</span>
+            </div>
+            <div class="categories">
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">💡</span> Technologies émergentes</div>
+                    <div class="cat-content">
+                        <ul>
+                            <li>Percée de l'<strong>IA générative</strong> (ChatGPT, Gemini…)</li>
+                            <li>IA explicable, <strong>jumeaux numériques</strong>, énergies renouvelables</li>
+                            <li>Vers l'<strong>IAG</strong> (Intelligence Artificielle Générale) ?</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="cat-title"><span class="cat-icon">👥</span> Vision</div>
+                    <div class="cat-content">
+                        <ul>
+                            <li>Les humains et les machines vont <strong>collaborer étroitement</strong></li>
+                            <li>Un monde du travail plus humain, plus durable, plus résilient</li>
+                            <li>Les meilleures pratiques technologiques au service de l'humanité</li>
+                            <li><em>Place de l'homme dans le monde du travail ?</em></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer
+        style="text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--card-border); color: var(--text-muted); font-size: 0.8rem;">
+        Source : Frise historique industrie — CFAI Centre
+    </footer>
+
+</body>
+
+</html>
