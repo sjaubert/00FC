@@ -34,7 +34,7 @@ Cette journée alterne théorie et simulation pour transformer la perception du 
 **5\. Round 2 : Le Flux Tiré & One Piece Flow (1h00)**
 
 * **Règle :** On ne produit que si le client (ou le poste suivant) demande. Utilisation d'un **Kanban** visuel. Passage au flux pièce à pièce.  
-* **Pédagogie :** Introduction de la **Loi de Little** ($Lead Time \= WIP / Débit$). On démontre que réduire les stocks accélère la livraison.
+* **Pédagogie :** Introduction de la **Loi de Little** ($Lead Time = WIP / Débit$). On démontre que réduire les stocks accélère la livraison.
 
 **6\. Round 3 : Équilibrage et Kaizen (1h15)**
 
@@ -46,7 +46,7 @@ Cette journée alterne théorie et simulation pour transformer la perception du 
 
 * **Analyse :** Comparaison des indicateurs (KPI) des 3 rounds.  
 * **Focus Technique :** Calculer le **TRS** (Taux de Rendement Synthétique) de la ligne :  
-  $$TRS \= Disponibilité \\times Performance \\times Qualité$$  
+  $$TRS = Disponibilité \times Performance \times Qualité$$  
 * **Plan d'action :** Comment transposer ces "cocottes" dans leur quotidien (emails en attente, dossiers bloqués, palettes inutiles).
 
 ### ---
