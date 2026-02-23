@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Atelier Cocotte LEAN</title>
+  <style>
+    /* === BASE === */
+    :root {
+      --color-bg: #ffffff;
+      --color-text: #1a1a2e;
+      --color-heading: #16213e;
+      --color-accent: #0f3460;
+      --color-accent-light: #e8eef6;
+      --color-border: #d1d5db;
+      --color-table-header: #16213e;
+      --color-table-stripe: #f8f9fc;
+      --color-link: #2563eb;
+      --color-note-bg: #eff6ff;
+      --color-note-border: #3b82f6;
+      --color-tip-bg: #f0fdf4;
+      --color-tip-border: #22c55e;
+      --color-warning-bg: #fefce8;
+      --color-warning-border: #eab308;
+      --color-important-bg: #fef2f2;
+      --color-important-border: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--color-text);
+      background: var(--color-bg);
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 2.5rem;
+    }
+
+    /* === HEADINGS === */
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: var(--color-heading);
+      font-weight: 700;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      border-bottom: 3px solid var(--color-accent);
+      padding-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      border-bottom: 2px solid var(--color-border);
+      padding-bottom: 0.4rem;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      color: var(--color-accent);
+    }
+
+    h4 {
+      font-size: 1rem;
+    }
+
+    header#title-block-header {
+      display: none;
+    }
+
+    /* === TABLES === */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.2rem 0;
+      font-size: 0.92rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    thead tr {
+      background: var(--color-table-header);
+      color: #fff;
+    }
+
+    thead th {
+      padding: 0.7rem 0.9rem;
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: 0.02em;
+      border: none;
+    }
+
+    tbody td {
+      padding: 0.6rem 0.9rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    tbody tr:nth-child(even) {
+      background: var(--color-table-stripe);
+    }
+
+    tbody tr:hover {
+      background: #eef2ff;
+    }
+
+    /* === BLOCKQUOTES / ALERTS === */
+    blockquote {
+      margin: 1.2rem 0;
+      padding: 1rem 1.2rem;
+      border-left: 4px solid var(--color-note-border);
+      background: var(--color-note-bg);
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+
+    blockquote p {
+      margin: 0.4rem 0;
+    }
+
+    /* === CODE === */
+    pre {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 1.2rem 1.4rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      margin: 1rem 0;
+    }
+
+    code {
+      font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+      white-space: pre-wrap;
+    }
+
+    :not(pre)>code {
+      background: #f1f5f9;
+      padding: 0.15em 0.4em;
+      border-radius: 3px;
+      font-size: 0.9em;
+      color: #334155;
+    }
+
+    /* === LISTS === */
+    ul,
+    ol {
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.3rem;
+    }
+
+    ul.task-list[class] {
+      list-style: none;
+      padding-left: 0.5rem;
+    }
+
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 1em;
+      height: 1em;
+      margin: 0 0.6em 0.2em 0;
+      vertical-align: middle;
+      accent-color: var(--color-accent);
+    }
+
+    /* === HORIZONTAL RULES === */
+    hr {
+      border: none;
+      border-top: 2px solid #e5e7eb;
+      margin: 2rem 0;
+    }
+
+    /* === MATH === */
+    .math.display {
+      overflow-x: auto;
+      margin: 1rem 0;
+      padding: 0.5rem;
+      background: #fafbfd;
+      border-radius: 4px;
+      border: 1px solid #e5e7eb;
+    }
+
+    /* === STRONG / EM === */
+    strong {
+      color: var(--color-heading);
+    }
+
+    /* === LINKS === */
+    a {
+      color: var(--color-link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* === PRINT === */
+    @media print {
+      body {
+        max-width: 100%;
+        padding: 0.5cm;
+        font-size: 11pt;
+      }
+
+      pre {
+        background: #f8f9fa !important;
+        color: #1a1a2e !important;
+        border: 1px solid #ccc;
+      }
+
+      table {
+        box-shadow: none;
+      }
+
+      thead tr {
+        background: #333 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      h1,
+      h2 {
+        page-break-after: avoid;
+      }
+
+      table,
+      pre {
+        page-break-inside: avoid;
+      }
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+        font-size: 14px;
+      }
+
+      table {
+        font-size: 0.85rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <header id="title-block-header">
+    <h1 class="title">Atelier Cocotte LEAN</h1>
+  </header>
+  <h1 id="atelier-cocotte-lean-lexcellence-par-le-flux">Atelier Cocotte
+    LEAN — « L’Excellence par le Flux »</h1>
+  <h2 id="guide-complet-de-la-formation-1-journée">Guide Complet de la
+    Formation (1 Journée)</h2>
+  <blockquote>
+    <p>[!IMPORTANT] <strong>Objectif Global</strong> : Permettre aux
+      participants de découvrir les fondamentaux du LEAN à travers une
+      simulation pratique de fabrication de cocottes en papier. La journée
+      compare trois modes de production (flux poussé, flux tiré Kanban,
+      optimisé Kaizen) pour démontrer l’impact sur le Lead Time, le WIP, la
+      qualité et le bien-être.</p>
+  </blockquote>
+  <hr />
+  <h2 id="informations-pratiques">1. Informations Pratiques</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: left;">Paramètre</th>
+        <th style="text-align: left;">Valeur</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left;"><strong>Public cible</strong></td>
+        <td style="text-align: left;">Salariés d’entreprise (tous niveaux)</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong>Durée totale</strong></td>
+        <td style="text-align: left;">7 h 30 (pause déjeuner incluse)</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong>Participants</strong></td>
+        <td style="text-align: left;">8 à 16 personnes (idéalement 12)</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong>Organisation</strong></td>
+        <td style="text-align: left;">2 lignes de production de 4 à 6
+          personnes</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong>Formateur(s)</strong></td>
+        <td style="text-align: left;">1 à 2 coachs LEAN</td>
+      </tr>
+    </tbody>
+  </table>
+  <hr />
+  <h2 id="matériel-nécessaire">2. Matériel Nécessaire</h2>
+  <h3 id="par-participant">Par participant</h3>
+  <ul>
+    <li>100 feuilles A4 blanches (80 g/m²)</li>
+  </ul>
+  <h3 id="par-ligne-de-production">Par ligne de production</h3>
+  <ul>
+    <li>1 chronomètre</li>
+    <li>1 tableau d’indicateurs vierge (format A3)</li>
+    <li>Des marqueurs de couleur</li>
+  </ul>
+  <h3 id="collectif">Collectif</h3>
+  <ul>
+    <li>1 paperboard + feuilles vierges</li>
+    <li>Post-its de couleurs (jaune, vert, rouge, bleu)</li>
+    <li>Scotch, ciseaux, feutres</li>
+    <li>Affiches des 8 gaspillages (format A3)</li>
+    <li>Fiches d’Instruction au Poste (FIP) imprimées en A3</li>
+    <li>Diagrammes Yamazumi vierges</li>
+    <li>Cartes Kanban (rouge = occupé, verte = disponible) — 2 par
+      poste</li>
+    <li>Vidéoprojecteur + vidéo courte (ex. usine Toyota)</li>
+  </ul>
+  <hr />
+  <h2 id="fiche-dinstruction-standard-fip-fabrication-de-la-cocotte">3.
+    Fiche d’Instruction Standard (FIP) — Fabrication de la Cocotte</h2>
+  <blockquote>
+    <p><strong>Objectif</strong> : Produire une cocotte symétrique,
+      fonctionnelle et esthétique.</p>
+    <p><strong>Matériel</strong> : 1 feuille A4 blanche (80 g/m²).</p>
+  </blockquote>
+  <h3 id="phase-préparatoire-obtenir-un-carré-parfait">3.1 Phase
+    Préparatoire : Obtenir un Carré Parfait</h3>
+  <blockquote>
+    <p>[!TIP] La majorité des rebuts en Round 1 viennent d’un carré mal
+      coupé. Cette phase est critique.</p>
+  </blockquote>
+  <ol type="1">
+    <li><strong>Le Triangle d’Or</strong> : Prenez le coin supérieur gauche
+      et rabattez-le sur le bord droit pour former un triangle rectangle
+      isocèle.</li>
+    <li><strong>L’Élimination du Muda</strong> : Découpez (ou déchirez
+      proprement le long du pli) la bande rectangulaire restante.</li>
+    <li><strong>Résultat</strong> : Vous obtenez un carré parfait de
+      <strong>210 × 210 mm</strong>.
+    </li>
+  </ol>
+  <h3 id="étapes-de-pliage">3.2 Étapes de Pliage</h3>
+  <table>
+    <colgroup>
+      <col style="width: 14%" />
+      <col style="width: 16%" />
+      <col style="width: 26%" />
+      <col style="width: 44%" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th style="text-align: center;">Étape</th>
+        <th style="text-align: left;">Action</th>
+        <th style="text-align: left;">Points clés</th>
+        <th style="text-align: left;">Raison du point clé</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: center;"><strong>1</strong></td>
+        <td style="text-align: left;"><strong>Les Diagonales</strong></td>
+        <td style="text-align: left;">Marquer les deux plis en croix en repliant
+          coin à coin.</td>
+        <td style="text-align: left;">Localiser précisément le centre.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><strong>2</strong></td>
+        <td style="text-align: left;"><strong>Le 1er Blintz</strong></td>
+        <td style="text-align: left;">Rabattre les 4 coins vers le point
+          central.</td>
+        <td style="text-align: left;">Les bords ne doivent pas se
+          chevaucher.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><strong>3</strong></td>
+        <td style="text-align: left;"><strong>Le Retournement</strong></td>
+        <td style="text-align: left;">Retourner la feuille, face lisse vers
+          vous.</td>
+        <td style="text-align: left;"><strong>Crucial</strong> pour la
+          cinématique d’ouverture.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><strong>4</strong></td>
+        <td style="text-align: left;"><strong>Le 2ème Blintz</strong></td>
+        <td style="text-align: left;">Rabattre les 4 nouveaux coins vers le
+          centre.</td>
+        <td style="text-align: left;">Appuyer fort sur chaque pli
+          (marquer).</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><strong>5</strong></td>
+        <td style="text-align: left;"><strong>Le Pré-formage</strong></td>
+        <td style="text-align: left;">Plier le carré en deux (horizontal) puis
+          en deux (vertical).</td>
+        <td style="text-align: left;">Bien marquer les plis extérieurs.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><strong>6</strong></td>
+        <td style="text-align: left;"><strong>L’Ouverture (Mise en
+            volume)</strong></td>
+        <td style="text-align: left;">Glisser les doigts dans les 4 poches et
+          pousser vers le centre.</td>
+        <td style="text-align: left;">Ne pas déchirer le papier.</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="schéma-visuel-du-pliage">3.3 Schéma Visuel du Pliage</h3>
+  <pre><code>  Étape 2 (Recto)          Étape 3 &amp; 4 (Verso)         Étape 6 (Final)
+
+    _____________             _____________               _  _
+   |  \       /  |           |  \       /  |             / \/ \
+   |   \     /   |           |   \     /   |            |      |
+   |----  X  ----|   ---&gt;    |----  X  ----|    ---&gt;     \    /
+   |   /     \   | (Retourner) |   /     \   |            (____)
+   |__/_______\__|           |__/_______\__|
+  (Coins au centre)         (Coins au centre)        (Mise en volume)</code></pre>
+  <hr />
+  <h2 id="descriptif-des-5-postes-de-travail">4. Descriptif des 5 Postes
+    de Travail</h2>
+  <p>Chaque ligne de production est organisée en <strong>5 postes
+      séquentiels</strong>. Chaque équipe nomme un <strong>responsable
+      d’équipe</strong> et un <strong>contrôleur qualité</strong> (au Poste
+    5).</p>
+  <table>
+    <colgroup>
+      <col style="width: 19%" />
+      <col style="width: 33%" />
+      <col style="width: 47%" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th style="text-align: center;">Poste</th>
+        <th style="text-align: left;">Opérations</th>
+        <th style="text-align: center;">Temps indicatif</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: center;"><strong>P1</strong></td>
+        <td style="text-align: left;">Formation du carré (triangle, découpe,
+          vérification 210 × 210 mm)</td>
+        <td style="text-align: center;">~25 s</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><strong>P2</strong></td>
+        <td style="text-align: left;">Diagonales + 1er Blintz (4 coins au
+          centre, face recto)</td>
+        <td style="text-align: center;">~35 s</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><strong>P3</strong></td>
+        <td style="text-align: left;">Retournement + 2ème Blintz (4 coins au
+          centre, face verso)</td>
+        <td style="text-align: center;">~40 s</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><strong>P4</strong></td>
+        <td style="text-align: left;">Pré-formage (pli horizontal + pli
+          vertical)</td>
+        <td style="text-align: center;">~20 s</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><strong>P5</strong></td>
+        <td style="text-align: left;">Ouverture (mise en volume) +
+          <strong>Contrôle Qualité</strong>
+        </td>
+        <td style="text-align: center;">~30 s</td>
+      </tr>
+    </tbody>
+  </table>
+  <blockquote>
+    <p>[!NOTE] Les temps indicatifs sont des moyennes observées. Le poste le
+      plus lent (souvent P3) constitue le <strong>goulot
+        d’étranglement</strong> qui limite le débit de toute la ligne.</p>
+  </blockquote>
+  <hr />
+  <h2 id="critères-de-contrôle-qualité">5. Critères de Contrôle
+    Qualité</h2>
+  <p>Pour être déclarée <strong>« Conforme »</strong>, chaque cocotte doit
+    passer les 3 critères suivants :</p>
+  <table>
+    <colgroup>
+      <col style="width: 6%" />
+      <col style="width: 19%" />
+      <col style="width: 28%" />
+      <col style="width: 45%" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th style="text-align: center;">#</th>
+        <th style="text-align: left;">Critère</th>
+        <th style="text-align: left;">Description</th>
+        <th style="text-align: left;">Méthode de contrôle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: center;">1</td>
+        <td style="text-align: left;"><strong>Symétrie</strong></td>
+        <td style="text-align: left;">Les 4 pointes doivent être de même
+          hauteur</td>
+        <td style="text-align: left;">Poser la cocotte, vérifier visuellement
+          l’alignement</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">2</td>
+        <td style="text-align: left;"><strong>Mobilité</strong></td>
+        <td style="text-align: left;">S’ouvre et se ferme sans résistance (pas
+          de plis « mous »)</td>
+        <td style="text-align: left;">Actionner 3 fois la cocotte dans les deux
+          axes</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: left;"><strong>Propreté</strong></td>
+        <td style="text-align: left;">Absence de déchirures ou de traces de
+          doigts excessives</td>
+        <td style="text-align: left;">Inspection visuelle</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><strong>Cocotte non conforme</strong> → Comptabilisée comme
+    <strong>défaut</strong> dans les KPI. Elle n’est pas recomptée en
+    production bonne.
+  </p>
+  <hr />
+  <h2 id="calcul-des-indicateurs-kpi">6. Calcul des Indicateurs (KPI)</h2>
+  <h3 id="production-totale-et-taux-de-qualité">6.1 Production Totale et
+    Taux de Qualité</h3>
+  <p><span class="math display">\[
+      \text{Production Totale} = \text{Nombre de cocottes terminées (bonnes +
+      défectueuses)}
+      \]</span></p>
+  <p><span class="math display">\[
+      \text{Taux de Qualité} = \frac{\text{Cocottes conformes}}{\text{Cocottes
+      terminées}} \times 100\%
+      \]</span></p>
+  <h3 id="wip-work-in-progress-en-cours">6.2 WIP (Work In Progress /
+    En-cours)</h3>
+  <p>Le WIP correspond au <strong>nombre total de cocottes en cours de
+      fabrication</strong> à un instant donné — c’est-à-dire toutes les
+    cocottes qui ont quitté le stock de matière première mais n’ont pas
+    encore passé le contrôle qualité au Poste 5.</p>
+  <p><span class="math display">\[
+      \text{WIP} = \sum_{i=1}^{5} \text{En-cours au Poste}_i
+      \]</span></p>
+  <p><strong>Méthode de relevé</strong> : À la fin du round, compter
+    toutes les cocottes partiellement achevées entre les postes et aux
+    postes.</p>
+  <h3 id="lead-time-temps-de-traversée">6.3 Lead Time (Temps de
+    traversée)</h3>
+  <p>Le Lead Time est le <strong>temps total</strong> entre l’entrée d’une
+    feuille au Poste 1 et la sortie de la cocotte terminée au Poste 5.</p>
+  <p>Deux méthodes de mesure :</p>
+  <p><strong>Méthode directe (chronométrage)</strong> : Marquer une
+    feuille (ex. croix au crayon) à son entrée, déclencher un chrono,
+    l’arrêter quand la cocotte sort du P5.</p>
+  <p><strong>Méthode indirecte (Loi de Little)</strong> : <span class="math display">\[
+      \text{Lead Time} = \frac{\text{WIP}}{\text{Débit}}
+      \]</span></p>
+  <h3 id="débit-throughput">6.4 Débit (Throughput)</h3>
+  <p>Le débit est le <strong>nombre de cocottes terminées par unité de
+      temps</strong>.</p>
+  <p><span class="math display">\[
+      \text{Débit} = \frac{\text{Cocottes terminées}}{\text{Durée du round (en
+      minutes)}}
+      \]</span></p>
+  <p><strong>Exemple</strong> : 52 cocottes terminées en 20 min → Débit =
+    2,6 cocottes/min.</p>
+  <h3 id="loi-de-little">6.5 Loi de Little</h3>
+  <p>La <strong>Loi de Little</strong> relie les trois indicateurs
+    fondamentaux d’un système en régime permanent :</p>
+  <p><span class="math display">\[
+      \boxed{L = \lambda \times W}
+      \]</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: center;">Symbole</th>
+        <th style="text-align: left;">Signification</th>
+        <th style="text-align: left;">Unité typique</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: center;"><span class="math inline">\(L\)</span></td>
+        <td style="text-align: left;">WIP moyen (nombre de pièces dans le
+          système)</td>
+        <td style="text-align: left;">cocottes</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><span class="math inline">\(\lambda\)</span></td>
+        <td style="text-align: left;">Débit moyen (throughput)</td>
+        <td style="text-align: left;">cocottes/min</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><span class="math inline">\(W\)</span></td>
+        <td style="text-align: left;">Lead Time moyen</td>
+        <td style="text-align: left;">min</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><strong>Traduction opérationnelle</strong> : Pour réduire le Lead
+    Time (<span class="math inline">\(W\)</span>), on peut soit
+    <strong>réduire le WIP</strong> (<span class="math inline">\(L\)</span>), soit <strong>augmenter le
+      débit</strong> (<span class="math inline">\(\lambda\)</span>).
+  </p>
+  <p><strong>Exemple concret</strong> :</p>
+  <ul>
+    <li>Round 1 : WIP = 50, Débit = 1 cocotte/min → Lead Time = 50 min</li>
+    <li>Round 2 : WIP = 5, Débit = 1 cocotte/min → Lead Time = <strong>5
+        min</strong> → ÷ 10 !</li>
+  </ul>
+  <h3 id="takt-time">6.6 Takt Time</h3>
+  <p>Le Takt Time est le <strong>rythme de production imposé par la
+      demande client</strong>.</p>
+  <p><span class="math display">\[
+      \text{Takt Time} = \frac{\text{Temps disponible}}{\text{Demande client}}
+      \]</span></p>
+  <p><strong>Exemple</strong> : Demande = 100 cocottes/heure, Temps
+    disponible = 60 min → Takt Time = 60/100 = <strong>36
+      secondes/cocotte</strong>. Chaque poste doit produire en ≤ 36 s.</p>
+  <h3 id="trs-taux-de-rendement-synthétique">6.7 TRS (Taux de Rendement
+    Synthétique)</h3>
+  <p><span class="math display">\[
+      \boxed{\text{TRS} = \text{Disponibilité} \times \text{Performance}
+      \times \text{Qualité}}
+      \]</span></p>
+  <table>
+    <colgroup>
+      <col style="width: 31%" />
+      <col style="width: 23%" />
+      <col style="width: 44%" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th style="text-align: left;">Composante</th>
+        <th style="text-align: left;">Formule</th>
+        <th style="text-align: center;">Exemple Round 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left;"><strong>Disponibilité</strong></td>
+        <td style="text-align: left;">Temps effectif / Temps d’ouverture</td>
+        <td style="text-align: center;">1150 s / 1200 s = <strong>95,8
+            %</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong>Performance</strong></td>
+        <td style="text-align: left;">Production réelle / Production théorique
+          au Takt</td>
+        <td style="text-align: center;">min(68/33 , 1) = <strong>100
+            %</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong>Qualité</strong></td>
+        <td style="text-align: left;">Pièces bonnes / Pièces produites</td>
+        <td style="text-align: center;">65/68 = <strong>95,6 %</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong>TRS</strong></td>
+        <td style="text-align: left;">Produit des trois</td>
+        <td style="text-align: center;"><strong>91,5 %</strong> ✅</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><strong>Repères</strong> :</p>
+  <ul>
+    <li>TRS ≈ 40–50 % → production de masse désorganisée (typique Round
+      1)</li>
+    <li>TRS ≈ 85 % → classe mondiale</li>
+    <li>TRS &gt; 90 % → excellence opérationnelle (objectif Round 3)</li>
+  </ul>
+  <hr />
+  <h2 id="simulation-1-flux-poussé-lusine-à-stocks">7. Simulation 1 — Flux
+    Poussé : « L’Usine à Stocks »</h2>
+  <h3 id="règles-du-round-1">7.1 Règles du Round 1</h3>
+  <blockquote>
+    <p>[!WARNING] <strong>Mode production de masse</strong></p>
+    <ul>
+      <li>Travail par <strong>lots de 10 cocottes</strong></li>
+      <li>Chaque poste produit <strong>au maximum de sa capacité</strong>,
+        sans attendre le poste suivant</li>
+      <li><strong>Communication interdite</strong> entre les postes</li>
+      <li>Objectif donné aux participants : « Produire le
+        <strong>maximum</strong> en 20 minutes »
+      </li>
+    </ul>
+  </blockquote>
+  <h3 id="déroulé">7.2 Déroulé</h3>
+  <table>
+    <colgroup>
+      <col style="width: 34%" />
+      <col style="width: 38%" />
+      <col style="width: 26%" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th style="text-align: left;">Horaire</th>
+        <th style="text-align: left;">Activité</th>
+        <th style="text-align: center;">Durée</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left;">11 h 00</td>
+        <td style="text-align: left;">Briefing : explication des règles,
+          distribution du stock matière, installation des chronomètres</td>
+        <td style="text-align: center;">5 min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">11 h 05</td>
+        <td style="text-align: left;"><strong>Production</strong> — TOP Départ !
+          Le formateur observe sans intervenir. À mi-parcours (10 min), demander :
+          « Qui est débordé ? Qui attend ? »</td>
+        <td style="text-align: center;">20 min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">11 h 25</td>
+        <td style="text-align: left;"><strong>Comptage et mesures</strong> —
+          Arrêt de la production. Compter : cocottes terminées, en-cours par
+          poste, défauts.</td>
+        <td style="text-align: center;">10 min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">11 h 35</td>
+        <td style="text-align: left;"><strong>Débriefing
+            approfondi</strong></td>
+        <td style="text-align: center;">25 min</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="observations-attendues">7.3 Observations Attendues</h3>
+  <ul>
+    <li>📦 <strong>En-cours massifs</strong> entre les postes (stocks
+      intermédiaires)</li>
+    <li>😰 <strong>Stress visible</strong> des opérateurs au goulot</li>
+    <li>🔴 <strong>Défauts détectés tardivement</strong> (au Poste 5, les
+      cocottes du début sont déjà dans la pile)</li>
+    <li>🚧 <strong>Goulot d’étranglement</strong> (le poste le plus lent
+      bloque tout le flux en aval)</li>
+    <li>🗑️ Présence de la plupart des <strong>8 gaspillages</strong> :
+      <ul>
+        <li>Surproduction (lots de 10)</li>
+        <li>Attentes (postes rapides inactifs)</li>
+        <li>Stocks (en-cours empilés)</li>
+        <li>Mouvements inutiles (chercher de la place)</li>
+        <li>Défauts (trouvés tard)</li>
+        <li>Sur-processus (retouches)</li>
+      </ul>
+    </li>
+  </ul>
+  <h3 id="questions-de-débriefing">7.4 Questions de Débriefing</h3>
+  <ol type="1">
+    <li>« Comment vous êtes-vous senti pendant la production ? »</li>
+    <li>« Qu’avez-vous observé ? »</li>
+    <li>« Où étaient les stocks ? »</li>
+    <li>« Quand avez-vous détecté les défauts ? »</li>
+    <li>Faire identifier les 8 gaspillages au paperboard</li>
+  </ol>
+  <h3 id="relevé-kpi-round-1">7.5 Relevé KPI — Round 1</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: left;">Indicateur</th>
+        <th style="text-align: center;">Valeur</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left;">Production totale</td>
+        <td style="text-align: center;">___ cocottes</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">En-cours (WIP)</td>
+        <td style="text-align: center;">___ cocottes</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">Lead Time moyen</td>
+        <td style="text-align: center;">___ s</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">Débit</td>
+        <td style="text-align: center;">___ cocottes/min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">Taux de qualité</td>
+        <td style="text-align: center;">___ %</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">Stress perçu</td>
+        <td style="text-align: center;">⭐⭐⭐⭐⭐</td>
+      </tr>
+    </tbody>
+  </table>
+  <hr />
+  <h2 id="simulation-2-flux-tiré-kanban-lusine-fluide">8. Simulation 2 —
+    Flux Tiré &amp; Kanban : « L’Usine Fluide »</h2>
+  <h3 id="concepts-clés">8.1 Concepts Clés</h3>
+  <ul>
+    <li><strong>Flux Tiré (Pull)</strong> : On ne produit que si le poste
+      suivant (le « client ») le demande → inversion de la logique de
+      production.</li>
+    <li><strong>Kanban</strong> : Signal visuel de déclenchement de
+      production (carte verte = « je suis disponible, envoie une pièce
+      »).</li>
+    <li><strong>One Piece Flow</strong> : Fabrication pièce par pièce (lot
+      de 1) au lieu de lots de 10.</li>
+  </ul>
+  <h3 id="règles-du-round-2">8.2 Règles du Round 2</h3>
+  <blockquote>
+    <p>[!TIP] <strong>Mode Flux Tiré</strong></p>
+    <ul>
+      <li>Production <strong>pièce à pièce</strong> uniquement (lot = 1)</li>
+      <li>On ne produit que si le <strong>poste aval</strong> affiche sa
+        <strong>carte verte</strong> (Kanban)
+      </li>
+      <li>Carte <strong>rouge</strong> = poste occupé, ne pas envoyer</li>
+      <li>Carte <strong>verte</strong> = poste disponible, demande une
+        pièce</li>
+      <li><strong>Communication autorisée</strong> et encouragée</li>
+      <li>Objectif : <strong>Réduire le Lead Time</strong> et le WIP</li>
+    </ul>
+  </blockquote>
+  <h3 id="mise-en-place-du-kanban">8.3 Mise en Place du Kanban</h3>
+  <ol type="1">
+    <li>Chaque poste reçoit <strong>2 cartes Kanban</strong> (1 rouge, 1
+      verte)</li>
+    <li>Le poste affiche la carte <strong>verte</strong> quand il est prêt à
+      recevoir une pièce</li>
+    <li>Le poste amont ne transfert la pièce que s’il voit la carte
+      verte</li>
+    <li>Dès réception, le poste passe en carte <strong>rouge</strong></li>
+    <li>Réorganisation physique : <strong>rapprocher les postes</strong>
+      pour minimiser les transports</li>
+  </ol>
+  <h3 id="déroulé-1">8.4 Déroulé</h3>
+  <table>
+    <colgroup>
+      <col style="width: 34%" />
+      <col style="width: 38%" />
+      <col style="width: 26%" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th style="text-align: left;">Horaire</th>
+        <th style="text-align: left;">Activité</th>
+        <th style="text-align: center;">Durée</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left;">13 h 00</td>
+        <td style="text-align: left;">Briefing : explication flux tiré +
+          démonstration Kanban au tableau</td>
+        <td style="text-align: center;">15 min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">13 h 15</td>
+        <td style="text-align: left;">Essai à blanc (5 cocottes test)</td>
+        <td style="text-align: center;">5 min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">13 h 20</td>
+        <td style="text-align: left;"><strong>Production</strong> — TOP Départ !
+          Observer : fluidité, communication, WIP, détection précoce des
+          défauts.</td>
+        <td style="text-align: center;">20 min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">13 h 40</td>
+        <td style="text-align: left;"><strong>Comptage et mesures</strong></td>
+        <td style="text-align: center;">10 min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">13 h 50</td>
+        <td style="text-align: left;"><strong>Débriefing</strong> +
+          démonstration Loi de Little au tableau</td>
+        <td style="text-align: center;">25 min</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="observations-attendues-1">8.5 Observations Attendues</h3>
+  <ul>
+    <li>📉 <strong>WIP très faible</strong> (1 à 2 pièces maximum dans le
+      système)</li>
+    <li>⚡ <strong>Lead Time considérablement réduit</strong> (vérifiable
+      par la Loi de Little)</li>
+    <li>✅ <strong>Défauts détectés immédiatement</strong> (poste suivant
+      alerte le poste amont)</li>
+    <li>🤝 <strong>Collaboration naturelle</strong> entre les postes</li>
+    <li>😌 <strong>Stress en baisse</strong> significative</li>
+  </ul>
+  <h3 id="questions-de-débriefing-1">8.6 Questions de Débriefing</h3>
+  <ol type="1">
+    <li>« Quelle différence majeure avec le Round 1 ? »</li>
+    <li>« Quand avez-vous détecté les défauts cette fois ? »</li>
+    <li>« Comment était votre niveau de stress ? »</li>
+    <li>« Quel rôle ont joué les cartes Kanban ? »</li>
+  </ol>
+  <h3 id="relevé-kpi-round-2">8.7 Relevé KPI — Round 2</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: left;">Indicateur</th>
+        <th style="text-align: center;">Valeur</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left;">Production totale</td>
+        <td style="text-align: center;">___ cocottes</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">En-cours (WIP)</td>
+        <td style="text-align: center;">___ cocottes</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">Lead Time moyen</td>
+        <td style="text-align: center;">___ s</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">Débit</td>
+        <td style="text-align: center;">___ cocottes/min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">Taux de qualité</td>
+        <td style="text-align: center;">___ %</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">Stress perçu</td>
+        <td style="text-align: center;">⭐⭐⭐</td>
+      </tr>
+    </tbody>
+  </table>
+  <hr />
+  <h2 id="simulation-3-équilibrage-kaizen">9. Simulation 3 — Équilibrage
+    &amp; Kaizen</h2>
+  <h3 id="objectifs">9.1 Objectifs</h3>
+  <ul>
+    <li>Équilibrer les charges de travail entre postes</li>
+    <li>Calculer et appliquer le Takt Time</li>
+    <li>Mettre en place le 5S</li>
+    <li>Pratiquer l’amélioration continue (Kaizen)</li>
+  </ul>
+  <h3 id="atelier-yamazumi-diagramme-déquilibrage">9.2 Atelier Yamazumi
+    (Diagramme d’Équilibrage)</h3>
+  <ol type="1">
+    <li><strong>Chronométrer</strong> chaque opération par poste (3 cycles,
+      prendre la moyenne)</li>
+    <li><strong>Construire</strong> le diagramme Yamazumi au paperboard :
+      <ul>
+        <li>Axe vertical : Temps (secondes)</li>
+        <li>Axe horizontal : Postes P1 à P5</li>
+        <li>Ligne horizontale : <strong>Takt Time cible</strong> (ex. 36 s)</li>
+      </ul>
+    </li>
+  </ol>
+  <pre><code>Temps (sec)
+   60│         █████
+   50│  ████   █████  ████
+   40│  ████   █████  ████  ████
+   30│  ████ ┆ █████  ████  ████  ████  ← Takt Time = 36 s
+   20│  ████   █████  ████  ████  ████
+   10│  ████   █████  ████  ████  ████
+    0└─────┬────┬────┬────┬────┬────
+         P1   P2   P3   P4   P5</code></pre>
+  <ol type="1">
+    <li><strong>Identifier le goulot</strong> (poste au-dessus du Takt
+      Time)</li>
+    <li><strong>Brainstorming</strong> en équipe pour réduire ce temps :
+      <ul>
+        <li>Redistribuer certaines opérations</li>
+        <li>Simplifier les gestes</li>
+        <li>Améliorer l’ergonomie</li>
+      </ul>
+    </li>
+  </ol>
+  <h3 id="mise-en-place-du-5s">9.3 Mise en Place du 5S</h3>
+  <table>
+    <colgroup>
+      <col style="width: 6%" />
+      <col style="width: 22%" />
+      <col style="width: 33%" />
+      <col style="width: 37%" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th style="text-align: center;">#</th>
+        <th style="text-align: left;">Japonais</th>
+        <th style="text-align: left;">Signification</th>
+        <th style="text-align: left;">Action concrète</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: center;">1</td>
+        <td style="text-align: left;"><strong>Seiri</strong></td>
+        <td style="text-align: left;">Trier</td>
+        <td style="text-align: left;">Retirer le matériel inutile des
+          tables</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">2</td>
+        <td style="text-align: left;"><strong>Seiton</strong></td>
+        <td style="text-align: left;">Ranger</td>
+        <td style="text-align: left;">Placer chaque outil à portée de main (zone
+          de préhension)</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">3</td>
+        <td style="text-align: left;"><strong>Seiso</strong></td>
+        <td style="text-align: left;">Nettoyer</td>
+        <td style="text-align: left;">Remettre les tables en ordre</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">4</td>
+        <td style="text-align: left;"><strong>Seiketsu</strong></td>
+        <td style="text-align: left;">Standardiser</td>
+        <td style="text-align: left;">Photographier la disposition (standard
+          visuel)</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">5</td>
+        <td style="text-align: left;"><strong>Shitsuke</strong></td>
+        <td style="text-align: left;">Respecter</td>
+        <td style="text-align: left;">S’engager collectivement à maintenir
+          l’organisation</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="production-round-3-20-min">9.4 Production Round 3 (20 min)</h3>
+  <ul>
+    <li>Application des améliorations (nouveau layout, tâches rééquilibrées,
+      5S)</li>
+    <li>Objectif : qualité maximale + respect du Takt Time</li>
+  </ul>
+  <h3 id="relevé-kpi-round-3">9.5 Relevé KPI — Round 3</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: left;">Indicateur</th>
+        <th style="text-align: center;">Valeur</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left;">Production totale</td>
+        <td style="text-align: center;">___ cocottes</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">En-cours (WIP)</td>
+        <td style="text-align: center;">___ cocottes</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">Lead Time moyen</td>
+        <td style="text-align: center;">___ s</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">Débit</td>
+        <td style="text-align: center;">___ cocottes/min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">Taux de qualité</td>
+        <td style="text-align: center;">___ %</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">Stress perçu</td>
+        <td style="text-align: center;">⭐⭐</td>
+      </tr>
+    </tbody>
+  </table>
+  <hr />
+  <h2 id="tableau-comparatif-des-3-rounds">10. Tableau Comparatif des 3
+    Rounds</h2>
+  <table>
+    <colgroup>
+      <col style="width: 13%" />
+      <col style="width: 25%" />
+      <col style="width: 32%" />
+      <col style="width: 29%" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th style="text-align: left;">Indicateur</th>
+        <th style="text-align: center;">Round 1 — Flux Poussé</th>
+        <th style="text-align: center;">Round 2 — Kanban / Flux Tiré</th>
+        <th style="text-align: center;">Round 3 — Optimisé Kaizen</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left;"><strong>Production totale</strong></td>
+        <td style="text-align: center;">~45</td>
+        <td style="text-align: center;">~52</td>
+        <td style="text-align: center;">~68</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong>En-cours (WIP)</strong></td>
+        <td style="text-align: center;">~48 (montagnes)</td>
+        <td style="text-align: center;">~8 (limité)</td>
+        <td style="text-align: center;">~2 (minimal)</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong>Lead Time moyen</strong></td>
+        <td style="text-align: center;">~18 min</td>
+        <td style="text-align: center;">~5 min</td>
+        <td style="text-align: center;">~2 min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong>Débit</strong></td>
+        <td style="text-align: center;">~2,3 cocottes/min</td>
+        <td style="text-align: center;">~2,6 cocottes/min</td>
+        <td style="text-align: center;">~3,4 cocottes/min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong>Taux de qualité</strong></td>
+        <td style="text-align: center;">~62 %</td>
+        <td style="text-align: center;">~85 %</td>
+        <td style="text-align: center;">~96 %</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong>TRS estimé</strong></td>
+        <td style="text-align: center;">~45 %</td>
+        <td style="text-align: center;">~75 %</td>
+        <td style="text-align: center;">~91 %</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong>Stress perçu</strong></td>
+        <td style="text-align: center;">⭐⭐⭐⭐⭐ (Maximum)</td>
+        <td style="text-align: center;">⭐⭐⭐ (En baisse)</td>
+        <td style="text-align: center;">⭐⭐ (Serein)</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong>Collaboration</strong></td>
+        <td style="text-align: center;">Faible</td>
+        <td style="text-align: center;">Moyenne</td>
+        <td style="text-align: center;">Excellente</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><em>Les chiffres ci-dessus sont des exemples types observés lors de
+      formations précédentes.</em></p>
+  <hr />
+  <h2 id="déroulé-chronologique-de-la-journée">11. Déroulé Chronologique
+    de la Journée</h2>
+  <table>
+    <colgroup>
+      <col style="width: 39%" />
+      <col style="width: 30%" />
+      <col style="width: 30%" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th style="text-align: left;">Horaire</th>
+        <th style="text-align: left;">Phase</th>
+        <th style="text-align: center;">Durée</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left;">09 h 00 – 09 h 30</td>
+        <td style="text-align: left;">Accueil &amp; Brise-glace « La Cocotte
+          Agile »</td>
+        <td style="text-align: center;">30 min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">09 h 30 – 10 h 15</td>
+        <td style="text-align: left;">Fondamentaux du LEAN (Muda, Muri, Mura, 8
+          gaspillages)</td>
+        <td style="text-align: center;">45 min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">10 h 15 – 10 h 45</td>
+        <td style="text-align: left;">Standardisation : FIP + Organisation des 5
+          postes</td>
+        <td style="text-align: center;">30 min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">10 h 45 – 11 h 00</td>
+        <td style="text-align: left;">☕ Pause</td>
+        <td style="text-align: center;">15 min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">11 h 00 – 12 h 00</td>
+        <td style="text-align: left;"><strong>Round 1 : Flux Poussé</strong>
+          (production + débriefing)</td>
+        <td style="text-align: center;">1 h 00</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">12 h 00 – 13 h 00</td>
+        <td style="text-align: left;">🍽️ Pause déjeuner</td>
+        <td style="text-align: center;">1 h 00</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">13 h 00 – 14 h 15</td>
+        <td style="text-align: left;"><strong>Round 2 : Flux Tiré
+            Kanban</strong> (production + débriefing)</td>
+        <td style="text-align: center;">1 h 15</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">14 h 15 – 15 h 45</td>
+        <td style="text-align: left;"><strong>Round 3 : Équilibrage &amp;
+            Kaizen</strong> (Yamazumi, 5S, production)</td>
+        <td style="text-align: center;">1 h 30</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">15 h 45 – 16 h 00</td>
+        <td style="text-align: left;">☕ Pause</td>
+        <td style="text-align: center;">15 min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">16 h 00 – 16 h 45</td>
+        <td style="text-align: left;">Synthèse finale : tableau comparatif +
+          calcul du TRS</td>
+        <td style="text-align: center;">45 min</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">16 h 45 – 17 h 00</td>
+        <td style="text-align: left;">Clôture &amp; Plan d’action personnel</td>
+        <td style="text-align: center;">15 min</td>
+      </tr>
+    </tbody>
+  </table>
+  <hr />
+  <h2 id="annexes-pour-le-formateur">12. Annexes pour le Formateur</h2>
+  <h3 id="checklist-pré-formation">12.1 Checklist Pré-Formation</h3>
+  <ul class="task-list">
+    <li><label><input type="checkbox" />Imprimer la Fiche d’Instruction au
+        Poste (FIP) en A3 (1 par poste)</label></li>
+    <li><label><input type="checkbox" />Imprimer les affiches des 8
+        gaspillages</label></li>
+    <li><label><input type="checkbox" />Préparer les cartes Kanban (vertes
+        et rouges, 2 par poste)</label></li>
+    <li><label><input type="checkbox" />Tester le pliage cocotte en amont
+        (vérifier la qualité du papier 80 g/m²)</label></li>
+    <li><label><input type="checkbox" />Préparer les chronomètres et
+        tableaux de bord vierges</label></li>
+    <li><label><input type="checkbox" />Commander post-its, marqueurs,
+        scotch, feutres</label></li>
+    <li><label><input type="checkbox" />Vérifier la salle : tables mobiles
+        pour réorganisation entre les rounds</label></li>
+    <li><label><input type="checkbox" />Prévoir vidéoprojecteur + vidéo
+        Toyota (3-4 min)</label></li>
+    <li><label><input type="checkbox" />Préparer les badges nominatifs et
+        kits matériel individuels</label></li>
+    <li><label><input type="checkbox" />Imprimer le diagramme Yamazumi
+        vierge en A3</label></li>
+  </ul>
+  <h3 id="grille-dobservation-des-comportements">12.2 Grille d’Observation
+    des Comportements</h3>
+  <table>
+    <colgroup>
+      <col style="width: 16%" />
+      <col style="width: 27%" />
+      <col style="width: 27%" />
+      <col style="width: 27%" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th style="text-align: left;">Dimension</th>
+        <th style="text-align: left;">Round 1 (Poussé)</th>
+        <th style="text-align: left;">Round 2 (Kanban)</th>
+        <th style="text-align: left;">Round 3 (Kaizen)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left;">Communication</td>
+        <td style="text-align: left;">Individualisme, silence</td>
+        <td style="text-align: left;">Début de communication</td>
+        <td style="text-align: left;">Échanges fluides</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">Ambiance</td>
+        <td style="text-align: left;">Frustration, recherche de coupables</td>
+        <td style="text-align: left;">Entraide ponctuelle</td>
+        <td style="text-align: left;">Esprit d’équipe</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">Face aux défauts</td>
+        <td style="text-align: left;">Ignorés ou cachés</td>
+        <td style="text-align: left;">Signalés au poste amont</td>
+        <td style="text-align: left;">Problème = opportunité</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;">Posture</td>
+        <td style="text-align: left;">Stress, crispation</td>
+        <td style="text-align: left;">Relâchement progressif</td>
+        <td style="text-align: left;">Sourires, sérénité</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="variantes-pédagogiques">12.3 Variantes Pédagogiques</h3>
+  <p><strong>Pour un public confirmé :</strong></p>
+  <ul>
+    <li>Ajouter un Round 4 avec introduction du <strong>Heijunka</strong>
+      (lissage de production) : demande client variable (3 types de cocottes
+      de tailles différentes)</li>
+    <li>Simuler des <strong>pannes machine</strong> ou des variations de
+      demande client pendant le round</li>
+  </ul>
+  <p><strong>Pour un public débutant :</strong></p>
+  <ul>
+    <li>Simplifier le calcul du TRS (omettre la composante Performance)</li>
+    <li>Se concentrer sur Round 1 vs Round 2 uniquement</li>
+    <li>Insister sur l’expérience vécue plutôt que sur les formules</li>
+  </ul>
+  <p><strong>Pour un format demi-journée :</strong></p>
+  <ul>
+    <li>Supprimer le Round 3 (Kaizen)</li>
+    <li>Synthèse directe après le Round 2</li>
+    <li>Durée : environ 3 h 30</li>
+  </ul>
+  <h3 id="conseils-pédagogiques">12.4 Conseils Pédagogiques</h3>
+  <blockquote>
+    <p>[!TIP] <strong>Standard au poste</strong> : Imprimez la FIP et
+      scotchez-la directement sur la table. Lors du Round 1, personne ne la
+      regarde ! C’est lors du débriefing que vous direz : <em>« Le standard
+        était sous vos yeux, pourquoi ne l’avez-vous pas suivi ? »</em> —
+      meilleur moyen d’introduire la <strong>discipline
+        opérationnelle</strong>.</p>
+  </blockquote>
+  <blockquote>
+    <p>[!NOTE] <strong>Message clé de la journée</strong> : Le LEAN n’est
+      pas une méthode pour travailler plus vite, mais pour <strong>travailler
+        mieux en supprimant ce qui ne sert à rien</strong>.</p>
+    <p>Citation de Taiichi Ohno : <em>« Le pire gaspillage, c’est de faire
+        efficacement quelque chose qui ne devrait pas être fait du tout.
+        »</em></p>
+  </blockquote>
+  <hr />
+  <h2 id="indicateurs-de-réussite-de-la-formation">13. Indicateurs de
+    Réussite de la Formation</h2>
+  <p>À l’issue de la journée, les participants doivent être capables de
+    :</p>
+  <ol type="1">
+    <li>✅ Citer les 3 démons du LEAN (Muda, Muri, Mura)</li>
+    <li>✅ Identifier au moins 5 des 8 gaspillages dans leur
+      environnement</li>
+    <li>✅ Expliquer la différence entre flux poussé et flux tiré</li>
+    <li>✅ Comprendre l’impact du WIP sur le Lead Time (Loi de Little)</li>
+    <li>✅ Calculer un TRS à partir des 3 composantes</li>
+    <li>✅ Proposer au moins une amélioration concrète (Kaizen) pour leur
+      poste</li>
+    <li>✅ Comprendre que le LEAN est avant tout un <strong>état
+        d’esprit</strong></li>
+  </ol>
+  <hr />
+  <p><em>Document unifié — Version 1.0 — Février 2026</em></p>
+</body>
+
+</html>
