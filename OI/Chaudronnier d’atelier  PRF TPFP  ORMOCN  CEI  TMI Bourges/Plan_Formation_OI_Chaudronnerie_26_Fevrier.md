@@ -1,4 +1,4 @@
-# PLAN DE FORMATION : Organisation Industrielle
+﻿# PLAN DE FORMATION : Organisation Industrielle
 
 ## Public Chaudronniers en Reconversion
 
@@ -45,10 +45,10 @@
 **2. L'Atelier Cocotte (Jeu de simulation de l'organisation Lean) (2h00)**
 
 - **Ressources** :
-  - [Scénario Atelier Lean Cocotte (Lien 1)](file:///c:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/Atelier_cocotte/scenario_atelier_lean_cocotte_1jour.html)
-  - [Atelier Cocotte Formation Lean (Lien 2)](file:///c:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/Atelier_cocotte/Atelier-Cocotte-_-Formation-Lean-Journ%C3%A9e.html)
+  - [Guide Complet Atelier Cocotte LEAN](file:///c:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/Atelier_cocotte/Atelier_Cocotte_Lean.html)
+  - [Guide Cocotte LEAN (version HTML)](file:///c:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/Atelier_cocotte/Atelier_Cocotte_Lean.html)
   - [Vidéo : Le Lean en action (Toyota Valenciennes)](https://www.youtube.com/watch?v=uDnsW-WEXpU) *(Projection courte de 3-4 min)*
-- **Déroulement** : Parfait pour comprendre de manière simple et concrète (avec du pliage de papier) la différence entre un flux poussé (chacun travaille dans son coin à son rythme, stocks intermédiaires qui s'accumulent) et un flux tiré/continu. Les stagiaires plient des cocottes en papier à la chaîne, mesurent les temps, voient les problèmes, et réorganisent leur ligne. Idéal pour un public manuel. La vidéo Toyota vient en conclusion de cet exercice pour leur montrer l'Atelier Cocotte appliqué à l'échelle d'une véritable usine moderne.
+- **Déroulement** : Parfait pour comprendre de manière simple et concrète (avec du pliage de papier) la différence entre un flux poussé (chacun travaille dans son coin à son rythme, stocks intermédiaires qui s'accumulent) et un flux tiré/continu. Les stagiaires plient des cocottes en papier à la chaîne en lots de 10 (flux poussé), puis en pièce à pièce avec cartes Kanban (flux tiré). Ils mesurent les indicateurs (WIP, Lead Time via la Loi de Little simplifiée, Débit, TRG) et réorganisent leur ligne. Idéal pour un public manuel. La vidéo Toyota vient en conclusion de cet exercice pour leur montrer l'Atelier Cocotte appliqué à l'échelle d'une véritable usine moderne.
 
 **3. Débriefing : Les 7 Gaspillages / Mudas (1h00)**
 
