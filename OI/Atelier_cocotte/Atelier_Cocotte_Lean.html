@@ -212,6 +212,62 @@
       text-decoration: underline;
     }
 
+    /* === LOGO HEADER === */
+    .logo-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--color-border);
+    }
+
+    .logo-header img {
+      max-width: 180px;
+      height: auto;
+      margin-bottom: 0.5rem;
+    }
+
+    .logo-header .structure-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--color-accent);
+    }
+
+    /* === PAGE BREAKS === */
+    .page-break {
+      page-break-before: always;
+    }
+
+    /* === FOLDING IMAGE === */
+    .folding-image {
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+
+    .folding-image img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+    }
+
+    /* === TAKT TIME HIGHLIGHT === */
+    .takt-highlight {
+      background: #fef3c7;
+      border: 2px solid #f59e0b;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      margin: 1.2rem 0;
+    }
+
+    .takt-highlight table {
+      box-shadow: none;
+      margin: 0.8rem 0;
+    }
+
+    .takt-highlight p {
+      margin: 0.3rem 0;
+    }
+
     /* === PRINT === */
     @media print {
       body {
@@ -239,6 +295,10 @@
       h1,
       h2 {
         page-break-after: avoid;
+      }
+
+      h2.page-break {
+        page-break-before: always;
       }
 
       table,
@@ -272,6 +332,10 @@
 </head>
 
 <body>
+  <div class="logo-header">
+    <img src="logo_uimm_placeholder.jpg" alt="Logo UIMM" />
+    <div class="structure-name">Pôle Formation UIMM - CVDL</div>
+  </div>
   <header id="title-block-header">
     <h1 class="title">Atelier Cocotte LEAN</h1>
   </header>
@@ -288,7 +352,7 @@
       qualité et le bien-être.</p>
   </blockquote>
   <hr />
-  <h2 id="informations-pratiques">1. Informations Pratiques</h2>
+  <h2 id="informations-pratiques" class="page-break">1. Informations Pratiques</h2>
   <table>
     <thead>
       <tr>
@@ -320,8 +384,7 @@
       </tr>
     </tbody>
   </table>
-  <hr />
-  <h2 id="matériel-nécessaire">2. Matériel Nécessaire</h2>
+  <h2 id="matériel-nécessaire" class="page-break">2. Matériel Nécessaire</h2>
   <h3 id="par-participant">Par participant</h3>
   <ul>
     <li>100 feuilles A4 blanches (80 g/m²)</li>
@@ -344,8 +407,7 @@
       poste</li>
     <li>Vidéoprojecteur + vidéo courte (ex. usine Toyota)</li>
   </ul>
-  <hr />
-  <h2 id="fiche-dinstruction-standard-fip-fabrication-de-la-cocotte">3.
+  <h2 id="fiche-dinstruction-standard-fip-fabrication-de-la-cocotte" class="page-break">3.
     Fiche d’Instruction Standard (FIP) — Fabrication de la Cocotte</h2>
   <blockquote>
     <p><strong>Objectif</strong> : Produire une cocotte symétrique,
@@ -434,22 +496,27 @@
     </tbody>
   </table>
   <h3 id="schéma-visuel-du-pliage">3.3 Schéma Visuel du Pliage</h3>
-  <pre><code>  Étape 2 (Recto)          Étape 3 &amp; 4 (Verso)         Étape 6 (Final)
-
-    _____________             _____________               _  _
-   |  \       /  |           |  \       /  |             / \/ \
-   |   \     /   |           |   \     /   |            |      |
-   |----  X  ----|   ---&gt;    |----  X  ----|    ---&gt;     \    /
-   |   /     \   | (Retourner) |   /     \   |            (____)
-   |__/_______\__|           |__/_______\__|
-  (Coins au centre)         (Coins au centre)        (Mise en volume)</code></pre>
-  <hr />
-  <h2 id="descriptif-des-5-postes-de-travail">4. Descriptif des 5 Postes
+  <div class="folding-image">
+    <img src="Plan_Cocotte_simple.jpg" alt="Plan de pliage de la cocotte en 12 étapes" />
+  </div>
+  <h2 id="descriptif-des-5-postes-de-travail" class="page-break">4. Descriptif des 5 Postes
     de Travail</h2>
   <p>Chaque ligne de production est organisée en <strong>5 postes
       séquentiels</strong>. Chaque équipe nomme un <strong>responsable
       d’équipe</strong> et un <strong>contrôleur qualité</strong> (au Poste
     5).</p>
+  <blockquote>
+    <p>[!TIP] <strong>Adaptation au nombre de participants</strong> : Le descriptif ci-dessous correspond à une
+      configuration standard de 5 postes par ligne. En fonction du nombre de participants, le formateur doit adapter
+      l'organisation :</p>
+    <ul>
+      <li><strong>Moins de 8 participants</strong> : Réduire à 3 ou 4 postes en fusionnant certaines opérations (ex.
+        P2+P3 ou P4+P5).</li>
+      <li><strong>Plus de 12 participants</strong> : Ajouter une 3ème ligne de production ou dédoubler certains postes
+        (ex. 2 opérateurs au poste goulot).</li>
+      <li>L'essentiel est que chaque participant ait un rôle actif dans la ligne de production.</li>
+    </ul>
+  </blockquote>
   <table>
     <colgroup>
       <col style="width: 19%" />
@@ -502,8 +569,7 @@
       plus lent (souvent P3) constitue le <strong>goulot
         d’étranglement</strong> qui limite le débit de toute la ligne.</p>
   </blockquote>
-  <hr />
-  <h2 id="critères-de-contrôle-qualité">5. Critères de Contrôle
+  <h2 id="critères-de-contrôle-qualité" class="page-break">5. Critères de Contrôle
     Qualité</h2>
   <p>Pour être déclarée <strong>« Conforme »</strong>, chaque cocotte doit
     passer les 3 critères suivants :</p>
@@ -552,8 +618,7 @@
     <strong>défaut</strong> dans les KPI. Elle n’est pas recomptée en
     production bonne.
   </p>
-  <hr />
-  <h2 id="calcul-des-indicateurs-kpi">6. Calcul des Indicateurs (KPI)</h2>
+  <h2 id="calcul-des-indicateurs-kpi" class="page-break">6. Calcul des Indicateurs (KPI)</h2>
   <h3 id="production-totale-et-taux-de-qualité">6.1 Production Totale et
     Taux de Qualité</h3>
   <p><span class="math display">\[
@@ -598,46 +663,48 @@
     2,6 cocottes/min.</p>
   <h3 id="loi-de-little">6.5 Loi de Little</h3>
   <p>La <strong>Loi de Little</strong> relie les trois indicateurs
-    fondamentaux d’un système en régime permanent :</p>
+    fondamentaux d'un système en régime permanent :</p>
   <p><span class="math display">\[
-      \boxed{L = \lambda \times W}
+      \boxed{\text{WIP} = \text{Débit} \times \text{Lead Time}}
+      \]</span></p>
+  <p>Ou de manière équivalente :</p>
+  <p><span class="math display">\[
+      \text{Lead Time} = \frac{\text{WIP}}{\text{Débit}}
       \]</span></p>
   <table>
     <thead>
       <tr>
-        <th style="text-align: center;">Symbole</th>
+        <th style="text-align: left;">Indicateur</th>
         <th style="text-align: left;">Signification</th>
         <th style="text-align: left;">Unité typique</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td style="text-align: center;"><span class="math inline">\(L\)</span></td>
-        <td style="text-align: left;">WIP moyen (nombre de pièces dans le
-          système)</td>
+        <td style="text-align: left;"><strong>WIP</strong></td>
+        <td style="text-align: left;">Nombre moyen de pièces dans le système</td>
         <td style="text-align: left;">cocottes</td>
       </tr>
       <tr>
-        <td style="text-align: center;"><span class="math inline">\(\lambda\)</span></td>
-        <td style="text-align: left;">Débit moyen (throughput)</td>
+        <td style="text-align: left;"><strong>Débit</strong></td>
+        <td style="text-align: left;">Nombre de pièces terminées par unité de temps</td>
         <td style="text-align: left;">cocottes/min</td>
       </tr>
       <tr>
-        <td style="text-align: center;"><span class="math inline">\(W\)</span></td>
-        <td style="text-align: left;">Lead Time moyen</td>
+        <td style="text-align: left;"><strong>Lead Time</strong></td>
+        <td style="text-align: left;">Temps de traversée moyen d'une pièce</td>
         <td style="text-align: left;">min</td>
       </tr>
     </tbody>
   </table>
-  <p><strong>Traduction opérationnelle</strong> : Pour réduire le Lead
-    Time (<span class="math inline">\(W\)</span>), on peut soit
-    <strong>réduire le WIP</strong> (<span class="math inline">\(L\)</span>), soit <strong>augmenter le
-      débit</strong> (<span class="math inline">\(\lambda\)</span>).
+  <p><strong>Traduction opérationnelle</strong> : Pour réduire le
+    <strong>Lead Time</strong>, on peut soit
+    <strong>réduire le WIP</strong>, soit <strong>augmenter le Débit</strong>.
   </p>
   <p><strong>Exemple concret</strong> :</p>
   <ul>
-    <li>Round 1 : WIP = 50, Débit = 1 cocotte/min → Lead Time = 50 min</li>
-    <li>Round 2 : WIP = 5, Débit = 1 cocotte/min → Lead Time = <strong>5
+    <li>Round 1 : WIP = 50, Débit = 1 cocotte/min → Lead Time = 50/1 = <strong>50 min</strong></li>
+    <li>Round 2 : WIP = 5, Débit = 1 cocotte/min → Lead Time = 5/1 = <strong>5
         min</strong> → ÷ 10 !</li>
   </ul>
   <h3 id="takt-time">6.6 Takt Time</h3>
@@ -646,13 +713,43 @@
   <p><span class="math display">\[
       \text{Takt Time} = \frac{\text{Temps disponible}}{\text{Demande client}}
       \]</span></p>
-  <p><strong>Exemple</strong> : Demande = 100 cocottes/heure, Temps
-    disponible = 60 min → Takt Time = 60/100 = <strong>36
-      secondes/cocotte</strong>. Chaque poste doit produire en ≤ 36 s.</p>
-  <h3 id="trs-taux-de-rendement-synthétique">6.7 TRS (Taux de Rendement
-    Synthétique)</h3>
+  <div class="takt-highlight">
+    <p><strong>📐 Calcul du Takt Time pour l'atelier :</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: left;">Donnée</th>
+          <th style="text-align: center;">Valeur</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left;"><strong>Demande client</strong></td>
+          <td style="text-align: center;"><strong>100 cocottes / heure</strong></td>
+        </tr>
+        <tr>
+          <td style="text-align: left;"><strong>Temps disponible</strong></td>
+          <td style="text-align: center;"><strong>60 minutes</strong></td>
+        </tr>
+        <tr>
+          <td style="text-align: left;"><strong>Takt Time</strong></td>
+          <td style="text-align: center;"><strong>60 min / 100 = 0,6 min = 36 secondes / cocotte</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>➡️ <strong>Chaque poste doit réaliser son opération en 36 secondes maximum</strong> pour satisfaire la demande
+      client.</p>
+  </div>
+  <h3 id="trg-taux-de-rendement-global">6.7 TRG (Taux de Rendement
+    Global)</h3>
+  <blockquote>
+    <p>[!NOTE] <strong>TRG vs TRS</strong> : Dans notre atelier, la <strong>Disponibilité</strong> se calcule par
+      rapport au <strong>Temps d'ouverture</strong> (temps total de la session). C'est donc un <strong>TRG</strong>
+      (Taux de Rendement Global) et non un TRS (Taux de Rendement Synthétique). Le TRS utiliserait le <strong>Temps
+        requis</strong> (Temps d'ouverture − arrêts planifiés) au dénominateur.</p>
+  </blockquote>
   <p><span class="math display">\[
-      \boxed{\text{TRS} = \text{Disponibilité} \times \text{Performance}
+      \boxed{\text{TRG} = \text{Disponibilité} \times \text{Performance}
       \times \text{Qualité}}
       \]</span></p>
   <table>
@@ -671,7 +768,7 @@
     <tbody>
       <tr>
         <td style="text-align: left;"><strong>Disponibilité</strong></td>
-        <td style="text-align: left;">Temps effectif / Temps d’ouverture</td>
+        <td style="text-align: left;">Temps effectif / Temps d'ouverture</td>
         <td style="text-align: center;">1150 s / 1200 s = <strong>95,8
             %</strong></td>
       </tr>
@@ -688,7 +785,7 @@
         <td style="text-align: center;">65/68 = <strong>95,6 %</strong></td>
       </tr>
       <tr>
-        <td style="text-align: left;"><strong>TRS</strong></td>
+        <td style="text-align: left;"><strong>TRG</strong></td>
         <td style="text-align: left;">Produit des trois</td>
         <td style="text-align: center;"><strong>91,5 %</strong> ✅</td>
       </tr>
@@ -696,19 +793,20 @@
   </table>
   <p><strong>Repères</strong> :</p>
   <ul>
-    <li>TRS ≈ 40–50 % → production de masse désorganisée (typique Round
+    <li>TRG ≈ 40–50 % → production de masse désorganisée (typique Round
       1)</li>
-    <li>TRS ≈ 85 % → classe mondiale</li>
-    <li>TRS &gt; 90 % → excellence opérationnelle (objectif Round 3)</li>
+    <li>TRG ≈ 85 % → classe mondiale</li>
+    <li>TRG &gt; 90 % → excellence opérationnelle (objectif Round 3)</li>
   </ul>
-  <hr />
-  <h2 id="simulation-1-flux-poussé-lusine-à-stocks">7. Simulation 1 — Flux
+  <h2 id="simulation-1-flux-poussé-lusine-à-stocks" class="page-break">7. Simulation 1 — Flux
     Poussé : « L’Usine à Stocks »</h2>
   <h3 id="règles-du-round-1">7.1 Règles du Round 1</h3>
   <blockquote>
     <p>[!WARNING] <strong>Mode production de masse</strong></p>
     <ul>
-      <li>Travail par <strong>lots de 10 cocottes</strong></li>
+      <li>Travail par <strong>lots de 10 cocottes</strong> : chaque poste doit terminer un lot complet de 10 pièces
+        avant de le transférer au poste suivant. Par exemple, le P1 découpe et prépare 10 carrés, puis les pousse en
+        bloc vers le P2. Le P2 attend d'avoir ses 10 pièces pliées avant de les envoyer au P3, etc.</li>
       <li>Chaque poste produit <strong>au maximum de sa capacité</strong>,
         sans attendre le poste suivant</li>
       <li><strong>Communication interdite</strong> entre les postes</li>
@@ -716,6 +814,13 @@
         <strong>maximum</strong> en 20 minutes »
       </li>
     </ul>
+  </blockquote>
+  <blockquote>
+    <p>[!NOTE] <strong>Démarrage de la simulation</strong> : Tous les postes démarrent <strong>à vide</strong> (aucun
+      en-cours initial). Seul le <strong>Poste 1</strong> reçoit un stock de feuilles A4 brutes. Au signal « TOP Départ
+      ! », le P1 commence immédiatement à travailler. Les postes suivants (P2 à P5) attendent de recevoir leur premier
+      lot pour démarrer. C'est précisément cette montée en charge progressive qui génère les attentes et déséquilibres
+      que l'on souhaite observer.</p>
   </blockquote>
   <h3 id="déroulé">7.2 Déroulé</h3>
   <table>
@@ -823,8 +928,7 @@
       </tr>
     </tbody>
   </table>
-  <hr />
-  <h2 id="simulation-2-flux-tiré-kanban-lusine-fluide">8. Simulation 2 —
+  <h2 id="simulation-2-flux-tiré-kanban-lusine-fluide" class="page-break">8. Simulation 2 —
     Flux Tiré &amp; Kanban : « L’Usine Fluide »</h2>
   <h3 id="concepts-clés">8.1 Concepts Clés</h3>
   <ul>
@@ -963,8 +1067,7 @@
       </tr>
     </tbody>
   </table>
-  <hr />
-  <h2 id="simulation-3-équilibrage-kaizen">9. Simulation 3 — Équilibrage
+  <h2 id="simulation-3-équilibrage-kaizen" class="page-break">9. Simulation 3 — Équilibrage
     &amp; Kaizen</h2>
   <h3 id="objectifs">9.1 Objectifs</h3>
   <ul>
@@ -976,8 +1079,11 @@
   <h3 id="atelier-yamazumi-diagramme-déquilibrage">9.2 Atelier Yamazumi
     (Diagramme d’Équilibrage)</h3>
   <ol type="1">
-    <li><strong>Chronométrer</strong> chaque opération par poste (3 cycles,
-      prendre la moyenne)</li>
+    <li><strong>Chronométrer</strong> chaque poste individuellement : pour chaque poste (P1 à P5), mesurer le temps de
+      cycle de son opération spécifique sur <strong>3 cycles consécutifs</strong>, puis calculer la
+      <strong>moyenne</strong>. Par exemple, chronométrer 3 fois l'opération du P3 (retournement + 2ème Blintz) et faire
+      la moyenne des 3 mesures pour obtenir le temps de cycle moyen du P3.
+    </li>
     <li><strong>Construire</strong> le diagramme Yamazumi au paperboard :
       <ul>
         <li>Axe vertical : Temps (secondes)</li>
@@ -1100,8 +1206,7 @@
       </tr>
     </tbody>
   </table>
-  <hr />
-  <h2 id="tableau-comparatif-des-3-rounds">10. Tableau Comparatif des 3
+  <h2 id="tableau-comparatif-des-3-rounds" class="page-break">10. Tableau Comparatif des 3
     Rounds</h2>
   <table>
     <colgroup>
@@ -1150,7 +1255,7 @@
         <td style="text-align: center;">~96 %</td>
       </tr>
       <tr>
-        <td style="text-align: left;"><strong>TRS estimé</strong></td>
+        <td style="text-align: left;"><strong>TRG estimé</strong></td>
         <td style="text-align: center;">~45 %</td>
         <td style="text-align: center;">~75 %</td>
         <td style="text-align: center;">~91 %</td>
@@ -1171,8 +1276,7 @@
   </table>
   <p><em>Les chiffres ci-dessus sont des exemples types observés lors de
       formations précédentes.</em></p>
-  <hr />
-  <h2 id="déroulé-chronologique-de-la-journée">11. Déroulé Chronologique
+  <h2 id="déroulé-chronologique-de-la-journée" class="page-break">11. Déroulé Chronologique
     de la Journée</h2>
   <table>
     <colgroup>
@@ -1242,7 +1346,7 @@
       <tr>
         <td style="text-align: left;">16 h 00 – 16 h 45</td>
         <td style="text-align: left;">Synthèse finale : tableau comparatif +
-          calcul du TRS</td>
+          calcul du TRG</td>
         <td style="text-align: center;">45 min</td>
       </tr>
       <tr>
@@ -1252,8 +1356,7 @@
       </tr>
     </tbody>
   </table>
-  <hr />
-  <h2 id="annexes-pour-le-formateur">12. Annexes pour le Formateur</h2>
+  <h2 id="annexes-pour-le-formateur" class="page-break">12. Annexes pour le Formateur</h2>
   <h3 id="checklist-pré-formation">12.1 Checklist Pré-Formation</h3>
   <ul class="task-list">
     <li><label><input type="checkbox" />Imprimer la Fiche d’Instruction au
@@ -1332,7 +1435,7 @@
   </ul>
   <p><strong>Pour un public débutant :</strong></p>
   <ul>
-    <li>Simplifier le calcul du TRS (omettre la composante Performance)</li>
+    <li>Simplifier le calcul du TRG (omettre la composante Performance)</li>
     <li>Se concentrer sur Round 1 vs Round 2 uniquement</li>
     <li>Insister sur l’expérience vécue plutôt que sur les formules</li>
   </ul>
@@ -1359,8 +1462,7 @@
         efficacement quelque chose qui ne devrait pas être fait du tout.
         »</em></p>
   </blockquote>
-  <hr />
-  <h2 id="indicateurs-de-réussite-de-la-formation">13. Indicateurs de
+  <h2 id="indicateurs-de-réussite-de-la-formation" class="page-break">13. Indicateurs de
     Réussite de la Formation</h2>
   <p>À l’issue de la journée, les participants doivent être capables de
     :</p>
@@ -1370,7 +1472,7 @@
       environnement</li>
     <li>✅ Expliquer la différence entre flux poussé et flux tiré</li>
     <li>✅ Comprendre l’impact du WIP sur le Lead Time (Loi de Little)</li>
-    <li>✅ Calculer un TRS à partir des 3 composantes</li>
+    <li>✅ Calculer un TRG à partir des 3 composantes</li>
     <li>✅ Proposer au moins une amélioration concrète (Kaizen) pour leur
       poste</li>
     <li>✅ Comprendre que le LEAN est avant tout un <strong>état

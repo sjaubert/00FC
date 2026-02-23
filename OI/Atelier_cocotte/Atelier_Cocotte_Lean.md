@@ -1,3 +1,9 @@
+![Logo UIMM](logo_uimm_placeholder.jpg)
+
+**Pôle Formation UIMM - CVDL**
+
+---
+
 # Atelier Cocotte LEAN — « L'Excellence par le Flux »
 
 ## Guide Complet de la Formation (1 Journée)
@@ -5,7 +11,7 @@
 > [!IMPORTANT]
 > **Objectif Global** : Permettre aux participants de découvrir les fondamentaux du LEAN à travers une simulation pratique de fabrication de cocottes en papier. La journée compare trois modes de production (flux poussé, flux tiré Kanban, optimisé Kaizen) pour démontrer l'impact sur le Lead Time, le WIP, la qualité et le bien-être.
 
----
+<div style="page-break-before: always;"></div>
 
 ## 1. Informations Pratiques
 
@@ -17,7 +23,7 @@
 | **Organisation** | 2 lignes de production de 4 à 6 personnes |
 | **Formateur(s)** | 1 à 2 coachs LEAN |
 
----
+<div style="page-break-before: always;"></div>
 
 ## 2. Matériel Nécessaire
 
@@ -42,7 +48,7 @@
 - Cartes Kanban (rouge = occupé, verte = disponible) — 2 par poste
 - Vidéoprojecteur + vidéo courte (ex. usine Toyota)
 
----
+<div style="page-break-before: always;"></div>
 
 ## 3. Fiche d'Instruction Standard (FIP) — Fabrication de la Cocotte
 
@@ -72,23 +78,20 @@
 
 ### 3.3 Schéma Visuel du Pliage
 
-```
-  Étape 2 (Recto)          Étape 3 & 4 (Verso)         Étape 6 (Final)
+![Plan de pliage de la cocotte en 12 étapes](Plan_Cocotte_simple.jpg)
 
-    _____________             _____________               _  _
-   |  \       /  |           |  \       /  |             / \/ \
-   |   \     /   |           |   \     /   |            |      |
-   |----  X  ----|   --->    |----  X  ----|    --->     \    /
-   |   /     \   | (Retourner) |   /     \   |            (____)
-   |__/_______\__|           |__/_______\__|
-  (Coins au centre)         (Coins au centre)        (Mise en volume)
-```
-
----
+<div style="page-break-before: always;"></div>
 
 ## 4. Descriptif des 5 Postes de Travail
 
 Chaque ligne de production est organisée en **5 postes séquentiels**. Chaque équipe nomme un **responsable d'équipe** et un **contrôleur qualité** (au Poste 5).
+
+> [!TIP]
+> **Adaptation au nombre de participants** : Le descriptif ci-dessous correspond à une configuration standard de 5 postes par ligne. En fonction du nombre de participants, le formateur doit adapter l'organisation :
+>
+> - **Moins de 8 participants** : Réduire à 3 ou 4 postes en fusionnant certaines opérations (ex. P2+P3 ou P4+P5).
+> - **Plus de 12 participants** : Ajouter une 3ème ligne de production ou dédoubler certains postes (ex. 2 opérateurs au poste goulot).
+> - L'essentiel est que chaque participant ait un rôle actif dans la ligne de production.
 
 | Poste | Opérations | Temps indicatif |
 |:-----:|:-----------|:---------------:|
@@ -101,7 +104,7 @@ Chaque ligne de production est organisée en **5 postes séquentiels**. Chaque �
 > [!NOTE]
 > Les temps indicatifs sont des moyennes observées. Le poste le plus lent (souvent P3) constitue le **goulot d'étranglement** qui limite le débit de toute la ligne.
 
----
+<div style="page-break-before: always;"></div>
 
 ## 5. Critères de Contrôle Qualité
 
@@ -115,7 +118,7 @@ Pour être déclarée **« Conforme »**, chaque cocotte doit passer les 3 crit�
 
 **Cocotte non conforme** → Comptabilisée comme **défaut** dans les KPI. Elle n'est pas recomptée en production bonne.
 
----
+<div style="page-break-before: always;"></div>
 
 ## 6. Calcul des Indicateurs (KPI)
 
@@ -167,21 +170,27 @@ $$
 La **Loi de Little** relie les trois indicateurs fondamentaux d'un système en régime permanent :
 
 $$
-\boxed{L = \lambda \times W}
+\boxed{\text{WIP} = \text{Débit} \times \text{Lead Time}}
 $$
 
-| Symbole | Signification | Unité typique |
-|:-------:|:--------------|:--------------|
-| $L$ | WIP moyen (nombre de pièces dans le système) | cocottes |
-| $\lambda$ | Débit moyen (throughput) | cocottes/min |
-| $W$ | Lead Time moyen | min |
+Ou de manière équivalente :
 
-**Traduction opérationnelle** : Pour réduire le Lead Time ($W$), on peut soit **réduire le WIP** ($L$), soit **augmenter le débit** ($\lambda$).
+$$
+\text{Lead Time} = \frac{\text{WIP}}{\text{Débit}}
+$$
+
+| Indicateur | Signification | Unité typique |
+|:-----------|:--------------|:--------------|
+| **WIP** | Nombre moyen de pièces dans le système | cocottes |
+| **Débit** | Nombre de pièces terminées par unité de temps | cocottes/min |
+| **Lead Time** | Temps de traversée moyen d'une pièce | min |
+
+**Traduction opérationnelle** : Pour réduire le **Lead Time**, on peut soit **réduire le WIP**, soit **augmenter le Débit**.
 
 **Exemple concret** :
 
-- Round 1 : WIP = 50, Débit = 1 cocotte/min → Lead Time = 50 min
-- Round 2 : WIP = 5, Débit = 1 cocotte/min → Lead Time = **5 min** → ÷ 10 !
+- Round 1 : WIP = 50, Débit = 1 cocotte/min → Lead Time = 50/1 = **50 min**
+- Round 2 : WIP = 5, Débit = 1 cocotte/min → Lead Time = 5/1 = **5 min** → ÷ 10 !
 
 ### 6.6 Takt Time
 
@@ -191,12 +200,24 @@ $$
 \text{Takt Time} = \frac{\text{Temps disponible}}{\text{Demande client}}
 $$
 
-**Exemple** : Demande = 100 cocottes/heure, Temps disponible = 60 min → Takt Time = 60/100 = **36 secondes/cocotte**. Chaque poste doit produire en ≤ 36 s.
+> [!IMPORTANT]
+> **Calcul du Takt Time pour l'atelier :**
+>
+> | Donnée | Valeur |
+> |:-------|:------:|
+> | **Demande client** | **100 cocottes / heure** |
+> | **Temps disponible** | **60 minutes** |
+> | **Takt Time** | **60 min / 100 = 0,6 min = 36 secondes / cocotte** |
+>
+> ➡️ **Chaque poste doit réaliser son opération en 36 secondes maximum** pour satisfaire la demande client.
 
-### 6.7 TRS (Taux de Rendement Synthétique)
+### 6.7 TRG (Taux de Rendement Global)
+
+> [!NOTE]
+> **TRG vs TRS** : Dans notre atelier, la **Disponibilité** se calcule par rapport au **Temps d'ouverture** (temps total de la session). C'est donc un **TRG** (Taux de Rendement Global) et non un TRS (Taux de Rendement Synthétique). Le TRS utiliserait le **Temps requis** (Temps d'ouverture − arrêts planifiés) au dénominateur.
 
 $$
-\boxed{\text{TRS} = \text{Disponibilité} \times \text{Performance} \times \text{Qualité}}
+\boxed{\text{TRG} = \text{Disponibilité} \times \text{Performance} \times \text{Qualité}}
 $$
 
 | Composante | Formule | Exemple Round 3 |
@@ -204,15 +225,15 @@ $$
 | **Disponibilité** | Temps effectif / Temps d'ouverture | 1150 s / 1200 s = **95,8 %** |
 | **Performance** | Production réelle / Production théorique au Takt | min(68/33 , 1) = **100 %** |
 | **Qualité** | Pièces bonnes / Pièces produites | 65/68 = **95,6 %** |
-| **TRS** | Produit des trois | **91,5 %** ✅ |
+| **TRG** | Produit des trois | **91,5 %** ✅ |
 
 **Repères** :
 
-- TRS ≈ 40–50 % → production de masse désorganisée (typique Round 1)
-- TRS ≈ 85 % → classe mondiale
-- TRS > 90 % → excellence opérationnelle (objectif Round 3)
+- TRG ≈ 40–50 % → production de masse désorganisée (typique Round 1)
+- TRG ≈ 85 % → classe mondiale
+- TRG > 90 % → excellence opérationnelle (objectif Round 3)
 
----
+<div style="page-break-before: always;"></div>
 
 ## 7. Simulation 1 — Flux Poussé : « L'Usine à Stocks »
 
@@ -221,10 +242,13 @@ $$
 > [!WARNING]
 > **Mode production de masse**
 >
-> - Travail par **lots de 10 cocottes**
+> - Travail par **lots de 10 cocottes** : chaque poste doit terminer un lot complet de 10 pièces avant de le transférer au poste suivant. Par exemple, le P1 découpe et prépare 10 carrés, puis les pousse en bloc vers le P2. Le P2 attend d'avoir ses 10 pièces pliées avant de les envoyer au P3, etc.
 > - Chaque poste produit **au maximum de sa capacité**, sans attendre le poste suivant
 > - **Communication interdite** entre les postes
 > - Objectif donné aux participants : « Produire le **maximum** en 20 minutes »
+
+> [!NOTE]
+> **Démarrage de la simulation** : Tous les postes démarrent **à vide** (aucun en-cours initial). Seul le **Poste 1** reçoit un stock de feuilles A4 brutes. Au signal « TOP Départ ! », le P1 commence immédiatement à travailler. Les postes suivants (P2 à P5) attendent de recevoir leur premier lot pour démarrer. C'est précisément cette montée en charge progressive qui génère les attentes et déséquilibres que l'on souhaite observer.
 
 ### 7.2 Déroulé
 
@@ -268,7 +292,7 @@ $$
 | Taux de qualité | ___ % |
 | Stress perçu | ⭐⭐⭐⭐⭐ |
 
----
+<div style="page-break-before: always;"></div>
 
 ## 8. Simulation 2 — Flux Tiré & Kanban : « L'Usine Fluide »
 
@@ -334,7 +358,7 @@ $$
 | Taux de qualité | ___ % |
 | Stress perçu | ⭐⭐⭐ |
 
----
+<div style="page-break-before: always;"></div>
 
 ## 9. Simulation 3 — Équilibrage & Kaizen
 
@@ -347,7 +371,7 @@ $$
 
 ### 9.2 Atelier Yamazumi (Diagramme d'Équilibrage)
 
-1. **Chronométrer** chaque opération par poste (3 cycles, prendre la moyenne)
+1. **Chronométrer** chaque poste individuellement : pour chaque poste (P1 à P5), mesurer le temps de cycle de son opération spécifique sur **3 cycles consécutifs**, puis calculer la **moyenne**. Par exemple, chronométrer 3 fois l'opération du P3 (retournement + 2ème Blintz) et faire la moyenne des 3 mesures pour obtenir le temps de cycle moyen du P3.
 2. **Construire** le diagramme Yamazumi au paperboard :
    - Axe vertical : Temps (secondes)
    - Axe horizontal : Postes P1 à P5
@@ -397,7 +421,7 @@ Temps (sec)
 | Taux de qualité | ___ % |
 | Stress perçu | ⭐⭐ |
 
----
+<div style="page-break-before: always;"></div>
 
 ## 10. Tableau Comparatif des 3 Rounds
 
@@ -408,13 +432,13 @@ Temps (sec)
 | **Lead Time moyen** | ~18 min | ~5 min | ~2 min |
 | **Débit** | ~2,3 cocottes/min | ~2,6 cocottes/min | ~3,4 cocottes/min |
 | **Taux de qualité** | ~62 % | ~85 % | ~96 % |
-| **TRS estimé** | ~45 % | ~75 % | ~91 % |
+| **TRG estimé** | ~45 % | ~75 % | ~91 % |
 | **Stress perçu** | ⭐⭐⭐⭐⭐ (Maximum) | ⭐⭐⭐ (En baisse) | ⭐⭐ (Serein) |
 | **Collaboration** | Faible | Moyenne | Excellente |
 
 *Les chiffres ci-dessus sont des exemples types observés lors de formations précédentes.*
 
----
+<div style="page-break-before: always;"></div>
 
 ## 11. Déroulé Chronologique de la Journée
 
@@ -429,10 +453,10 @@ Temps (sec)
 | 13 h 00 – 14 h 15 | **Round 2 : Flux Tiré Kanban** (production + débriefing) | 1 h 15 |
 | 14 h 15 – 15 h 45 | **Round 3 : Équilibrage & Kaizen** (Yamazumi, 5S, production) | 1 h 30 |
 | 15 h 45 – 16 h 00 | ☕ Pause | 15 min |
-| 16 h 00 – 16 h 45 | Synthèse finale : tableau comparatif + calcul du TRS | 45 min |
+| 16 h 00 – 16 h 45 | Synthèse finale : tableau comparatif + calcul du TRG | 45 min |
 | 16 h 45 – 17 h 00 | Clôture & Plan d'action personnel | 15 min |
 
----
+<div style="page-break-before: always;"></div>
 
 ## 12. Annexes pour le Formateur
 
@@ -467,7 +491,7 @@ Temps (sec)
 
 **Pour un public débutant :**
 
-- Simplifier le calcul du TRS (omettre la composante Performance)
+- Simplifier le calcul du TRG (omettre la composante Performance)
 - Se concentrer sur Round 1 vs Round 2 uniquement
 - Insister sur l'expérience vécue plutôt que sur les formules
 
@@ -487,7 +511,7 @@ Temps (sec)
 >
 > Citation de Taiichi Ohno : *« Le pire gaspillage, c'est de faire efficacement quelque chose qui ne devrait pas être fait du tout. »*
 
----
+<div style="page-break-before: always;"></div>
 
 ## 13. Indicateurs de Réussite de la Formation
 
@@ -497,7 +521,7 @@ Temps (sec)
 2. ✅ Identifier au moins 5 des 8 gaspillages dans leur environnement
 3. ✅ Expliquer la différence entre flux poussé et flux tiré
 4. ✅ Comprendre l'impact du WIP sur le Lead Time (Loi de Little)
-5. ✅ Calculer un TRS à partir des 3 composantes
+5. ✅ Calculer un TRG à partir des 3 composantes
 6. ✅ Proposer au moins une amélioration concrète (Kaizen) pour leur poste
 7. ✅ Comprendre que le LEAN est avant tout un **état d'esprit**
 
