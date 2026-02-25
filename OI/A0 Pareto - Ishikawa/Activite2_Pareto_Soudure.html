@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activité 2 — Pareto Tuyauterie Industrielle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main: #e67e22;
+            --main-dark: #d35400;
+            --accent: #2c3e50;
+            --light: #fdf6ec;
+            --bg: #ffffff;
+            --text: #2c3e50;
+            --grey: #7f8c8d;
+            --success: #27ae60;
+            --danger: #e74c3c;
+            --info: #3498db;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #d35400 0%, #c0392b 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: var(--bg);
+            border-radius: 16px;
+            padding: 45px 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--light);
+        }
+
+        .header-left h1 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--main-dark);
+        }
+
+        .header-left .badge {
+            display: inline-block;
+            background: var(--light);
+            color: var(--main-dark);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        .header-right {
+            text-align: right;
+            color: var(--grey);
+            font-size: 0.9rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin: 30px 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            color: var(--main-dark);
+            margin: 20px 0 10px;
+        }
+
+        p,
+        li {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text);
+        }
+
+        .scenario {
+            background: linear-gradient(135deg, #fef9f2, #fdebd0);
+            border-left: 5px solid var(--main-dark);
+            padding: 25px 30px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+
+        .scenario .quote {
+            font-style: italic;
+            color: #555;
+            margin-top: 12px;
+            padding-left: 15px;
+            border-left: 3px solid var(--main-dark);
+        }
+
+        table.work-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.95rem;
+        }
+
+        table.work-table thead th {
+            background: var(--main-dark);
+            color: white;
+            padding: 11px 14px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table.work-table tbody td {
+            padding: 9px 14px;
+            border-bottom: 1px solid #eee;
+        }
+
+        table.work-table tbody tr:nth-child(even) {
+            background: #fef9f2;
+        }
+
+        .instruction-box {
+            background: #ebf5fb;
+            border-left: 5px solid var(--info);
+            padding: 20px 25px;
+            border-radius: 0 10px 10px 0;
+            margin: 20px 0;
+        }
+
+        .instruction-box h3 {
+            color: var(--info);
+        }
+
+        .success-box {
+            background: #eafaf1;
+            border-left: 5px solid var(--success);
+            padding: 20px 25px;
+            border-radius: 0 10px 10px 0;
+            margin: 20px 0;
+        }
+
+        .success-box h3 {
+            color: var(--success);
+        }
+
+        .warning-box {
+            background: #fef9e7;
+            border-left: 5px solid #f1c40f;
+            padding: 20px 25px;
+            border-radius: 0 10px 10px 0;
+            margin: 20px 0;
+        }
+
+        .action-box {
+            background: #fdedec;
+            border-left: 5px solid var(--danger);
+            padding: 20px 25px;
+            border-radius: 0 10px 10px 0;
+            margin: 20px 0;
+        }
+
+        .action-box h3 {
+            color: var(--danger);
+        }
+
+        ol.instructions {
+            padding-left: 20px;
+        }
+
+        ol.instructions li {
+            margin: 10px 0;
+        }
+
+        ul {
+            padding-left: 25px;
+        }
+
+        ul li {
+            margin: 6px 0;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.9em;
+            color: var(--main-dark);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--main-dark);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.3s, transform 0.2s;
+            margin: 10px 5px;
+        }
+
+        .btn:hover {
+            background: #a93226;
+            transform: translateY(-2px);
+        }
+
+        .btn-copy {
+            background: var(--info);
+        }
+
+        .btn-copy:hover {
+            background: #2980b9;
+        }
+
+        .copy-toast {
+            display: none;
+            color: var(--success);
+            font-weight: 600;
+            margin-left: 10px;
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--grey);
+            font-size: 0.85rem;
+        }
+
+        .level-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: white;
+            background: var(--main-dark);
+            margin-left: 10px;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+
+            .btn,
+            .btn-copy {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-left">
+                <h1>📊 Activité 2 — Pareto sur tableur</h1>
+                <span class="badge">🔧 Tuyauterie industrielle — Semi-guidé</span>
+            </div>
+            <div class="header-right">
+                <div>⏱️ Durée : <strong>45 minutes</strong></div>
+                <div>📁 Outil : Tableur (Excel / Calc)</div>
+                <div><span class="level-badge">Niveau ★★☆</span></div>
+            </div>
+        </div>
+
+        <!-- OBJECTIFS -->
+        <h2>🎯 Objectifs</h2>
+        <ul>
+            <li>Construire un Pareto de façon <strong>autonome</strong> dans le tableur</li>
+            <li>Travailler avec un <strong>jeu de données plus volumineux</strong> (150 défauts, 8 catégories)</li>
+            <li>Proposer un <strong>plan d'action priorisé</strong> basé sur le Pareto</li>
+            <li>Utiliser les formules du tableur (SOMME, pourcentages, tri)</li>
+        </ul>
+
+        <!-- SCENARIO -->
+        <h2>🏭 Scénario</h2>
+        <div class="scenario">
+            <p><strong>Entreprise :</strong> TubaConduit Industries — chaudronnerie et tuyauterie industrielle pour le
+                secteur pétrochimique</p>
+            <p><strong>Chantier :</strong> Extension d'une unité de traitement — 2 800 soudures à réaliser sur
+                tuyauteries inox et acier carbone</p>
+            <p><strong>Situation :</strong> Après 3 semaines de chantier, le contrôle non destructif (CND) a identifié
+                <strong>150 non-conformités</strong>. Le taux de réparation dépasse <strong>12%</strong>, bien au-delà
+                de l'objectif de 3%.</p>
+            <div class="quote">
+                « Le client nous menace de pénalités de retard. Il faut absolument réduire le taux de réparation, mais
+                on ne sait pas où concentrer nos efforts. On a 8 équipes de soudeurs, 3 types de matériaux, et des
+                défauts de toutes sortes… »<br>
+                — <em>Karim B., Chef de chantier</em>
+            </div>
+        </div>
+
+        <!-- DONNÉES -->
+        <h2>📋 Les données du contrôle CND</h2>
+        <p>Voici le relevé synthétisé des <strong>150 non-conformités</strong> identifiées par radiographie et ressuage
+            :</p>
+
+        <table class="work-table">
+            <thead>
+                <tr>
+                    <th>Type de défaut</th>
+                    <th>Description</th>
+                    <th>Quantité</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Porosité</td>
+                    <td>Bulles de gaz piégées dans le cordon</td>
+                    <td>48</td>
+                </tr>
+                <tr>
+                    <td>Manque de pénétration</td>
+                    <td>Fusion incomplète à la racine</td>
+                    <td>31</td>
+                </tr>
+                <tr>
+                    <td>Caniveau</td>
+                    <td>Sillon le long du cordon</td>
+                    <td>24</td>
+                </tr>
+                <tr>
+                    <td>Fissure longitudinale</td>
+                    <td>Fissure parallèle au cordon</td>
+                    <td>18</td>
+                </tr>
+                <tr>
+                    <td>Inclusion de laitier</td>
+                    <td>Résidu de laitier piégé</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>Excès de surépaisseur</td>
+                    <td>Cordon trop épais</td>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <td>Défaut d'alignement</td>
+                    <td>Décalage des bords à souder</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>Morsure</td>
+                    <td>Entaille dans le métal de base</td>
+                    <td>3</td>
+                </tr>
+                <tr style="font-weight:700; background:#fdebd0;">
+                    <td><strong>TOTAL</strong></td>
+                    <td></td>
+                    <td><strong>150</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="btn-copy" onclick="copyData()">📋 Copier les données pour le tableur</button>
+        <span class="copy-toast" id="copy-toast">✅ Copié !</span>
+
+        <!-- TRAVAIL DEMANDÉ -->
+        <h2>✏️ Travail demandé</h2>
+
+        <div class="instruction-box">
+            <h3>📌 Partie A — Construction du Pareto (20 min)</h3>
+            <ol class="instructions">
+                <li>Collez ou saisissez les données dans votre tableur</li>
+                <li><strong>Triez</strong> les défauts par quantité décroissante</li>
+                <li>Ajoutez une colonne <strong>« % »</strong> et calculez le pourcentage de chaque défaut</li>
+                <li>Ajoutez une colonne <strong>« % Cumulé »</strong> et calculez le pourcentage cumulé</li>
+                <li><strong>Créez le graphique</strong> : histogramme pour les quantités + courbe pour le % cumulé</li>
+                <li>Identifiez la <strong>zone 80/20</strong> : quels défauts représentent environ 80% des
+                    non-conformités ?</li>
+            </ol>
+        </div>
+
+        <div class="instruction-box">
+            <h3>📌 Partie B — Analyse et plan d'action (25 min)</h3>
+            <ol class="instructions">
+                <li><strong>Combien de types de défauts</strong> faut-il traiter pour éliminer 80% des non-conformités ?
+                </li>
+                <li>Pour chaque défaut prioritaire, <strong>proposez une cause probable</strong> et une <strong>action
+                        corrective</strong> en utilisant le tableau ci-dessous :</li>
+            </ol>
+
+            <table class="work-table" style="margin-top:15px;">
+                <thead>
+                    <tr>
+                        <th>Défaut prioritaire</th>
+                        <th>Cause probable</th>
+                        <th>Action corrective</th>
+                        <th>Responsable</th>
+                        <th>Délai</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1.</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <ol class="instructions" start="3">
+                <li><strong>Calculez l'impact économique</strong> : si une réparation coûte en moyenne
+                    <strong>350€</strong>, quel est le gain potentiel en résolvant les défauts de la zone 80% ?</li>
+                <li>Rédigez une <strong>conclusion de 5 lignes</strong> que vous pourriez présenter au chef de chantier.
+                </li>
+            </ol>
+        </div>
+
+        <!-- CORRECTION -->
+        <button class="btn" onclick="toggleCorrection()">👁️ Voir la correction complète</button>
+
+        <div id="correction" style="display:none;">
+            <div class="success-box">
+                <h3>✅ Tableau Pareto — Correction</h3>
+                <table class="work-table">
+                    <thead>
+                        <tr>
+                            <th>Type de défaut</th>
+                            <th>Quantité</th>
+                            <th>%</th>
+                            <th>% Cumulé</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background:#fdebd0;">
+                            <td>🔴 Porosité</td>
+                            <td>48</td>
+                            <td>32,0%</td>
+                            <td>32,0%</td>
+                        </tr>
+                        <tr style="background:#fdebd0;">
+                            <td>🟠 Manque de pénétration</td>
+                            <td>31</td>
+                            <td>20,7%</td>
+                            <td>52,7%</td>
+                        </tr>
+                        <tr style="background:#fdebd0;">
+                            <td>🟡 Caniveau</td>
+                            <td>24</td>
+                            <td>16,0%</td>
+                            <td>68,7%</td>
+                        </tr>
+                        <tr style="background:#fef5e0;">
+                            <td>🟤 Fissure longitudinale</td>
+                            <td>18</td>
+                            <td>12,0%</td>
+                            <td>80,7%</td>
+                        </tr>
+                        <tr>
+                            <td>🔵 Inclusion de laitier</td>
+                            <td>12</td>
+                            <td>8,0%</td>
+                            <td>88,7%</td>
+                        </tr>
+                        <tr>
+                            <td>🟣 Excès de surépaisseur</td>
+                            <td>9</td>
+                            <td>6,0%</td>
+                            <td>94,7%</td>
+                        </tr>
+                        <tr>
+                            <td>⚫ Défaut d'alignement</td>
+                            <td>5</td>
+                            <td>3,3%</td>
+                            <td>98,0%</td>
+                        </tr>
+                        <tr>
+                            <td>⚪ Morsure</td>
+                            <td>3</td>
+                            <td>2,0%</td>
+                            <td>100%</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div
+                    style="margin: 20px 0; padding: 15px; background: #fff3cd; border-radius: 8px; text-align: center;">
+                    <strong style="color: var(--danger);">🎯 Zone 80/20 :</strong><br>
+                    <strong>4 défauts sur 8</strong> (Porosité + Manque pénétration + Caniveau + Fissure) =
+                    <strong>80,7%</strong> des NC<br>
+                    Mais les <strong>3 premiers seuls = 68,7%</strong>
+                </div>
+            </div>
+
+            <div class="action-box">
+                <h3>🚨 Plan d'action priorisé</h3>
+                <table class="work-table">
+                    <thead>
+                        <tr>
+                            <th>Défaut</th>
+                            <th>Cause probable</th>
+                            <th>Action corrective</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Porosité</strong><br>(32%)</td>
+                            <td>Gaz de protection insuffisant, humidité, courant d'air</td>
+                            <td>Vérifier débit argon, stocker consommables au sec, protéger zone de soudage</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Manque pénétration</strong><br>(20,7%)</td>
+                            <td>Intensité trop basse, vitesse trop rapide, chanfrein mal préparé</td>
+                            <td>Revoir DMOS, contrôler préparation chanfreins, ajuster paramètres</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Caniveau</strong><br>(16%)</td>
+                            <td>Intensité trop élevée, mauvais angle de torche</td>
+                            <td>Formation gestuelle, réglage paramètres, supervision renforcée</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="success-box">
+                <h3>💰 Impact économique</h3>
+                <p><strong>Coût actuel des réparations :</strong> 150 × 350€ = <strong>52 500€</strong></p>
+                <p><strong>En résolvant la zone 80% :</strong> 52 500€ × 0,807 = <strong>42 368€ économisés</strong></p>
+                <p style="margin-top:10px;"><strong>Conclusion type :</strong><br>
+                    L'analyse Pareto montre que 3 types de défauts (Porosité, Manque de pénétration, Caniveau)
+                    concentrent 68,7% des non-conformités. En ciblant les actions correctives sur ces 3 défauts —
+                    principalement liés à la protection gazeuse et aux paramètres de soudage — nous pouvons réduire le
+                    taux de réparation de 12% à environ 4%, pour un gain estimé à plus de 36 000€. Les actions
+                    prioritaires (vérification gaz, DMOS, formation) peuvent être mises en œuvre immédiatement sans
+                    surcoût majeur.</p>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <div>📊 Activité 2 — Pareto Tuyauterie Industrielle • Chaudronnerie</div>
+            <div>Pôle Formation UIMM-CVDL</div>
+        </div>
+    </div>
+
+    <script>
+        function copyData() {
+            const data = "Type de défaut\tQuantité\nPorosité\t48\nManque de pénétration\t31\nCaniveau\t24\nFissure longitudinale\t18\nInclusion de laitier\t12\nExcès de surépaisseur\t9\nDéfaut d'alignement\t5\nMorsure\t3";
+            navigator.clipboard.writeText(data).then(() => {
+                const toast = document.getElementById('copy-toast');
+                toast.style.display = 'inline';
+                setTimeout(() => toast.style.display = 'none', 2500);
+            });
+        }
+
+        function toggleCorrection() {
+            const el = document.getElementById('correction');
+            el.style.display = el.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</body>
+
+</html>
