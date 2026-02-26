@@ -179,12 +179,20 @@ $$
 > **Mode production de masse**
 >
 > - Travail par **lots de 10 cocottes** : chaque poste termine un lot complet de 10 pièces avant de le transférer au poste suivant.
-> - Chaque poste produit **au maximum de sa capacité**, sans attendre le poste suivant
+> - **Production continue pendant 20 minutes** : chaque poste produit **au maximum de sa capacité, sans s'arrêter**. Dès qu'un lot de 10 est terminé et envoyé au poste suivant, l'opérateur **recommence immédiatement** un nouveau lot de 10 (s'il a de la matière disponible).
 > - **Communication interdite** entre les postes
 > - Objectif : « Produire le **maximum** en 20 minutes »
 
+> [!CAUTION]
+> **⚠️ Piège fréquent** : Il ne s'agit **PAS** de faire passer un seul lot de 10 à travers toute la ligne ! Le P1 doit **enchaîner les lots** sans attendre que les postes suivants aient fini. C'est cette production en continu qui génère l'**accumulation de stocks entre les postes** (WIP) — le phénomène central que le Round 1 cherche à démontrer.
+>
+> **Exemple concret** : Pendant que P2 travaille encore sur le 1er lot, P1 a déjà terminé et poussé un 2ème lot. Ce 2ème lot **s'empile en attente** devant P2. Au bout de 20 minutes, on observe souvent 30 à 40 cocottes en cours dans le système !
+
 > [!NOTE]
-> **Démarrage** : Tous les postes démarrent **à vide**. Seul le **Poste 1** reçoit un stock de feuilles A4 brutes. Au signal « TOP Départ ! », le P1 commence immédiatement. Les postes suivants attendent de recevoir leur premier lot pour démarrer.
+> **Démarrage** : Tous les postes démarrent **à vide**. Seul le **Poste 1** reçoit un **gros stock de feuilles A4 brutes** (50 à 100 feuilles). Au signal « TOP Départ ! », le P1 commence immédiatement et **ne s'arrête plus** pendant 20 minutes. Les postes suivants attendent de recevoir leur premier lot pour démarrer.
+
+> [!TIP]
+> **Mesure du WIP** : À mi-parcours (10 min) ou à la fin des 20 minutes, le formateur demande **STOP**. Chaque équipe compte alors toutes les cocottes « dans le tuyau » : celles en cours de traitement + celles en attente entre les postes. Ce total = **WIP instantané**. C'est ce chiffre qui, combiné au débit, permet de calculer le Lead Time par la **Loi de Little**.
 
 ### 6.2 Relevé KPI — Round 1
 
