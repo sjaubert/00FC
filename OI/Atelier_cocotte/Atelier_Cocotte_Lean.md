@@ -243,12 +243,20 @@ $$
 > **Mode production de masse**
 >
 > - Travail par **lots de 10 cocottes** : chaque poste doit terminer un lot complet de 10 pièces avant de le transférer au poste suivant. Par exemple, le P1 découpe et prépare 10 carrés, puis les pousse en bloc vers le P2. Le P2 attend d'avoir ses 10 pièces pliées avant de les envoyer au P3, etc.
-> - Chaque poste produit **au maximum de sa capacité**, sans attendre le poste suivant
+> - **Production continue pendant 20 minutes** : chaque poste produit **au maximum de sa capacité, sans jamais s'arrêter**. Dès qu'un lot de 10 est terminé et envoyé au poste suivant, l'opérateur **recommence immédiatement** un nouveau lot de 10 (s'il a de la matière disponible). Le P1 en particulier **enchaîne les lots sans attendre** que les postes suivants aient fini.
 > - **Communication interdite** entre les postes
 > - Objectif donné aux participants : « Produire le **maximum** en 20 minutes »
 
+> [!CAUTION]
+> **⚠️ Erreur fréquente du formateur** : Il ne faut **PAS** faire passer un seul lot de 10 à travers toute la ligne de façon séquentielle (P1 fait 10, puis P2 fait 10, puis P3…). L'objectif est que **tous les postes travaillent en parallèle** dès qu'ils reçoivent de la matière. C'est cette production en continu qui génère l'**accumulation massive de stocks entre les postes** (WIP) — le phénomène central que le Round 1 cherche à rendre visible.
+>
+> **Exemple concret** : Pendant que P2 travaille encore sur le 1er lot de 10, P1 a déjà terminé et poussé un 2ème lot de 10. Ce 2ème lot **s'empile en attente** devant P2. Au poste goulot (P3 à ~40 s/pièce), les lots s'accumulent rapidement. Au bout de 20 minutes, on observe souvent **30 à 50 cocottes en cours** dans le système !
+
 > [!NOTE]
-> **Démarrage de la simulation** : Tous les postes démarrent **à vide** (aucun en-cours initial). Seul le **Poste 1** reçoit un stock de feuilles A4 brutes. Au signal « TOP Départ ! », le P1 commence immédiatement à travailler. Les postes suivants (P2 à P5) attendent de recevoir leur premier lot pour démarrer. C'est précisément cette montée en charge progressive qui génère les attentes et déséquilibres que l'on souhaite observer.
+> **Démarrage de la simulation** : Tous les postes démarrent **à vide** (aucun en-cours initial). Seul le **Poste 1** reçoit un **gros stock de feuilles A4 brutes** (50 à 100 feuilles). Au signal « TOP Départ ! », le P1 commence immédiatement et **ne s'arrête plus** pendant 20 minutes. Les postes suivants (P2 à P5) attendent de recevoir leur premier lot pour démarrer. C'est précisément cette montée en charge progressive qui génère les attentes et déséquilibres que l'on souhaite observer.
+
+> [!TIP]
+> **Mesure du WIP (crucial !)** : À mi-parcours (~10 min), faire un **arrêt de 30 secondes** et demander aux équipes de compter physiquement toutes les cocottes « dans le tuyau » : celles en cours de traitement + celles en attente entre les postes. Ce total = **WIP instantané**. Recommencer le comptage à la fin des 20 minutes. Ce chiffre, combiné au débit, permet de vérifier la **Loi de Little** de façon concrète.
 
 ### 7.2 Déroulé
 
