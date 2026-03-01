@@ -1,0 +1,453 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activité 8 — Étude de Cas Intégrée : Ligne de Convoyeur</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, rgba(234, 179, 8, 0.2), rgba(249, 115, 22, 0.15));
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #eab308, #f97316);
+            color: #1e293b;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .header h1 {
+            font-size: 1.9em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #fde047, #fb923c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+
+        .section {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(234, 179, 8, 0.15);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            color: #fde047;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #fb923c;
+            font-size: 1.1em;
+            margin: 20px 0 10px;
+        }
+
+        .section p,
+        .section li {
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .section ol,
+        .section ul {
+            margin-left: 20px;
+        }
+
+        .section ol li {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            background: rgba(234, 179, 8, 0.1);
+            border-left: 3px solid #eab308;
+            padding: 15px 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 15px 0;
+        }
+
+        .highlight strong {
+            color: #fde047;
+        }
+
+        .warning {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 3px solid #ef4444;
+            padding: 15px 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 15px 0;
+        }
+
+        .warning strong {
+            color: #f87171;
+        }
+
+        .success {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 3px solid #22c55e;
+            padding: 15px 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 15px 0;
+        }
+
+        .success strong {
+            color: #4ade80;
+        }
+
+        .step-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid;
+            border-radius: 14px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .step-card.s1 {
+            border-color: rgba(14, 165, 233, 0.3);
+        }
+
+        .step-card.s2 {
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .step-card.s3 {
+            border-color: rgba(249, 115, 22, 0.3);
+        }
+
+        .step-card.s4 {
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        .step-badge {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .step-badge.s1 {
+            background: #0ea5e9;
+        }
+
+        .step-badge.s2 {
+            background: #8b5cf6;
+        }
+
+        .step-badge.s3 {
+            background: #f97316;
+        }
+
+        .step-badge.s4 {
+            background: #ef4444;
+        }
+
+        .question-box {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .question-box h4 {
+            color: #818cf8;
+            margin-bottom: 10px;
+        }
+
+        .question-box textarea {
+            width: 100%;
+            min-height: 80px;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9em;
+            resize: vertical;
+        }
+
+        .team-info {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .team-card {
+            flex: 1;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .team-card h4 {
+            color: #a5b4fc;
+            margin-bottom: 5px;
+        }
+
+        .team-card p {
+            color: #94a3b8;
+            font-size: 0.85em;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #fde047;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            color: #fef08a;
+        }
+            .logo-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            background: rgba(30,41,59,0.9);
+            border: 1px solid rgba(51,65,85,0.5);
+            border-radius: 14px;
+        }
+        .logo-header img {
+            height: 55px;
+            border-radius: 8px;
+        }
+        .logo-header .structure-name {
+            font-size: 0.95em;
+            font-weight: 700;
+            color: #e2e8f0;
+            line-height: 1.3;
+        }
+        .logo-header .formateur {
+            font-size: 0.8em;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+    <div class="logo-header">
+      <img src="logo_uimm_placeholder.jpg" alt="Logo UIMM" />
+      <div>
+        <div class="structure-name">Pôle Formation UIMM - CVDL</div>
+        <div class="formateur">Formateur : S. Jaubert</div>
+      </div>
+    </div>
+        <div class="header">
+            <div class="badge">Jour 2 — Activité 8 — Étude de cas finale</div>
+            <h1>🏭 Étude de Cas Intégrée : Ligne de Convoyeur</h1>
+            <p>Mettez en œuvre TOUTES vos compétences SPC dans un scénario industriel complet : de l'analyse de
+                normalité à la mise en place des cartes de contrôle et au plan d'action.</p>
+            <div style="color: #94a3b8; margin-top: 10px;">⏱️ 90 min | 👥 Travail en binôme | 📁 Fichier :
+                <code>SPC-15-convoyeur.csv</code></div>
+        </div>
+
+        <!-- CONTEXTE -->
+        <div class="section">
+            <h2>📋 Le scénario</h2>
+            <p>Vous êtes technicien qualité dans une usine d'assemblage. Votre ligne de convoyeur utilise <strong>deux
+                    machines (A et B)</strong> pour produire un sous-ensemble critique. Vous disposez de données de
+                contrôle sur deux caractéristiques :</p>
+            <ul>
+                <li><strong>Z-écart</strong> : écart dimensionnel (en µm) par rapport à la cible</li>
+                <li><strong>Z</strong> : dimension mesurée (en µm)</li>
+            </ul>
+            <div class="highlight">
+                <strong>📏 Spécification Z-écart :</strong> LSI = 50 µm &nbsp;|&nbsp; LSS = 350 µm<br>
+                <strong>📏 Spécification Z :</strong> LSI = 100 µm &nbsp;|&nbsp; LSS = 300 µm<br>
+                <strong>📊 Structure :</strong> Sous-groupes de 4 mesures, 2 machines
+            </div>
+            <div class="team-info">
+                <div class="team-card">
+                    <h4>👤 Binôme A</h4>
+                    <p>Travaille sur la variable <strong>Z-écart</strong></p>
+                </div>
+                <div class="team-card">
+                    <h4>👤 Binôme B</h4>
+                    <p>Travaille sur la variable <strong>Z</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ÉTAPE 1 -->
+        <div class="step-card s1">
+            <span class="step-badge s1">Étape 1 — Analyse exploratoire (20 min)</span>
+            <h3 style="color:#38bdf8;">Statistiques descriptives & normalité</h3>
+            <ol>
+                <li>Ouvrir <code>SPC-15-convoyeur.csv</code> et identifier les colonnes (groupe, Z-écart, machine, Z)
+                </li>
+                <li>Séparer les données par machine (A et B)</li>
+                <li>Pour votre variable assignée, calculer : moyenne, écart-type, min, max</li>
+                <li>Construire l'histogramme (global puis par machine)</li>
+                <li>Vérifier la normalité</li>
+            </ol>
+            <div class="question-box">
+                <h4>❓ Livrable 1</h4>
+                <p>Les distributions des deux machines sont-elles similaires ? Y a-t-il un décalage de centrage entre
+                    machine A et machine B ?</p>
+                <textarea placeholder="Statistiques machine A vs B :\n\nComparaison des distributions :"></textarea>
+            </div>
+        </div>
+
+        <!-- ÉTAPE 2 -->
+        <div class="step-card s2">
+            <span class="step-badge s2">Étape 2 — Étude de capabilité (20 min)</span>
+            <h3 style="color:#a78bfa;">Calcul des indices Cp/Cpk/Pp/Ppk</h3>
+            <ol>
+                <li>Calculer Cp, Cpk, Pp, Ppk pour <strong>chaque machine séparément</strong></li>
+                <li>Calculer Cp, Cpk, Pp, Ppk pour <strong>les deux machines combinées</strong></li>
+                <li>Comparer les résultats</li>
+            </ol>
+            <div class="question-box">
+                <h4>❓ Livrable 2</h4>
+                <p>Remplissez le tableau et commentez :</p>
+                <textarea
+                    placeholder="                Machine A    Machine B    Combiné\nCp  =           ...          ...          ...\nCpk =           ...          ...          ...\nPp  =           ...          ...          ...\nPpk =           ...          ...          ...\n\nCommentaire : "
+                    style="font-family: 'Courier New', monospace; min-height: 120px;"></textarea>
+            </div>
+            <div class="warning">
+                <strong>💡 Question piège :</strong> Pourquoi les indices combinés sont-ils probablement <em>moins
+                    bons</em> que ceux de chaque machine séparément ? (Indice : que se passe-t-il quand on mélange deux
+                distributions centrées différemment ?)
+            </div>
+        </div>
+
+        <!-- ÉTAPE 3 -->
+        <div class="step-card s3">
+            <span class="step-badge s3">Étape 3 — Carte de contrôle (25 min)</span>
+            <h3 style="color:#fb923c;">Construction et interprétation</h3>
+            <ol>
+                <li>Construire une carte X̄-R sur <strong>les données combinées</strong></li>
+                <li>Observer : y a-t-il des signaux d'alarme ?</li>
+                <li>Construire <strong>deux cartes séparées</strong> (une pour machine A, une pour machine B)</li>
+                <li>Comparer l'interprétation</li>
+            </ol>
+            <div class="question-box">
+                <h4>❓ Livrable 3</h4>
+                <p>La carte combinée montre-t-elle un pattern de « mélange » (règle 6) ? Les cartes séparées sont-elles
+                    sous contrôle ? Quelle leçon en tirez-vous sur le regroupement des données ?</p>
+                <textarea
+                    placeholder="Carte combinée : ...\nCarte machine A : ...\nCarte machine B : ...\nLeçon : "></textarea>
+            </div>
+        </div>
+
+        <!-- ÉTAPE 4 -->
+        <div class="step-card s4">
+            <span class="step-badge s4">Étape 4 — Plan d'action & restitution (25 min)</span>
+            <h3 style="color:#f87171;">Décision et communication</h3>
+            <p>Sur la base de votre analyse complète, proposez un <strong>plan d'action</strong> au responsable de
+                production :</p>
+            <ol>
+                <li>Le procédé est-il capable ? Si non, quelle machine pose problème ?</li>
+                <li>Faut-il séparer la surveillance des deux machines ?</li>
+                <li>Quelle fréquence d'échantillonnage recommandez-vous ?</li>
+                <li>Quelles règles d'interprétation sont les plus pertinentes ici ?</li>
+            </ol>
+            <div class="question-box">
+                <h4>📋 Plan d'action (à présenter oralement au groupe)</h4>
+                <textarea
+                    placeholder="1. Diagnostic du procédé :\n\n2. Actions correctives proposées :\n\n3. Organisation de la surveillance SPC :\n   - Fréquence : \n   - Type de carte :\n   - Règles d'interprétation :\n\n4. Indicateurs de suivi :"
+                    style="min-height: 180px;"></textarea>
+            </div>
+        </div>
+
+        <!-- GRILLE D'ÉVALUATION -->
+        <div class="section">
+            <h2>✅ Grille d'évaluation de la restitution</h2>
+            <table style="width:100%; border-collapse:collapse; font-size:0.9em;">
+                <tr>
+                    <th
+                        style="background:rgba(234,179,8,0.2); color:#fde047; padding:10px; text-align:left; border-bottom:2px solid rgba(234,179,8,0.3);">
+                        Critère</th>
+                    <th
+                        style="background:rgba(234,179,8,0.2); color:#fde047; padding:10px; text-align:center; border-bottom:2px solid rgba(234,179,8,0.3); width:80px;">
+                        / Points</th>
+                </tr>
+                <tr>
+                    <td style="padding:8px; border-bottom:1px solid rgba(51,65,85,0.5);">Calculs corrects (statistiques,
+                        capabilité, limites de contrôle)</td>
+                    <td style="padding:8px; text-align:center; border-bottom:1px solid rgba(51,65,85,0.5);">/ 5</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px; border-bottom:1px solid rgba(51,65,85,0.5);">Interprétation pertinente des
+                        résultats</td>
+                    <td style="padding:8px; text-align:center; border-bottom:1px solid rgba(51,65,85,0.5);">/ 4</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px; border-bottom:1px solid rgba(51,65,85,0.5);">Identification du problème lié
+                        aux 2 machines</td>
+                    <td style="padding:8px; text-align:center; border-bottom:1px solid rgba(51,65,85,0.5);">/ 3</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px; border-bottom:1px solid rgba(51,65,85,0.5);">Plan d'action réaliste et
+                        argumenté</td>
+                    <td style="padding:8px; text-align:center; border-bottom:1px solid rgba(51,65,85,0.5);">/ 4</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px; border-bottom:1px solid rgba(51,65,85,0.5);">Qualité de la restitution orale
+                    </td>
+                    <td style="padding:8px; text-align:center; border-bottom:1px solid rgba(51,65,85,0.5);">/ 4</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px; font-weight:700; color:#fde047;">TOTAL</td>
+                    <td style="padding:8px; text-align:center; font-weight:700; color:#fde047;">/ 20</td>
+                </tr>
+            </table>
+        </div>
+
+        <a href="index.html" class="back-link">← Retour aux ressources</a>
+    </div>
+</body>
+
+</html>

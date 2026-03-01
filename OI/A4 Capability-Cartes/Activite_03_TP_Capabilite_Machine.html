@@ -1,0 +1,529 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activité 3 — TP Capabilité Machine (Cm/Cmk)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(239, 68, 68, 0.15));
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #fbbf24, #f87171);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+
+        .section {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(245, 158, 11, 0.15);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            color: #fbbf24;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #fb923c;
+            font-size: 1.1em;
+            margin: 20px 0 10px;
+        }
+
+        .section p,
+        .section li {
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .section ol {
+            margin-left: 20px;
+        }
+
+        .section ol li {
+            margin-bottom: 12px;
+        }
+
+        .highlight {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 3px solid #f59e0b;
+            padding: 15px 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 15px 0;
+        }
+
+        .highlight strong {
+            color: #fbbf24;
+        }
+
+        .formula-box {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .formula {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #fbbf24;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .formula-desc {
+            color: #94a3b8;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .warning {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 3px solid #ef4444;
+            padding: 15px 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 15px 0;
+        }
+
+        .warning strong {
+            color: #f87171;
+        }
+
+        .success {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 3px solid #22c55e;
+            padding: 15px 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 15px 0;
+        }
+
+        .success strong {
+            color: #4ade80;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .data-table th {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+            padding: 10px 15px;
+            text-align: center;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .data-table td {
+            padding: 8px 15px;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+            color: #cbd5e1;
+            text-align: center;
+        }
+
+        .threshold-table td:nth-child(1) {
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.85em;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+
+        .tool-tabs {
+            display: flex;
+            gap: 0;
+            margin: 15px 0;
+        }
+
+        .tool-tab {
+            padding: 10px 24px;
+            background: rgba(51, 65, 85, 0.5);
+            color: #94a3b8;
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+
+        .tool-tab:first-child {
+            border-radius: 10px 0 0 10px;
+        }
+
+        .tool-tab:last-child {
+            border-radius: 0 10px 10px 0;
+        }
+
+        .tool-tab.active {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        .tool-content {
+            display: none;
+            padding: 20px;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(51, 65, 85, 0.3);
+            border-radius: 0 0 12px 12px;
+            margin-top: -1px;
+        }
+
+        .tool-content.active {
+            display: block;
+        }
+
+        .question-box {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .question-box h4 {
+            color: #818cf8;
+            margin-bottom: 10px;
+        }
+
+        .question-box textarea {
+            width: 100%;
+            min-height: 60px;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9em;
+            resize: vertical;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #fbbf24;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            color: #fde68a;
+        }
+
+        .logo-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            border-radius: 14px;
+        }
+
+        .logo-header img {
+            height: 55px;
+            border-radius: 8px;
+        }
+
+        .logo-header .structure-name {
+            font-size: 0.95em;
+            font-weight: 700;
+            color: #e2e8f0;
+            line-height: 1.3;
+        }
+
+        .logo-header .formateur {
+            font-size: 0.8em;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+    </style>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo-header">
+            <img src="logo_uimm_placeholder.jpg" alt="Logo UIMM" />
+            <div>
+                <div class="structure-name">Pôle Formation UIMM - CVDL</div>
+                <div class="formateur">Formateur : S. Jaubert</div>
+            </div>
+        </div>
+        <div class="header">
+            <div class="badge">Jour 1 — Activité 3</div>
+            <h1>🔬 TP Capabilité Machine (Cm / Cmk)</h1>
+            <p>Mesurez des pièces butées réelles, calculez la capabilité machine, et décidez si la machine est apte à
+                produire dans les tolérances.</p>
+            <div style="color: #94a3b8; margin-top: 10px;">⏱️ 90 min | 🛠️ Pied à coulisse + Excel/Ellistat | 📁
+                Référence : <code>TP Controle statistique Butee diametre.pdf</code></div>
+        </div>
+
+        <!-- CONTEXTE -->
+        <div class="section">
+            <h2>🏭 Contexte</h2>
+            <p>Avant de lancer une production, il faut <strong>qualifier la machine</strong> : est-elle capable de
+                produire dans les tolérances demandées ?</p>
+            <p style="margin-top:10px;">C'est l'<strong>étude de capabilité machine</strong> (Cm/Cmk). Elle se fait sur
+                des pièces produites dans des conditions <strong>optimales et stables</strong> (même opérateur, même
+                matière, court intervalle de temps).</p>
+            <div class="highlight">
+                <strong>📏 Pièce étudiée :</strong> Butée — Cote : diamètre<br>
+                <strong>📐 Spécification :</strong> Consultez le TP Butées (PDF) pour les limites<br>
+                <strong>🔢 Nombre de pièces :</strong> 50 pièces consécutives minimum
+            </div>
+        </div>
+
+        <!-- PROTOCOLE DE MESURE -->
+        <div class="section">
+            <h2>📋 Partie 1 — Protocole de mesure (30 min)</h2>
+            <ol>
+                <li><span class="step-number">1</span> <strong>Vérifier l'instrument</strong> : Pied à coulisse étalonné
+                    ? Résolution suffisante (0,01 mm) ?</li>
+                <li><span class="step-number">2</span> <strong>Prélever 50 pièces</strong> consécutives de la production
+                </li>
+                <li><span class="step-number">3</span> <strong>Mesurer le diamètre</strong> de chaque pièce, dans le
+                    même sens, avec la même pression</li>
+                <li><span class="step-number">4</span> <strong>Noter les mesures</strong> dans l'ordre de production (ne
+                    pas trier !)</li>
+                <li><span class="step-number">5</span> <strong>Saisir dans Excel</strong> : une colonne "N° pièce", une
+                    colonne "Diamètre"</li>
+            </ol>
+            <div class="warning">
+                <strong>⚠️ Attention :</strong> Ne pas mélanger les pièces ! L'ordre de production est important pour
+                détecter des tendances ou des dérives.
+            </div>
+        </div>
+
+        <!-- FORMULES -->
+        <div class="section">
+            <h2>📐 Partie 2 — Rappel des formules Cm et Cmk</h2>
+
+            <div class="formula-box">
+                <p style="color: #94a3b8; font-size: 0.9em; margin-bottom: 5px;">Capabilité machine (potentielle)</p>
+                <div class="formula">$$C_m = \frac{LSS - LSI}{6\sigma}$$</div>
+                <div class="formula-desc">Compare la tolérance à la dispersion naturelle de la machine</div>
+            </div>
+
+            <div class="formula-box">
+                <p style="color: #94a3b8; font-size: 0.9em; margin-bottom: 5px;">Capabilité machine (centrée)</p>
+                <div class="formula">$$C_{mk} = \min\left(\frac{LSS - \bar{x}}{3\sigma},\; \frac{\bar{x} -
+                    LSI}{3\sigma}\right)$$</div>
+                <div class="formula-desc">Prend en compte le centrage de la machine par rapport aux limites</div>
+            </div>
+
+            <h3>Seuils de décision</h3>
+            <table class="data-table threshold-table">
+                <tr>
+                    <th>Valeur</th>
+                    <th>Interprétation</th>
+                    <th>Décision</th>
+                </tr>
+                <tr>
+                    <td>Cm ou Cmk < 1,00</td>
+                    <td style="color:#f87171;">Machine non capable</td>
+                    <td>❌ Stopper — action corrective obligatoire</td>
+                </tr>
+                <tr>
+                    <td>1,00 ≤ Cm/Cmk < 1,33</td>
+                    <td style="color:#fbbf24;">Limite de capabilité</td>
+                    <td>⚠️ Surveillance renforcée, amélioration nécessaire</td>
+                </tr>
+                <tr>
+                    <td>1,33 ≤ Cm/Cmk < 1,67</td>
+                    <td style="color:#4ade80;">Machine capable</td>
+                    <td>✅ OK pour production série</td>
+                </tr>
+                <tr>
+                    <td>Cm/Cmk ≥ 1,67</td>
+                    <td style="color:#22d3ee;">Machine très capable</td>
+                    <td>🏆 Qualification validée</td>
+                </tr>
+            </table>
+
+            <div class="success">
+                <strong>💡 Règle pratique :</strong> On exige souvent <strong>Cm ≥ 2,00 et Cmk ≥ 1,67</strong> lors
+                d'une qualification machine initiale (MSA), car la capabilité va se dégrader en conditions réelles de
+                production.
+            </div>
+        </div>
+
+        <!-- CALCUL -->
+        <div class="section">
+            <h2>🧮 Partie 3 — Calcul sur vos données (30 min)</h2>
+
+            <div class="tool-tabs">
+                <div class="tool-tab active" onclick="switchTab('excel-cm', this)">📗 Excel</div>
+                <div class="tool-tab" onclick="switchTab('ellistat-cm', this)">📘 Ellistat</div>
+            </div>
+            <div class="tool-content active" id="excel-cm">
+                <p><strong>Hypothèse :</strong> Vos mesures sont en colonne B (B2:B51), LSI en cellule E1, LSS en
+                    cellule E2</p>
+                <table class="data-table">
+                    <tr>
+                        <th>Calcul</th>
+                        <th>Formule Excel</th>
+                    </tr>
+                    <tr>
+                        <td>Moyenne (x̄)</td>
+                        <td style="text-align:left"><code>=MOYENNE(B2:B51)</code></td>
+                    </tr>
+                    <tr>
+                        <td>Écart-type (σ)</td>
+                        <td style="text-align:left"><code>=ECARTYPE.STANDARD(B2:B51)</code></td>
+                    </tr>
+                    <tr>
+                        <td>Cm</td>
+                        <td style="text-align:left"><code>=(E2-E1)/(6*ECARTYPE.STANDARD(B2:B51))</code></td>
+                    </tr>
+                    <tr>
+                        <td>Cmk supérieur</td>
+                        <td style="text-align:left"><code>=(E2-MOYENNE(B2:B51))/(3*ECARTYPE.STANDARD(B2:B51))</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cmk inférieur</td>
+                        <td style="text-align:left"><code>=(MOYENNE(B2:B51)-E1)/(3*ECARTYPE.STANDARD(B2:B51))</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cmk</td>
+                        <td style="text-align:left"><code>=MIN(Cmk_sup; Cmk_inf)</code></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="tool-content" id="ellistat-cm">
+                <ol>
+                    <li>Importer vos données de mesure</li>
+                    <li>Aller dans <strong>Capabilité → Étude machine</strong></li>
+                    <li>Renseigner LSI et LSS</li>
+                    <li>Ellistat calcule automatiquement Cm, Cmk et affiche l'histogramme avec les limites</li>
+                </ol>
+            </div>
+
+            <div class="question-box">
+                <h4>❓ Question 1 — Résultats</h4>
+                <p>Notez vos résultats : Cm = _____ et Cmk = _____</p>
+                <textarea placeholder="Cm = ...    Cmk = ..."></textarea>
+            </div>
+
+            <div class="question-box">
+                <h4>❓ Question 2 — Interprétation</h4>
+                <p>La machine est-elle capable ? Si Cm > Cmk, que cela signifie-t-il concrètement ?</p>
+                <textarea placeholder="Votre analyse..."></textarea>
+            </div>
+
+            <div class="question-box">
+                <h4>❓ Question 3 — Action</h4>
+                <p>Si Cmk < 1,67 mais Cm ≥ 1,67, quelle action proposez-vous ? (Indice : il s'agit d'un problème de
+                        centrage, pas de dispersion)</p>
+                        <textarea placeholder="Votre proposition d'action corrective..."></textarea>
+            </div>
+        </div>
+
+        <!-- SYNTHÈSE -->
+        <div class="section">
+            <h2>📝 Synthèse — Capabilité machine vs procédé</h2>
+            <div class="highlight">
+                <strong>Cm/Cmk = capabilité MACHINE</strong> (court terme, conditions optimales)<br><br>
+                <strong>Cp/Cpk = capabilité PROCÉDÉ</strong> court terme (inclut changements opérateurs,
+                matières…)<br><br>
+                <strong>Pp/Ppk = performance PROCÉDÉ</strong> long terme (inclut toutes les sources de variation)
+            </div>
+            <p style="margin-top: 15px; color: #94a3b8;">👉 En général : <strong>Cm ≥ Cp ≥ Pp</strong> — la capabilité
+                se dégrade quand on ajoute des sources de variation.</p>
+            <p style="margin-top: 10px; color: #94a3b8;">L'activité suivante (Activité 4) traitera la capabilité procédé
+                Cp/Cpk/Pp/Ppk.</p>
+        </div>
+
+        <a href="index.html" class="back-link">← Retour aux ressources</a>
+    </div>
+
+    <script>
+        function switchTab(id, tabEl) {
+            const parent = tabEl.parentElement;
+            parent.querySelectorAll('.tool-tab').forEach(t => t.classList.remove('active'));
+            tabEl.classList.add('active');
+            let sibling = parent.nextElementSibling;
+            while (sibling && sibling.classList.contains('tool-content')) {
+                sibling.classList.remove('active');
+                sibling = sibling.nextElementSibling;
+            }
+            document.getElementById(id).classList.add('active');
+        }
+    </script>
+</body>
+
+</html>

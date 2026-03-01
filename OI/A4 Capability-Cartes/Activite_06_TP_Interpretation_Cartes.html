@@ -1,0 +1,717 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activité 6 — TP Interprétation des Cartes de Contrôle</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(249, 115, 22, 0.2));
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ef4444, #f97316);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .header h1 {
+            font-size: 1.9em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #f87171, #fb923c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+
+        .section {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            color: #f87171;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #fb923c;
+            font-size: 1.1em;
+            margin: 20px 0 10px;
+        }
+
+        .section p,
+        .section li {
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .section ol,
+        .section ul {
+            margin-left: 20px;
+        }
+
+        .highlight {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 3px solid #ef4444;
+            padding: 15px 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 15px 0;
+        }
+
+        .highlight strong {
+            color: #f87171;
+        }
+
+        .rule-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 12px 0;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .rule-card:hover {
+            border-color: rgba(239, 68, 68, 0.3);
+            transform: translateX(4px);
+        }
+
+        .rule-card .rule-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .rule-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #ef4444, #f97316);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.85em;
+            flex-shrink: 0;
+        }
+
+        .rule-name {
+            font-weight: 700;
+            color: #f87171;
+            font-size: 1.05em;
+        }
+
+        .rule-desc {
+            color: #94a3b8;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .rule-pattern {
+            font-family: 'Courier New', monospace;
+            color: #fbbf24;
+            margin-top: 8px;
+            font-size: 0.85em;
+        }
+
+        .scenario {
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .scenario-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .scenario-num {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9em;
+        }
+
+        .scenario-title {
+            color: #a5b4fc;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .chart-data {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(51, 65, 85, 0.4);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        .chart-data table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85em;
+        }
+
+        .chart-data th {
+            color: #94a3b8;
+            padding: 5px 8px;
+            font-weight: 600;
+            text-align: center;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+        }
+
+        .chart-data td {
+            padding: 5px 8px;
+            text-align: center;
+            color: #e2e8f0;
+        }
+
+        .chart-data td.alert {
+            color: #f87171;
+            font-weight: 700;
+        }
+
+        .limits-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .limit-val {
+            text-align: center;
+            padding: 8px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .limit-lcs {
+            background: rgba(239, 68, 68, 0.1);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .limit-cl {
+            background: rgba(34, 197, 94, 0.1);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .limit-lci {
+            background: rgba(14, 165, 233, 0.1);
+            color: #38bdf8;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .question-box {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .question-box h4 {
+            color: #818cf8;
+            margin-bottom: 10px;
+        }
+
+        .question-box textarea {
+            width: 100%;
+            min-height: 80px;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9em;
+            resize: vertical;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #f87171;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            color: #fca5a5;
+        }
+
+        .zones-diagram {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .zone-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin: 3px 0;
+            font-size: 0.9em;
+        }
+
+        .zone-label {
+            width: 100px;
+            text-align: right;
+            font-weight: 600;
+        }
+
+        .zone-bar {
+            height: 24px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.8em;
+        }
+            .logo-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            background: rgba(30,41,59,0.9);
+            border: 1px solid rgba(51,65,85,0.5);
+            border-radius: 14px;
+        }
+        .logo-header img {
+            height: 55px;
+            border-radius: 8px;
+        }
+        .logo-header .structure-name {
+            font-size: 0.95em;
+            font-weight: 700;
+            color: #e2e8f0;
+            line-height: 1.3;
+        }
+        .logo-header .formateur {
+            font-size: 0.8em;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+    <div class="logo-header">
+      <img src="logo_uimm_placeholder.jpg" alt="Logo UIMM" />
+      <div>
+        <div class="structure-name">Pôle Formation UIMM - CVDL</div>
+        <div class="formateur">Formateur : S. Jaubert</div>
+      </div>
+    </div>
+        <div class="header">
+            <div class="badge">Jour 2 — Activité 6</div>
+            <h1>🚨 TP Interprétation des Cartes de Contrôle</h1>
+            <p>Apprenez à lire une carte de contrôle comme un professionnel : identifiez les alarmes et appliquez les
+                règles Western Electric / Nelson.</p>
+            <div style="color: #94a3b8; margin-top: 10px;">⏱️ 75 min | 📁 Référence : <code>SPC-5-ohm.csv</code></div>
+        </div>
+
+        <!-- ZONES -->
+        <div class="section">
+            <h2>📐 Les 3 zones de la carte de contrôle</h2>
+            <p>La carte est divisée en <strong>6 bandes</strong> (3 au-dessus, 3 en-dessous de la ligne centrale) :</p>
+            <div class="zones-diagram">
+                <div class="zone-row"><span class="zone-label" style="color:#ef4444;">LCS →</span>
+                    <div class="zone-bar" style="width:300px; background:rgba(239,68,68,0.3); color:#fca5a5;">— — — Hors
+                        contrôle — — —</div>
+                </div>
+                <div class="zone-row"><span class="zone-label" style="color:#f97316;">Zone A</span>
+                    <div class="zone-bar" style="width:300px; background:rgba(249,115,22,0.15); color:#fdba74;">+2σ à
+                        +3σ</div>
+                </div>
+                <div class="zone-row"><span class="zone-label" style="color:#fbbf24;">Zone B</span>
+                    <div class="zone-bar" style="width:300px; background:rgba(250,204,21,0.1); color:#fde68a;">+1σ à +2σ
+                    </div>
+                </div>
+                <div class="zone-row"><span class="zone-label" style="color:#4ade80;">Zone C</span>
+                    <div class="zone-bar" style="width:300px; background:rgba(74,222,128,0.1); color:#86efac;">0 à +1σ
+                    </div>
+                </div>
+                <div class="zone-row"><span class="zone-label" style="color:#22c55e;">LC →</span>
+                    <div class="zone-bar" style="width:300px; background:rgba(34,197,94,0.2); color:#4ade80;">═══ Ligne
+                        Centrale (X̿) ═══</div>
+                </div>
+                <div class="zone-row"><span class="zone-label" style="color:#4ade80;">Zone C</span>
+                    <div class="zone-bar" style="width:300px; background:rgba(74,222,128,0.1); color:#86efac;">0 à -1σ
+                    </div>
+                </div>
+                <div class="zone-row"><span class="zone-label" style="color:#fbbf24;">Zone B</span>
+                    <div class="zone-bar" style="width:300px; background:rgba(250,204,21,0.1); color:#fde68a;">-1σ à -2σ
+                    </div>
+                </div>
+                <div class="zone-row"><span class="zone-label" style="color:#f97316;">Zone A</span>
+                    <div class="zone-bar" style="width:300px; background:rgba(249,115,22,0.15); color:#fdba74;">-2σ à
+                        -3σ</div>
+                </div>
+                <div class="zone-row"><span class="zone-label" style="color:#ef4444;">LCI →</span>
+                    <div class="zone-bar" style="width:300px; background:rgba(239,68,68,0.3); color:#fca5a5;">— — — Hors
+                        contrôle — — —</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RÈGLES -->
+        <div class="section">
+            <h2>📏 Les 8 règles d'interprétation (Western Electric / Nelson)</h2>
+
+            <div class="rule-card">
+                <div class="rule-header"><span class="rule-num">1</span><span class="rule-name">Point hors
+                        limites</span></div>
+                <div class="rule-desc">1 point au-delà de la LCS ou LCI (zone A+ ou au-delà)</div>
+                <div class="rule-pattern">Cause probable : événement soudain et important (panne, erreur opérateur,
+                    changement de lot)</div>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-header"><span class="rule-num">2</span><span class="rule-name">Zone A (2 sur 3)</span>
+                </div>
+                <div class="rule-desc">2 points sur 3 consécutifs en zone A ou au-delà, du même côté</div>
+                <div class="rule-pattern">Cause probable : déréglage important du procédé</div>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-header"><span class="rule-num">3</span><span class="rule-name">Zone B (4 sur 5)</span>
+                </div>
+                <div class="rule-desc">4 points sur 5 consécutifs en zone B ou au-delà, du même côté</div>
+                <div class="rule-pattern">Cause probable : dérive progressive du procédé</div>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-header"><span class="rule-num">4</span><span class="rule-name">Run (série)</span></div>
+                <div class="rule-desc">7 ou 8 points consécutifs du même côté de la ligne centrale</div>
+                <div class="rule-pattern">Cause probable : changement de niveau (matière, outil, opérateur)</div>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-header"><span class="rule-num">5</span><span class="rule-name">Tendance</span></div>
+                <div class="rule-desc">6 ou 7 points consécutifs en augmentation ou en diminution constante</div>
+                <div class="rule-pattern">Cause probable : usure progressive (outil, machine), dérive thermique</div>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-header"><span class="rule-num">6</span><span class="rule-name">Mélange (mixture)</span>
+                </div>
+                <div class="rule-desc">8 points consécutifs en dehors de la zone C (aucun point près de la moyenne)
+                </div>
+                <div class="rule-pattern">Cause probable : deux procédés mélangés (2 machines, 2 opérateurs alternés)
+                </div>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-header"><span class="rule-num">7</span><span class="rule-name">Stratification</span>
+                </div>
+                <div class="rule-desc">15 points consécutifs dans la zone C (tous proches de la moyenne)</div>
+                <div class="rule-pattern">Cause probable : sous-groupes trop hétérogènes (calcul des limites erroné)
+                </div>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-header"><span class="rule-num">8</span><span class="rule-name">Sur-contrôle
+                        (oscillation)</span></div>
+                <div class="rule-desc">14 points consécutifs alternant haut-bas-haut-bas</div>
+                <div class="rule-pattern">Cause probable : réglages trop fréquents par l'opérateur ("tampering")</div>
+            </div>
+        </div>
+
+        <!-- SCÉNARIO 1 -->
+        <div class="section">
+            <h2>🔍 Exercices d'interprétation</h2>
+
+            <div class="scenario">
+                <div class="scenario-header"><span class="scenario-num">Cas 1</span><span class="scenario-title">Ligne
+                        d'assemblage — cote de serrage</span></div>
+                <div class="limits-info">
+                    <div class="limit-val limit-lcs">LCS = 52,0</div>
+                    <div class="limit-val limit-cl">LC = 45,0</div>
+                    <div class="limit-val limit-lci">LCI = 38,0</div>
+                </div>
+                <p style="color:#94a3b8; font-size:0.85em; margin-bottom:5px;">σ estimé ≈ 2,33 → Zone A : >49,7 ou <40,3
+                        | Zone B :>47,3 ou <42,7< /p>
+                            <div class="chart-data">
+                                <table>
+                                    <tr>
+                                        <th>Éch.</th>
+                                        <th>1</th>
+                                        <th>2</th>
+                                        <th>3</th>
+                                        <th>4</th>
+                                        <th>5</th>
+                                        <th>6</th>
+                                        <th>7</th>
+                                        <th>8</th>
+                                        <th>9</th>
+                                        <th>10</th>
+                                        <th>11</th>
+                                        <th>12</th>
+                                    </tr>
+                                    <tr>
+                                        <td>X̄</td>
+                                        <td>44,2</td>
+                                        <td>45,8</td>
+                                        <td>43,1</td>
+                                        <td>46,5</td>
+                                        <td>47,8</td>
+                                        <td>48,2</td>
+                                        <td>49,1</td>
+                                        <td>50,3</td>
+                                        <td>50,8</td>
+                                        <td>51,2</td>
+                                        <td class="alert">52,5</td>
+                                        <td>51,0</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="question-box">
+                                <h4>❓ Quelles règles sont violées ? Quelle action recommandez-vous ?</h4>
+                                <textarea placeholder="Règles violées et actions..."></textarea>
+                            </div>
+            </div>
+
+            <div class="scenario">
+                <div class="scenario-header"><span class="scenario-num">Cas 2</span><span
+                        class="scenario-title">Remplissage de flacons — volume en mL</span></div>
+                <div class="limits-info">
+                    <div class="limit-val limit-lcs">LCS = 103,0</div>
+                    <div class="limit-val limit-cl">LC = 100,0</div>
+                    <div class="limit-val limit-lci">LCI = 97,0</div>
+                </div>
+                <div class="chart-data">
+                    <table>
+                        <tr>
+                            <th>Éch.</th>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                            <th>6</th>
+                            <th>7</th>
+                            <th>8</th>
+                            <th>9</th>
+                            <th>10</th>
+                            <th>11</th>
+                            <th>12</th>
+                        </tr>
+                        <tr>
+                            <td>X̄</td>
+                            <td>100,5</td>
+                            <td>100,8</td>
+                            <td>101,2</td>
+                            <td>100,9</td>
+                            <td>101,5</td>
+                            <td>101,0</td>
+                            <td>101,3</td>
+                            <td>100,7</td>
+                            <td>101,1</td>
+                            <td>100,6</td>
+                            <td>101,4</td>
+                            <td>100,9</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="question-box">
+                    <h4>❓ Tous les points sont dans les limites. Le procédé est-il vraiment sous contrôle ? Quelle règle
+                        pourrait être violée ?</h4>
+                    <textarea placeholder="Analyse détaillée..."></textarea>
+                </div>
+            </div>
+
+            <div class="scenario">
+                <div class="scenario-header"><span class="scenario-num">Cas 3</span><span class="scenario-title">Usinage
+                        CNC — épaisseur de paroi</span></div>
+                <div class="limits-info">
+                    <div class="limit-val limit-lcs">LCS = 8,20</div>
+                    <div class="limit-val limit-cl">LC = 7,50</div>
+                    <div class="limit-val limit-lci">LCI = 6,80</div>
+                </div>
+                <div class="chart-data">
+                    <table>
+                        <tr>
+                            <th>Éch.</th>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                            <th>6</th>
+                            <th>7</th>
+                            <th>8</th>
+                            <th>9</th>
+                            <th>10</th>
+                            <th>11</th>
+                            <th>12</th>
+                            <th>13</th>
+                            <th>14</th>
+                        </tr>
+                        <tr>
+                            <td>X̄</td>
+                            <td>7,8</td>
+                            <td>7,2</td>
+                            <td>7,9</td>
+                            <td>7,1</td>
+                            <td>7,8</td>
+                            <td>7,0</td>
+                            <td>7,9</td>
+                            <td>7,1</td>
+                            <td>7,8</td>
+                            <td>7,2</td>
+                            <td>7,9</td>
+                            <td>7,0</td>
+                            <td>7,8</td>
+                            <td>7,1</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="question-box">
+                    <h4>❓ Aucun point hors limites, pourtant ce pattern est anormal. Quelle règle est violée ? Quelle
+                        cause probable ?</h4>
+                    <textarea placeholder="Règle et cause..."></textarea>
+                </div>
+            </div>
+
+            <div class="scenario">
+                <div class="scenario-header"><span class="scenario-num">Cas 4</span><span
+                        class="scenario-title">Traitement thermique — température</span></div>
+                <div class="limits-info">
+                    <div class="limit-val limit-lcs">LCS = 865</div>
+                    <div class="limit-val limit-cl">LC = 850</div>
+                    <div class="limit-val limit-lci">LCI = 835</div>
+                </div>
+                <div class="chart-data">
+                    <table>
+                        <tr>
+                            <th>Éch.</th>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                            <th>6</th>
+                            <th>7</th>
+                            <th>8</th>
+                            <th>9</th>
+                            <th>10</th>
+                            <th>11</th>
+                            <th>12</th>
+                            <th>13</th>
+                            <th>14</th>
+                            <th>15</th>
+                            <th>16</th>
+                        </tr>
+                        <tr>
+                            <td>X̄</td>
+                            <td>851</td>
+                            <td>849</td>
+                            <td>850</td>
+                            <td>848</td>
+                            <td>851</td>
+                            <td>850</td>
+                            <td>852</td>
+                            <td>849</td>
+                            <td>850</td>
+                            <td>851</td>
+                            <td>850</td>
+                            <td>849</td>
+                            <td>850</td>
+                            <td>851</td>
+                            <td>850</td>
+                            <td>849</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="question-box">
+                    <h4>❓ Tout semble « trop parfait ». Quelle règle pourrait être violée ? Pourquoi est-ce un problème
+                        ?</h4>
+                    <textarea placeholder="Analyse du pattern \" trop parfait\"..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXERCICE SPC-5 -->
+        <div class="section">
+            <h2>📊 Exercice avancé : Données de résistance (SPC-5-ohm.csv)</h2>
+            <p>Ouvrez <code>SPC-5-ohm.csv</code> (51 sous-groupes de 4 mesures de résistance en Ω). Construisez la carte
+                X̄-R sur Excel/Ellistat et identifiez <strong>toutes les violations de règles</strong>.</p>
+            <div class="question-box">
+                <h4>❓ Rapport d'analyse complet</h4>
+                <p>Listez les alarmes détectées (numéro de règle + sous-groupes concernés). Observez-vous une tendance
+                    globale ? Que recommanderiez-vous au responsable production ?</p>
+                <textarea
+                    placeholder="Alarmes détectées :\n- Règle n°... aux sous-groupes...\n- Règle n°... aux sous-groupes...\n\nTendance globale : ...\n\nRecommandations : ..."
+                    style="min-height: 140px;"></textarea>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-link">← Retour aux ressources</a>
+    </div>
+</body>
+
+</html>
