@@ -1,0 +1,554 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activité 5 — TP Construction Cartes X̄-R</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(59, 130, 246, 0.2));
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .header h1 {
+            font-size: 1.9em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #38bdf8, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+
+        .section {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(14, 165, 233, 0.15);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            color: #38bdf8;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #60a5fa;
+            font-size: 1.1em;
+            margin: 20px 0 10px;
+        }
+
+        .section p,
+        .section li {
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .section ol,
+        .section ul {
+            margin-left: 20px;
+        }
+
+        .section ol li {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            background: rgba(14, 165, 233, 0.1);
+            border-left: 3px solid #0ea5e9;
+            padding: 15px 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 15px 0;
+        }
+
+        .highlight strong {
+            color: #38bdf8;
+        }
+
+        .warning {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 3px solid #f59e0b;
+            padding: 15px 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 15px 0;
+        }
+
+        .warning strong {
+            color: #fbbf24;
+        }
+
+        .formula-box {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .formula {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #38bdf8;
+            margin: 8px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .formula-desc {
+            color: #94a3b8;
+            font-size: 0.85em;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.9em;
+        }
+
+        .data-table th {
+            background: rgba(14, 165, 233, 0.2);
+            color: #38bdf8;
+            padding: 8px 10px;
+            text-align: center;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(14, 165, 233, 0.3);
+        }
+
+        .data-table td {
+            padding: 6px 10px;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+            color: #cbd5e1;
+            text-align: center;
+        }
+
+        .data-table tr:hover td {
+            background: rgba(14, 165, 233, 0.05);
+        }
+
+        .constants-table {
+            font-size: 0.95em;
+        }
+
+        .constants-table th {
+            background: rgba(139, 92, 246, 0.2);
+            color: #a78bfa;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.85em;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+
+        .tool-tabs {
+            display: flex;
+            gap: 0;
+            margin: 15px 0;
+        }
+
+        .tool-tab {
+            padding: 10px 24px;
+            background: rgba(51, 65, 85, 0.5);
+            color: #94a3b8;
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+
+        .tool-tab:first-child {
+            border-radius: 10px 0 0 10px;
+        }
+
+        .tool-tab:last-child {
+            border-radius: 0 10px 10px 0;
+        }
+
+        .tool-tab.active {
+            background: rgba(14, 165, 233, 0.2);
+            color: #38bdf8;
+            border-color: rgba(14, 165, 233, 0.3);
+        }
+
+        .tool-content {
+            display: none;
+            padding: 20px;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(51, 65, 85, 0.3);
+            border-radius: 0 0 12px 12px;
+            margin-top: -1px;
+        }
+
+        .tool-content.active {
+            display: block;
+        }
+
+        .question-box {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .question-box h4 {
+            color: #818cf8;
+            margin-bottom: 10px;
+        }
+
+        .question-box textarea {
+            width: 100%;
+            min-height: 60px;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9em;
+            resize: vertical;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            color: #7dd3fc;
+        }
+
+        .logo-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            border-radius: 14px;
+        }
+
+        .logo-header img {
+            height: 55px;
+            border-radius: 8px;
+        }
+
+        .logo-header .structure-name {
+            font-size: 0.95em;
+            font-weight: 700;
+            color: #e2e8f0;
+            line-height: 1.3;
+        }
+
+        .logo-header .formateur {
+            font-size: 0.8em;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+    </style>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo-header">
+            <img src="logo_uimm_placeholder.jpg" alt="Logo UIMM" />
+            <div>
+                <div class="structure-name">Pôle Formation UIMM - CVDL</div>
+                <div class="formateur">Formateur : S. Jaubert</div>
+            </div>
+        </div>
+        <div class="header">
+            <div class="badge">Jour 2 — Activité 5</div>
+            <h1>📉 TP Construction Cartes X̄-R</h1>
+            <p>Construisez des cartes de contrôle aux mesures, d'abord manuellement (papier) puis sur Excel/Ellistat, à
+                partir de données de pression industrielle.</p>
+            <div style="color: #94a3b8; margin-top: 10px;">⏱️ 75 min | 📁 Fichier : <code>SPC-2-pression.csv</code> (24
+                groupes × 5 mesures)</div>
+        </div>
+
+        <!-- PRINCIPE -->
+        <div class="section">
+            <h2>📚 Principe de la carte X̄-R</h2>
+            <p>La carte de contrôle aux mesures se compose de <strong>deux graphiques superposés</strong> :</p>
+            <ul>
+                <li><strong>Carte X̄ (des moyennes)</strong> : surveille le <em>centrage</em> du procédé</li>
+                <li><strong>Carte R (des étendues)</strong> : surveille la <em>dispersion</em> du procédé</li>
+            </ul>
+            <p style="margin-top: 15px;">Chaque point correspond à un <strong>sous-groupe</strong> (échantillon) de n
+                mesures prélevées à intervalles réguliers.</p>
+        </div>
+
+        <!-- CONSTANTES -->
+        <div class="section">
+            <h2>📐 Formules et constantes</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="formula-box">
+                    <div class="formula-desc">Limites carte X̄</div>
+                    <div class="formula">$$LCS_{\bar{X}} = \bar{\bar{X}} + A_2 \times \bar{R}$$</div>
+                    <div class="formula">$$LCI_{\bar{X}} = \bar{\bar{X}} - A_2 \times \bar{R}$$</div>
+                </div>
+                <div class="formula-box">
+                    <div class="formula-desc">Limites carte R</div>
+                    <div class="formula">$$LCS_R = D_4 \times \bar{R}$$</div>
+                    <div class="formula">$$LCI_R = D_3 \times \bar{R}$$</div>
+                </div>
+            </div>
+
+            <h3>Table des constantes</h3>
+            <table class="data-table constants-table">
+                <tr>
+                    <th>Taille n</th>
+                    <th>A₂</th>
+                    <th>D₃</th>
+                    <th>D₄</th>
+                    <th>d₂</th>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>1,880</td>
+                    <td>0</td>
+                    <td>3,267</td>
+                    <td>1,128</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>1,023</td>
+                    <td>0</td>
+                    <td>2,575</td>
+                    <td>1,693</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>0,729</td>
+                    <td>0</td>
+                    <td>2,282</td>
+                    <td>2,059</td>
+                </tr>
+                <tr style="background: rgba(14,165,233,0.1);">
+                    <td><strong>5</strong></td>
+                    <td><strong>0,577</strong></td>
+                    <td><strong>0</strong></td>
+                    <td><strong>2,115</strong></td>
+                    <td><strong>2,326</strong></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>0,483</td>
+                    <td>0</td>
+                    <td>2,004</td>
+                    <td>2,534</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>0,419</td>
+                    <td>0,076</td>
+                    <td>1,924</td>
+                    <td>2,704</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>0,373</td>
+                    <td>0,136</td>
+                    <td>1,864</td>
+                    <td>2,847</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>0,337</td>
+                    <td>0,184</td>
+                    <td>1,816</td>
+                    <td>2,970</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>0,308</td>
+                    <td>0,223</td>
+                    <td>1,777</td>
+                    <td>3,078</td>
+                </tr>
+            </table>
+            <div class="highlight">
+                <strong>💡 Pour nos données :</strong> n = 5 → A₂ = 0,577 &nbsp;|&nbsp; D₃ = 0 &nbsp;|&nbsp; D₄ = 2,115
+                &nbsp;|&nbsp; d₂ = 2,326
+            </div>
+        </div>
+
+        <!-- CONSTRUCTION MANUELLE -->
+        <div class="section">
+            <h2>✏️ Partie 1 — Construction manuelle (25 min)</h2>
+            <p>Avec les <strong>12 premiers sous-groupes</strong> du fichier <code>SPC-2-pression.csv</code> (1 déc. au
+                16 déc.) :</p>
+            <ol>
+                <li><span class="step-number">1</span> Calculer X̄ᵢ et Rᵢ pour chaque sous-groupe</li>
+                <li><span class="step-number">2</span> Calculer X̿ (moyenne des X̄ᵢ) et R̄ (moyenne des Rᵢ)</li>
+                <li><span class="step-number">3</span> Calculer les limites de contrôle :
+                    <ul>
+                        <li>Carte X̄ : LCS = X̿ + 0,577 × R̄ &nbsp;|&nbsp; LCI = X̿ − 0,577 × R̄</li>
+                        <li>Carte R : LCS = 2,115 × R̄ &nbsp;|&nbsp; LCI = 0 × R̄ = 0</li>
+                    </ul>
+                </li>
+                <li><span class="step-number">4</span> Sur papier millimétré (ou quadrillé), tracer :
+                    <ul>
+                        <li>La ligne centrale (X̿ et R̄)</li>
+                        <li>Les limites de contrôle (LCS, LCI) en rouge</li>
+                        <li>Les points X̄ᵢ et Rᵢ reliés entre eux</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <div class="question-box">
+                <h4>❓ Question 1</h4>
+                <p>Notez vos valeurs : X̿ = _____ &nbsp;|&nbsp; R̄ = _____ &nbsp;|&nbsp; LCS(X̄) = _____ &nbsp;|&nbsp;
+                    LCI(X̄) = _____</p>
+                <textarea placeholder="X̿ = ...  R̄ = ...  LCS = ...  LCI = ..."></textarea>
+            </div>
+        </div>
+
+        <!-- CONSTRUCTION EXCEL -->
+        <div class="section">
+            <h2>💻 Partie 2 — Construction sur Excel/Ellistat (25 min)</h2>
+            <p>Maintenant, utilisez <strong>les 24 sous-groupes</strong> (données complètes) :</p>
+
+            <div class="tool-tabs">
+                <div class="tool-tab active" onclick="switchTab('excel-cc', this)">📗 Excel</div>
+                <div class="tool-tab" onclick="switchTab('ellistat-cc', this)">📘 Ellistat</div>
+            </div>
+            <div class="tool-content active" id="excel-cc">
+                <ol>
+                    <li>Ouvrir <code>SPC-2-pression.csv</code> dans Excel</li>
+                    <li>Pour chaque sous-groupe, calculer X̄ et R (comme en Partie 1)</li>
+                    <li>Calculer X̿, R̄, et les limites de contrôle</li>
+                    <li>Créer un graphique en courbes pour la <strong>carte X̄</strong> :
+                        <ul>
+                            <li>Série 1 : les X̄ᵢ (points + ligne)</li>
+                            <li>Série 2 : X̿ (ligne droite horizontale, vert)</li>
+                            <li>Série 3 : LCS (ligne droite, rouge pointillé)</li>
+                            <li>Série 4 : LCI (ligne droite, rouge pointillé)</li>
+                        </ul>
+                    </li>
+                    <li>Créer un second graphique pour la <strong>carte R</strong></li>
+                </ol>
+            </div>
+            <div class="tool-content" id="ellistat-cc">
+                <ol>
+                    <li>Importer <code>SPC-2-pression.csv</code></li>
+                    <li>Aller dans <strong>Cartes de contrôle → X̄-R</strong></li>
+                    <li>Configurer : Variable = pression, Sous-groupe = groupe, Taille = 5</li>
+                    <li>Ellistat affiche automatiquement les deux cartes avec limites</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- INTERPRÉTATION -->
+        <div class="section">
+            <h2>🔍 Partie 3 — Interprétation (25 min)</h2>
+            <p>Observez vos cartes. Les données de pression montrent un scénario intéressant : les mesures de
+                <strong>décembre</strong> puis de <strong>janvier</strong>…
+            </p>
+
+            <div class="question-box">
+                <h4>❓ Question 2 — Analyse de la carte X̄</h4>
+                <p>Y a-t-il des points hors limites ? Observez-vous une tendance ou un changement de niveau entre
+                    décembre et janvier ?</p>
+                <textarea placeholder="Description de ce que vous observez sur la carte des moyennes..."></textarea>
+            </div>
+
+            <div class="question-box">
+                <h4>❓ Question 3 — Les sous-groupes 15 et 16</h4>
+                <p>Que se passe-t-il aux sous-groupes 15-16 (21-22 déc.) ? Les valeurs sont-elles anormalement élevées ?
+                    Quelle cause spéciale pourrait expliquer ce comportement ?</p>
+                <textarea placeholder="Analyse des sous-groupes 15-16..."></textarea>
+            </div>
+
+            <div class="question-box">
+                <h4>❓ Question 4 — Après les vacances</h4>
+                <p>Les sous-groupes 17-24 (janvier) montrent un changement. Décrivez ce que vous observez. Le procédé
+                    est-il le même qu'en décembre ? Que recommandez-vous ?</p>
+                <textarea placeholder="Analyse janvier et recommandations..."></textarea>
+            </div>
+
+            <div class="warning">
+                <strong>💡 Leçon clé :</strong> La carte de contrôle fonctionne comme un <strong>système
+                    d'alarme</strong>. Elle ne dit pas POURQUOI le procédé a changé, mais QUAND. C'est à l'équipe de
+                production d'investiguer la cause (5M, Ishikawa…).
+            </div>
+        </div>
+
+        <a href="index.html" class="back-link">← Retour aux ressources</a>
+    </div>
+
+    <script>
+        function switchTab(id, tabEl) {
+            const parent = tabEl.parentElement;
+            parent.querySelectorAll('.tool-tab').forEach(t => t.classList.remove('active'));
+            tabEl.classList.add('active');
+            let sibling = parent.nextElementSibling;
+            while (sibling && sibling.classList.contains('tool-content')) { sibling.classList.remove('active'); sibling = sibling.nextElementSibling; }
+            document.getElementById(id).classList.add('active');
+        }
+    </script>
+</body>
+
+</html>

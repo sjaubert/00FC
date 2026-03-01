@@ -1,0 +1,466 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activité 1 — Quiz Variabilité & Sensibilisation SPC</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 860px; margin: 0 auto; }
+        .header {
+            text-align: center;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(168,85,247,0.2));
+            border: 1px solid rgba(99,102,241,0.3);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+        .header .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        .header h1 { font-size: 2em; font-weight: 800; margin-bottom: 10px; background: linear-gradient(135deg, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header p { color: #94a3b8; font-size: 1.05em; line-height: 1.6; }
+        .intro-box {
+            background: rgba(30,41,59,0.8);
+            border: 1px solid rgba(99,102,241,0.2);
+            border-radius: 16px;
+            padding: 25px 30px;
+            margin-bottom: 30px;
+        }
+        .intro-box h2 { color: #818cf8; font-size: 1.2em; margin-bottom: 10px; }
+        .intro-box p { color: #94a3b8; line-height: 1.7; }
+        .intro-box ul { color: #94a3b8; margin: 10px 0 0 20px; line-height: 1.8; }
+        .question-card {
+            background: rgba(30,41,59,0.8);
+            border: 1px solid rgba(99,102,241,0.15);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        .question-card.correct { border-color: #22c55e; background: rgba(34,197,94,0.05); }
+        .question-card.incorrect { border-color: #ef4444; background: rgba(239,68,68,0.05); }
+        .q-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: white;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-weight: 700;
+            font-size: 0.85em;
+            margin-bottom: 12px;
+        }
+        .q-text { font-size: 1.05em; font-weight: 600; color: #e2e8f0; margin-bottom: 18px; line-height: 1.5; }
+        .options { display: flex; flex-direction: column; gap: 10px; }
+        .option {
+            display: flex; align-items: center; gap: 12px;
+            padding: 14px 18px;
+            background: rgba(51,65,85,0.5);
+            border: 1px solid rgba(99,102,241,0.1);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.25s;
+            font-size: 0.95em;
+        }
+        .option:hover { background: rgba(99,102,241,0.15); border-color: rgba(99,102,241,0.3); transform: translateX(4px); }
+        .option.selected { background: rgba(99,102,241,0.2); border-color: #6366f1; }
+        .option.right { background: rgba(34,197,94,0.15); border-color: #22c55e; }
+        .option.wrong { background: rgba(239,68,68,0.1); border-color: #ef4444; opacity: 0.7; }
+        .option input { display: none; }
+        .radio-custom {
+            width: 20px; height: 20px;
+            border: 2px solid #475569;
+            border-radius: 50%;
+            flex-shrink: 0;
+            position: relative;
+            transition: all 0.25s;
+        }
+        .option.selected .radio-custom { border-color: #6366f1; }
+        .option.selected .radio-custom::after { content: ''; position: absolute; top: 4px; left: 4px; width: 8px; height: 8px; background: #6366f1; border-radius: 50%; }
+        .option.right .radio-custom { border-color: #22c55e; }
+        .option.right .radio-custom::after { content: '✓'; position: absolute; top: -2px; left: 2px; font-size: 14px; color: #22c55e; }
+        .explanation {
+            display: none;
+            margin-top: 15px;
+            padding: 15px 18px;
+            border-radius: 10px;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        .explanation.show { display: block; }
+        .explanation.correct-exp { background: rgba(34,197,94,0.1); border-left: 3px solid #22c55e; color: #86efac; }
+        .explanation.incorrect-exp { background: rgba(239,68,68,0.1); border-left: 3px solid #ef4444; color: #fca5a5; }
+        .btn-validate {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            margin-top: 30px;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
+        }
+        .btn-validate:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(99,102,241,0.3); }
+        .btn-validate:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+        .result-panel {
+            display: none;
+            text-align: center;
+            padding: 40px 30px;
+            background: rgba(30,41,59,0.9);
+            border: 1px solid rgba(99,102,241,0.3);
+            border-radius: 20px;
+            margin-top: 30px;
+        }
+        .result-panel.show { display: block; }
+        .score-circle {
+            width: 140px; height: 140px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2.5em; font-weight: 800;
+            border: 4px solid;
+        }
+        .score-circle.good { border-color: #22c55e; color: #22c55e; background: rgba(34,197,94,0.1); }
+        .score-circle.medium { border-color: #f59e0b; color: #f59e0b; background: rgba(245,158,11,0.1); }
+        .score-circle.low { border-color: #ef4444; color: #ef4444; background: rgba(239,68,68,0.1); }
+        .result-panel h2 { font-size: 1.5em; margin-bottom: 10px; }
+        .result-panel p { color: #94a3b8; font-size: 1.05em; line-height: 1.6; }
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(51,65,85,0.5);
+            border-radius: 3px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #6366f1, #a855f7);
+            border-radius: 3px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #818cf8;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .back-link:hover { color: #a5b4fc; }
+            .logo-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            background: rgba(30,41,59,0.9);
+            border: 1px solid rgba(51,65,85,0.5);
+            border-radius: 14px;
+        }
+        .logo-header img {
+            height: 55px;
+            border-radius: 8px;
+        }
+        .logo-header .structure-name {
+            font-size: 0.95em;
+            font-weight: 700;
+            color: #e2e8f0;
+            line-height: 1.3;
+        }
+        .logo-header .formateur {
+            font-size: 0.8em;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="logo-header">
+      <img src="logo_uimm_placeholder.jpg" alt="Logo UIMM" />
+      <div>
+        <div class="structure-name">Pôle Formation UIMM - CVDL</div>
+        <div class="formateur">Formateur : S. Jaubert</div>
+      </div>
+    </div>
+    <div class="header">
+        <div class="badge">Jour 1 — Activité 1</div>
+        <h1>🎯 Quiz d'Entrée : Variabilité & SPC</h1>
+        <p>Testez vos connaissances actuelles sur la variabilité des procédés et la maîtrise statistique. Ce quiz permet de faire le point avant d'entrer dans le vif du sujet.</p>
+    </div>
+
+    <div class="intro-box">
+        <h2>📋 Objectifs de cette activité</h2>
+        <ul>
+            <li>Prendre conscience que <strong>deux pièces ne sont jamais identiques</strong></li>
+            <li>Distinguer les <strong>causes communes</strong> des <strong>causes spéciales</strong> de variation</li>
+            <li>Comprendre pourquoi le <strong>contrôle 100%</strong> ne suffit pas</li>
+            <li>Découvrir le vocabulaire de base du SPC</li>
+        </ul>
+        <p style="margin-top: 15px; color: #818cf8;"><strong>⏱️ Durée :</strong> 30 minutes — <strong>📝 Format :</strong> 10 questions à choix unique</p>
+    </div>
+
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+    <form id="quizForm">
+        <!-- Q1 -->
+        <div class="question-card" id="q1">
+            <div class="q-number">1</div>
+            <div class="q-text">Vous produisez 100 pièces sur la même machine, avec les mêmes réglages, le même opérateur et la même matière. Que constatez-vous en mesurant les pièces ?</div>
+            <div class="options">
+                <label class="option" onclick="selectOption(this, 1)"><span class="radio-custom"></span><span>Toutes les pièces sont strictement identiques</span></label>
+                <label class="option" onclick="selectOption(this, 1)"><span class="radio-custom"></span><span>Les mesures varient légèrement autour d'une valeur centrale</span></label>
+                <label class="option" onclick="selectOption(this, 1)"><span class="radio-custom"></span><span>La moitié est conforme, l'autre non</span></label>
+                <label class="option" onclick="selectOption(this, 1)"><span class="radio-custom"></span><span>Il est impossible de prédire quoi que ce soit</span></label>
+            </div>
+            <div class="explanation" id="exp1"></div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="question-card" id="q2">
+            <div class="q-number">2</div>
+            <div class="q-text">Qu'appelle-t-on une « cause commune » de variation dans un procédé ?</div>
+            <div class="options">
+                <label class="option" onclick="selectOption(this, 2)"><span class="radio-custom"></span><span>Un défaut de la machine qui provoque un arrêt</span></label>
+                <label class="option" onclick="selectOption(this, 2)"><span class="radio-custom"></span><span>Une variation naturelle, inhérente au procédé, toujours présente</span></label>
+                <label class="option" onclick="selectOption(this, 2)"><span class="radio-custom"></span><span>Un changement de lot de matière première</span></label>
+                <label class="option" onclick="selectOption(this, 2)"><span class="radio-custom"></span><span>Une erreur de l'opérateur</span></label>
+            </div>
+            <div class="explanation" id="exp2"></div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="question-card" id="q3">
+            <div class="q-number">3</div>
+            <div class="q-text">Quel outil permet de visualiser la distribution des mesures d'une production ?</div>
+            <div class="options">
+                <label class="option" onclick="selectOption(this, 3)"><span class="radio-custom"></span><span>Un diagramme de Gantt</span></label>
+                <label class="option" onclick="selectOption(this, 3)"><span class="radio-custom"></span><span>Un histogramme</span></label>
+                <label class="option" onclick="selectOption(this, 3)"><span class="radio-custom"></span><span>Un diagramme d'Ishikawa</span></label>
+                <label class="option" onclick="selectOption(this, 3)"><span class="radio-custom"></span><span>Un diagramme de Pareto</span></label>
+            </div>
+            <div class="explanation" id="exp3"></div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="question-card" id="q4">
+            <div class="q-number">4</div>
+            <div class="q-text">Une machine est « capable » lorsque :</div>
+            <div class="options">
+                <label class="option" onclick="selectOption(this, 4)"><span class="radio-custom"></span><span>Elle fonctionne sans panne pendant 8 heures</span></label>
+                <label class="option" onclick="selectOption(this, 4)"><span class="radio-custom"></span><span>Sa dispersion naturelle est inférieure à l'intervalle de tolérance</span></label>
+                <label class="option" onclick="selectOption(this, 4)"><span class="radio-custom"></span><span>Elle produit plus de 100 pièces par heure</span></label>
+                <label class="option" onclick="selectOption(this, 4)"><span class="radio-custom"></span><span>L'opérateur maîtrise parfaitement la machine</span></label>
+            </div>
+            <div class="explanation" id="exp4"></div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="question-card" id="q5">
+            <div class="q-number">5</div>
+            <div class="q-text">Le contrôle à 100% des pièces produites est-il la meilleure stratégie qualité ?</div>
+            <div class="options">
+                <label class="option" onclick="selectOption(this, 5)"><span class="radio-custom"></span><span>Oui, c'est la seule façon de garantir zéro défaut</span></label>
+                <label class="option" onclick="selectOption(this, 5)"><span class="radio-custom"></span><span>Oui, mais c'est trop cher en pratique</span></label>
+                <label class="option" onclick="selectOption(this, 5)"><span class="radio-custom"></span><span>Non, il est coûteux, fatigant et ne détecte pas 100% des défauts</span></label>
+                <label class="option" onclick="selectOption(this, 5)"><span class="radio-custom"></span><span>Non, il vaut mieux ne rien contrôler</span></label>
+            </div>
+            <div class="explanation" id="exp5"></div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="question-card" id="q6">
+            <div class="q-number">6</div>
+            <div class="q-text">Que signifie le sigle SPC (ou MSP en français) ?</div>
+            <div class="options">
+                <label class="option" onclick="selectOption(this, 6)"><span class="radio-custom"></span><span>Système de Production Continue</span></label>
+                <label class="option" onclick="selectOption(this, 6)"><span class="radio-custom"></span><span>Statistical Process Control / Maîtrise Statistique des Procédés</span></label>
+                <label class="option" onclick="selectOption(this, 6)"><span class="radio-custom"></span><span>Standard de Performance et Conformité</span></label>
+                <label class="option" onclick="selectOption(this, 6)"><span class="radio-custom"></span><span>Suivi des Procédures de Contrôle</span></label>
+            </div>
+            <div class="explanation" id="exp6"></div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="question-card" id="q7">
+            <div class="q-number">7</div>
+            <div class="q-text">Un procédé est dit « sous contrôle statistique » lorsque :</div>
+            <div class="options">
+                <label class="option" onclick="selectOption(this, 7)"><span class="radio-custom"></span><span>Un opérateur vérifie chaque pièce</span></label>
+                <label class="option" onclick="selectOption(this, 7)"><span class="radio-custom"></span><span>Seules des causes communes de variation agissent</span></label>
+                <label class="option" onclick="selectOption(this, 7)"><span class="radio-custom"></span><span>Le taux de rebut est inférieur à 1%</span></label>
+                <label class="option" onclick="selectOption(this, 7)"><span class="radio-custom"></span><span>La machine est neuve</span></label>
+            </div>
+            <div class="explanation" id="exp7"></div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="question-card" id="q8">
+            <div class="q-number">8</div>
+            <div class="q-text">Quelle courbe décrit le mieux la répartition naturelle des mesures dans un procédé stable ?</div>
+            <div class="options">
+                <label class="option" onclick="selectOption(this, 8)"><span class="radio-custom"></span><span>Courbe en U (baignoire)</span></label>
+                <label class="option" onclick="selectOption(this, 8)"><span class="radio-custom"></span><span>Courbe en cloche (loi normale / Gaussienne)</span></label>
+                <label class="option" onclick="selectOption(this, 8)"><span class="radio-custom"></span><span>Courbe linéaire</span></label>
+                <label class="option" onclick="selectOption(this, 8)"><span class="radio-custom"></span><span>Courbe exponentielle</span></label>
+            </div>
+            <div class="explanation" id="exp8"></div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="question-card" id="q9">
+            <div class="q-number">9</div>
+            <div class="q-text">L'indice Cp mesure :</div>
+            <div class="options">
+                <label class="option" onclick="selectOption(this, 9)"><span class="radio-custom"></span><span>La vitesse de production de la machine</span></label>
+                <label class="option" onclick="selectOption(this, 9)"><span class="radio-custom"></span><span>Le coût de production par pièce</span></label>
+                <label class="option" onclick="selectOption(this, 9)"><span class="radio-custom"></span><span>Le rapport entre la tolérance et la dispersion du procédé</span></label>
+                <label class="option" onclick="selectOption(this, 9)"><span class="radio-custom"></span><span>Le nombre de pièces non conformes par lot</span></label>
+            </div>
+            <div class="explanation" id="exp9"></div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="question-card" id="q10">
+            <div class="q-number">10</div>
+            <div class="q-text">Quel est l'objectif principal d'une carte de contrôle ?</div>
+            <div class="options">
+                <label class="option" onclick="selectOption(this, 10)"><span class="radio-custom"></span><span>Remplacer le contrôle qualité par un logiciel</span></label>
+                <label class="option" onclick="selectOption(this, 10)"><span class="radio-custom"></span><span>Détecter rapidement l'apparition de causes spéciales de variation</span></label>
+                <label class="option" onclick="selectOption(this, 10)"><span class="radio-custom"></span><span>Calculer la productivité de l'atelier</span></label>
+                <label class="option" onclick="selectOption(this, 10)"><span class="radio-custom"></span><span>Enregistrer le nombre de pièces produites</span></label>
+            </div>
+            <div class="explanation" id="exp10"></div>
+        </div>
+
+        <button type="button" class="btn-validate" id="btnValidate" onclick="validateQuiz()">✅ Valider mes réponses</button>
+    </form>
+
+    <div class="result-panel" id="resultPanel">
+        <div class="score-circle" id="scoreCircle"></div>
+        <h2 id="resultTitle"></h2>
+        <p id="resultText"></p>
+    </div>
+
+    <a href="index.html" class="back-link">← Retour aux ressources</a>
+</div>
+
+<script>
+const answers = {
+    1: 1, 2: 1, 3: 1, 4: 1, 5: 2, 6: 1, 7: 1, 8: 1, 9: 2, 10: 1
+};
+const explanations = {
+    1: "✅ C'est le principe fondamental de la variabilité : même dans les conditions les plus contrôlées, les mesures fluctuent naturellement autour d'une valeur moyenne. C'est inévitable ! Le SPC nous apprend à distinguer la variabilité « normale » de celle qui signale un problème.",
+    2: "✅ Les causes communes sont les petites variations aléatoires, toujours présentes : vibrations, micro-variations de matière, température ambiante… Elles sont « normales » et ne peuvent être éliminées qu'en améliorant le procédé lui-même.",
+    3: "✅ L'histogramme regroupe les mesures en classes et montre la forme de la distribution. Il permet de voir d'un coup d'œil si les pièces sont centrées sur la cible, si la dispersion est large ou étroite, et si la distribution est normale.",
+    4: "✅ La capabilité compare la dispersion naturelle du procédé (6σ) à l'intervalle de tolérance (IT). Si la dispersion est plus petite que la tolérance, le procédé est capable de produire des pièces conformes.",
+    5: "✅ Le contrôle 100% est coûteux, source de fatigue (donc d'erreurs), et des études montrent qu'il ne détecte que 80% des pièces défectueuses environ. Le SPC propose une approche plus intelligente : surveiller le procédé plutôt que trier les pièces.",
+    6: "✅ SPC = Statistical Process Control, traduit en français par MSP = Maîtrise Statistique des Procédés. C'est une méthode qui utilise les statistiques pour piloter un procédé et prévenir les dérives avant qu'elles ne génèrent des défauts.",
+    7: "✅ Un procédé sous contrôle statistique ne subit que des causes communes (aléatoires). Sa variabilité est prévisible et stable dans le temps. Toute cause spéciale (déréglage, usure anormale, erreur) perturbe cette stabilité.",
+    8: "✅ La courbe en cloche (loi normale ou Gaussienne) est la distribution la plus fréquente en production. Les valeurs se concentrent autour de la moyenne, et les valeurs extrêmes sont rares. C'est la base de tous les calculs SPC.",
+    9: "✅ Cp = IT / 6σ. C'est le rapport entre l'intervalle de tolérance (ce que le client accepte) et la dispersion naturelle du procédé (ce que le procédé produit). Un Cp ≥ 1,33 est généralement requis.",
+    10: "✅ La carte de contrôle surveille le procédé en temps réel. Quand un point sort des limites ou qu'un pattern anormal apparaît, c'est le signal qu'une cause spéciale agit. On peut alors réagir AVANT de produire des pièces non conformes."
+};
+
+let userAnswers = {};
+let validated = false;
+
+function selectOption(el, qNum) {
+    if (validated) return;
+    const card = document.getElementById('q' + qNum);
+    card.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    const options = Array.from(card.querySelectorAll('.option'));
+    userAnswers[qNum] = options.indexOf(el);
+    updateProgress();
+}
+
+function updateProgress() {
+    const answered = Object.keys(userAnswers).length;
+    document.getElementById('progressFill').style.width = (answered / 10 * 100) + '%';
+    document.getElementById('btnValidate').disabled = answered < 10;
+}
+
+function validateQuiz() {
+    if (Object.keys(userAnswers).length < 10) return;
+    validated = true;
+    let score = 0;
+
+    for (let q = 1; q <= 10; q++) {
+        const card = document.getElementById('q' + q);
+        const options = card.querySelectorAll('.option');
+        const correctIdx = answers[q];
+        const userIdx = userAnswers[q];
+
+        options[correctIdx].classList.add('right');
+        if (userIdx === correctIdx) {
+            score++;
+            card.classList.add('correct');
+            const exp = document.getElementById('exp' + q);
+            exp.className = 'explanation show correct-exp';
+            exp.innerHTML = explanations[q];
+        } else {
+            options[userIdx].classList.add('wrong');
+            card.classList.add('incorrect');
+            const exp = document.getElementById('exp' + q);
+            exp.className = 'explanation show incorrect-exp';
+            exp.innerHTML = '❌ Mauvaise réponse. ' + explanations[q];
+        }
+    }
+
+    const panel = document.getElementById('resultPanel');
+    const circle = document.getElementById('scoreCircle');
+    const title = document.getElementById('resultTitle');
+    const text = document.getElementById('resultText');
+
+    circle.textContent = score + '/10';
+    if (score >= 8) {
+        circle.className = 'score-circle good';
+        title.textContent = '🏆 Excellent !';
+        text.textContent = 'Vous avez de solides bases en SPC. Cette formation va vous permettre d\'approfondir et de pratiquer avec des outils concrets.';
+    } else if (score >= 5) {
+        circle.className = 'score-circle medium';
+        title.textContent = '👍 Bon début !';
+        text.textContent = 'Vous connaissez certains concepts. La formation va combler les lacunes et surtout vous faire pratiquer sur des cas réels.';
+    } else {
+        circle.className = 'score-circle low';
+        title.textContent = '📚 C\'est le moment d\'apprendre !';
+        text.textContent = 'Pas d\'inquiétude, c\'est justement l\'objectif de ces deux jours ! Chaque concept sera expliqué clairement et mis en pratique.';
+    }
+
+    panel.classList.add('show');
+    document.getElementById('btnValidate').style.display = 'none';
+    panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+updateProgress();
+</script>
+</body>
+</html>
