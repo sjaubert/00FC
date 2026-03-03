@@ -1,4 +1,4 @@
-# 📚 INDEX - Collection Jeux de Rôle Résolution de Problèmes
+﻿# 📚 INDEX - Collection Jeux de Rôle Résolution de Problèmes
 
 **Collection Pédagogique** pour la formation à la résolution de problèmes industriels  
 **Pôle Formation UIMM - CVDL**  
@@ -365,7 +365,7 @@ Le changement de série sur une presse prend 45 min. Objectif : réduire de 50% 
 ## 📁 Structure des Fichiers
 
 ```
-📂 OI/A5 MRPrb/Ressources/
+📂 OI/a5_mrprb/Ressources/
 │
 ├── 📄 Jeux_de_Role_Resolution_Problemes.md
 │   └─ Description des 6 jeux de rôle

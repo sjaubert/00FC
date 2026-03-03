@@ -53,8 +53,8 @@
 **3. Débriefing : Les 7 Gaspillages / Mudas (1h00)**
 
 - **Ressources** :
-  - [Introduction au Lean Sigma](file:///c:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00%20LEAN%20SS/INTRODUCTION%20AU%20LEAN%20SIGMA.pdf)
-  - [La Philosophie Lean (Vidéo)](file:///c:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00%20LEAN%20SS/La_Philosophie_Lean.mp4)
+  - [Introduction au Lean Sigma](file:///c:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/INTRODUCTION%20AU%20LEAN%20SIGMA.pdf)
+  - [La Philosophie Lean (Vidéo)](file:///c:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/La_Philosophie_Lean.mp4)
 - **Activité** : Plaquer la théorie des 7 gaspillages sur ce qu'ils viennent de vivre.
 - **Transposition Chaudronnerie** :
   - *Mouvements inutiles* : Chercher l'outillage (meuleuse, pince étau).
@@ -69,7 +69,7 @@
 **4. Ranger pour gagner du temps : Le 5S et le Management Visuel (1h30)**
 
 - **Ressources** :
-  - [Les fondamentaux de l'organisation industrielle](file:///c:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00%20LEAN%20SS/Les%20fondamentaux%20de%20l'Organisation%20Industrielle%20-%20Formation%20Interactive.pdf)
+  - [Les fondamentaux de l'organisation industrielle](file:///c:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/Les%20fondamentaux%20de%20l'Organisation%20Industrielle%20-%20Formation%20Interactive.pdf)
 - **Pourquoi ?** Une servante mal rangée = de l'énervement.
 - **Activité** : Le "Jeu des nombres de 1 à 49" (trouver les numéros sur une feuille chaotique, puis sur une feuille organisée type 5S) -> Effet "Wahou".
 - **Visuels** : Montrer des photos de panneaux d'outils "shadow board", de zones peintes au sol pour les racks de ferraille.
@@ -77,7 +77,7 @@
 **5. Résolution de problème "Terrain" (1h30)**
 
 - **Ressources** :
-  - [Diapositive Analyse Action Qualité Ishikawa](file:///c:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/A0%20Pareto%20-%20Ishikawa/Diapo_Analyse_Action_Qualit%C3%A9_Ishikawa_Pareto.pdf)
+  - [Diapositive Analyse Action Qualité Ishikawa](file:///c:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/a0_pareto_ishikawa/Diapo_Analyse_Action_Qualit%C3%A9_Ishikawa_Pareto.pdf)
 - **Précision** : Version ultra-allégée. Pas de Pareto, on se concentre sur Ishikawa (5M) et les 5 Pourquoi.
 - **Cas d'école Chaudronnerie** : *"Une pièce pliée sur la presse plieuse est hors tolérance et part au rebut"*.
   - Exemple 5 Pourquoi : *C'est plié de travers -> Mauvaise butée -> L'opérateur s'est trompé -> La consigne était illisible -> L'imprimante n'avait plus d'encre (cause racine).*
