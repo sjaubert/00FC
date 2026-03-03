@@ -1,4 +1,4 @@
----
+﻿---
 description: Instructions récurrentes pour le workspace 00FC — Organisation Industrielle
 ---
 # Instructions Récurrentes — Pôle Formation UIMM-CVDL
@@ -55,7 +55,7 @@ description: Instructions récurrentes pour le workspace 00FC — Organisation I
    </div>
    ```
 
-2. **CSS professionnel** : Utiliser le template CSS disponible dans `OI/_templates/style_formation.css`. Pour les fichiers HTML générés avec pandoc, utiliser l'option `--css`.
+2. **CSS professionnel** : Utiliser le template CSS disponible dans `OI/templates/style_formation.css`. Pour les fichiers HTML générés avec pandoc, utiliser l'option `--css`.
 3. **Sauts de page** : Ajouter la classe `page-break` aux `<h2>` pour les sections principales, avec le CSS associé :
 
    ```css
@@ -78,7 +78,7 @@ description: Instructions récurrentes pour le workspace 00FC — Organisation I
 
 - **`OI/md2pdf.bat`** : Convertisseur Markdown → PDF (via pandoc + Chrome headless). Respecte les sauts de page CSS.
 - **`OI/md2html.bat`** : Convertisseur Markdown → HTML (via pandoc + CSS template).
-- **Template CSS** : `OI/_templates/style_formation.css`
+- **Template CSS** : `OI/templates/style_formation.css`
 
 ## Mise à jour de l'index
 
@@ -93,6 +93,7 @@ Quand un nouveau fichier HTML est créé ou modifié dans ce repo, **mettre à j
 - Fichiers : `Nom_Du_Document.md` / `Nom_Du_Document.html` (underscores, pas d'espaces)
 - Dossiers activités : `A[N] Nom` (ex. `A0 Pareto - Ishikawa`)
 - Versions apprenant : suffixe `_Apprenant` (ex. `Atelier_Cocotte_Lean_Apprenant.md`)
+- Tous les noms de répertoires et fichiers seront sans accent et espace
 
 ## Orchestration du Flux de Travail
 

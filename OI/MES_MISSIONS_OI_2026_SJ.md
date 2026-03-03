@@ -1,4 +1,4 @@
-# MES MISSIONS OI 2026 - Stéphane JAUBERT
+﻿# MES MISSIONS OI 2026 - Stéphane JAUBERT
 **Document vérifié sur sources primaires**  
 **Date de vérification : 13 décembre 2025**
 
@@ -153,7 +153,7 @@ Nombre à confirmer
 - Planning : `Planning détaillé CQPM PYRO A_session 2026.xlsx/pdf`
 - Email : `Fw_ E18_SP_007 _ CQPM Opérateur de Production en milieu Pyritechnique.pdf`
 - Livret : `Livret_CQPM RE_0183.pdf`
-- Supports : `OI/CQPM Pyro 23-01-2026/Organisation Industrielle.docx/pdf`
+- Supports : `OI/cqpm_pyro_23_01_2026/Organisation Industrielle.docx/pdf`
 - Supports : `Communication Opérationnelle efficace_2j.docx`
 
 ### 📅 Calendrier global
@@ -274,9 +274,9 @@ Les dates et informations sont cohérentes entre :
 ## 📁 RESSOURCES PÉDAGOGIQUES DISPONIBLES
 
 ### Jeux de formation
-- **Jeu du KANBAN** - `OI/Jeu du KANBAN/Présentation Jeu du Kanban.docx`
-- **Jeu du Kaizen** - `OI/Jeu du Kaizen/PRÉSENTATION DU JEU DU KAIZEN.docx`
-- **Jeu du LEAN Manufacturing** - `OI/Jeu du LEAN Manufacturing/Présentation du Jeu de Simulation LEAN Manufacturing.docx`
+- **Jeu du KANBAN** - `OI/jeu_du_kanban/Présentation Jeu du Kanban.docx`
+- **Jeu du Kaizen** - `OI/jeu_du_kaizen/PRÉSENTATION DU JEU DU KAIZEN.docx`
+- **Jeu du LEAN Manufacturing** - `OI/jeu_du_lean_manufacturing/Présentation du Jeu de Simulation LEAN Manufacturing.docx`
 
 ### Supports de cours
 - **Organisation Industrielle** - Plusieurs versions selon formation
@@ -296,7 +296,7 @@ Les dates et informations sont cohérentes entre :
 **Dossier principal** : `c:\Users\s.jaubert\OneDrive - CFAI Centre\00FC\OI`
 
 **Plannings de référence** :
-- `OI/planning pdf/` - Tous les plannings en PDF
+- `OI/planning_pdf/` - Tous les plannings en PDF
 - Versions Excel dans les dossiers respectifs
 
 ---
