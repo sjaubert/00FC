@@ -11,6 +11,8 @@ description: Instructions récurrentes pour le workspace 00FC — Organisation I
 
 ## Standards pour les fichiers Markdown (.md)
 
+#### Pas d'émoji
+
 1. **En-tête obligatoire** : Chaque fichier `.md` doit commencer par :
 
    ```markdown
@@ -46,6 +48,8 @@ description: Instructions récurrentes pour le workspace 00FC — Organisation I
 
 ## Standards pour les fichiers HTML
 
+#### Pas d'émoji
+
 1. **En-tête avec logo** : Inclure un div `.logo-header` après la balise `<body>` :
 
    ```html
@@ -55,20 +59,20 @@ description: Instructions récurrentes pour le workspace 00FC — Organisation I
    </div>
    ```
 
-2. **CSS professionnel** : Utiliser le template CSS disponible dans `OI/templates/style_formation.css`. Pour les fichiers HTML générés avec pandoc, utiliser l'option `--css`.
+3. **CSS professionnel** : Utiliser le template CSS disponible dans `OI/templates/style_formation.css`. Pour les fichiers HTML générés avec pandoc, utiliser l'option `--css`.
 3. **Sauts de page** : Ajouter la classe `page-break` aux `<h2>` pour les sections principales, avec le CSS associé :
 
    ```css
    h2.page-break { page-break-before: always; }
    ```
 
-4. **MathJax** : Inclure MathJax dans le `<head>` :
+5. **MathJax** : Inclure MathJax dans le `<head>` :
 
    ```html
    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
    ```
 
-5. **Google Font Inter** : Utiliser la police Inter :
+6. **Google Font Inter** : Utiliser la police Inter :
 
    ```html
    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
