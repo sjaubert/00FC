@@ -1,4 +1,4 @@
-﻿---
+---
 description: Instructions récurrentes pour le workspace 00FC — Organisation Industrielle
 ---
 # Instructions Récurrentes — Pôle Formation UIMM-CVDL
@@ -91,7 +91,7 @@ Quand un nouveau fichier HTML est créé ou modifié dans ce repo, **mettre à j
 ## Conventions de nommage
 
 - Fichiers : `Nom_Du_Document.md` / `Nom_Du_Document.html` (underscores, pas d'espaces)
-- Dossiers activités : `A[N] Nom` (ex. `A0 Pareto - Ishikawa`)
+- Dossiers activités : `A[N] Nom` (ex. `A0_Pareto_Ishikawa`)
 - Versions apprenant : suffixe `_Apprenant` (ex. `Atelier_Cocotte_Lean_Apprenant.md`)
 - Tous les noms de répertoires et fichiers seront sans accent et espace
 
