@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,20 +8,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --blue:   #1a56db;
+      --blue: #1a56db;
       --blue-l: #e8f0fe;
-      --green:  #0e9f6e;
-      --amber:  #d97706;
+      --green: #0e9f6e;
+      --amber: #d97706;
       --purple: #7c3aed;
-      --red:    #e02424;
-      --bg:     #f8fafc;
-      --card:   #ffffff;
+      --red: #e02424;
+      --bg: #f8fafc;
+      --card: #ffffff;
       --border: #e2e8f0;
-      --text:   #1e293b;
-      --muted:  #64748b;
+      --text: #1e293b;
+      --muted: #64748b;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
 
     /* ── HEADER ── */
     header {
@@ -30,16 +41,24 @@
       position: relative;
       overflow: hidden;
     }
+
     header::after {
       content: '';
-      position: absolute; inset: 0;
+      position: absolute;
+      inset: 0;
       background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     }
-    header .inner { position: relative; max-width: 960px; margin: auto; }
+
+    header .inner {
+      position: relative;
+      max-width: 960px;
+      margin: auto;
+    }
+
     header .badge {
       display: inline-block;
-      background: rgba(255,255,255,0.2);
-      border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
       border-radius: 999px;
       padding: .25rem .75rem;
       font-size: .75rem;
@@ -48,18 +67,43 @@
       text-transform: uppercase;
       margin-bottom: .75rem;
     }
-    header h1 { font-size: 1.9rem; font-weight: 700; line-height: 1.2; }
-    header p  { margin-top: .5rem; opacity: .85; font-size: .95rem; }
-    .meta-row { display: flex; gap: 1.5rem; margin-top: 1.25rem; flex-wrap: wrap; }
+
+    header h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    header p {
+      margin-top: .5rem;
+      opacity: .85;
+      font-size: .95rem;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1.25rem;
+      flex-wrap: wrap;
+    }
+
     .meta-item {
-      display: flex; align-items: center; gap: .4rem;
-      background: rgba(255,255,255,.15);
-      border-radius: 8px; padding: .35rem .75rem;
-      font-size: .82rem; font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      background: rgba(255, 255, 255, .15);
+      border-radius: 8px;
+      padding: .35rem .75rem;
+      font-size: .82rem;
+      font-weight: 500;
     }
 
     /* ── LAYOUT ── */
-    main { max-width: 960px; margin: 2rem auto; padding: 0 1.25rem 3rem; }
+    main {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1.25rem 3rem;
+    }
 
     /* ── TIP BANNER ── */
     .tip {
@@ -71,23 +115,44 @@
       font-size: .9rem;
       line-height: 1.6;
     }
-    .tip strong { color: #92400e; }
+
+    .tip strong {
+      color: #92400e;
+    }
 
     /* ── SECTION ── */
-    .section { margin-bottom: 2rem; }
+    .section {
+      margin-bottom: 2rem;
+    }
+
     .section-header {
-      display: flex; align-items: center; gap: .75rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
       margin-bottom: 1rem;
     }
+
     .section-icon {
-      width: 40px; height: 40px;
+      width: 40px;
+      height: 40px;
       border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 1.2rem;
       flex-shrink: 0;
     }
-    .section-title { font-size: 1.05rem; font-weight: 700; }
-    .section-sub   { font-size: .82rem; color: var(--muted); margin-top: .1rem; }
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .section-sub {
+      font-size: .82rem;
+      color: var(--muted);
+      margin-top: .1rem;
+    }
 
     /* ── RESOURCE GRID ── */
     .resource-grid {
@@ -95,6 +160,7 @@
       grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
       gap: .75rem;
     }
+
     .resource-card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -102,29 +168,71 @@
       padding: .9rem 1rem;
       text-decoration: none;
       color: var(--text);
-      display: flex; align-items: flex-start; gap: .75rem;
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
       transition: box-shadow .15s, border-color .15s, transform .15s;
     }
+
     .resource-card:hover {
       border-color: var(--blue);
-      box-shadow: 0 4px 16px rgba(26,86,219,.12);
+      box-shadow: 0 4px 16px rgba(26, 86, 219, .12);
       transform: translateY(-2px);
     }
+
     .fmt-badge {
-      font-size: .65rem; font-weight: 700; letter-spacing: .04em;
-      padding: .2rem .45rem; border-radius: 5px;
-      flex-shrink: 0; margin-top: .1rem;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      padding: .2rem .45rem;
+      border-radius: 5px;
+      flex-shrink: 0;
+      margin-top: .1rem;
       text-transform: uppercase;
     }
-    .fmt-pdf   { background: #fee2e2; color: #991b1b; }
-    .fmt-docx  { background: #dbeafe; color: #1e40af; }
-    .fmt-pptx  { background: #fce7f3; color: #9d174d; }
-    .fmt-html  { background: #d1fae5; color: #065f46; }
-    .fmt-video { background: #ede9fe; color: #5b21b6; }
-    .fmt-xlsx  { background: #dcfce7; color: #14532d; }
 
-    .rc-body .rc-title { font-size: .88rem; font-weight: 600; line-height: 1.4; }
-    .rc-body .rc-path  { font-size: .73rem; color: var(--muted); margin-top: .2rem; font-family: monospace; }
+    .fmt-pdf {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .fmt-docx {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    .fmt-pptx {
+      background: #fce7f3;
+      color: #9d174d;
+    }
+
+    .fmt-html {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .fmt-video {
+      background: #ede9fe;
+      color: #5b21b6;
+    }
+
+    .fmt-xlsx {
+      background: #dcfce7;
+      color: #14532d;
+    }
+
+    .rc-body .rc-title {
+      font-size: .88rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .rc-body .rc-path {
+      font-size: .73rem;
+      color: var(--muted);
+      margin-top: .2rem;
+      font-family: monospace;
+    }
 
     /* ── CLE EN MAIN ── */
     .highlight-card {
@@ -134,13 +242,27 @@
       padding: 1.25rem 1.5rem;
       margin-bottom: 2rem;
     }
+
     .highlight-card h3 {
-      font-size: 1rem; font-weight: 700; color: #065f46;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #065f46;
       margin-bottom: .6rem;
     }
-    .highlight-card p { font-size: .88rem; color: #047857; margin-bottom: .8rem; }
-    .highlight-card .resource-grid { margin-top: .5rem; }
-    .highlight-card .resource-card { background: white; }
+
+    .highlight-card p {
+      font-size: .88rem;
+      color: #047857;
+      margin-bottom: .8rem;
+    }
+
+    .highlight-card .resource-grid {
+      margin-top: .5rem;
+    }
+
+    .highlight-card .resource-card {
+      background: white;
+    }
 
     footer {
       text-align: center;
@@ -150,293 +272,354 @@
     }
   </style>
 </head>
+
 <body>
 
-<header>
-  <div class="inner">
-    <div style="display:flex; align-items:center; gap:1.25rem; margin-bottom:1rem;">
-      <img src="logo_uimm.jpg" alt="Logo UIMM" style="height:56px; background:white; padding:6px 10px; border-radius:8px; flex-shrink:0;">
-      <div class="badge">Pôle Formation UIMM Centre-Val de Loire</div>
-    </div>
-    <h1>Ressources — Formation Organisation Industrielle</h1>
-    <p>Parcours Assembleur Monteur Câblage · Adecco Issoudun · 1 jour</p>
-    <div class="meta-row">
-      <div class="meta-item">📍 Lycée d'Alembert, Issoudun</div>
-      <div class="meta-item">📅 23 mars 2026</div>
-      <div class="meta-item">👥 8 stagiaires (intérimaires Adecco)</div>
-      <div class="meta-item">🎯 Safran · PGA · Trigano</div>
-      <div class="meta-item">🧑‍🏫 S. Jaubert</div>
-    </div>
-  </div>
-</header>
-
-<main>
-
-  <div class="tip">
-    <strong>⭐ Ressource clé en main recommandée :</strong> L'<strong>Atelier Cocotte LEAN</strong> peut servir de fil rouge pour toute la journée — il illustre VA/NVA, rôles en production et amélioration continue dans un contexte d'atelier de fabrication très proche des futurs postes des stagiaires.
-  </div>
-
-  <!-- COCOTTE -->
-  <div class="highlight-card">
-    <h3>✅ Atelier Cocotte LEAN — Simulation complète (fil rouge de la journée)</h3>
-    <p>Jeu de simulation pédagogique : mise en situation de production, flux, gaspillages, amélioration continue.</p>
-    <div class="resource-grid">
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/Atelier_cocotte/Atelier%20Cocotte%20LEAN.pdf" target="_blank">
-        <span class="fmt-badge fmt-pdf">PDF</span>
-        <div class="rc-body">
-          <div class="rc-title">Atelier Cocotte LEAN — Support Animateur</div>
-          <div class="rc-path">Atelier_cocotte/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/Atelier_cocotte/Atelier%20Cocotte%20LEAN%20%E2%80%94%20Livret%20Participant.pdf" target="_blank">
-        <span class="fmt-badge fmt-pdf">PDF</span>
-        <div class="rc-body">
-          <div class="rc-title">Livret Participant (à imprimer)</div>
-          <div class="rc-path">Atelier_cocotte/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/Atelier_cocotte/Atelier_Cocotte_Lean.html" target="_blank">
-        <span class="fmt-badge fmt-html">HTML</span>
-        <div class="rc-body">
-          <div class="rc-title">Atelier Cocotte — Version interactive</div>
-          <div class="rc-path">Atelier_cocotte/</div>
-        </div>
-      </a>
-    </div>
-  </div>
-
-  <!-- PARTIE 1 -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-icon" style="background:#eff6ff;">🏭</div>
-      <div>
-        <div class="section-title">Partie 1 — Économie d'entreprise &amp; Approche processus</div>
-        <div class="section-sub">Durée prévue : 2h · 9h00 → 11h00</div>
+  <header>
+    <div class="inner">
+      <div style="display:flex; align-items:center; gap:1.25rem; margin-bottom:1rem;">
+        <img src="logo_uimm.jpg" alt="Logo UIMM"
+          style="height:56px; background:white; padding:6px 10px; border-radius:8px; flex-shrink:0;">
+        <div class="badge">Pôle Formation UIMM Centre-Val de Loire</div>
+      </div>
+      <h1>Ressources — Formation Organisation Industrielle</h1>
+      <p>Parcours Assembleur Monteur Câblage · Adecco Issoudun · 1 jour</p>
+      <div class="meta-row">
+        <div class="meta-item">Lycée d'Alembert, Issoudun</div>
+        <div class="meta-item">23 mars 2026</div>
+        <div class="meta-item">8 stagiaires (intérimaires Adecco)</div>
+        <div class="meta-item">Safran · PGA · Trigano</div>
+        <div class="meta-item">S. Jaubert</div>
       </div>
     </div>
-    <div class="resource-grid">
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/Qu'est-ce%20qu'une%20entreprise.docx" target="_blank">
-        <span class="fmt-badge fmt-docx">DOCX</span>
-        <div class="rc-body">
-          <div class="rc-title">Qu'est-ce qu'une entreprise ?</div>
-          <div class="rc-path">00_lean_ss/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/Qu'appelle%20t-on%20industrie%20_%20.docx" target="_blank">
-        <span class="fmt-badge fmt-docx">DOCX</span>
-        <div class="rc-body">
-          <div class="rc-title">Qu'appelle-t-on industrie ?</div>
-          <div class="rc-path">00_lean_ss/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/Fiche%20M%C3%A9mo%20%E2%80%94%20Frise%20Historique%20de%20l'Industrie.pdf" target="_blank">
-        <span class="fmt-badge fmt-pdf">PDF</span>
-        <div class="rc-body">
-          <div class="rc-title">Fiche Mémo — Frise Historique de l'Industrie</div>
-          <div class="rc-path">00_lean_ss/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/Fiche_Memo_Frise_Historique.html" target="_blank">
-        <span class="fmt-badge fmt-html">HTML</span>
-        <div class="rc-body">
-          <div class="rc-title">Frise Historique — Interactive</div>
-          <div class="rc-path">00_lean_ss/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/Cartes_12_Entreprises_Classification.html" target="_blank">
-        <span class="fmt-badge fmt-html">HTML</span>
-        <div class="rc-body">
-          <div class="rc-title">12 Entreprises à classifier (jeu d'intro)</div>
-          <div class="rc-path">00_lean_ss/</div>
-        </div>
-      </a>
-    </div>
-  </div>
+  </header>
 
-  <!-- PARTIE 2 -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-icon" style="background:#faf5ff;">⚙️</div>
-      <div>
-        <div class="section-title">Partie 2 — Lean Manufacturing : VA/NVA, 5S, TPM, SMED</div>
-        <div class="section-sub">Durée prévue : 1h30 · 11h00 → 12h30</div>
+  <main>
+
+    <div class="tip">
+      <strong>Ressource clé en main recommandée :</strong> L'<strong>Atelier Cocotte LEAN</strong> peut servir de fil
+      rouge pour toute la journée — il illustre VA/NVA, rôles en production et amélioration continue dans un contexte
+      d'atelier de fabrication très proche des futurs postes des stagiaires.
+    </div>
+
+    <!-- COCOTTE -->
+    <div class="highlight-card">
+      <h3>Atelier Cocotte LEAN — Simulation complète (fil rouge de la journée)</h3>
+      <p>Jeu de simulation pédagogique : mise en situation de production, flux, gaspillages, amélioration continue.</p>
+      <div class="resource-grid">
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/Atelier_cocotte/Atelier%20Cocotte%20LEAN.pdf"
+          target="_blank">
+          <span class="fmt-badge fmt-pdf">PDF</span>
+          <div class="rc-body">
+            <div class="rc-title">Atelier Cocotte LEAN — Support Animateur</div>
+            <div class="rc-path">Atelier_cocotte/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/Atelier_cocotte/Atelier%20Cocotte%20LEAN%20%E2%80%94%20Livret%20Participant.pdf"
+          target="_blank">
+          <span class="fmt-badge fmt-pdf">PDF</span>
+          <div class="rc-body">
+            <div class="rc-title">Livret Participant (à imprimer)</div>
+            <div class="rc-path">Atelier_cocotte/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/Atelier_cocotte/Atelier_Cocotte_Lean.html"
+          target="_blank">
+          <span class="fmt-badge fmt-html">HTML</span>
+          <div class="rc-body">
+            <div class="rc-title">Atelier Cocotte — Version interactive</div>
+            <div class="rc-path">Atelier_cocotte/</div>
+          </div>
+        </a>
       </div>
     </div>
-    <div class="resource-grid">
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/Les%20fondamentaux%20de%20l'Organisation%20Industrielle%20-%20ENRICHI.html" target="_blank">
-        <span class="fmt-badge fmt-html">HTML</span>
-        <div class="rc-body">
-          <div class="rc-title">Fondamentaux OI — Support enrichi (interactif)</div>
-          <div class="rc-path">00_lean_ss/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/Support_Formation_Organisation_Industrielle.html" target="_blank">
-        <span class="fmt-badge fmt-html">HTML</span>
-        <div class="rc-body">
-          <div class="rc-title">Support Formation OI complet</div>
-          <div class="rc-path">00_lean_ss/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/CFAI_LSS.pptx" target="_blank">
-        <span class="fmt-badge fmt-pptx">PPTX</span>
-        <div class="rc-body">
-          <div class="rc-title">Présentation LEAN Sigma (diapositives complètes)</div>
-          <div class="rc-path">00_lean_ss/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/Maison%20LEAN.pdf" target="_blank">
-        <span class="fmt-badge fmt-pdf">PDF</span>
-        <div class="rc-body">
-          <div class="rc-title">La Maison Lean</div>
-          <div class="rc-path">00_lean_ss/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/L_Esprit_LEAN_Guide_du_nouvel_explorateur.pdf" target="_blank">
-        <span class="fmt-badge fmt-pdf">PDF</span>
-        <div class="rc-body">
-          <div class="rc-title">L'Esprit LEAN — Guide du nouvel explorateur</div>
-          <div class="rc-path">00_lean_ss/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/La_Philosophie_Lean.mp4" target="_blank">
-        <span class="fmt-badge fmt-video">Vidéo</span>
-        <div class="rc-body">
-          <div class="rc-title">La Philosophie Lean 🎬</div>
-          <div class="rc-path">00_lean_ss/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/cqpm_pyro_23_01_2026/Organisation%20Industrielle.docx" target="_blank">
-        <span class="fmt-badge fmt-docx">DOCX</span>
-        <div class="rc-body">
-          <div class="rc-title">Organisation Industrielle — Support CQPM Pyro (public similaire)</div>
-          <div class="rc-path">cqpm_pyro_23_01_2026/</div>
-        </div>
-      </a>
-    </div>
-  </div>
 
-  <!-- PARTIE 3 -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-icon" style="background:#fff7ed;">🔄</div>
-      <div>
-        <div class="section-title">Partie 3 — Amélioration continue &amp; Résolution de problèmes</div>
-        <div class="section-sub">Durée prévue : 1h30 · 14h00 → 15h30</div>
+    <!-- PARTIE 1 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:#eff6ff;">🏭</div>
+        <div>
+          <div class="section-title">Partie 1 — Économie d'entreprise &amp; Approche processus</div>
+          <div class="section-sub">Durée prévue : 2h · 9h00 → 11h00</div>
+        </div>
+      </div>
+      <div class="resource-grid">
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/Qu'est-ce%20qu'une%20entreprise.docx"
+          target="_blank">
+          <span class="fmt-badge fmt-docx">DOCX</span>
+          <div class="rc-body">
+            <div class="rc-title">Qu'est-ce qu'une entreprise ?</div>
+            <div class="rc-path">00_lean_ss/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/Qu'appelle%20t-on%20industrie%20_%20.docx"
+          target="_blank">
+          <span class="fmt-badge fmt-docx">DOCX</span>
+          <div class="rc-body">
+            <div class="rc-title">Qu'appelle-t-on industrie ?</div>
+            <div class="rc-path">00_lean_ss/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/Fiche%20M%C3%A9mo%20%E2%80%94%20Frise%20Historique%20de%20l'Industrie.pdf"
+          target="_blank">
+          <span class="fmt-badge fmt-pdf">PDF</span>
+          <div class="rc-body">
+            <div class="rc-title">Fiche Mémo — Frise Historique de l'Industrie</div>
+            <div class="rc-path">00_lean_ss/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/Fiche_Memo_Frise_Historique.html"
+          target="_blank">
+          <span class="fmt-badge fmt-html">HTML</span>
+          <div class="rc-body">
+            <div class="rc-title">Frise Historique — Interactive</div>
+            <div class="rc-path">00_lean_ss/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/Cartes_12_Entreprises_Classification.html"
+          target="_blank">
+          <span class="fmt-badge fmt-html">HTML</span>
+          <div class="rc-body">
+            <div class="rc-title">12 Entreprises à classifier (jeu d'intro)</div>
+            <div class="rc-path">00_lean_ss/</div>
+          </div>
+        </a>
       </div>
     </div>
-    <div class="resource-grid">
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/Methodes%20de%20Resolution%20de%20Probleme.pdf" target="_blank">
-        <span class="fmt-badge fmt-pdf">PDF</span>
-        <div class="rc-body">
-          <div class="rc-title">Méthodes de Résolution de Problème</div>
-          <div class="rc-path">00_lean_ss/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/Qualite_QQOQCCP.pdf" target="_blank">
-        <span class="fmt-badge fmt-pdf">PDF</span>
-        <div class="rc-body">
-          <div class="rc-title">QQOQCCP — Support qualité</div>
-          <div class="rc-path">00_lean_ss/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/a0_pareto_ishikawa/Diagrammes%20d'Ishikawa%20et%20de%20Pareto.pdf" target="_blank">
-        <span class="fmt-badge fmt-pdf">PDF</span>
-        <div class="rc-body">
-          <div class="rc-title">Ishikawa &amp; Pareto — Cours complet</div>
-          <div class="rc-path">a0_pareto_ishikawa/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/a0_pareto_ishikawa/ISHIKAWA%20Exercice.pdf" target="_blank">
-        <span class="fmt-badge fmt-pdf">PDF</span>
-        <div class="rc-body">
-          <div class="rc-title">Exercice Ishikawa (à imprimer)</div>
-          <div class="rc-path">a0_pareto_ishikawa/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/a0_pareto_ishikawa/Activite1_Pareto_Decouverte.html" target="_blank">
-        <span class="fmt-badge fmt-html">HTML</span>
-        <div class="rc-body">
-          <div class="rc-title">Activité Pareto — Découverte interactive</div>
-          <div class="rc-path">a0_pareto_ishikawa/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/a5_mrprb/4-la-methode-8d.pdf" target="_blank">
-        <span class="fmt-badge fmt-pdf">PDF</span>
-        <div class="rc-body">
-          <div class="rc-title">Méthode 8D</div>
-          <div class="rc-path">a5_mrprb/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/jeu_du_kaizen/Le_paradoxe_du_progr%C3%A8s_permanent.mp4" target="_blank">
-        <span class="fmt-badge fmt-video">Vidéo</span>
-        <div class="rc-body">
-          <div class="rc-title">Le paradoxe du progrès permanent 🎬</div>
-          <div class="rc-path">jeu_du_kaizen/</div>
-        </div>
-      </a>
-    </div>
-  </div>
 
-  <!-- PARTIE 4 -->
-  <div class="section">
-    <div class="section-header">
-      <div class="section-icon" style="background:#f0fdf4;">🎯</div>
-      <div>
-        <div class="section-title">Partie 4 — Rôles, Postures &amp; Jeux pédagogiques</div>
-        <div class="section-sub">Durée prévue : 2h · 15h30 → 17h00</div>
+    <!-- PARTIE 2 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:#faf5ff;">⚙️</div>
+        <div>
+          <div class="section-title">Partie 2 — Lean Manufacturing : VA/NVA, 5S, TPM, SMED</div>
+          <div class="section-sub">Durée prévue : 1h30 · 11h00 → 12h30</div>
+        </div>
+      </div>
+      <div class="resource-grid">
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/Les%20fondamentaux%20de%20l'Organisation%20Industrielle%20-%20ENRICHI.html"
+          target="_blank">
+          <span class="fmt-badge fmt-html">HTML</span>
+          <div class="rc-body">
+            <div class="rc-title">Fondamentaux OI — Support enrichi (interactif)</div>
+            <div class="rc-path">00_lean_ss/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/Support_Formation_Organisation_Industrielle.html"
+          target="_blank">
+          <span class="fmt-badge fmt-html">HTML</span>
+          <div class="rc-body">
+            <div class="rc-title">Support Formation OI complet</div>
+            <div class="rc-path">00_lean_ss/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/CFAI_LSS.pptx"
+          target="_blank">
+          <span class="fmt-badge fmt-pptx">PPTX</span>
+          <div class="rc-body">
+            <div class="rc-title">Présentation LEAN Sigma (diapositives complètes)</div>
+            <div class="rc-path">00_lean_ss/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/Maison%20LEAN.pdf"
+          target="_blank">
+          <span class="fmt-badge fmt-pdf">PDF</span>
+          <div class="rc-body">
+            <div class="rc-title">La Maison Lean</div>
+            <div class="rc-path">00_lean_ss/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/L_Esprit_LEAN_Guide_du_nouvel_explorateur.pdf"
+          target="_blank">
+          <span class="fmt-badge fmt-pdf">PDF</span>
+          <div class="rc-body">
+            <div class="rc-title">L'Esprit LEAN — Guide du nouvel explorateur</div>
+            <div class="rc-path">00_lean_ss/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/La_Philosophie_Lean.mp4"
+          target="_blank">
+          <span class="fmt-badge fmt-video">Vidéo</span>
+          <div class="rc-body">
+            <div class="rc-title">La Philosophie Lean 🎬</div>
+            <div class="rc-path">00_lean_ss/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/cqpm_pyro_23_01_2026/Organisation%20Industrielle.docx"
+          target="_blank">
+          <span class="fmt-badge fmt-docx">DOCX</span>
+          <div class="rc-body">
+            <div class="rc-title">Organisation Industrielle — Support CQPM Pyro (public similaire)</div>
+            <div class="rc-path">cqpm_pyro_23_01_2026/</div>
+          </div>
+        </a>
       </div>
     </div>
-    <div class="resource-grid">
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/jeu_du_kanban/Pr%C3%A9sentation%20Jeu%20du%20Kanban.docx" target="_blank">
-        <span class="fmt-badge fmt-docx">DOCX</span>
-        <div class="rc-body">
-          <div class="rc-title">Jeu du Kanban — Présentation</div>
-          <div class="rc-path">jeu_du_kanban/</div>
+
+    <!-- PARTIE 3 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:#fff7ed;">🔄</div>
+        <div>
+          <div class="section-title">Partie 3 — Amélioration continue &amp; Résolution de problèmes</div>
+          <div class="section-sub">Durée prévue : 1h30 · 14h00 → 15h30</div>
         </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/jeu_du_kanban/Intro_Jeu_Kanban.html" target="_blank">
-        <span class="fmt-badge fmt-html">HTML</span>
-        <div class="rc-body">
-          <div class="rc-title">Jeu du Kanban — Intro page web</div>
-          <div class="rc-path">jeu_du_kanban/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/jeu_du_kanban/Approche%20Lean_Toyota%20Production%20System%20KANBAN.pdf" target="_blank">
-        <span class="fmt-badge fmt-pdf">PDF</span>
-        <div class="rc-body">
-          <div class="rc-title">Approche Lean · Toyota · KANBAN</div>
-          <div class="rc-path">jeu_du_kanban/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/jeu_du_kaizen/PR%C3%89SENTATION%20DU%20JEU%20DU%20KAIZEN.docx" target="_blank">
-        <span class="fmt-badge fmt-docx">DOCX</span>
-        <div class="rc-body">
-          <div class="rc-title">Jeu du Kaizen — Présentation</div>
-          <div class="rc-path">jeu_du_kaizen/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/jeu_du_lean_manufacturing/Pr%C3%A9sentation%20du%20Jeu%20de%20Simulation%20LEAN%20Manufacturing%20.docx" target="_blank">
-        <span class="fmt-badge fmt-docx">DOCX</span>
-        <div class="rc-body">
-          <div class="rc-title">Jeu de Simulation LEAN Manufacturing</div>
-          <div class="rc-path">jeu_du_lean_manufacturing/</div>
-        </div>
-      </a>
-      <a class="resource-card" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/jeu_du_lean_manufacturing/Le_sauvetage_de_l_usine_PALEO.mp4" target="_blank">
-        <span class="fmt-badge fmt-video">Vidéo</span>
-        <div class="rc-body">
-          <div class="rc-title">Le Sauvetage de l'Usine PALEO 🎬</div>
-          <div class="rc-path">jeu_du_lean_manufacturing/</div>
-        </div>
-      </a>
+      </div>
+      <div class="resource-grid">
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/Methodes%20de%20Resolution%20de%20Probleme.pdf"
+          target="_blank">
+          <span class="fmt-badge fmt-pdf">PDF</span>
+          <div class="rc-body">
+            <div class="rc-title">Méthodes de Résolution de Problème</div>
+            <div class="rc-path">00_lean_ss/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/00_lean_ss/Qualite_QQOQCCP.pdf"
+          target="_blank">
+          <span class="fmt-badge fmt-pdf">PDF</span>
+          <div class="rc-body">
+            <div class="rc-title">QQOQCCP — Support qualité</div>
+            <div class="rc-path">00_lean_ss/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/a0_pareto_ishikawa/Diagrammes%20d'Ishikawa%20et%20de%20Pareto.pdf"
+          target="_blank">
+          <span class="fmt-badge fmt-pdf">PDF</span>
+          <div class="rc-body">
+            <div class="rc-title">Ishikawa &amp; Pareto — Cours complet</div>
+            <div class="rc-path">a0_pareto_ishikawa/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/a0_pareto_ishikawa/ISHIKAWA%20Exercice.pdf"
+          target="_blank">
+          <span class="fmt-badge fmt-pdf">PDF</span>
+          <div class="rc-body">
+            <div class="rc-title">Exercice Ishikawa (à imprimer)</div>
+            <div class="rc-path">a0_pareto_ishikawa/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/a0_pareto_ishikawa/Activite1_Pareto_Decouverte.html"
+          target="_blank">
+          <span class="fmt-badge fmt-html">HTML</span>
+          <div class="rc-body">
+            <div class="rc-title">Activité Pareto — Découverte interactive</div>
+            <div class="rc-path">a0_pareto_ishikawa/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/a5_mrprb/4-la-methode-8d.pdf"
+          target="_blank">
+          <span class="fmt-badge fmt-pdf">PDF</span>
+          <div class="rc-body">
+            <div class="rc-title">Méthode 8D</div>
+            <div class="rc-path">a5_mrprb/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/jeu_du_kaizen/Le_paradoxe_du_progr%C3%A8s_permanent.mp4"
+          target="_blank">
+          <span class="fmt-badge fmt-video">Vidéo</span>
+          <div class="rc-body">
+            <div class="rc-title">Le paradoxe du progrès permanent 🎬</div>
+            <div class="rc-path">jeu_du_kaizen/</div>
+          </div>
+        </a>
+      </div>
     </div>
-  </div>
 
-</main>
+    <!-- PARTIE 4 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:#f0fdf4;">🎯</div>
+        <div>
+          <div class="section-title">Partie 4 — Rôles, Postures &amp; Jeux pédagogiques</div>
+          <div class="section-sub">Durée prévue : 2h · 15h30 → 17h00</div>
+        </div>
+      </div>
+      <div class="resource-grid">
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/jeu_du_kanban/Pr%C3%A9sentation%20Jeu%20du%20Kanban.docx"
+          target="_blank">
+          <span class="fmt-badge fmt-docx">DOCX</span>
+          <div class="rc-body">
+            <div class="rc-title">Jeu du Kanban — Présentation</div>
+            <div class="rc-path">jeu_du_kanban/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/jeu_du_kanban/Intro_Jeu_Kanban.html"
+          target="_blank">
+          <span class="fmt-badge fmt-html">HTML</span>
+          <div class="rc-body">
+            <div class="rc-title">Jeu du Kanban — Intro page web</div>
+            <div class="rc-path">jeu_du_kanban/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/jeu_du_kanban/Approche%20Lean_Toyota%20Production%20System%20KANBAN.pdf"
+          target="_blank">
+          <span class="fmt-badge fmt-pdf">PDF</span>
+          <div class="rc-body">
+            <div class="rc-title">Approche Lean · Toyota · KANBAN</div>
+            <div class="rc-path">jeu_du_kanban/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/jeu_du_kaizen/PR%C3%89SENTATION%20DU%20JEU%20DU%20KAIZEN.docx"
+          target="_blank">
+          <span class="fmt-badge fmt-docx">DOCX</span>
+          <div class="rc-body">
+            <div class="rc-title">Jeu du Kaizen — Présentation</div>
+            <div class="rc-path">jeu_du_kaizen/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/jeu_du_lean_manufacturing/Pr%C3%A9sentation%20du%20Jeu%20de%20Simulation%20LEAN%20Manufacturing%20.docx"
+          target="_blank">
+          <span class="fmt-badge fmt-docx">DOCX</span>
+          <div class="rc-body">
+            <div class="rc-title">Jeu de Simulation LEAN Manufacturing</div>
+            <div class="rc-path">jeu_du_lean_manufacturing/</div>
+          </div>
+        </a>
+        <a class="resource-card"
+          href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/OI/jeu_du_lean_manufacturing/Le_sauvetage_de_l_usine_PALEO.mp4"
+          target="_blank">
+          <span class="fmt-badge fmt-video">Vidéo</span>
+          <div class="rc-body">
+            <div class="rc-title">Le Sauvetage de l'Usine PALEO 🎬</div>
+            <div class="rc-path">jeu_du_lean_manufacturing/</div>
+          </div>
+        </a>
+      </div>
+    </div>
 
-<footer>
-  Pôle Formation UIMM Centre-Val de Loire · AFPI &amp; Trajectoire Industrie · Document interne
-</footer>
+  </main>
+
+  <footer>
+    Pôle Formation UIMM Centre-Val de Loire · AFPI &amp; Trajectoire Industrie · Document interne
+  </footer>
 
 </body>
+
 </html>
