@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue au Jeu du Kanban !</title>
+    <style>
+        :root {
+            --primary-color: #005A9C; /* UIMM blue */
+            --secondary-color: #00A2E8;
+            --accent-color: #FF5A5F;
+            --background: #F4F7F6;
+            --text-main: #333333;
+            --card-bg: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .qa-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .qa-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Animation delays for staggered effect */
+        .qa-card:nth-child(1) { animation-delay: 0.1s; }
+        .qa-card:nth-child(2) { animation-delay: 0.3s; }
+        .qa-card:nth-child(3) { animation-delay: 0.5s; }
+        .qa-card:nth-child(4) { animation-delay: 0.7s; }
+        .qa-card:nth-child(5) { animation-delay: 0.9s; }
+
+        .qa-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-left-color: var(--secondary-color);
+        }
+
+        .question {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .question-icon {
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .answer {
+            font-size: 1.1rem;
+            color: #444;
+            padding-left: 40px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .cta-container {
+            text-align: center;
+            margin-top: 40px;
+            animation: fadeIn 1.5s ease-out 1s forwards;
+            opacity: 0;
+        }
+
+        .btn-start {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 162, 232, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-start:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 162, 232, 0.6);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .question { font-size: 1.1rem; }
+            .answer { font-size: 1rem; padding-left: 0; margin-top: 10px; }
+            .qa-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>🏭 Bienvenue au Jeu du Kanban !</h1>
+            <p class="subtitle">Apprendre à s'organiser au travail, sans stress et en s'amusant.</p>
+        </header>
+
+        <div class="qa-container">
+            
+            <div class="qa-card" id="q1">
+                <h2 class="question"><span class="question-icon">1</span> C'est quoi "Kanban" ? Ça se mange ?</h2>
+                <div class="answer">
+                    Non ! 🍣 (Même si c'est un mot japonais). "Kanban" veut simplement dire <strong>"Étiquette"</strong> ou <strong>"Panneau"</strong>. C'est une méthode visuelle très simple pour s'organiser au travail et savoir quoi faire, au bon moment, sans se noyer sous les tâches.
+                </div>
+            </div>
+
+            <div class="qa-card" id="q2">
+                <h2 class="question"><span class="question-icon">2</span> Pourquoi on va jouer à ça aujourd'hui ?</h2>
+                <div class="answer">
+                    Parce que dans toutes les entreprises (usines, logistique, bureaux...), le plus gros problème, c'est le <span class="highlight">BAZAR</span> et la mauvaise communication ! On va apprendre comment travailler ensemble efficacement, sans se marcher sur les pieds ni se fatiguer pour rien.
+                </div>
+            </div>
+
+            <div class="qa-card" id="q3">
+                <h2 class="question"><span class="question-icon">3</span> Je n'y connais rien en usine ou en gestion, je peux réussir ?</h2>
+                <div class="answer">
+                    <strong>OUI ! À 100%.</strong> Le Kanban, c'est du pur bon sens. Si vous savez ranger vos courses dans un placard ou suivre une recette de cuisine, vous allez y arriver. Le but n'est pas d'être fort en calcul, mais d'<strong>observer</strong> et de <strong>communiquer avec votre équipe</strong>.
+                </div>
+            </div>
+
+            <div class="qa-card" id="q4">
+                <h2 class="question"><span class="question-icon">4</span> Qu'est-ce que ça va m'apporter pour mon futur métier ?</h2>
+                <div class="answer">
+                    Aujourd'hui, tous les employeurs cherchent des gens organisés. Avec cette méthode, on gagne du temps, on fait moins d'erreurs, et surtout : <span class="highlight">on a MOINS DE STRESS</span>. Vous apprendrez à arrêter de "courir partout" pour travailler plus sereinement.
+                </div>
+            </div>
+
+            <div class="qa-card" id="q5">
+                <h2 class="question"><span class="question-icon">5</span> Concrètement, qu'est-ce qu'on va faire dans ce jeu ?</h2>
+                <div class="answer">
+                    On va former des équipes pour simuler une petite ligne de production.
+                    <br>👉 <strong>Étape 1 :</strong> On essaye de travailler "comme on peut". Ça va être le chaos (c'est fait exprès !).
+                    <br>👉 <strong>Étape 2 :</strong> On utilise les règles du Kanban... et vous allez voir la magie opérer sur votre travail !
+                </div>
+            </div>
+
+        </div>
+
+        <div class="cta-container">
+            <button class="btn-start" onclick="startPresentation()">C'est parti ! 🚀</button>
+        </div>
+    </div>
+
+    <script>
+        function startPresentation() {
+            // Simple visual feedback when clicked
+            const btn = document.querySelector('.btn-start');
+            btn.innerHTML = "On commence ! 🎉";
+            btn.style.background = "linear-gradient(135deg, #FF5A5F, #E0484D)";
+            
+            // Here you could redirect to the next slide or start the game
+            // window.location.href = "page_suivante.html";
+        }
+    </script>
+</body>
+</html>
