@@ -1,3 +1,8 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
 # 🏭 Les Fondamentaux de l'Organisation Industrielle
 
 ## Formation Interactive pour Reconversion Professionnelle
