@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Diagramme de Pareto — Chaudronnerie</title>
+    <title>Le Diagramme de Pareto</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -19,7 +19,11 @@
             --danger: #e74c3c;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -30,8 +34,10 @@
 
         .slide {
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -97,13 +103,15 @@
             width: 100%;
         }
 
-        .content-box p, .content-box li {
+        .content-box p,
+        .content-box li {
             font-size: 1.1rem;
             line-height: 1.8;
             color: var(--text);
         }
 
-        .content-box ul, .content-box ol {
+        .content-box ul,
+        .content-box ol {
             padding-left: 25px;
         }
 
@@ -135,7 +143,7 @@
 
         .card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
 
         .card .icon {
@@ -143,7 +151,9 @@
             margin-bottom: 12px;
         }
 
-        .card h3 { text-align: center; }
+        .card h3 {
+            text-align: center;
+        }
 
         .card p {
             font-size: 1rem;
@@ -198,7 +208,8 @@
 
         .step-num {
             flex-shrink: 0;
-            width: 40px; height: 40px;
+            width: 40px;
+            height: 40px;
             background: var(--main);
             color: white;
             border-radius: 50%;
@@ -275,7 +286,8 @@
         }
 
         .nav button {
-            width: 48px; height: 48px;
+            width: 48px;
+            height: 48px;
             border: none;
             border-radius: 50%;
             background: var(--main);
@@ -341,8 +353,18 @@
         }
 
         @media print {
-            .nav, .slide-counter { display: none; }
-            .slide { position: relative; opacity: 1; pointer-events: auto; page-break-after: always; }
+
+            .nav,
+            .slide-counter {
+                display: none;
+            }
+
+            .slide {
+                position: relative;
+                opacity: 1;
+                pointer-events: auto;
+                page-break-after: always;
+            }
         }
     </style>
 </head>
@@ -355,15 +377,16 @@
     <div class="slide active">
         <div class="emoji-big">📊</div>
         <h1>Le Diagramme de Pareto</h1>
-        <p class="subtitle">La loi des 80/20 appliquée à la chaudronnerie</p>
-        <span class="tag">🔧 Formation Qualité — Chaudronniers</span>
+        <p class="subtitle">La loi des 80/20</p>
+        <span class="tag">🔧 Formation Qualité</span>
     </div>
 
     <!-- SLIDE 2 : CONTEXTE ATELIER -->
     <div class="slide">
         <h2>🏭 Situation en atelier</h2>
         <div class="content-box">
-            <p>Imaginez : vous êtes chef d'atelier chaudronnerie. Ce mois-ci, le <span class="highlight">taux de rebut a explosé à 15%</span> au lieu des 3% habituels.</p>
+            <p>Imaginez : vous êtes chef d'atelier. Ce mois-ci, le <span class="highlight">taux de rebut a
+                    explosé à 15%</span> au lieu des 3% habituels.</p>
             <br>
             <p>Les défauts sont nombreux et variés :</p>
             <ul>
@@ -386,12 +409,14 @@
             <div class="card">
                 <div class="icon">👤</div>
                 <h3>Qui ?</h3>
-                <p><strong>Vilfredo Pareto</strong> (1848–1923), économiste italien. Il observe en 1896 que <strong>80% des terres en Italie</strong> appartiennent à <strong>20% de la population</strong>.</p>
+                <p><strong>Vilfredo Pareto</strong> (1848–1923), économiste italien. Il observe en 1896 que <strong>80%
+                        des terres en Italie</strong> appartiennent à <strong>20% de la population</strong>.</p>
             </div>
             <div class="card">
                 <div class="icon">💡</div>
                 <h3>Le principe</h3>
-                <p>Cette répartition 80/20 se retrouve partout ! Joseph Juran l'applique à la qualité industrielle dans les années 1950.</p>
+                <p>Cette répartition 80/20 se retrouve partout ! Joseph Juran l'applique à la qualité industrielle dans
+                    les années 1950.</p>
             </div>
         </div>
         <div class="zone-8020" style="margin-top: 30px; max-width: 600px;">
@@ -432,11 +457,13 @@
         <ul class="step-list">
             <li>
                 <div class="step-num">1</div>
-                <div><strong>Collecter les données</strong><br>Relever tous les défauts sur une période donnée. Utiliser une feuille de relevé.</div>
+                <div><strong>Collecter les données</strong><br>Relever tous les défauts sur une période donnée. Utiliser
+                    une feuille de relevé.</div>
             </li>
             <li>
                 <div class="step-num">2</div>
-                <div><strong>Classer par catégorie et compter</strong><br>Regrouper les défauts par type et compter chaque catégorie.</div>
+                <div><strong>Classer par catégorie et compter</strong><br>Regrouper les défauts par type et compter
+                    chaque catégorie.</div>
             </li>
             <li>
                 <div class="step-num">3</div>
@@ -444,7 +471,8 @@
             </li>
             <li>
                 <div class="step-num">4</div>
-                <div><strong>Calculer les pourcentages et le cumul</strong><br>% de chaque catégorie, puis le % cumulé.</div>
+                <div><strong>Calculer les pourcentages et le cumul</strong><br>% de chaque catégorie, puis le % cumulé.
+                </div>
             </li>
             <li>
                 <div class="step-num">5</div>
@@ -466,13 +494,48 @@
                 </tr>
             </thead>
             <tbody>
-                <tr><td>🔴 Porosités</td><td>52</td><td>43,3%</td><td>43,3%</td></tr>
-                <tr><td>🟠 Caniveaux</td><td>27</td><td>22,5%</td><td>65,8%</td></tr>
-                <tr><td>🟡 Déformations</td><td>18</td><td>15,0%</td><td>80,8%</td></tr>
-                <tr><td>🔵 Cotes H.T.</td><td>11</td><td>9,2%</td><td>90,0%</td></tr>
-                <tr><td>🟢 Fissures</td><td>7</td><td>5,8%</td><td>95,8%</td></tr>
-                <tr><td>⚪ Aspect</td><td>5</td><td>4,2%</td><td>100%</td></tr>
-                <tr style="background:#fdebd0;font-weight:700;"><td><strong>TOTAL</strong></td><td><strong>120</strong></td><td><strong>100%</strong></td><td></td></tr>
+                <tr>
+                    <td>🔴 Porosités</td>
+                    <td>52</td>
+                    <td>43,3%</td>
+                    <td>43,3%</td>
+                </tr>
+                <tr>
+                    <td>🟠 Caniveaux</td>
+                    <td>27</td>
+                    <td>22,5%</td>
+                    <td>65,8%</td>
+                </tr>
+                <tr>
+                    <td>🟡 Déformations</td>
+                    <td>18</td>
+                    <td>15,0%</td>
+                    <td>80,8%</td>
+                </tr>
+                <tr>
+                    <td>🔵 Cotes H.T.</td>
+                    <td>11</td>
+                    <td>9,2%</td>
+                    <td>90,0%</td>
+                </tr>
+                <tr>
+                    <td>🟢 Fissures</td>
+                    <td>7</td>
+                    <td>5,8%</td>
+                    <td>95,8%</td>
+                </tr>
+                <tr>
+                    <td>⚪ Aspect</td>
+                    <td>5</td>
+                    <td>4,2%</td>
+                    <td>100%</td>
+                </tr>
+                <tr style="background:#fdebd0;font-weight:700;">
+                    <td><strong>TOTAL</strong></td>
+                    <td><strong>120</strong></td>
+                    <td><strong>100%</strong></td>
+                    <td></td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -506,7 +569,8 @@
                 <div class="bar-label">Aspect</div>
             </div>
         </div>
-        <div class="cumul-line">--- Courbe cumulée : 43% → 66% → <strong style="border: 2px dashed red; padding: 2px 8px;">81%</strong> → 90% → 96% → 100%</div>
+        <div class="cumul-line">--- Courbe cumulée : 43% → 66% → <strong
+                style="border: 2px dashed red; padding: 2px 8px;">81%</strong> → 90% → 96% → 100%</div>
         <div class="zone-8020" style="max-width: 600px;">
             <span>3 types de défauts = 81% des problèmes !</span>
         </div>
@@ -519,13 +583,16 @@
             <div class="card" style="border-color: var(--danger);">
                 <div class="icon">🚨</div>
                 <h3>Zone prioritaire (80%)</h3>
-                <p>Les <strong>Porosités</strong> et les <strong>Caniveaux</strong> représentent <strong>66%</strong> des défauts. C'est là qu'il faut agir en premier !</p>
-                <p style="margin-top:10px; color: var(--danger); font-weight:700;">→ 2 défauts sur 6 = 66% des rebuts</p>
+                <p>Les <strong>Porosités</strong> et les <strong>Caniveaux</strong> représentent <strong>66%</strong>
+                    des défauts. C'est là qu'il faut agir en premier !</p>
+                <p style="margin-top:10px; color: var(--danger); font-weight:700;">→ 2 défauts sur 6 = 66% des rebuts
+                </p>
             </div>
             <div class="card" style="border-color: var(--success);">
                 <div class="icon">✅</div>
                 <h3>Zone secondaire</h3>
-                <p>Les Fissures et Défauts d'aspect ne représentent que <strong>10%</strong> des problèmes. Ils peuvent attendre.</p>
+                <p>Les Fissures et Défauts d'aspect ne représentent que <strong>10%</strong> des problèmes. Ils peuvent
+                    attendre.</p>
                 <p style="margin-top:10px; color: var(--success); font-weight:700;">→ Ne pas disperser les efforts !</p>
             </div>
         </div>
@@ -536,12 +603,20 @@
         <h2>💻 Construire un Pareto dans le tableur</h2>
         <div class="content-box">
             <ol style="padding-left: 20px;">
-                <li style="margin: 10px 0;"><strong>Colonne A</strong> : Types de défauts (triés du + au – fréquent)</li>
+                <li style="margin: 10px 0;"><strong>Colonne A</strong> : Types de défauts (triés du + au – fréquent)
+                </li>
                 <li style="margin: 10px 0;"><strong>Colonne B</strong> : Quantités</li>
-                <li style="margin: 10px 0;"><strong>Colonne C</strong> : Pourcentage → <code>=B2/SOMME($B$2:$B$7)*100</code></li>
-                <li style="margin: 10px 0;"><strong>Colonne D</strong> : % Cumulé → 1ère ligne : <code>=C2</code> puis <code>=D2+C3</code></li>
-                <li style="margin: 10px 0;"><strong>Graphique</strong> : Sélectionner A:B → Insérer un <strong>histogramme</strong></li>
-                <li style="margin: 10px 0;"><strong>Courbe</strong> : Ajouter la colonne D sur un <strong>axe secondaire</strong> en courbe</li>
+                <li style="margin: 10px 0;"><strong>Colonne C</strong> : Pourcentage →
+                    <code>=B2/SOMME($B$2:$B$7)*100</code>
+                </li>
+                <li style="margin: 10px 0;"><strong>Colonne D</strong> : % Cumulé → 1ère ligne : <code>=C2</code> puis
+                    <code>=D2+C3</code>
+                </li>
+                <li style="margin: 10px 0;"><strong>Graphique</strong> : Sélectionner A:B → Insérer un
+                    <strong>histogramme</strong>
+                </li>
+                <li style="margin: 10px 0;"><strong>Courbe</strong> : Ajouter la colonne D sur un <strong>axe
+                        secondaire</strong> en courbe</li>
             </ol>
         </div>
     </div>
@@ -554,7 +629,8 @@
             Le Pareto vous dit <strong>OÙ concentrer vos efforts</strong>.<br><br>
             En chaudronnerie : résoudre <strong>1 ou 2 gros problèmes</strong><br>
             vaut mieux que de courir après 10 petits défauts !<br><br>
-            <span style="font-size: 1rem; opacity: 0.9;">« Toujours MESURER avant d'AGIR. Les impressions trompent. »</span>
+            <span style="font-size: 1rem; opacity: 0.9;">« Toujours MESURER avant d'AGIR. Les impressions trompent.
+                »</span>
         </div>
         <span class="tag" style="margin-top: 30px;">🔧 À vous de jouer → Activités pratiques</span>
     </div>
