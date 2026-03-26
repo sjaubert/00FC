@@ -17,9 +17,13 @@ output:
 
 ## 1. Synthèse Générale
 
-La formation "Organisation Industrielle" s'est déroulée dans d'excellentes conditions sur les deux journées prévues. Afin de maximiser l'impact pédagogique et de répondre à la dynamique très pratique du groupe, **le déroulé initial a été adapté**. 
+Le groupe de stagiaires s'est révélé être un **public particulièrement hétérogène**. On y retrouvait d'une part de jeunes profils ayant un niveau BAC général (dont un stagiaire issu de classes préparatoires), et d'autre part des personnes non diplômées, sans aucun prérequis. Cette hétérogénéité s'est accompagnée, pour une partie du groupe, de très grandes difficultés d'attention et de lecture, ainsi que de comportements inadaptés. 
 
-La priorité a été donnée à l'expérimentation par le jeu (Atelier Cocotte et Jeu du KANBAN), ce qui a permis un ancrage profond et concret des concepts fondamentaux du Lean Manufacturing et de l'amélioration continue.
+L'implication durant la formation fut donc très diverse : allant d'une participation active et engagée pour certains, à un désintérêt total pour d'autres se traduisant par un temps passé quasi-exclusivement à jouer sur leur téléphone portable.
+
+Face à un public peu ou plus du tout habitué à rester assis sur une chaise en salle de formation pendant 7 heures consécutives, **le déroulé initial a dû être impérativement adapté**.
+
+La priorité absolue a donc été donnée à l'expérimentation par le jeu (Atelier Cocotte et Jeu du KANBAN). Cette orientation très pratique était indispensable pour capter l'attention du groupe et permettre l'ancrage concret des concepts fondamentaux du Lean Manufacturing et de l'amélioration continue.
 
 ---
 
@@ -59,8 +63,8 @@ La priorité a été donnée à l'expérimentation par le jeu (Atelier Cocotte e
 
 ## 3. Conclusion et évaluation
 
-Le groupe a fait preuve d'une excellente participation, particulièrement lors des phases pratiques. L'adaptation du planning en faveur d'un temps d'expérimentation plus long (Atelier Cocotte dédié sur une demi-journée et simulation Kanban sur 3 semaines fictives) s'est avérée être un choix pédagogique très pertinent. 
+Malgré la difficulté initiale liée à la forte hétérogénéité du groupe et aux écarts importants de comportement et d'attitude, l'approche ludique s'est avérée indispensable. Si l'attention sur les parties théoriques fut très inégale, les phases pratiques ont permis d'embarquer la majorité du groupe. L'adaptation du planning en faveur d'un temps d'expérimentation plus long (Atelier Cocotte dédié sur une demi-journée et simulation Kanban sur 3 semaines fictives) s'est imposée comme le choix pédagogique le plus pertinent pour pallier les problèmes de concentration.
 
-Les participants ont pu toucher du doigt la réalité du terrain et comprennent désormais non seulement *pourquoi* l'amélioration continue est nécessaire, mais aussi *comment* les outils comme le flux tiré ou le management visuel impactent directement les résultats de la production.
+Les participants les plus investis ont pu ainsi toucher du doigt la réalité du terrain et comprennent désormais non seulement *pourquoi* l'amélioration continue est nécessaire, mais aussi *comment* des outils comme le flux tiré ou le management visuel impactent directement les résultats de production.
 
-**Les objectifs de la formation ont été pleinement atteints.**
+**Dans l'ensemble, l'adaptation radicale par le jeu a permis de sauver la dynamique de groupe et d'atteindre les objectifs de la formation.**
