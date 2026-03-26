@@ -1,3 +1,9 @@
+---
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+---
 # Bilan de Formation — Organisation Industrielle
 
 **Document à l'attention de :** ADECCO TRAINING  
