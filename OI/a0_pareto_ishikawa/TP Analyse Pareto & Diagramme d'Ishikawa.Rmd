@@ -1,0 +1,71 @@
+---
+title: "TP Analyse Pareto & Diagramme d'Ishikawa"
+output: word_document
+date: "2026-03-30"
+---
+# TP : Optimisation de la Maintenance par les Outils LEAN
+**Thème** : Analyse Pareto & Diagramme d'Ishikawa
+**Public** : Électriciens de Maintenance de Systèmes Automatisés (EIMSA)
+**Durée estimée** : 3h30
+
+---
+
+## 1. Mise en situation réelle
+Vous travaillez sur une ligne de conditionnement automatisée. Depuis quelques semaines, le taux de disponibilité de la machine chute. La direction vous demande de sortir de la logique du "pompier" (réparer au coup par coup) pour passer à une logique de **maintenance proactive**.
+
+---
+
+## 2. Exercice 1 : La Loi de Pareto (1h30)
+**Objectif** : Identifier les 20% de causes responsables de 80% des arrêts de production.
+
+### A. Données de l'historique (Mois de Mars)
+Voici l'extraction de la GMAO concernant les arrêts techniques :
+
+| Type de défaillance | Fréquence (nb d'appels) | Durée totale d'arrêt (min) |
+| :--- | :---: | :---: |
+| Cellule photoélectrique encrassée | 25 | 50 |
+| Capteur de présence pièce mal réglé | 22 | 110 |
+| Problème de ventouses (Pneumatique) | 18 | 90 |
+| Erreur de communication Automate (Bus) | 12 | 180 |
+| Bouton d'arrêt d'urgence défectueux | 4 | 40 |
+| Surchauffe variateur de vitesse | 3 | 120 |
+| Court-circuit moteur convoyeur | 2 | 240 |
+
+### B. Travail à réaliser
+1. **Classement** : Rangez ces pannes par ordre décroissant de **Durée totale d'arrêt**.
+2. **Calculs** : Complétez un tableau avec les colonnes suivantes :
+   * Temps d'arrêt (min)
+   * % du temps total
+   * % cumulé
+3. **Graphique** : Tracez l'histogramme des temps et la courbe de Lorenz.
+4. **Analyse** : 
+   * Quelles sont les 3 pannes critiques à traiter en priorité ?
+   * Pourquoi s'attaquer au "Court-circuit moteur" est-il plus urgent que de nettoyer les "Cellules encrassées" ?
+
+---
+
+## 3. Exercice 2 : Le Diagramme d'Ishikawa (1h30)
+**Objectif** : Rechercher les causes racines d'un problème complexe pour éviter qu'il ne réapparaisse.
+
+**Problème à analyser** : *"Erreur répétitive de communication sur le Bus de terrain (perte de dialogue automate/périphériques)"*.
+
+### A. Travail en sous-groupes (Brainstorming)
+Utilisez la méthode des **5M** pour lister les causes possibles :
+
+1. **MATIÈRE** : Qualité des câbles, connectique RJ45/M12, blindage défectueux...
+2. **MATÉRIEL** : Switch industriel, automate, cartes E/S, parasites électromagnétiques (CEM)...
+3. **MÉTHODE** : Configuration IP, paramétrage du logiciel de communication, absence de procédure de test...
+4. **MAIN D'OEUVRE** : Manque de formation sur le réseau, erreur de branchement lors d'un dépannage rapide...
+5. **MILIEU** : Vibrations, température excessive dans l'armoire, humidité, poussière...
+
+### B. Approfondissement : Les "5 Pourquoi"
+Choisissez la cause "Connecteur RJ45 endommagé" et remontez à la source :
+* *Pourquoi le connecteur est-il endommagé ?* -> Parce que le câble est tendu.
+* *Pourquoi est-il tendu ?* -> ... (Continuez jusqu'à trouver une action concrète).
+
+---
+
+## 4. Plan d'Action Final (30 min)
+Au vu des deux exercices, proposez :
+1. Une action de **maintenance préventive** immédiate.
+2. Une action d'**amélioration technique** à long terme.
