@@ -1,8 +1,15 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
+
+![](../Atelier_cocotte/logo_uimm_placeholder.jpg)
+
 # TP : Pilotage de la Performance - Le TRS (Taux de Rendement Synthétique)
 
-**Thème** : Analyse des pertes et calcul d'indicateurs de performance
-**Public** : Électriciens de Maintenance de Systèmes Automatisés (EIMSA)
-**Durée estimée** : 3h30
+* **Thème** : Analyse des pertes et calcul d'indicateurs de performance
+  **Public** : Électriciens de Maintenance de Systèmes Automatisés (EIMSA)
 
 ---
 
@@ -46,16 +53,19 @@ L'objectif est de décomposer le temps pour comprendre où les minutes s'échapp
 **Travail à réaliser (Utilisez les formules suivantes) :**
 
 1. **Taux de Disponibilité ($D_{o}$)** :
+
    $$
    \frac{Temps \ de \ Fonctionnement \ (T_{f})}{Temps \ Requis \ (T_{r})}
    $$
 2. **Taux de Performance ($T_{p}$)** :
+
    $$
    \frac{Production \ réelle \times Temps \ de \ cycle \ théorique}{Temps \ de \ Fonctionnement \ (T_{f})}
    $$
 
    *(Note : Temps de cycle théorique = 1 minute / 12 sacs)*
 3. **Taux de Qualité ($T_{q}$)** :
+
    $$
    \frac{Production \ totale - Rebuts}{Production \ totale}
    $$
