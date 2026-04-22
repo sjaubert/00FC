@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Méthodologie IA : LEAN & 6 Sigma en Maintenance</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e67e22; /* Changed to orange for a maintenance vibe */
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #e9ecef;
+            --code-bg: #282c34;
+            --code-text: #abb2bf;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        h3 {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .method-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .objective {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            font-size: 0.95rem;
+            position: relative;
+        }
+        
+        .copy-badge {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 0.8rem;
+            color: #888;
+            user-select: none;
+        }
+
+        .example-box {
+            background-color: #fef8f0;
+            border: 1px solid #fbe7ca;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+
+        .example-box ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .example-box li {
+             margin-bottom: 8px;
+        }
+
+        .badge {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Focus LEAN / 6 Sigma : Spécial Maintenance & Fiabilité Assisté par l'IA</h1>
+        <p>Ce document présente 6 approches méthodologiques phares de la qualité et de l'amélioration continue orientées sur le domaine de la maintenance. Vous y trouverez des "prompts" spécifiques et des exemples tirés du monde industriel de la maintenance technique.</p>
+    </header>
+
+    <!-- METHOD 1 -->
+    <div class="method-card">
+        <h2>1. Méthode QQOQCP</h2>
+        <div class="objective"><strong>Objectif :</strong> Poser le problème, clarifier le contexte des équipements et les périmètres techniques d'investigation.</div>
+        
+        <h3><span class="badge">📋</span> Prompt générique à copier-coller</h3>
+        <pre><span class="copy-badge">COPIER</span>Tu es un consultant en maintenance et ingénierie de fiabilité, spécialisé en diagnostic, animé par le besoin de clarifier les zones d'ombre pour cibler précisément l'investigation technique.
+Voici une situation à analyser : [décris la situation]. Réponds aux 7 questions QQOQCP (Qui, Quoi, Où, Quand, Comment, Combien, Pourquoi) de façon structurée pour m'aider à poser un diagnostic clair et proposer un plan d'action d'inspection.</pre>
+
+        <h3><span class="badge">🏭</span> Exemple d'application en Maintenance</h3>
+        <div class="example-box">
+            <ul>
+                <li><strong>L'anomalie :</strong> Dérives thermiques inexpliquées sur un four de traitement.</li>
+                <li><strong>Le prompt prêt à l'emploi :</strong></li>
+            </ul>
+        </div>
+        <pre><span class="copy-badge">COPIER</span>Tu es un consultant en maintenance et ingénierie de fiabilité, spécialisé en diagnostic, animé par le besoin de clarifier les zones d'ombre pour cibler précisément l'investigation technique.
+Voici une situation à analyser : Depuis le début du trimestre, nous constatons des dérives de température inexpliquées (+/- 5°C par rapport à la consigne) sur le four de traitement thermique n°2, ce qui déclenche régulièrement de fausses alarmes de sécurité pendant les week-ends sans supervision.
+Réponds aux 7 questions QQOQCP (Qui, Quoi, Où, Quand, Comment, Combien, Pourquoi) de façon structurée pour m'aider à poser un diagnostic clair et proposer un plan d'action d'inspection.</pre>
+    </div>
+
+    <!-- METHOD 2 -->
+    <div class="method-card">
+        <h2>2. Les 5 Pourquoi</h2>
+        <div class="objective"><strong>Objectif :</strong> Dépasser les symptômes du dépannage immédiat pour éviter de "re-changer" la même pièce sans fin.</div>
+        
+        <h3><span class="badge">📋</span> Prompt générique à copier-coller</h3>
+        <pre><span class="copy-badge">COPIER</span>Tu es un expert en maintenance industrielle et résolution de problèmes racine, passionné par la compréhension profonde des pannes pour éviter le simple changement de pièce ("re-panne").
+Voici un problème technique sur mon parc machine : [décris le problème ou la panne].
+Pose-moi cinq fois la question "Pourquoi ?", de manière logique (arbre des défaillances), pour m'aider à remonter jusqu'à la cause fondamentale. 
+Propose une synthèse finale de la cause identifiée.</pre>
+
+        <h3><span class="badge">🏭</span> Exemple d'application en Maintenance</h3>
+        <div class="example-box">
+            <ul>
+                <li><strong>L'anomalie :</strong> Rupture prématurée d'un roulement sur une pompe de circulation d'eau.</li>
+                <li><strong>Le prompt prêt à l'emploi :</strong></li>
+            </ul>
+        </div>
+        <pre><span class="copy-badge">COPIER</span>Tu es un expert en maintenance industrielle et résolution de problèmes racine, passionné par la compréhension profonde des pannes pour éviter le simple changement de pièce ("re-panne").
+Voici un problème technique sur mon parc machine : Lors de l'inspection vibratoire mensuelle, le technicien a diagnostiqué une usure sévère d'un roulement côté accouplement sur la pompe de circulation d'eau glacée, alors que celui-ci avait été remplacé en préventif il y a seulement 3 mois (durée de vie théorique moyenne: 5 ans).
+Pose-moi cinq fois la question "Pourquoi ?", de manière logique (arbre des défaillances), pour m'aider à remonter jusqu'à la cause fondamentale. 
+Propose une synthèse finale de la cause identifiée.</pre>
+    </div>
+
+    <!-- METHOD 3 -->
+    <div class="method-card">
+        <h2>3. Arbre des causes</h2>
+        <div class="objective"><strong>Objectif :</strong> Modéliser les combinaisons d'événements complexes ayant provoqué un arrêt majeur ou une cascade de pannes.</div>
+        
+        <h3><span class="badge">📋</span> Prompt générique à copier-coller</h3>
+        <pre><span class="copy-badge">COPIER</span>Tu es un ingénieur méthode maintenance et spécialiste en sûreté de fonctionnement utilisant l'approche Arbre des causes.
+Problème ou incident : [décrivez la panne ou l'événement redouté].
+1. Reformule les faits de façon factuelle (pas d'hypothèse).
+2. Construit l'arbre en remontant des faits probants vers les causes initiales.
+3. Pour chaque branche, identifie les conditions contributives (organisation, technique, erreur de manipulation).
+4. Présente le tout sous forme d'arbre textuel utilisant des puces hiérarchisées.
+5. Conclus par 2 ou 3 pistes d'actions correctives durables à ajouter au plan de maintenance.</pre>
+
+        <h3><span class="badge">🏭</span> Exemple d'application en Maintenance</h3>
+        <div class="example-box">
+            <ul>
+                <li><strong>L'anomalie :</strong> Départ d'incendie électrique dans le local d'air comprimé.</li>
+                <li><strong>Le prompt prêt à l'emploi :</strong></li>
+            </ul>
+        </div>
+        <pre><span class="copy-badge">COPIER</span>Tu es un ingénieur méthode maintenance et spécialiste en sûreté de fonctionnement utilisant l'approche Arbre des causes.
+Problème ou incident : Cette nuit, un départ d'incendie a eu lieu dans l'armoire électrique TGBT du local compresseurs. Cela a provoqué le déclenchement des extincteurs automatiques et causé l'arrêt complet des installations d'air comprimé de l'usine.
+1. Reformule les faits de façon factuelle (pas d'hypothèse).
+2. Construit l'arbre en remontant des faits probants vers les causes initiales.
+3. Pour chaque branche, identifie les conditions contributives (organisation, technique, erreur de manipulation).
+4. Présente le tout sous forme d'arbre textuel utilisant des puces hiérarchisées.
+5. Conclus par 2 ou 3 pistes d'actions correctives durables à ajouter au plan de maintenance.</pre>
+    </div>
+
+    <!-- METHOD 4 -->
+    <div class="method-card">
+        <h2>4. Diagramme d'Ishikawa (5M)</h2>
+        <div class="objective"><strong>Objectif :</strong> Structurer l'investigation face à la dégradation des KPI maintenance comme le MTTR ou le taux de pannes (MTBF).</div>
+        
+        <h3><span class="badge">📋</span> Prompt générique à copier-coller</h3>
+        <pre><span class="copy-badge">COPIER</span>Tu es un manager méthode/fiabilité, expert en analyse de performance opérationnelle et adepte des diagrammes d'Ishikawa.
+Voici la problématique ou la dérive constatée en maintenance : [décrivez la problématique]. 
+Classe les causes potentielles en catégories 5M (Méthodes, Matériel, Main-d'œuvre, Milieu, Matière/Pièces de rechange) et dresse un schéma textuel Ishikawa de ce problème.
+Termine en m'indiquant sur laquelle de ces familles il serait le plus pertinent d'axer le diagnostic initial prioritaires.</pre>
+
+        <h3><span class="badge">🏭</span> Exemple d'application en Maintenance</h3>
+        <div class="example-box">
+            <ul>
+                <li><strong>L'anomalie :</strong> Augmentation importante du temps d'immobilisation pour réparation (MTTR).</li>
+                <li><strong>Le prompt prêt à l'emploi :</strong></li>
+            </ul>
+        </div>
+        <pre><span class="copy-badge">COPIER</span>Tu es un manager méthode/fiabilité, expert en analyse de performance opérationnelle et adepte des diagrammes d'Ishikawa.
+Voici la problématique ou la dérive constatée en maintenance : Lors du bilan GMAO du dernier trimestre, nous avons observé une dégradation (augmentation) de notre indicateur MTTR (Temps Moyen de Réparation) de 25 % spécifiquement sur les interventions curatives du parc de convoyeurs de la zone d'expédition.
+Classe les causes potentielles en catégories 5M (Méthodes, Matériel, Main-d'œuvre, Milieu, Matière/Pièces de rechange) et dresse un schéma textuel Ishikawa de ce problème.
+Termine en m'indiquant sur laquelle de ces familles il serait le plus pertinent d'axer le diagnostic initial prioritaires.</pre>
+    </div>
+
+    <!-- METHOD 5 -->
+    <div class="method-card">
+        <h2>5. AMDEC (Moyen de Production)</h2>
+        <div class="objective"><strong>Objectif :</strong> Outil de définition du plan de maintenance (préventive / prédictive) basé sur l'anticipation des défaillances.</div>
+        
+        <h3><span class="badge">📋</span> Prompt générique à copier-coller</h3>
+        <pre><span class="copy-badge">COPIER</span>Tu es un ingénieur Méthodes Maintenance spécialisé en AMDEC Moyen de Production.
+Je dois bâtir ou optimiser le plan de maintenance pour ce système : [décris l'équipement].
+Identifie ses 5 principaux sous-ensembles, liste pour chacun les modes de défaillance pertinents, leurs effets et causes probables.
+Puis propose-moi un plan d'actions basé sur l'Inspection (Visuel, Vibratoire, Thermographie, etc.), le Préventif Systématique (lubrification, échange standard) ou la modification de design, en fonction de la criticité supposée de la défaillance.</pre>
+
+        <h3><span class="badge">🏭</span> Exemple d'application en Maintenance</h3>
+        <div class="example-box">
+            <ul>
+                <li><strong>L'équipement :</strong> Implémentation du plan d'entretien d'une nouvelle station de cogénération.</li>
+                <li><strong>Le prompt prêt à l'emploi :</strong></li>
+            </ul>
+        </div>
+        <pre><span class="copy-badge">COPIER</span>Tu es un ingénieur Méthodes Maintenance spécialisé en AMDEC Moyen de Production.
+Je dois bâtir ou optimiser le plan de maintenance pour ce système : Une nouvelle centrale de cogénération biomasse intégrant un silo d'alimentation, une chaudière à grille mobile, un traitement de fumées et une turbine vapeur couplée à un alternateur.
+Identifie ses 5 principaux sous-ensembles, liste pour chacun les modes de défaillance pertinents, leurs effets et causes probables.
+Puis propose-moi un plan d'actions basé sur l'Inspection (Visuel, Vibratoire, Thermographie, etc.), le Préventif Systématique (lubrification, échange standard) ou la modification de design, en fonction de la criticité supposée de la défaillance.</pre>
+    </div>
+
+    <!-- METHOD 6 -->
+    <div class="method-card">
+        <h2>6. Méthode 8D</h2>
+        <div class="objective"><strong>Objectif :</strong> Assurer le règlement d'une crise technique qui nécessite une sécurisation immédiate et l'analyse transverse des causes racines.</div>
+        
+        <h3><span class="badge">📋</span> Prompt générique à copier-coller</h3>
+        <pre><span class="copy-badge">COPIER</span>Tu es un référent technique LEAN Maintenance expert en animation de la démarche 8D pour des pannes critiques.
+Voici l'incident majeur que nous devons sécuriser et résoudre : [décris la panne critique].
+Guide-moi de manière pratique à travers les 8 étapes du 8D orienté maintenance. Assure-toi de mettre en évidence l'étape des actions de sécurisation immédiates (D3) et la définition d'actions préventives durables (intégration dans la GMAO en D6/D7).
+Donne pour chaque étape ce que nous devons livrer et formaliser concrètement.</pre>
+
+        <h3><span class="badge">🏭</span> Exemple d'application en Maintenance</h3>
+        <div class="example-box">
+            <ul>
+                <li><strong>L'anomalie :</strong> Panne à répétition provoquant des crashs sur centres d'usinage.</li>
+                <li><strong>Le prompt prêt à l'emploi :</strong></li>
+            </ul>
+        </div>
+        <pre><span class="copy-badge">COPIER</span>Tu es un référent technique LEAN Maintenance expert en animation de la démarche 8D pour des pannes critiques.
+Voici l'incident majeur que nous devons sécuriser et résoudre : Sur nos centres d'usinage grande vitesse (UGV), nous subissons depuis le début de l'année une série de défaillances inattendues des capteurs de vibration intégrés aux broches (pertes de signal ou câbles sectionnés), ce qui a provoqué ce mois-ci trois crashs machine car la sécurité anti-collision n'a pas pu s'activer à temps.
+Guide-moi de manière pratique à travers les 8 étapes du 8D orienté maintenance. Assure-toi de mettre en évidence l'étape des actions de sécurisation immédiates (D3) et la définition d'actions préventives durables (intégration dans la GMAO en D6/D7).
+Donne pour chaque étape ce que nous devons livrer et formaliser concrètement.</pre>
+    </div>
+
+</body>
+</html>
