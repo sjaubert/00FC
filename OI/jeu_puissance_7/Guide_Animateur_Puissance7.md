@@ -1,3 +1,8 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
 # 🎯 Puissance 7® — Guide de l'Animateur
 
 > **Jeu d'entreprise conçu par le CIPE** (Centre International de la Pédagogie d'Entreprise)
