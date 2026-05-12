@@ -546,17 +546,18 @@ function drawVSM(canvas, engine, params) {
   const arrColor = isPull ? COLORS.pull : COLORS.push;
   const yM = 90;  // ligne principale
 
-  // Positions
+  // Positions proportionnelles à la largeur du canvas
   const xFour = 44;
-  const xP    = [150, 340, 530];
-  const xS    = [240, 435, 625];   // stocks entre postes
   const xCli  = W - 44;
+  const span  = xCli - xFour;
+  const xP    = [xFour + span*0.18, xFour + span*0.46, xFour + span*0.73];
+  const xS    = [xFour + span*0.32, xFour + span*0.59, xFour + span*0.87];
 
   // ─── Fournisseur ───
   drawActor(ctx, xFour, yM, "Fourni-\nsseur", COLORS.bleu);
 
   // ─── Stock MP (entre fournisseur et P1) ───
-  const mpX = (xFour + xP[0] - 38) / 2 + 10;
+  const mpX = (xFour + xP[0]) / 2;
   drawArrow(ctx, xFour+28, yM, xP[0]-42, yM, arrColor);
   drawStockBadge(ctx, mpX, yM - 28, engine.stocks[0], STOCK_LABELS[0], 30);
 
