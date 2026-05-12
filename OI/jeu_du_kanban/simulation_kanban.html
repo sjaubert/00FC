@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulation Flux Poussé / Flux Tiré (Kanban) — UIMM CVDL</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --bleu:   #1a3a5c;
+  --rouge:  #c8102e;
+  --blanc:  #ffffff;
+  --fond:   #f4f6f8;
+  --panel:  #ffffff;
+  --push:   #e74c3c;
+  --pull:   #27ae60;
+  --gris:   #ecf0f1;
+  --texte:  #2c3e50;
+  --orange: #f39c12;
+  --violet: #8e44ad;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--fond);
+  color: var(--texte);
+  font-size: 13px;
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--bleu);
+  color: var(--blanc);
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 16px;
+}
+header img { height: 52px; border-radius: 4px; background: #fff; padding: 4px; }
+.hdr-center { flex: 1; text-align: center; }
+.hdr-center h1 { font-size: 1.15em; font-weight: 700; }
+.hdr-center p  { font-size: 0.82em; color: #adc6e0; }
+.hdr-right { text-align: right; font-size: 0.82em; }
+.hdr-right strong { display: block; }
+.hdr-right span   { color: #adc6e0; }
+.red-bar { height: 4px; background: var(--rouge); }
+
+/* ── CONTROLS ── */
+#controls {
+  background: var(--panel);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-bottom: 1px solid #dde3ea;
+  flex-wrap: wrap;
+}
+button {
+  border: none; cursor: pointer; border-radius: 4px;
+  font-size: 0.85em; font-weight: 600; padding: 6px 14px;
+  transition: opacity .15s;
+}
+button:hover { opacity: .85; }
+#btnMode  { background: var(--push); color: #fff; font-size: 0.9em; }
+#btnStart { background: var(--bleu); color: #fff; }
+#btnStep, #btnReset { background: var(--gris); color: var(--texte); }
+.sep { width: 1px; height: 24px; background: #ccc; margin: 0 4px; }
+#speedWrap { display: flex; align-items: center; gap: 6px; font-size: 0.82em; }
+#speedWrap input { width: 100px; }
+#lblPeriod { margin-left: auto; font-size: 0.82em; color: #666; }
+
+/* ── MAIN GRID ── */
+#main {
+  display: grid;
+  grid-template-columns: 210px 1fr 280px;
+  gap: 6px;
+  padding: 6px;
+  height: calc(100vh - 110px);
+}
+
+/* ── PARAMS ── */
+#params {
+  background: var(--panel);
+  border-radius: 6px;
+  overflow-y: auto;
+  border: 1px solid #dde3ea;
+}
+.panel-title {
+  background: var(--bleu); color: #fff;
+  font-weight: 700; font-size: 0.82em;
+  padding: 5px 8px; letter-spacing: .05em;
+}
+.section-lbl {
+  background: var(--gris); color: var(--bleu);
+  font-weight: 700; font-size: 0.78em;
+  padding: 4px 8px; margin-top: 6px;
+}
+.param-row {
+  display: flex; align-items: center;
+  padding: 3px 8px; gap: 4px;
+}
+.param-row label { flex: 1; font-size: 0.78em; color: var(--texte); }
+.param-row input[type=range] { width: 80px; }
+.param-val { width: 36px; text-align: right; font-size: 0.78em;
+             font-weight: 700; color: var(--bleu); }
+
+/* ── CENTER ── */
+#center {
+  display: flex; flex-direction: column; gap: 6px;
+}
+#vsmWrap {
+  background: var(--panel);
+  border-radius: 6px;
+  border: 1px solid #dde3ea;
+  overflow: hidden;
+}
+#vsmWrap .panel-title { }
+#vsmCanvas { width: 100%; display: block; }
+
+#logWrap {
+  background: var(--panel);
+  border-radius: 6px;
+  border: 1px solid #dde3ea;
+  flex: 1; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+#logBox {
+  flex: 1; overflow-y: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 0.75em;
+  background: #1e2a3a; color: #7fdbff;
+  padding: 6px 8px;
+}
+
+/* ── RIGHT ── */
+#right {
+  background: var(--panel);
+  border-radius: 6px;
+  border: 1px solid #dde3ea;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+#kpis {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4px; padding: 6px;
+}
+.kpi-box {
+  background: var(--gris); border-radius: 4px;
+  text-align: center; padding: 4px;
+}
+.kpi-box .kpi-lbl { font-size: 0.72em; color: #666; }
+.kpi-box .kpi-val { font-size: 1.3em; font-weight: 700; }
+#charts { flex: 1; display: flex; flex-direction: column;
+          gap: 4px; padding: 4px; overflow: hidden; }
+.chart-wrap { flex: 1; position: relative; min-height: 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <img id="logoImg" src="../../logo_uimm_placeholder.jpg" alt="UIMM"
+       onerror="this.style.display='none'">
+  <div class="hdr-center">
+    <h1>SIMULATION FLUX POUSSÉ &nbsp;/&nbsp; FLUX TIRÉ (KANBAN)</h1>
+    <p>Organisation Industrielle — BTS ATI</p>
+  </div>
+  <div class="hdr-right">
+    <strong>Pôle Formation - UIMM CVDL</strong>
+    <span>Formateur : S. Jaubert</span>
+  </div>
+</header>
+<div class="red-bar"></div>
+
+<div id="controls">
+  <button id="btnMode">MODE : FLUX POUSSÉ</button>
+  <div class="sep"></div>
+  <button id="btnStart">DÉMARRER</button>
+  <button id="btnStep">Pas à pas</button>
+  <button id="btnReset">Réinitialiser</button>
+  <div class="sep"></div>
+  <div id="speedWrap">
+    <label>Vitesse :</label>
+    <input type="range" id="slSpeed" min="100" max="2000" step="100" value="800">
+    <span id="lblSpeed">800 ms</span>
+  </div>
+  <span id="lblPeriod">Période : 0</span>
+</div>
+
+<div id="main">
+
+  <!-- PARAMS -->
+  <div id="params">
+    <div class="panel-title">PARAMÈTRES</div>
+
+    <div class="section-lbl">Demande client</div>
+    <div class="param-row">
+      <label>Moyenne (u/p)</label>
+      <input type="range" id="pDemand" min="2" max="20" step="0.5" value="8">
+      <span class="param-val" id="vDemand">8</span>
+    </div>
+    <div class="param-row">
+      <label>Variabilité</label>
+      <input type="range" id="pCV" min="0" max="0.8" step="0.05" value="0.3">
+      <span class="param-val" id="vCV">30%</span>
+    </div>
+
+    <div class="section-lbl">Cadence postes (u/p)</div>
+    <div class="param-row">
+      <label>Usinage</label>
+      <input type="range" id="pCap0" min="2" max="20" step="0.5" value="10">
+      <span class="param-val" id="vCap0">10</span>
+    </div>
+    <div class="param-row">
+      <label>Assemblage</label>
+      <input type="range" id="pCap1" min="2" max="20" step="0.5" value="9">
+      <span class="param-val" id="vCap1">9</span>
+    </div>
+    <div class="param-row">
+      <label>Contrôle</label>
+      <input type="range" id="pCap2" min="2" max="20" step="0.5" value="10">
+      <span class="param-val" id="vCap2">10</span>
+    </div>
+
+    <div class="section-lbl">Tickets Kanban</div>
+    <div class="param-row">
+      <label>Boucle Usinage</label>
+      <input type="range" id="pK0" min="1" max="20" step="1" value="6">
+      <span class="param-val" id="vK0">6</span>
+    </div>
+    <div class="param-row">
+      <label>Boucle Assembl.</label>
+      <input type="range" id="pK1" min="1" max="20" step="1" value="6">
+      <span class="param-val" id="vK1">6</span>
+    </div>
+    <div class="param-row">
+      <label>Boucle Contrôle</label>
+      <input type="range" id="pK2" min="1" max="20" step="1" value="6">
+      <span class="param-val" id="vK2">6</span>
+    </div>
+    <div class="param-row">
+      <label>Taille de lot</label>
+      <input type="range" id="pLot" min="1" max="10" step="1" value="3">
+      <span class="param-val" id="vLot">3</span>
+    </div>
+
+    <div class="section-lbl">Incidents</div>
+    <div class="param-row">
+      <label>Probabilité</label>
+      <input type="range" id="pInc" min="0" max="0.5" step="0.01" value="0.12">
+      <span class="param-val" id="vInc">12%</span>
+    </div>
+  </div>
+
+  <!-- CENTER -->
+  <div id="center">
+    <div id="vsmWrap">
+      <div class="panel-title">CARTE DE FLUX DE VALEUR (VSM)</div>
+      <canvas id="vsmCanvas" height="200"></canvas>
+    </div>
+    <div id="logWrap">
+      <div class="panel-title">JOURNAL DES ÉVÉNEMENTS</div>
+      <div id="logBox"></div>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div id="right">
+    <div class="panel-title">INDICATEURS CLÉS</div>
+    <div id="kpis">
+      <div class="kpi-box">
+        <div class="kpi-lbl">Taux de service</div>
+        <div class="kpi-val" id="kSvc" style="color:var(--gris)">—</div>
+      </div>
+      <div class="kpi-box">
+        <div class="kpi-lbl">Stock total (u)</div>
+        <div class="kpi-val" id="kStk" style="color:var(--gris)">—</div>
+      </div>
+      <div class="kpi-box">
+        <div class="kpi-lbl">Efficience moy.</div>
+        <div class="kpi-val" id="kEff" style="color:var(--gris)">—</div>
+      </div>
+      <div class="kpi-box">
+        <div class="kpi-lbl">Incidents</div>
+        <div class="kpi-val" id="kInc" style="color:var(--gris)">—</div>
+      </div>
+    </div>
+    <div id="charts">
+      <div class="chart-wrap"><canvas id="chartSvc"></canvas></div>
+      <div class="chart-wrap"><canvas id="chartStk"></canvas></div>
+      <div class="chart-wrap"><canvas id="chartEff"></canvas></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+// MOTEUR DE SIMULATION
+// ═══════════════════════════════════════════════════════════
+const STATION_NAMES = ["Usinage", "Assemblage", "Contrôle"];
+const STOCK_LABELS  = ["M.P.", "En-cours 1", "En-cours 2", "Stock P.F."];
+
+class SimParams {
+  constructor() {
+    this.demand_mean     = 8;
+    this.demand_cv       = 0.30;
+    this.capacities      = [10, 9, 10];
+    this.initial_stocks  = [40, 25, 20, 20];
+    this.kanban_counts   = [6, 6, 6];
+    this.kanban_lot_size = 3;
+    this.incident_prob   = 0.12;
+    this.incident_max_dur = 3;
+    this.mode            = "push";
+    this.speed_ms        = 800;
+  }
+}
+
+class SimulationEngine {
+  constructor(params) {
+    this.p = params;
+    this.reset();
+  }
+
+  reset() {
+    const p = this.p;
+    this.t               = 0;
+    this.stocks          = [...p.initial_stocks];
+    this.busy            = [0, 0, 0];
+    this.cap_used        = [0, 0, 0];
+    this.kanbans         = [...p.kanban_counts];
+    this.backlog         = 0;
+    this.time_hist       = [];
+    this.stock_hist      = [[], [], [], []];
+    this.demand_hist     = [];
+    this.delivered_hist  = [];
+    this.service_hist    = [];
+    this.eff_hist        = [[], [], []];
+    this.incident_hist   = [];
+    this.total_demand    = 0;
+    this.total_delivered = 0;
+    this.total_incidents = 0;
+  }
+
+  _normal(mean, std) {
+    // Box-Muller
+    const u = Math.random(), v = Math.random();
+    return mean + std * Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+  }
+
+  _genDemand() {
+    const p = this.p;
+    return Math.max(0, Math.round(this._normal(p.demand_mean, p.demand_mean * p.demand_cv)));
+  }
+
+  step() {
+    const p = this.p;
+    this.t++;
+    const ev = { t: this.t, incidents: [], produced: [0,0,0], demand: 0, delivered: 0, backlog: 0 };
+
+    // 1. Incidents
+    for (let i = 0; i < 3; i++) {
+      if (this.busy[i] > 0) {
+        this.busy[i]--;
+      } else if (Math.random() < p.incident_prob) {
+        const dur = Math.max(1, Math.ceil(Math.random() * p.incident_max_dur));
+        this.busy[i] = dur;
+        this.total_incidents++;
+        ev.incidents.push({ station: i, duration: dur });
+        this.incident_hist.push(this.t);
+      }
+    }
+
+    // 2. Production
+    if (p.mode === "push") this._push(ev);
+    else                    this._pull(ev);
+
+    // 3. Demande & livraison
+    const demand  = this._genDemand();
+    this.total_demand += demand;
+    ev.demand = demand;
+    const toFulfill  = demand + this.backlog;
+    const delivered  = Math.min(toFulfill, this.stocks[3]);
+    this.stocks[3]  -= delivered;
+    this.backlog     = Math.max(0, toFulfill - delivered);
+    this.total_delivered += delivered;
+    ev.delivered = delivered;
+    ev.backlog   = this.backlog;
+
+    // 4. Flux tiré : libération tickets PF → P3
+    if (p.mode === "pull") {
+      const rel = Math.floor(delivered / p.kanban_lot_size);
+      this.kanbans[2] = Math.min(this.kanbans[2] + rel, p.kanban_counts[2]);
+    }
+
+    // 5. Historique
+    this.time_hist.push(this.t);
+    this.demand_hist.push(demand);
+    this.delivered_hist.push(delivered);
+    for (let i = 0; i < 4; i++) this.stock_hist[i].push(this.stocks[i]);
+    const svc = this.total_delivered / Math.max(this.total_demand, 1);
+    this.service_hist.push(svc);
+    for (let i = 0; i < 3; i++) {
+      this.eff_hist[i].push(Math.min(this.cap_used[i] / Math.max(p.capacities[i], 1), 1));
+    }
+    ev.service = svc;
+    return ev;
+  }
+
+  _push(ev) {
+    const p = this.p;
+    for (let i = 0; i < 3; i++) {
+      if (this.busy[i] > 0) { this.cap_used[i] = 0; continue; }
+      const prod = Math.max(0, Math.floor(Math.min(p.capacities[i], this.stocks[i])));
+      this.stocks[i] -= prod; this.stocks[i+1] += prod;
+      this.cap_used[i] = prod; ev.produced[i] = prod;
+    }
+  }
+
+  _pull(ev) {
+    const p = this.p;
+    for (let i = 2; i >= 0; i--) {
+      if (this.busy[i] > 0 || this.kanbans[i] <= 0) { this.cap_used[i] = 0; continue; }
+      const lot    = p.kanban_lot_size;
+      const maxP   = Math.min(p.capacities[i], this.stocks[i], this.kanbans[i] * lot);
+      const prod   = Math.max(0, Math.floor(maxP));
+      if (prod === 0) { this.cap_used[i] = 0; continue; }
+      const lots   = Math.max(1, Math.floor(prod / lot));
+      this.kanbans[i] -= lots;
+      this.stocks[i]  -= prod; this.stocks[i+1] += prod;
+      this.cap_used[i] = prod; ev.produced[i] = prod;
+      if (i > 0) this.kanbans[i-1] = Math.min(this.kanbans[i-1] + lots, p.kanban_counts[i-1]);
+    }
+  }
+
+  get tauxService()      { return this.total_delivered / Math.max(this.total_demand, 1); }
+  get stockTotal()       { return this.stocks.reduce((a,b) => a+b, 0); }
+  get efficienceMoy()    {
+    if (!this.eff_hist[0].length) return 0;
+    return this.eff_hist.map(h => h.reduce((a,b)=>a+b,0)/h.length).reduce((a,b)=>a+b,0)/3;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+// VSM — dessin Canvas
+// ═══════════════════════════════════════════════════════════
+const VSM_H = 200;
+const COLORS = {
+  bleu:"#1a3a5c", rouge:"#c8102e", push:"#e74c3c", pull:"#27ae60",
+  orange:"#f39c12", violet:"#8e44ad", blanc:"#ffffff", gris:"#ecf0f1", texte:"#2c3e50"
+};
+
+function drawVSM(canvas, engine, params) {
+  const W = canvas.width, H = VSM_H;
+  const ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, W, H);
+
+  const isPull   = params.mode === "pull";
+  const arrColor = isPull ? COLORS.pull : COLORS.push;
+  const yM = 90;  // ligne principale
+
+  // Positions
+  const xFour = 44;
+  const xP    = [150, 340, 530];
+  const xS    = [240, 435, 625];   // stocks entre postes
+  const xCli  = W - 44;
+
+  // ─── Fournisseur ───
+  drawActor(ctx, xFour, yM, "Fourni-\nsseur", COLORS.bleu);
+
+  // ─── Stock MP (entre fournisseur et P1) ───
+  const mpX = (xFour + xP[0] - 38) / 2 + 10;
+  drawArrow(ctx, xFour+28, yM, xP[0]-42, yM, arrColor);
+  drawStockBadge(ctx, mpX, yM - 28, engine.stocks[0], STOCK_LABELS[0], 30);
+
+  // ─── 3 postes + stocks intermédiaires ───
+  for (let i = 0; i < 3; i++) {
+    const inc = engine.busy[i] > 0;
+    drawStation(ctx, xP[i], yM, STATION_NAMES[i], engine.cap_used[i], params.capacities[i], inc);
+
+    // Flèche poste → stock aval
+    drawArrow(ctx, xP[i]+42, yM, xS[i]-26, yM, arrColor);
+
+    // Badge stock
+    drawStockBadge(ctx, xS[i], yM, engine.stocks[i+1], STOCK_LABELS[i+1], 20);
+
+    // Flèche stock → poste suivant ou client
+    const nextX = i < 2 ? xP[i+1] - 42 : xCli - 28;
+    drawArrow(ctx, xS[i]+26, yM, nextX, yM, arrColor);
+
+    // Boucle kanban (flux tiré)
+    if (isPull) drawKanbanLoop(ctx, xP[i], xS[i], yM, engine.kanbans[i], params.kanban_counts[i], i);
+  }
+
+  // ─── Client ───
+  drawActor(ctx, xCli, yM, "Client", COLORS.rouge);
+
+  // ─── Demande ───
+  ctx.setLineDash([3,3]);
+  ctx.strokeStyle = COLORS.rouge; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(xCli, yM+26); ctx.lineTo(xCli, yM+50); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = COLORS.rouge; ctx.font = "10px sans-serif"; ctx.textAlign = "left";
+  ctx.fillText(`≈${params.demand_mean.toFixed(0)} u/p`, xCli+6, yM+44);
+
+  // ─── Badge mode ───
+  const modeCol = isPull ? COLORS.pull : COLORS.push;
+  const modeStr = isPull ? "FLUX TIRÉ — KANBAN" : "FLUX POUSSÉ — MRP";
+  ctx.fillStyle = modeCol;
+  ctx.beginPath(); ctx.roundRect(W-180, 6, 170, 22, 4); ctx.fill();
+  ctx.fillStyle = "#fff"; ctx.font = "bold 10px sans-serif"; ctx.textAlign = "center";
+  ctx.fillText(modeStr, W-95, 21);
+
+  // ─── Période ───
+  ctx.fillStyle = COLORS.texte; ctx.font = "10px sans-serif"; ctx.textAlign = "left";
+  ctx.fillText(`t = ${engine.t}`, 8, 14);
+}
+
+function drawArrow(ctx, x1, y, x2, y2, color) {
+  ctx.strokeStyle = color; ctx.lineWidth = 2; ctx.setLineDash([]);
+  ctx.beginPath(); ctx.moveTo(x1, y); ctx.lineTo(x2, y2); ctx.stroke();
+  // arrowhead
+  const angle = Math.atan2(y2-y, x2-x1);
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.moveTo(x2, y2);
+  ctx.lineTo(x2 - 8*Math.cos(angle-0.4), y2 - 8*Math.sin(angle-0.4));
+  ctx.lineTo(x2 - 8*Math.cos(angle+0.4), y2 - 8*Math.sin(angle+0.4));
+  ctx.closePath(); ctx.fill();
+}
+
+function drawActor(ctx, x, y, label, color) {
+  ctx.fillStyle = color;
+  ctx.beginPath(); ctx.arc(x, y, 26, 0, Math.PI*2); ctx.fill();
+  ctx.fillStyle = "#fff"; ctx.font = "bold 9px sans-serif"; ctx.textAlign = "center";
+  const lines = label.split("\n");
+  lines.forEach((l, i) => ctx.fillText(l, x, y + (i - (lines.length-1)/2) * 13));
+}
+
+function drawStation(ctx, x, y, name, used, cap, incident) {
+  const bw = 82, bh = 52;
+  ctx.fillStyle = incident ? "#c0392b" : COLORS.bleu;
+  ctx.beginPath(); ctx.roundRect(x-bw/2, y-bh/2, bw, bh, 4); ctx.fill();
+
+  ctx.fillStyle = "#fff"; ctx.font = "bold 9px sans-serif"; ctx.textAlign = "center";
+  ctx.fillText(name, x, y - 10);
+
+  // Barre efficience
+  const eff = Math.min(used / Math.max(cap, 1), 1);
+  const bw2 = 62;
+  ctx.fillStyle = "#2980b9";
+  ctx.beginPath(); ctx.roundRect(x - bw2/2, y+4, bw2, 12, 2); ctx.fill();
+  const effCol = eff > 0.6 ? "#2ecc71" : eff > 0.3 ? "#e67e22" : "#e74c3c";
+  ctx.fillStyle = effCol;
+  ctx.beginPath(); ctx.roundRect(x - bw2/2, y+4, bw2*eff, 12, 2); ctx.fill();
+  ctx.fillStyle = "#fff"; ctx.font = "bold 8px sans-serif";
+  ctx.fillText(`${Math.round(eff*100)}%`, x, y+14);
+
+  if (incident) {
+    ctx.fillStyle = "#ffcc00"; ctx.font = "bold 8px sans-serif";
+    ctx.fillText("⚠ INCIDENT", x, y+26);
+  }
+}
+
+function drawStockBadge(ctx, x, y, value, label, highThresh) {
+  const col = value > highThresh*1.5 ? "#e74c3c" : value > highThresh*0.5 ? "#f39c12" : "#27ae60";
+  ctx.fillStyle = col;
+  ctx.beginPath();
+  ctx.moveTo(x, y-26); ctx.lineTo(x-22, y+4); ctx.lineTo(x+22, y+4);
+  ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = "#fff"; ctx.lineWidth = 1.5; ctx.stroke();
+
+  ctx.fillStyle = "#fff"; ctx.font = "bold 10px sans-serif"; ctx.textAlign = "center";
+  ctx.fillText(value, x, y-8);
+  ctx.fillStyle = COLORS.texte; ctx.font = "8px sans-serif";
+  ctx.fillText(label, x, y+18);
+}
+
+function drawKanbanLoop(ctx, xStation, xStock, yM, available, total, idx) {
+  const y2 = yM + 68 + idx * 5;
+  ctx.strokeStyle = COLORS.violet; ctx.lineWidth = 1.2;
+  ctx.setLineDash([4, 3]);
+  ctx.beginPath();
+  ctx.moveTo(xStock, yM+28); ctx.lineTo(xStock, y2);
+  ctx.lineTo(xStation, y2); ctx.lineTo(xStation, yM+28);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  // Arrowhead retour (vers station)
+  ctx.fillStyle = COLORS.violet;
+  ctx.beginPath(); ctx.moveTo(xStation, yM+28);
+  ctx.lineTo(xStation+6, yM+36); ctx.lineTo(xStation-6, yM+36);
+  ctx.closePath(); ctx.fill();
+  // Badge
+  const mx = (xStation + xStock) / 2;
+  ctx.fillStyle = COLORS.violet;
+  ctx.beginPath(); ctx.roundRect(mx-28, y2-9, 56, 18, 4); ctx.fill();
+  ctx.fillStyle = "#fff"; ctx.font = "bold 8px sans-serif"; ctx.textAlign = "center";
+  ctx.fillText(`K: ${available}/${total}`, mx, y2+3);
+}
+
+// ═══════════════════════════════════════════════════════════
+// GRAPHIQUES — Chart.js
+// ═══════════════════════════════════════════════════════════
+let chartSvc, chartStk, chartEff;
+
+const chartDefaults = {
+  responsive: true, maintainAspectRatio: false,
+  animation: false,
+  plugins: { legend: { labels: { font: { size: 9 }, boxWidth: 10, padding: 6 } } },
+  scales: {
+    x: { ticks: { font: { size: 8 }, maxTicksLimit: 8 }, grid: { color: "#eee" } },
+    y: { ticks: { font: { size: 8 } }, grid: { color: "#eee" } }
+  }
+};
+
+function initCharts() {
+  const cfg = (id, label, yMax, datasets) => ({
+    type: "line",
+    data: { labels: [], datasets },
+    options: {
+      ...chartDefaults,
+      scales: {
+        ...chartDefaults.scales,
+        y: { ...chartDefaults.scales.y, min: 0, max: yMax,
+             title: { display: true, text: label, font: { size: 9 } } }
+      }
+    }
+  });
+
+  chartSvc = new Chart(document.getElementById("chartSvc"), cfg("chartSvc", "Taux de service", 1.05, [{
+    label: "Taux de service", borderColor: "#27ae60", backgroundColor: "rgba(39,174,96,.1)",
+    data: [], borderWidth: 1.5, pointRadius: 0, fill: true, tension: 0.3
+  }]));
+  chartSvc.options.plugins.title = { display: true, text: "Taux de service", font: { size: 9, weight:"bold" }, color:"#1a3a5c", padding: 2 };
+
+  chartStk = new Chart(document.getElementById("chartStk"), cfg("chartStk", "unités", undefined, [
+    { label:"M.P.",        borderColor:"#1a3a5c", data:[], borderWidth:1.5, pointRadius:0, tension:0.3 },
+    { label:"En-cours 1",  borderColor:"#f39c12", data:[], borderWidth:1.5, pointRadius:0, tension:0.3 },
+    { label:"En-cours 2",  borderColor:"#e74c3c", data:[], borderWidth:1.5, pointRadius:0, tension:0.3 },
+    { label:"Stock P.F.",  borderColor:"#27ae60", data:[], borderWidth:1.5, pointRadius:0, tension:0.3 },
+  ]));
+
+  chartEff = new Chart(document.getElementById("chartEff"), cfg("chartEff", "Efficience", 1.05, [
+    { label:"Usinage",    borderColor:"#1a3a5c", data:[], borderWidth:1.5, pointRadius:0, tension:0.3 },
+    { label:"Assembl.",   borderColor:"#f39c12", data:[], borderWidth:1.5, pointRadius:0, tension:0.3 },
+    { label:"Contrôle",   borderColor:"#27ae60", data:[], borderWidth:1.5, pointRadius:0, tension:0.3 },
+  ]));
+}
+
+function updateCharts(engine) {
+  const t = engine.time_hist;
+  if (!t.length) return;
+
+  // Service
+  chartSvc.data.labels = t;
+  chartSvc.data.datasets[0].data = engine.service_hist;
+  chartSvc.update("none");
+
+  // Stocks
+  chartStk.data.labels = t;
+  for (let i = 0; i < 4; i++) chartStk.data.datasets[i].data = engine.stock_hist[i];
+  chartStk.update("none");
+
+  // Efficience
+  chartEff.data.labels = t;
+  for (let i = 0; i < 3; i++) chartEff.data.datasets[i].data = engine.eff_hist[i];
+  chartEff.update("none");
+}
+
+function resetCharts() {
+  [chartSvc, chartStk, chartEff].forEach(c => {
+    c.data.labels = [];
+    c.data.datasets.forEach(d => d.data = []);
+    c.update("none");
+  });
+}
+
+// ═══════════════════════════════════════════════════════════
+// KPI
+// ═══════════════════════════════════════════════════════════
+function updateKPIs(engine) {
+  const svc = engine.tauxService;
+  const stk = engine.stockTotal;
+  const eff = engine.efficienceMoy;
+  const inc = engine.total_incidents;
+
+  const el = (id, val, fmt, good) => {
+    const el = document.getElementById(id);
+    el.textContent = fmt(val);
+    el.style.color = good ? "var(--pull)" : "var(--push)";
+  };
+  el("kSvc", svc, v => `${(v*100).toFixed(1)}%`, svc >= 0.85);
+  el("kStk", stk, v => v, stk <= 60);
+  el("kEff", eff, v => `${(v*100).toFixed(1)}%`, eff >= 0.65);
+  el("kInc", inc, v => v, inc <= 5);
+}
+
+// ═══════════════════════════════════════════════════════════
+// LOG
+// ═══════════════════════════════════════════════════════════
+function logEvent(ev) {
+  const box = document.getElementById("logBox");
+  const lines = [];
+  ev.incidents.forEach(inc =>
+    lines.push(`[t=${ev.t}] ⚠ INCIDENT ${STATION_NAMES[inc.station]} (${inc.duration} p.)`));
+  lines.push(`[t=${ev.t}] Demande=${ev.demand}  Livré=${ev.delivered}  Retard=${ev.backlog}  Service=${(ev.service*100).toFixed(1)}%`);
+  lines.forEach(l => {
+    const d = document.createElement("div");
+    d.textContent = l;
+    if (l.includes("INCIDENT")) d.style.color = "#ff6b6b";
+    box.insertBefore(d, box.firstChild);
+  });
+  // Limite à 300 lignes
+  while (box.children.length > 300) box.removeChild(box.lastChild);
+}
+
+// ═══════════════════════════════════════════════════════════
+// APPLICATION PRINCIPALE
+// ═══════════════════════════════════════════════════════════
+const params = new SimParams();
+const engine = new SimulationEngine(params);
+let running  = false;
+let timer    = null;
+
+const canvas = document.getElementById("vsmCanvas");
+
+function resizeCanvas() {
+  canvas.width = canvas.parentElement.clientWidth;
+  canvas.height = VSM_H;
+  drawVSM(canvas, engine, params);
+}
+
+function readParams() {
+  params.demand_mean      = +document.getElementById("pDemand").value;
+  params.demand_cv        = +document.getElementById("pCV").value;
+  params.capacities       = [0,1,2].map(i => +document.getElementById(`pCap${i}`).value);
+  params.kanban_counts    = [0,1,2].map(i => +document.getElementById(`pK${i}`).value);
+  params.kanban_lot_size  = +document.getElementById("pLot").value;
+  params.incident_prob    = +document.getElementById("pInc").value;
+  params.speed_ms         = +document.getElementById("slSpeed").value;
+  if (engine.t === 0) engine.kanbans = [...params.kanban_counts];
+}
+
+function updateAll(ev) {
+  drawVSM(canvas, engine, params);
+  updateCharts(engine);
+  updateKPIs(engine);
+  document.getElementById("lblPeriod").textContent = `Période : ${engine.t}`;
+  if (ev) logEvent(ev);
+}
+
+function stepOnce() {
+  readParams();
+  const ev = engine.step();
+  updateAll(ev);
+}
+
+function startLoop() {
+  if (timer) clearInterval(timer);
+  timer = setInterval(() => { if (running) stepOnce(); }, params.speed_ms);
+}
+
+// ── Contrôles ──
+document.getElementById("btnMode").addEventListener("click", () => {
+  params.mode = params.mode === "push" ? "pull" : "push";
+  engine.p.mode = params.mode;
+  const btn = document.getElementById("btnMode");
+  if (params.mode === "pull") {
+    btn.textContent = "MODE : FLUX TIRÉ (KANBAN)";
+    btn.style.background = "var(--pull)";
+  } else {
+    btn.textContent = "MODE : FLUX POUSSÉ";
+    btn.style.background = "var(--push)";
+  }
+  drawVSM(canvas, engine, params);
+});
+
+document.getElementById("btnStart").addEventListener("click", () => {
+  running = !running;
+  const btn = document.getElementById("btnStart");
+  if (running) {
+    btn.textContent = "PAUSE";
+    btn.style.background = "var(--rouge)";
+    startLoop();
+  } else {
+    btn.textContent = "DÉMARRER";
+    btn.style.background = "var(--bleu)";
+  }
+});
+
+document.getElementById("btnStep").addEventListener("click", stepOnce);
+
+document.getElementById("btnReset").addEventListener("click", () => {
+  running = false;
+  if (timer) clearInterval(timer);
+  document.getElementById("btnStart").textContent = "DÉMARRER";
+  document.getElementById("btnStart").style.background = "var(--bleu)";
+  readParams();
+  engine.reset();
+  document.getElementById("logBox").innerHTML = "";
+  resetCharts();
+  updateAll(null);
+});
+
+document.getElementById("slSpeed").addEventListener("input", () => {
+  params.speed_ms = +document.getElementById("slSpeed").value;
+  document.getElementById("lblSpeed").textContent = `${params.speed_ms} ms`;
+  if (running) startLoop();
+});
+
+// Sliders paramètres → affichage valeur
+[
+  ["pDemand","vDemand", v => v],
+  ["pCV",    "vCV",     v => `${Math.round(v*100)}%`],
+  ["pCap0",  "vCap0",   v => v],
+  ["pCap1",  "vCap1",   v => v],
+  ["pCap2",  "vCap2",   v => v],
+  ["pK0",    "vK0",     v => v],
+  ["pK1",    "vK1",     v => v],
+  ["pK2",    "vK2",     v => v],
+  ["pLot",   "vLot",    v => v],
+  ["pInc",   "vInc",    v => `${Math.round(v*100)}%`],
+].forEach(([sid, vid, fmt]) => {
+  document.getElementById(sid).addEventListener("input", function() {
+    document.getElementById(vid).textContent = fmt(+this.value);
+    readParams();
+  });
+});
+
+// ── Init ──
+window.addEventListener("resize", resizeCanvas);
+initCharts();
+resizeCanvas();
+updateAll(null);
+</script>
+</body>
+</html>
