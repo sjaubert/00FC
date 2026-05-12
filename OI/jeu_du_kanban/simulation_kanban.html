@@ -581,7 +581,9 @@ function drawStockBadge(ctx, x, y, value, label, highThresh) {
 }
 
 function drawKanbanLoop(ctx, xStation, xStock, yM, available, total, idx) {
-  const y2 = yM + 68 + idx * 5;
+  // Vert = ticket libre (sur le tableau kanban)
+  // Orange = ticket en circuit (attaché à des pièces dans le stock)
+  const y2 = yM + 72 + idx * 5;
   ctx.strokeStyle = COLORS.violet; ctx.lineWidth = 1.2;
   ctx.setLineDash([4, 3]);
   ctx.beginPath();
@@ -589,17 +591,27 @@ function drawKanbanLoop(ctx, xStation, xStock, yM, available, total, idx) {
   ctx.lineTo(xStation, y2); ctx.lineTo(xStation, yM+28);
   ctx.stroke();
   ctx.setLineDash([]);
-  // Arrowhead retour (vers station)
+  // Flèche retour (vers station)
   ctx.fillStyle = COLORS.violet;
   ctx.beginPath(); ctx.moveTo(xStation, yM+28);
   ctx.lineTo(xStation+6, yM+36); ctx.lineTo(xStation-6, yM+36);
   ctx.closePath(); ctx.fill();
-  // Badge
+  // Tickets individuels colorés
   const mx = (xStation + xStock) / 2;
-  ctx.fillStyle = COLORS.violet;
-  ctx.beginPath(); ctx.roundRect(mx-28, y2-9, 56, 18, 4); ctx.fill();
-  ctx.fillStyle = "#fff"; ctx.font = "bold 8px sans-serif"; ctx.textAlign = "center";
-  ctx.fillText(`K: ${available}/${total}`, mx, y2+3);
+  const tw = 10, th = 8, gap = 2;
+  const startX = mx - (total * (tw + gap)) / 2;
+  for (let i = 0; i < total; i++) {
+    ctx.fillStyle = i < available ? '#27ae60' : '#e67e22';
+    ctx.beginPath();
+    ctx.roundRect(startX + i*(tw+gap), y2 - th/2, tw, th, 2);
+    ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 0.8;
+    ctx.stroke();
+  }
+  // Légende
+  const enCircuit = total - available;
+  ctx.fillStyle = COLORS.violet; ctx.font = "7px sans-serif"; ctx.textAlign = "center";
+  ctx.fillText(`${available} libre${available>1?'s':''}  |  ${enCircuit} en circuit`, mx, y2 + 13);
 }
 
 // ═══════════════════════════════════════════════════════════

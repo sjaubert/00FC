@@ -717,8 +717,9 @@ class KanbanApp:
 
     def _vsm_kanban_loop(self, c, station_x, stock_x, y, loop_idx,
                          available, total):
-        """Dessine la boucle kanban sous le flux principal."""
-        y2 = y + 70 + loop_idx * 4
+        """Dessine la boucle kanban avec tickets individuels colorés.
+        Vert = libre (sur le tableau), Orange = en circuit (avec les pièces)."""
+        y2 = y + 72 + loop_idx * 4
         x1 = station_x
         x2 = stock_x
         # Ligne retour kanban
@@ -727,12 +728,22 @@ class KanbanApp:
                       arrow=tk.LAST)
         c.create_line(x1, y2, x1, y + 30, fill="#8e44ad", width=1, dash=(3, 2))
 
-        # Etiquette tickets
+        # Tickets individuels : vert = libre, orange = en circuit
         mid_x = (x1 + x2) // 2
-        c.create_rectangle(mid_x - 28, y2 - 8, mid_x + 28, y2 + 8,
-                            fill="#8e44ad", outline="")
-        c.create_text(mid_x, y2, text=f"K: {available}/{total}",
-                      fill=C["blanc"], font=("Helvetica", 7, "bold"))
+        tw, th, gap = 10, 8, 2
+        start_x = mid_x - (total * (tw + gap)) // 2
+        for i in range(total):
+            col = "#27ae60" if i < available else "#e67e22"
+            c.create_rectangle(start_x + i*(tw+gap), y2 - th//2,
+                                start_x + i*(tw+gap) + tw, y2 + th//2,
+                                fill=col, outline="#fff", width=1)
+
+        # Légende compacte
+        en_circuit = total - available
+        c.create_text(mid_x, y2 + 12,
+                      text=f"{available} libre{'s' if available>1 else ''}"
+                           f"  |  {en_circuit} en circuit",
+                      fill="#8e44ad", font=("Helvetica", 7))
 
     # ---------------------------------------------------------------
     # LOG ÉVÉNEMENTS
