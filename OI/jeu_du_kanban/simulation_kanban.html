@@ -642,6 +642,10 @@ function drawStation(ctx, x, y, name, used, cap, incident) {
     ctx.fillStyle = "#ffcc00"; ctx.font = "bold 8px sans-serif";
     ctx.fillText("⚠ INCIDENT", x, y+26);
   }
+
+  // Cadence nominale sous le bloc
+  ctx.fillStyle = COLORS.texte; ctx.font = "8px sans-serif"; ctx.textAlign = "center";
+  ctx.fillText(`Cadence : ${cap} u/p`, x, y + 38);
 }
 
 function drawStockBadge(ctx, x, y, value, label, highThresh) {
