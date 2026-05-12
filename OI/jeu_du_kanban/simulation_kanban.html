@@ -269,6 +269,7 @@ button:hover { opacity: .85; }
       <span class="param-val" id="vCap2">9</span>
     </div>
 
+    <div id="kanbanSection">
     <div class="section-lbl">Tickets Kanban</div>
     <div class="param-row">
       <label>Boucle Usinage</label>
@@ -290,6 +291,7 @@ button:hover { opacity: .85; }
       <input type="range" id="pLot" min="1" max="10" step="1" value="3">
       <span class="param-val" id="vLot">3</span>
     </div>
+    </div><!-- /kanbanSection -->
 
     <div class="section-lbl">Stocks initiaux (u)</div>
     <div class="param-row">
@@ -901,6 +903,11 @@ function readParams() {
   }
 }
 
+function updateKanbanVisibility() {
+  document.getElementById("kanbanSection").style.display =
+    params.mode === "pull" ? "" : "none";
+}
+
 function updateLegend() {
   const lot  = params.kanban_lot_size;
   const kMax = params.kanban_counts[2]; // boucle Contrôle → stock PF
@@ -949,6 +956,7 @@ document.getElementById("btnMode").addEventListener("click", () => {
     btn.textContent = "MODE : FLUX POUSSÉ";
     btn.style.background = "var(--push)";
   }
+  updateKanbanVisibility();
   drawVSM(canvas, engine, params);
 });
 
@@ -1014,6 +1022,7 @@ document.getElementById("slSpeed").addEventListener("input", () => {
 window.addEventListener("resize", resizeCanvas);
 initCharts();
 resizeCanvas();
+updateKanbanVisibility();
 updateAll(null);
 </script>
 </body>
