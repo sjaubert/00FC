@@ -127,7 +127,10 @@ class SimulationEngine:
             "backlog":  0,
         }
 
-        # 1. Incidents aléatoires
+        # 1. Réapprovisionnement fournisseur (livraison continue selon cadence P1)
+        self.stocks[0] += int(p.capacities[0])
+
+        # 2. Incidents aléatoires
         for i in range(3):
             if self.busy[i] > 0:
                 self.busy[i] -= 1
@@ -138,13 +141,13 @@ class SimulationEngine:
                 ev["incidents"].append({"station": i, "duration": dur})
                 self.incident_hist.append((self.t, i))
 
-        # 2. Production
+        # 3. Production
         if p.mode == "push":
             self._produce_push(ev)
         else:
             self._produce_pull(ev)
 
-        # 3. Demande client et livraison depuis stock PF
+        # 4. Demande client et livraison depuis stock PF
         demand = self._generate_demand()
         self.total_demand += demand
         ev["demand"] = demand
