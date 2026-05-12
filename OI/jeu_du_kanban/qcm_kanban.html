@@ -18,48 +18,57 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: var(--fond); color: var(--texte); font-size: 14px;
+  background: var(--fond); color: var(--texte); font-size: 15px;
 }
 
 /* HEADER */
 header {
   background: var(--bleu); color: #fff;
-  display: flex; align-items: center;
-  padding: 10px 20px; gap: 16px;
+  display: flex; align-items: center; flex-wrap: wrap;
+  padding: 10px 20px; gap: 12px;
 }
-header img { height: 52px; border-radius: 4px; background: #fff; padding: 4px; }
-.hdr-center { flex: 1; text-align: center; }
-.hdr-center h1 { font-size: 1.1em; font-weight: 700; }
-.hdr-center p  { font-size: 0.82em; color: #adc6e0; }
-.hdr-right { text-align: right; font-size: 0.82em; }
+header img { height: 52px; border-radius: 4px; background: #fff; padding: 4px; flex-shrink: 0; }
+.hdr-center { flex: 1; text-align: center; min-width: 200px; }
+.hdr-center h1 { font-size: 1.05em; font-weight: 700; line-height: 1.3; }
+.hdr-center p  { font-size: 0.82em; color: #adc6e0; margin-top: 2px; }
+.hdr-right { text-align: right; font-size: 0.82em; white-space: nowrap; }
 .hdr-right strong { display: block; }
 .hdr-right span { color: #adc6e0; }
 .red-bar { height: 4px; background: var(--rouge); }
 
+/* CONTENU CENTRÉ */
+.wrap {
+  max-width: 800px; margin: 0 auto; padding: 0 16px;
+}
+
 /* INTRO */
 #intro {
-  max-width: 760px; margin: 24px auto 0;
+  margin: 24px auto 0; max-width: 800px; padding: 0 16px;
+}
+#intro-inner {
   background: var(--panel); border-radius: 8px;
   border: 1px solid #dde3ea; padding: 20px 24px;
 }
-#intro h2 { color: var(--bleu); font-size: 1.05em; margin-bottom: 8px; }
-#intro p  { line-height: 1.6; color: #555; font-size: 0.9em; }
-#intro .badge-sim {
+#intro-inner h2 { color: var(--bleu); font-size: 1.05em; margin-bottom: 8px; }
+#intro-inner p  { line-height: 1.6; color: #555; font-size: 0.9em; }
+.badge-sim {
   display: inline-block; margin-top: 12px;
   background: var(--bleu); color: #fff;
-  padding: 6px 14px; border-radius: 4px;
-  font-size: 0.82em; text-decoration: none;
+  padding: 7px 16px; border-radius: 4px;
+  font-size: 0.85em; text-decoration: none; font-weight: 600;
 }
-#intro .badge-sim:hover { opacity: .85; }
+.badge-sim:hover { opacity: .85; }
 
 /* PROGRESS */
 #progressBar {
-  max-width: 760px; margin: 16px auto 0;
+  max-width: 800px; margin: 14px auto 0; padding: 0 16px;
+}
+#progressBar-inner {
   background: var(--panel); border-radius: 8px;
   border: 1px solid #dde3ea; padding: 10px 16px;
   display: flex; align-items: center; gap: 12px;
 }
-#progressBar span { font-size: 0.82em; color: #666; white-space: nowrap; }
+#progressBar-inner span { font-size: 0.82em; color: #666; white-space: nowrap; }
 #progressTrack {
   flex: 1; height: 8px; background: var(--gris);
   border-radius: 4px; overflow: hidden;
@@ -70,8 +79,8 @@ header img { height: 52px; border-radius: 4px; background: #fff; padding: 4px; }
 }
 #scoreDisplay { font-size: 0.82em; color: var(--bleu); font-weight: 700; white-space: nowrap; }
 
-/* QUESTION */
-#qcm { max-width: 760px; margin: 16px auto 24px; }
+/* QUESTIONS */
+#qcm { max-width: 800px; margin: 14px auto 24px; padding: 0 16px; }
 
 .q-card {
   background: var(--panel); border-radius: 8px;
@@ -83,65 +92,68 @@ header img { height: 52px; border-radius: 4px; background: #fff; padding: 4px; }
 
 .q-header {
   background: var(--bleu); color: #fff;
-  padding: 10px 16px;
-  display: flex; align-items: center; gap: 10px;
+  padding: 12px 16px;
+  display: flex; align-items: flex-start; gap: 12px;
 }
 .q-num {
   background: var(--rouge); color: #fff;
-  border-radius: 50%; width: 26px; height: 26px;
+  border-radius: 50%; width: 28px; height: 28px;
   display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 0.85em; flex-shrink: 0;
+  font-weight: 700; font-size: 0.85em; flex-shrink: 0; margin-top: 1px;
 }
-.q-header p { font-size: 0.95em; line-height: 1.4; }
+.q-header p { font-size: 0.97em; line-height: 1.5; }
 
-.q-body { padding: 14px 16px; }
+.q-body { padding: 16px; }
 
 .choice {
-  display: flex; align-items: flex-start; gap: 10px;
-  padding: 9px 12px; margin-bottom: 8px;
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 10px 14px; margin-bottom: 10px;
   border: 2px solid #dde3ea; border-radius: 6px;
   cursor: pointer; transition: border-color .15s, background .15s;
-  line-height: 1.4;
+  line-height: 1.5; font-size: 0.95em;
 }
 .choice:hover { border-color: var(--bleu); background: #f0f5ff; }
 .choice.correct  { border-color: var(--vert);  background: #eafaf1; cursor: default; }
 .choice.wrong    { border-color: var(--rouge); background: #fdf0f0; cursor: default; }
 .choice.missed   { border-color: var(--vert);  background: #eafaf1; cursor: default; }
 .choice-letter {
-  font-weight: 700; color: var(--bleu); min-width: 20px;
-  font-size: 0.9em;
+  font-weight: 700; color: var(--bleu);
+  min-width: 22px; font-size: 0.95em; flex-shrink: 0;
 }
 .choice.correct .choice-letter  { color: var(--vert); }
 .choice.wrong   .choice-letter  { color: var(--rouge); }
 .choice.missed  .choice-letter  { color: var(--vert); }
 
 .q-feedback {
-  display: none; margin-top: 10px;
-  padding: 10px 12px; border-radius: 6px;
-  font-size: 0.88em; line-height: 1.5;
+  display: none; margin-top: 12px;
+  padding: 12px 14px; border-radius: 6px;
+  font-size: 0.9em; line-height: 1.6;
 }
 .q-feedback.ok  { background: #eafaf1; border-left: 4px solid var(--vert); color: #1e7e4e; }
 .q-feedback.nok { background: #fdf0f0; border-left: 4px solid var(--rouge); color: #922b21; }
 
 .q-nav {
   display: flex; justify-content: flex-end;
-  padding: 0 16px 14px;
+  padding: 4px 16px 16px;
 }
 .btn-next {
   background: var(--bleu); color: #fff;
   border: none; border-radius: 4px;
-  padding: 8px 20px; font-size: 0.88em; font-weight: 600;
+  padding: 9px 22px; font-size: 0.9em; font-weight: 600;
   cursor: pointer; display: none;
 }
 .btn-next:hover { opacity: .85; }
 
 /* RÉSULTAT FINAL */
 #result {
-  display: none; max-width: 760px; margin: 16px auto 40px;
+  display: none; max-width: 800px; margin: 14px auto 40px;
+  padding: 0 16px;
+}
+#result-inner {
   background: var(--panel); border-radius: 8px;
   border: 1px solid #dde3ea; padding: 28px 24px; text-align: center;
 }
-#result h2 { font-size: 1.3em; color: var(--bleu); margin-bottom: 8px; }
+#result-inner h2 { font-size: 1.3em; color: var(--bleu); margin-bottom: 8px; }
 #resultScore {
   font-size: 3em; font-weight: 700; margin: 16px 0;
 }
@@ -149,21 +161,25 @@ header img { height: 52px; border-radius: 4px; background: #fff; padding: 4px; }
 #resultDetails {
   text-align: left; background: var(--gris);
   border-radius: 6px; padding: 14px 16px;
-  font-size: 0.85em; line-height: 1.8; margin-bottom: 20px;
+  font-size: 0.88em; line-height: 2; margin-bottom: 24px;
+  word-break: break-word;
 }
 #resultDetails span.ok  { color: var(--vert); font-weight: 700; }
 #resultDetails span.nok { color: var(--rouge); font-weight: 700; }
+.result-btns {
+  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+}
 .btn-restart {
   background: var(--bleu); color: #fff;
   border: none; border-radius: 4px;
-  padding: 10px 24px; font-size: 0.9em; font-weight: 600;
-  cursor: pointer; margin-right: 8px;
+  padding: 10px 28px; font-size: 0.9em; font-weight: 600;
+  cursor: pointer;
 }
 .btn-restart:hover { opacity: .85; }
 .btn-sim {
   background: var(--gris); color: var(--texte);
-  border: none; border-radius: 4px;
-  padding: 10px 24px; font-size: 0.9em; font-weight: 600;
+  border: 2px solid #c5d5e8; border-radius: 4px;
+  padding: 10px 28px; font-size: 0.9em; font-weight: 600;
   cursor: pointer; text-decoration: none; display: inline-block;
 }
 .btn-sim:hover { background: #d5dbe2; }
@@ -186,24 +202,28 @@ header img { height: 52px; border-radius: 4px; background: #fff; padding: 4px; }
 <div class="red-bar"></div>
 
 <div id="intro">
-  <h2>Consigne</h2>
-  <p>Ce QCM valide votre compréhension de la simulation Flux Poussé / Flux Tiré (Kanban).
-     Vous pouvez rouvrir la simulation dans un autre onglet pour vérifier vos réponses
-     avant de répondre. Chaque question est indépendante. La correction et une explication
-     s'affichent immédiatement après votre choix.</p>
-  <a class="badge-sim" href="simulation_kanban.html" target="_blank">
-    Ouvrir la simulation dans un nouvel onglet
-  </a>
+  <div id="intro-inner">
+    <h2>Consigne</h2>
+    <p>Ce QCM valide votre compréhension de la simulation Flux Poussé / Flux Tiré (Kanban).
+       Vous pouvez rouvrir la simulation dans un autre onglet pour vérifier vos réponses
+       avant de répondre. Chaque question est indépendante. La correction et une explication
+       s'affichent immédiatement après votre choix.</p>
+    <a class="badge-sim" href="simulation_kanban.html" target="_blank">
+      Ouvrir la simulation dans un nouvel onglet
+    </a>
+  </div>
 </div>
 
 <div id="progressBar">
-  <span id="progressLabel">Question 1 / 10</span>
-  <div id="progressTrack"><div id="progressFill"></div></div>
-  <span id="scoreDisplay">Score : 0 / 0</span>
+  <div id="progressBar-inner">
+    <span id="progressLabel">Question 1 / 10</span>
+    <div id="progressTrack"><div id="progressFill"></div></div>
+    <span id="scoreDisplay">Score : 0 / 0</span>
+  </div>
 </div>
 
 <div id="qcm"></div>
-<div id="result"></div>
+<div id="result"><div id="result-inner"></div></div>
 
 <script>
 const QUESTIONS = [
@@ -443,15 +463,16 @@ function showResult() {
     `<span class="${results[i] ? 'ok' : 'nok'}">${results[i] ? '✓' : '✗'}</span> Q${i+1} — ${q.q}`
   ).join("<br>");
 
-  const result = document.getElementById("result");
-  result.style.display = "block";
-  result.innerHTML = `
+  document.getElementById("result").style.display = "block";
+  document.getElementById("result-inner").innerHTML = `
     <h2>Résultats</h2>
     <div id="resultScore" style="color:${col}">${score} / ${QUESTIONS.length} &nbsp;<span style="font-size:.5em;font-weight:400">(${pct}%)</span></div>
     <p id="resultMsg">${msg}</p>
     <div id="resultDetails">${detailLines}</div>
-    <button class="btn-restart" onclick="restart()">Recommencer</button>
-    <a class="btn-sim" href="simulation_kanban.html" target="_blank">Rouvrir la simulation</a>
+    <div class="result-btns">
+      <button class="btn-restart" onclick="restart()">Recommencer</button>
+      <a class="btn-sim" href="simulation_kanban.html" target="_blank">Rouvrir la simulation</a>
+    </div>
   `;
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
