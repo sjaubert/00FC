@@ -357,8 +357,7 @@ class SimulationEngine {
   step() {
     const p = this.p;
     this.t++;
-    const prevKanbans = [...this.kanbans]; // snapshot avant tout changement
-    const ev = { t: this.t, incidents: [], produced: [0,0,0], demand: 0, delivered: 0, backlog: 0 };
+    const ev = { t: this.t, incidents: [], produced: [0,0,0], demand: 0, delivered: 0, backlog: 0, kanbanReleases: [] };
 
     // 1. Réapprovisionnement fournisseur (livraison continue selon cadence P1)
     this.stocks[0] += Math.floor(p.capacities[0]);
@@ -392,10 +391,13 @@ class SimulationEngine {
     ev.delivered = delivered;
     ev.backlog   = this.backlog;
 
-    // 4. Flux tiré : libération tickets PF → P3
+    // 4. Flux tiré : libération tickets PF → P3 (signal client)
     if (p.mode === "pull") {
+      const before = this.kanbans[2];
       const rel = Math.floor(delivered / p.kanban_lot_size);
       this.kanbans[2] = Math.min(this.kanbans[2] + rel, p.kanban_counts[2]);
+      const released = this.kanbans[2] - before;
+      if (released > 0) ev.kanbanReleases.push({ loop: 2, count: released });
     }
 
     // 5. Historique
@@ -409,14 +411,6 @@ class SimulationEngine {
       this.eff_hist[i].push(Math.min(this.cap_used[i] / Math.max(p.capacities[i], 1), 1));
     }
     ev.service = svc;
-    // Détection des libérations de tickets (pour animation)
-    ev.kanbanReleases = [];
-    if (p.mode === "pull") {
-      for (let i = 0; i < 3; i++) {
-        const rel = this.kanbans[i] - prevKanbans[i];
-        if (rel > 0) ev.kanbanReleases.push({ loop: i, count: rel });
-      }
-    }
     return ev;
   }
 
@@ -442,7 +436,12 @@ class SimulationEngine {
       this.kanbans[i] -= lots;
       this.stocks[i]  -= prod; this.stocks[i+1] += prod;
       this.cap_used[i] = prod; ev.produced[i] = prod;
-      if (i > 0) this.kanbans[i-1] = Math.min(this.kanbans[i-1] + lots, p.kanban_counts[i-1]);
+      if (i > 0) {
+        const before = this.kanbans[i-1];
+        this.kanbans[i-1] = Math.min(this.kanbans[i-1] + lots, p.kanban_counts[i-1]);
+        const released = this.kanbans[i-1] - before;
+        if (released > 0) ev.kanbanReleases.push({ loop: i-1, count: released });
+      }
     }
   }
 
