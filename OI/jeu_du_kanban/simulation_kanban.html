@@ -291,6 +291,28 @@ button:hover { opacity: .85; }
       <span class="param-val" id="vLot">3</span>
     </div>
 
+    <div class="section-lbl">Stocks initiaux (u)</div>
+    <div class="param-row">
+      <label>Mat. premières</label>
+      <input type="range" id="pS0" min="0" max="100" step="5" value="40">
+      <span class="param-val" id="vS0">40</span>
+    </div>
+    <div class="param-row">
+      <label>En-cours 1</label>
+      <input type="range" id="pS1" min="0" max="80" step="5" value="25">
+      <span class="param-val" id="vS1">25</span>
+    </div>
+    <div class="param-row">
+      <label>En-cours 2</label>
+      <input type="range" id="pS2" min="0" max="80" step="5" value="20">
+      <span class="param-val" id="vS2">20</span>
+    </div>
+    <div class="param-row">
+      <label>Produits finis</label>
+      <input type="range" id="pS3" min="0" max="80" step="5" value="20">
+      <span class="param-val" id="vS3">20</span>
+    </div>
+
     <div class="section-lbl">Incidents</div>
     <div class="param-row">
       <label>Probabilité</label>
@@ -872,7 +894,11 @@ function readParams() {
   params.kanban_lot_size  = +document.getElementById("pLot").value;
   params.incident_prob    = +document.getElementById("pInc").value;
   params.speed_ms         = +document.getElementById("slSpeed").value;
-  if (engine.t === 0) engine.kanbans = [...params.kanban_counts];
+  params.initial_stocks   = [0,1,2,3].map(i => +document.getElementById(`pS${i}`).value);
+  if (engine.t === 0) {
+    engine.kanbans = [...params.kanban_counts];
+    engine.stocks  = [...params.initial_stocks];
+  }
 }
 
 function updateLegend() {
@@ -973,6 +999,10 @@ document.getElementById("slSpeed").addEventListener("input", () => {
   ["pK2",    "vK2",     v => v],
   ["pLot",   "vLot",    v => v],
   ["pInc",   "vInc",    v => `${Math.round(v*100)}%`],
+  ["pS0",    "vS0",     v => v],
+  ["pS1",    "vS1",     v => v],
+  ["pS2",    "vS2",     v => v],
+  ["pS3",    "vS3",     v => v],
 ].forEach(([sid, vid, fmt]) => {
   document.getElementById(sid).addEventListener("input", function() {
     document.getElementById(vid).textContent = fmt(+this.value);
