@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QCM — Flux Poussé / Flux Tiré (Kanban) — UIMM CVDL</title>
+<style>
+:root {
+  --bleu:  #1a3a5c;
+  --rouge: #c8102e;
+  --vert:  #27ae60;
+  --orange:#e67e22;
+  --fond:  #f4f6f8;
+  --panel: #ffffff;
+  --texte: #2c3e50;
+  --gris:  #ecf0f1;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--fond); color: var(--texte); font-size: 14px;
+}
+
+/* HEADER */
+header {
+  background: var(--bleu); color: #fff;
+  display: flex; align-items: center;
+  padding: 10px 20px; gap: 16px;
+}
+header img { height: 52px; border-radius: 4px; background: #fff; padding: 4px; }
+.hdr-center { flex: 1; text-align: center; }
+.hdr-center h1 { font-size: 1.1em; font-weight: 700; }
+.hdr-center p  { font-size: 0.82em; color: #adc6e0; }
+.hdr-right { text-align: right; font-size: 0.82em; }
+.hdr-right strong { display: block; }
+.hdr-right span { color: #adc6e0; }
+.red-bar { height: 4px; background: var(--rouge); }
+
+/* INTRO */
+#intro {
+  max-width: 760px; margin: 24px auto 0;
+  background: var(--panel); border-radius: 8px;
+  border: 1px solid #dde3ea; padding: 20px 24px;
+}
+#intro h2 { color: var(--bleu); font-size: 1.05em; margin-bottom: 8px; }
+#intro p  { line-height: 1.6; color: #555; font-size: 0.9em; }
+#intro .badge-sim {
+  display: inline-block; margin-top: 12px;
+  background: var(--bleu); color: #fff;
+  padding: 6px 14px; border-radius: 4px;
+  font-size: 0.82em; text-decoration: none;
+}
+#intro .badge-sim:hover { opacity: .85; }
+
+/* PROGRESS */
+#progressBar {
+  max-width: 760px; margin: 16px auto 0;
+  background: var(--panel); border-radius: 8px;
+  border: 1px solid #dde3ea; padding: 10px 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+#progressBar span { font-size: 0.82em; color: #666; white-space: nowrap; }
+#progressTrack {
+  flex: 1; height: 8px; background: var(--gris);
+  border-radius: 4px; overflow: hidden;
+}
+#progressFill {
+  height: 100%; width: 0%; background: var(--bleu);
+  transition: width .4s ease;
+}
+#scoreDisplay { font-size: 0.82em; color: var(--bleu); font-weight: 700; white-space: nowrap; }
+
+/* QUESTION */
+#qcm { max-width: 760px; margin: 16px auto 24px; }
+
+.q-card {
+  background: var(--panel); border-radius: 8px;
+  border: 1px solid #dde3ea;
+  margin-bottom: 16px; overflow: hidden;
+  display: none;
+}
+.q-card.active { display: block; }
+
+.q-header {
+  background: var(--bleu); color: #fff;
+  padding: 10px 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.q-num {
+  background: var(--rouge); color: #fff;
+  border-radius: 50%; width: 26px; height: 26px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.85em; flex-shrink: 0;
+}
+.q-header p { font-size: 0.95em; line-height: 1.4; }
+
+.q-body { padding: 14px 16px; }
+
+.choice {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 9px 12px; margin-bottom: 8px;
+  border: 2px solid #dde3ea; border-radius: 6px;
+  cursor: pointer; transition: border-color .15s, background .15s;
+  line-height: 1.4;
+}
+.choice:hover { border-color: var(--bleu); background: #f0f5ff; }
+.choice.correct  { border-color: var(--vert);  background: #eafaf1; cursor: default; }
+.choice.wrong    { border-color: var(--rouge); background: #fdf0f0; cursor: default; }
+.choice.missed   { border-color: var(--vert);  background: #eafaf1; cursor: default; }
+.choice-letter {
+  font-weight: 700; color: var(--bleu); min-width: 20px;
+  font-size: 0.9em;
+}
+.choice.correct .choice-letter  { color: var(--vert); }
+.choice.wrong   .choice-letter  { color: var(--rouge); }
+.choice.missed  .choice-letter  { color: var(--vert); }
+
+.q-feedback {
+  display: none; margin-top: 10px;
+  padding: 10px 12px; border-radius: 6px;
+  font-size: 0.88em; line-height: 1.5;
+}
+.q-feedback.ok  { background: #eafaf1; border-left: 4px solid var(--vert); color: #1e7e4e; }
+.q-feedback.nok { background: #fdf0f0; border-left: 4px solid var(--rouge); color: #922b21; }
+
+.q-nav {
+  display: flex; justify-content: flex-end;
+  padding: 0 16px 14px;
+}
+.btn-next {
+  background: var(--bleu); color: #fff;
+  border: none; border-radius: 4px;
+  padding: 8px 20px; font-size: 0.88em; font-weight: 600;
+  cursor: pointer; display: none;
+}
+.btn-next:hover { opacity: .85; }
+
+/* RÉSULTAT FINAL */
+#result {
+  display: none; max-width: 760px; margin: 16px auto 40px;
+  background: var(--panel); border-radius: 8px;
+  border: 1px solid #dde3ea; padding: 28px 24px; text-align: center;
+}
+#result h2 { font-size: 1.3em; color: var(--bleu); margin-bottom: 8px; }
+#resultScore {
+  font-size: 3em; font-weight: 700; margin: 16px 0;
+}
+#resultMsg { font-size: 0.95em; color: #555; margin-bottom: 20px; line-height: 1.6; }
+#resultDetails {
+  text-align: left; background: var(--gris);
+  border-radius: 6px; padding: 14px 16px;
+  font-size: 0.85em; line-height: 1.8; margin-bottom: 20px;
+}
+#resultDetails span.ok  { color: var(--vert); font-weight: 700; }
+#resultDetails span.nok { color: var(--rouge); font-weight: 700; }
+.btn-restart {
+  background: var(--bleu); color: #fff;
+  border: none; border-radius: 4px;
+  padding: 10px 24px; font-size: 0.9em; font-weight: 600;
+  cursor: pointer; margin-right: 8px;
+}
+.btn-restart:hover { opacity: .85; }
+.btn-sim {
+  background: var(--gris); color: var(--texte);
+  border: none; border-radius: 4px;
+  padding: 10px 24px; font-size: 0.9em; font-weight: 600;
+  cursor: pointer; text-decoration: none; display: inline-block;
+}
+.btn-sim:hover { background: #d5dbe2; }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="../../logo_uimm_placeholder.jpg" alt="UIMM"
+       onerror="this.style.display='none'">
+  <div class="hdr-center">
+    <h1>QCM — FLUX POUSSÉ / FLUX TIRÉ (KANBAN)</h1>
+    <p>Organisation Industrielle — BTS ATI</p>
+  </div>
+  <div class="hdr-right">
+    <strong>Pôle Formation - UIMM CVDL</strong>
+    <span>Formateur : S. Jaubert</span>
+  </div>
+</header>
+<div class="red-bar"></div>
+
+<div id="intro">
+  <h2>Consigne</h2>
+  <p>Ce QCM valide votre compréhension de la simulation Flux Poussé / Flux Tiré (Kanban).
+     Vous pouvez rouvrir la simulation dans un autre onglet pour vérifier vos réponses
+     avant de répondre. Chaque question est indépendante. La correction et une explication
+     s'affichent immédiatement après votre choix.</p>
+  <a class="badge-sim" href="simulation_kanban.html" target="_blank">
+    Ouvrir la simulation dans un nouvel onglet
+  </a>
+</div>
+
+<div id="progressBar">
+  <span id="progressLabel">Question 1 / 10</span>
+  <div id="progressTrack"><div id="progressFill"></div></div>
+  <span id="scoreDisplay">Score : 0 / 0</span>
+</div>
+
+<div id="qcm"></div>
+<div id="result"></div>
+
+<script>
+const QUESTIONS = [
+  {
+    q: "En flux poussé, à quel moment le poste Usinage produit-il ?",
+    choices: [
+      "Uniquement quand un ticket kanban l'y autorise",
+      "À sa cadence maximale, indépendamment de la demande aval",
+      "Quand le stock En-cours 1 descend en dessous d'un seuil",
+      "En fonction des commandes passées par le client"
+    ],
+    answer: 1,
+    feedback_ok: "Correct. En flux poussé (MRP), chaque poste produit à sa cadence nominale maximale sans attendre le besoin aval. C'est ce qui provoque l'accumulation des stocks intermédiaires.",
+    feedback_nok: "En flux poussé, la production est pilotée par le plan (cadence maximale), pas par la consommation réelle. Les tickets kanban n'existent qu'en flux tiré."
+  },
+  {
+    q: "Que représente un ticket kanban orange (en circuit) ?",
+    choices: [
+      "Une autorisation de produire disponible sur le tableau kanban",
+      "Une pièce défectueuse signalée par le poste Contrôle",
+      "Un ticket attaché à un bac de pièces en cours de production ou en stock",
+      "Un bon de livraison en attente chez le fournisseur"
+    ],
+    answer: 2,
+    feedback_ok: "Correct. Le ticket orange est \"en circuit\" : il accompagne physiquement un bac de pièces depuis la production jusqu'à la consommation par l'aval. Il ne reviendra disponible (vert) qu'une fois ce bac consommé.",
+    feedback_nok: "Orange = en circuit = le ticket est attaché à un bac de pièces. Vert = libre = le ticket est sur le tableau kanban et autorise une nouvelle production."
+  },
+  {
+    q: "Avec 6 tickets par boucle et une taille de lot de 3 pièces, quel est le stock maximum autorisé dans cette boucle ?",
+    choices: [
+      "6 pièces",
+      "3 pièces",
+      "9 pièces",
+      "18 pièces"
+    ],
+    answer: 3,
+    feedback_ok: "Correct. Stock max = tickets × taille de lot = 6 × 3 = 18 pièces. C'est le principe du kanban : le nombre de tickets plafonne le WIP (Work In Progress).",
+    feedback_nok: "Le calcul est : tickets × taille de lot = 6 × 3 = 18 pièces. Chaque ticket autorise la production d'un bac de 3 pièces, et il y a 6 tickets au maximum en circulation."
+  },
+  {
+    q: "Dans la simulation, le poste Assemblage a une cadence de 9 u/p alors que Usinage et Contrôle sont à 10 u/p. En flux poussé, que se passe-t-il après 20 périodes ?",
+    choices: [
+      "Le stock En-cours 1 s'accumule car Usinage pousse 10 u/p mais Assemblage n'en absorbe que 9",
+      "Le stock Produits Finis explose car Contrôle produit trop vite",
+      "Les trois postes s'autorégulent et les stocks restent stables",
+      "Le fournisseur cesse de livrer pour éviter la saturation"
+    ],
+    answer: 0,
+    feedback_ok: "Correct. Assemblage est le goulot : il absorbe 9 u/p alors qu'Usinage en pousse 10. L'excédent (1 u/p) s'accumule dans l'En-cours 1. Après 20 périodes : +20 pièces dans EC1. C'est l'effet \"coup de fouet\" du flux poussé.",
+    feedback_nok: "Le goulot est Assemblage (9 u/p). Usinage pousse 10 u/p, Assemblage ne peut en traiter que 9 → 1 pièce s'accumule dans EC1 à chaque période. En flux tiré, le ticket kanban empêche Usinage de surproduire."
+  },
+  {
+    q: "En flux tiré avec 6 tickets par boucle (lot = 3), on observe les stocks après 30 périodes. Que constate-t-on ?",
+    choices: [
+      "Les stocks gonflent indéfiniment, comme en flux poussé",
+      "Les stocks tombent à zéro : plus aucune pièce n'est disponible",
+      "Les stocks plafonnent autour du stock maximum autorisé (tickets × lot)",
+      "Le fournisseur est le seul poste qui continue de fonctionner"
+    ],
+    answer: 2,
+    feedback_ok: "Correct. C'est la propriété fondamentale du kanban : le WIP est borné. Les stocks ne peuvent pas dépasser tickets × lot, car aucune production n'est possible sans ticket disponible.",
+    feedback_nok: "Le kanban borne le WIP. Sans ticket disponible, le poste ne peut pas produire. Les stocks plafonnent donc autour de tickets × lot, quelle que soit la durée de la simulation."
+  },
+  {
+    q: "En flux tiré, le poste Usinage affiche une efficience de 35% (orange). Quelle est l'interprétation correcte ?",
+    choices: [
+      "Le poste est en panne depuis le début de la période",
+      "Il y a un problème qualité sur 65% des pièces produites",
+      "Le poste a produit 35% de sa cadence nominale car il attendait un ticket kanban",
+      "Le stock de matières premières est épuisé en permanence"
+    ],
+    answer: 2,
+    feedback_ok: "Correct. En flux tiré, un poste \"attend\" qu'un ticket se libère avant de produire. Une efficience basse n'est pas forcément un problème : c'est le principe du Juste-à-Temps. Le poste ne surproduit pas.",
+    feedback_nok: "L'efficience mesure la quantité produite rapportée à la cadence nominale. En flux tiré, si aucun ticket n'est disponible, le poste n'a pas le droit de produire — son efficience baisse, ce qui est normal et souhaitable."
+  },
+  {
+    q: "Qu'est-ce qui déclenche la libération d'un ticket kanban vers le poste Contrôle ?",
+    choices: [
+      "Le planning de production hebdomadaire établi par le service méthodes",
+      "La consommation réelle d'un bac par le client, qui libère un ticket",
+      "La décision du chef d'atelier en début de poste",
+      "Le remplissage complet du stock Produits Finis"
+    ],
+    answer: 1,
+    feedback_ok: "Correct. C'est le principe fondateur du flux tiré : c'est la consommation réelle (le client prend un bac) qui libère le ticket et remonte vers le poste amont. La production est tirée par la demande, pas poussée par un plan.",
+    feedback_nok: "En flux tiré, la production n'est jamais déclenchée par un plan. C'est la consommation du client qui libère un ticket kanban, lequel remonte vers le poste amont pour autoriser une nouvelle production."
+  },
+  {
+    q: "On passe en flux tiré tendu : 3 tickets par boucle, lot de 2, incidents à 20%. Quel risque apparaît ?",
+    choices: [
+      "Le stock de matières premières explose car le fournisseur livre trop",
+      "Les postes tournent à 100% d'efficience en permanence",
+      "Une panne sur un poste peut provoquer une rupture de stock et un taux de service effondré",
+      "Le nombre de tickets augmente automatiquement pour compenser les pannes"
+    ],
+    answer: 2,
+    feedback_ok: "Correct. Flux tendu = peu de stock tampon = aucune marge de sécurité. Un incident sur un poste bloque rapidement la chaîne aval. C'est pourquoi le flux tendu exige fiabilité, SMED et maintenance préventive.",
+    feedback_nok: "Avec peu de tickets, le stock tampon est minimal. Si un poste tombe en panne, il n'y a pas de réserve pour alimenter l'aval : rupture rapide. Le kanban ne gère pas les pannes — il les révèle."
+  },
+  {
+    q: "Avec une demande moyenne de 8 u/p et un lot de 4 pièces, combien de bacs le client consomme-t-il en moyenne par période ?",
+    choices: [
+      "8 bacs",
+      "4 bacs",
+      "2 bacs",
+      "32 bacs"
+    ],
+    answer: 2,
+    feedback_ok: "Correct. Demande en bacs = demande en pièces ÷ taille de lot = 8 ÷ 4 = 2 bacs/période. C'est le rythme auquel les tickets seront libérés vers l'amont.",
+    feedback_nok: "Le nombre de bacs consommés = demande (pièces) ÷ taille de lot = 8 ÷ 4 = 2 bacs/période. Ce calcul est visible dans la légende de la simulation quand vous changez les paramètres."
+  },
+  {
+    q: "Quel est le message clé que la simulation cherche à faire comprendre ?",
+    choices: [
+      "Plus les postes tournent vite, meilleur est le taux de service",
+      "Le flux poussé est plus simple à mettre en oeuvre et toujours aussi efficace",
+      "Le Kanban n'est pas magique : il révèle les problèmes que le stock cachait",
+      "Il faut toujours maximiser le nombre de tickets pour éviter toute rupture"
+    ],
+    answer: 2,
+    feedback_ok: "Correct. Réduire le stock (le \"flux tendu\") ne crée pas les problèmes : il les rend visibles. Pannes, variabilité, goulots existaient en flux poussé — ils étaient masqués par les encours. C'est la puissance du kanban comme outil d'amélioration continue.",
+    feedback_nok: "Le stock agit comme un voile sur les dysfonctionnements. En flux tiré, le WIP est borné : les problèmes (goulots, pannes, variabilité) deviennent immédiatement visibles. Maximiser les tickets revient à revenir au flux poussé."
+  }
+];
+
+let current  = 0;
+let score    = 0;
+let answered = 0;
+const results = [];
+
+function buildQCM() {
+  const container = document.getElementById("qcm");
+  QUESTIONS.forEach((q, qi) => {
+    const card = document.createElement("div");
+    card.className = "q-card" + (qi === 0 ? " active" : "");
+    card.id = `q${qi}`;
+
+    const letters = ["A", "B", "C", "D"];
+    const choicesHTML = q.choices.map((c, ci) =>
+      `<div class="choice" data-qi="${qi}" data-ci="${ci}">
+         <span class="choice-letter">${letters[ci]}.</span>
+         <span>${c}</span>
+       </div>`
+    ).join("");
+
+    card.innerHTML = `
+      <div class="q-header">
+        <div class="q-num">${qi + 1}</div>
+        <p>${q.q}</p>
+      </div>
+      <div class="q-body">
+        ${choicesHTML}
+        <div class="q-feedback" id="fb${qi}"></div>
+      </div>
+      <div class="q-nav">
+        <button class="btn-next" id="btn${qi}" onclick="nextQuestion(${qi})">
+          ${qi < QUESTIONS.length - 1 ? "Question suivante &rarr;" : "Voir mes résultats"}
+        </button>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+
+  // Délégation d'événement sur les choix
+  container.addEventListener("click", e => {
+    const choice = e.target.closest(".choice");
+    if (!choice) return;
+    const qi = +choice.dataset.qi;
+    const ci = +choice.dataset.ci;
+    handleAnswer(qi, ci);
+  });
+}
+
+function handleAnswer(qi, ci) {
+  const q = QUESTIONS[qi];
+  const card = document.getElementById(`q${qi}`);
+  // Ignorer si déjà répondu
+  if (card.querySelector(".choice.correct, .choice.wrong")) return;
+
+  const choices = card.querySelectorAll(".choice");
+  const isCorrect = ci === q.answer;
+
+  choices.forEach((ch, i) => {
+    if (i === q.answer) ch.classList.add("correct");
+    else if (i === ci && !isCorrect) ch.classList.add("wrong");
+  });
+
+  const fb = document.getElementById(`fb${qi}`);
+  fb.style.display = "block";
+  if (isCorrect) {
+    fb.className = "q-feedback ok";
+    fb.innerHTML = `<strong>Bonne réponse.</strong> ${q.feedback_ok}`;
+    score++;
+  } else {
+    fb.className = "q-feedback nok";
+    fb.innerHTML = `<strong>Réponse incorrecte.</strong> ${q.feedback_nok}`;
+  }
+
+  answered++;
+  results[qi] = isCorrect;
+  document.getElementById(`btn${qi}`).style.display = "inline-block";
+  updateProgress();
+}
+
+function nextQuestion(qi) {
+  document.getElementById(`q${qi}`).classList.remove("active");
+  if (qi + 1 < QUESTIONS.length) {
+    document.getElementById(`q${qi + 1}`).classList.add("active");
+    current = qi + 1;
+    updateProgress();
+    window.scrollTo({ top: document.getElementById(`q${qi+1}`).offsetTop - 80, behavior: "smooth" });
+  } else {
+    showResult();
+  }
+}
+
+function updateProgress() {
+  const total = QUESTIONS.length;
+  const done  = answered;
+  document.getElementById("progressLabel").textContent  = `Question ${current + 1} / ${total}`;
+  document.getElementById("progressFill").style.width   = `${(done / total) * 100}%`;
+  document.getElementById("scoreDisplay").textContent   = `Score : ${score} / ${done}`;
+}
+
+function showResult() {
+  document.getElementById("qcm").style.display = "none";
+  document.getElementById("progressBar").style.display = "none";
+  const pct = Math.round((score / QUESTIONS.length) * 100);
+  const col  = pct >= 80 ? "var(--vert)" : pct >= 50 ? "var(--orange)" : "var(--rouge)";
+  let msg = "";
+  if (pct === 100) msg = "Score parfait ! Vous maîtrisez les principes du flux tiré.";
+  else if (pct >= 80) msg = "Très bon résultat. Les concepts essentiels sont bien assimilés.";
+  else if (pct >= 50) msg = "Des bases solides. Relancez la simulation sur les points manqués pour consolider.";
+  else msg = "Des révisions s'imposent. Reprenez la simulation en observant les scénarios proposés, puis retentez le QCM.";
+
+  const detailLines = QUESTIONS.map((q, i) =>
+    `<span class="${results[i] ? 'ok' : 'nok'}">${results[i] ? '✓' : '✗'}</span> Q${i+1} — ${q.q}`
+  ).join("<br>");
+
+  const result = document.getElementById("result");
+  result.style.display = "block";
+  result.innerHTML = `
+    <h2>Résultats</h2>
+    <div id="resultScore" style="color:${col}">${score} / ${QUESTIONS.length} &nbsp;<span style="font-size:.5em;font-weight:400">(${pct}%)</span></div>
+    <p id="resultMsg">${msg}</p>
+    <div id="resultDetails">${detailLines}</div>
+    <button class="btn-restart" onclick="restart()">Recommencer</button>
+    <a class="btn-sim" href="simulation_kanban.html" target="_blank">Rouvrir la simulation</a>
+  `;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function restart() {
+  score    = 0;
+  answered = 0;
+  current  = 0;
+  results.length = 0;
+  document.getElementById("result").style.display   = "none";
+  document.getElementById("qcm").style.display      = "block";
+  document.getElementById("progressBar").style.display = "flex";
+  document.querySelectorAll(".q-card").forEach((c, i) => {
+    c.classList.toggle("active", i === 0);
+    c.querySelectorAll(".choice").forEach(ch => ch.className = "choice");
+    const fb = c.querySelector(".q-feedback");
+    fb.style.display = "none"; fb.className = "q-feedback";
+    c.querySelector(".btn-next").style.display = "none";
+  });
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+buildQCM();
+updateProgress();
+</script>
+</body>
+</html>
