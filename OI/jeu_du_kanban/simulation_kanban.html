@@ -357,6 +357,7 @@ class SimulationEngine {
   step() {
     const p = this.p;
     this.t++;
+    const prevKanbans = [...this.kanbans]; // snapshot avant tout changement
     const ev = { t: this.t, incidents: [], produced: [0,0,0], demand: 0, delivered: 0, backlog: 0 };
 
     // 1. Réapprovisionnement fournisseur (livraison continue selon cadence P1)
@@ -408,6 +409,14 @@ class SimulationEngine {
       this.eff_hist[i].push(Math.min(this.cap_used[i] / Math.max(p.capacities[i], 1), 1));
     }
     ev.service = svc;
+    // Détection des libérations de tickets (pour animation)
+    ev.kanbanReleases = [];
+    if (p.mode === "pull") {
+      for (let i = 0; i < 3; i++) {
+        const rel = this.kanbans[i] - prevKanbans[i];
+        if (rel > 0) ev.kanbanReleases.push({ loop: i, count: rel });
+      }
+    }
     return ev;
   }
 
@@ -612,6 +621,70 @@ function drawKanbanLoop(ctx, xStation, xStock, yM, available, total, idx) {
   const enCircuit = total - available;
   ctx.fillStyle = COLORS.violet; ctx.font = "7px sans-serif"; ctx.textAlign = "center";
   ctx.fillText(`${available} libre${available>1?'s':''}  |  ${enCircuit} en circuit`, mx, y2 + 13);
+
+  // Tickets animés remontant vers le poste amont
+  ticketAnimations
+    .filter(a => a.loop === idx)
+    .forEach(anim => {
+      const pos = getTicketPos(anim.progress, xStation, xStock, yM, idx);
+      ctx.save();
+      ctx.shadowColor = '#27ae60'; ctx.shadowBlur = 6;
+      ctx.fillStyle = '#27ae60';
+      ctx.beginPath(); ctx.roundRect(pos.x - 6, pos.y - 5, 12, 9, 2); ctx.fill();
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.2; ctx.shadowBlur = 0;
+      ctx.stroke();
+      ctx.restore();
+    });
+}
+
+// ═══════════════════════════════════════════════════════════
+// ANIMATION TICKETS KANBAN
+// ═══════════════════════════════════════════════════════════
+let ticketAnimations = []; // [{loop, progress}]
+let _rafId = null;
+const ANIM_DURATION = 1.8; // secondes pour parcourir la boucle complète
+
+function getTicketPos(progress, xStation, xStock, yM, idx) {
+  const y2 = yM + 72 + idx * 5;
+  const segs = [
+    { from: { x: xStock,    y: yM+28 }, to: { x: xStock,    y: y2    } }, // descend
+    { from: { x: xStock,    y: y2    }, to: { x: xStation,  y: y2    } }, // remonte horizontalement
+    { from: { x: xStation,  y: y2    }, to: { x: xStation,  y: yM+28 } }, // monte
+  ];
+  const lens  = segs.map(s => Math.hypot(s.to.x - s.from.x, s.to.y - s.from.y));
+  const total = lens.reduce((a, b) => a + b, 0);
+  let dist = progress * total;
+  for (const seg of segs) {
+    const len = Math.hypot(seg.to.x - seg.from.x, seg.to.y - seg.from.y);
+    if (dist <= len + 0.001) {
+      const t = Math.min(dist / len, 1);
+      return { x: seg.from.x + t * (seg.to.x - seg.from.x),
+               y: seg.from.y + t * (seg.to.y - seg.from.y) };
+    }
+    dist -= len;
+  }
+  return segs[segs.length - 1].to;
+}
+
+function spawnTicketAnimation(loop) {
+  if (ticketAnimations.filter(a => a.loop === loop).length >= 4) return; // max 4 par boucle
+  ticketAnimations.push({ loop, progress: 0 });
+  if (!_rafId) _startAnimLoop();
+}
+
+function _startAnimLoop() {
+  let last = performance.now();
+  function frame(ts) {
+    const dt = Math.min((ts - last) / 1000, 0.1);
+    last = ts;
+    ticketAnimations = ticketAnimations.filter(a => {
+      a.progress += dt / ANIM_DURATION;
+      return a.progress < 1;
+    });
+    drawVSM(canvas, engine, params);
+    _rafId = ticketAnimations.length > 0 ? requestAnimationFrame(frame) : null;
+  }
+  _rafId = requestAnimationFrame(frame);
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -769,6 +842,12 @@ function stepOnce() {
   readParams();
   const ev = engine.step();
   updateAll(ev);
+  // Animer les tickets libérés (seulement si vitesse lisible)
+  if (params.mode === "pull" && params.speed_ms >= 400) {
+    (ev.kanbanReleases || []).forEach(({ loop, count }) => {
+      for (let c = 0; c < Math.min(count, 3); c++) spawnTicketAnimation(loop);
+    });
+  }
 }
 
 function startLoop() {
@@ -813,6 +892,8 @@ document.getElementById("btnReset").addEventListener("click", () => {
   document.getElementById("btnStart").style.background = "var(--bleu)";
   readParams();
   engine.reset();
+  ticketAnimations = [];
+  if (_rafId) { cancelAnimationFrame(_rafId); _rafId = null; }
   document.getElementById("logBox").innerHTML = "";
   resetCharts();
   updateAll(null);
