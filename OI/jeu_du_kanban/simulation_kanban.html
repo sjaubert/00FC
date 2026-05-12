@@ -359,7 +359,10 @@ class SimulationEngine {
     this.t++;
     const ev = { t: this.t, incidents: [], produced: [0,0,0], demand: 0, delivered: 0, backlog: 0 };
 
-    // 1. Incidents
+    // 1. Réapprovisionnement fournisseur (livraison continue selon cadence P1)
+    this.stocks[0] += Math.floor(p.capacities[0]);
+
+    // 2. Incidents
     for (let i = 0; i < 3; i++) {
       if (this.busy[i] > 0) {
         this.busy[i]--;
