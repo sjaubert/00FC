@@ -219,8 +219,8 @@ button:hover { opacity: .85; }
     </div>
     <div class="param-row">
       <label>Contrôle</label>
-      <input type="range" id="pCap2" min="2" max="20" step="0.5" value="10">
-      <span class="param-val" id="vCap2">10</span>
+      <input type="range" id="pCap2" min="2" max="20" step="0.5" value="9">
+      <span class="param-val" id="vCap2">9</span>
     </div>
 
     <div class="section-lbl">Tickets Kanban</div>
@@ -306,7 +306,7 @@ class SimParams {
   constructor() {
     this.demand_mean     = 8;
     this.demand_cv       = 0.30;
-    this.capacities      = [10, 9, 10];
+    this.capacities      = [10, 9, 9];
     this.initial_stocks  = [40, 25, 20, 20];
     this.kanban_counts   = [6, 6, 6];
     this.kanban_lot_size = 3;
