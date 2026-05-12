@@ -71,13 +71,46 @@ button:hover { opacity: .85; }
 #speedWrap input { width: 100px; }
 #lblPeriod { margin-left: auto; font-size: 0.82em; color: #666; }
 
+/* ── LÉGENDE KANBAN ── */
+#legend {
+  background: #eef4fb;
+  border-bottom: 1px solid #c5d5e8;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 4px 14px;
+  font-size: 0.78em;
+  flex-wrap: wrap;
+}
+#legend .leg-group {
+  display: flex; align-items: center; gap: 10px;
+}
+#legend .leg-title {
+  font-weight: 700; color: var(--bleu); white-space: nowrap;
+}
+.leg-swatch {
+  display: inline-block;
+  width: 14px; height: 14px;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin-right: 3px;
+  border: 1px solid rgba(0,0,0,.2);
+}
+#legCalc {
+  margin-left: auto;
+  display: flex; gap: 16px;
+  font-size: 0.82em; color: #2c3e50;
+}
+#legCalc span { white-space: nowrap; }
+#legCalc strong { color: var(--bleu); }
+
 /* ── MAIN GRID ── */
 #main {
   display: grid;
   grid-template-columns: 210px 1fr 280px;
   gap: 6px;
   padding: 6px;
-  height: calc(100vh - 110px);
+  height: calc(100vh - 145px);
 }
 
 /* ── PARAMS ── */
@@ -186,6 +219,19 @@ button:hover { opacity: .85; }
     <span id="lblSpeed">800 ms</span>
   </div>
   <span id="lblPeriod">Période : 0</span>
+</div>
+
+<div id="legend">
+  <div class="leg-group">
+    <span class="leg-title">Tickets Kanban :</span>
+    <span><span class="leg-swatch" style="background:#27ae60;"></span>Libre (sur le tableau kanban)</span>
+    <span><span class="leg-swatch" style="background:#f39c12;"></span>En circuit (attaché au bac en production)</span>
+  </div>
+  <div id="legCalc">
+    <span>1 ticket = 1 bac = <strong id="legLot">3</strong> pièces</span>
+    <span>Stock max (Contrôle) = <strong id="legStockMax">18</strong> pièces</span>
+    <span>Demande ≈ <strong id="legDemPieces">8</strong> pièces/p = <strong id="legDemBacs">2,7</strong> bacs/p</span>
+  </div>
 </div>
 
 <div id="main">
@@ -829,10 +875,21 @@ function readParams() {
   if (engine.t === 0) engine.kanbans = [...params.kanban_counts];
 }
 
+function updateLegend() {
+  const lot  = params.kanban_lot_size;
+  const kMax = params.kanban_counts[2]; // boucle Contrôle → stock PF
+  const dem  = params.demand_mean;
+  document.getElementById("legLot").textContent        = lot;
+  document.getElementById("legStockMax").textContent   = kMax * lot;
+  document.getElementById("legDemPieces").textContent  = dem;
+  document.getElementById("legDemBacs").textContent    = (dem / lot).toFixed(1).replace(".", ",");
+}
+
 function updateAll(ev) {
   drawVSM(canvas, engine, params);
   updateCharts(engine);
   updateKPIs(engine);
+  updateLegend();
   document.getElementById("lblPeriod").textContent = `Période : ${engine.t}`;
   if (ev) logEvent(ev);
 }
