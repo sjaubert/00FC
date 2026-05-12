@@ -54,7 +54,7 @@ class SimParams:
     """Tous les paramètres ajustables de la simulation."""
     demand_mean:          float = 8.0
     demand_cv:            float = 0.30   # coefficient de variation
-    capacities:           List[float] = field(default_factory=lambda: [10.0, 9.0, 10.0])
+    capacities:           List[float] = field(default_factory=lambda: [10.0, 9.0, 9.0])
     initial_stocks:       List[int]   = field(default_factory=lambda: [40, 25, 20, 20])
     kanban_counts:        List[int]   = field(default_factory=lambda: [6, 6, 6])
     kanban_lot_size:      int   = 3
@@ -189,15 +189,16 @@ class SimulationEngine:
         return max(0, val)
 
     def _produce_push(self, ev):
-        """Chaque poste produit au max de sa capacité sans attendre l'aval."""
+        """Chaque poste produit au max de sa capacité sans attendre l'aval.
+        Snapshot des stocks en début de période : production simultanée réaliste
+        (une pièce ne peut pas traverser deux postes dans la même période)."""
         p = self.p
-        order = [0, 1, 2]   # on traite dans l'ordre amont -> aval
-        for i in order:
+        snapshot = list(self.stocks)   # lecture avant toute production
+        for i in range(3):
             if self.busy[i] > 0:
                 self.cap_used[i] = 0
                 continue
-            stock_in  = self.stocks[i]     # stock amont de ce poste
-            produced  = max(0, int(min(p.capacities[i], stock_in)))
+            produced = max(0, int(min(p.capacities[i], snapshot[i])))
             self.stocks[i]     -= produced
             self.stocks[i + 1] += produced
             self.cap_used[i]    = produced
