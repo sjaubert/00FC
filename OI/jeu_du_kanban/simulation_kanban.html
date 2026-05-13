@@ -552,6 +552,8 @@ function drawVSM(canvas, engine, params) {
   const span  = xCli - xFour;
   const xP    = [xFour + span*0.18, xFour + span*0.46, xFour + span*0.73];
   const xS    = [xFour + span*0.32, xFour + span*0.59, xFour + span*0.87];
+  // Mise à jour du cache global (utilisé par les animations)
+  _gxP = [...xP]; _gxS = [...xS]; _gyM = yM;
 
   // ─── Fournisseur ───
   drawActor(ctx, xFour, yM, "Fourni-\nsseur", COLORS.bleu);
@@ -666,7 +668,7 @@ function drawStockBadge(ctx, x, y, value, label, highThresh) {
   ctx.fillText(value, x, y-8);
   ctx.fillStyle = COLORS.texte; ctx.font = "8px sans-serif";
   ctx.fillText(label, x, y+18);
-  ctx.fillStyle = "#888"; ctx.font = "7px sans-serif";
+  ctx.fillStyle = "#555"; ctx.font = "7px sans-serif";
   ctx.fillText(`seuil : ${highThresh} u`, x, y+28);
 }
 
@@ -698,22 +700,28 @@ function drawKanbanLoop(ctx, xStation, xStock, yM, available, total, idx) {
     ctx.strokeStyle = '#fff'; ctx.lineWidth = 0.8;
     ctx.stroke();
   }
-  // Légende
+  // Légende compteur + flèche de sens
   const enCircuit = total - available;
   ctx.fillStyle = COLORS.violet; ctx.font = "7px sans-serif"; ctx.textAlign = "center";
   ctx.fillText(`${available} libre${available>1?'s':''}  |  ${enCircuit} en circuit`, mx, y2 + 13);
+  // Indication sens de circulation du ticket (de droite à gauche = aval → amont)
+  ctx.fillStyle = COLORS.violet; ctx.font = "bold 8px sans-serif";
+  ctx.fillText("← ticket libéré", mx, y2 - 4);
 
-  // Tickets animés remontant vers le poste amont
+  // Tickets animés — couleur orange (libérés d'un bac, retournant au tableau kanban)
   ticketAnimations
     .filter(a => a.loop === idx)
     .forEach(anim => {
       const pos = getTicketPos(anim.progress, xStation, xStock, yM, idx);
       ctx.save();
-      ctx.shadowColor = '#27ae60'; ctx.shadowBlur = 6;
-      ctx.fillStyle = '#27ae60';
-      ctx.beginPath(); ctx.roundRect(pos.x - 6, pos.y - 5, 12, 9, 2); ctx.fill();
-      ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.2; ctx.shadowBlur = 0;
+      ctx.shadowColor = '#e67e22'; ctx.shadowBlur = 8;
+      ctx.fillStyle = '#e67e22';
+      ctx.beginPath(); ctx.roundRect(pos.x - 7, pos.y - 6, 14, 10, 2); ctx.fill();
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.shadowBlur = 0;
       ctx.stroke();
+      // Petite flèche ↑ indiquant la remontée vers l'amont
+      ctx.fillStyle = '#fff'; ctx.font = 'bold 7px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('↑', pos.x, pos.y + 3);
       ctx.restore();
     });
 }
@@ -721,9 +729,13 @@ function drawKanbanLoop(ctx, xStation, xStock, yM, available, total, idx) {
 // ═══════════════════════════════════════════════════════════
 // ANIMATION TICKETS KANBAN
 // ═══════════════════════════════════════════════════════════
-let ticketAnimations = []; // [{loop, progress}]
+let ticketAnimations = []; // [{loop, progress}]  — ticket remontant vers l'amont
+let bacAnimations    = []; // [{station, progress}] — bac descendant vers l'aval
 let _rafId = null;
-const ANIM_DURATION = 1.8; // secondes pour parcourir la boucle complète
+const ANIM_DURATION     = 1.8;  // s — ticket remonte la boucle kanban
+const ANIM_DURATION_BAC = 0.5;  // s — bac se déplace vers le stock aval
+// Cache des positions calculées par drawVSM (mises à jour à chaque frame)
+let _gxP = [150,340,530], _gxS = [240,435,625], _gyM = 90;
 
 function getTicketPos(progress, xStation, xStock, yM, idx) {
   const y2 = yM + 95 + idx * 5;
@@ -748,9 +760,32 @@ function getTicketPos(progress, xStation, xStock, yM, idx) {
 }
 
 function spawnTicketAnimation(loop) {
-  if (ticketAnimations.filter(a => a.loop === loop).length >= 4) return; // max 4 par boucle
+  if (ticketAnimations.filter(a => a.loop === loop).length >= 3) return;
   ticketAnimations.push({ loop, progress: 0 });
   if (!_rafId) _startAnimLoop();
+}
+
+function spawnBacAnimation(stationIdx) {
+  if (!_gxP || stationIdx > 2) return;
+  if (bacAnimations.filter(a => a.station === stationIdx).length >= 2) return;
+  bacAnimations.push({ station: stationIdx, progress: 0 });
+  if (!_rafId) _startAnimLoop();
+}
+
+function drawBacAnimations(ctx) {
+  bacAnimations.forEach(a => {
+    const x0 = _gxP[a.station] + 42;          // sortie du poste
+    const x1 = _gxS[a.station] - 24;          // entrée du stock
+    const x  = x0 + a.progress * (x1 - x0);
+    ctx.save();
+    ctx.shadowColor = '#2980b9'; ctx.shadowBlur = 6;
+    ctx.fillStyle = '#2980b9';
+    ctx.beginPath(); ctx.roundRect(x - 10, _gyM - 8, 20, 14, 3); ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.shadowBlur = 0; ctx.stroke();
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 7px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('BAC→', x, _gyM + 3);
+    ctx.restore();
+  });
 }
 
 function _startAnimLoop() {
@@ -762,8 +797,14 @@ function _startAnimLoop() {
       a.progress += dt / ANIM_DURATION;
       return a.progress < 1;
     });
+    bacAnimations = bacAnimations.filter(a => {
+      a.progress += dt / ANIM_DURATION_BAC;
+      return a.progress < 1;
+    });
     drawVSM(canvas, engine, params);
-    _rafId = ticketAnimations.length > 0 ? requestAnimationFrame(frame) : null;
+    drawBacAnimations(canvas.getContext("2d"));
+    _rafId = (ticketAnimations.length > 0 || bacAnimations.length > 0)
+             ? requestAnimationFrame(frame) : null;
   }
   _rafId = requestAnimationFrame(frame);
 }
@@ -943,10 +984,15 @@ function stepOnce() {
   readParams();
   const ev = engine.step();
   updateAll(ev);
-  // Animer les tickets libérés (seulement si vitesse lisible)
+  // Animer uniquement si vitesse lisible
   if (params.mode === "pull" && params.speed_ms >= 400) {
+    // Tickets libérés remontant de l'aval vers l'amont (orange, boucle kanban)
     (ev.kanbanReleases || []).forEach(({ loop, count }) => {
-      for (let c = 0; c < Math.min(count, 3); c++) spawnTicketAnimation(loop);
+      for (let c = 0; c < Math.min(count, 2); c++) spawnTicketAnimation(loop);
+    });
+    // Bacs produits descendant de l'amont vers l'aval (bleu, flèche de flux)
+    ev.produced.forEach((qty, i) => {
+      if (qty > 0) spawnBacAnimation(i);
     });
   }
 }
@@ -994,7 +1040,7 @@ document.getElementById("btnReset").addEventListener("click", () => {
   document.getElementById("btnStart").style.background = "var(--bleu)";
   readParams();
   engine.reset();
-  ticketAnimations = [];
+  ticketAnimations = []; bacAnimations = [];
   if (_rafId) { cancelAnimationFrame(_rafId); _rafId = null; }
   document.getElementById("logBox").innerHTML = "";
   resetCharts();
