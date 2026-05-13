@@ -673,9 +673,11 @@ function drawStockBadge(ctx, x, y, value, label, highThresh) {
 }
 
 function drawKanbanLoop(ctx, xStation, xStock, yM, available, total, idx) {
-  // Vert = ticket libre (sur le tableau kanban)
-  // Orange = ticket en circuit (attaché à des pièces dans le stock)
-  const y2 = yM + 95 + idx * 5;
+  const y2       = yM + 95 + idx * 5;
+  const enCircuit = total - available;
+  const tw = 10, th = 8, gap = 3;
+
+  // ── Boucle en pointillés ──
   ctx.strokeStyle = COLORS.violet; ctx.lineWidth = 1.2;
   ctx.setLineDash([4, 3]);
   ctx.beginPath();
@@ -683,32 +685,57 @@ function drawKanbanLoop(ctx, xStation, xStock, yM, available, total, idx) {
   ctx.lineTo(xStation, y2); ctx.lineTo(xStation, yM+48);
   ctx.stroke();
   ctx.setLineDash([]);
-  // Flèche retour (vers station)
-  ctx.fillStyle = COLORS.violet;
-  ctx.beginPath(); ctx.moveTo(xStation, yM+48);
-  ctx.lineTo(xStation+6, yM+56); ctx.lineTo(xStation-6, yM+56);
-  ctx.closePath(); ctx.fill();
-  // Tickets individuels colorés
-  const mx = (xStation + xStock) / 2;
-  const tw = 10, th = 8, gap = 2;
-  const startX = mx - (total * (tw + gap)) / 2;
-  for (let i = 0; i < total; i++) {
-    ctx.fillStyle = i < available ? '#27ae60' : '#e67e22';
-    ctx.beginPath();
-    ctx.roundRect(startX + i*(tw+gap), y2 - th/2, tw, th, 2);
-    ctx.fill();
-    ctx.strokeStyle = '#fff'; ctx.lineWidth = 0.8;
-    ctx.stroke();
-  }
-  // Légende compteur + flèche de sens
-  const enCircuit = total - available;
-  ctx.fillStyle = COLORS.violet; ctx.font = "7px sans-serif"; ctx.textAlign = "center";
-  ctx.fillText(`${available} libre${available>1?'s':''}  |  ${enCircuit} en circuit`, mx, y2 + 13);
-  // Indication sens de circulation du ticket (de droite à gauche = aval → amont)
-  ctx.fillStyle = COLORS.violet; ctx.font = "bold 8px sans-serif";
-  ctx.fillText("← ticket libéré", mx, y2 - 4);
 
-  // Tickets animés — couleur orange (libérés d'un bac, retournant au tableau kanban)
+  // ── Flèche indiquant que le ticket remonte vers la station ──
+  ctx.fillStyle = COLORS.violet;
+  ctx.beginPath();
+  ctx.moveTo(xStation, yM+48);
+  ctx.lineTo(xStation+6, yM+57); ctx.lineTo(xStation-6, yM+57);
+  ctx.closePath(); ctx.fill();
+
+  // ── Tableau Kanban (icône côté station) ──
+  const bx = xStation - 20, by = y2 - 12, bw = 16, bh = 20;
+  ctx.fillStyle = '#2c3e50';
+  ctx.beginPath(); ctx.roundRect(bx, by, bw, bh, 2); ctx.fill();
+  // Lignes du tableau (2 rangées symboliques)
+  ctx.strokeStyle = '#7f8c8d'; ctx.lineWidth = 0.6;
+  [0.35, 0.65].forEach(r => {
+    ctx.beginPath();
+    ctx.moveTo(bx+2, by + bh*r); ctx.lineTo(bx+bw-2, by + bh*r);
+    ctx.stroke();
+  });
+  // Étiquette au-dessus
+  ctx.fillStyle = '#8e44ad'; ctx.font = 'bold 6px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('TABLEAU', bx + bw/2, by - 7);
+  ctx.fillText('KANBAN',  bx + bw/2, by - 1);
+
+  // ── Tickets LIBRES — côté tableau kanban (station) ──
+  for (let i = 0; i < available; i++) {
+    ctx.fillStyle = '#27ae60';
+    ctx.beginPath();
+    ctx.roundRect(xStation + 4 + i*(tw+gap), y2 - th/2, tw, th, 2); ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 0.8; ctx.stroke();
+  }
+
+  // ── Tickets EN CIRCUIT — côté stock (aval) ──
+  for (let i = 0; i < enCircuit; i++) {
+    const rx = xStock - 6 - (enCircuit - 1 - i) * (tw + gap);
+    ctx.fillStyle = '#e67e22';
+    ctx.beginPath();
+    ctx.roundRect(rx, y2 - th/2, tw, th, 2); ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 0.8; ctx.stroke();
+  }
+
+  // ── Légende ──
+  ctx.fillStyle = '#27ae60'; ctx.font = '7px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(`${available} libre${available>1?'s':''}`, xStation + 4, y2 + 12);
+  ctx.fillStyle = '#e67e22'; ctx.textAlign = 'right';
+  ctx.fillText(`${enCircuit} en circuit`, xStock - 4, y2 + 12);
+  // Sens du ticket libéré
+  ctx.fillStyle = COLORS.violet; ctx.font = 'bold 7px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('← ticket libéré', (xStation + xStock) / 2, y2 - 3);
+
+  // ── Tickets animés (remontent de l'aval vers l'amont) ──
   ticketAnimations
     .filter(a => a.loop === idx)
     .forEach(anim => {
@@ -717,9 +744,7 @@ function drawKanbanLoop(ctx, xStation, xStock, yM, available, total, idx) {
       ctx.shadowColor = '#e67e22'; ctx.shadowBlur = 8;
       ctx.fillStyle = '#e67e22';
       ctx.beginPath(); ctx.roundRect(pos.x - 7, pos.y - 6, 14, 10, 2); ctx.fill();
-      ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.shadowBlur = 0;
-      ctx.stroke();
-      // Petite flèche ↑ indiquant la remontée vers l'amont
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.shadowBlur = 0; ctx.stroke();
       ctx.fillStyle = '#fff'; ctx.font = 'bold 7px sans-serif'; ctx.textAlign = 'center';
       ctx.fillText('↑', pos.x, pos.y + 3);
       ctx.restore();
