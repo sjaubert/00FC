@@ -1,15 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formation Interactive : Les Biais Cognitifs</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Chosen Palette: Warm Neutrals & Industrial Accents (Beige background, Slate/Zinc text, Amber/Blue accents for interaction) -->
-    <style>
-        body {
+<html lang="fr"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Formation Interactive : Les Biais Cognitifs</title> <script src="https://cdn.tailwindcss.com"></script> <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chosen Palette: Warm Neutrals & Industrial Accents (Beige background, Slate/Zinc text, Amber/Blue accents for interaction) --> <style> body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: #f5f5f0;
             /* Warm neutral */
@@ -51,239 +41,43 @@
             .chart-container {
                 height: 350px;
             }
-        }
-    </style>
-</head>
-
-<body class="flex flex-col min-h-screen">
-
-    <!-- Header -->
-    <header class="bg-slate-900 text-white p-6 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
-            <div>
-                <h1 class="text-2xl font-bold tracking-wider">🧠 MISSION DÉBIAISAGE</h1>
-                <p class="text-slate-400 text-sm mt-1">Voyage au cœur de vos "Bugs" Mentaux - Contexte Industriel</p>
-            </div>
-            <button onclick="app.reset()" class="text-sm bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded transition">
-                Réinitialiser
-            </button>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="flex-grow container mx-auto p-4 md:p-8 space-y-12">
-
-        <!-- Intro Section: The Hook -->
-        <section id="intro-section" class="bg-white rounded-xl shadow-md p-6 md:p-10 border-l-8 border-amber-500">
-            <div class="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                    <h2 class="text-3xl font-bold text-slate-800 mb-4">Le Test de la Pensée Rapide</h2>
-                    <p class="text-lg text-slate-600 mb-6">
-                        Avant de commencer, testons votre "Système 1". Répondez instinctivement à cette énigme
-                        classique.
-                    </p>
-                    <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
-                        <p class="font-serif text-xl italic mb-4 text-slate-800">
-                            "Une batte et une balle coûtent au total <span class="font-bold text-amber-600">1,10
-                                €</span>.<br>
-                            La batte coûte <span class="font-bold text-amber-600">1,00 €</span> de plus que la
-                            balle.<br>
-                            Combien coûte la balle ?"
-                        </p>
-                        <div class="flex items-center space-x-4 mt-6">
-                            <input type="number" id="bat-ball-input" placeholder="0.00" step="0.01"
-                                class="border-2 border-slate-300 rounded px-4 py-2 w-32 focus:border-amber-500 focus:outline-none text-lg">
-                            <span class="text-lg font-bold">€</span>
-                            <button onclick="app.checkBatBall()"
-                                class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded font-bold transition shadow-md">
-                                Vérifier
-                            </button>
-                        </div>
-                        <div id="bat-ball-feedback" class="mt-4 hidden"></div>
-                    </div>
-                </div>
-                <div class="flex flex-col items-center justify-center bg-slate-50 rounded-lg p-4">
-                    <div class="chart-container">
-                        <canvas id="systemChart"></canvas>
-                    </div>
-                    <p class="text-sm text-center text-slate-500 mt-2 italic">Coût énergétique cognitif</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Application Structure Plan:
+        } </style>
+</head> <body class="flex flex-col min-h-screen"> <!-- Header --> <header class="bg-slate-900 text-white p-6 shadow-lg"> <div class="container mx-auto flex justify-between items-center"> <div> <h1 class="text-2xl font-bold tracking-wider"> MISSION DÉBIAISAGE</h1> <p class="text-slate-400 text-sm mt-1">Voyage au cœur de vos "Bugs" Mentaux - Contexte Industriel</p> </div> <button onclick="app.reset()" class="text-sm bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded transition"> Réinitialiser </button> </div> </header> <!-- Main Content --> <main class="flex-grow container mx-auto p-4 md:p-8 space-y-12"> <!-- Intro Section: The Hook --> <section id="intro-section" class="bg-white rounded-xl shadow-md p-6 md:p-10 border-l-8 border-amber-500"> <div class="grid md:grid-cols-2 gap-8 items-center"> <div> <h2 class="text-3xl font-bold text-slate-800 mb-4">Le Test de la Pensée Rapide</h2> <p class="text-lg text-slate-600 mb-6"> Avant de commencer, testons votre "Système 1". Répondez instinctivement à cette énigme
+                        classique. </p> <div class="bg-slate-50 p-6 rounded-lg border border-slate-200"> <p class="font-serif text-xl italic mb-4 text-slate-800"> "Une batte et une balle coûtent au total <span class="font-bold text-amber-600">1,10
+                                €</span>.<br> La batte coûte <span class="font-bold text-amber-600">1,00 €</span> de plus que la
+                            balle.<br> Combien coûte la balle ?" </p> <div class="flex items-center space-x-4 mt-6"> <input type="number" id="bat-ball-input" placeholder="0.00" step="0.01"
+                                class="border-2 border-slate-300 rounded px-4 py-2 w-32 focus:border-amber-500 focus:outline-none text-lg"> <span class="text-lg font-bold">€</span> <button onclick="app.checkBatBall()"
+                                class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded font-bold transition shadow-md"> Vérifier </button> </div> <div id="bat-ball-feedback" class="mt-4 hidden"></div> </div> </div> <div class="flex flex-col items-center justify-center bg-slate-50 rounded-lg p-4"> <div class="chart-container"> <canvas id="systemChart"></canvas> </div> <p class="text-sm text-center text-slate-500 mt-2 italic">Coût énergétique cognitif</p> </div> </div> </section> <!-- Application Structure Plan:
              The app is structured as a "Dashboard of Analysis".
              After the intro hook, the user sees 5 cards representing the 5 categories from the source report.
              Each card expands into a detailed view where the specific industrial scenarios/questions are presented.
              This allows non-linear exploration.
              The interactive element is "The Reveal": Users are presented with the situation/question first (Maieutics),
              then they interact (click/think), and finally the Bias is revealed with its definition.
-        -->
-
-        <!-- Categories Dashboard -->
-        <section id="dashboard" class="space-y-6">
-            <div class="text-center max-w-3xl mx-auto">
-                <h2 class="text-2xl font-bold text-slate-800">Les 5 Grandes Familles de Biais</h2>
-                <p class="text-slate-600 mt-2">
-                    Cliquez sur une catégorie pour découvrir les pièges mentaux qui affectent votre quotidien en
-                    maintenance, production et gestion.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Card 1: Raisonnement -->
-                <div onclick="app.openCategory('reasoning')"
-                    class="cursor-pointer bg-white p-6 rounded-xl shadow-sm border-t-4 border-blue-500 card-hover group">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-3xl">🎨</span>
-                        <span class="text-blue-500 group-hover:translate-x-1 transition">➔</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-800">Raisonnement & MRP</h3>
-                    <p class="text-slate-500 text-sm mt-2">Résolution de problèmes, pannes machine et diagnostics
-                        techniques.</p>
-                </div>
-
-                <!-- Card 2: Mémoire -->
-                <div onclick="app.openCategory('memory')"
-                    class="cursor-pointer bg-white p-6 rounded-xl shadow-sm border-t-4 border-purple-500 card-hover group">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-3xl">🧠</span>
-                        <span class="text-purple-500 group-hover:translate-x-1 transition">➔</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-800">Mémoire & Souvenirs</h3>
-                    <p class="text-slate-500 text-sm mt-2">Fiabilité des témoignages, rapports d'incidents et sécurité.
-                    </p>
-                </div>
-
-                <!-- Card 3: Décision -->
-                <div onclick="app.openCategory('decision')"
-                    class="cursor-pointer bg-white p-6 rounded-xl shadow-sm border-t-4 border-green-500 card-hover group">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-3xl">🚀</span>
-                        <span class="text-green-500 group-hover:translate-x-1 transition">➔</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-800">Prise de Décision</h3>
-                    <p class="text-slate-500 text-sm mt-2">Investissements, achats d'outillage et projets coûteux.</p>
-                </div>
-
-                <!-- Card 4: Travail d'équipe -->
-                <div onclick="app.openCategory('team')"
-                    class="cursor-pointer bg-white p-6 rounded-xl shadow-sm border-t-4 border-red-500 card-hover group">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-3xl">👥</span>
-                        <span class="text-red-500 group-hover:translate-x-1 transition">➔</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-800">Travail d'Équipe</h3>
-                    <p class="text-slate-500 text-sm mt-2">Réunions, influence hiérarchique et consensus mou.</p>
-                </div>
-
-                <!-- Card 5: Communication -->
-                <div onclick="app.openCategory('communication')"
-                    class="cursor-pointer bg-white p-6 rounded-xl shadow-sm border-t-4 border-orange-500 card-hover group">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-3xl">📝</span>
-                        <span class="text-orange-500 group-hover:translate-x-1 transition">➔</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-800">Communication</h3>
-                    <p class="text-slate-500 text-sm mt-2">Reporting, formation des stagiaires et explications
-                        techniques.</p>
-                </div>
-
-                <!-- Conclusion Card -->
-                <div onclick="app.scrollToConclusion()"
-                    class="cursor-pointer bg-slate-800 p-6 rounded-xl shadow-sm border-t-4 border-slate-600 card-hover group">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-3xl">🏁</span>
-                        <span class="text-white group-hover:translate-x-1 transition">➔</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white">Le Test Final</h3>
-                    <p class="text-slate-400 text-sm mt-2">Avez-vous le biais... de ne pas avoir de biais ?</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Dynamic Category Viewer -->
-        <section id="category-viewer" class="hidden bg-white rounded-xl shadow-xl p-8 border border-slate-200">
-            <div class="flex justify-between items-start mb-8 border-b pb-4">
-                <div>
-                    <h2 id="cat-title" class="text-3xl font-bold text-slate-800"></h2>
-                    <p id="cat-desc" class="text-slate-600 mt-2"></p>
-                </div>
-                <button onclick="app.closeCategory()"
-                    class="text-slate-400 hover:text-slate-600 text-2xl font-bold">&times;</button>
-            </div>
-
-            <!-- Visualization & Content Choices:
+        --> <!-- Categories Dashboard --> <section id="dashboard" class="space-y-6"> <div class="text-center max-w-3xl mx-auto"> <h2 class="text-2xl font-bold text-slate-800">Les 5 Grandes Familles de Biais</h2> <p class="text-slate-600 mt-2"> Cliquez sur une catégorie pour découvrir les pièges mentaux qui affectent votre quotidien en
+                    maintenance, production et gestion. </p> </div> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> <!-- Card 1: Raisonnement --> <div onclick="app.openCategory('reasoning')"
+                    class="cursor-pointer bg-white p-6 rounded-xl shadow-sm border-t-4 border-blue-500 card-hover group"> <div class="flex items-center justify-between mb-4"> <span class="text-3xl"></span> <span class="text-blue-500 group-hover:translate-x-1 transition"></span> </div> <h3 class="text-xl font-bold text-slate-800">Raisonnement & MRP</h3> <p class="text-slate-500 text-sm mt-2">Résolution de problèmes, pannes machine et diagnostics
+                        techniques.</p> </div> <!-- Card 2: Mémoire --> <div onclick="app.openCategory('memory')"
+                    class="cursor-pointer bg-white p-6 rounded-xl shadow-sm border-t-4 border-purple-500 card-hover group"> <div class="flex items-center justify-between mb-4"> <span class="text-3xl"></span> <span class="text-purple-500 group-hover:translate-x-1 transition"></span> </div> <h3 class="text-xl font-bold text-slate-800">Mémoire & Souvenirs</h3> <p class="text-slate-500 text-sm mt-2">Fiabilité des témoignages, rapports d'incidents et sécurité. </p> </div> <!-- Card 3: Décision --> <div onclick="app.openCategory('decision')"
+                    class="cursor-pointer bg-white p-6 rounded-xl shadow-sm border-t-4 border-green-500 card-hover group"> <div class="flex items-center justify-between mb-4"> <span class="text-3xl"></span> <span class="text-green-500 group-hover:translate-x-1 transition"></span> </div> <h3 class="text-xl font-bold text-slate-800">Prise de Décision</h3> <p class="text-slate-500 text-sm mt-2">Investissements, achats d'outillage et projets coûteux.</p> </div> <!-- Card 4: Travail d'équipe --> <div onclick="app.openCategory('team')"
+                    class="cursor-pointer bg-white p-6 rounded-xl shadow-sm border-t-4 border-red-500 card-hover group"> <div class="flex items-center justify-between mb-4"> <span class="text-3xl"></span> <span class="text-red-500 group-hover:translate-x-1 transition"></span> </div> <h3 class="text-xl font-bold text-slate-800">Travail d'Équipe</h3> <p class="text-slate-500 text-sm mt-2">Réunions, influence hiérarchique et consensus mou.</p> </div> <!-- Card 5: Communication --> <div onclick="app.openCategory('communication')"
+                    class="cursor-pointer bg-white p-6 rounded-xl shadow-sm border-t-4 border-orange-500 card-hover group"> <div class="flex items-center justify-between mb-4"> <span class="text-3xl"></span> <span class="text-orange-500 group-hover:translate-x-1 transition"></span> </div> <h3 class="text-xl font-bold text-slate-800">Communication</h3> <p class="text-slate-500 text-sm mt-2">Reporting, formation des stagiaires et explications
+                        techniques.</p> </div> <!-- Conclusion Card --> <div onclick="app.scrollToConclusion()"
+                    class="cursor-pointer bg-slate-800 p-6 rounded-xl shadow-sm border-t-4 border-slate-600 card-hover group"> <div class="flex items-center justify-between mb-4"> <span class="text-3xl"></span> <span class="text-white group-hover:translate-x-1 transition"></span> </div> <h3 class="text-xl font-bold text-white">Le Test Final</h3> <p class="text-slate-400 text-sm mt-2">Avez-vous le biais... de ne pas avoir de biais ?</p> </div> </div> </section> <!-- Dynamic Category Viewer --> <section id="category-viewer" class="hidden bg-white rounded-xl shadow-xl p-8 border border-slate-200"> <div class="flex justify-between items-start mb-8 border-b pb-4"> <div> <h2 id="cat-title" class="text-3xl font-bold text-slate-800"></h2> <p id="cat-desc" class="text-slate-600 mt-2"></p> </div> <button onclick="app.closeCategory()"
+                    class="text-slate-400 hover:text-slate-600 text-2xl font-bold">&times;</button> </div> <!-- Visualization & Content Choices:
                  Each question from the report is turned into an interactive block.
                  Block 1: Context/Question.
                  Block 2: Interactive 'Thought Trigger' (Button).
                  Block 3: The Reveal (Bias Name, Definition, Industrial Application).
                  Library: Chart.js used in 'Framing Effect' to visualize 95% vs 5%.
-            -->
-            <div id="questions-container" class="space-y-8">
-                <!-- Questions injected via JS -->
-            </div>
-        </section>
-
-        <!-- Conclusion Section -->
-        <section id="conclusion" class="bg-slate-900 text-white rounded-xl shadow-xl p-8 md:p-12 text-center">
-            <h2 class="text-3xl font-bold mb-6">Conclusion : Le Plus Grand des Pièges</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">
-                Maintenant que nous avons vu ces mécanismes, une dernière question honnête :
-                <br><span class="text-amber-400 font-bold">"Qui pense être MOINS sujet aux biais que la moyenne des gens
-                    ?"</span>
-            </p>
-
-            <div class="flex justify-center gap-4 mb-8">
-                <button onclick="app.revealConclusion('yes')"
-                    class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-8 py-3 rounded transition">
-                    Moi, je suis plutôt objectif
-                </button>
-                <button onclick="app.revealConclusion('no')"
-                    class="bg-slate-700 hover:bg-slate-600 text-white font-bold px-8 py-3 rounded transition">
-                    Je suis probablement biaisé
-                </button>
-            </div>
-
-            <div id="blind-spot-reveal"
-                class="hidden max-w-4xl mx-auto bg-slate-800 p-6 rounded-lg border border-slate-700">
-                <h3 class="text-2xl font-bold text-amber-400 mb-2">Le Biais de l'Angle Mort</h3>
-                <p class="text-slate-300 mb-6">
-                    Nous voyons très bien les défauts de raisonnement des autres, mais nous sommes aveugles aux nôtres.
-                    C'est le biais ultime.
-                </p>
-                <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <div class="text-left space-y-4">
-                        <div class="bg-slate-700 p-4 rounded">
-                            <h4 class="font-bold text-white">Le Système 2 (Logique)</h4>
-                            <p class="text-sm text-slate-400">Doit être activé volontairement. C'est votre "pare-feu"
-                                contre les erreurs.</p>
-                        </div>
-                        <div class="bg-slate-700 p-4 rounded">
-                            <h4 class="font-bold text-white">Le Jeu de Cartes</h4>
-                            <p class="text-sm text-slate-400">Pour apprendre à détecter ces bugs, nous allons passer au
-                                jeu. Les noms seront masqués : à vous d'enquêter !</p>
-                        </div>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="blindSpotChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-slate-100 border-t border-slate-200 mt-12 py-8">
-        <div class="container mx-auto text-center text-slate-500">
-            <p class="mb-2">Support de Formation Interactif - Basé sur l'exposé "Introduction aux Biais Cognitifs"</p>
-            <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-        </div>
-    </footer>
-
-    <script>
-        // Data Store based on the Source Report
+            --> <div id="questions-container" class="space-y-8"> <!-- Questions injected via JS --> </div> </section> <!-- Conclusion Section --> <section id="conclusion" class="bg-slate-900 text-white rounded-xl shadow-xl p-8 md:p-12 text-center"> <h2 class="text-3xl font-bold mb-6">Conclusion : Le Plus Grand des Pièges</h2> <p class="text-xl mb-8 max-w-2xl mx-auto"> Maintenant que nous avons vu ces mécanismes, une dernière question honnête : <br><span class="text-amber-400 font-bold">"Qui pense être MOINS sujet aux biais que la moyenne des gens
+                    ?"</span> </p> <div class="flex justify-center gap-4 mb-8"> <button onclick="app.revealConclusion('yes')"
+                    class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-8 py-3 rounded transition"> Moi, je suis plutôt objectif </button> <button onclick="app.revealConclusion('no')"
+                    class="bg-slate-700 hover:bg-slate-600 text-white font-bold px-8 py-3 rounded transition"> Je suis probablement biaisé </button> </div> <div id="blind-spot-reveal"
+                class="hidden max-w-4xl mx-auto bg-slate-800 p-6 rounded-lg border border-slate-700"> <h3 class="text-2xl font-bold text-amber-400 mb-2">Le Biais de l'Angle Mort</h3> <p class="text-slate-300 mb-6"> Nous voyons très bien les défauts de raisonnement des autres, mais nous sommes aveugles aux nôtres.
+                    C'est le biais ultime. </p> <div class="grid md:grid-cols-2 gap-8 items-center"> <div class="text-left space-y-4"> <div class="bg-slate-700 p-4 rounded"> <h4 class="font-bold text-white">Le Système 2 (Logique)</h4> <p class="text-sm text-slate-400">Doit être activé volontairement. C'est votre "pare-feu"
+                                contre les erreurs.</p> </div> <div class="bg-slate-700 p-4 rounded"> <h4 class="font-bold text-white">Le Jeu de Cartes</h4> <p class="text-sm text-slate-400">Pour apprendre à détecter ces bugs, nous allons passer au
+                                jeu. Les noms seront masqués : à vous d'enquêter !</p> </div> </div> <div class="chart-container"> <canvas id="blindSpotChart"></canvas> </div> </div> </div> </section> </main> <!-- Footer --> <footer class="bg-slate-100 border-t border-slate-200 mt-12 py-8"> <div class="container mx-auto text-center text-slate-500"> <p class="mb-2">Support de Formation Interactif - Basé sur l'exposé "Introduction aux Biais Cognitifs"</p> <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. --> </div> </footer> <script> // Data Store based on the Source Report
         const data = {
             reasoning: {
                 title: "Raisonnement & Résolution de Problème",
@@ -436,21 +230,9 @@
                 feedback.classList.remove('hidden');
 
                 if (input === 0.1 || input === 0.10) {
-                    feedback.innerHTML = `
-                        <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded">
-                            <p class="font-bold">🛑 Piège du Système 1 !</p>
-                            <p>Si la balle coûte 0,10 € et la batte 1,00 € de plus (1,10 €), le total serait de 1,20 €.</p>
-                            <p class="mt-2">Votre cerveau a pris un raccourci intuitif.</p>
-                        </div>
-                    `;
+                    feedback.innerHTML = ` <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded"> <p class="font-bold"> Piège du Système 1 !</p> <p>Si la balle coûte 0,10 € et la batte 1,00 € de plus (1,10 €), le total serait de 1,20 €.</p> <p class="mt-2">Votre cerveau a pris un raccourci intuitif.</p> </div> `;
                 } else if (input === 0.05) {
-                    feedback.innerHTML = `
-                        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded">
-                            <p class="font-bold">✅ Bravo ! Système 2 activé.</p>
-                            <p>Balle = 0,05 €. Batte = 1,05 €. Total = 1,10 €.</p>
-                            <p class="mt-2">Vous avez résisté à l'intuition.</p>
-                        </div>
-                    `;
+                    feedback.innerHTML = ` <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded"> <p class="font-bold"> Bravo ! Système 2 activé.</p> <p>Balle = 0,05 €. Batte = 1,05 €. Total = 1,10 €.</p> <p class="mt-2">Vous avez résisté à l'intuition.</p> </div> `;
                 } else {
                     feedback.innerHTML = `<p class="text-slate-600">Essayez encore. (Indice : B + (B+1) = 1.10)</p>`;
                 }
@@ -512,32 +294,9 @@
                 };
 
                 // Build HTML
-                container.innerHTML = cat.questions.map((q, index) => `
-                    <div class="bg-slate-50 p-6 rounded-lg shadow-sm ${colors[catKey]}">
-                        <p class="text-lg font-semibold text-slate-800 mb-2">${q.q}</p>
-                        ${q.sub ? `<p class="text-slate-600 mb-4 italic">${q.sub}</p>` : ''}
+                container.innerHTML = cat.questions.map((q, index) => ` <div class="bg-slate-50 p-6 rounded-lg shadow-sm ${colors[catKey]}"> <p class="text-lg font-semibold text-slate-800 mb-2">${q.q}</p> ${q.sub ? `<p class="text-slate-600 mb-4 italic">${q.sub}</p>` : ''}
                         
-                        ${q.type === 'visual' ? `
-                             <div class="chart-container mb-4">
-                                <canvas id="framingChart"></canvas>
-                            </div>
-                            <div class="flex justify-center gap-4 mb-4">
-                                <button onclick="app.updateFramingChart(true)" class="bg-green-100 text-green-800 px-3 py-1 rounded text-sm hover:bg-green-200">Voir "Fiabilité"</button>
-                                <button onclick="app.updateFramingChart(false)" class="bg-red-100 text-red-800 px-3 py-1 rounded text-sm hover:bg-red-200">Voir "Pannes"</button>
-                            </div>
-                        ` : ''}
-
-                        <button id="btn-${index}" onclick="document.getElementById('reveal-${index}').classList.remove('hidden'); this.classList.add('hidden');" class="mt-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium px-4 py-2 rounded transition text-sm">
-                            🤔 Quel est le piège ? (Révéler)
-                        </button>
-                        
-                        <div id="reveal-${index}" class="hidden mt-4 bg-white p-4 rounded border border-slate-200 reveal-anim">
-                            <h4 class="font-bold text-lg text-amber-600 mb-1">${q.bias}</h4>
-                            <p class="text-slate-700 font-medium mb-2">${q.definition}</p>
-                            <p class="text-sm text-slate-500 border-t pt-2 mt-2"><span class="font-bold">Impact Industriel :</span> ${q.industrial}</p>
-                        </div>
-                    </div>
-                `).join('');
+                        ${q.type === 'visual' ? ` <div class="chart-container mb-4"> <canvas id="framingChart"></canvas> </div> <div class="flex justify-center gap-4 mb-4"> <button onclick="app.updateFramingChart(true)" class="bg-green-100 text-green-800 px-3 py-1 rounded text-sm hover:bg-green-200">Voir "Fiabilité"</button> <button onclick="app.updateFramingChart(false)" class="bg-red-100 text-red-800 px-3 py-1 rounded text-sm hover:bg-red-200">Voir "Pannes"</button> </div> ` : ''} <button id="btn-${index}" onclick="document.getElementById('reveal-${index}').classList.remove('hidden'); this.classList.add('hidden');" class="mt-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium px-4 py-2 rounded transition text-sm"> Quel est le piège ? (Révéler) </button> <div id="reveal-${index}" class="hidden mt-4 bg-white p-4 rounded border border-slate-200 reveal-anim"> <h4 class="font-bold text-lg text-amber-600 mb-1">${q.bias}</h4> <p class="text-slate-700 font-medium mb-2">${q.definition}</p> <p class="text-sm text-slate-500 border-t pt-2 mt-2"><span class="font-bold">Impact Industriel :</span> ${q.industrial}</p> </div> </div> `).join('');
 
                 // Show viewer
                 viewer.classList.remove('hidden');
@@ -632,8 +391,5 @@
         // Initialize App
         window.onload = function () {
             app.init();
-        };
-    </script>
-</body>
-
-</html>
+        }; </script>
+</body> </html>

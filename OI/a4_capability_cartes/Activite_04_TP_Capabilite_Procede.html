@@ -1,12 +1,5 @@
-﻿<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Activité 4 — TP Capabilité Procédé (Cp/Cpk/Pp/Ppk)</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+<!DOCTYPE html>
+<html lang="fr"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Activité 4 — TP Capabilité Procédé (Cp/Cpk/Pp/Ppk)</title> <style> @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
         * {
             margin: 0;
@@ -336,287 +329,34 @@
             font-size: 0.8em;
             color: #94a3b8;
             font-weight: 500;
-        }
-    </style>
-    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
-</head>
-
-<body>
-    <div class="container">
-        <div class="logo-header">
-            <img src="logo_uimm_placeholder.jpg" alt="Logo UIMM" />
-            <div>
-                <div class="structure-name">Pôle Formation UIMM - CVDL</div>
-                <div class="formateur">Formateur : S. Jaubert</div>
-            </div>
-        </div>
-        <div class="header">
-            <div class="badge">Jour 1 — Activité 4</div>
-            <h1>📈 TP Capabilité Procédé (Cp/Cpk/Pp/Ppk)</h1>
-            <p>Analysez des données de production sur le long terme, calculez les indices de capabilité procédé, et
-                prenez des décisions qualité.</p>
-            <div style="color: #94a3b8; margin-top: 10px;">⏱️ 75 min | 🛠️ Excel ou Ellistat | 📁 Fichier :
-                <code>SPC-10-dimension.csv</code>
-            </div>
-        </div>
-
-        <!-- RAPPEL THÉORIQUE -->
-        <div class="section">
-            <h2>📚 Rappel : Court terme vs Long terme</h2>
-            <table class="data-table">
-                <tr>
-                    <th></th>
-                    <th>Court terme (Cp/Cpk)</th>
-                    <th>Long terme (Pp/Ppk)</th>
-                </tr>
-                <tr>
-                    <td style="text-align:left; font-weight:600;">Ce qu'on mesure</td>
-                    <td>Variabilité intrinsèque</td>
-                    <td>Variabilité totale réelle</td>
-                </tr>
-                <tr>
-                    <td style="text-align:left; font-weight:600;">Écart-type utilisé</td>
-                    <td>σ̂ estimé (via R̄/d₂)</td>
-                    <td>σ global (écart-type classique)</td>
-                </tr>
-                <tr>
-                    <td style="text-align:left; font-weight:600;">Période couverte</td>
-                    <td>Quelques heures/jours</td>
-                    <td>Semaines/mois</td>
-                </tr>
-                <tr>
-                    <td style="text-align:left; font-weight:600;">Sources de variation</td>
-                    <td>Machine seule</td>
-                    <td>Machine + opérateur + matière + environnement</td>
-                </tr>
-                <tr>
-                    <td style="text-align:left; font-weight:600;">Question posée</td>
-                    <td>"Le procédé peut-il être capable ?"</td>
-                    <td>"Le procédé est-il réellement capable ?"</td>
-                </tr>
-            </table>
-        </div>
-
-        <!-- FORMULES -->
-        <div class="section">
-            <h2>📐 Formules</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                <div class="formula-box">
-                    <div class="formula-desc">Potentiel court terme</div>
-                    <div class="formula">$$C_p = \frac{IT}{6\hat{\sigma}}$$</div>
-                </div>
-                <div class="formula-box">
-                    <div class="formula-desc">Centrage court terme</div>
-                    <div class="formula">$$C_{pk} = \min(C_{pu},\; C_{pl})$$</div>
-                </div>
-                <div class="formula-box">
-                    <div class="formula-desc">Potentiel long terme</div>
-                    <div class="formula">$$P_p = \frac{IT}{6\sigma}$$</div>
-                </div>
-                <div class="formula-box">
-                    <div class="formula-desc">Centrage long terme</div>
-                    <div class="formula">$$P_{pk} = \min(P_{pu},\; P_{pl})$$</div>
-                </div>
-            </div>
-            <div class="highlight" style="margin-top: 15px;">
-                <strong>Où :</strong><br>
-                \(IT = LSS - LSI\) (Intervalle de Tolérance)<br>
-                \(C_{pu} = \frac{LSS - \bar{x}}{3\sigma}\) &nbsp;|&nbsp; \(C_{pl} = \frac{\bar{x} - LSI}{3\sigma}\)<br>
-                \(\hat{\sigma} = \bar{R} / d_2\) (écart-type estimé depuis les étendues des sous-groupes)<br>
-                \(\sigma\) = écart-type global de toutes les mesures
-            </div>
-        </div>
-
-        <!-- TP PRINCIPAL -->
-        <div class="section">
-            <h2>🧪 Partie 1 — Analyse des données dimensionnelles (40 min)</h2>
-            <p>Le fichier <code>SPC-10-dimension.csv</code> contient <strong>27 sous-groupes de 5
+        } </style> <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+</head> <body> <div class="container"> <div class="logo-header"> <img src="logo_uimm_placeholder.jpg" alt="Logo UIMM" /> <div> <div class="structure-name">Pôle Formation UIMM - CVDL</div> <div class="formateur">Formateur : S. Jaubert</div> </div> </div> <div class="header"> <div class="badge">Jour 1 — Activité 4</div> <h1> TP Capabilité Procédé (Cp/Cpk/Pp/Ppk)</h1> <p>Analysez des données de production sur le long terme, calculez les indices de capabilité procédé, et
+                prenez des décisions qualité.</p> <div style="color: #94a3b8; margin-top: 10px;"> 75 min |  Excel ou Ellistat |  Fichier : <code>SPC-10-dimension.csv</code> </div> </div> <!-- RAPPEL THÉORIQUE --> <div class="section"> <h2> Rappel : Court terme vs Long terme</h2> <table class="data-table"> <tr> <th></th> <th>Court terme (Cp/Cpk)</th> <th>Long terme (Pp/Ppk)</th> </tr> <tr> <td style="text-align:left; font-weight:600;">Ce qu'on mesure</td> <td>Variabilité intrinsèque</td> <td>Variabilité totale réelle</td> </tr> <tr> <td style="text-align:left; font-weight:600;">Écart-type utilisé</td> <td>σ̂ estimé (via R̄/d₂)</td> <td>σ global (écart-type classique)</td> </tr> <tr> <td style="text-align:left; font-weight:600;">Période couverte</td> <td>Quelques heures/jours</td> <td>Semaines/mois</td> </tr> <tr> <td style="text-align:left; font-weight:600;">Sources de variation</td> <td>Machine seule</td> <td>Machine + opérateur + matière + environnement</td> </tr> <tr> <td style="text-align:left; font-weight:600;">Question posée</td> <td>"Le procédé peut-il être capable ?"</td> <td>"Le procédé est-il réellement capable ?"</td> </tr> </table> </div> <!-- FORMULES --> <div class="section"> <h2> Formules</h2> <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;"> <div class="formula-box"> <div class="formula-desc">Potentiel court terme</div> <div class="formula">$$C_p = \frac{IT}{6\hat{\sigma}}$$</div> </div> <div class="formula-box"> <div class="formula-desc">Centrage court terme</div> <div class="formula">$$C_{pk} = \min(C_{pu},\; C_{pl})$$</div> </div> <div class="formula-box"> <div class="formula-desc">Potentiel long terme</div> <div class="formula">$$P_p = \frac{IT}{6\sigma}$$</div> </div> <div class="formula-box"> <div class="formula-desc">Centrage long terme</div> <div class="formula">$$P_{pk} = \min(P_{pu},\; P_{pl})$$</div> </div> </div> <div class="highlight" style="margin-top: 15px;"> <strong>Où :</strong><br> \(IT = LSS - LSI\) (Intervalle de Tolérance)<br> \(C_{pu} = \frac{LSS - \bar{x}}{3\sigma}\) &nbsp;|&nbsp; \(C_{pl} = \frac{\bar{x} - LSI}{3\sigma}\)<br> \(\hat{\sigma} = \bar{R} / d_2\) (écart-type estimé depuis les étendues des sous-groupes)<br> \(\sigma\) = écart-type global de toutes les mesures </div> </div> <!-- TP PRINCIPAL --> <div class="section"> <h2> Partie 1 — Analyse des données dimensionnelles (40 min)</h2> <p>Le fichier <code>SPC-10-dimension.csv</code> contient <strong>27 sous-groupes de 5
                     mesures</strong> d'une
-                dimension critique (en µm). Spécification : <strong>LSI = 2000 µm</strong> &nbsp;|&nbsp;
-                <strong>LSS =
-                    2800 µm</strong>
-            </p>
-
-            <h3>Étape 1 : Calculer les statistiques par sous-groupe</h3>
-            <div class="tool-tabs">
-                <div class="tool-tab active" onclick="switchTab('excel-cp', this)">📗 Excel</div>
-                <div class="tool-tab" onclick="switchTab('ellistat-cp', this)">📘 Ellistat</div>
-            </div>
-            <div class="tool-content active" id="excel-cp">
-                <p>Pour chaque sous-groupe (lignes de 5 mesures) :</p>
-                <table class="data-table">
-                    <tr>
-                        <th>Calcul</th>
-                        <th>Formule (ex: sous-groupe 1, cellules B2:B6)</th>
-                    </tr>
-                    <tr>
-                        <td>Moyenne du groupe (X̄ᵢ)</td>
-                        <td style="text-align:left"><code>=MOYENNE(B2:B6)</code></td>
-                    </tr>
-                    <tr>
-                        <td>Étendue du groupe (Rᵢ)</td>
-                        <td style="text-align:left"><code>=MAX(B2:B6)-MIN(B2:B6)</code></td>
-                    </tr>
-                </table>
-                <p style="margin-top:15px;">Puis les moyennes globales :</p>
-                <table class="data-table">
-                    <tr>
-                        <th>Calcul</th>
-                        <th>Formule</th>
-                    </tr>
-                    <tr>
-                        <td>Moyenne générale (X̿)</td>
-                        <td style="text-align:left"><code>=MOYENNE(toutes les X̄ᵢ)</code></td>
-                    </tr>
-                    <tr>
-                        <td>Étendue moyenne (R̄)</td>
-                        <td style="text-align:left"><code>=MOYENNE(toutes les Rᵢ)</code></td>
-                    </tr>
-                    <tr>
-                        <td>σ̂ (court terme)</td>
-                        <td style="text-align:left"><code>=R̄ / 2,326</code> (d₂ pour n=5)</td>
-                    </tr>
-                    <tr>
-                        <td>σ global (long terme)</td>
-                        <td style="text-align:left"><code>=ECARTYPE.STANDARD(toutes les mesures)</code></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="tool-content" id="ellistat-cp">
-                <ol>
-                    <li>Importer <code>SPC-10-dimension.csv</code></li>
-                    <li>Configurer : variable = X, sous-groupes = colonne "groupe", taille = 5</li>
-                    <li>Renseigner LSI = 2000, LSS = 2800</li>
-                    <li>Aller dans <strong>Capabilité → Étude procédé</strong></li>
-                    <li>Lire directement Cp, Cpk, Pp, Ppk</li>
-                </ol>
-            </div>
-
-            <h3>Étape 2 : Calculer les 4 indices</h3>
-            <table class="data-table">
-                <tr>
-                    <th>Indice</th>
-                    <th>Formule Excel</th>
-                    <th>Votre résultat</th>
-                </tr>
-                <tr>
-                    <td>Cp</td>
-                    <td style="text-align:left"><code>=(2800-2000)/(6*σ̂)</code></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Cpk</td>
-                    <td style="text-align:left"><code>=MIN((2800-X̿)/(3*σ̂); (X̿-2000)/(3*σ̂))</code></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Pp</td>
-                    <td style="text-align:left"><code>=(2800-2000)/(6*σ_global)</code></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Ppk</td>
-                    <td style="text-align:left">
-                        <code>=MIN((2800-X̿)/(3*σ_global); (X̿-2000)/(3*σ_global))</code>
-                    </td>
-                    <td></td>
-                </tr>
-            </table>
-
-            <div class="question-box">
-                <h4>❓ Question 1 — Résultats</h4>
-                <p>Notez vos 4 indices. Que constatez-vous en comparant Cp vs Pp et Cpk vs Ppk ?</p>
-                <textarea placeholder="Cp = ...  Cpk = ...  Pp = ...  Ppk = ..."></textarea>
-            </div>
-        </div>
-
-        <!-- INTERPRÉTATION -->
-        <div class="section">
-            <h2>🔍 Partie 2 — Interprétation et diagnostic (20 min)</h2>
-
-            <h3>Arbre de décision</h3>
-            <div class="decision-tree">
-                <div class="decision-node decision-q">📌 Cp ≥ 1,33 ?</div>
-                <div class="decision-node decision-yes">✅ OUI → La dispersion est acceptable. Le procédé a le
+                dimension critique (en µm). Spécification : <strong>LSI = 2000 µm</strong> &nbsp;|&nbsp; <strong>LSS =
+                    2800 µm</strong> </p> <h3>Étape 1 : Calculer les statistiques par sous-groupe</h3> <div class="tool-tabs"> <div class="tool-tab active" onclick="switchTab('excel-cp', this)"> Excel</div> <div class="tool-tab" onclick="switchTab('ellistat-cp', this)"> Ellistat</div> </div> <div class="tool-content active" id="excel-cp"> <p>Pour chaque sous-groupe (lignes de 5 mesures) :</p> <table class="data-table"> <tr> <th>Calcul</th> <th>Formule (ex: sous-groupe 1, cellules B2:B6)</th> </tr> <tr> <td>Moyenne du groupe (X̄ᵢ)</td> <td style="text-align:left"><code>=MOYENNE(B2:B6)</code></td> </tr> <tr> <td>Étendue du groupe (Rᵢ)</td> <td style="text-align:left"><code>=MAX(B2:B6)-MIN(B2:B6)</code></td> </tr> </table> <p style="margin-top:15px;">Puis les moyennes globales :</p> <table class="data-table"> <tr> <th>Calcul</th> <th>Formule</th> </tr> <tr> <td>Moyenne générale (X̿)</td> <td style="text-align:left"><code>=MOYENNE(toutes les X̄ᵢ)</code></td> </tr> <tr> <td>Étendue moyenne (R̄)</td> <td style="text-align:left"><code>=MOYENNE(toutes les Rᵢ)</code></td> </tr> <tr> <td>σ̂ (court terme)</td> <td style="text-align:left"><code>=R̄ / 2,326</code> (d₂ pour n=5)</td> </tr> <tr> <td>σ global (long terme)</td> <td style="text-align:left"><code>=ECARTYPE.STANDARD(toutes les mesures)</code></td> </tr> </table> </div> <div class="tool-content" id="ellistat-cp"> <ol> <li>Importer <code>SPC-10-dimension.csv</code></li> <li>Configurer : variable = X, sous-groupes = colonne "groupe", taille = 5</li> <li>Renseigner LSI = 2000, LSS = 2800</li> <li>Aller dans <strong>Capabilité → Étude procédé</strong></li> <li>Lire directement Cp, Cpk, Pp, Ppk</li> </ol> </div> <h3>Étape 2 : Calculer les 4 indices</h3> <table class="data-table"> <tr> <th>Indice</th> <th>Formule Excel</th> <th>Votre résultat</th> </tr> <tr> <td>Cp</td> <td style="text-align:left"><code>=(2800-2000)/(6*σ̂)</code></td> <td></td> </tr> <tr> <td>Cpk</td> <td style="text-align:left"><code>=MIN((2800-X̿)/(3*σ̂); (X̿-2000)/(3*σ̂))</code></td> <td></td> </tr> <tr> <td>Pp</td> <td style="text-align:left"><code>=(2800-2000)/(6*σ_global)</code></td> <td></td> </tr> <tr> <td>Ppk</td> <td style="text-align:left"> <code>=MIN((2800-X̿)/(3*σ_global); (X̿-2000)/(3*σ_global))</code> </td> <td></td> </tr> </table> <div class="question-box"> <h4> Question 1 — Résultats</h4> <p>Notez vos 4 indices. Que constatez-vous en comparant Cp vs Pp et Cpk vs Ppk ?</p> <textarea placeholder="Cp = ...  Cpk = ...  Pp = ...  Ppk = ..."></textarea> </div> </div> <!-- INTERPRÉTATION --> <div class="section"> <h2> Partie 2 — Interprétation et diagnostic (20 min)</h2> <h3>Arbre de décision</h3> <div class="decision-tree"> <div class="decision-node decision-q"> Cp ≥ 1,33 ?</div> <div class="decision-node decision-yes"> OUI → La dispersion est acceptable. Le procédé a le
                     POTENTIEL
-                    d'être capable.</div>
-                <div class="decision-node decision-no">❌ NON → La dispersion est trop grande. Il faut réduire la
-                    variabilité (améliorer la machine, les outils, la matière…)</div>
-
-                <div class="decision-node decision-q">📌 Cpk ≥ 1,33 ?</div>
-                <div class="decision-node decision-yes">✅ OUI → Le procédé est capable ET bien centré à court
-                    terme.
-                </div>
-                <div class="decision-node decision-no">❌ NON (mais Cp OK) → Le procédé est décentré. Il faut
+                    d'être capable.</div> <div class="decision-node decision-no"> NON → La dispersion est trop grande. Il faut réduire la
+                    variabilité (améliorer la machine, les outils, la matière…)</div> <div class="decision-node decision-q"> Cpk ≥ 1,33 ?</div> <div class="decision-node decision-yes"> OUI → Le procédé est capable ET bien centré à court
+                    terme. </div> <div class="decision-node decision-no"> NON (mais Cp OK) → Le procédé est décentré. Il faut
                     recentrer
-                    (régler la machine sur la cible).</div>
-
-                <div class="decision-node decision-q">📌 Pp ≈ Cp ?</div>
-                <div class="decision-node decision-yes">✅ OUI → Le procédé est stable dans le temps. Pas de
+                    (régler la machine sur la cible).</div> <div class="decision-node decision-q"> Pp ≈ Cp ?</div> <div class="decision-node decision-yes"> OUI → Le procédé est stable dans le temps. Pas de
                     sources de
-                    variation supplémentaires.</div>
-                <div class="decision-node decision-no">❌ NON (Pp << Cp) → Le procédé dérive dans le temps ! Des causes
-                        spéciales agissent sur le long terme.</div>
-
-                        <div class="decision-node decision-q">📌 Ppk ≥ 1,33 ?</div>
-                        <div class="decision-node decision-yes">✅ OUI → 🏆 Le procédé est réellement capable en
-                            production. Validation OK.</div>
-                        <div class="decision-node decision-no">❌ NON → Le client reçoit potentiellement des
+                    variation supplémentaires.</div> <div class="decision-node decision-no"> NON (Pp << Cp) → Le procédé dérive dans le temps ! Des causes
+                        spéciales agissent sur le long terme.</div> <div class="decision-node decision-q"> Ppk ≥ 1,33 ?</div> <div class="decision-node decision-yes"> OUI →  Le procédé est réellement capable en
+                            production. Validation OK.</div> <div class="decision-node decision-no"> NON → Le client reçoit potentiellement des
                             pièces non
-                            conformes. Action requise.</div>
-                </div>
-
-                <div class="question-box">
-                    <h4>❓ Question 2 — Diagnostic</h4>
-                    <p>En utilisant l'arbre de décision ci-dessus, quel est le diagnostic pour vos données ?
+                            conformes. Action requise.</div> </div> <div class="question-box"> <h4> Question 2 — Diagnostic</h4> <p>En utilisant l'arbre de décision ci-dessus, quel est le diagnostic pour vos données ?
                         Quelle(s)
-                        action(s) recommandez-vous ?</p>
-                    <textarea placeholder="Diagnostic et actions recommandées..."></textarea>
-                </div>
-            </div>
-
-            <!-- EXERCICE COMPLÉMENTAIRE -->
-            <div class="section">
-                <h2>🎯 Partie 3 — Exercice complémentaire : Remplissage (15 min)</h2>
-                <p>Ouvrez le fichier <code>SPC-9-remplissage.csv</code>. Il contient <strong>16 sous-groupes de
+                        action(s) recommandez-vous ?</p> <textarea placeholder="Diagnostic et actions recommandées..."></textarea> </div> </div> <!-- EXERCICE COMPLÉMENTAIRE --> <div class="section"> <h2> Partie 3 — Exercice complémentaire : Remplissage (15 min)</h2> <p>Ouvrez le fichier <code>SPC-9-remplissage.csv</code>. Il contient <strong>16 sous-groupes de
                         10
                         mesures</strong> d'écart de remplissage (unité : mL). Spécification : <strong>LSI = −3
-                        mL</strong> &nbsp;|&nbsp; <strong>LSS = +3 mL</strong></p>
-
-                <div class="question-box">
-                    <h4>❓ Question 3</h4>
-                    <p>Calculez Cp, Cpk, Pp, Ppk pour ces données de remplissage. Le procédé de remplissage
+                        mL</strong> &nbsp;|&nbsp; <strong>LSS = +3 mL</strong></p> <div class="question-box"> <h4> Question 3</h4> <p>Calculez Cp, Cpk, Pp, Ppk pour ces données de remplissage. Le procédé de remplissage
                         est-il plus
-                        ou moins capable que le procédé dimensionnel ?</p>
-                    <textarea placeholder="Indices de remplissage et comparaison..."></textarea>
-                </div>
-            </div>
-
-            <!-- SYNTHÈSE -->
-            <div class="section">
-                <h2>📝 Points clés à retenir</h2>
-                <div class="success">
-                    <ul style="margin-left: 15px;">
-                        <li><strong>Cp / Pp</strong> = potentiel → "La tolérance est-elle assez large par
+                        ou moins capable que le procédé dimensionnel ?</p> <textarea placeholder="Indices de remplissage et comparaison..."></textarea> </div> </div> <!-- SYNTHÈSE --> <div class="section"> <h2> Points clés à retenir</h2> <div class="success"> <ul style="margin-left: 15px;"> <li><strong>Cp / Pp</strong> = potentiel → "La tolérance est-elle assez large par
                             rapport à ma
-                            dispersion ?"</li>
-                        <li><strong>Cpk / Ppk</strong> = réel → "En plus du potentiel, suis-je bien centré ?"
-                        </li>
-                        <li><strong>Cp = Cpk</strong> → parfaitement centré</li>
-                        <li><strong>Cp > Cpk</strong> → problème de centrage (action simple : rerégler)</li>
-                        <li><strong>Cp >> Pp</strong> → instabilité long terme (causes spéciales à trouver)</li>
-                        <li>Seuil industriel courant : <strong>≥ 1,33</strong> (série) ou <strong>≥
-                                1,67</strong>
-                            (qualification)</li>
-                    </ul>
-                </div>
-            </div>
-
-            <a href="index.html" class="back-link">← Retour aux ressources</a>
-        </div>
-
-        <script>
-            function switchTab(id, tabEl) {
+                            dispersion ?"</li> <li><strong>Cpk / Ppk</strong> = réel → "En plus du potentiel, suis-je bien centré ?" </li> <li><strong>Cp = Cpk</strong> → parfaitement centré</li> <li><strong>Cp > Cpk</strong> → problème de centrage (action simple : rerégler)</li> <li><strong>Cp >> Pp</strong> → instabilité long terme (causes spéciales à trouver)</li> <li>Seuil industriel courant : <strong>≥ 1,33</strong> (série) ou <strong>≥
+                                1,67</strong> (qualification)</li> </ul> </div> </div> <a href="index.html" class="back-link">← Retour aux ressources</a> </div> <script> function switchTab(id, tabEl) {
                 const parent = tabEl.parentElement;
                 parent.querySelectorAll('.tool-tab').forEach(t => t.classList.remove('active'));
                 tabEl.classList.add('active');
@@ -626,8 +366,5 @@
                     sibling = sibling.nextElementSibling;
                 }
                 document.getElementById(id).classList.add('active');
-            }
-        </script>
-</body>
-
-</html>
+            } </script>
+</body> </html>

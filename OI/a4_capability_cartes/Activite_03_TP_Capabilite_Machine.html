@@ -1,12 +1,5 @@
-﻿<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Activité 3 — TP Capabilité Machine (Cm/Cmk)</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+<!DOCTYPE html>
+<html lang="fr"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Activité 3 — TP Capabilité Machine (Cm/Cmk)</title> <style> @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
         * {
             margin: 0;
@@ -308,211 +301,26 @@
             font-size: 0.8em;
             color: #94a3b8;
             font-weight: 500;
-        }
-    </style>
-    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
-</head>
-
-<body>
-    <div class="container">
-        <div class="logo-header">
-            <img src="logo_uimm_placeholder.jpg" alt="Logo UIMM" />
-            <div>
-                <div class="structure-name">Pôle Formation UIMM - CVDL</div>
-                <div class="formateur">Formateur : S. Jaubert</div>
-            </div>
-        </div>
-        <div class="header">
-            <div class="badge">Jour 1 — Activité 3</div>
-            <h1>🔬 TP Capabilité Machine (Cm / Cmk)</h1>
-            <p>Mesurez des pièces butées réelles, calculez la capabilité machine, et décidez si la machine est apte à
-                produire dans les tolérances.</p>
-            <div style="color: #94a3b8; margin-top: 10px;">⏱️ 90 min | 🛠️ Pied à coulisse + Excel/Ellistat | 📁
-                Référence : <code>TP Controle statistique Butee diametre.pdf</code></div>
-        </div>
-
-        <!-- CONTEXTE -->
-        <div class="section">
-            <h2>🏭 Contexte</h2>
-            <p>Avant de lancer une production, il faut <strong>qualifier la machine</strong> : est-elle capable de
-                produire dans les tolérances demandées ?</p>
-            <p style="margin-top:10px;">C'est l'<strong>étude de capabilité machine</strong> (Cm/Cmk). Elle se fait sur
+        } </style> <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+</head> <body> <div class="container"> <div class="logo-header"> <img src="logo_uimm_placeholder.jpg" alt="Logo UIMM" /> <div> <div class="structure-name">Pôle Formation UIMM - CVDL</div> <div class="formateur">Formateur : S. Jaubert</div> </div> </div> <div class="header"> <div class="badge">Jour 1 — Activité 3</div> <h1> TP Capabilité Machine (Cm / Cmk)</h1> <p>Mesurez des pièces butées réelles, calculez la capabilité machine, et décidez si la machine est apte à
+                produire dans les tolérances.</p> <div style="color: #94a3b8; margin-top: 10px;"> 90 min |  Pied à coulisse + Excel/Ellistat | 
+                Référence : <code>TP Controle statistique Butee diametre.pdf</code></div> </div> <!-- CONTEXTE --> <div class="section"> <h2> Contexte</h2> <p>Avant de lancer une production, il faut <strong>qualifier la machine</strong> : est-elle capable de
+                produire dans les tolérances demandées ?</p> <p style="margin-top:10px;">C'est l'<strong>étude de capabilité machine</strong> (Cm/Cmk). Elle se fait sur
                 des pièces produites dans des conditions <strong>optimales et stables</strong> (même opérateur, même
-                matière, court intervalle de temps).</p>
-            <div class="highlight">
-                <strong>📏 Pièce étudiée :</strong> Butée — Cote : diamètre<br>
-                <strong>📐 Spécification :</strong> Consultez le TP Butées (PDF) pour les limites<br>
-                <strong>🔢 Nombre de pièces :</strong> 50 pièces consécutives minimum
-            </div>
-        </div>
-
-        <!-- PROTOCOLE DE MESURE -->
-        <div class="section">
-            <h2>📋 Partie 1 — Protocole de mesure (30 min)</h2>
-            <ol>
-                <li><span class="step-number">1</span> <strong>Vérifier l'instrument</strong> : Pied à coulisse étalonné
-                    ? Résolution suffisante (0,01 mm) ?</li>
-                <li><span class="step-number">2</span> <strong>Prélever 50 pièces</strong> consécutives de la production
-                </li>
-                <li><span class="step-number">3</span> <strong>Mesurer le diamètre</strong> de chaque pièce, dans le
-                    même sens, avec la même pression</li>
-                <li><span class="step-number">4</span> <strong>Noter les mesures</strong> dans l'ordre de production (ne
-                    pas trier !)</li>
-                <li><span class="step-number">5</span> <strong>Saisir dans Excel</strong> : une colonne "N° pièce", une
-                    colonne "Diamètre"</li>
-            </ol>
-            <div class="warning">
-                <strong>⚠️ Attention :</strong> Ne pas mélanger les pièces ! L'ordre de production est important pour
-                détecter des tendances ou des dérives.
-            </div>
-        </div>
-
-        <!-- FORMULES -->
-        <div class="section">
-            <h2>📐 Partie 2 — Rappel des formules Cm et Cmk</h2>
-
-            <div class="formula-box">
-                <p style="color: #94a3b8; font-size: 0.9em; margin-bottom: 5px;">Capabilité machine (potentielle)</p>
-                <div class="formula">$$C_m = \frac{LSS - LSI}{6\sigma}$$</div>
-                <div class="formula-desc">Compare la tolérance à la dispersion naturelle de la machine</div>
-            </div>
-
-            <div class="formula-box">
-                <p style="color: #94a3b8; font-size: 0.9em; margin-bottom: 5px;">Capabilité machine (centrée)</p>
-                <div class="formula">$$C_{mk} = \min\left(\frac{LSS - \bar{x}}{3\sigma},\; \frac{\bar{x} -
-                    LSI}{3\sigma}\right)$$</div>
-                <div class="formula-desc">Prend en compte le centrage de la machine par rapport aux limites</div>
-            </div>
-
-            <h3>Seuils de décision</h3>
-            <table class="data-table threshold-table">
-                <tr>
-                    <th>Valeur</th>
-                    <th>Interprétation</th>
-                    <th>Décision</th>
-                </tr>
-                <tr>
-                    <td>Cm ou Cmk < 1,00</td>
-                    <td style="color:#f87171;">Machine non capable</td>
-                    <td>❌ Stopper — action corrective obligatoire</td>
-                </tr>
-                <tr>
-                    <td>1,00 ≤ Cm/Cmk < 1,33</td>
-                    <td style="color:#fbbf24;">Limite de capabilité</td>
-                    <td>⚠️ Surveillance renforcée, amélioration nécessaire</td>
-                </tr>
-                <tr>
-                    <td>1,33 ≤ Cm/Cmk < 1,67</td>
-                    <td style="color:#4ade80;">Machine capable</td>
-                    <td>✅ OK pour production série</td>
-                </tr>
-                <tr>
-                    <td>Cm/Cmk ≥ 1,67</td>
-                    <td style="color:#22d3ee;">Machine très capable</td>
-                    <td>🏆 Qualification validée</td>
-                </tr>
-            </table>
-
-            <div class="success">
-                <strong>💡 Règle pratique :</strong> On exige souvent <strong>Cm ≥ 2,00 et Cmk ≥ 1,67</strong> lors
+                matière, court intervalle de temps).</p> <div class="highlight"> <strong> Pièce étudiée :</strong> Butée — Cote : diamètre<br> <strong> Spécification :</strong> Consultez le TP Butées (PDF) pour les limites<br> <strong> Nombre de pièces :</strong> 50 pièces consécutives minimum </div> </div> <!-- PROTOCOLE DE MESURE --> <div class="section"> <h2> Partie 1 — Protocole de mesure (30 min)</h2> <ol> <li><span class="step-number">1</span> <strong>Vérifier l'instrument</strong> : Pied à coulisse étalonné
+                    ? Résolution suffisante (0,01 mm) ?</li> <li><span class="step-number">2</span> <strong>Prélever 50 pièces</strong> consécutives de la production </li> <li><span class="step-number">3</span> <strong>Mesurer le diamètre</strong> de chaque pièce, dans le
+                    même sens, avec la même pression</li> <li><span class="step-number">4</span> <strong>Noter les mesures</strong> dans l'ordre de production (ne
+                    pas trier !)</li> <li><span class="step-number">5</span> <strong>Saisir dans Excel</strong> : une colonne "N° pièce", une
+                    colonne "Diamètre"</li> </ol> <div class="warning"> <strong> Attention :</strong> Ne pas mélanger les pièces ! L'ordre de production est important pour
+                détecter des tendances ou des dérives. </div> </div> <!-- FORMULES --> <div class="section"> <h2> Partie 2 — Rappel des formules Cm et Cmk</h2> <div class="formula-box"> <p style="color: #94a3b8; font-size: 0.9em; margin-bottom: 5px;">Capabilité machine (potentielle)</p> <div class="formula">$$C_m = \frac{LSS - LSI}{6\sigma}$$</div> <div class="formula-desc">Compare la tolérance à la dispersion naturelle de la machine</div> </div> <div class="formula-box"> <p style="color: #94a3b8; font-size: 0.9em; margin-bottom: 5px;">Capabilité machine (centrée)</p> <div class="formula">$$C_{mk} = \min\left(\frac{LSS - \bar{x}}{3\sigma},\; \frac{\bar{x} -
+                    LSI}{3\sigma}\right)$$</div> <div class="formula-desc">Prend en compte le centrage de la machine par rapport aux limites</div> </div> <h3>Seuils de décision</h3> <table class="data-table threshold-table"> <tr> <th>Valeur</th> <th>Interprétation</th> <th>Décision</th> </tr> <tr> <td>Cm ou Cmk < 1,00</td> <td style="color:#f87171;">Machine non capable</td> <td> Stopper — action corrective obligatoire</td> </tr> <tr> <td>1,00 ≤ Cm/Cmk < 1,33</td> <td style="color:#fbbf24;">Limite de capabilité</td> <td> Surveillance renforcée, amélioration nécessaire</td> </tr> <tr> <td>1,33 ≤ Cm/Cmk < 1,67</td> <td style="color:#4ade80;">Machine capable</td> <td> OK pour production série</td> </tr> <tr> <td>Cm/Cmk ≥ 1,67</td> <td style="color:#22d3ee;">Machine très capable</td> <td> Qualification validée</td> </tr> </table> <div class="success"> <strong> Règle pratique :</strong> On exige souvent <strong>Cm ≥ 2,00 et Cmk ≥ 1,67</strong> lors
                 d'une qualification machine initiale (MSA), car la capabilité va se dégrader en conditions réelles de
-                production.
-            </div>
-        </div>
-
-        <!-- CALCUL -->
-        <div class="section">
-            <h2>🧮 Partie 3 — Calcul sur vos données (30 min)</h2>
-
-            <div class="tool-tabs">
-                <div class="tool-tab active" onclick="switchTab('excel-cm', this)">📗 Excel</div>
-                <div class="tool-tab" onclick="switchTab('ellistat-cm', this)">📘 Ellistat</div>
-            </div>
-            <div class="tool-content active" id="excel-cm">
-                <p><strong>Hypothèse :</strong> Vos mesures sont en colonne B (B2:B51), LSI en cellule E1, LSS en
-                    cellule E2</p>
-                <table class="data-table">
-                    <tr>
-                        <th>Calcul</th>
-                        <th>Formule Excel</th>
-                    </tr>
-                    <tr>
-                        <td>Moyenne (x̄)</td>
-                        <td style="text-align:left"><code>=MOYENNE(B2:B51)</code></td>
-                    </tr>
-                    <tr>
-                        <td>Écart-type (σ)</td>
-                        <td style="text-align:left"><code>=ECARTYPE.STANDARD(B2:B51)</code></td>
-                    </tr>
-                    <tr>
-                        <td>Cm</td>
-                        <td style="text-align:left"><code>=(E2-E1)/(6*ECARTYPE.STANDARD(B2:B51))</code></td>
-                    </tr>
-                    <tr>
-                        <td>Cmk supérieur</td>
-                        <td style="text-align:left"><code>=(E2-MOYENNE(B2:B51))/(3*ECARTYPE.STANDARD(B2:B51))</code>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Cmk inférieur</td>
-                        <td style="text-align:left"><code>=(MOYENNE(B2:B51)-E1)/(3*ECARTYPE.STANDARD(B2:B51))</code>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Cmk</td>
-                        <td style="text-align:left"><code>=MIN(Cmk_sup; Cmk_inf)</code></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="tool-content" id="ellistat-cm">
-                <ol>
-                    <li>Importer vos données de mesure</li>
-                    <li>Aller dans <strong>Capabilité → Étude machine</strong></li>
-                    <li>Renseigner LSI et LSS</li>
-                    <li>Ellistat calcule automatiquement Cm, Cmk et affiche l'histogramme avec les limites</li>
-                </ol>
-            </div>
-
-            <div class="question-box">
-                <h4>❓ Question 1 — Résultats</h4>
-                <p>Notez vos résultats : Cm = _____ et Cmk = _____</p>
-                <textarea placeholder="Cm = ...    Cmk = ..."></textarea>
-            </div>
-
-            <div class="question-box">
-                <h4>❓ Question 2 — Interprétation</h4>
-                <p>La machine est-elle capable ? Si Cm > Cmk, que cela signifie-t-il concrètement ?</p>
-                <textarea placeholder="Votre analyse..."></textarea>
-            </div>
-
-            <div class="question-box">
-                <h4>❓ Question 3 — Action</h4>
-                <p>Si Cmk < 1,67 mais Cm ≥ 1,67, quelle action proposez-vous ? (Indice : il s'agit d'un problème de
-                        centrage, pas de dispersion)</p>
-                        <textarea placeholder="Votre proposition d'action corrective..."></textarea>
-            </div>
-        </div>
-
-        <!-- SYNTHÈSE -->
-        <div class="section">
-            <h2>📝 Synthèse — Capabilité machine vs procédé</h2>
-            <div class="highlight">
-                <strong>Cm/Cmk = capabilité MACHINE</strong> (court terme, conditions optimales)<br><br>
-                <strong>Cp/Cpk = capabilité PROCÉDÉ</strong> court terme (inclut changements opérateurs,
-                matières…)<br><br>
-                <strong>Pp/Ppk = performance PROCÉDÉ</strong> long terme (inclut toutes les sources de variation)
-            </div>
-            <p style="margin-top: 15px; color: #94a3b8;">👉 En général : <strong>Cm ≥ Cp ≥ Pp</strong> — la capabilité
-                se dégrade quand on ajoute des sources de variation.</p>
-            <p style="margin-top: 10px; color: #94a3b8;">L'activité suivante (Activité 4) traitera la capabilité procédé
-                Cp/Cpk/Pp/Ppk.</p>
-        </div>
-
-        <a href="index.html" class="back-link">← Retour aux ressources</a>
-    </div>
-
-    <script>
-        function switchTab(id, tabEl) {
+                production. </div> </div> <!-- CALCUL --> <div class="section"> <h2> Partie 3 — Calcul sur vos données (30 min)</h2> <div class="tool-tabs"> <div class="tool-tab active" onclick="switchTab('excel-cm', this)"> Excel</div> <div class="tool-tab" onclick="switchTab('ellistat-cm', this)"> Ellistat</div> </div> <div class="tool-content active" id="excel-cm"> <p><strong>Hypothèse :</strong> Vos mesures sont en colonne B (B2:B51), LSI en cellule E1, LSS en
+                    cellule E2</p> <table class="data-table"> <tr> <th>Calcul</th> <th>Formule Excel</th> </tr> <tr> <td>Moyenne (x̄)</td> <td style="text-align:left"><code>=MOYENNE(B2:B51)</code></td> </tr> <tr> <td>Écart-type (σ)</td> <td style="text-align:left"><code>=ECARTYPE.STANDARD(B2:B51)</code></td> </tr> <tr> <td>Cm</td> <td style="text-align:left"><code>=(E2-E1)/(6*ECARTYPE.STANDARD(B2:B51))</code></td> </tr> <tr> <td>Cmk supérieur</td> <td style="text-align:left"><code>=(E2-MOYENNE(B2:B51))/(3*ECARTYPE.STANDARD(B2:B51))</code> </td> </tr> <tr> <td>Cmk inférieur</td> <td style="text-align:left"><code>=(MOYENNE(B2:B51)-E1)/(3*ECARTYPE.STANDARD(B2:B51))</code> </td> </tr> <tr> <td>Cmk</td> <td style="text-align:left"><code>=MIN(Cmk_sup; Cmk_inf)</code></td> </tr> </table> </div> <div class="tool-content" id="ellistat-cm"> <ol> <li>Importer vos données de mesure</li> <li>Aller dans <strong>Capabilité → Étude machine</strong></li> <li>Renseigner LSI et LSS</li> <li>Ellistat calcule automatiquement Cm, Cmk et affiche l'histogramme avec les limites</li> </ol> </div> <div class="question-box"> <h4> Question 1 — Résultats</h4> <p>Notez vos résultats : Cm = _____ et Cmk = _____</p> <textarea placeholder="Cm = ...    Cmk = ..."></textarea> </div> <div class="question-box"> <h4> Question 2 — Interprétation</h4> <p>La machine est-elle capable ? Si Cm > Cmk, que cela signifie-t-il concrètement ?</p> <textarea placeholder="Votre analyse..."></textarea> </div> <div class="question-box"> <h4> Question 3 — Action</h4> <p>Si Cmk < 1,67 mais Cm ≥ 1,67, quelle action proposez-vous ? (Indice : il s'agit d'un problème de
+                        centrage, pas de dispersion)</p> <textarea placeholder="Votre proposition d'action corrective..."></textarea> </div> </div> <!-- SYNTHÈSE --> <div class="section"> <h2> Synthèse — Capabilité machine vs procédé</h2> <div class="highlight"> <strong>Cm/Cmk = capabilité MACHINE</strong> (court terme, conditions optimales)<br><br> <strong>Cp/Cpk = capabilité PROCÉDÉ</strong> court terme (inclut changements opérateurs,
+                matières…)<br><br> <strong>Pp/Ppk = performance PROCÉDÉ</strong> long terme (inclut toutes les sources de variation) </div> <p style="margin-top: 15px; color: #94a3b8;"> En général : <strong>Cm ≥ Cp ≥ Pp</strong> — la capabilité
+                se dégrade quand on ajoute des sources de variation.</p> <p style="margin-top: 10px; color: #94a3b8;">L'activité suivante (Activité 4) traitera la capabilité procédé
+                Cp/Cpk/Pp/Ppk.</p> </div> <a href="index.html" class="back-link">← Retour aux ressources</a> </div> <script> function switchTab(id, tabEl) {
             const parent = tabEl.parentElement;
             parent.querySelectorAll('.tool-tab').forEach(t => t.classList.remove('active'));
             tabEl.classList.add('active');
@@ -522,8 +330,5 @@
                 sibling = sibling.nextElementSibling;
             }
             document.getElementById(id).classList.add('active');
-        }
-    </script>
-</body>
-
-</html>
+        } </script>
+</body> </html>
