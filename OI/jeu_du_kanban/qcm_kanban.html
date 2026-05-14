@@ -185,47 +185,16 @@ header img { height: 52px; border-radius: 4px; background: #fff; padding: 4px; f
 .btn-sim:hover { background: #d5dbe2; }
 </style>
 </head>
-<body>
-
-<header>
-  <img src="../../logo_uimm_placeholder.jpg" alt="UIMM"
-       onerror="this.style.display='none'">
-  <div class="hdr-center">
-    <h1>QCM — FLUX POUSSÉ / FLUX TIRÉ (KANBAN)</h1>
-    <p>Organisation Industrielle — BTS ATI</p>
-  </div>
-  <div class="hdr-right">
-    <strong>Pôle Formation - UIMM CVDL</strong>
-    <span>Formateur : S. Jaubert</span>
-  </div>
+<body> <header> <img src="../../logo_uimm_placeholder.jpg" alt="UIMM"
+       onerror="this.style.display='none'"> <div class="hdr-center"> <h1>QCM — FLUX POUSSÉ / FLUX TIRÉ (KANBAN)</h1> <p>Organisation Industrielle — BTS ATI</p> </div> <div class="hdr-right"> <strong>Pôle Formation - UIMM CVDL</strong> <span>Formateur : S. Jaubert</span> </div>
 </header>
-<div class="red-bar"></div>
-
-<div id="intro">
-  <div id="intro-inner">
-    <h2>Consigne</h2>
-    <p>Ce QCM valide votre compréhension de la simulation Flux Poussé / Flux Tiré (Kanban).
+<div class="red-bar"></div> <div id="intro"> <div id="intro-inner"> <h2>Consigne</h2> <p>Ce QCM valide votre compréhension de la simulation Flux Poussé / Flux Tiré (Kanban).
        Vous pouvez rouvrir la simulation dans un autre onglet pour vérifier vos réponses
        avant de répondre. Chaque question est indépendante. La correction et une explication
-       s'affichent immédiatement après votre choix.</p>
-    <a class="badge-sim" href="simulation_kanban.html" target="_blank">
-      Ouvrir la simulation dans un nouvel onglet
-    </a>
-  </div>
-</div>
-
-<div id="progressBar">
-  <div id="progressBar-inner">
-    <span id="progressLabel">Question 1 / 10</span>
-    <div id="progressTrack"><div id="progressFill"></div></div>
-    <span id="scoreDisplay">Score : 0 / 0</span>
-  </div>
-</div>
-
-<div id="qcm"></div>
-<div id="result"><div id="result-inner"></div></div>
-
-<script>
+       s'affichent immédiatement après votre choix.</p> <a class="badge-sim" href="simulation_kanban.html" target="_blank"> Ouvrir la simulation dans un nouvel onglet </a> </div>
+</div> <div id="progressBar"> <div id="progressBar-inner"> <span id="progressLabel">Question 1 / 10</span> <div id="progressTrack"><div id="progressFill"></div></div> <span id="scoreDisplay">Score : 0 / 0</span> </div>
+</div> <div id="qcm"></div>
+<div id="result"><div id="result-inner"></div></div> <script>
 const QUESTIONS = [
   {
     q: "En flux poussé, à quel moment le poste Usinage produit-il ?",
@@ -362,28 +331,10 @@ function buildQCM() {
     card.id = `q${qi}`;
 
     const letters = ["A", "B", "C", "D"];
-    const choicesHTML = q.choices.map((c, ci) =>
-      `<div class="choice" data-qi="${qi}" data-ci="${ci}">
-         <span class="choice-letter">${letters[ci]}.</span>
-         <span>${c}</span>
-       </div>`
+    const choicesHTML = q.choices.map((c, ci) => `<div class="choice" data-qi="${qi}" data-ci="${ci}"> <span class="choice-letter">${letters[ci]}.</span> <span>${c}</span> </div>`
     ).join("");
 
-    card.innerHTML = `
-      <div class="q-header">
-        <div class="q-num">${qi + 1}</div>
-        <p>${q.q}</p>
-      </div>
-      <div class="q-body">
-        ${choicesHTML}
-        <div class="q-feedback" id="fb${qi}"></div>
-      </div>
-      <div class="q-nav">
-        <button class="btn-next" id="btn${qi}" onclick="nextQuestion(${qi})">
-          ${qi < QUESTIONS.length - 1 ? "Question suivante &rarr;" : "Voir mes résultats"}
-        </button>
-      </div>
-    `;
+    card.innerHTML = ` <div class="q-header"> <div class="q-num">${qi + 1}</div> <p>${q.q}</p> </div> <div class="q-body"> ${choicesHTML} <div class="q-feedback" id="fb${qi}"></div> </div> <div class="q-nav"> <button class="btn-next" id="btn${qi}" onclick="nextQuestion(${qi})"> ${qi < QUESTIONS.length - 1 ? "Question suivante &rarr;" : "Voir mes résultats"} </button> </div> `;
     container.appendChild(card);
   });
 
@@ -459,21 +410,11 @@ function showResult() {
   else if (pct >= 50) msg = "Des bases solides. Relancez la simulation sur les points manqués pour consolider.";
   else msg = "Des révisions s'imposent. Reprenez la simulation en observant les scénarios proposés, puis retentez le QCM.";
 
-  const detailLines = QUESTIONS.map((q, i) =>
-    `<span class="${results[i] ? 'ok' : 'nok'}">${results[i] ? '✓' : '✗'}</span> Q${i+1} — ${q.q}`
+  const detailLines = QUESTIONS.map((q, i) => `<span class="${results[i] ? 'ok' : 'nok'}">${results[i] ? '' : ''}</span> Q${i+1} — ${q.q}`
   ).join("<br>");
 
   document.getElementById("result").style.display = "block";
-  document.getElementById("result-inner").innerHTML = `
-    <h2>Résultats</h2>
-    <div id="resultScore" style="color:${col}">${score} / ${QUESTIONS.length} &nbsp;<span style="font-size:.5em;font-weight:400">(${pct}%)</span></div>
-    <p id="resultMsg">${msg}</p>
-    <div id="resultDetails">${detailLines}</div>
-    <div class="result-btns">
-      <button class="btn-restart" onclick="restart()">Recommencer</button>
-      <a class="btn-sim" href="simulation_kanban.html" target="_blank">Rouvrir la simulation</a>
-    </div>
-  `;
+  document.getElementById("result-inner").innerHTML = ` <h2>Résultats</h2> <div id="resultScore" style="color:${col}">${score} / ${QUESTIONS.length} &nbsp;<span style="font-size:.5em;font-weight:400">(${pct}%)</span></div> <p id="resultMsg">${msg}</p> <div id="resultDetails">${detailLines}</div> <div class="result-btns"> <button class="btn-restart" onclick="restart()">Recommencer</button> <a class="btn-sim" href="simulation_kanban.html" target="_blank">Rouvrir la simulation</a> </div> `;
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 

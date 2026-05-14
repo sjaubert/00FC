@@ -1,11 +1,6 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Activité 1 — Quiz Variabilité & Sensibilisation SPC</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+<head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Activité 1 — Quiz Variabilité & Sensibilisation SPC</title> <style> @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
@@ -98,7 +93,7 @@
         .option.selected .radio-custom { border-color: #6366f1; }
         .option.selected .radio-custom::after { content: ''; position: absolute; top: 4px; left: 4px; width: 8px; height: 8px; background: #6366f1; border-radius: 50%; }
         .option.right .radio-custom { border-color: #22c55e; }
-        .option.right .radio-custom::after { content: '✓'; position: absolute; top: -2px; left: 2px; font-size: 14px; color: #22c55e; }
+        .option.right .radio-custom::after { content: ''; position: absolute; top: -2px; left: 2px; font-size: 14px; color: #22c55e; }
         .explanation {
             display: none;
             margin-top: 15px;
@@ -198,195 +193,25 @@
             font-size: 0.8em;
             color: #94a3b8;
             font-weight: 500;
-        }
-    </style>
+        } </style>
 </head>
 <body>
-<div class="container">
-    <div class="logo-header">
-      <img src="logo_uimm_placeholder.jpg" alt="Logo UIMM" />
-      <div>
-        <div class="structure-name">Pôle Formation UIMM - CVDL</div>
-        <div class="formateur">Formateur : S. Jaubert</div>
-      </div>
-    </div>
-    <div class="header">
-        <div class="badge">Jour 1 — Activité 1</div>
-        <h1>🎯 Quiz d'Entrée : Variabilité & SPC</h1>
-        <p>Testez vos connaissances actuelles sur la variabilité des procédés et la maîtrise statistique. Ce quiz permet de faire le point avant d'entrer dans le vif du sujet.</p>
-    </div>
-
-    <div class="intro-box">
-        <h2>📋 Objectifs de cette activité</h2>
-        <ul>
-            <li>Prendre conscience que <strong>deux pièces ne sont jamais identiques</strong></li>
-            <li>Distinguer les <strong>causes communes</strong> des <strong>causes spéciales</strong> de variation</li>
-            <li>Comprendre pourquoi le <strong>contrôle 100%</strong> ne suffit pas</li>
-            <li>Découvrir le vocabulaire de base du SPC</li>
-        </ul>
-        <p style="margin-top: 15px; color: #818cf8;"><strong>⏱️ Durée :</strong> 30 minutes — <strong>📝 Format :</strong> 10 questions à choix unique</p>
-    </div>
-
-    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-
-    <form id="quizForm">
-        <!-- Q1 -->
-        <div class="question-card" id="q1">
-            <div class="q-number">1</div>
-            <div class="q-text">Vous produisez 100 pièces sur la même machine, avec les mêmes réglages, le même opérateur et la même matière. Que constatez-vous en mesurant les pièces ?</div>
-            <div class="options">
-                <label class="option" onclick="selectOption(this, 1)"><span class="radio-custom"></span><span>Toutes les pièces sont strictement identiques</span></label>
-                <label class="option" onclick="selectOption(this, 1)"><span class="radio-custom"></span><span>Les mesures varient légèrement autour d'une valeur centrale</span></label>
-                <label class="option" onclick="selectOption(this, 1)"><span class="radio-custom"></span><span>La moitié est conforme, l'autre non</span></label>
-                <label class="option" onclick="selectOption(this, 1)"><span class="radio-custom"></span><span>Il est impossible de prédire quoi que ce soit</span></label>
-            </div>
-            <div class="explanation" id="exp1"></div>
-        </div>
-
-        <!-- Q2 -->
-        <div class="question-card" id="q2">
-            <div class="q-number">2</div>
-            <div class="q-text">Qu'appelle-t-on une « cause commune » de variation dans un procédé ?</div>
-            <div class="options">
-                <label class="option" onclick="selectOption(this, 2)"><span class="radio-custom"></span><span>Un défaut de la machine qui provoque un arrêt</span></label>
-                <label class="option" onclick="selectOption(this, 2)"><span class="radio-custom"></span><span>Une variation naturelle, inhérente au procédé, toujours présente</span></label>
-                <label class="option" onclick="selectOption(this, 2)"><span class="radio-custom"></span><span>Un changement de lot de matière première</span></label>
-                <label class="option" onclick="selectOption(this, 2)"><span class="radio-custom"></span><span>Une erreur de l'opérateur</span></label>
-            </div>
-            <div class="explanation" id="exp2"></div>
-        </div>
-
-        <!-- Q3 -->
-        <div class="question-card" id="q3">
-            <div class="q-number">3</div>
-            <div class="q-text">Quel outil permet de visualiser la distribution des mesures d'une production ?</div>
-            <div class="options">
-                <label class="option" onclick="selectOption(this, 3)"><span class="radio-custom"></span><span>Un diagramme de Gantt</span></label>
-                <label class="option" onclick="selectOption(this, 3)"><span class="radio-custom"></span><span>Un histogramme</span></label>
-                <label class="option" onclick="selectOption(this, 3)"><span class="radio-custom"></span><span>Un diagramme d'Ishikawa</span></label>
-                <label class="option" onclick="selectOption(this, 3)"><span class="radio-custom"></span><span>Un diagramme de Pareto</span></label>
-            </div>
-            <div class="explanation" id="exp3"></div>
-        </div>
-
-        <!-- Q4 -->
-        <div class="question-card" id="q4">
-            <div class="q-number">4</div>
-            <div class="q-text">Une machine est « capable » lorsque :</div>
-            <div class="options">
-                <label class="option" onclick="selectOption(this, 4)"><span class="radio-custom"></span><span>Elle fonctionne sans panne pendant 8 heures</span></label>
-                <label class="option" onclick="selectOption(this, 4)"><span class="radio-custom"></span><span>Sa dispersion naturelle est inférieure à l'intervalle de tolérance</span></label>
-                <label class="option" onclick="selectOption(this, 4)"><span class="radio-custom"></span><span>Elle produit plus de 100 pièces par heure</span></label>
-                <label class="option" onclick="selectOption(this, 4)"><span class="radio-custom"></span><span>L'opérateur maîtrise parfaitement la machine</span></label>
-            </div>
-            <div class="explanation" id="exp4"></div>
-        </div>
-
-        <!-- Q5 -->
-        <div class="question-card" id="q5">
-            <div class="q-number">5</div>
-            <div class="q-text">Le contrôle à 100% des pièces produites est-il la meilleure stratégie qualité ?</div>
-            <div class="options">
-                <label class="option" onclick="selectOption(this, 5)"><span class="radio-custom"></span><span>Oui, c'est la seule façon de garantir zéro défaut</span></label>
-                <label class="option" onclick="selectOption(this, 5)"><span class="radio-custom"></span><span>Oui, mais c'est trop cher en pratique</span></label>
-                <label class="option" onclick="selectOption(this, 5)"><span class="radio-custom"></span><span>Non, il est coûteux, fatigant et ne détecte pas 100% des défauts</span></label>
-                <label class="option" onclick="selectOption(this, 5)"><span class="radio-custom"></span><span>Non, il vaut mieux ne rien contrôler</span></label>
-            </div>
-            <div class="explanation" id="exp5"></div>
-        </div>
-
-        <!-- Q6 -->
-        <div class="question-card" id="q6">
-            <div class="q-number">6</div>
-            <div class="q-text">Que signifie le sigle SPC (ou MSP en français) ?</div>
-            <div class="options">
-                <label class="option" onclick="selectOption(this, 6)"><span class="radio-custom"></span><span>Système de Production Continue</span></label>
-                <label class="option" onclick="selectOption(this, 6)"><span class="radio-custom"></span><span>Statistical Process Control / Maîtrise Statistique des Procédés</span></label>
-                <label class="option" onclick="selectOption(this, 6)"><span class="radio-custom"></span><span>Standard de Performance et Conformité</span></label>
-                <label class="option" onclick="selectOption(this, 6)"><span class="radio-custom"></span><span>Suivi des Procédures de Contrôle</span></label>
-            </div>
-            <div class="explanation" id="exp6"></div>
-        </div>
-
-        <!-- Q7 -->
-        <div class="question-card" id="q7">
-            <div class="q-number">7</div>
-            <div class="q-text">Un procédé est dit « sous contrôle statistique » lorsque :</div>
-            <div class="options">
-                <label class="option" onclick="selectOption(this, 7)"><span class="radio-custom"></span><span>Un opérateur vérifie chaque pièce</span></label>
-                <label class="option" onclick="selectOption(this, 7)"><span class="radio-custom"></span><span>Seules des causes communes de variation agissent</span></label>
-                <label class="option" onclick="selectOption(this, 7)"><span class="radio-custom"></span><span>Le taux de rebut est inférieur à 1%</span></label>
-                <label class="option" onclick="selectOption(this, 7)"><span class="radio-custom"></span><span>La machine est neuve</span></label>
-            </div>
-            <div class="explanation" id="exp7"></div>
-        </div>
-
-        <!-- Q8 -->
-        <div class="question-card" id="q8">
-            <div class="q-number">8</div>
-            <div class="q-text">Quelle courbe décrit le mieux la répartition naturelle des mesures dans un procédé stable ?</div>
-            <div class="options">
-                <label class="option" onclick="selectOption(this, 8)"><span class="radio-custom"></span><span>Courbe en U (baignoire)</span></label>
-                <label class="option" onclick="selectOption(this, 8)"><span class="radio-custom"></span><span>Courbe en cloche (loi normale / Gaussienne)</span></label>
-                <label class="option" onclick="selectOption(this, 8)"><span class="radio-custom"></span><span>Courbe linéaire</span></label>
-                <label class="option" onclick="selectOption(this, 8)"><span class="radio-custom"></span><span>Courbe exponentielle</span></label>
-            </div>
-            <div class="explanation" id="exp8"></div>
-        </div>
-
-        <!-- Q9 -->
-        <div class="question-card" id="q9">
-            <div class="q-number">9</div>
-            <div class="q-text">L'indice Cp mesure :</div>
-            <div class="options">
-                <label class="option" onclick="selectOption(this, 9)"><span class="radio-custom"></span><span>La vitesse de production de la machine</span></label>
-                <label class="option" onclick="selectOption(this, 9)"><span class="radio-custom"></span><span>Le coût de production par pièce</span></label>
-                <label class="option" onclick="selectOption(this, 9)"><span class="radio-custom"></span><span>Le rapport entre la tolérance et la dispersion du procédé</span></label>
-                <label class="option" onclick="selectOption(this, 9)"><span class="radio-custom"></span><span>Le nombre de pièces non conformes par lot</span></label>
-            </div>
-            <div class="explanation" id="exp9"></div>
-        </div>
-
-        <!-- Q10 -->
-        <div class="question-card" id="q10">
-            <div class="q-number">10</div>
-            <div class="q-text">Quel est l'objectif principal d'une carte de contrôle ?</div>
-            <div class="options">
-                <label class="option" onclick="selectOption(this, 10)"><span class="radio-custom"></span><span>Remplacer le contrôle qualité par un logiciel</span></label>
-                <label class="option" onclick="selectOption(this, 10)"><span class="radio-custom"></span><span>Détecter rapidement l'apparition de causes spéciales de variation</span></label>
-                <label class="option" onclick="selectOption(this, 10)"><span class="radio-custom"></span><span>Calculer la productivité de l'atelier</span></label>
-                <label class="option" onclick="selectOption(this, 10)"><span class="radio-custom"></span><span>Enregistrer le nombre de pièces produites</span></label>
-            </div>
-            <div class="explanation" id="exp10"></div>
-        </div>
-
-        <button type="button" class="btn-validate" id="btnValidate" onclick="validateQuiz()">✅ Valider mes réponses</button>
-    </form>
-
-    <div class="result-panel" id="resultPanel">
-        <div class="score-circle" id="scoreCircle"></div>
-        <h2 id="resultTitle"></h2>
-        <p id="resultText"></p>
-    </div>
-
-    <a href="index.html" class="back-link">← Retour aux ressources</a>
-</div>
-
-<script>
+<div class="container"> <div class="logo-header"> <img src="logo_uimm_placeholder.jpg" alt="Logo UIMM" /> <div> <div class="structure-name">Pôle Formation UIMM - CVDL</div> <div class="formateur">Formateur : S. Jaubert</div> </div> </div> <div class="header"> <div class="badge">Jour 1 — Activité 1</div> <h1> Quiz d'Entrée : Variabilité & SPC</h1> <p>Testez vos connaissances actuelles sur la variabilité des procédés et la maîtrise statistique. Ce quiz permet de faire le point avant d'entrer dans le vif du sujet.</p> </div> <div class="intro-box"> <h2> Objectifs de cette activité</h2> <ul> <li>Prendre conscience que <strong>deux pièces ne sont jamais identiques</strong></li> <li>Distinguer les <strong>causes communes</strong> des <strong>causes spéciales</strong> de variation</li> <li>Comprendre pourquoi le <strong>contrôle 100%</strong> ne suffit pas</li> <li>Découvrir le vocabulaire de base du SPC</li> </ul> <p style="margin-top: 15px; color: #818cf8;"><strong> Durée :</strong> 30 minutes — <strong> Format :</strong> 10 questions à choix unique</p> </div> <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div> <form id="quizForm"> <!-- Q1 --> <div class="question-card" id="q1"> <div class="q-number">1</div> <div class="q-text">Vous produisez 100 pièces sur la même machine, avec les mêmes réglages, le même opérateur et la même matière. Que constatez-vous en mesurant les pièces ?</div> <div class="options"> <label class="option" onclick="selectOption(this, 1)"><span class="radio-custom"></span><span>Toutes les pièces sont strictement identiques</span></label> <label class="option" onclick="selectOption(this, 1)"><span class="radio-custom"></span><span>Les mesures varient légèrement autour d'une valeur centrale</span></label> <label class="option" onclick="selectOption(this, 1)"><span class="radio-custom"></span><span>La moitié est conforme, l'autre non</span></label> <label class="option" onclick="selectOption(this, 1)"><span class="radio-custom"></span><span>Il est impossible de prédire quoi que ce soit</span></label> </div> <div class="explanation" id="exp1"></div> </div> <!-- Q2 --> <div class="question-card" id="q2"> <div class="q-number">2</div> <div class="q-text">Qu'appelle-t-on une « cause commune » de variation dans un procédé ?</div> <div class="options"> <label class="option" onclick="selectOption(this, 2)"><span class="radio-custom"></span><span>Un défaut de la machine qui provoque un arrêt</span></label> <label class="option" onclick="selectOption(this, 2)"><span class="radio-custom"></span><span>Une variation naturelle, inhérente au procédé, toujours présente</span></label> <label class="option" onclick="selectOption(this, 2)"><span class="radio-custom"></span><span>Un changement de lot de matière première</span></label> <label class="option" onclick="selectOption(this, 2)"><span class="radio-custom"></span><span>Une erreur de l'opérateur</span></label> </div> <div class="explanation" id="exp2"></div> </div> <!-- Q3 --> <div class="question-card" id="q3"> <div class="q-number">3</div> <div class="q-text">Quel outil permet de visualiser la distribution des mesures d'une production ?</div> <div class="options"> <label class="option" onclick="selectOption(this, 3)"><span class="radio-custom"></span><span>Un diagramme de Gantt</span></label> <label class="option" onclick="selectOption(this, 3)"><span class="radio-custom"></span><span>Un histogramme</span></label> <label class="option" onclick="selectOption(this, 3)"><span class="radio-custom"></span><span>Un diagramme d'Ishikawa</span></label> <label class="option" onclick="selectOption(this, 3)"><span class="radio-custom"></span><span>Un diagramme de Pareto</span></label> </div> <div class="explanation" id="exp3"></div> </div> <!-- Q4 --> <div class="question-card" id="q4"> <div class="q-number">4</div> <div class="q-text">Une machine est « capable » lorsque :</div> <div class="options"> <label class="option" onclick="selectOption(this, 4)"><span class="radio-custom"></span><span>Elle fonctionne sans panne pendant 8 heures</span></label> <label class="option" onclick="selectOption(this, 4)"><span class="radio-custom"></span><span>Sa dispersion naturelle est inférieure à l'intervalle de tolérance</span></label> <label class="option" onclick="selectOption(this, 4)"><span class="radio-custom"></span><span>Elle produit plus de 100 pièces par heure</span></label> <label class="option" onclick="selectOption(this, 4)"><span class="radio-custom"></span><span>L'opérateur maîtrise parfaitement la machine</span></label> </div> <div class="explanation" id="exp4"></div> </div> <!-- Q5 --> <div class="question-card" id="q5"> <div class="q-number">5</div> <div class="q-text">Le contrôle à 100% des pièces produites est-il la meilleure stratégie qualité ?</div> <div class="options"> <label class="option" onclick="selectOption(this, 5)"><span class="radio-custom"></span><span>Oui, c'est la seule façon de garantir zéro défaut</span></label> <label class="option" onclick="selectOption(this, 5)"><span class="radio-custom"></span><span>Oui, mais c'est trop cher en pratique</span></label> <label class="option" onclick="selectOption(this, 5)"><span class="radio-custom"></span><span>Non, il est coûteux, fatigant et ne détecte pas 100% des défauts</span></label> <label class="option" onclick="selectOption(this, 5)"><span class="radio-custom"></span><span>Non, il vaut mieux ne rien contrôler</span></label> </div> <div class="explanation" id="exp5"></div> </div> <!-- Q6 --> <div class="question-card" id="q6"> <div class="q-number">6</div> <div class="q-text">Que signifie le sigle SPC (ou MSP en français) ?</div> <div class="options"> <label class="option" onclick="selectOption(this, 6)"><span class="radio-custom"></span><span>Système de Production Continue</span></label> <label class="option" onclick="selectOption(this, 6)"><span class="radio-custom"></span><span>Statistical Process Control / Maîtrise Statistique des Procédés</span></label> <label class="option" onclick="selectOption(this, 6)"><span class="radio-custom"></span><span>Standard de Performance et Conformité</span></label> <label class="option" onclick="selectOption(this, 6)"><span class="radio-custom"></span><span>Suivi des Procédures de Contrôle</span></label> </div> <div class="explanation" id="exp6"></div> </div> <!-- Q7 --> <div class="question-card" id="q7"> <div class="q-number">7</div> <div class="q-text">Un procédé est dit « sous contrôle statistique » lorsque :</div> <div class="options"> <label class="option" onclick="selectOption(this, 7)"><span class="radio-custom"></span><span>Un opérateur vérifie chaque pièce</span></label> <label class="option" onclick="selectOption(this, 7)"><span class="radio-custom"></span><span>Seules des causes communes de variation agissent</span></label> <label class="option" onclick="selectOption(this, 7)"><span class="radio-custom"></span><span>Le taux de rebut est inférieur à 1%</span></label> <label class="option" onclick="selectOption(this, 7)"><span class="radio-custom"></span><span>La machine est neuve</span></label> </div> <div class="explanation" id="exp7"></div> </div> <!-- Q8 --> <div class="question-card" id="q8"> <div class="q-number">8</div> <div class="q-text">Quelle courbe décrit le mieux la répartition naturelle des mesures dans un procédé stable ?</div> <div class="options"> <label class="option" onclick="selectOption(this, 8)"><span class="radio-custom"></span><span>Courbe en U (baignoire)</span></label> <label class="option" onclick="selectOption(this, 8)"><span class="radio-custom"></span><span>Courbe en cloche (loi normale / Gaussienne)</span></label> <label class="option" onclick="selectOption(this, 8)"><span class="radio-custom"></span><span>Courbe linéaire</span></label> <label class="option" onclick="selectOption(this, 8)"><span class="radio-custom"></span><span>Courbe exponentielle</span></label> </div> <div class="explanation" id="exp8"></div> </div> <!-- Q9 --> <div class="question-card" id="q9"> <div class="q-number">9</div> <div class="q-text">L'indice Cp mesure :</div> <div class="options"> <label class="option" onclick="selectOption(this, 9)"><span class="radio-custom"></span><span>La vitesse de production de la machine</span></label> <label class="option" onclick="selectOption(this, 9)"><span class="radio-custom"></span><span>Le coût de production par pièce</span></label> <label class="option" onclick="selectOption(this, 9)"><span class="radio-custom"></span><span>Le rapport entre la tolérance et la dispersion du procédé</span></label> <label class="option" onclick="selectOption(this, 9)"><span class="radio-custom"></span><span>Le nombre de pièces non conformes par lot</span></label> </div> <div class="explanation" id="exp9"></div> </div> <!-- Q10 --> <div class="question-card" id="q10"> <div class="q-number">10</div> <div class="q-text">Quel est l'objectif principal d'une carte de contrôle ?</div> <div class="options"> <label class="option" onclick="selectOption(this, 10)"><span class="radio-custom"></span><span>Remplacer le contrôle qualité par un logiciel</span></label> <label class="option" onclick="selectOption(this, 10)"><span class="radio-custom"></span><span>Détecter rapidement l'apparition de causes spéciales de variation</span></label> <label class="option" onclick="selectOption(this, 10)"><span class="radio-custom"></span><span>Calculer la productivité de l'atelier</span></label> <label class="option" onclick="selectOption(this, 10)"><span class="radio-custom"></span><span>Enregistrer le nombre de pièces produites</span></label> </div> <div class="explanation" id="exp10"></div> </div> <button type="button" class="btn-validate" id="btnValidate" onclick="validateQuiz()"> Valider mes réponses</button> </form> <div class="result-panel" id="resultPanel"> <div class="score-circle" id="scoreCircle"></div> <h2 id="resultTitle"></h2> <p id="resultText"></p> </div> <a href="index.html" class="back-link">← Retour aux ressources</a>
+</div> <script>
 const answers = {
     1: 1, 2: 1, 3: 1, 4: 1, 5: 2, 6: 1, 7: 1, 8: 1, 9: 2, 10: 1
 };
 const explanations = {
-    1: "✅ C'est le principe fondamental de la variabilité : même dans les conditions les plus contrôlées, les mesures fluctuent naturellement autour d'une valeur moyenne. C'est inévitable ! Le SPC nous apprend à distinguer la variabilité « normale » de celle qui signale un problème.",
-    2: "✅ Les causes communes sont les petites variations aléatoires, toujours présentes : vibrations, micro-variations de matière, température ambiante… Elles sont « normales » et ne peuvent être éliminées qu'en améliorant le procédé lui-même.",
-    3: "✅ L'histogramme regroupe les mesures en classes et montre la forme de la distribution. Il permet de voir d'un coup d'œil si les pièces sont centrées sur la cible, si la dispersion est large ou étroite, et si la distribution est normale.",
-    4: "✅ La capabilité compare la dispersion naturelle du procédé (6σ) à l'intervalle de tolérance (IT). Si la dispersion est plus petite que la tolérance, le procédé est capable de produire des pièces conformes.",
-    5: "✅ Le contrôle 100% est coûteux, source de fatigue (donc d'erreurs), et des études montrent qu'il ne détecte que 80% des pièces défectueuses environ. Le SPC propose une approche plus intelligente : surveiller le procédé plutôt que trier les pièces.",
-    6: "✅ SPC = Statistical Process Control, traduit en français par MSP = Maîtrise Statistique des Procédés. C'est une méthode qui utilise les statistiques pour piloter un procédé et prévenir les dérives avant qu'elles ne génèrent des défauts.",
-    7: "✅ Un procédé sous contrôle statistique ne subit que des causes communes (aléatoires). Sa variabilité est prévisible et stable dans le temps. Toute cause spéciale (déréglage, usure anormale, erreur) perturbe cette stabilité.",
-    8: "✅ La courbe en cloche (loi normale ou Gaussienne) est la distribution la plus fréquente en production. Les valeurs se concentrent autour de la moyenne, et les valeurs extrêmes sont rares. C'est la base de tous les calculs SPC.",
-    9: "✅ Cp = IT / 6σ. C'est le rapport entre l'intervalle de tolérance (ce que le client accepte) et la dispersion naturelle du procédé (ce que le procédé produit). Un Cp ≥ 1,33 est généralement requis.",
-    10: "✅ La carte de contrôle surveille le procédé en temps réel. Quand un point sort des limites ou qu'un pattern anormal apparaît, c'est le signal qu'une cause spéciale agit. On peut alors réagir AVANT de produire des pièces non conformes."
+    1: " C'est le principe fondamental de la variabilité : même dans les conditions les plus contrôlées, les mesures fluctuent naturellement autour d'une valeur moyenne. C'est inévitable ! Le SPC nous apprend à distinguer la variabilité « normale » de celle qui signale un problème.",
+    2: " Les causes communes sont les petites variations aléatoires, toujours présentes : vibrations, micro-variations de matière, température ambiante… Elles sont « normales » et ne peuvent être éliminées qu'en améliorant le procédé lui-même.",
+    3: " L'histogramme regroupe les mesures en classes et montre la forme de la distribution. Il permet de voir d'un coup d'œil si les pièces sont centrées sur la cible, si la dispersion est large ou étroite, et si la distribution est normale.",
+    4: " La capabilité compare la dispersion naturelle du procédé (6σ) à l'intervalle de tolérance (IT). Si la dispersion est plus petite que la tolérance, le procédé est capable de produire des pièces conformes.",
+    5: " Le contrôle 100% est coûteux, source de fatigue (donc d'erreurs), et des études montrent qu'il ne détecte que 80% des pièces défectueuses environ. Le SPC propose une approche plus intelligente : surveiller le procédé plutôt que trier les pièces.",
+    6: " SPC = Statistical Process Control, traduit en français par MSP = Maîtrise Statistique des Procédés. C'est une méthode qui utilise les statistiques pour piloter un procédé et prévenir les dérives avant qu'elles ne génèrent des défauts.",
+    7: " Un procédé sous contrôle statistique ne subit que des causes communes (aléatoires). Sa variabilité est prévisible et stable dans le temps. Toute cause spéciale (déréglage, usure anormale, erreur) perturbe cette stabilité.",
+    8: " La courbe en cloche (loi normale ou Gaussienne) est la distribution la plus fréquente en production. Les valeurs se concentrent autour de la moyenne, et les valeurs extrêmes sont rares. C'est la base de tous les calculs SPC.",
+    9: " Cp = IT / 6σ. C'est le rapport entre l'intervalle de tolérance (ce que le client accepte) et la dispersion naturelle du procédé (ce que le procédé produit). Un Cp ≥ 1,33 est généralement requis.",
+    10: " La carte de contrôle surveille le procédé en temps réel. Quand un point sort des limites ou qu'un pattern anormal apparaît, c'est le signal qu'une cause spéciale agit. On peut alors réagir AVANT de produire des pièces non conformes."
 };
 
 let userAnswers = {};
@@ -431,7 +256,7 @@ function validateQuiz() {
             card.classList.add('incorrect');
             const exp = document.getElementById('exp' + q);
             exp.className = 'explanation show incorrect-exp';
-            exp.innerHTML = '❌ Mauvaise réponse. ' + explanations[q];
+            exp.innerHTML = ' Mauvaise réponse. ' + explanations[q];
         }
     }
 
@@ -443,15 +268,15 @@ function validateQuiz() {
     circle.textContent = score + '/10';
     if (score >= 8) {
         circle.className = 'score-circle good';
-        title.textContent = '🏆 Excellent !';
+        title.textContent = ' Excellent !';
         text.textContent = 'Vous avez de solides bases en SPC. Cette formation va vous permettre d\'approfondir et de pratiquer avec des outils concrets.';
     } else if (score >= 5) {
         circle.className = 'score-circle medium';
-        title.textContent = '👍 Bon début !';
+        title.textContent = ' Bon début !';
         text.textContent = 'Vous connaissez certains concepts. La formation va combler les lacunes et surtout vous faire pratiquer sur des cas réels.';
     } else {
         circle.className = 'score-circle low';
-        title.textContent = '📚 C\'est le moment d\'apprendre !';
+        title.textContent = ' C\'est le moment d\'apprendre !';
         text.textContent = 'Pas d\'inquiétude, c\'est justement l\'objectif de ces deux jours ! Chaque concept sera expliqué clairement et mis en pratique.';
     }
 

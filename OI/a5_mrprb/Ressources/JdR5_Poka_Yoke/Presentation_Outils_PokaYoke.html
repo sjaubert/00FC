@@ -1,12 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Outils JdR 5 : Poka-Yoke</title>
-    <style>
-        :root {
+<html lang="fr"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Outils JdR 5 : Poka-Yoke</title> <style> :root {
             --bg: #ffffff;
             --text: #333;
             --ok: #27ae60;
@@ -139,70 +132,10 @@
             max-height: 280px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="container">
-        <img src="../../../../logo_uimm_placeholder.jpg" alt="Logo UIMM" class="logo">
-        <div class="org-name">Pôle Formation UIMM-CVDL</div>
-
-        <!-- Slide 1 -->
-        <div class="slide active">
-            <h1>POKA - YOKE</h1>
-            <h2>(Anti-Erreur)</h2>
-            <p>Rendre l'erreur <strong>IMPOSSIBLE</strong>.</p>
-        </div>
-
-        <!-- Slide 2 -->
-        <div class="slide">
-            <h2>Erreur vs Défaut</h2>
-            <div
-                style="font-size: 1.5rem; text-align: left; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                <p>👤 <strong>Erreur</strong> : Action humaine (oubli, confusion...). C'est inévitable.</p>
-                <p style="margin-top: 20px;">💥 <strong>Défaut</strong> : Le résultat de l'erreur sur le produit.</p>
-                <hr style="margin: 20px 0;">
-                <p><strong>But du Poka-Yoke</strong> : Empêcher que l'Erreur ne devienne un Défaut.</p>
-            </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="slide">
-            <h2>Le Problème : Joints Inversés</h2>
-            <div class="image-container">
-                <img src="../Images/joints_toriques.png" alt="Joints toriques">
-                <p style="color: var(--nok); margin-top: 10px;">15% d'erreurs - Les joints se ressemblent trop !</p>
-            </div>
-        </div>
-
-        <!-- Slide 4 -->
-        <div class="slide">
-            <h2>La Solution Poka-Yoke</h2>
-            <div class="image-container">
-                <img src="../Images/poka_yoke_solution.png" alt="Solution Poka-Yoke">
-                <p style="color: var(--ok); margin-top: 10px;">Bacs colorés avec couvercles sélectifs → Erreur
-                    impossible !</p>
-            </div>
-        </div>
-
-        <!-- Slide 5 -->
-        <div class="slide">
-            <h2>Types de Poka-Yoke</h2>
-            <ul style="text-align: left; font-size: 1.5rem;">
-                <li>🛑 <strong>De Contact</strong> : Forme physique, guide, détrompeur.</li>
-                <li>🔢 <strong>De Nombre</strong> : Compter les pièces, livrer le nombre exact.</li>
-                <li>⏱️ <strong>De Séquence</strong> : Obligation de suivre l'ordre (A avant B).</li>
-            </ul>
-        </div>
-
-        <button class="nav-btn prev-btn" onclick="go(-1)">⬆</button>
-        <button class="nav-btn next-btn" onclick="go(1)">⬇</button>
-    </div>
-
-    <script>
-        let sl = 0;
+        } </style>
+</head> <body> <div class="container"> <img src="../../../../logo_uimm_placeholder.jpg" alt="Logo UIMM" class="logo"> <div class="org-name">Pôle Formation UIMM-CVDL</div> <!-- Slide 1 --> <div class="slide active"> <h1>POKA - YOKE</h1> <h2>(Anti-Erreur)</h2> <p>Rendre l'erreur <strong>IMPOSSIBLE</strong>.</p> </div> <!-- Slide 2 --> <div class="slide"> <h2>Erreur vs Défaut</h2> <div
+                style="font-size: 1.5rem; text-align: left; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"> <p> <strong>Erreur</strong> : Action humaine (oubli, confusion...). C'est inévitable.</p> <p style="margin-top: 20px;"> <strong>Défaut</strong> : Le résultat de l'erreur sur le produit.</p> <hr style="margin: 20px 0;"> <p><strong>But du Poka-Yoke</strong> : Empêcher que l'Erreur ne devienne un Défaut.</p> </div> </div> <!-- Slide 3 --> <div class="slide"> <h2>Le Problème : Joints Inversés</h2> <div class="image-container"> <img src="../Images/joints_toriques.png" alt="Joints toriques"> <p style="color: var(--nok); margin-top: 10px;">15% d'erreurs - Les joints se ressemblent trop !</p> </div> </div> <!-- Slide 4 --> <div class="slide"> <h2>La Solution Poka-Yoke</h2> <div class="image-container"> <img src="../Images/poka_yoke_solution.png" alt="Solution Poka-Yoke"> <p style="color: var(--ok); margin-top: 10px;">Bacs colorés avec couvercles sélectifs → Erreur
+                    impossible !</p> </div> </div> <!-- Slide 5 --> <div class="slide"> <h2>Types de Poka-Yoke</h2> <ul style="text-align: left; font-size: 1.5rem;"> <li> <strong>De Contact</strong> : Forme physique, guide, détrompeur.</li> <li> <strong>De Nombre</strong> : Compter les pièces, livrer le nombre exact.</li> <li> <strong>De Séquence</strong> : Obligation de suivre l'ordre (A avant B).</li> </ul> </div> <button class="nav-btn prev-btn" onclick="go(-1)">⬆</button> <button class="nav-btn next-btn" onclick="go(1)">⬇</button> </div> <script> let sl = 0;
         const slides = document.querySelectorAll('.slide');
         function go(d) {
             slides.forEach((s, i) => {
@@ -222,8 +155,5 @@
         document.addEventListener('keydown', e => {
             if (e.key === 'ArrowDown' || e.key === 'ArrowRight') go(1);
             if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') go(-1);
-        });
-    </script>
-</body>
-
-</html>
+        }); </script>
+</body> </html>

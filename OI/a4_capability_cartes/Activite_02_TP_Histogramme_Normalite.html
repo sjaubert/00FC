@@ -1,12 +1,5 @@
-﻿<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Activité 2 — TP Histogramme & Normalité</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+<!DOCTYPE html>
+<html lang="fr"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Activité 2 — TP Histogramme & Normalité</title> <style> @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
         * {
             margin: 0;
@@ -290,243 +283,21 @@
             font-size: 0.8em;
             color: #94a3b8;
             font-weight: 500;
-        }
-    </style>
-    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
-</head>
-
-<body>
-    <div class="container">
-    <div class="logo-header">
-      <img src="logo_uimm_placeholder.jpg" alt="Logo UIMM" />
-      <div>
-        <div class="structure-name">Pôle Formation UIMM - CVDL</div>
-        <div class="formateur">Formateur : S. Jaubert</div>
-      </div>
-    </div>
-        <div class="header">
-            <div class="badge">Jour 1 — Activité 2</div>
-            <h1>📊 TP Histogramme & Normalité</h1>
-            <p>Construisez un histogramme à partir de mesures réelles, vérifiez la normalité de la distribution, et
-                interprétez les résultats.</p>
-            <div class="duration">⏱️ Durée : 90 minutes | 🛠️ Outils : Excel ou Ellistat | 📁 Fichier :
-                <code>diameter.csv</code></div>
-        </div>
-
-        <!-- CONTEXTE -->
-        <div class="section">
-            <h2>🏭 Contexte industriel</h2>
-            <p>Un atelier d'usinage produit des <strong>axes cylindriques</strong>. La cote critique est le
-                <strong>diamètre</strong>, dont la spécification est :</p>
-            <div class="highlight">
-                <strong>Cible : 11,88 mm</strong> &nbsp;|&nbsp; <strong>Tolérance : 11,84 ± 0,08 mm</strong>
-                &nbsp;→&nbsp; LSI = 11,80 mm &nbsp;|&nbsp; LSS = 11,96 mm
-            </div>
-            <p>30 pièces ont été mesurées consécutivement. Les données sont dans le fichier <code>diameter.csv</code>.
-            </p>
-        </div>
-
-        <!-- PARTIE 1 -->
-        <div class="section">
-            <h2>📋 Partie 1 — Statistiques descriptives (20 min)</h2>
-            <ol>
-                <li><span class="step-number">1</span> <strong>Ouvrir le fichier</strong> <code>diameter.csv</code> dans
-                    Excel ou Ellistat</li>
-                <li><span class="step-number">2</span> <strong>Calculez les statistiques suivantes :</strong></li>
-            </ol>
-            <table class="data-table">
-                <tr>
-                    <th>Statistique</th>
-                    <th>Formule Excel</th>
-                    <th>Votre résultat</th>
-                </tr>
-                <tr>
-                    <td>Nombre de mesures (n)</td>
-                    <td><code>=NB(A2:A31)</code></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Moyenne (x̄)</td>
-                    <td><code>=MOYENNE(A2:A31)</code></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Écart-type (s)</td>
-                    <td><code>=ECARTYPE.STANDARD(A2:A31)</code></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Minimum</td>
-                    <td><code>=MIN(A2:A31)</code></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Maximum</td>
-                    <td><code>=MAX(A2:A31)</code></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Étendue (R)</td>
-                    <td><code>=MAX(...)-MIN(...)</code></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Médiane</td>
-                    <td><code>=MEDIANE(A2:A31)</code></td>
-                    <td></td>
-                </tr>
-            </table>
-
-            <div class="question-box">
-                <h4>❓ Question 1</h4>
-                <p>La moyenne est-elle proche de la cible (11,88 mm) ? Le procédé semble-t-il centré ?</p>
-                <textarea placeholder="Votre réponse..."></textarea>
-            </div>
-        </div>
-
-        <!-- PARTIE 2 -->
-        <div class="section">
-            <h2>📊 Partie 2 — Construction de l'histogramme (30 min)</h2>
-
-            <h3>Méthode manuelle (comprendre le principe)</h3>
-            <ol>
-                <li><span class="step-number">1</span> <strong>Nombre de classes :</strong> Utilisez la règle de Sturges
-                    : k = 1 + 3,322 × log₁₀(n). Pour n = 30 → k ≈ 6 classes</li>
-                <li><span class="step-number">2</span> <strong>Amplitude des classes :</strong> h = Étendue / k</li>
-                <li><span class="step-number">3</span> <strong>Bornes des classes :</strong> Commencez au minimum et
-                    ajoutez h à chaque fois</li>
-                <li><span class="step-number">4</span> <strong>Comptez</strong> le nombre de mesures dans chaque classe
-                    (effectifs)</li>
-            </ol>
-
-            <h3>Construction sur outil</h3>
-            <div class="tool-tabs">
-                <div class="tool-tab active" onclick="switchTab('excel-hist', this)">📗 Excel</div>
-                <div class="tool-tab" onclick="switchTab('ellistat-hist', this)">📘 Ellistat</div>
-            </div>
-            <div class="tool-content active" id="excel-hist">
-                <ol>
-                    <li><strong>Créer les bornes</strong> dans une colonne (ex : 11,84 ; 11,85 ; 11,86 … 11,93)</li>
-                    <li><strong>=FREQUENCE(A2:A31; bornes)</strong> → sélectionner une colonne, valider avec
-                        Ctrl+Maj+Entrée</li>
-                    <li><strong>Insérer un graphique</strong> → Histogramme (ou graphique à barres)</li>
-                    <li>Ajouter les <strong>limites de spécification</strong> (LSI = 11,80 et LSS = 11,96) en lignes
-                        verticales</li>
-                </ol>
-                <div class="warning">
-                    <strong>💡 Astuce Excel :</strong> Vous pouvez aussi utiliser l'outil "Utilitaire d'analyse" →
-                    Histogramme (onglet Données → Analyse de données)
-                </div>
-            </div>
-            <div class="tool-content" id="ellistat-hist">
-                <ol>
-                    <li>Importer le fichier CSV (Fichier → Importer)</li>
-                    <li>Sélectionner la colonne "diameter"</li>
-                    <li>Aller dans <strong>Statistiques → Histogramme</strong></li>
-                    <li>Renseigner les limites : LSI = 11,80 et LSS = 11,96</li>
-                    <li>L'histogramme est généré automatiquement avec la courbe normale superposée</li>
-                </ol>
-            </div>
-
-            <div class="question-box">
-                <h4>❓ Question 2</h4>
-                <p>Décrivez la forme de votre histogramme. Est-il symétrique ? En forme de cloche ? Y a-t-il des valeurs
-                    en dehors des limites de tolérance ?</p>
-                <textarea placeholder="Votre réponse..."></textarea>
-            </div>
-        </div>
-
-        <!-- PARTIE 3 -->
-        <div class="section">
-            <h2>🔔 Partie 3 — Vérification de la normalité (25 min)</h2>
-            <p>Pour appliquer le SPC, la distribution doit être <strong>approximativement normale</strong> (en cloche).
-                Voici 3 méthodes pour le vérifier :</p>
-
-            <h3>Méthode 1 : Visuelle</h3>
-            <p>Comparez votre histogramme à la courbe en cloche théorique. Est-il :</p>
-            <ul>
-                <li>✅ Symétrique autour de la moyenne ?</li>
-                <li>✅ En forme de cloche (plus concentré au centre) ?</li>
-                <li>✅ Sans « trous » ni pics multiples ?</li>
-            </ul>
-
-            <h3>Méthode 2 : Droite de Henry (papier de probabilité normale)</h3>
-            <div class="tool-tabs">
-                <div class="tool-tab active" onclick="switchTab('excel-norm', this)">📗 Excel</div>
-                <div class="tool-tab" onclick="switchTab('ellistat-norm', this)">📘 Ellistat</div>
-            </div>
-            <div class="tool-content active" id="excel-norm">
-                <ol>
-                    <li>Trier les données par ordre croissant</li>
-                    <li>Pour chaque mesure i, calculer le rang : <code>F(i) = (i - 0,5) / n</code></li>
-                    <li>Calculer le quantile normal : <code>=LOI.NORMALE.STANDARD.INVERSE(F(i))</code></li>
-                    <li>Tracer les mesures (axe X) vs. quantiles normaux (axe Y)</li>
-                    <li><strong>Si les points forment une droite → distribution normale</strong></li>
-                </ol>
-            </div>
-            <div class="tool-content" id="ellistat-norm">
-                <ol>
-                    <li>Statistiques → Test de normalité</li>
-                    <li>Sélectionner la variable "diameter"</li>
-                    <li>Ellistat affiche automatiquement la droite de Henry et la p-value</li>
-                    <li><strong>p-value &gt; 0,05 → on accepte la normalité</strong></li>
-                </ol>
-            </div>
-
-            <h3>Méthode 3 : Règle rapide des 68-95-99,7</h3>
-            <div class="highlight">
-                <p>Si la distribution est normale :</p>
-                <ul>
-                    <li><strong>68%</strong> des mesures sont dans l'intervalle [x̄ - s ; x̄ + s]</li>
-                    <li><strong>95%</strong> des mesures sont dans l'intervalle [x̄ - 2s ; x̄ + 2s]</li>
-                    <li><strong>99,7%</strong> des mesures sont dans l'intervalle [x̄ - 3s ; x̄ + 3s]</li>
-                </ul>
-            </div>
-
-            <div class="question-box">
-                <h4>❓ Question 3</h4>
-                <p>Avec vos calculs, combien de mesures tombent dans [x̄ - s ; x̄ + s] ? Est-ce proche de 68% ?</p>
-                <textarea placeholder="Votre réponse..."></textarea>
-            </div>
-
-            <div class="question-box">
-                <h4>❓ Question 4</h4>
-                <p>Concluez : la distribution est-elle normale ? Peut-on appliquer les outils SPC classiques sur ces
-                    données ?</p>
-                <textarea placeholder="Votre réponse..."></textarea>
-            </div>
-        </div>
-
-        <!-- PARTIE 4 : SYNTHÈSE -->
-        <div class="section">
-            <h2>📝 Partie 4 — Synthèse et points clés (15 min)</h2>
-            <div class="highlight">
-                <strong>Ce qu'il faut retenir :</strong>
-                <ul style="margin-top: 10px;">
-                    <li>L'histogramme est le <strong>premier outil</strong> à utiliser pour visualiser une production
-                    </li>
-                    <li>La <strong>loi normale</strong> (courbe en cloche) est le modèle de base du SPC</li>
-                    <li>Il faut <strong>vérifier la normalité</strong> avant d'appliquer les indices Cp/Cpk</li>
-                    <li>Les 3 informations clés : <strong>centrage</strong> (moyenne vs cible),
-                        <strong>dispersion</strong> (écart-type), <strong>forme</strong> (symétrie)</li>
-                    <li>La règle <strong>68-95-99,7</strong> permet de vérifier rapidement la normalité</li>
-                </ul>
-            </div>
-
-            <div class="question-box">
-                <h4>❓ Question 5 — Pour aller plus loin</h4>
-                <p>Si l'histogramme montrait deux pics (distribution bimodale), qu'est-ce que cela pourrait signifier
-                    dans un contexte de production ?</p>
-                <textarea
-                    placeholder="Votre réponse... (Indice : pensez à deux sources de variation différentes)"></textarea>
-            </div>
-        </div>
-
-        <a href="index.html" class="back-link">← Retour aux ressources</a>
-    </div>
-
-    <script>
-        function switchTab(id, tabEl) {
+        } </style> <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+</head> <body> <div class="container"> <div class="logo-header"> <img src="logo_uimm_placeholder.jpg" alt="Logo UIMM" /> <div> <div class="structure-name">Pôle Formation UIMM - CVDL</div> <div class="formateur">Formateur : S. Jaubert</div> </div> </div> <div class="header"> <div class="badge">Jour 1 — Activité 2</div> <h1> TP Histogramme & Normalité</h1> <p>Construisez un histogramme à partir de mesures réelles, vérifiez la normalité de la distribution, et
+                interprétez les résultats.</p> <div class="duration"> Durée : 90 minutes |  Outils : Excel ou Ellistat |  Fichier : <code>diameter.csv</code></div> </div> <!-- CONTEXTE --> <div class="section"> <h2> Contexte industriel</h2> <p>Un atelier d'usinage produit des <strong>axes cylindriques</strong>. La cote critique est le <strong>diamètre</strong>, dont la spécification est :</p> <div class="highlight"> <strong>Cible : 11,88 mm</strong> &nbsp;|&nbsp; <strong>Tolérance : 11,84 ± 0,08 mm</strong> &nbsp;→&nbsp; LSI = 11,80 mm &nbsp;|&nbsp; LSS = 11,96 mm </div> <p>30 pièces ont été mesurées consécutivement. Les données sont dans le fichier <code>diameter.csv</code>. </p> </div> <!-- PARTIE 1 --> <div class="section"> <h2> Partie 1 — Statistiques descriptives (20 min)</h2> <ol> <li><span class="step-number">1</span> <strong>Ouvrir le fichier</strong> <code>diameter.csv</code> dans
+                    Excel ou Ellistat</li> <li><span class="step-number">2</span> <strong>Calculez les statistiques suivantes :</strong></li> </ol> <table class="data-table"> <tr> <th>Statistique</th> <th>Formule Excel</th> <th>Votre résultat</th> </tr> <tr> <td>Nombre de mesures (n)</td> <td><code>=NB(A2:A31)</code></td> <td></td> </tr> <tr> <td>Moyenne (x̄)</td> <td><code>=MOYENNE(A2:A31)</code></td> <td></td> </tr> <tr> <td>Écart-type (s)</td> <td><code>=ECARTYPE.STANDARD(A2:A31)</code></td> <td></td> </tr> <tr> <td>Minimum</td> <td><code>=MIN(A2:A31)</code></td> <td></td> </tr> <tr> <td>Maximum</td> <td><code>=MAX(A2:A31)</code></td> <td></td> </tr> <tr> <td>Étendue (R)</td> <td><code>=MAX(...)-MIN(...)</code></td> <td></td> </tr> <tr> <td>Médiane</td> <td><code>=MEDIANE(A2:A31)</code></td> <td></td> </tr> </table> <div class="question-box"> <h4> Question 1</h4> <p>La moyenne est-elle proche de la cible (11,88 mm) ? Le procédé semble-t-il centré ?</p> <textarea placeholder="Votre réponse..."></textarea> </div> </div> <!-- PARTIE 2 --> <div class="section"> <h2> Partie 2 — Construction de l'histogramme (30 min)</h2> <h3>Méthode manuelle (comprendre le principe)</h3> <ol> <li><span class="step-number">1</span> <strong>Nombre de classes :</strong> Utilisez la règle de Sturges
+                    : k = 1 + 3,322 × log₁₀(n). Pour n = 30 → k ≈ 6 classes</li> <li><span class="step-number">2</span> <strong>Amplitude des classes :</strong> h = Étendue / k</li> <li><span class="step-number">3</span> <strong>Bornes des classes :</strong> Commencez au minimum et
+                    ajoutez h à chaque fois</li> <li><span class="step-number">4</span> <strong>Comptez</strong> le nombre de mesures dans chaque classe
+                    (effectifs)</li> </ol> <h3>Construction sur outil</h3> <div class="tool-tabs"> <div class="tool-tab active" onclick="switchTab('excel-hist', this)"> Excel</div> <div class="tool-tab" onclick="switchTab('ellistat-hist', this)"> Ellistat</div> </div> <div class="tool-content active" id="excel-hist"> <ol> <li><strong>Créer les bornes</strong> dans une colonne (ex : 11,84 ; 11,85 ; 11,86 … 11,93)</li> <li><strong>=FREQUENCE(A2:A31; bornes)</strong> → sélectionner une colonne, valider avec
+                        Ctrl+Maj+Entrée</li> <li><strong>Insérer un graphique</strong> → Histogramme (ou graphique à barres)</li> <li>Ajouter les <strong>limites de spécification</strong> (LSI = 11,80 et LSS = 11,96) en lignes
+                        verticales</li> </ol> <div class="warning"> <strong> Astuce Excel :</strong> Vous pouvez aussi utiliser l'outil "Utilitaire d'analyse" →
+                    Histogramme (onglet Données → Analyse de données) </div> </div> <div class="tool-content" id="ellistat-hist"> <ol> <li>Importer le fichier CSV (Fichier → Importer)</li> <li>Sélectionner la colonne "diameter"</li> <li>Aller dans <strong>Statistiques → Histogramme</strong></li> <li>Renseigner les limites : LSI = 11,80 et LSS = 11,96</li> <li>L'histogramme est généré automatiquement avec la courbe normale superposée</li> </ol> </div> <div class="question-box"> <h4> Question 2</h4> <p>Décrivez la forme de votre histogramme. Est-il symétrique ? En forme de cloche ? Y a-t-il des valeurs
+                    en dehors des limites de tolérance ?</p> <textarea placeholder="Votre réponse..."></textarea> </div> </div> <!-- PARTIE 3 --> <div class="section"> <h2> Partie 3 — Vérification de la normalité (25 min)</h2> <p>Pour appliquer le SPC, la distribution doit être <strong>approximativement normale</strong> (en cloche).
+                Voici 3 méthodes pour le vérifier :</p> <h3>Méthode 1 : Visuelle</h3> <p>Comparez votre histogramme à la courbe en cloche théorique. Est-il :</p> <ul> <li> Symétrique autour de la moyenne ?</li> <li> En forme de cloche (plus concentré au centre) ?</li> <li> Sans « trous » ni pics multiples ?</li> </ul> <h3>Méthode 2 : Droite de Henry (papier de probabilité normale)</h3> <div class="tool-tabs"> <div class="tool-tab active" onclick="switchTab('excel-norm', this)"> Excel</div> <div class="tool-tab" onclick="switchTab('ellistat-norm', this)"> Ellistat</div> </div> <div class="tool-content active" id="excel-norm"> <ol> <li>Trier les données par ordre croissant</li> <li>Pour chaque mesure i, calculer le rang : <code>F(i) = (i - 0,5) / n</code></li> <li>Calculer le quantile normal : <code>=LOI.NORMALE.STANDARD.INVERSE(F(i))</code></li> <li>Tracer les mesures (axe X) vs. quantiles normaux (axe Y)</li> <li><strong>Si les points forment une droite → distribution normale</strong></li> </ol> </div> <div class="tool-content" id="ellistat-norm"> <ol> <li>Statistiques → Test de normalité</li> <li>Sélectionner la variable "diameter"</li> <li>Ellistat affiche automatiquement la droite de Henry et la p-value</li> <li><strong>p-value &gt; 0,05 → on accepte la normalité</strong></li> </ol> </div> <h3>Méthode 3 : Règle rapide des 68-95-99,7</h3> <div class="highlight"> <p>Si la distribution est normale :</p> <ul> <li><strong>68%</strong> des mesures sont dans l'intervalle [x̄ - s ; x̄ + s]</li> <li><strong>95%</strong> des mesures sont dans l'intervalle [x̄ - 2s ; x̄ + 2s]</li> <li><strong>99,7%</strong> des mesures sont dans l'intervalle [x̄ - 3s ; x̄ + 3s]</li> </ul> </div> <div class="question-box"> <h4> Question 3</h4> <p>Avec vos calculs, combien de mesures tombent dans [x̄ - s ; x̄ + s] ? Est-ce proche de 68% ?</p> <textarea placeholder="Votre réponse..."></textarea> </div> <div class="question-box"> <h4> Question 4</h4> <p>Concluez : la distribution est-elle normale ? Peut-on appliquer les outils SPC classiques sur ces
+                    données ?</p> <textarea placeholder="Votre réponse..."></textarea> </div> </div> <!-- PARTIE 4 : SYNTHÈSE --> <div class="section"> <h2> Partie 4 — Synthèse et points clés (15 min)</h2> <div class="highlight"> <strong>Ce qu'il faut retenir :</strong> <ul style="margin-top: 10px;"> <li>L'histogramme est le <strong>premier outil</strong> à utiliser pour visualiser une production </li> <li>La <strong>loi normale</strong> (courbe en cloche) est le modèle de base du SPC</li> <li>Il faut <strong>vérifier la normalité</strong> avant d'appliquer les indices Cp/Cpk</li> <li>Les 3 informations clés : <strong>centrage</strong> (moyenne vs cible), <strong>dispersion</strong> (écart-type), <strong>forme</strong> (symétrie)</li> <li>La règle <strong>68-95-99,7</strong> permet de vérifier rapidement la normalité</li> </ul> </div> <div class="question-box"> <h4> Question 5 — Pour aller plus loin</h4> <p>Si l'histogramme montrait deux pics (distribution bimodale), qu'est-ce que cela pourrait signifier
+                    dans un contexte de production ?</p> <textarea
+                    placeholder="Votre réponse... (Indice : pensez à deux sources de variation différentes)"></textarea> </div> </div> <a href="index.html" class="back-link">← Retour aux ressources</a> </div> <script> function switchTab(id, tabEl) {
             const parent = tabEl.parentElement;
             parent.querySelectorAll('.tool-tab').forEach(t => t.classList.remove('active'));
             tabEl.classList.add('active');
@@ -536,8 +307,5 @@
                 sibling = sibling.nextElementSibling;
             }
             document.getElementById(id).classList.add('active');
-        }
-    </script>
-</body>
-
-</html>
+        } </script>
+</body> </html>
