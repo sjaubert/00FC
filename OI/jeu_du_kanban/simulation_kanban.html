@@ -243,6 +243,7 @@ class SimulationEngine {
     this.total_demand    = 0;
     this.total_delivered = 0;
     this.total_incidents = 0;
+    this.lastP1Consumed  = Math.floor(this.p.capacities[0]); // 1re livraison = cadence P1
   }
 
   _normal(mean, std) {
@@ -261,8 +262,12 @@ class SimulationEngine {
     this.t++;
     const ev = { t: this.t, incidents: [], produced: [0,0,0], demand: 0, delivered: 0, backlog: 0, kanbanReleases: [] };
 
-    // 1. Réapprovisionnement fournisseur (livraison continue selon cadence P1)
-    this.stocks[0] += Math.floor(p.capacities[0]);
+    // 1. Réapprovisionnement fournisseur
+    // Flux poussé : livraison à la cadence nominale de P1 (plan fixe)
+    // Flux tiré   : livraison = ce que P1 a consommé la période précédente (signal kanban)
+    this.stocks[0] += p.mode === "push"
+      ? Math.floor(p.capacities[0])
+      : this.lastP1Consumed;
 
     // 2. Incidents
     for (let i = 0; i < 3; i++) {
@@ -313,6 +318,8 @@ class SimulationEngine {
       this.eff_hist[i].push(Math.min(this.cap_used[i] / Math.max(p.capacities[i], 1), 1));
     }
     ev.service = svc;
+    // Mémoriser la consommation de P1 pour le prochain réapprovisionnement fournisseur (pull)
+    this.lastP1Consumed = ev.produced[0];
     return ev;
   }
 
@@ -380,13 +387,12 @@ function drawVSM(canvas, engine, params) {
   const xP    = [xFour + span*0.18, xFour + span*0.46, xFour + span*0.73];
   const xS    = [xFour + span*0.32, xFour + span*0.59, xFour + span*0.87];
   // Mise à jour du cache global (utilisé par les animations)
-  _gxP = [...xP]; _gxS = [...xS]; _gyM = yM;
-
   // ─── Fournisseur ───
   drawActor(ctx, xFour, yM, "Fourni-\nsseur", COLORS.bleu);
 
   // ─── Stock MP (entre fournisseur et P1) ───
   const mpX = (xFour + xP[0]) / 2;
+  _gxP = [...xP]; _gxS = [...xS]; _gyM = yM; _gmpX = mpX;
   drawArrow(ctx, xFour+28, yM, xP[0]-42, yM, arrColor);
   drawStockBadge(ctx, mpX, yM - 28, engine.stocks[0], STOCK_LABELS[0], 30);
 
@@ -568,12 +574,12 @@ function drawKanbanLoop(ctx, xStation, xStock, yM, available, total, idx) {
     .forEach(anim => {
       const pos = getTicketPos(anim.progress, xStation, xStock, yM, idx);
       ctx.save();
-      ctx.shadowColor = '#e67e22'; ctx.shadowBlur = 8;
-      ctx.fillStyle = '#e67e22';
-      ctx.beginPath(); ctx.roundRect(pos.x - 7, pos.y - 6, 14, 10, 2); ctx.fill();
+      ctx.shadowColor = '#27ae60'; ctx.shadowBlur = 8;
+      ctx.fillStyle = '#27ae60';
+      ctx.beginPath(); ctx.roundRect(pos.x - 7, pos.y - 5, 14, 10, 2); ctx.fill();
       ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.shadowBlur = 0; ctx.stroke();
-      ctx.fillStyle = '#fff'; ctx.font = 'bold 7px sans-serif'; ctx.textAlign = 'center';
-      ctx.fillText('↑', pos.x, pos.y + 3);
+      ctx.fillStyle = '#fff'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('←', pos.x, pos.y + 3);
       ctx.restore();
     });
 }
@@ -587,55 +593,54 @@ let _rafId = null;
 const ANIM_DURATION     = 1.8;  // s — ticket remonte la boucle kanban
 const ANIM_DURATION_BAC = 0.5;  // s — bac se déplace vers le stock aval
 // Cache des positions calculées par drawVSM (mises à jour à chaque frame)
-let _gxP = [150,340,530], _gxS = [240,435,625], _gyM = 90;
+let _gxP = [150,340,530], _gxS = [240,435,625], _gyM = 90, _gmpX = 97;
 
 function getTicketPos(progress, xStation, xStock, yM, idx) {
+  // Glissement horizontal simple de l'aval (stock) vers l'amont (station) sur la base de la boucle
   const y2 = yM + 95 + idx * 5;
-  const segs = [
-    { from: { x: xStock,    y: yM+48 }, to: { x: xStock,    y: y2    } }, // descend
-    { from: { x: xStock,    y: y2    }, to: { x: xStation,  y: y2    } }, // remonte horizontalement
-    { from: { x: xStation,  y: y2    }, to: { x: xStation,  y: yM+48 } }, // monte
-  ];
-  const lens  = segs.map(s => Math.hypot(s.to.x - s.from.x, s.to.y - s.from.y));
-  const total = lens.reduce((a, b) => a + b, 0);
-  let dist = progress * total;
-  for (const seg of segs) {
-    const len = Math.hypot(seg.to.x - seg.from.x, seg.to.y - seg.from.y);
-    if (dist <= len + 0.001) {
-      const t = Math.min(dist / len, 1);
-      return { x: seg.from.x + t * (seg.to.x - seg.from.x),
-               y: seg.from.y + t * (seg.to.y - seg.from.y) };
-    }
-    dist -= len;
-  }
-  return segs[segs.length - 1].to;
+  return { x: xStock - 6 + progress * (xStation + 20 - xStock + 6), y: y2 };
 }
 
 function spawnTicketAnimation(loop) {
-  if (ticketAnimations.filter(a => a.loop === loop).length >= 3) return;
+  if (ticketAnimations.filter(a => a.loop === loop).length >= 1) return; // 1 max par boucle
   ticketAnimations.push({ loop, progress: 0 });
   if (!_rafId) _startAnimLoop();
 }
 
 function spawnBacAnimation(stationIdx) {
   if (!_gxP || stationIdx > 2) return;
-  if (bacAnimations.filter(a => a.station === stationIdx).length >= 2) return;
-  bacAnimations.push({ station: stationIdx, progress: 0 });
+  if (bacAnimations.filter(a => a.station === stationIdx && a.dir === 'out').length >= 2) return;
+  bacAnimations.push({ station: stationIdx, progress: 0, dir: 'out' });
+  if (!_rafId) _startAnimLoop();
+}
+
+function spawnInputBacAnimation(stationIdx) {
+  if (!_gxP || stationIdx > 2) return;
+  if (bacAnimations.filter(a => a.station === stationIdx && a.dir === 'in').length >= 2) return;
+  bacAnimations.push({ station: stationIdx, progress: 0, dir: 'in' });
   if (!_rafId) _startAnimLoop();
 }
 
 function drawBacAnimations(ctx) {
   bacAnimations.forEach(a => {
-    const x0 = _gxP[a.station] + 42;          // sortie du poste
-    const x1 = _gxS[a.station] - 24;          // entrée du stock
-    const x  = x0 + a.progress * (x1 - x0);
+    let x0, x1;
+    if (a.dir === 'out') {
+      // Bac sortant : poste → stock aval
+      x0 = _gxP[a.station] + 42;
+      x1 = _gxS[a.station] - 24;
+    } else {
+      // Bac entrant : stock amont → poste
+      x0 = (a.station === 0 ? _gmpX + 22 : _gxS[a.station - 1] + 24);
+      x1 = _gxP[a.station] - 42;
+    }
+    const x = x0 + a.progress * (x1 - x0);
     ctx.save();
     ctx.shadowColor = '#2980b9'; ctx.shadowBlur = 6;
-    ctx.fillStyle = '#2980b9';
+    ctx.fillStyle = a.dir === 'out' ? '#2980b9' : '#1a5276';
     ctx.beginPath(); ctx.roundRect(x - 10, _gyM - 8, 20, 14, 3); ctx.fill();
     ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.shadowBlur = 0; ctx.stroke();
     ctx.fillStyle = '#fff'; ctx.font = 'bold 7px sans-serif'; ctx.textAlign = 'center';
-    ctx.fillText('BAC→', x, _gyM + 3);
+    ctx.fillText(a.dir === 'out' ? 'BAC→' : '→BAC', x, _gyM + 3);
     ctx.restore();
   });
 }
@@ -837,13 +842,16 @@ function stepOnce() {
   updateAll(ev);
   // Animer uniquement si vitesse lisible
   if (params.mode === "pull" && params.speed_ms >= 400) {
-    // Tickets libérés remontant de l'aval vers l'amont (orange, boucle kanban)
-    (ev.kanbanReleases || []).forEach(({ loop, count }) => {
-      for (let c = 0; c < Math.min(count, 2); c++) spawnTicketAnimation(loop);
+    // Ticket libéré remontant vers l'amont (vert, boucle kanban) — 1 max par boucle
+    (ev.kanbanReleases || []).forEach(({ loop }) => {
+      spawnTicketAnimation(loop);
     });
-    // Bacs produits descendant de l'amont vers l'aval (bleu, flèche de flux)
+    // Bacs : sortant (poste→stock aval) + entrant (stock amont→poste)
     ev.produced.forEach((qty, i) => {
-      if (qty > 0) spawnBacAnimation(i);
+      if (qty > 0) {
+        spawnBacAnimation(i);       // bac qui sort du poste
+        spawnInputBacAnimation(i);  // bac qui entre dans le poste (depuis stock amont)
+      }
     });
   }
 }
