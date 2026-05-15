@@ -196,7 +196,7 @@ button:hover { opacity: .85; }
 <div class="red-bar"></div> <div id="controls"> <button id="btnMode">MODE : FLUX POUSSÉ</button> <div class="sep"></div> <button id="btnStart">DÉMARRER</button> <button id="btnStep">Pas à pas</button> <button id="btnReset">Réinitialiser</button> <div class="sep"></div> <div id="speedWrap"> <label>Vitesse :</label> <input type="range" id="slSpeed" min="100" max="2000" step="100" value="800"> <span id="lblSpeed">800 ms</span> </div> <span id="lblPeriod">Période : 0</span> <a href="qcm_kanban.html" target="_blank"
      style="margin-left:auto;background:#8e44ad;color:#fff;border-radius:4px;
             padding:6px 14px;font-size:0.85em;font-weight:600;text-decoration:none;"> QCM de validation </a>
-</div> <div id="legend"> <div class="leg-group"> <span class="leg-title">Tickets Kanban :</span> <span><span class="leg-swatch" style="background:#27ae60;"></span>Libre (sur le tableau kanban)</span> <span><span class="leg-swatch" style="background:#f39c12;"></span>En circuit (attaché au bac en production)</span> </div> <div id="legCalc"> <span>1 ticket = 1 bac = <strong id="legLot">3</strong> pièces</span> <span>Stock max (Contrôle) = <strong id="legStockMax">18</strong> pièces</span> <span>Demande ≈ <strong id="legDemPieces">8</strong> pièces/p = <strong id="legDemBacs">2,7</strong> bacs/p</span> </div>
+</div> <div id="legend"> <div class="leg-group"> <span class="leg-title">Tickets Kanban :</span> <span><span class="leg-swatch" style="background:#27ae60;"></span>Libre (sur le tableau kanban)</span> <span><span class="leg-swatch" style="background:#c0392b;"></span>En circuit (attaché au bac en production)</span> </div> <div id="legCalc"> <span>1 ticket = 1 bac = <strong id="legLot">3</strong> pièces</span> <span>Stock max (Contrôle) = <strong id="legStockMax">18</strong> pièces</span> <span>Demande ≈ <strong id="legDemPieces">8</strong> pièces/p = <strong id="legDemBacs">2,7</strong> bacs/p</span> </div>
 </div> <div id="main"> <!-- PARAMS --> <div id="params"> <div class="panel-title">PARAMÈTRES</div> <div class="section-lbl">Demande client</div> <div class="param-row"> <label>Moyenne (u/p)</label> <input type="range" id="pDemand" min="2" max="20" step="0.5" value="8"> <span class="param-val" id="vDemand">8</span> </div> <div class="param-row"> <label>Variabilité</label> <input type="range" id="pCV" min="0" max="0.8" step="0.05" value="0.3"> <span class="param-val" id="vCV">30%</span> </div> <div class="section-lbl">Cadence postes (u/p)</div> <div class="param-row"> <label>Usinage</label> <input type="range" id="pCap0" min="2" max="20" step="0.5" value="10"> <span class="param-val" id="vCap0">10</span> </div> <div class="param-row"> <label>Assemblage</label> <input type="range" id="pCap1" min="2" max="20" step="0.5" value="9"> <span class="param-val" id="vCap1">9</span> </div> <div class="param-row"> <label>Contrôle</label> <input type="range" id="pCap2" min="2" max="20" step="0.5" value="9"> <span class="param-val" id="vCap2">9</span> </div> <div id="kanbanSection"> <div class="section-lbl">Tickets Kanban</div> <div class="param-row"> <label>Boucle Usinage</label> <input type="range" id="pK0" min="1" max="20" step="1" value="6"> <span class="param-val" id="vK0">6</span> </div> <div class="param-row"> <label>Boucle Assembl.</label> <input type="range" id="pK1" min="1" max="20" step="1" value="6"> <span class="param-val" id="vK1">6</span> </div> <div class="param-row"> <label>Boucle Contrôle</label> <input type="range" id="pK2" min="1" max="20" step="1" value="6"> <span class="param-val" id="vK2">6</span> </div> <div class="param-row"> <label>Taille de lot</label> <input type="range" id="pLot" min="1" max="10" step="1" value="3"> <span class="param-val" id="vLot">3</span> </div> </div><!-- /kanbanSection --> <div class="section-lbl">Stocks initiaux (u)</div> <div class="param-row"> <label>Mat. premières</label> <input type="range" id="pS0" min="0" max="100" step="5" value="40"> <span class="param-val" id="vS0">40</span> </div> <div class="param-row"> <label>En-cours 1</label> <input type="range" id="pS1" min="0" max="80" step="5" value="25"> <span class="param-val" id="vS1">25</span> </div> <div class="param-row"> <label>En-cours 2</label> <input type="range" id="pS2" min="0" max="80" step="5" value="20"> <span class="param-val" id="vS2">20</span> </div> <div class="param-row"> <label>Produits finis</label> <input type="range" id="pS3" min="0" max="80" step="5" value="20"> <span class="param-val" id="vS3">20</span> </div> <div class="section-lbl">Incidents</div> <div class="param-row"> <label>Probabilité</label> <input type="range" id="pInc" min="0" max="0.5" step="0.01" value="0.12"> <span class="param-val" id="vInc">12%</span> </div> </div> <!-- CENTER --> <div id="center"> <div id="vsmWrap"> <div class="panel-title">CARTE DE FLUX DE VALEUR (VSM)</div> <canvas id="vsmCanvas" height="235"></canvas> </div> <div id="logWrap"> <div class="panel-title">JOURNAL DES ÉVÉNEMENTS</div> <div id="logBox"></div> </div> </div> <!-- RIGHT --> <div id="right"> <div class="panel-title">INDICATEURS CLÉS</div> <div id="kpis"> <div class="kpi-box"> <div class="kpi-lbl">Taux de service</div> <div class="kpi-val" id="kSvc" style="color:var(--gris)">—</div> </div> <div class="kpi-box"> <div class="kpi-lbl">Stock total (u)</div> <div class="kpi-val" id="kStk" style="color:var(--gris)">—</div> </div> <div class="kpi-box"> <div class="kpi-lbl">Efficience moy.</div> <div class="kpi-val" id="kEff" style="color:var(--gris)">—</div> </div> <div class="kpi-box"> <div class="kpi-lbl">Incidents</div> <div class="kpi-val" id="kInc" style="color:var(--gris)">—</div> </div> </div> <div id="charts"> <div class="chart-wrap"><canvas id="chartSvc"></canvas></div> <div class="chart-wrap"><canvas id="chartStk"></canvas></div> <div class="chart-wrap"><canvas id="chartEff"></canvas></div> </div> </div> </div> <script>
 // ═══════════════════════════════════════════════════════════
 // MOTEUR DE SIMULATION
@@ -507,7 +507,7 @@ function drawStockBadge(ctx, x, y, value, label, highThresh) {
 
 function drawKanbanLoop(ctx, xStation, xStock, yM, available, total, idx) {
   const y2       = yM + 95 + idx * 5;
-  const enCircuit = total - available;
+  const enCircuit = Math.max(0, total - available);
   const tw = 10, th = 8, gap = 3;
 
   // ── Boucle en pointillés ──
@@ -551,9 +551,10 @@ function drawKanbanLoop(ctx, xStation, xStock, yM, available, total, idx) {
   }
 
   // ── Tickets EN CIRCUIT — côté stock (aval) ──
+  const ROUGE_K = '#c0392b';
   for (let i = 0; i < enCircuit; i++) {
     const rx = xStock - 6 - (enCircuit - 1 - i) * (tw + gap);
-    ctx.fillStyle = '#e67e22';
+    ctx.fillStyle = ROUGE_K;
     ctx.beginPath();
     ctx.roundRect(rx, y2 - th/2, tw, th, 2); ctx.fill();
     ctx.strokeStyle = '#fff'; ctx.lineWidth = 0.8; ctx.stroke();
@@ -562,7 +563,7 @@ function drawKanbanLoop(ctx, xStation, xStock, yM, available, total, idx) {
   // ── Légende ──
   ctx.fillStyle = '#27ae60'; ctx.font = '7px sans-serif'; ctx.textAlign = 'left';
   ctx.fillText(`${available} libre${available>1?'s':''}`, xStation + 4, y2 + 12);
-  ctx.fillStyle = '#e67e22'; ctx.textAlign = 'right';
+  ctx.fillStyle = ROUGE_K; ctx.textAlign = 'right';
   ctx.fillText(`${enCircuit} en circuit`, xStock - 4, y2 + 12);
   // Sens du ticket libéré
   ctx.fillStyle = COLORS.violet; ctx.font = 'bold 7px sans-serif'; ctx.textAlign = 'center';
@@ -809,6 +810,9 @@ function readParams() {
   if (engine.t === 0) {
     engine.kanbans = [...params.kanban_counts];
     engine.stocks  = [...params.initial_stocks];
+  } else {
+    // Clamper engine.kanbans si le slider est réduit en cours de run
+    engine.kanbans = engine.kanbans.map((k, i) => Math.min(k, params.kanban_counts[i]));
   }
 }
 
