@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de formation – Capabilité / SPC – CQPM TQ6</title>
+<style>
+  :root {
+    --bleu: #1F3864;
+    --bleu-clair: #2E75B6;
+    --bleu-pale: #D6E4F0;
+    --gris: #E9EFF7;
+    --orange: #C55A11;
+    --texte: #222;
+    --blanc: #fff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: var(--texte);
+    background: #f4f6f9;
+  }
+
+  /* BANDEAU */
+  header {
+    background: var(--bleu);
+    color: var(--blanc);
+    padding: 0;
+    display: flex;
+    align-items: stretch;
+    border-bottom: 4px solid var(--bleu-clair);
+  }
+  .header-accent { width: 8px; background: var(--bleu-clair); flex-shrink: 0; }
+  .header-content { padding: 24px 32px; flex: 1; }
+  header h1 { font-size: 26px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 6px; }
+  header .subtitle { font-size: 15px; color: #a8c8e8; }
+  .header-meta { display: flex; gap: 28px; margin-top: 14px; flex-wrap: wrap; }
+  .header-meta span { font-size: 13px; background: rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 20px; }
+
+  /* NAV */
+  nav {
+    background: var(--bleu-clair);
+    padding: 0 32px;
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  nav a {
+    color: var(--blanc);
+    text-decoration: none;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.2s;
+    display: block;
+  }
+  nav a:hover { border-bottom-color: #a8d8ff; }
+
+  /* CONTENU */
+  main { max-width: 1200px; margin: 0 auto; padding: 32px 24px 60px; }
+
+  /* SECTIONS */
+  section { margin-bottom: 48px; }
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .section-num {
+    background: var(--bleu);
+    color: var(--blanc);
+    font-size: 17px;
+    font-weight: 700;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-title h2 { font-size: 20px; color: var(--bleu); }
+  .section-divider { border: none; border-top: 3px solid var(--bleu-clair); margin-bottom: 20px; }
+
+  /* CARDS JOURNEES */
+  .day-card {
+    background: var(--blanc);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+  .day-header {
+    background: var(--bleu);
+    color: var(--blanc);
+    padding: 16px 24px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  .day-header h3 { font-size: 17px; font-weight: 700; }
+  .day-header .day-date { font-size: 13px; color: #a8c8e8; }
+  .day-objectives {
+    background: var(--gris);
+    padding: 14px 24px;
+    border-left: 4px solid var(--bleu-clair);
+    margin: 16px 24px;
+    border-radius: 0 4px 4px 0;
+  }
+  .day-objectives h4 { font-size: 12px; text-transform: uppercase; color: var(--bleu-clair); letter-spacing: 1px; margin-bottom: 8px; }
+  .day-objectives ul { padding-left: 18px; }
+  .day-objectives li { font-size: 13px; margin-bottom: 4px; line-height: 1.5; }
+
+  /* TABLE SÉANCES */
+  .seances-wrap { padding: 0 24px 24px; overflow-x: auto; }
+  table.seances {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  table.seances thead tr {
+    background: var(--bleu-clair);
+    color: var(--blanc);
+  }
+  table.seances thead th {
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  table.seances tbody tr:nth-child(even) { background: var(--gris); }
+  table.seances tbody tr:nth-child(odd) { background: var(--blanc); }
+  table.seances tbody tr.pause { background: #f8f8f8; color: #999; font-style: italic; }
+  table.seances tbody td {
+    padding: 10px 12px;
+    vertical-align: top;
+    line-height: 1.5;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  td.horaire { white-space: nowrap; font-weight: 600; color: var(--bleu); width: 80px; }
+  td.duree { white-space: nowrap; color: #666; width: 70px; }
+  td.titre { font-weight: 600; width: 180px; color: var(--bleu); }
+  td.titre.key { color: var(--orange); }
+  td.modalite { font-style: italic; color: #555; width: 160px; }
+
+  /* LIENS RESSOURCES */
+  .ressources { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .ressource-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11.5px;
+    padding: 3px 9px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: opacity 0.15s;
+  }
+  .ressource-link:hover { opacity: 0.8; text-decoration: underline; }
+  .ressource-link.pdf { background: #fde8e0; color: #b03a10; }
+  .ressource-link.xlsx { background: #e0f0e8; color: #1a7340; }
+  .ressource-link.docx { background: #dce8f8; color: #1a4a8a; }
+  .ressource-link.csv { background: #f0ede0; color: #6b5a10; }
+
+  /* TABLEAUX GENERIQUES */
+  table.generic {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: var(--blanc);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  }
+  table.generic thead tr { background: var(--bleu); color: var(--blanc); }
+  table.generic thead th { padding: 11px 14px; text-align: left; font-weight: 600; }
+  table.generic tbody tr:nth-child(even) { background: var(--gris); }
+  table.generic tbody td { padding: 10px 14px; border-bottom: 1px solid #dde5f0; vertical-align: top; line-height: 1.5; }
+
+  /* SYNTHESE */
+  .synthese-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .synthese-card {
+    background: var(--blanc);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+  .synthese-card-header {
+    background: var(--bleu-clair);
+    color: var(--blanc);
+    padding: 12px 16px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .synthese-card-body { padding: 14px 16px; font-size: 13px; line-height: 1.6; }
+
+  /* LISTES */
+  ul.liste { padding-left: 20px; }
+  ul.liste li { margin-bottom: 6px; line-height: 1.6; }
+  ul.liste li strong { color: var(--bleu-clair); }
+
+  /* PRINCIPES PEDA */
+  .principes { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-top: 16px; }
+  .principe {
+    background: var(--blanc);
+    border-left: 4px solid var(--bleu-clair);
+    padding: 12px 14px;
+    border-radius: 0 6px 6px 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .principe strong { display: block; color: var(--bleu); margin-bottom: 4px; font-size: 13px; }
+  .principe span { font-size: 12.5px; color: #555; line-height: 1.5; }
+
+  /* EVAL */
+  .eval-note {
+    background: var(--bleu-pale);
+    border-left: 4px solid var(--bleu-clair);
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+
+  /* CONSEILS */
+  .conseil-bloc {
+    background: var(--blanc);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  }
+  .conseil-bloc h4 { color: var(--bleu-clair); font-size: 14px; margin-bottom: 10px; border-bottom: 1px solid var(--bleu-pale); padding-bottom: 6px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--bleu);
+    color: #a8c8e8;
+    text-align: center;
+    padding: 16px;
+    font-size: 12px;
+    margin-top: 40px;
+  }
+
+  @media(max-width: 768px) {
+    .synthese-grid { grid-template-columns: 1fr; }
+    table.seances { font-size: 12px; }
+    td.titre { width: 120px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-accent"></div>
+  <div class="header-content">
+    <h1>Plan de formation – Capabilité &amp; SPC</h1>
+    <div class="subtitle">Maîtrise Statistique des Procédés</div>
+    <div class="header-meta">
+      <span>CQPM Technicien Qualité – Promo TQ 6</span>
+      <span>5, 6 et 25 novembre 2026 – 3 jours</span>
+      <span>AFPI Bourges</span>
+      <span>Formateur : S. Jaubert</span>
+      <span>Pôle Formation UIMM CVDL</span>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <a href="#contexte">1. Contexte</a>
+  <a href="#synthese">2. Synthèse</a>
+  <a href="#j1">3. Journée 1</a>
+  <a href="#j2">4. Journée 2</a>
+  <a href="#j3">5. Journée 3</a>
+  <a href="#ressources">6. Ressources</a>
+  <a href="#evaluation">7. Évaluation</a>
+  <a href="#conseils">8. Conseils</a>
+</nav>
+
+<main>
+
+<!-- ===== 1. CONTEXTE ===== -->
+<section id="contexte">
+  <div class="section-title">
+    <div class="section-num">1</div>
+    <h2>Contexte et positionnement</h2>
+  </div>
+  <hr class="section-divider">
+  <p style="margin-bottom:16px;line-height:1.7;">Ce module s'inscrit dans le parcours CQPM Technicien Qualité (MQ 92 11 89 0101). Il vise à doter les stagiaires – majoritairement issus de la production – des compétences pratiques pour mesurer la capabilité d'un procédé et piloter un suivi statistique en atelier.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
+    <div class="conseil-bloc">
+      <h4>Public visé</h4>
+      <ul class="liste">
+        <li>Salariés en poste ou en reconversion, <strong>profil très opérateur</strong></li>
+        <li>Faible exposition préalable aux outils statistiques</li>
+        <li>Familiarisés avec les tolérances et le contrôle dimensionnel</li>
+      </ul>
+    </div>
+    <div class="conseil-bloc">
+      <h4>Prérequis</h4>
+      <ul class="liste">
+        <li>Notions de base en lecture de plan et métrologie</li>
+        <li>Maniement élémentaire d'Excel</li>
+      </ul>
+    </div>
+    <div class="conseil-bloc">
+      <h4>Compétences CQPM visées</h4>
+      <ul class="liste">
+        <li><strong>C5</strong> : Contribuer à la maîtrise statistique des procédés</li>
+        <li><strong>C6</strong> : Réaliser des analyses de capabilité machine et procédé</li>
+      </ul>
+    </div>
+    <div class="conseil-bloc">
+      <h4>Objectifs de formation</h4>
+      <ul class="liste">
+        <li>Calculer et interpréter Cm / Cmk et Cp / Cpk</li>
+        <li>Construire et lire une carte X̅ / R</li>
+        <li>Détecter les dérives sur une carte Shewhart</li>
+        <li>Mettre en œuvre un suivi SPC avec Ellistat</li>
+        <li>Réagir face à un point hors limites de contrôle</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2. SYNTHESE ===== -->
+<section id="synthese">
+  <div class="section-title">
+    <div class="section-num">2</div>
+    <h2>Synthèse du programme</h2>
+  </div>
+  <hr class="section-divider">
+  <div class="synthese-grid">
+    <div class="synthese-card">
+      <div class="synthese-card-header">J1 – 5 novembre &nbsp;(7 h)</div>
+      <div class="synthese-card-body">
+        <strong style="color:var(--bleu)">Capabilité machine et procédé</strong><br>
+        Cm, Cmk, Cp, Cpk<br><br>
+        <em>Cours illustré + exercices Excel</em>
+      </div>
+    </div>
+    <div class="synthese-card">
+      <div class="synthese-card-header">J2 – 6 novembre &nbsp;(7 h)</div>
+      <div class="synthese-card-body">
+        <strong style="color:var(--bleu)">Introduction au SPC</strong><br>
+        Cartes Shewhart X̅ / R<br><br>
+        <em>Cours + TP données réelles</em>
+      </div>
+    </div>
+    <div class="synthese-card">
+      <div class="synthese-card-header">J3 – 25 novembre &nbsp;(7 h)</div>
+      <div class="synthese-card-body">
+        <strong style="color:var(--bleu)">Mise en œuvre SPC en production</strong><br>
+        Ancrage terrain<br><br>
+        <em>TP Ellistat + étude de cas</em>
+      </div>
+    </div>
+  </div>
+  <h3 style="color:var(--bleu-clair);font-size:15px;margin-bottom:12px;">Principes pédagogiques retenus</h3>
+  <div class="principes">
+    <div class="principe"><strong>Ancrage terrain</strong><span>Partir d'un exemple concret avant toute formule</span></div>
+    <div class="principe"><strong>Visualisation</strong><span>Privilégier les graphiques et les analogies visuelles</span></div>
+    <div class="principe"><strong>Progressivité</strong><span>Installer la capabilité (J1) avant le SPC dynamique (J2-J3)</span></div>
+    <div class="principe"><strong>Retour terrain</strong><span>La rupture de 3 semaines est exploitée comme mission d'observation</span></div>
+    <div class="principe"><strong>Outil unique</strong><span>Ellistat comme fil conducteur : simple, visuel, adapté au terrain</span></div>
+  </div>
+</section>
+
+<!-- ===== 3. JOURNEE 1 ===== -->
+<section id="j1">
+  <div class="section-title">
+    <div class="section-num">3</div>
+    <h2>Journée 1 – 5 novembre 2026 : Capabilité machine et procédé</h2>
+  </div>
+  <hr class="section-divider">
+  <div class="day-card">
+    <div class="day-header">
+      <h3>Déroulement de la journée</h3>
+      <span class="day-date">5 novembre 2026 – 09h00 / 17h00 – AFPI Bourges</span>
+    </div>
+    <div class="day-objectives">
+      <h4>Objectifs spécifiques</h4>
+      <ul>
+        <li>Distinguer variabilité naturelle du procédé et tolérances client</li>
+        <li>Calculer Cm / Cmk (capabilité machine) et Cp / Cpk (capabilité procédé)</li>
+        <li>Interpréter les valeurs obtenues et prendre une décision</li>
+        <li>Identifier les causes de non-capabilité (dispersion, centrage, dérive)</li>
+      </ul>
+    </div>
+    <div class="seances-wrap">
+      <table class="seances">
+        <thead><tr>
+          <th>Horaire</th><th>Durée</th><th>Séquence</th><th>Contenu / activité</th><th>Modalité</th><th>Ressources</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td class="horaire">09h00</td><td class="duree">30 min</td>
+            <td class="titre">Ouverture et tour de table</td>
+            <td>Présentation des stagiaires, recueil des représentations sur la qualité en production, introduction du fil conducteur de la journée.</td>
+            <td class="modalite">Discussion</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="horaire">09h30</td><td class="duree">60 min</td>
+            <td class="titre key">De la tolérance à la capabilité</td>
+            <td>Notion de dispersion naturelle d'un procédé. Courbe en cloche, centrage, écart-type. Analogie : « Le procédé vise-t-il juste et est-il précis ? »</td>
+            <td class="modalite">Cours illustré</td>
+            <td>
+              <div class="ressources">
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/BACHELOR_Capabilite_Cours-Exercice.pdf">BACHELOR_Capabilite_Cours-Exercice.pdf</a>
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/00_capabilitTechetForm.pdf">00_capabilitTechetForm.pdf</a>
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/capabilite-process.pdf">capabilite-process.pdf</a>
+              </div>
+            </td>
+          </tr>
+          <tr class="pause">
+            <td class="horaire">10h30</td><td class="duree">15 min</td><td colspan="4">Pause</td>
+          </tr>
+          <tr>
+            <td class="horaire">10h45</td><td class="duree">45 min</td>
+            <td class="titre key">Indices Cm et Cmk</td>
+            <td>Capabilité machine court terme. Formules, interprétation : Cm ≥ 1,67 / Cmk ≥ 1,67. Tableau de référence. Exercice 1 : calcul sur données diamètre butée.</td>
+            <td class="modalite">Cours + exercice Excel</td>
+            <td>
+              <div class="ressources">
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/capabilite-mesure.pdf">capabilite-mesure.pdf</a>
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/CPk_mesure.pdf">CPk_mesure.pdf</a>
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/chapitre-1-capabilite-machine-processus.pdf">chapitre-1-capabilite.pdf</a>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="horaire">11h30</td><td class="duree">60 min</td>
+            <td class="titre key">Indices Cp et Cpk</td>
+            <td>Passage à la capabilité procédé (long terme, sous-groupes). Différence Cm / Cp. Exercice 2 : calcul Cp / Cpk à partir de relevés de production.</td>
+            <td class="modalite">Cours + exercice Excel</td>
+            <td>
+              <div class="ressources">
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/capabilite-process.pdf">capabilite-process.pdf</a>
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/Analyse%20de%20capabilit%C3%A9.pdf">Analyse de capabilité.pdf</a>
+              </div>
+            </td>
+          </tr>
+          <tr class="pause">
+            <td class="horaire">12h30</td><td class="duree">60 min</td><td colspan="4">Déjeuner</td>
+          </tr>
+          <tr>
+            <td class="horaire">13h30</td><td class="duree">30 min</td>
+            <td class="titre">Synthèse et quiz matin</td>
+            <td>Questions / réponses. Quiz collectif 5 questions, correction immédiate.</td>
+            <td class="modalite">Quiz collectif</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="horaire">14h00</td><td class="duree">90 min</td>
+            <td class="titre key">TP capabilité sur cas réel</td>
+            <td>Calcul complet Cp / Cpk sur données réelles, interprétation, conclusion. Travail en binômes.</td>
+            <td class="modalite">TP binômes Excel</td>
+            <td>
+              <div class="ressources">
+                <a class="ressource-link xlsx" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/TP_MSP_app.xlsx">TP_MSP_app.xlsx</a>
+                <a class="ressource-link csv" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/diam%C3%A8tre_but%C3%A9e_TPU53_2.csv">diamètre_butée.csv</a>
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/TP_Bachelor_Capability_diameter_Butee.pdf">TP_Bachelor_Capability.pdf</a>
+                <a class="ressource-link docx" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/SPC%20Capabilit%C3%A9%20Exercices%20MISTAT.docx">SPC Capabilité Exercices MISTAT.docx</a>
+              </div>
+            </td>
+          </tr>
+          <tr class="pause">
+            <td class="horaire">15h30</td><td class="duree">15 min</td><td colspan="4">Pause</td>
+          </tr>
+          <tr>
+            <td class="horaire">15h45</td><td class="duree">60 min</td>
+            <td class="titre key">Mise en situation</td>
+            <td>Scénario : « Le client exige Cpk ≥ 1,33. Voici 3 séries de mesures. Que proposez-vous ? » Correction et discussion sur les actions correctives possibles.</td>
+            <td class="modalite">Étude de cas</td>
+            <td>
+              <div class="ressources">
+                <a class="ressource-link docx" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/SPC%20Capabilit%C3%A9%20Exercices%20MISTAT.docx">SPC Capabilité Exercices MISTAT.docx</a>
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/TD-CQ.pdf">TD-CQ.pdf</a>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="horaire">16h45</td><td class="duree">15 min</td>
+            <td class="titre">Bilan J1</td>
+            <td>Récapitulatif des points clés. Annonce J2 : on passe de la photo instantanée à la surveillance en continu.</td>
+            <td class="modalite">Synthèse orale</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. JOURNEE 2 ===== -->
+<section id="j2">
+  <div class="section-title">
+    <div class="section-num">4</div>
+    <h2>Journée 2 – 6 novembre 2026 : Introduction au SPC</h2>
+  </div>
+  <hr class="section-divider">
+  <div class="day-card">
+    <div class="day-header">
+      <h3>Déroulement de la journée</h3>
+      <span class="day-date">6 novembre 2026 – 09h00 / 17h00 – AFPI Bourges</span>
+    </div>
+    <div class="day-objectives">
+      <h4>Objectifs spécifiques</h4>
+      <ul>
+        <li>Comprendre la logique de la maîtrise statistique des procédés</li>
+        <li>Construire une carte X̅ / R à partir de relevés de production</li>
+        <li>Calculer les limites de contrôle et les distinguer des tolérances</li>
+        <li>Lire une carte et identifier les signaux d'alerte (règles de Nelson simplifiées)</li>
+        <li>Réagir correctement face à un signal d'alerte</li>
+      </ul>
+    </div>
+    <div class="seances-wrap">
+      <table class="seances">
+        <thead><tr>
+          <th>Horaire</th><th>Durée</th><th>Séquence</th><th>Contenu / activité</th><th>Modalité</th><th>Ressources</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td class="horaire">09h00</td><td class="duree">30 min</td>
+            <td class="titre">Retour sur J1</td>
+            <td>Correction des exercices. Transition : « La capabilité est une photo. Le SPC, c'est le film. »</td>
+            <td class="modalite">Discussion</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="horaire">09h30</td><td class="duree">60 min</td>
+            <td class="titre key">Pourquoi surveiller le procédé ?</td>
+            <td>Causes communes vs causes spéciales (Shewhart). La dérive ne se voit pas toujours sur la pièce. Analogie : le tableau de bord d'une voiture.</td>
+            <td class="modalite">Cours illustré</td>
+            <td>
+              <div class="ressources">
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/chapitre-3-maitrise-statistique-procedes.pdf">chapitre-3-MSP.pdf</a>
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/Introduction%20to%20SPC.pdf">Introduction to SPC.pdf</a>
+              </div>
+            </td>
+          </tr>
+          <tr class="pause">
+            <td class="horaire">10h30</td><td class="duree">15 min</td><td colspan="4">Pause</td>
+          </tr>
+          <tr>
+            <td class="horaire">10h45</td><td class="duree">75 min</td>
+            <td class="titre key">Construction de la carte X̅ / R</td>
+            <td>Principe des sous-groupes. Calcul de X̅ et R. Constantes A₂, D₃, D₄ : lecture du tableau. LCS et LCI. Exercice 3 : construction pas à pas.</td>
+            <td class="modalite">Cours + exercice collectif</td>
+            <td>
+              <div class="ressources">
+                <a class="ressource-link xlsx" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/Exercices%20Cartes%20de%20Shewhart.xlsx">Exercices Cartes Shewhart.xlsx</a>
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/carte_xb_r_trame.pdf">carte_xb_r_trame.pdf</a>
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/Cartes%20Shewhart.pdf">Cartes Shewhart.pdf</a>
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/Chap08-cartes%20Shewhart.pdf">Chap08-cartes Shewhart.pdf</a>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="horaire">12h00</td><td class="duree">30 min</td>
+            <td class="titre key">Limites de contrôle vs tolérances</td>
+            <td>Erreur classique à éviter absolument. Pourquoi elles sont différentes. Schéma de synthèse visuel.</td>
+            <td class="modalite">Cours court</td>
+            <td>
+              <div class="ressources">
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/Cours-%20Cartes%20de%20contr%C3%B4le.pdf">Cours- Cartes de contrôle.pdf</a>
+              </div>
+            </td>
+          </tr>
+          <tr class="pause">
+            <td class="horaire">12h30</td><td class="duree">60 min</td><td colspan="4">Déjeuner</td>
+          </tr>
+          <tr>
+            <td class="horaire">13h30</td><td class="duree">45 min</td>
+            <td class="titre key">Lecture et interprétation d'une carte</td>
+            <td>Les 4 règles essentielles pour un opérateur (règles de Nelson simplifiées). Exercice 4 : lecture de 6 cartes – « normal ou alarme ? »</td>
+            <td class="modalite">Exercice lecture</td>
+            <td>
+              <div class="ressources">
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/Exercices-%20cartes%20de%20Shewhart.pdf">Exercices- cartes de Shewhart.pdf</a>
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/Efficacite_carte_de_controle.pdf">Efficacite_carte_de_controle.pdf</a>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="horaire">14h15</td><td class="duree">75 min</td>
+            <td class="titre key">TP carte de contrôle sur données réelles</td>
+            <td>Construction complète d'une carte X̅ / R à partir des fichiers CSV. Identification des points hors limites. Travail en binômes, correction collective.</td>
+            <td class="modalite">TP binômes Excel</td>
+            <td>
+              <div class="ressources">
+                <a class="ressource-link csv" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/TP_MSP_relev%C3%A91_df1.csv">df1.csv</a>
+                <a class="ressource-link csv" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/TP_MSP_relev%C3%A91_df2.csv">df2.csv</a>
+                <a class="ressource-link csv" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/TP_MSP_relev%C3%A91_df3.csv">df3.csv</a>
+                <a class="ressource-link csv" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/TP_MSP_relev%C3%A91_df4.csv">df4.csv</a>
+                <a class="ressource-link csv" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/TP_MSP_relev%C3%A91_df5.csv">df5.csv</a>
+                <a class="ressource-link csv" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/TP_MSP_relev%C3%A91_df6.csv">df6.csv</a>
+                <a class="ressource-link csv" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/TP_MSP_relev%C3%A91_df7.csv">df7.csv</a>
+                <a class="ressource-link csv" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/TP_MSP_relev%C3%A91_df8.csv">df8.csv</a>
+                <a class="ressource-link csv" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/TP_MSP_relev%C3%A91_df9.csv">df9.csv</a>
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/TP%20Carte%20de%20controle.pdf">TP Carte de controle.pdf</a>
+                <a class="ressource-link docx" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/TP%20ATI%20Controle%20statistique%20Butee%20diametre.docx">TP ATI Controle statistique.docx</a>
+              </div>
+            </td>
+          </tr>
+          <tr class="pause">
+            <td class="horaire">15h30</td><td class="duree">15 min</td><td colspan="4">Pause</td>
+          </tr>
+          <tr>
+            <td class="horaire">15h45</td><td class="duree">45 min</td>
+            <td class="titre key">Procédure de réaction en cas d'alerte</td>
+            <td>Arbre de décision simplifié : stopper / alerter / consigner. Jeu de rôle : 3 scénarios atelier.</td>
+            <td class="modalite">Jeu de rôle</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="horaire">16h30</td><td class="duree">30 min</td>
+            <td class="titre">Bilan J2 et mission terrain</td>
+            <td>Synthèse. Mission intercalaire : observer un suivi SPC en entreprise, noter les questions pour J3.</td>
+            <td class="modalite">Synthèse + mission</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5. JOURNEE 3 ===== -->
+<section id="j3">
+  <div class="section-title">
+    <div class="section-num">5</div>
+    <h2>Journée 3 – 25 novembre 2026 : Mise en œuvre SPC en production</h2>
+  </div>
+  <hr class="section-divider">
+  <div class="day-card">
+    <div class="day-header">
+      <h3>Déroulement de la journée</h3>
+      <span class="day-date">25 novembre 2026 – 09h00 / 17h00 – AFPI Bourges</span>
+    </div>
+    <div class="day-objectives">
+      <h4>Objectifs spécifiques</h4>
+      <ul>
+        <li>Consolider les acquis de J1 et J2 après la période terrain</li>
+        <li>Mettre en œuvre un suivi SPC complet avec Ellistat</li>
+        <li>Relier capabilité initiale, plan de surveillance et cartes de contrôle</li>
+        <li>Analyser un cas industriel et proposer des actions correctives</li>
+      </ul>
+    </div>
+    <div class="seances-wrap">
+      <table class="seances">
+        <thead><tr>
+          <th>Horaire</th><th>Durée</th><th>Séquence</th><th>Contenu / activité</th><th>Modalité</th><th>Ressources</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td class="horaire">09h00</td><td class="duree">45 min</td>
+            <td class="titre">Retour d'expérience terrain</td>
+            <td>Tour de table : chaque stagiaire présente en 2 min ce qu'il a observé en entreprise. Recueil des questions et blocages des 3 semaines.</td>
+            <td class="modalite">Tour de table</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="horaire">09h45</td><td class="duree">30 min</td>
+            <td class="titre">Consolidation des acquis</td>
+            <td>Correction des points mal assimilés. Mini-quiz de positionnement (10 questions).</td>
+            <td class="modalite">Quiz collectif</td>
+            <td></td>
+          </tr>
+          <tr class="pause">
+            <td class="horaire">10h15</td><td class="duree">15 min</td><td colspan="4">Pause</td>
+          </tr>
+          <tr>
+            <td class="horaire">10h30</td><td class="duree">60 min</td>
+            <td class="titre key">Prise en main d'Ellistat SPC</td>
+            <td>Présentation de l'interface. Saisie des données, paramétrage des caractéristiques (nominal, tolérances). Calcul automatique des indices. Lecture des graphiques générés.</td>
+            <td class="modalite">Démo + prise en main</td>
+            <td>
+              <div class="ressources">
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/SPC/SPC%20Ellistat.pdf">SPC Ellistat.pdf</a>
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/SPC/DIAPO_5_Keys_to_MSP_Excellence.pdf">5 Keys to MSP Excellence.pdf</a>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="horaire">11h30</td><td class="duree">60 min</td>
+            <td class="titre key">TP intégratif Ellistat</td>
+            <td>Scénario complet : partir des relevés CSV, calculer la capabilité initiale, paramétrer la carte X̅ / R, simuler une dérive, identifier l'alerte. Travail individuel.</td>
+            <td class="modalite">TP individuel Ellistat</td>
+            <td>
+              <div class="ressources">
+                <a class="ressource-link csv" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/turning_default_simulation_Ellistat.csv">turning_default_simulation_Ellistat.csv</a>
+                <a class="ressource-link xlsx" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/TP_MSP_app.xlsx">TP_MSP_app.xlsx</a>
+                <a class="ressource-link csv" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/TP_MSP_relev%C3%A91_df1.csv">df1.csv</a>
+              </div>
+            </td>
+          </tr>
+          <tr class="pause">
+            <td class="horaire">12h30</td><td class="duree">60 min</td><td colspan="4">Déjeuner</td>
+          </tr>
+          <tr>
+            <td class="horaire">13h30</td><td class="duree">60 min</td>
+            <td class="titre key">Du SPC au plan de surveillance</td>
+            <td>Comment s'articulent capabilité, caractéristique critique, plan de surveillance et carte de contrôle. Lecture d'un extrait de plan de surveillance (lien avec le module AMDEC).</td>
+            <td class="modalite">Cours + discussion</td>
+            <td>
+              <div class="ressources">
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/chapitre-3-maitrise-statistique-procedes.pdf">chapitre-3-MSP.pdf</a>
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/chapitre-4-plans-echantillonnage.pdf">chapitre-4-plans-echantillonnage.pdf</a>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="horaire">14h30</td><td class="duree">60 min</td>
+            <td class="titre key">Étude de cas finale</td>
+            <td>Cas industriel : Cpk initial = 0,92. Analyse en groupes de 3 : diagnostic, proposition d'actions, restitution de 5 min par groupe.</td>
+            <td class="modalite">Étude de cas groupes</td>
+            <td>
+              <div class="ressources">
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/TD-CQ.pdf">TD-CQ.pdf</a>
+                <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/TD_exercices_%C3%A9nonc%C3%A9s2022_23.pdf">TD_exercices_énoncés2022_23.pdf</a>
+              </div>
+            </td>
+          </tr>
+          <tr class="pause">
+            <td class="horaire">15h30</td><td class="duree">15 min</td><td colspan="4">Pause</td>
+          </tr>
+          <tr>
+            <td class="horaire">15h45</td><td class="duree">30 min</td>
+            <td class="titre">Restitution et synthèse</td>
+            <td>Présentation des groupes. Synthèse formateur. Points de vigilance pour la mise en œuvre en entreprise.</td>
+            <td class="modalite">Restitution</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="horaire">16h15</td><td class="duree">45 min</td>
+            <td class="titre">Évaluation et clôture</td>
+            <td>QCM de 15 questions. Tour de table final. Remise des supports et fichiers de TP.</td>
+            <td class="modalite">Évaluation + clôture</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6. RESSOURCES ===== -->
+<section id="ressources">
+  <div class="section-title">
+    <div class="section-num">6</div>
+    <h2>Ressources et supports mobilisés</h2>
+  </div>
+  <hr class="section-divider">
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;">
+    <div class="conseil-bloc">
+      <h4>Cours – Capabilité</h4>
+      <div class="ressources" style="flex-direction:column;align-items:flex-start;">
+        <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/BACHELOR_Capabilite_Cours-Exercice.pdf">BACHELOR_Capabilite_Cours-Exercice.pdf</a>
+        <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/capabilite-mesure.pdf">capabilite-mesure.pdf</a>
+        <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/capabilite-process.pdf">capabilite-process.pdf</a>
+        <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/Analyse%20de%20capabilit%C3%A9.pdf">Analyse de capabilité.pdf</a>
+        <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/chapitre-1-capabilite-machine-processus.pdf">chapitre-1-capabilite.pdf</a>
+      </div>
+    </div>
+    <div class="conseil-bloc">
+      <h4>Cours – Cartes de contrôle / SPC</h4>
+      <div class="ressources" style="flex-direction:column;align-items:flex-start;">
+        <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/Cartes%20Shewhart.pdf">Cartes Shewhart.pdf</a>
+        <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/Cours-%20Cartes%20de%20contr%C3%B4le.pdf">Cours- Cartes de contrôle.pdf</a>
+        <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/chapitre-3-maitrise-statistique-procedes.pdf">chapitre-3-MSP.pdf</a>
+        <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/SPC/SPC%20Ellistat.pdf">SPC Ellistat.pdf</a>
+        <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/00FC/SPC/DIAPO_5_Keys_to_MSP_Excellence.pdf">5 Keys to MSP Excellence.pdf</a>
+      </div>
+    </div>
+    <div class="conseil-bloc">
+      <h4>Fichiers TP – Données</h4>
+      <div class="ressources" style="flex-direction:column;align-items:flex-start;">
+        <a class="ressource-link xlsx" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/TP_MSP_app.xlsx">TP_MSP_app.xlsx</a>
+        <a class="ressource-link xlsx" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/Exercices%20Cartes%20de%20Shewhart.xlsx">Exercices Cartes de Shewhart.xlsx</a>
+        <a class="ressource-link csv" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/diam%C3%A8tre_but%C3%A9e_TPU53_2.csv">diamètre_butée_TPU53_2.csv</a>
+        <a class="ressource-link csv" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/turning_default_simulation_Ellistat.csv">turning_default_simulation_Ellistat.csv</a>
+      </div>
+    </div>
+    <div class="conseil-bloc">
+      <h4>Fichiers TP – Exercices</h4>
+      <div class="ressources" style="flex-direction:column;align-items:flex-start;">
+        <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/TP%20Carte%20de%20controle.pdf">TP Carte de controle.pdf</a>
+        <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/TP_Bachelor_Capability_diameter_Butee.pdf">TP_Bachelor_Capability_diameter_Butee.pdf</a>
+        <a class="ressource-link docx" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/BTS%20ATI/OI/MSP%20SPC/TP%20ATI%20Controle%20statistique%20Butee%20diametre.docx">TP ATI Controle statistique.docx</a>
+        <a class="ressource-link docx" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/SPC%20Capabilit%C3%A9%20Exercices%20MISTAT.docx">SPC Capabilité Exercices MISTAT.docx</a>
+        <a class="ressource-link pdf" href="file:///C:/Users/s.jaubert/OneDrive%20-%20CFAI%20Centre/Bachelor/Capability/TD-CQ.pdf">TD-CQ.pdf</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7. EVALUATION ===== -->
+<section id="evaluation">
+  <div class="section-title">
+    <div class="section-num">7</div>
+    <h2>Évaluation des acquis</h2>
+  </div>
+  <hr class="section-divider">
+  <table class="generic">
+    <thead><tr>
+      <th>Moment</th><th>Outil</th><th>Ce qui est évalué</th><th>Modalité</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>En cours (J1 et J2)</td><td>Quiz 5 et 10 questions</td><td>Compréhension immédiate des notions clés</td><td>Collectif / oral</td></tr>
+      <tr><td>J2 – fin de journée</td><td>Exercice lecture de carte</td><td>Capacité à détecter un signal et réagir</td><td>Individuel / écrit</td></tr>
+      <tr><td>J3 – fin de formation</td><td>QCM 15 questions + étude de cas</td><td>Maîtrise globale capabilité + SPC</td><td>Individuel / écrit</td></tr>
+    </tbody>
+  </table>
+  <div class="eval-note">
+    <strong>Seuil de maîtrise :</strong> score ≥ 70 % au QCM final. L'étude de cas est évaluée sur la pertinence du raisonnement, pas uniquement sur le résultat numérique.
+  </div>
+</section>
+
+<!-- ===== 8. CONSEILS ===== -->
+<section id="conseils">
+  <div class="section-title">
+    <div class="section-num">8</div>
+    <h2>Conseils de mise en œuvre</h2>
+  </div>
+  <hr class="section-divider">
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;">
+    <div class="conseil-bloc">
+      <h4>Gestion du niveau hétérogène</h4>
+      <ul class="liste">
+        <li>Certains stagiaires seront déjà en contact avec des cartes de contrôle : valoriser leur expérience</li>
+        <li>Pour les stagiaires les plus en difficulté : insister sur l'interprétation plutôt que sur le calcul</li>
+        <li>Distribuer dès J1 une fiche aide-mémoire avec les formules essentielles</li>
+      </ul>
+    </div>
+    <div class="conseil-bloc">
+      <h4>Points de vigilance pédagogique</h4>
+      <ul class="liste">
+        <li>Confusion fréquente entre <strong>limites de contrôle et tolérances</strong> : insister en J2 et rappeler en J3</li>
+        <li>L'écart-type peut bloquer : analogie de la dispersion de tirs à la cible</li>
+        <li>Ne pas surcharger J1 : Cm / Cmk puis Cp / Cpk suffit – Cpm hors programme</li>
+        <li>Tester Ellistat la veille de J3 et prévoir un plan B avec Excel</li>
+      </ul>
+    </div>
+    <div class="conseil-bloc">
+      <h4>Gestion de l'intercalaire (3 semaines)</h4>
+      <ul class="liste">
+        <li>Envoyer un rappel en semaine 2 avec la <strong>mission terrain</strong> : noter une caractéristique surveillée en production</li>
+        <li>Prévoir en J3 45 min pour exploiter ces retours : souvent le moment le plus riche de la formation</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Plan de formation – Capabilité / SPC &nbsp;|&nbsp; CQPM Technicien Qualité TQ6 – Novembre 2026 &nbsp;|&nbsp; Pôle Formation UIMM CVDL &nbsp;|&nbsp; S. Jaubert
+</footer>
+
+</body>
+</html>
