@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { size: A4 landscape; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 297mm; height: 210mm;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: #1f2933;
+    background: #ffffff;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .page {
+    width: 297mm; height: 210mm;
+    padding: 10mm 12mm 9mm 12mm;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+
+  /* ---- En-tête ---- */
+  header { display: flex; align-items: flex-end; justify-content: space-between;
+           border-bottom: 3px solid #14507a; padding-bottom: 5px; }
+  .title-zone h1 { font-size: 30px; color: #14507a; letter-spacing: .5px; font-weight: 700; }
+  .title-zone h1 span { color: #c8761a; }
+  .title-zone p { font-size: 12.5px; color: #52606d; margin-top: 3px; }
+  .kicker { font-size: 10.5px; text-transform: uppercase; letter-spacing: 2px;
+            color: #c8761a; font-weight: 700; margin-bottom: 2px; }
+  .brand { text-align: right; font-size: 10px; color: #7b8794; line-height: 1.5; }
+  .brand strong { color: #14507a; font-size: 11px; }
+
+  /* ---- Bandeau définition ---- */
+  .definition { background: #14507a; color: #fff; border-radius: 8px;
+                padding: 9px 16px; margin: 9px 0; display: flex; align-items: center; gap: 14px; }
+  .definition .jp { font-size: 26px; font-weight: 700; color: #f3c98b; white-space: nowrap;
+                    border-right: 1px solid #3d6e94; padding-right: 14px; }
+  .definition .jp small { display: block; font-size: 10px; color: #cdd9e5; font-weight: 400; letter-spacing: 1px; }
+  .definition p { font-size: 12.5px; line-height: 1.45; }
+  .definition p b { color: #f3c98b; }
+
+  /* ---- Corps : deux colonnes ---- */
+  .body { display: flex; gap: 12px; flex: 1; min-height: 0; }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 11px; }
+
+  .card { border: 1px solid #d9e2ec; border-radius: 8px; padding: 12px 13px;
+          flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .card h2 { justify-content: flex-start; }
+  .card h2 { font-size: 14px; color: #14507a; margin-bottom: 7px;
+             display: flex; align-items: center; gap: 8px; }
+  .badge { background: #14507a; color: #fff; width: 22px; height: 22px; border-radius: 50%;
+           display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+  .badge.or { background: #c8761a; }
+
+  /* ---- Origine LEAN : schéma flux tiré ---- */
+  .lean-card { background: #f4f8fb; }
+  .flow { display: flex; align-items: center; justify-content: space-between; margin: 6px 0 4px; }
+  .station { background: #fff; border: 2px solid #14507a; border-radius: 6px;
+             padding: 7px 6px; text-align: center; width: 30%; }
+  .station .lbl { font-size: 10.5px; font-weight: 700; color: #14507a; }
+  .station .sub { font-size: 8.5px; color: #6b7785; margin-top: 2px; }
+  .arrow-flux { font-size: 9px; color: #c8761a; text-align: center; width: 18%; line-height: 1.3; }
+  .arrow-flux .big { font-size: 20px; display: block; color: #c8761a; }
+  .card .note { font-size: 10.5px; color: #475569; line-height: 1.4; }
+  .card .note b { color: #14507a; }
+
+  /* ---- Tableau Kanban visuel ---- */
+  .kb { display: flex; gap: 6px; margin-top: 3px; }
+  .kbcol { flex: 1; border-radius: 6px; overflow: hidden; border: 1px solid #d9e2ec; }
+  .kbcol .head { font-size: 10px; font-weight: 700; text-align: center; padding: 4px 2px; color: #fff; }
+  .kbcol.todo .head { background: #7b8794; }
+  .kbcol.doing .head { background: #c8761a; }
+  .kbcol.done .head { background: #2f8f5b; }
+  .kbcol .body-col { background: #f7f9fb; padding: 5px; min-height: 74px; display: flex; flex-direction: column; gap: 4px; }
+  .ticket { background: #fff; border: 1px solid #dbe3ec; border-left: 4px solid #14507a; border-radius: 3px;
+            padding: 4px 5px; font-size: 8.5px; color: #3a4654; box-shadow: 0 1px 1px rgba(0,0,0,.04); }
+  .ticket.b { border-left-color: #c8761a; }
+  .ticket.g { border-left-color: #2f8f5b; }
+  .wip { font-size: 8.5px; color: #c8761a; font-weight: 700; }
+
+  /* ---- Principes clés ---- */
+  .principles { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+  .principle { display: flex; gap: 8px; align-items: flex-start; }
+  .principle .ic { width: 26px; height: 26px; border-radius: 6px; background: #fdf0e0; color: #c8761a;
+                   flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; }
+  .principle .tx b { font-size: 11px; color: #14507a; display: block; }
+  .principle .tx span { font-size: 9.5px; color: #52606d; line-height: 1.3; }
+
+  /* ---- Bénéfices ---- */
+  .benefits-card { background: #14507a; color: #fff; }
+  .benefits-card h2 { color: #fff; }
+  .benefits-card h2 .badge { background: #fff; color: #14507a; }
+  .benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; }
+  .benefit { font-size: 10.5px; display: flex; align-items: center; gap: 7px; }
+  .benefit .dot { color: #f3c98b; font-size: 14px; }
+
+  /* ---- Pied de page ---- */
+  footer { margin-top: 8px; border-top: 1px solid #d9e2ec; padding-top: 5px;
+           display: flex; justify-content: space-between; font-size: 9px; color: #7b8794; }
+  footer b { color: #14507a; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="title-zone">
+      <div class="kicker">Outils du LEAN Manufacturing</div>
+      <h1>Le <span>KANBAN</span></h1>
+      <p>Du système à flux tiré de Toyota au tableau visuel de gestion du travail</p>
+    </div>
+    <div class="brand">
+      <strong>Pôle Formation UIMM-CVDL</strong><br>
+      Support de formation<br>
+      Organisation industrielle
+    </div>
+  </header>
+
+  <div class="definition">
+    <div class="jp">かんばん<small>KAN-BAN</small></div>
+    <p>Mot japonais signifiant <b>"étiquette" ou "panneau visuel"</b>. Le Kanban est une méthode de gestion
+       de la production et du travail fondée sur le <b>signal visuel</b> : on ne produit (ou ne lance une tâche)
+       que lorsqu'un besoin réel est exprimé en aval. C'est le principe du <b>flux tiré</b> (pull).</p>
+  </div>
+
+  <div class="body">
+
+    <!-- COLONNE GAUCHE -->
+    <div class="col">
+
+      <div class="card lean-card">
+        <h2><span class="badge">1</span> L'origine : le Kanban de production (Toyota)</h2>
+        <div class="flow">
+          <div class="station">
+            <div class="lbl">Fournisseur</div>
+            <div class="sub">Poste amont</div>
+          </div>
+          <div class="arrow-flux">
+            <span class="big">&#8594;</span>pièces produites
+          </div>
+          <div class="station">
+            <div class="lbl">Stock tampon</div>
+            <div class="sub">avec cartes Kanban</div>
+          </div>
+          <div class="arrow-flux">
+            <span class="big">&#8592;</span>carte = ordre
+          </div>
+          <div class="station">
+            <div class="lbl">Client</div>
+            <div class="sub">Poste aval</div>
+          </div>
+        </div>
+        <p class="note">La <b>carte (kanban)</b> circule en sens inverse du flux physique. Quand l'aval
+           consomme un lot, la carte libérée devient l'<b>ordre de réapprovisionnement</b> pour l'amont :
+           c'est le besoin réel qui déclenche la production, pas une prévision.</p>
+      </div>
+
+      <div class="card">
+        <h2><span class="badge or">2</span> Le Kanban visuel moderne (tableau)</h2>
+        <div class="kb">
+          <div class="kbcol todo">
+            <div class="head">À FAIRE</div>
+            <div class="body-col">
+              <div class="ticket">Tâche A</div>
+              <div class="ticket">Tâche B</div>
+              <div class="ticket">Tâche C</div>
+            </div>
+          </div>
+          <div class="kbcol doing">
+            <div class="head">EN COURS &middot; <span class="wip" style="color:#fff">max 2</span></div>
+            <div class="body-col">
+              <div class="ticket b">Tâche D</div>
+              <div class="ticket b">Tâche E</div>
+            </div>
+          </div>
+          <div class="kbcol done">
+            <div class="head">TERMINÉ</div>
+            <div class="body-col">
+              <div class="ticket g">Tâche F</div>
+              <div class="ticket g">Tâche G</div>
+            </div>
+          </div>
+        </div>
+        <p class="note" style="margin-top:6px">Chaque tâche est une carte qui progresse de gauche à droite.
+           La <b>limite d'en-cours (WIP)</b> par colonne empêche de tout commencer en même temps et
+           révèle immédiatement les blocages.</p>
+      </div>
+
+    </div>
+
+    <!-- COLONNE DROITE -->
+    <div class="col">
+
+      <div class="card">
+        <h2><span class="badge or">3</span> Les principes clés</h2>
+        <div class="principles">
+          <div class="principle">
+            <div class="ic">&#8592;</div>
+            <div class="tx"><b>Flux tiré</b><span>La demande aval déclenche l'action, pas la prévision.</span></div>
+          </div>
+          <div class="principle">
+            <div class="ic">&#9673;</div>
+            <div class="tx"><b>Visualiser</b><span>Rendre visible le travail et son état d'avancement.</span></div>
+          </div>
+          <div class="principle">
+            <div class="ic">&#9635;</div>
+            <div class="tx"><b>Limiter l'en-cours</b><span>Plafonner les tâches simultanées (WIP).</span></div>
+          </div>
+          <div class="principle">
+            <div class="ic">&#8635;</div>
+            <div class="tx"><b>Amélioration continue</b><span>Ajuster le flux en continu (Kaizen).</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card benefits-card">
+        <h2><span class="badge">4</span> Pourquoi l'utiliser ?</h2>
+        <div class="benefits">
+          <div class="benefit"><span class="dot">&#9679;</span> Réduction des stocks et du gaspillage</div>
+          <div class="benefit"><span class="dot">&#9679;</span> Délais maîtrisés, flux plus régulier</div>
+          <div class="benefit"><span class="dot">&#9679;</span> Problèmes rendus visibles rapidement</div>
+          <div class="benefit"><span class="dot">&#9679;</span> Priorités claires pour l'équipe</div>
+          <div class="benefit"><span class="dot">&#9679;</span> Moins de surproduction</div>
+          <div class="benefit"><span class="dot">&#9679;</span> Pilotage simple et collaboratif</div>
+        </div>
+      </div>
+
+      <div class="card" style="background:#fdf7ef; border-color:#f0d8b6;">
+        <h2 style="color:#c8761a"><span class="badge or">!</span> À retenir</h2>
+        <p class="note" style="font-size:11px">Qu'il s'agisse de <b>cartes en atelier</b> ou de
+           <b>post-it sur un tableau</b>, le Kanban repose toujours sur la même idée :
+           <b>un signal visuel régule le travail au rythme du besoin réel</b>. C'est un outil
+           de pilotage du flux, simple à mettre en place et puissant pour l'amélioration continue.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <span>Kanban &mdash; Système à flux tiré &amp; management visuel</span>
+    <span><b>Pôle Formation UIMM-CVDL</b> &middot; Organisation industrielle / LEAN</span>
+  </footer>
+
+</div>
+</body>
+</html>
