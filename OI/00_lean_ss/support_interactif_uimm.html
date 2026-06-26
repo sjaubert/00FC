@@ -18,7 +18,7 @@
       font-family: 'Inter', sans-serif;
       background-color: #0b0f19;
     }
-    /* Custom Scrollbar for notes */
+    /* Barre de défilement personnalisée pour les notes du formateur */
     ::-webkit-scrollbar {
       width: 6px;
     }
@@ -33,7 +33,7 @@
       background: #64748b;
     }
     
-    /* Animation Keyframes */
+    /* Animations et transitions d'état */
     @keyframes spin-slow {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
@@ -51,6 +51,16 @@
     .slide-transition {
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
+    .gradient-uimm {
+      background: linear-gradient(135deg, #0F5B88 0%, #1EA1E2 100%);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.4s ease-out;
+    }
   </style>
   <script>
     tailwind.config = {
@@ -61,6 +71,13 @@
             uimmLight: '#1EA1E2',
             uimmRed: '#EE2A2F',
             slateDark: '#0B0F19',
+            slate: {
+              250: '#cdd5df',
+              350: '#b0bccd',
+              450: '#7c899e',
+              750: '#283549',
+              850: '#172032',
+            }
           }
         }
       }
@@ -86,13 +103,30 @@
         </div>
       </div>
       
-      <div class="flex items-center gap-4">
-        <span class="hidden sm:inline-block text-[10px] font-bold text-slate-400 bg-slate-800 px-3 py-1.5 rounded-full uppercase tracking-wider">
+      <div class="flex items-center gap-3">
+        <!-- Badge visible uniquement sur l'écran synchronisé stagiaire -->
+        <div id="badgeSyncStagiaire" class="hidden items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 text-[10px] font-bold uppercase tracking-wider">
+          <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+          🖥️ Écran Projecteur Synchronisé
+        </div>
+
+        <span id="moduleBadge" class="hidden lg:inline-block text-[10px] font-bold text-slate-400 bg-slate-800 px-3 py-1.5 rounded-full uppercase tracking-wider">
           Module : Organisation Industrielle
         </span>
+        
+        <!-- Bouton pour ouvrir l'écran projeté autonome -->
+        <button 
+          id="openTraineeWindowBtn"
+          onclick="openTraineeWindow()"
+          class="flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[10px] font-bold tracking-wider transition-all uppercase bg-slate-800 hover:bg-slate-750 text-slate-300 border border-slate-700/80"
+          title="Ouvre une nouvelle fenêtre de projection à placer sur le vidéoprojecteur"
+        >
+          🖥️ Écran Stagiaire (Projecteur)
+        </button>
+
         <button 
           id="toggleNotesBtn"
-          class="flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-bold tracking-wider transition-all uppercase bg-uimmLight text-white shadow-lg shadow-uimmLight/20"
+          class="flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[10px] font-bold tracking-wider transition-all uppercase bg-uimmLight text-white shadow-lg shadow-uimmLight/20"
         >
           💡 Mode Présentateur
         </button>
@@ -175,19 +209,19 @@
                 <!-- Stylized Clickable CSS Pencil -->
                 <div class="w-full h-12 flex items-stretch rounded-lg overflow-hidden border border-slate-750 shadow-inner relative mb-6">
                   <!-- Sharp Tip / Graphite -->
-                  <button onclick="selectPencilPart('graphite')" id="btn-pencil-graphite" class="w-1/12 bg-slate-700 hover:bg-slate-600 transition-colors border-r border-slate-800 relative flex items-center justify-center group">
+                  <button onclick="selectPencilPart('graphite', true)" id="btn-pencil-graphite" class="w-1/12 bg-slate-700 hover:bg-slate-600 transition-colors border-r border-slate-800 relative flex items-center justify-center group">
                     <span class="absolute text-[8px] font-black text-white opacity-0 group-hover:opacity-100 transition-opacity">MIN</span>
                   </button>
                   <!-- Wooden Shaft -->
-                  <button onclick="selectPencilPart('bois')" id="btn-pencil-bois" class="w-7/12 bg-amber-800 hover:bg-amber-700 transition-colors border-r border-slate-800 relative flex items-center justify-center group">
+                  <button onclick="selectPencilPart('bois', true)" id="btn-pencil-bois" class="w-7/12 bg-amber-800 hover:bg-amber-700 transition-colors border-r border-slate-800 relative flex items-center justify-center group">
                     <span class="text-amber-100 text-[10px] font-extrabold tracking-widest">BOIS DE CÈDRE</span>
                   </button>
                   <!-- Metal Collar (Virole) -->
-                  <button onclick="selectPencilPart('virole')" id="btn-pencil-virole" class="w-2/12 bg-yellow-600 hover:bg-yellow-500 transition-colors border-r border-slate-800 relative flex items-center justify-center group">
+                  <button onclick="selectPencilPart('virole', true)" id="btn-pencil-virole" class="w-2/12 bg-yellow-600 hover:bg-yellow-500 transition-colors border-r border-slate-800 relative flex items-center justify-center group">
                     <span class="text-yellow-100 text-[10px] font-extrabold tracking-widest">VIROLE</span>
                   </button>
                   <!-- Eraser (Gomme) -->
-                  <button onclick="selectPencilPart('gomme')" id="btn-pencil-gomme" class="w-2/12 bg-pink-600 hover:bg-pink-500 transition-colors relative flex items-center justify-center group">
+                  <button onclick="selectPencilPart('gomme', true)" id="btn-pencil-gomme" class="w-2/12 bg-pink-600 hover:bg-pink-500 transition-colors relative flex items-center justify-center group">
                     <span class="text-pink-100 text-[10px] font-extrabold tracking-widest">GOMME</span>
                   </button>
                 </div>
@@ -215,16 +249,16 @@
               </div>
 
               <div class="flex flex-col gap-2">
-                <button onclick="selectPhoneMetric('summary')" id="btn-phone-summary" class="phone-metric-btn px-4 py-2.5 rounded-xl text-xs font-bold text-left transition-all bg-uimmDark text-white shadow-lg">
+                <button onclick="selectPhoneMetric('summary', true)" id="btn-phone-summary" class="phone-metric-btn px-4 py-2.5 rounded-xl text-xs font-bold text-left transition-all bg-uimmDark text-white shadow-lg">
                   📊 Aperçu général (130g)
                 </button>
-                <button onclick="selectPhoneMetric('ore')" id="btn-phone-ore" class="phone-metric-btn px-4 py-2.5 rounded-xl text-xs font-bold text-left transition-all bg-slate-900/40 text-slate-400 hover:bg-slate-800">
+                <button onclick="selectPhoneMetric('ore', true)" id="btn-phone-ore" class="phone-metric-btn px-4 py-2.5 rounded-xl text-xs font-bold text-left transition-all bg-slate-900/40 text-slate-400 hover:bg-slate-800">
                   ⛏️ Les minerais extraits (237 kg)
                 </button>
-                <button onclick="selectPhoneMetric('water')" id="btn-phone-water" class="phone-metric-btn px-4 py-2.5 rounded-xl text-xs font-bold text-left transition-all bg-slate-900/40 text-slate-400 hover:bg-slate-800">
+                <button onclick="selectPhoneMetric('water', true)" id="btn-phone-water" class="phone-metric-btn px-4 py-2.5 rounded-xl text-xs font-bold text-left transition-all bg-slate-900/40 text-slate-400 hover:bg-slate-800">
                   💧 L'eau virtuelle (12 000 L)
                 </button>
-                <button onclick="selectPhoneMetric('actors')" id="btn-phone-actors" class="phone-metric-btn px-4 py-2.5 rounded-xl text-xs font-bold text-left transition-all bg-slate-900/40 text-slate-400 hover:bg-slate-800">
+                <button onclick="selectPhoneMetric('actors', true)" id="btn-phone-actors" class="phone-metric-btn px-4 py-2.5 rounded-xl text-xs font-bold text-left transition-all bg-slate-900/40 text-slate-400 hover:bg-slate-800">
                   🤝 Acteurs de la chaîne (200+)
                 </button>
               </div>
@@ -265,7 +299,7 @@
                     min="0" 
                     max="100" 
                     value="50" 
-                    oninput="updateVAValue(this.value)"
+                    oninput="updateVAValue(this.value, true)"
                     class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-uimmLight"
                   />
                   <div class="flex justify-between text-[10px] text-slate-500 mt-2 font-mono">
@@ -281,7 +315,7 @@
 
                 <div id="vaResultArea" class="w-full max-w-sm flex flex-col items-center">
                   <button 
-                    onclick="revealVAReality()"
+                    onclick="revealVAReality(true)"
                     class="px-6 py-2.5 bg-uimmLight text-white font-bold text-xs rounded-xl hover:bg-uimmLight/80 transition-all shadow-lg shadow-uimmLight/20 uppercase tracking-wider"
                   >
                     Révéler la réalité industrielle
@@ -294,31 +328,31 @@
           <!-- SLIDE 4: THE 7 WASTES (MUDA) -->
           <div id="slide-4" class="slide-element hidden flex flex-col h-full justify-between">
             <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5">
-              <button onclick="selectMuda('surprod')" id="btn-muda-surprod" class="muda-btn p-3.5 rounded-xl border border-slate-800 text-left transition-all bg-slate-900/50 hover:border-slate-700">
+              <button onclick="selectMuda('surprod', true)" id="btn-muda-surprod" class="muda-btn p-3.5 rounded-xl border border-slate-800 text-left transition-all bg-slate-900/50 hover:border-slate-700">
                 <span class="text-[8px] font-bold text-uimmRed uppercase tracking-wider block">Muda 1</span>
                 <span class="text-xs font-black block mt-1 leading-tight text-white">Surproduction</span>
               </button>
-              <button onclick="selectMuda('stock')" id="btn-muda-stock" class="muda-btn p-3.5 rounded-xl border border-slate-800 text-left transition-all bg-slate-900/50 hover:border-slate-700">
+              <button onclick="selectMuda('stock', true)" id="btn-muda-stock" class="muda-btn p-3.5 rounded-xl border border-slate-800 text-left transition-all bg-slate-900/50 hover:border-slate-700">
                 <span class="text-[8px] font-bold text-uimmRed uppercase tracking-wider block">Muda 2</span>
                 <span class="text-xs font-black block mt-1 leading-tight text-white">Stocks</span>
               </button>
-              <button onclick="selectMuda('attente')" id="btn-muda-attente" class="muda-btn p-3.5 rounded-xl border border-slate-800 text-left transition-all bg-slate-900/50 hover:border-slate-700">
+              <button onclick="selectMuda('attente', true)" id="btn-muda-attente" class="muda-btn p-3.5 rounded-xl border border-slate-800 text-left transition-all bg-slate-900/50 hover:border-slate-700">
                 <span class="text-[8px] font-bold text-uimmRed uppercase tracking-wider block">Muda 3</span>
                 <span class="text-xs font-black block mt-1 leading-tight text-white">Attentes</span>
               </button>
-              <button onclick="selectMuda('transport')" id="btn-muda-transport" class="muda-btn p-3.5 rounded-xl border border-slate-800 text-left transition-all bg-slate-900/50 hover:border-slate-700">
+              <button onclick="selectMuda('transport', true)" id="btn-muda-transport" class="muda-btn p-3.5 rounded-xl border border-slate-800 text-left transition-all bg-slate-900/50 hover:border-slate-700">
                 <span class="text-[8px] font-bold text-uimmRed uppercase tracking-wider block">Muda 4</span>
                 <span class="text-xs font-black block mt-1 leading-tight text-white">Transports</span>
               </button>
-              <button onclick="selectMuda('mouvement')" id="btn-muda-mouvement" class="muda-btn p-3.5 rounded-xl border border-slate-800 text-left transition-all bg-slate-900/50 hover:border-slate-700">
+              <button onclick="selectMuda('mouvement', true)" id="btn-muda-mouvement" class="muda-btn p-3.5 rounded-xl border border-slate-800 text-left transition-all bg-slate-900/50 hover:border-slate-700">
                 <span class="text-[8px] font-bold text-uimmRed uppercase tracking-wider block">Muda 5</span>
                 <span class="text-xs font-black block mt-1 leading-tight text-white">Mouvements</span>
               </button>
-              <button onclick="selectMuda('traitement')" id="btn-muda-traitement" class="muda-btn p-3.5 rounded-xl border border-slate-800 text-left transition-all bg-slate-900/50 hover:border-slate-700">
+              <button onclick="selectMuda('traitement', true)" id="btn-muda-traitement" class="muda-btn p-3.5 rounded-xl border border-slate-800 text-left transition-all bg-slate-900/50 hover:border-slate-700">
                 <span class="text-[8px] font-bold text-uimmRed uppercase tracking-wider block">Muda 6</span>
                 <span class="text-xs font-black block mt-1 leading-tight text-white">Traitements</span>
               </button>
-              <button onclick="selectMuda('defauts')" id="btn-muda-defauts" class="muda-btn p-3.5 rounded-xl border border-slate-800 text-left transition-all bg-slate-900/50 hover:border-slate-700">
+              <button onclick="selectMuda('defauts', true)" id="btn-muda-defauts" class="muda-btn p-3.5 rounded-xl border border-slate-800 text-left transition-all bg-slate-900/50 hover:border-slate-700">
                 <span class="text-[8px] font-bold text-uimmRed uppercase tracking-wider block">Muda 7</span>
                 <span class="text-xs font-black block mt-1 leading-tight text-white">Défauts</span>
               </button>
@@ -343,24 +377,24 @@
               </div>
 
               <div class="flex gap-2">
-                <button onclick="setFlowType('push')" id="btn-sim-push" class="flex-1 py-2 text-xs font-bold rounded-xl transition-all bg-uimmRed text-white shadow-lg">
+                <button onclick="setFlowType('push', true)" id="btn-sim-push" class="flex-1 py-2 text-xs font-bold rounded-xl transition-all bg-uimmRed text-white shadow-lg">
                   Flux Poussé (Push)
                 </button>
-                <button onclick="setFlowType('pull')" id="btn-sim-pull" class="flex-1 py-2 text-xs font-bold rounded-xl transition-all bg-slate-900/40 text-slate-400 hover:bg-slate-800">
+                <button onclick="setFlowType('pull', true)" id="btn-sim-pull" class="flex-1 py-2 text-xs font-bold rounded-xl transition-all bg-slate-900/40 text-slate-400 hover:bg-slate-800">
                   Flux Tiré (Pull)
                 </button>
               </div>
 
               <div class="flex gap-2">
-                <button id="simCtrlBtn" onclick="toggleSimulation()" class="flex-1 px-4 py-2.5 text-xs font-bold rounded-xl bg-green-600 text-white hover:bg-green-500 transition-all">
+                <button id="simCtrlBtn" onclick="toggleSimulation(true)" class="flex-1 px-4 py-2.5 text-xs font-bold rounded-xl bg-green-600 text-white hover:bg-green-500 transition-all">
                   ▶️ Lancer la simulation
                 </button>
-                <button onclick="resetSimulation()" class="px-3 py-2 bg-slate-800 rounded-xl text-xs text-slate-400 hover:bg-slate-700 transition-all">
+                <button onclick="resetSimulation(true)" class="px-3 py-2 bg-slate-800 rounded-xl text-xs text-slate-400 hover:bg-slate-700 transition-all">
                   🔄 Reset
                 </button>
               </div>
               <div id="simPullTriggerArea" class="hidden animate-fadeIn">
-                <button onclick="triggerPullBuy()" class="w-full px-4 py-3 bg-uimmLight hover:bg-uimmLight/80 text-white font-bold text-xs rounded-xl shadow-lg transition-all uppercase tracking-wider">
+                <button onclick="triggerPullBuy(true)" class="w-full px-4 py-3 bg-uimmLight hover:bg-uimmLight/80 text-white font-bold text-xs rounded-xl shadow-lg transition-all uppercase tracking-wider">
                   🛒 Acheter un produit (Le client tire)
                 </button>
               </div>
@@ -476,10 +510,10 @@
               <!-- PDCA Steps Selector -->
               <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 shadow-inner">
                 <div class="flex gap-1.5 mb-3">
-                  <button onclick="selectPDCAStep('P')" id="btn-pdca-P" class="pdca-btn flex-1 py-1.5 text-xs font-bold rounded-lg transition-all bg-uimmLight text-white">Plan</button>
-                  <button onclick="selectPDCAStep('D')" id="btn-pdca-D" class="pdca-btn flex-1 py-1.5 text-xs font-bold rounded-lg transition-all bg-slate-900 text-slate-500 hover:bg-slate-800">Do</button>
-                  <button onclick="selectPDCAStep('C')" id="btn-pdca-C" class="pdca-btn flex-1 py-1.5 text-xs font-bold rounded-lg transition-all bg-slate-900 text-slate-500 hover:bg-slate-800">Check</button>
-                  <button onclick="selectPDCAStep('A')" id="btn-pdca-A" class="pdca-btn flex-1 py-1.5 text-xs font-bold rounded-lg transition-all bg-slate-900 text-slate-500 hover:bg-slate-800">Act</button>
+                  <button onclick="selectPDCAStep('P', true)" id="btn-pdca-P" class="pdca-btn flex-1 py-1.5 text-xs font-bold rounded-lg transition-all bg-uimmLight text-white">Plan</button>
+                  <button onclick="selectPDCAStep('D', true)" id="btn-pdca-D" class="pdca-btn flex-1 py-1.5 text-xs font-bold rounded-lg transition-all bg-slate-900 text-slate-500 hover:bg-slate-800">Do</button>
+                  <button onclick="selectPDCAStep('C', true)" id="btn-pdca-C" class="pdca-btn flex-1 py-1.5 text-xs font-bold rounded-lg transition-all bg-slate-900 text-slate-500 hover:bg-slate-800">Check</button>
+                  <button onclick="selectPDCAStep('A', true)" id="btn-pdca-A" class="pdca-btn flex-1 py-1.5 text-xs font-bold rounded-lg transition-all bg-slate-900 text-slate-500 hover:bg-slate-800">Act</button>
                 </div>
                 <div id="pdca-text-area" class="text-xs text-slate-350 leading-relaxed min-h-[70px]">
                   <strong>🎯 Plan (Planifier) :</strong> Poser les objectifs, identifier le problème (ex: méthode des 5 Pourquoi) et formaliser un plan d'actions clair.
@@ -516,13 +550,13 @@
           <!-- SLIDE 8: DAILY KAIZEN -->
           <div id="slide-8" class="slide-element hidden grid grid-cols-1 lg:grid-cols-12 gap-6 items-center h-full">
             <div class="lg:col-span-4 flex flex-col gap-2.5">
-              <button onclick="selectKaizenTab('team')" id="btn-kaizen-team" class="kaizen-tab-btn px-4 py-3 rounded-2xl text-left text-xs font-bold transition-all bg-uimmDark text-white shadow-lg">
+              <button onclick="selectKaizenTab('team', true)" id="btn-kaizen-team" class="kaizen-tab-btn px-4 py-3 rounded-2xl text-left text-xs font-bold transition-all bg-uimmDark text-white shadow-lg">
                 👥 Pour ton Équipe (Rituels)
               </button>
-              <button onclick="selectKaizenTab('corp')" id="btn-kaizen-corp" class="kaizen-tab-btn px-4 py-3 rounded-2xl text-left text-xs font-bold transition-all bg-slate-900/40 text-slate-400 hover:bg-slate-800">
+              <button onclick="selectKaizenTab('corp', true)" id="btn-kaizen-corp" class="kaizen-tab-btn px-4 py-3 rounded-2xl text-left text-xs font-bold transition-all bg-slate-900/40 text-slate-400 hover:bg-slate-800">
                 🏢 Pour ton Entreprise (Systèmes)
               </button>
-              <button onclick="selectKaizenTab('self')" id="btn-kaizen-self" class="kaizen-tab-btn px-4 py-3 rounded-2xl text-left text-xs font-bold transition-all bg-slate-900/40 text-slate-400 hover:bg-slate-800">
+              <button onclick="selectKaizenTab('self', true)" id="btn-kaizen-self" class="kaizen-tab-btn px-4 py-3 rounded-2xl text-left text-xs font-bold transition-all bg-slate-900/40 text-slate-400 hover:bg-slate-800">
                 👤 Pour Toi (Habitudes)
               </button>
             </div>
@@ -555,11 +589,11 @@
                 <!-- Line in background -->
                 <div class="absolute left-6 right-6 h-1 bg-slate-800 z-0"></div>
                 
-                <button onclick="selectRevolution(1)" id="btn-rev-1" class="rev-btn w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs transition-all z-10 bg-slate-900 text-slate-500 hover:bg-slate-800">1</button>
-                <button onclick="selectRevolution(2)" id="btn-rev-2" class="rev-btn w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs transition-all z-10 bg-slate-900 text-slate-500 hover:bg-slate-800">2</button>
-                <button onclick="selectRevolution(3)" id="btn-rev-3" class="rev-btn w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs transition-all z-10 bg-slate-900 text-slate-500 hover:bg-slate-800">3</button>
-                <button onclick="selectRevolution(4)" id="btn-rev-4" class="rev-btn w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs transition-all z-10 bg-uimmLight text-white border-4 border-slate-950 scale-125">4</button>
-                <button onclick="selectRevolution(5)" id="btn-rev-5" class="rev-btn w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs transition-all z-10 bg-slate-900 text-slate-500 hover:bg-slate-800">5</button>
+                <button onclick="selectRevolution(1, true)" id="btn-rev-1" class="rev-btn w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs transition-all z-10 bg-slate-900 text-slate-500 hover:bg-slate-800">1</button>
+                <button onclick="selectRevolution(2, true)" id="btn-rev-2" class="rev-btn w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs transition-all z-10 bg-slate-900 text-slate-500 hover:bg-slate-800">2</button>
+                <button onclick="selectRevolution(3, true)" id="btn-rev-3" class="rev-btn w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs transition-all z-10 bg-slate-900 text-slate-500 hover:bg-slate-800">3</button>
+                <button onclick="selectRevolution(4, true)" id="btn-rev-4" class="rev-btn w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs transition-all z-10 bg-uimmLight text-white border-4 border-slate-950 scale-125">4</button>
+                <button onclick="selectRevolution(5, true)" id="btn-rev-5" class="rev-btn w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs transition-all z-10 bg-slate-900 text-slate-500 hover:bg-slate-800">5</button>
               </div>
 
               <!-- Detail area -->
@@ -631,7 +665,7 @@
             <div class="flex gap-2">
               <button 
                 id="prevSlideBtn"
-                onclick="prevSlide()"
+                onclick="prevSlide(true)"
                 class="p-2.5 bg-slate-900 border border-slate-800 rounded-xl hover:border-slate-700 hover:bg-slate-800 text-slate-400 disabled:opacity-30 disabled:pointer-events-none transition-all shadow-md"
               >
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -640,7 +674,7 @@
               </button>
               <button 
                 id="nextSlideBtn"
-                onclick="nextSlide()"
+                onclick="nextSlide(true)"
                 class="p-2.5 bg-slate-900 border border-slate-800 rounded-xl hover:border-slate-700 hover:bg-slate-800 text-slate-400 disabled:opacity-30 disabled:pointer-events-none transition-all shadow-md"
               >
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -706,11 +740,20 @@
   </div>
 
   <script>
-    // --- APP GLOBAL STATE ---
+    // Identifier unique d'instance pour éviter que la fenêtre stagiaire ne ré-émette vers l'émetteur
+    const instanceId = Math.random().toString(36).substring(2, 9);
+    
+    // Détection du rôle de la fenêtre (si '?view=trainee' est présent dans l'URL)
+    const urlParams = new URLSearchParams(window.location.search);
+    const isTraineeView = urlParams.get('view') === 'trainee';
+
+    // Canal de communication inter-fenêtres
+    const syncChannel = new BroadcastChannel('uimm_presentation_sync');
+
     const state = {
       currentSlide: 0,
       totalSlides: 11,
-      showNotes: true,
+      showNotes: !isTraineeView, // Masqué par défaut si vue Stagiaire
       
       // Slide 1 : Pencil Click
       activePencilPart: null,
@@ -726,7 +769,7 @@
       selectedWaste: null,
       
       // Slide 5 : Push vs Pull simulation
-      flowType: 'push', // 'push' or 'pull'
+      flowType: 'push', 
       simulationRun: false,
       inventory: { s1: 0, s2: 0 },
       simIntervalId: null,
@@ -741,7 +784,6 @@
       activeRev: 4
     };
 
-    // --- SLIDE DATA (CONTENT & NOTES) ---
     const SLIDES_METADATA = [
       {
         bloc: "INTRODUCTION",
@@ -769,7 +811,7 @@
         subtitle: "Un smartphone pèse 130g... mais mobilise des tonnes d'efforts invisibles.",
         notes: {
           title: "QUESTION INSOLITE : Le Smartphone",
-          content: "« Combien de matières différentes pensez-vous trouver dans votre téléphone ? » Attendez la réaction. La réponse : jusqu'à 60 éléments chimiques différents ! Soit près de 80% du tableau périodique des éléments. Présentez l'empreinte écologique cachée pour faire prendre conscience de la chaîne logistique mondiale.",
+          content: "« Combien de matières différentes pensez-vous trouver dans votre téléphone ? » Attendez la réaction. La réponse : jusqu'à 60 éléments chimiques différents ! Soit près de la moitié du tableau périodique des éléments. Présentez l'empreinte écologique cachée pour faire prendre conscience de la chaîne logistique mondiale.",
           duration: "8 min"
         }
       },
@@ -829,7 +871,7 @@
         subtitle: "Des habitudes simples et applicables immédiatement à tous les niveaux.",
         notes: {
           title: "CONSEILS D'ANIMATION : Kaizen quotidien",
-          content: "Expliquez que le Kaizen n'est pas réservé aux ingénieurs méthodes. C'est un état d'esprit quotidien. Parcourez les 3 onglets (Mon équipe, Mon entreprise, Pour Moi). Mettez l'accent sur la règle des deux minutes pour le public en formation professionnelle.",
+          content: "Expliquez que le Kaizen n'est pas réservé aux ingénieurs méthodes. C'est un état d'esprit quotidien. Parcourez les 3 onglés (Mon équipe, Mon entreprise, Pour Moi). Mettez l'accent sur la règle des deux minutes pour le public en formation professionnelle.",
           duration: "8 min"
         }
       },
@@ -855,9 +897,112 @@
       }
     ];
 
-    // --- NAVIGATION LOGIC ---
-    function updateSlide() {
-      // Show only active slide
+    // --- GESTION DE LA SYNCHRONISATION MULTI-FENÊTRE ---
+    
+    // Émission d'un événement vers l'autre fenêtre
+    function broadcast(action, data) {
+      if (isTraineeView) return; // Seul le formateur peut émettre
+      const payload = { action, data, sender: instanceId };
+      
+      // Envoi via BroadcastChannel
+      try {
+        syncChannel.postMessage(payload);
+      } catch (err) {
+        console.warn("BroadcastChannel error, trying fallback:", err);
+      }
+      
+      // Secours via localStorage pour la compatibilité hors-ligne totale (USB / file://)
+      localStorage.setItem('uimm_sync_fallback', JSON.stringify({ ...payload, timestamp: Date.now() }));
+    }
+
+    // Réception des instructions de synchronisation
+    function handleSync(action, data) {
+      switch (action) {
+        case 'setSlide':
+          state.currentSlide = data;
+          updateSlide(false);
+          break;
+        case 'setPencilPart':
+          state.activePencilPart = data;
+          renderPencilPart();
+          break;
+        case 'setPhoneMetric':
+          state.smartphoneMetric = data;
+          renderPhoneMetric();
+          break;
+        case 'setVAValue':
+          state.estimatedVA = data;
+          const inputEl = document.getElementById('vaRangeInput');
+          if (inputEl) inputEl.value = data;
+          updateVAValue(data, false);
+          break;
+        case 'revealVA':
+          revealVAReality(false);
+          break;
+        case 'setMuda':
+          state.selectedWaste = data;
+          renderMudaDetails();
+          break;
+        case 'setFlowType':
+          setFlowType(data, false);
+          break;
+        case 'toggleSim':
+          toggleSimulation(false);
+          break;
+        case 'setInventory':
+          state.inventory = data;
+          renderSimulatorUI();
+          break;
+        case 'resetSim':
+          resetSimulation(false);
+          break;
+        case 'triggerPullBuy':
+          triggerPullBuy(false);
+          break;
+        case 'setPDCAStep':
+          state.activePDCA = data;
+          renderPDCADetails();
+          break;
+        case 'setKaizenTab':
+          state.kaizenTab = data;
+          renderKaizenDetails();
+          break;
+        case 'setRev':
+          state.activeRev = data;
+          renderRevolutionDetails();
+          break;
+      }
+    }
+
+    // Écouteurs d'événements de synchronisation
+    syncChannel.onmessage = (event) => {
+      if (event.data && event.data.sender !== instanceId) {
+        handleSync(event.data.action, event.data.data);
+      }
+    };
+
+    window.addEventListener('storage', (event) => {
+      if (event.key === 'uimm_sync_fallback' && event.newValue) {
+        const payload = JSON.parse(event.newValue);
+        if (payload.sender !== instanceId) {
+          handleSync(payload.action, payload.data);
+        }
+      }
+    });
+
+    // Ouvrir une nouvelle fenêtre "Stagiaire"
+    function openTraineeWindow() {
+      const url = window.location.pathname + '?view=trainee';
+      window.open(url, 'uimm_trainee_window', 'width=1280,height=800,menubar=no,toolbar=no,location=no,status=no');
+    }
+
+    // --- MISE À JOUR DE LA SLIDE ---
+    function updateSlide(shouldBroadcast = true) {
+      if (shouldBroadcast) {
+        broadcast('setSlide', state.currentSlide);
+      }
+
+      // Affichage de la diapositive courante
       for (let i = 0; i < state.totalSlides; i++) {
         const slide = document.getElementById(`slide-${i}`);
         if (slide) {
@@ -871,32 +1016,32 @@
         }
       }
 
-      // Metadata Update
+      // Mise à jour des métadonnées
       const meta = SLIDES_METADATA[state.currentSlide];
       document.getElementById('slideCategory').textContent = meta.bloc;
       document.getElementById('slideTitle').textContent = meta.title;
       document.getElementById('slideSubtitle').textContent = meta.subtitle;
       document.getElementById('slideCounter').textContent = `${String(state.currentSlide + 1).padStart(2, '0')} / ${String(state.totalSlides).padStart(2, '0')}`;
 
-      // Notes Update
+      // Notes formateur
       document.getElementById('notesDuration').textContent = `⏳ Durée : ${meta.notes.duration}`;
       document.getElementById('notesHookTitle').textContent = meta.notes.title;
       document.getElementById('notesHookContent').textContent = meta.notes.content;
 
-      // Progress bar Update
+      // Barre de progression
       const percent = ((state.currentSlide + 1) / state.totalSlides) * 100;
       document.getElementById('slideProgressBar').style.width = `${percent}%`;
 
-      // Buttons styling
+      // État des boutons de navigation
       document.getElementById('prevSlideBtn').disabled = state.currentSlide === 0;
       document.getElementById('nextSlideBtn').disabled = state.currentSlide === state.totalSlides - 1;
 
-      // Stop any simulator if we exit Slide 5
+      // Arrêt des simulations si sortie de la slide 5
       if (state.currentSlide !== 5) {
         stopSimulation();
       }
 
-      // Specific renders when navigating back/forth
+      // Initialisation/Rendu des sous-systèmes de la slide
       if (state.currentSlide === 1) renderPencilPart();
       if (state.currentSlide === 2) renderPhoneMetric();
       if (state.currentSlide === 4) renderMudaDetails();
@@ -906,21 +1051,21 @@
       if (state.currentSlide === 9) renderRevolutionDetails();
     }
 
-    function nextSlide() {
+    function nextSlide(shouldBroadcast = true) {
       if (state.currentSlide < state.totalSlides - 1) {
         state.currentSlide++;
-        updateSlide();
+        updateSlide(shouldBroadcast);
       }
     }
 
-    function prevSlide() {
+    function prevSlide(shouldBroadcast = true) {
       if (state.currentSlide > 0) {
         state.currentSlide--;
-        updateSlide();
+        updateSlide(shouldBroadcast);
       }
     }
 
-    // --- SLIDE 1: PENCIL DETAILS ---
+    // --- SLIDE 1 : CRAYON DE READ ---
     const PENCIL_PARTS = {
       graphite: { name: "Graphite du Sri Lanka", desc: "Extrait dans des mines complexes. Mélangé intimement avec de l'argile européenne pour fabriquer des mines d'une grande robustesse.", origin: "Sri Lanka / Inde" },
       bois: { name: "Cèdre du Nevada (USA)", desc: "Abattu et transformé en planches fines puis séché. Offre une rectitude parfaite et se taille sans éclats.", origin: "États-Unis" },
@@ -928,8 +1073,11 @@
       gomme: { name: "Gomme synthétique", desc: "Mélange d'huile végétale d'Indonésie vulcanisée au soufre et de pigments colorés.", origin: "Indonésie / Amérique" }
     };
 
-    function selectPencilPart(partKey) {
+    function selectPencilPart(partKey, shouldBroadcast = true) {
       state.activePencilPart = partKey;
+      if (shouldBroadcast) {
+        broadcast('setPencilPart', partKey);
+      }
       renderPencilPart();
     }
 
@@ -937,7 +1085,7 @@
       const container = document.getElementById('pencil-detail-card');
       if (!container) return;
 
-      // Clear active states on buttons
+      // Reset styles boutons
       ['graphite', 'bois', 'virole', 'gomme'].forEach(p => {
         const btn = document.getElementById(`btn-pencil-${p}`);
         if (btn) btn.className = btn.className.replace(' ring-4 ring-uimmLight', '');
@@ -952,7 +1100,6 @@
         return;
       }
 
-      // Add active rings to visual
       const activeBtn = document.getElementById(`btn-pencil-${state.activePencilPart}`);
       if (activeBtn) activeBtn.className += ' ring-4 ring-uimmLight';
 
@@ -967,9 +1114,12 @@
         </div>`;
     }
 
-    // --- SLIDE 2: SMARTPHONE METRICS ---
-    function selectPhoneMetric(metric) {
+    // --- SLIDE 2 : SMARTPHONE ---
+    function selectPhoneMetric(metric, shouldBroadcast = true) {
       state.smartphoneMetric = metric;
+      if (shouldBroadcast) {
+        broadcast('setPhoneMetric', metric);
+      }
       renderPhoneMetric();
     }
 
@@ -977,7 +1127,6 @@
       const container = document.getElementById('phone-detail-card');
       if (!container) return;
 
-      // Update button classes
       const btns = document.querySelectorAll('.phone-metric-btn');
       btns.forEach(b => {
         b.className = "phone-metric-btn px-4 py-2.5 rounded-xl text-xs font-bold text-left transition-all bg-slate-900/40 text-slate-400 hover:bg-slate-800";
@@ -1001,7 +1150,7 @@
               <div class="bg-slate-950/80 p-4 rounded-xl border border-slate-800/60">
                 <span class="text-[9px] uppercase tracking-wider text-slate-400 block font-semibold">Tableau périodique</span>
                 <div class="text-2xl font-black text-white mt-1">60 + métaux</div>
-                <p class="text-[10px] text-slate-450 mt-1">Une diversité d'éléments critiques (lithium, cobalt, cobalt, néodyme...).</p>
+                <p class="text-[10px] text-slate-450 mt-1">Une diversité d'éléments critiques (lithium, cobalt, néodyme...).</p>
               </div>
               <div class="bg-slate-950/80 p-4 rounded-xl border border-slate-800/60">
                 <span class="text-[9px] uppercase tracking-wider text-slate-400 block font-semibold">Chaîne d'assemblage</span>
@@ -1083,17 +1232,20 @@
       }
     }
 
-    // --- SLIDE 3: VALUE ADDED INTERACTION ---
-    function updateVAValue(val) {
+    // --- SLIDE 3 : ESTIMATEUR VALEUR AJOUTÉE ---
+    function updateVAValue(val, shouldBroadcast = true) {
       state.estimatedVA = val;
       document.getElementById('vaValueDisplay').innerHTML = `${val} % <span class="text-xs text-slate-400 font-sans font-normal">estimés</span>`;
       
-      // If result is already revealed, let user reset it by sliding
+      if (shouldBroadcast) {
+        broadcast('setVAValue', val);
+      }
+
       if (state.showVAResult) {
         state.showVAResult = false;
         document.getElementById('vaResultArea').innerHTML = `
           <button 
-            onclick="revealVAReality()"
+            onclick="revealVAReality(true)"
             class="px-6 py-2.5 bg-uimmLight text-white font-bold text-xs rounded-xl hover:bg-uimmLight/80 transition-all shadow-lg shadow-uimmLight/20 uppercase tracking-wider"
           >
             Révéler la réalité industrielle
@@ -1101,8 +1253,11 @@
       }
     }
 
-    function revealVAReality() {
+    function revealVAReality(shouldBroadcast = true) {
       state.showVAResult = true;
+      if (shouldBroadcast) {
+        broadcast('revealVA', null);
+      }
       const container = document.getElementById('vaResultArea');
       container.innerHTML = `
         <div class="w-full bg-uimmRed/10 border border-uimmRed/30 p-4 rounded-2xl animate-bounce mt-4 shadow-md text-left">
@@ -1119,7 +1274,7 @@
         </div>`;
     }
 
-    // --- SLIDE 4: THE 7 WASTES (MUDA) ---
+    // --- SLIDE 4 : LES 7 GASPILLAGES ---
     const MUDA_DATA = {
       surprod: { name: "La Surproduction", num: 1, desc: "Fabriquer des pièces ou dossiers plus tôt ou en plus grande quantité que requis par le client.", eg: "Imprimer un document de 120 pages pour une réunion sans savoir qui vient.", sol: "Passer au flux tiré et fabriquer à la commande." },
       stock: { name: "Les Stocks inutiles", num: 2, desc: "Accumuler des matières premières, en-cours ou articles finis.", eg: "Stocker une palette de pièces d'avance 'au cas où' au fond de l'atelier.", sol: "Mettre en place des en-cours maximums (Kanban)." },
@@ -1130,8 +1285,11 @@
       defauts: { name: "Les Défauts / Retouches", num: 7, desc: "Pièces non conformes nécessitant rejet ou réparation coûteuse.", eg: "Devoir ré-usiner un lot complet de vis mal filetées à cause d'un mauvais réglage.", sol: "Mettre en place des Poka-Yoke (systèmes anti-erreur physiques)." }
     };
 
-    function selectMuda(mudaKey) {
+    function selectMuda(mudaKey, shouldBroadcast = true) {
       state.selectedWaste = mudaKey;
+      if (shouldBroadcast) {
+        broadcast('setMuda', mudaKey);
+      }
       renderMudaDetails();
     }
 
@@ -1139,7 +1297,6 @@
       const container = document.getElementById('muda-detail-card');
       if (!container) return;
 
-      // Update button visual highlights
       Object.keys(MUDA_DATA).forEach(k => {
         const btn = document.getElementById(`btn-muda-${k}`);
         if (btn) {
@@ -1184,69 +1341,87 @@
         </div>`;
     }
 
-    // --- SLIDE 5: PUSH VS PULL SIMULATOR ---
-    function setFlowType(type) {
+    // --- SLIDE 5 : SIMULATEUR DE FLUX (PUSH VS PULL) ---
+    function setFlowType(type, shouldBroadcast = true) {
       stopSimulation();
       state.flowType = type;
       state.inventory = { s1: 0, s2: 0 };
       
+      if (shouldBroadcast) {
+        broadcast('setFlowType', type);
+      }
+
       const badge = document.getElementById('simModeBadge');
       const pullArea = document.getElementById('simPullTriggerArea');
       const pushBtn = document.getElementById('btn-sim-push');
       const pullBtn = document.getElementById('btn-sim-pull');
       
       if (type === 'push') {
-        badge.textContent = "Mode : Flux Poussé";
-        badge.className = "text-[10px] uppercase px-3 py-1 rounded-full font-bold bg-uimmRed/20 text-uimmRed border border-uimmRed/30";
-        pullArea.classList.add('hidden');
-        pushBtn.className = "flex-1 py-2 text-xs font-bold rounded-xl transition-all bg-uimmRed text-white shadow-lg shadow-uimmRed/25";
-        pullBtn.className = "flex-1 py-2 text-xs font-bold rounded-xl transition-all bg-slate-900/40 text-slate-400 hover:bg-slate-800";
+        if (badge) {
+          badge.textContent = "Mode : Flux Poussé";
+          badge.className = "text-[10px] uppercase px-3 py-1 rounded-full font-bold bg-uimmRed/20 text-uimmRed border border-uimmRed/30";
+        }
+        if (pullArea) pullArea.classList.add('hidden');
+        if (pushBtn) pushBtn.className = "flex-1 py-2 text-xs font-bold rounded-xl transition-all bg-uimmRed text-white shadow-lg shadow-uimmRed/25";
+        if (pullBtn) pullBtn.className = "flex-1 py-2 text-xs font-bold rounded-xl transition-all bg-slate-900/40 text-slate-400 hover:bg-slate-800";
       } else {
-        badge.textContent = "Mode : Flux Tiré (Kanban)";
-        badge.className = "text-[10px] uppercase px-3 py-1 rounded-full font-bold bg-uimmLight/20 text-uimmLight border border-uimmLight/30";
-        pullArea.classList.remove('hidden');
-        pushBtn.className = "flex-1 py-2 text-xs font-bold rounded-xl transition-all bg-slate-900/40 text-slate-400 hover:bg-slate-800";
-        pullBtn.className = "flex-1 py-2 text-xs font-bold rounded-xl transition-all bg-uimmLight text-white shadow-lg shadow-uimmLight/25";
+        if (badge) {
+          badge.textContent = "Mode : Flux Tiré (Kanban)";
+          badge.className = "text-[10px] uppercase px-3 py-1 rounded-full font-bold bg-uimmLight/20 text-uimmLight border border-uimmLight/30";
+        }
+        if (pullArea) pullArea.classList.remove('hidden');
+        if (pushBtn) pushBtn.className = "flex-1 py-2 text-xs font-bold rounded-xl transition-all bg-slate-900/40 text-slate-400 hover:bg-slate-800";
+        if (pullBtn) pullBtn.className = "flex-1 py-2 text-xs font-bold rounded-xl transition-all bg-uimmLight text-white shadow-lg shadow-uimmLight/25";
       }
       
       renderSimulatorUI();
     }
 
-    function toggleSimulation() {
+    function toggleSimulation(shouldBroadcast = true) {
       const btn = document.getElementById('simCtrlBtn');
+      
+      if (shouldBroadcast) {
+        broadcast('toggleSim', null);
+      }
+
       if (state.simulationRun) {
         stopSimulation();
       } else {
         state.simulationRun = true;
-        btn.textContent = "⏸️ Suspendre";
-        btn.className = "flex-1 px-4 py-2.5 text-xs font-bold rounded-xl bg-amber-600 text-white hover:bg-amber-500 transition-all";
+        if (btn) {
+          btn.textContent = "⏸️ Suspendre";
+          btn.className = "flex-1 px-4 py-2.5 text-xs font-bold rounded-xl bg-amber-600 text-white hover:bg-amber-500 transition-all";
+        }
         
-        // Spin gears visually
-        document.getElementById('gearIcon1').className = "text-2xl animate-spin";
+        const g1 = document.getElementById('gearIcon1');
+        if (g1) g1.className = "text-2xl animate-spin";
         
         if (state.flowType === 'push') {
-          // Push mode: Machine 1 is fast and pushes constantly
+          if (!isTraineeView) {
           state.simIntervalId = setInterval(() => {
-            // Machine 1 produces 1 unit
             state.inventory.s1++;
             
-            // Machine 2 takes 1 unit from stock s1 only every 3 steps (it is a bottleneck!)
             if (Math.random() > 0.6 && state.inventory.s1 > 0) {
               state.inventory.s1--;
               state.inventory.s2++;
-              // Pulse Machine 2 gear visually
               const g2 = document.getElementById('gearIcon2');
-              g2.className = "text-2xl animate-spin";
-              setTimeout(() => { g2.className = "text-2xl"; }, 600);
+              if (g2) {
+                g2.className = "text-2xl animate-spin";
+                setTimeout(() => { g2.className = "text-2xl"; }, 600);
+              }
             }
-            
             renderSimulatorUI();
+            broadcast('setInventory', state.inventory);
           }, 1200);
+          }
         } else {
-          // Pull mode visual running indicator
-          document.getElementById('gearIcon1').className = "text-2xl";
-          document.getElementById('simLogArea').innerHTML = `
-            ℹ️ <strong>Attente client :</strong> En flux tiré (Juste-à-Temps), la chaîne est totalement à l'arrêt tant qu'aucune vente n'a été validée en bout de ligne. Le stock reste de 0.`;
+          const g1 = document.getElementById('gearIcon1');
+          if (g1) g1.className = "text-2xl";
+          const simLog = document.getElementById('simLogArea');
+          if (simLog) {
+            simLog.innerHTML = `
+              ℹ️ <strong>Attente client :</strong> En flux tiré (Juste-à-Temps), la chaîne est totalement à l'arrêt tant qu'aucune vente n'a été validée en bout de ligne. Le stock reste de 0.`;
+          }
         }
       }
     }
@@ -1266,40 +1441,45 @@
       if (g1) g1.className = "text-2xl";
     }
 
-    function resetSimulation() {
+    function resetSimulation(shouldBroadcast = true) {
       stopSimulation();
       state.inventory = { s1: 0, s2: 0 };
+      if (shouldBroadcast) {
+        broadcast('resetSim', null);
+      }
       renderSimulatorUI();
     }
 
-    function triggerPullBuy() {
+    function triggerPullBuy(shouldBroadcast = true) {
       if (state.flowType !== 'pull') return;
       
-      // Client orders a piece -> Triggers production up to Machine 1
+      if (shouldBroadcast) {
+        broadcast('triggerPullBuy', null);
+      }
+
       const log = document.getElementById('simLogArea');
-      log.innerHTML = `🛒 <strong>Commande reçue !</strong> Le client tire 1 unité. La carte Kanban remonte au Poste 2, puis au Poste 1.`;
+      if (log) log.innerHTML = `🛒 <strong>Commande reçue !</strong> Le client tire 1 unité. La carte Kanban remonte au Poste 2, puis au Poste 1.`;
       
-      // Animate workflow sequence: Post 1 starts -> Stocks briefly -> Post 2 finishes -> Delivered
       const g1 = document.getElementById('gearIcon1');
       const g2 = document.getElementById('gearIcon2');
       
-      g1.className = "text-2xl animate-spin";
+      if (g1) g1.className = "text-2xl animate-spin";
       setTimeout(() => {
         state.inventory.s1 = 1;
         renderSimulatorUI();
-        g1.className = "text-2xl";
+        if (g1) g1.className = "text-2xl";
         
         setTimeout(() => {
           state.inventory.s1 = 0;
-          g2.className = "text-2xl animate-spin";
+          if (g2) g2.className = "text-2xl animate-spin";
           state.inventory.s2 = 1;
           renderSimulatorUI();
           
           setTimeout(() => {
             state.inventory.s2 = 0;
-            g2.className = "text-2xl";
+            if (g2) g2.className = "text-2xl";
             renderSimulatorUI();
-            log.innerHTML = `✅ <strong>Produit livré !</strong> L'unité a été assemblée et expédiée immédiatement sans stockage inutile de matières premières.`;
+            if (log) log.innerHTML = `✅ <strong>Produit livré !</strong> L'unité a été assemblée et expédiée immédiatement sans stockage inutile de matières premières.`;
           }, 800);
         }, 800);
       }, 800);
@@ -1314,7 +1494,6 @@
       
       if (!s1Val || !s1Bar || !s2Val || !s2Bar) return;
       
-      // Apply S1 visual limits
       s1Val.textContent = `${state.inventory.s1} pcs`;
       s1Bar.style.width = `${Math.min(state.inventory.s1 * 10, 100)}%`;
       if (state.inventory.s1 >= 6) {
@@ -1325,11 +1504,10 @@
         s1Bar.className = "bg-uimmLight h-full transition-all duration-300";
       }
 
-      // Apply S2 visual limits
       s2Val.textContent = `${state.inventory.s2} pcs`;
       s2Bar.style.width = `${Math.min(state.inventory.s2 * 10, 100)}%`;
 
-      if (state.flowType === 'push') {
+      if (state.flowType === 'push' && logArea) {
         if (state.inventory.s1 > 5) {
           logArea.innerHTML = `⚠️ <strong>Alerte Stock !</strong> Le Poste 1 sature le stock d'en-cours (${state.inventory.s1} pièces accumulées). Le Poste 2 est débordé (goulot d'bouteille). Cela cache les défauts et encombre l'usine !`;
         } else {
@@ -1338,7 +1516,7 @@
       }
     }
 
-    // --- SLIDE 7: PDCA DETAILS ---
+    // --- SLIDE 7 : ROUE PDCA ---
     const PDCA_STEPS = {
       P: { label: "P", name: "Plan (Planifier)", desc: "Définir précisément le problème à résoudre, fixer des objectifs chiffrés et formuler un plan d'actions clair basé sur l'analyse des causes racines (5 Pourquoi, Ishikawa)." },
       D: { label: "D", name: "Do (Faire)", desc: "Mettre en œuvre les correctifs décidés d'abord à petite échelle (pilote) pour valider l'impact sans perturber le reste de la ligne de montage." },
@@ -1346,8 +1524,11 @@
       A: { label: "A", name: "Act (Ancrer / Standardiser)", desc: "Si les résultats sont positifs, rédiger la fiche d'instruction écrite. C'est l'étape de standardisation qui empêche la roue de redescendre." }
     };
 
-    function selectPDCAStep(step) {
+    function selectPDCAStep(step, shouldBroadcast = true) {
       state.activePDCA = step;
+      if (shouldBroadcast) {
+        broadcast('setPDCAStep', step);
+      }
       renderPDCADetails();
     }
 
@@ -1355,7 +1536,6 @@
       const textBlock = document.getElementById('pdca-text-area');
       if (!textBlock) return;
 
-      // Update button highlights
       const btns = document.querySelectorAll('.pdca-btn');
       btns.forEach(b => {
         b.className = "pdca-btn flex-1 py-1.5 text-xs font-bold rounded-lg transition-all bg-slate-900 text-slate-500 hover:bg-slate-800";
@@ -1370,7 +1550,7 @@
       textBlock.innerHTML = `<strong>${data.name} :</strong> ${data.desc}`;
     }
 
-    // --- SLIDE 8: DAILY KAIZEN TABS ---
+    // --- SLIDE 8 : ONGLETS KAIZEN ---
     const KAIZEN_TABS = {
       team: [
         { title: "Rituel Flash Quotidien", desc: "Consacrer 5 à 10 minutes chaque matin debout devant le tableau d'équipe pour remonter les alertes ergonomie ou qualité de la veille." },
@@ -1383,14 +1563,17 @@
         { title: "Lancement des 'Fix-It Fridays'", desc: "Dédier la dernière heure du vendredi pour que chaque équipage nettoie et améliore l'ergonomie de sa propre zone de travail." }
       ],
       self: [
-        { title: "La règle reine des 2 minutes", desc: "Si un geste d'amélioration (comme ranger un forêt ou essuyer une coulure) prend moins de 2 minutes, l'accomplir sur-le-champ." },
+        { title: "La règle reine des 2 minutes", desc: "Si un geste d'amélioration (comme ranger un foret ou essuyer une coulure) prend moins de 2 minutes, l'accomplir sur-le-champ." },
         { title: "La question de fin de quart", desc: "Se demander systématiquement avant de badger : 'Quelle micro-amélioration ai-je apportée aujourd'hui pour me faciliter la tâche demain ?'" },
         { title: "Apprendre une notion par jour", desc: "Dédier 10 minutes par jour pour parfaire sa connaissance d'un outil d'atelier (ex: programmation de l'automate)." }
       ]
     };
 
-    function selectKaizenTab(tabKey) {
+    function selectKaizenTab(tabKey, shouldBroadcast = true) {
       state.kaizenTab = tabKey;
+      if (shouldBroadcast) {
+        broadcast('setKaizenTab', tabKey);
+      }
       renderKaizenDetails();
     }
 
@@ -1398,7 +1581,6 @@
       const container = document.getElementById('kaizen-detail-card');
       if (!container) return;
 
-      // Update button styling
       const btns = document.querySelectorAll('.kaizen-tab-btn');
       btns.forEach(b => {
         b.className = "kaizen-tab-btn px-4 py-3 rounded-2xl text-left text-xs font-bold transition-all bg-slate-900/40 text-slate-400 hover:bg-slate-800";
@@ -1428,17 +1610,20 @@
       container.innerHTML = html;
     }
 
-    // --- SLIDE 9: INDUSTRIAL REVOLUTIONS TIMELINE ---
+    // --- SLIDE 9 : RÉVOLUTIONS INDUSTRIELLES ---
     const REVOLUTIONS_DATA = {
       1: { title: "Industrie 1.0", subtitle: "Mécanisation & Vapeur", tech: "Machine à vapeur", desc: "Fin du XVIIIe siècle. Passage du travail manuel à l'utilisation des moteurs à eau puis à charbon. Révolutionne le textile et le transport lourd." },
       2: { title: "Industrie 2.0", subtitle: "Électricité & Taylorisme", tech: "Ligne d'assemblage", desc: "Fin du XIXe siècle. Introduction de l'électricité et de l'organisation scientifique du travail (Taylor). Permet la production de masse à coût abordable." },
       3: { title: "Industrie 3.0", subtitle: "Automates & Électronique", tech: "Automate Programmable (API)", desc: "Années 1970. Intégration massive des puces électroniques, microprocesseurs et premiers bras robots de soudage." },
       4: { title: "Industrie 4.0", subtitle: "Usine Connectée & Cyber-physique", tech: "IoT / Cloud / Big Data", desc: "Aujourd'hui. Mise en réseau globale des machines, maintenance prédictive par capteurs sans-fil et exploitation des algorithmes d'IA." },
-      5: { title: "Industrie 5.0", subtitle: "Cobotique & Transition verte", tech: "Cobots / Green Tech", desc: "En cours. recentrage de l'humain au cœur de l'usine, robotique collaborative (cobots), éco-conception pour la réduction drastique de l'empreinte carbone." }
+      5: { title: "Industrie 5.0", subtitle: "Cobotique & Transition verte", tech: "Cobots / Green Tech", desc: "En cours. Recentrage de l'humain au cœur de l'usine, robotique collaborative (cobots), éco-conception pour la réduction drastique de l'empreinte carbone." }
     };
 
-    function selectRevolution(num) {
+    function selectRevolution(num, shouldBroadcast = true) {
       state.activeRev = num;
+      if (shouldBroadcast) {
+        broadcast('setRev', num);
+      }
       renderRevolutionDetails();
     }
 
@@ -1446,7 +1631,6 @@
       const container = document.getElementById('rev-detail-card');
       if (!container) return;
 
-      // Update buttons
       const btns = document.querySelectorAll('.rev-btn');
       btns.forEach(b => {
         b.className = "rev-btn w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs transition-all z-10 bg-slate-900 text-slate-500 hover:bg-slate-800";
@@ -1471,12 +1655,11 @@
         </div>`;
     }
 
-    // --- SPEAKER NOTES VISIBILITY TOGGLE ---
+    // --- GESTION DE LA VISIBILITÉ DU PANNEAU NOTES ---
     const toggleNotesBtn = document.getElementById('toggleNotesBtn');
     const speakerNotesPanel = document.getElementById('speakerNotesPanel');
 
-    toggleNotesBtn.addEventListener('click', () => {
-      state.showNotes = !state.showNotes;
+    function updateNotesVisibility() {
       if (state.showNotes) {
         speakerNotesPanel.classList.remove('hidden');
         toggleNotesBtn.className = "flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-bold tracking-wider transition-all uppercase bg-uimmLight text-white shadow-lg shadow-uimmLight/20";
@@ -1484,18 +1667,24 @@
         speakerNotesPanel.classList.add('hidden');
         toggleNotesBtn.className = "flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-bold tracking-wider transition-all uppercase bg-slate-800 text-slate-400";
       }
+    }
+
+    toggleNotesBtn.addEventListener('click', () => {
+      state.showNotes = !state.showNotes;
+      updateNotesVisibility();
     });
 
-    // --- KEYBOARD & TOUCH NAVIGATION EVENTS ---
+    // --- NAVIGATION CLAVIER ---
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight' || e.key === 'Space') {
-        nextSlide();
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        nextSlide(true);
       } else if (e.key === 'ArrowLeft') {
-        prevSlide();
+        prevSlide(true);
       }
     });
 
-    // Touch Swipe Support
+    // --- NAVIGATION SWIPE TACTILE ---
     let touchstartX = 0;
     let touchendX = 0;
 
@@ -1510,24 +1699,30 @@
 
     function handleGesture() {
       if (touchendX < touchstartX - 60) {
-        nextSlide(); // Swipe gauche -> slide suivante
+        nextSlide(true);
       }
       if (touchendX > touchstartX + 60) {
-        prevSlide(); // Swipe droit -> slide précédente
+        prevSlide(true);
       }
     }
 
-    // --- APPLICATION STARTUP ON LOAD ---
+    // --- INITIALISATION ---
     window.onload = function() {
-      updateSlide();
+      if (isTraineeView) {
+        // Mode Écran Stagiaire Purifié : Masque tous les éléments d'administration
+        document.body.classList.add('uimm-trainee-mode');
+        document.getElementById('toggleNotesBtn').classList.add('hidden');
+        document.getElementById('openTraineeWindowBtn').classList.add('hidden');
+        document.getElementById('speakerNotesPanel').classList.add('hidden');
+        document.getElementById('badgeSyncStagiaire').classList.remove('hidden');
+        document.getElementById('badgeSyncStagiaire').classList.add('flex');
+        document.getElementById('moduleBadge').classList.add('hidden');
+        state.showNotes = false;
+      }
+      
+      updateNotesVisibility();
+      updateSlide(false);
     };
   </script>
 </body>
 </html>
-```
-eof
-
-### Qu'est-ce qui a été corrigé ?
-* **Élimination de Babel et de React en local :** L'entièreté des composants dynamiques, des rituels et des animations est désormais propulsée par du **JavaScript natif (Vanilla JS)** hyper robuste. Le navigateur n'a plus à compiler à la volée du code JSX, ce qui supprime définitivement l'erreur `SyntaxError: Failed to execute 'appendChild' on 'Node': Cannot use import statement outside a module`.
-* **Performances optimisées :** L'application se charge en une fraction de seconde sans aucune latence lors du changement de slide.
-* **Contrôles tactiles et clavier :** Vous pouvez toujours naviguer via les flèches directionnelles, la touche espace, ou par simple geste de glissement (swipe) sur tablette ou smartphone.
