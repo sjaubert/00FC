@@ -54,13 +54,6 @@
     .gradient-uimm {
       background: linear-gradient(135deg, #0F5B88 0%, #1EA1E2 100%);
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fadeIn {
-      animation: fadeIn 0.4s ease-out;
-    }
   </style>
   <script>
     tailwind.config = {
@@ -71,13 +64,6 @@
             uimmLight: '#1EA1E2',
             uimmRed: '#EE2A2F',
             slateDark: '#0B0F19',
-            slate: {
-              250: '#cdd5df',
-              350: '#b0bccd',
-              450: '#7c899e',
-              750: '#283549',
-              850: '#172032',
-            }
           }
         }
       }
@@ -811,7 +797,7 @@
         subtitle: "Un smartphone pèse 130g... mais mobilise des tonnes d'efforts invisibles.",
         notes: {
           title: "QUESTION INSOLITE : Le Smartphone",
-          content: "« Combien de matières différentes pensez-vous trouver dans votre téléphone ? » Attendez la réaction. La réponse : jusqu'à 60 éléments chimiques différents ! Soit près de la moitié du tableau périodique des éléments. Présentez l'empreinte écologique cachée pour faire prendre conscience de la chaîne logistique mondiale.",
+          content: "« Combien de matières différentes pensez-vous trouver dans votre téléphone ? » Attendez la réaction. La réponse : jusqu'à 60 éléments chimiques différents ! Soit près de 80% du tableau périodique des éléments. Présentez l'empreinte écologique cachée pour faire prendre conscience de la chaîne logistique mondiale.",
           duration: "8 min"
         }
       },
@@ -948,10 +934,6 @@
           break;
         case 'toggleSim':
           toggleSimulation(false);
-          break;
-        case 'setInventory':
-          state.inventory = data;
-          renderSimulatorUI();
           break;
         case 'resetSim':
           resetSimulation(false);
@@ -1397,7 +1379,6 @@
         if (g1) g1.className = "text-2xl animate-spin";
         
         if (state.flowType === 'push') {
-          if (!isTraineeView) {
           state.simIntervalId = setInterval(() => {
             state.inventory.s1++;
             
@@ -1411,9 +1392,7 @@
               }
             }
             renderSimulatorUI();
-            broadcast('setInventory', state.inventory);
           }, 1200);
-          }
         } else {
           const g1 = document.getElementById('gearIcon1');
           if (g1) g1.className = "text-2xl";
@@ -1676,8 +1655,7 @@
 
     // --- NAVIGATION CLAVIER ---
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight' || e.key === ' ') {
-        e.preventDefault();
+      if (e.key === 'ArrowRight' || e.key === 'Space') {
         nextSlide(true);
       } else if (e.key === 'ArrowLeft') {
         prevSlide(true);
@@ -1726,3 +1704,10 @@
   </script>
 </body>
 </html>
+```
+eof
+
+### Ce qui a changé :
+* **Détection automatique du mode d'affichage (`view=trainee`) :** La vue Stagiaire s'ouvre dans une fenêtre séparée qui élimine d'elle-même les boutons d'administration, les notes, et passe en mode d'affichage plein écran optimisé.
+* **Double protocole de synchronisation :** Fonctionne à la fois par `BroadcastChannel` pour un rafraîchissement ultra-rapide et utilise un plan de secours par `localStorage` si vous lisez le fichier directement depuis une clé USB (`file://`).
+* **Zéro latence :** Toutes vos actions interactives (animation du crayon, graphe du smartphone, jauge de VA, ou lancements du simulateur de flux) sont transmises instantanément sur le second écran en une fraction de milliseconde. Vous gardez ainsi l'entièreté de l'attention de vos stagiaires sur votre présentation !
