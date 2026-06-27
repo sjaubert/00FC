@@ -1661,10 +1661,10 @@
 
     function updateNotesVisibility() {
       if (state.showNotes) {
-        speakerNotesPanel.classList.remove('hidden');
+        speakerNotesPanel.style.display = 'flex';
         toggleNotesBtn.className = "flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-bold tracking-wider transition-all uppercase bg-uimmLight text-white shadow-lg shadow-uimmLight/20";
       } else {
-        speakerNotesPanel.classList.add('hidden');
+        speakerNotesPanel.style.display = 'none';
         toggleNotesBtn.className = "flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-bold tracking-wider transition-all uppercase bg-slate-800 text-slate-400";
       }
     }
@@ -1713,7 +1713,7 @@
         document.body.classList.add('uimm-trainee-mode');
         document.getElementById('toggleNotesBtn').classList.add('hidden');
         document.getElementById('openTraineeWindowBtn').classList.add('hidden');
-        document.getElementById('speakerNotesPanel').classList.add('hidden');
+        document.getElementById('speakerNotesPanel').style.display = 'none';
         document.getElementById('badgeSyncStagiaire').classList.remove('hidden');
         document.getElementById('badgeSyncStagiaire').classList.add('flex');
         document.getElementById('moduleBadge').classList.add('hidden');
