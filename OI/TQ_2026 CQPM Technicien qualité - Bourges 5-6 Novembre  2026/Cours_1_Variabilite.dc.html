@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/industry-09adf4b9-214f-4e28-9619-649931eeca15/styles.css">
+<script src="_ds/industry-09adf4b9-214f-4e28-9619-649931eeca15/_ds_bundle.js"></script>
+<style>
+  @media print {
+    .no-print { display: none !important; }
+    .fig-frame, .cle-box, .tp-card { break-inside: avoid; }
+    body { background: #fff; }
+  }
+  .course-col a { color: var(--color-accent-700); }
+  .course-col h2 {
+    font-size: 30px; color: var(--color-accent-900);
+    border-top: 2px solid var(--color-divider);
+    padding-top: 18px; margin-top: 44px; margin-bottom: 14px;
+  }
+  .course-col h3 { font-size: 21px; color: var(--color-accent-800); margin-top: 24px; }
+  .course-col p { font-size: 16px; line-height: 1.62; margin: 0 0 14px; }
+  .course-col li { font-size: 16px; line-height: 1.55; margin-bottom: 7px; }
+</style>
+</helmet>
+<div style="max-width: 900px; margin: 0 auto; padding: 40px 28px 90px;" class="course-col">
+
+  <div style="display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:6px;">
+    <span class="tag tag-outline" style="letter-spacing:.12em;">COURS 1 / 4</span>
+    <span style="font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--color-neutral-600);">Cours support — Capabilité &amp; SPC</span>
+  </div>
+  <h1 style="font-size:46px; line-height:1.02; margin:2px 0 10px; color:var(--color-text);">Comprendre la variabilité</h1>
+  <p style="font-size:18px; color:var(--color-neutral-700); margin-bottom:14px; max-width:640px;">Le socle avant tout calcul — Pôle Formation UIMM CVDL · S. Jaubert</p>
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:6px;">
+    <span class="tag tag-accent">Causes communes &amp; spéciales</span>
+    <span class="tag tag-accent">Moyenne · étendue · écart-type</span>
+    <span class="tag tag-accent">Loi normale</span>
+    <span class="tag tag-accent">Normalité</span>
+  </div>
+
+  <div style="border-left:3px solid var(--color-accent); background:var(--color-accent-100); padding:16px 20px; margin:26px 0 8px;">
+    <p style="margin:0; font-size:16.5px;"><strong style="color:var(--color-accent-800);">Pourquoi ce cours.</strong> Les TP te donnent les formules et te font calculer. Ici, on prend le temps du <em>sens</em>. Avant de parler de C<sub>p</sub>, de C<sub>pk</sub> ou de cartes de contrôle, il faut être au clair sur une seule idée : tout procédé produit de la variabilité, et cette variabilité obéit à des lois. Comprendre ces lois, c'est comprendre tout le reste.</p>
+  </div>
+
+  <h2>Rien n'est jamais deux fois identique</h2>
+  <p>Prends 30 pièces qui sortent de la même machine, réglée sur la même cote. Mesure-les au micron. Tu n'obtiendras jamais 30 fois la même valeur. Les nombres se serrent autour d'une valeur centrale, mais ils se dispersent.</p>
+
+  <figure class="fig-frame blueprint" style="padding:22px 26px 16px; margin:22px 0 6px;">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    {{ dotPlotFig }}
+    <figcaption style="font-size:12.5px; margin-top:10px;">30 pièces mesurées sur une machine réglée sur une seule cote. Aucune n'est identique : les valeurs se dispersent autour du centre. <span class="no-print">Relance un tirage pour voir un autre échantillon du même procédé.</span></figcaption>
+  </figure>
+
+  <p>Cette dispersion n'est pas un défaut de la mesure ni une malchance. C'est une propriété du procédé. La vraie question n'est donc pas « y a-t-il de la variation ? » (la réponse est toujours oui), mais :</p>
+  <ul>
+    <li><strong>Combien</strong> de variation ? C'est la question de la dispersion.</li>
+    <li><strong>D'où</strong> vient-elle ? C'est la question des causes.</li>
+    <li>Est-elle <strong>compatible</strong> avec ce que le client tolère ? C'est la capabilité (cours 2).</li>
+  </ul>
+
+  <h2>Deux familles de causes : communes et spéciales</h2>
+  <p>Walter Shewhart, puis W. E. Deming, ont posé une distinction qui commande toute la démarche SPC.</p>
+
+  <figure class="fig-frame blueprint" style="padding:22px 26px 16px; margin:22px 0 6px;">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    {{ causesFig }}
+    <figcaption style="font-size:12.5px; margin-top:10px;">Même procédé sur la durée : le bruit de fond permanent (causes communes) reste dans une bande stable ; une cause spéciale est un décrochage net et repérable.</figcaption>
+  </figure>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--color-divider); border:1px solid var(--color-divider); margin:20px 0;">
+    <div style="background:var(--color-accent); color:#fff; padding:10px 14px; font-family:var(--font-heading); font-weight:600; font-size:16px;">Causes communes</div>
+    <div style="background:var(--color-accent); color:#fff; padding:10px 14px; font-family:var(--font-heading); font-weight:600; font-size:16px;">Causes spéciales</div>
+    <div style="background:var(--color-bg); padding:11px 14px; font-size:14.5px;">Le bruit de fond du procédé, présent en permanence.</div>
+    <div style="background:var(--color-bg); padding:11px 14px; font-size:14.5px;">Un événement précis et identifiable.</div>
+    <div style="background:var(--color-bg); padding:11px 14px; font-size:14.5px;">Nombreuses, petites, sans coupable unique.</div>
+    <div style="background:var(--color-bg); padding:11px 14px; font-size:14.5px;">Rare, isolée, avec une origine repérable.</div>
+    <div style="background:var(--color-bg); padding:11px 14px; font-size:14.5px;">Jeu dans une glissière, micro-variations de matière, de température.</div>
+    <div style="background:var(--color-bg); padding:11px 14px; font-size:14.5px;">Outil cassé, mauvais lot de matière, erreur de réglage.</div>
+    <div style="background:var(--color-bg); padding:11px 14px; font-size:14.5px;">Procédé dit <strong>stable</strong> (sous contrôle).</div>
+    <div style="background:var(--color-bg); padding:11px 14px; font-size:14.5px;">Procédé <strong>instable</strong>.</div>
+  </div>
+
+  <div class="cle-box blueprint" style="padding:18px 22px; margin:24px 0; background:var(--color-accent-100);">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div style="font-family:var(--font-heading); font-weight:600; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--color-accent-700); margin-bottom:6px;">◆ La règle d'or</div>
+    <p style="margin:0; font-size:16px;">On ne règle jamais un procédé qui ne subit que des causes communes. Réagir à chaque petit écart d'un procédé stable, c'est du <em>sur-réglage</em> : loin de corriger, on ajoute de la variation. On ne « chasse » que les causes spéciales.</p>
+  </div>
+
+  <p>Cette idée est contre-intuitive. La meilleure façon de la comprendre est de la vivre, entonnoir en main.</p>
+
+  <sc-if value="{{ showTP }}" hint-placeholder-val="{{ true }}">
+  <a href="../TP_Activites/TP08_Entonnoir_Deming_Sur-reglage.html" class="tp-card blueprint" style="display:block; text-decoration:none; color:inherit; padding:16px 20px; margin:18px 0;">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;"><span class="tag tag-accent">TP 8</span><span style="font-family:var(--font-heading); font-weight:600; font-size:18px; color:var(--color-accent-800);">Entonnoir de Deming : le piège du sur-réglage</span></div>
+    <p style="margin:0; font-size:14.5px; color:var(--color-neutral-700);">Manip physique sans calcul. Tu lâches une bille selon 4 stratégies de réglage et tu vois, de tes yeux, comment « corriger » un procédé stable dégrade le résultat. <span style="color:var(--color-accent);">→</span></p>
+  </a>
+  </sc-if>
+
+  <h2>Décrire un lot avec trois nombres</h2>
+  <p>Pour parler d'un ensemble de mesures, trois grandeurs suffisent à démarrer. La figure ci-dessous les montre toutes les trois sur le même petit lot.</p>
+
+  <figure class="fig-frame blueprint" style="padding:22px 26px 16px; margin:22px 0 6px;">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    {{ threeStatsFig }}
+    <figcaption style="font-size:12.5px; margin-top:10px;">La moyenne place le nuage, l'étendue R en mesure la largeur brute (du min au max), l'écart-type s en donne l'écart « moyen » à la moyenne.</figcaption>
+  </figure>
+
+  <h3>La moyenne : où se situe le procédé</h3>
+  <div style="text-align:center; background:var(--color-surface); border:1px solid var(--color-divider); padding:16px; margin:14px 0; font-size:22px;">
+    x̄ = <span style="display:inline-block; text-align:center; vertical-align:middle; margin:0 4px;"><span style="display:block; border-bottom:1.5px solid currentColor; padding:0 8px; font-size:17px;">1</span><span style="display:block; padding:0 8px; font-size:17px;">n</span></span> <span style="font-size:26px;">Σ</span> x<sub>i</sub>
+  </div>
+  <p>Elle donne la <strong>position</strong> du nuage de points : « en moyenne, on tombe où ? ». À elle seule, elle ne dit rien de la dispersion.</p>
+
+  <h3>L'étendue : la mesure la plus simple de la dispersion</h3>
+  <div style="text-align:center; background:var(--color-surface); border:1px solid var(--color-divider); padding:16px; margin:14px 0; font-size:22px;">R = x<sub>max</sub> − x<sub>min</sub></div>
+  <p>Facile à calculer à la main, l'étendue est la largeur brute d'un petit échantillon. C'est elle qu'on utilise sur les cartes de contrôle (cours 3), justement parce qu'elle est rapide à l'atelier.</p>
+
+  <h3>L'écart-type : la dispersion « moyenne »</h3>
+  <p>L'écart-type mesure de combien, en moyenne, les valeurs s'écartent de la moyenne. C'est l'indicateur central de toute la capabilité.</p>
+  <div style="text-align:center; background:var(--color-surface); border:1px solid var(--color-divider); padding:18px; margin:14px 0; font-size:22px;">
+    s = <span style="font-size:34px; vertical-align:middle;">√</span><span style="display:inline-block; border-top:1.5px solid currentColor; padding-top:4px; vertical-align:middle;"><span style="display:inline-block; text-align:center; vertical-align:middle;"><span style="display:block; border-bottom:1.5px solid currentColor; padding:0 10px 3px; font-size:18px;">Σ (x<sub>i</sub> − x̄)²</span><span style="display:block; padding:3px 10px 0; font-size:18px;">n − 1</span></span></span>
+  </div>
+  <p>On divise par n−1 et non par n : quand on estime la dispersion d'un procédé à partir d'un échantillon, ce correctif évite de sous-estimer la vraie dispersion. Sur la population complète, on parle de σ.</p>
+
+  <div class="cle-box blueprint" style="padding:18px 22px; margin:24px 0; background:var(--color-accent-100);">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div style="font-family:var(--font-heading); font-weight:600; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--color-accent-700); margin-bottom:6px;">◆ Idée clé</div>
+    <p style="margin:0; font-size:16px;"><strong>Moyenne et écart-type sont indépendants.</strong> Deux procédés peuvent avoir la même moyenne et des dispersions très différentes, ou la même dispersion et des positions différentes. La qualité se joue sur les deux : être <em>bien placé</em> (centré) <strong>et</strong> <em>peu dispersé</em>.</p>
+  </div>
+
+  <figure class="fig-frame blueprint" style="padding:22px 26px 16px; margin:22px 0 6px;">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    {{ indepFig }}
+    <figcaption style="font-size:12.5px; margin-top:10px;">Position et dispersion sont deux réglages distincts : on peut déplacer le centre sans changer la largeur, et inversement.</figcaption>
+  </figure>
+
+  <h2>La loi normale et la règle des 6 sigma</h2>
+  <p>Quand un procédé n'est soumis qu'à des causes communes, ses mesures se répartissent le plus souvent selon une courbe en cloche : la <strong>loi normale</strong>. Elle est symétrique autour de la moyenne, et sa largeur est entièrement fixée par l'écart-type.</p>
+
+  <figure class="fig-frame blueprint" style="padding:22px 26px 16px; margin:22px 0 6px;">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    {{ normalFig }}
+    <figcaption style="font-size:12.5px; margin-top:10px;">Répartition des mesures d'un procédé stable. <span class="no-print">Fais varier σ : la cloche s'élargit ou se resserre, mais les proportions 68 / 95 / 99,7 % ne bougent pas — et la largeur naturelle vaut toujours 6σ.</span></figcaption>
+  </figure>
+
+  <div style="margin:20px 0; border:1px solid var(--color-divider);">
+    <div style="display:grid; grid-template-columns:1fr 1fr 2fr; background:var(--color-accent); color:#fff; font-family:var(--font-heading); font-weight:600; font-size:14.5px;">
+      <div style="padding:9px 14px;">Intervalle</div><div style="padding:9px 14px;">Production</div><div style="padding:9px 14px;">Ce qui sort</div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 2fr; font-size:14.5px; border-bottom:1px solid var(--color-divider);"><div style="padding:9px 14px;">±1σ</div><div style="padding:9px 14px;">68,3 %</div><div style="padding:9px 14px;">≈ 1 pièce sur 3 hors intervalle</div></div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 2fr; font-size:14.5px; border-bottom:1px solid var(--color-divider);"><div style="padding:9px 14px;">±2σ</div><div style="padding:9px 14px;">95,4 %</div><div style="padding:9px 14px;">≈ 1 pièce sur 22</div></div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 2fr; font-size:14.5px;"><div style="padding:9px 14px;">±3σ</div><div style="padding:9px 14px;">99,73 %</div><div style="padding:9px 14px;">≈ 2,7 pièces sur 1000</div></div>
+  </div>
+
+  <p>De −3σ à +3σ, on couvre <strong>6σ</strong> : c'est la « largeur naturelle » d'un procédé, la place qu'il occupe vraiment. Retiens ce chiffre. Toute la capabilité consiste à comparer cette largeur naturelle de 6σ à la largeur que le client autorise, la tolérance. C'est exactement le sujet du <a href="Cours_2_Capabilite.dc.html">cours 2</a>.</p>
+
+  <sc-if value="{{ showTP }}" hint-placeholder-val="{{ true }}">
+  <a href="../TP_Activites/TP1_Decouverte_Variabilite.html" class="tp-card blueprint" style="display:block; text-decoration:none; color:inherit; padding:16px 20px; margin:18px 0;">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;"><span class="tag tag-accent">TP 1</span><span style="font-family:var(--font-heading); font-weight:600; font-size:18px; color:var(--color-accent-800);">Découverte de la variabilité</span></div>
+    <p style="margin:0; font-size:14.5px; color:var(--color-neutral-700);">Premier contact avec des mesures réelles : moyenne, étendue, dispersion, et lecture d'un nuage de points. <span style="color:var(--color-accent);">→</span></p>
+  </a>
+  </sc-if>
+
+  <h2>Vérifier que la loi normale s'applique vraiment</h2>
+  <p>Tout ce qui précède, et presque tous les indices de capabilité, reposent sur une hypothèse : les mesures suivent une loi normale. Ce n'est pas toujours vrai. Une cote bornée (une excentration, une planéité qui ne peut pas être négative), un mélange de deux réglages ou un tri en amont peuvent casser la normalité.</p>
+  <p>D'où un réflexe avant de calculer un C<sub>p</sub> ou un C<sub>pk</sub> : <strong>vérifier la normalité</strong>. Deux outils simples :</p>
+  <ul>
+    <li>L'<strong>histogramme</strong> : la forme en cloche est-elle là, à peu près symétrique, à un seul sommet ?</li>
+    <li>La <strong>droite de Henry</strong> : on place les mesures sur un repère spécial où une loi normale donne des points alignés. Si les points suivent la droite, la normalité est plausible. S'ils s'en écartent en courbe ou en marche d'escalier, il faut se méfier.</li>
+  </ul>
+
+  <figure class="fig-frame blueprint" style="padding:22px 26px 16px; margin:22px 0 6px;">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    {{ henryFig }}
+    <figcaption style="font-size:12.5px; margin-top:10px;">À gauche, un cas normal : histogramme en cloche, points alignés sur la droite de Henry. À droite, une distribution bornée : histogramme dissymétrique, points qui décrochent en courbe.</figcaption>
+  </figure>
+
+  <sc-if value="{{ showTP }}" hint-placeholder-val="{{ true }}">
+  <a href="../TP_Activites/TP12_Normalite_Droite_Henry.html" class="tp-card blueprint" style="display:block; text-decoration:none; color:inherit; padding:16px 20px; margin:18px 0;">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;"><span class="tag tag-accent">TP 12</span><span style="font-family:var(--font-heading); font-weight:600; font-size:18px; color:var(--color-accent-800);">Normalité et droite de Henry</span></div>
+    <p style="margin:0; font-size:14.5px; color:var(--color-neutral-700);">Construire et lire une droite de Henry, décider si l'hypothèse de normalité tient avant de qualifier un procédé. <span style="color:var(--color-accent);">→</span></p>
+  </a>
+  </sc-if>
+
+  <div style="border:1px dashed var(--color-accent-400); background:var(--color-accent-100); padding:14px 18px; margin:22px 0; font-size:14px; color:var(--color-neutral-700);">
+    <strong style="color:var(--color-accent-800);">Pour aller plus loin.</strong> Le fondement mathématique de la normalité et son rôle dans les indices sont détaillés dans le chapitre <a href="https://sjaubert.github.io/SPCR/capability.html">Capability — cas normal</a> du site SPCR. Quand la normalité ne tient pas, la capabilité se calcule autrement : voir <a href="https://sjaubert.github.io/SPCR/Capability_non_normal_data.html">Capability — cas non normal</a>.
+  </div>
+
+  <h2 style="color:var(--color-accent);">À retenir</h2>
+  <ul>
+    <li>La variabilité est inévitable ; elle se mesure (dispersion) et elle a des causes.</li>
+    <li>Causes communes = bruit de fond du procédé stable. Causes spéciales = événement identifiable. On ne règle pas les premières, on chasse les secondes.</li>
+    <li>Trois nombres pour commencer : moyenne (position), étendue R (dispersion simple), écart-type σ (dispersion moyenne).</li>
+    <li>Un procédé stable suit une loi normale : ±3σ couvre 99,73 %, soit une largeur naturelle de 6σ.</li>
+    <li>Avant tout indice de capabilité, on vérifie la normalité (histogramme, droite de Henry).</li>
+  </ul>
+
+  <div class="no-print" style="display:flex; justify-content:space-between; align-items:center; border-top:2px solid var(--color-divider); margin-top:40px; padding-top:16px; font-size:14px;">
+    <a href="index_Cours.dc.html" style="color:var(--color-neutral-600); text-decoration:none;">Sommaire</a>
+    <a href="Cours_2_Capabilite.dc.html" style="color:var(--color-accent); font-family:var(--font-heading); font-weight:600; font-size:16px; text-decoration:none;">Cours 2 — La capabilité →</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:900,&quot;height&quot;:760},&quot;showTP&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenu&quot;}}">
+class Component extends DCLogic {
+  state = { sigma: 1.0, seed: 1 };
+
+  // ---- helpers ----
+  randn(rng) { // Box-Muller using a simple LCG for reproducibility
+    let u = 0, v = 0;
+    while (u === 0) u = rng();
+    while (v === 0) v = rng();
+    return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+  }
+  lcg(seed) { let s = seed % 2147483647; if (s <= 0) s += 2147483646;
+    return () => (s = (s * 16807) % 2147483647) / 2147483647; }
+
+  el(tag, props, ...kids) { return React.createElement(tag, props, ...kids); }
+  svg(w, h, ...kids) {
+    return this.el('svg', { viewBox: `0 0 ${w} ${h}`, width: '100%',
+      style: { maxWidth: w + 'px', display: 'block', margin: '0 auto', overflow: 'visible' } }, ...kids);
+  }
+
+  // ---- Figure: 30-point dot plot (resampleable) ----
+  buildDotPlot() {
+    const W = 800, H = 190, cx = W / 2, base = 150;
+    const rng = this.lcg(this.state.seed * 97 + 13);
+    const N = 30, spread = 95;
+    const vals = Array.from({ length: N }, () => this.randn(rng));
+    // bin to stack dots
+    const bins = {};
+    const dots = vals.map(v => {
+      const x = cx + v * spread;
+      const key = Math.round(x / 16);
+      bins[key] = (bins[key] || 0) + 1;
+      return { x: key * 16, level: bins[key] };
+    });
+    const accent = 'var(--color-accent)';
+    return this.el('div', null,
+      this.svg(W, H,
+        this.el('line', { x1: 60, y1: base, x2: W - 60, y2: base, stroke: 'var(--color-neutral-500)', strokeWidth: 1 }),
+        this.el('line', { x1: cx, y1: 30, x2: cx, y2: base, stroke: accent, strokeWidth: 1.5, strokeDasharray: '5 4' }),
+        this.el('text', { x: cx, y: 24, textAnchor: 'middle', fontSize: 13, fill: accent, fontFamily: 'var(--font-heading)' }, 'cote visée x̄'),
+        ...dots.map((d, i) => this.el('circle', { key: i, cx: d.x, cy: base - 8 - (d.level - 1) * 15, r: 5.5,
+          fill: 'var(--color-accent-300)', stroke: accent, strokeWidth: 1.2 })),
+        this.el('text', { x: 60, y: base + 20, fontSize: 12, fill: 'var(--color-neutral-600)' }, '← plus petit'),
+        this.el('text', { x: W - 60, y: base + 20, textAnchor: 'end', fontSize: 12, fill: 'var(--color-neutral-600)' }, 'plus grand →')
+      ),
+      this.el('button', { className: 'btn btn-secondary no-print', style: { marginTop: '4px' },
+        onClick: () => this.setState(s => ({ seed: s.seed + 1 })) }, '↻ Nouveau tirage de 30 pièces')
+    );
+  }
+
+  // ---- Figure: common vs special causes run chart ----
+  buildCausesFig() {
+    const W = 800, H = 210, mid = 105, band = 42;
+    const rng = this.lcg(7);
+    const N = 34;
+    const pts = [];
+    for (let i = 0; i < N; i++) {
+      let y = mid + this.randn(rng) * 13;
+      if (i === 24) y = mid - 78; // special cause spike
+      pts.push({ x: 60 + i * ((W - 110) / (N - 1)), y });
+    }
+    const path = pts.map((p, i) => (i ? 'L' : 'M') + p.x.toFixed(1) + ',' + p.y.toFixed(1)).join(' ');
+    return this.svg(W, H,
+      this.el('rect', { x: 60, y: mid - band, width: W - 110, height: band * 2, fill: 'var(--color-accent-100)' }),
+      this.el('line', { x1: 60, y1: mid - band, x2: W - 50, y2: mid - band, stroke: 'var(--color-neutral-400)', strokeDasharray: '4 4' }),
+      this.el('line', { x1: 60, y1: mid + band, x2: W - 50, y2: mid + band, stroke: 'var(--color-neutral-400)', strokeDasharray: '4 4' }),
+      this.el('line', { x1: 60, y1: mid, x2: W - 50, y2: mid, stroke: 'var(--color-accent)', strokeWidth: 1 }),
+      this.el('text', { x: W - 46, y: mid - band + 4, fontSize: 11, fill: 'var(--color-neutral-600)' }, '+3σ'),
+      this.el('text', { x: W - 46, y: mid + band + 4, fontSize: 11, fill: 'var(--color-neutral-600)' }, '−3σ'),
+      this.el('path', { d: path, fill: 'none', stroke: 'var(--color-accent-700)', strokeWidth: 1.6 }),
+      ...pts.map((p, i) => this.el('circle', { key: i, cx: p.x, cy: p.y, r: i === 24 ? 6 : 3.2,
+        fill: i === 24 ? '#c0392b' : 'var(--color-accent-700)' })),
+      this.el('text', { x: pts[24].x, y: pts[24].y - 12, textAnchor: 'middle', fontSize: 12.5, fill: '#c0392b', fontFamily: 'var(--font-heading)', fontWeight: 600 }, 'cause spéciale'),
+      this.el('text', { x: 150, y: mid - band - 10, textAnchor: 'middle', fontSize: 12.5, fill: 'var(--color-accent-700)', fontFamily: 'var(--font-heading)' }, 'causes communes (bruit stable)'),
+      this.el('text', { x: W / 2, y: H - 4, textAnchor: 'middle', fontSize: 11, fill: 'var(--color-neutral-600)' }, 'temps →')
+    );
+  }
+
+  // ---- Figure: three stats on a small lot ----
+  buildThreeStatsFig() {
+    const W = 800, H = 200, base = 130;
+    const data = [-2.1, -1.3, -0.6, -0.2, 0.1, 0.4, 0.9, 1.5, 2.4];
+    const sc = 120, cx = W / 2;
+    const mean = data.reduce((a, b) => a + b, 0) / data.length;
+    const xs = data.map(v => cx + (v - mean) * sc);
+    const min = Math.min(...xs), max = Math.max(...xs), mx = cx;
+    const accent = 'var(--color-accent)';
+    return this.svg(W, H,
+      this.el('line', { x1: 40, y1: base, x2: W - 40, y2: base, stroke: 'var(--color-neutral-500)' }),
+      // std band ±1s
+      this.el('rect', { x: mx - sc, y: base - 70, width: sc * 2, height: 70, fill: 'var(--color-accent-100)' }),
+      this.el('line', { x1: mx - sc, y1: base - 70, x2: mx - sc, y2: base, stroke: accent, strokeDasharray: '3 3' }),
+      this.el('line', { x1: mx + sc, y1: base - 70, x2: mx + sc, y2: base, stroke: accent, strokeDasharray: '3 3' }),
+      this.el('text', { x: mx, y: base - 76, textAnchor: 'middle', fontSize: 12, fill: 'var(--color-accent-700)' }, '± un écart-type s'),
+      // mean line
+      this.el('line', { x1: mx, y1: base - 92, x2: mx, y2: base + 6, stroke: accent, strokeWidth: 2 }),
+      this.el('text', { x: mx, y: base - 96, textAnchor: 'middle', fontSize: 13, fill: accent, fontFamily: 'var(--font-heading)', fontWeight: 600 }, 'moyenne x̄'),
+      // points
+      ...xs.map((x, i) => this.el('circle', { key: i, cx: x, cy: base - 10, r: 5.5, fill: 'var(--color-accent-300)', stroke: accent, strokeWidth: 1.2 })),
+      // range bracket
+      this.el('line', { x1: min, y1: base + 22, x2: max, y2: base + 22, stroke: 'var(--color-neutral-700)', strokeWidth: 1.4 }),
+      this.el('line', { x1: min, y1: base + 16, x2: min, y2: base + 28, stroke: 'var(--color-neutral-700)', strokeWidth: 1.4 }),
+      this.el('line', { x1: max, y1: base + 16, x2: max, y2: base + 28, stroke: 'var(--color-neutral-700)', strokeWidth: 1.4 }),
+      this.el('text', { x: (min + max) / 2, y: base + 42, textAnchor: 'middle', fontSize: 12.5, fill: 'var(--color-neutral-700)' }, 'étendue R = x max − x min')
+    );
+  }
+
+  // ---- Figure: mean vs dispersion independence (2x2) ----
+  gauss(cx, cy, amp, sig, sc) {
+    let d = '';
+    for (let px = -4; px <= 4; px += 0.15) {
+      const x = cx + px * sc;
+      const y = cy - amp * Math.exp(-(px * px) / (2 * sig * sig));
+      d += (d ? 'L' : 'M') + x.toFixed(1) + ',' + y.toFixed(1) + ' ';
+    }
+    return d;
+  }
+  buildIndepFig() {
+    const W = 800, H = 210;
+    const cell = (ox, oy, shift, sig, label) => {
+      const base = oy + 70, cx = ox + 175;
+      return this.el('g', { key: label },
+        this.el('line', { x1: ox + 20, y1: base, x2: ox + 330, y2: base, stroke: 'var(--color-neutral-400)' }),
+        this.el('path', { d: this.gauss(cx + shift, base, 58, sig, 26), fill: 'var(--color-accent-100)', stroke: 'var(--color-accent)', strokeWidth: 1.6 }),
+        this.el('line', { x1: cx, y1: oy + 6, x2: cx, y2: base, stroke: 'var(--color-neutral-500)', strokeDasharray: '3 3' }),
+        this.el('text', { x: cx, y: oy + 4, textAnchor: 'middle', fontSize: 11, fill: 'var(--color-neutral-600)' }, 'centre visé'),
+        this.el('text', { x: ox + 175, y: base + 22, textAnchor: 'middle', fontSize: 12.5, fill: 'var(--color-accent-800)', fontFamily: 'var(--font-heading)', fontWeight: 600 }, label)
+      );
+    };
+    return this.svg(W, H,
+      cell(0, 5, -55, 1.0, 'décentré, peu dispersé'),
+      cell(400, 5, 0, 1.9, 'centré, très dispersé')
+    );
+  }
+
+  // ---- Interactive normal curve ----
+  buildNormalFig() {
+    const W = 800, H = 300, base = 240, cx = W / 2;
+    const sig = this.state.sigma;      // 0.6 .. 2.2
+    const pxPerUnit = 62;              // px per raw unit
+    const amp = 200;                   // peak height at sig baseline
+    const peak = amp / sig;            // taller when narrower (area conserved-ish, visual)
+    const clampPeak = Math.min(peak, 205);
+    // gaussian in raw units, sd = sig
+    let path = '';
+    for (let u = -6; u <= 6; u += 0.08) {
+      const x = cx + u * pxPerUnit;
+      const y = base - clampPeak * Math.exp(-(u * u) / (2 * sig * sig));
+      path += (path ? 'L' : 'M') + x.toFixed(1) + ',' + y.toFixed(1) + ' ';
+    }
+    path += `L ${cx + 6 * pxPerUnit},${base} L ${cx - 6 * pxPerUnit},${base} Z`;
+    const at = k => cx + k * sig * pxPerUnit;
+    const yAt = k => base - clampPeak * Math.exp(-(k * k) / 2);
+    const accent = 'var(--color-accent)';
+    const line = (k, lbl, col) => this.el('g', { key: lbl },
+      this.el('line', { x1: at(k), y1: yAt(k), x2: at(k), y2: base, stroke: col, strokeWidth: 1, strokeDasharray: '3 3' }),
+      this.el('text', { x: at(k), y: base + 16, textAnchor: 'middle', fontSize: 11.5, fill: 'var(--color-neutral-700)' }, lbl)
+    );
+    const width6 = (6 * sig).toFixed(2);
+    return this.el('div', null,
+      this.svg(W, H,
+        this.el('path', { d: path, fill: 'var(--color-accent-100)', stroke: accent, strokeWidth: 2 }),
+        line(-3, '−3σ', 'var(--color-neutral-500)'), line(-2, '−2σ', 'var(--color-neutral-400)'), line(-1, '−1σ', 'var(--color-neutral-400)'),
+        line(1, '+1σ', 'var(--color-neutral-400)'), line(2, '+2σ', 'var(--color-neutral-400)'), line(3, '+3σ', 'var(--color-neutral-500)'),
+        this.el('line', { x1: cx, y1: yAt(0) - 4, x2: cx, y2: base, stroke: accent, strokeWidth: 1.5, strokeDasharray: '5 4' }),
+        this.el('text', { x: cx, y: yAt(0) - 10, textAnchor: 'middle', fontSize: 13, fill: accent, fontFamily: 'var(--font-heading)', fontWeight: 600 }, 'μ'),
+        this.el('text', { x: cx, y: base - clampPeak * 0.62, textAnchor: 'middle', fontSize: 14, fill: 'var(--color-accent-800)', fontFamily: 'var(--font-heading)', fontWeight: 600 }, '68,3 %'),
+        this.el('text', { x: cx, y: base - clampPeak * 0.28, textAnchor: 'middle', fontSize: 12.5, fill: 'var(--color-accent-800)' }, '95,4 %'),
+        this.el('text', { x: cx, y: base - clampPeak * 0.07, textAnchor: 'middle', fontSize: 11.5, fill: 'var(--color-accent-800)' }, '99,73 %'),
+        // 6-sigma bracket
+        this.el('line', { x1: at(-3), y1: base + 34, x2: at(3), y2: base + 34, stroke: accent, strokeWidth: 1.6 }),
+        this.el('line', { x1: at(-3), y1: base + 29, x2: at(-3), y2: base + 39, stroke: accent, strokeWidth: 1.6 }),
+        this.el('line', { x1: at(3), y1: base + 29, x2: at(3), y2: base + 39, stroke: accent, strokeWidth: 1.6 }),
+        this.el('rect', { x: cx - 88, y: base + 26, width: 176, height: 18, fill: 'var(--color-bg)' }),
+        this.el('text', { x: cx, y: base + 40, textAnchor: 'middle', fontSize: 13, fill: 'var(--color-accent-800)', fontFamily: 'var(--font-heading)', fontWeight: 600 }, `largeur naturelle 6σ = ${width6} unités`)
+      ),
+      this.el('div', { className: 'no-print', style: { display: 'flex', alignItems: 'center', gap: '12px', marginTop: '6px', justifyContent: 'center' } },
+        this.el('span', { style: { fontSize: '13px', color: 'var(--color-neutral-700)', fontFamily: 'var(--font-heading)' } }, 'écart-type σ'),
+        this.el('input', { type: 'range', min: 0.6, max: 2.2, step: 0.05, value: sig,
+          style: { width: '260px', accentColor: 'var(--color-accent)' },
+          onInput: e => this.setState({ sigma: parseFloat(e.target.value) }) }),
+        this.el('span', { style: { fontSize: '13px', color: 'var(--color-accent-800)', fontVariantNumeric: 'tabular-nums', minWidth: '64px' } }, 'σ = ' + sig.toFixed(2))
+      )
+    );
+  }
+
+  // ---- Figure: histogram + Henry (QQ) normal vs non-normal ----
+  buildHenryFig() {
+    const W = 800, H = 250;
+    const panel = (ox, title, normal) => {
+      const base = 120, left = ox + 30, w = 300;
+      const rng = this.lcg(normal ? 3 : 9);
+      // histogram bars
+      const barsN = 9;
+      const heights = normal
+        ? [8, 20, 42, 74, 92, 74, 42, 20, 8]
+        : [95, 78, 55, 38, 26, 17, 11, 6, 3]; // skewed
+      const bw = w / barsN;
+      const hist = heights.map((h, i) => this.el('rect', { key: i, x: left + i * bw + 2, y: base - h, width: bw - 4, height: h,
+        fill: 'var(--color-accent-200)', stroke: 'var(--color-accent)', strokeWidth: 1 }));
+      // Henry / QQ points
+      const qy = 150, qh = 78, qBase = qy + qh;
+      const pts = [];
+      for (let i = 0; i < 9; i++) {
+        const t = (i + 0.5) / 9;
+        const theo = left + t * w;
+        let emp;
+        if (normal) emp = qBase - t * qh + (this.randn(rng) * 3);
+        else emp = qBase - Math.pow(t, 1.9) * qh; // curved
+        pts.push({ x: theo, y: emp });
+      }
+      const linePath = `M ${left},${qBase} L ${left + w},${qBase - qh}`;
+      return this.el('g', { key: title },
+        this.el('text', { x: ox + 180, y: 18, textAnchor: 'middle', fontSize: 13, fontFamily: 'var(--font-heading)', fontWeight: 600,
+          fill: normal ? 'var(--color-accent-800)' : '#b23' }, title),
+        this.el('line', { x1: left, y1: base, x2: left + w, y2: base, stroke: 'var(--color-neutral-500)' }),
+        ...hist,
+        this.el('text', { x: ox + 180, y: base + 18, textAnchor: 'middle', fontSize: 11, fill: 'var(--color-neutral-600)' }, 'histogramme'),
+        // QQ
+        this.el('path', { d: linePath, stroke: 'var(--color-neutral-500)', strokeWidth: 1.3, strokeDasharray: '5 4', fill: 'none' }),
+        ...pts.map((p, i) => this.el('circle', { key: 'q' + i, cx: p.x, cy: p.y, r: 3.6,
+          fill: normal ? 'var(--color-accent)' : '#c0392b' })),
+        this.el('text', { x: ox + 180, y: qBase + 20, textAnchor: 'middle', fontSize: 11, fill: 'var(--color-neutral-600)' }, 'droite de Henry')
+      );
+    };
+    return this.svg(W, H,
+      panel(30, 'Cas normal ✓', true),
+      this.el('line', { x1: W / 2, y1: 10, x2: W / 2, y2: H - 6, stroke: 'var(--color-divider)' }),
+      panel(430, 'Distribution bornée ✗', false)
+    );
+  }
+
+  renderVals() {
+    return {
+      showTP: this.props.showTP ?? true,
+      dotPlotFig: this.buildDotPlot(),
+      causesFig: this.buildCausesFig(),
+      threeStatsFig: this.buildThreeStatsFig(),
+      indepFig: this.buildIndepFig(),
+      normalFig: this.buildNormalFig(),
+      henryFig: this.buildHenryFig(),
+    };
+  }
+}
+</script>
+</body>
+</html>

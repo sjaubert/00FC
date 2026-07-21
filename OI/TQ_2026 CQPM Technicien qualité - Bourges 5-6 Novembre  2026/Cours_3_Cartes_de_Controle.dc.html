@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/industry-09adf4b9-214f-4e28-9619-649931eeca15/styles.css">
+<script src="_ds/industry-09adf4b9-214f-4e28-9619-649931eeca15/_ds_bundle.js"></script>
+<style>
+  @media print { .no-print { display:none !important; } .fig-frame,.cle-box,.tp-card { break-inside: avoid; } body { background:#fff; } }
+  .course-col a { color: var(--color-accent-700); }
+  .course-col h2 { font-size:30px; color:var(--color-accent-900); border-top:2px solid var(--color-divider); padding-top:18px; margin-top:44px; margin-bottom:14px; }
+  .course-col h3 { font-size:21px; color:var(--color-accent-800); margin-top:24px; }
+  .course-col p { font-size:16px; line-height:1.62; margin:0 0 14px; }
+  .course-col li { font-size:16px; line-height:1.55; margin-bottom:7px; }
+</style>
+</helmet>
+<div style="max-width:900px; margin:0 auto; padding:40px 28px 90px;" class="course-col">
+
+  <div style="display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:6px;">
+    <span class="tag tag-outline" style="letter-spacing:.12em;">COURS 3 / 4</span>
+    <span style="font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--color-neutral-600);">Cours support — Capabilité &amp; SPC</span>
+  </div>
+  <h1 style="font-size:46px; line-height:1.02; margin:2px 0 10px; color:var(--color-text);">Les cartes de contrôle</h1>
+  <p style="font-size:18px; color:var(--color-neutral-700); margin-bottom:14px; max-width:680px;">Piloter le procédé dans le temps — Pôle Formation UIMM CVDL · S. Jaubert</p>
+  <div style="display:flex; gap:8px; flex-wrap:wrap;">
+    <span class="tag tag-accent">Carte X̄-R</span>
+    <span class="tag tag-accent">constantes</span>
+    <span class="tag tag-accent">8 règles</span>
+    <span class="tag tag-accent">zones A/B/C</span>
+    <span class="tag tag-accent">OCAP</span>
+    <span class="tag tag-accent">attributs</span>
+  </div>
+
+  <div style="border-left:3px solid var(--color-accent); background:var(--color-accent-100); padding:16px 20px; margin:26px 0 8px;">
+    <p style="margin:0; font-size:16.5px;"><strong style="color:var(--color-accent-800);">Le fil du cours.</strong> La capabilité (cours 2) est une photo : le procédé est-il bon aujourd'hui ? La carte de contrôle est le film : le procédé reste-t-il bon dans le temps ? Son rôle unique est de séparer, en direct, le signal (une cause spéciale à traiter) du bruit (les causes communes qu'on laisse tranquilles). C'est l'outil anti-sur-réglage par excellence.</p>
+  </div>
+
+  <h2>Pourquoi une carte plutôt qu'une simple mesure</h2>
+  <p>Sans repère, tout écart ressemble à un problème, et on est tenté de rerégler à chaque pièce, ce qui dégrade le procédé (cours 1 et 2). La carte de contrôle trace des <strong>limites naturelles</strong> du procédé, à ±3σ de sa moyenne. Tant que les points restent dedans et sans motif suspect, c'est du bruit : on ne touche à rien. Un point dehors, ou un motif anormal, c'est un signal : on agit.</p>
+
+  <div class="cle-box blueprint" style="padding:18px 22px; margin:24px 0; background:var(--color-accent-100);">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div style="font-family:var(--font-heading); font-weight:600; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--color-accent-700); margin-bottom:6px;">◆ La distinction qui change tout</div>
+    <p style="margin:0; font-size:16px;">Les <strong>limites de contrôle</strong> sont la « voix du procédé » : ce qu'il sait faire, calculé sur ses propres mesures. Les <strong>tolérances</strong> sont la « voix du client » : ce qu'il exige. Ce sont deux choses différentes, et on ne les mélange jamais sur une carte. Un procédé peut être sous contrôle (stable) tout en étant hors tolérance (non capable), et inversement.</p>
+  </div>
+
+  <figure class="fig-frame blueprint" style="padding:22px 26px 16px; margin:22px 0 6px;">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    {{ voicesFig }}
+    <figcaption style="font-size:12.5px; margin-top:10px;">Deux largeurs indépendantes : les limites de contrôle (bleu, calculées sur le procédé) ne coïncident pas avec les tolérances (rouge, fixées par le client). Ne jamais les tracer l'une pour l'autre.</figcaption>
+  </figure>
+
+  <h2>La carte X̄-R aux mesures</h2>
+  <p>On prélève régulièrement de petits sous-groupes (souvent n = 3 à 5 pièces consécutives). Pour chacun, on calcule sa moyenne X̄ et son étendue R. On trace alors deux cartes couplées : une pour la <strong>position</strong> (les X̄), une pour la <strong>dispersion</strong> (les R).</p>
+  <div style="text-align:center; background:var(--color-surface); border:1px solid var(--color-divider); padding:16px; margin:14px 0; font-size:18px; line-height:2.2;">
+    Limites carte X̄ :&nbsp; X̄̄ ± A<sub>2</sub> R̄ &nbsp;&nbsp;·&nbsp;&nbsp; Limites carte R :&nbsp; LCS<sub>R</sub> = D<sub>4</sub> R̄ &nbsp;;&nbsp; LCI<sub>R</sub> = D<sub>3</sub> R̄
+  </div>
+
+  <figure class="fig-frame blueprint" style="padding:22px 26px 16px; margin:22px 0 6px;">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    {{ xbarRFig }}
+    <figcaption style="font-size:12.5px; margin-top:10px;">Deux cartes couplées, même axe de temps : X̄ (position) au-dessus, R (dispersion) en dessous. Les points parlent tant qu'ils restent dans les limites ; celui qui franchit la LCS est un signal à traiter.</figcaption>
+  </figure>
+
+  <h2>D'où sortent les constantes</h2>
+  <p>Les coefficients A<sub>2</sub>, D<sub>3</sub>, D<sub>4</sub>, d<sub>2</sub> ne sont pas magiques : ils traduisent l'étendue moyenne R̄ en écart-type, puis en limites à ±3σ. Ils ne dépendent que de la taille du sous-groupe.</p>
+  <div style="margin:16px 0; border:1px solid var(--color-divider);">
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); background:var(--color-accent); color:#fff; font-family:var(--font-heading); font-weight:600; font-size:15px; text-align:center;"><div style="padding:9px;">n</div><div style="padding:9px;">A<sub>2</sub></div><div style="padding:9px;">D<sub>3</sub></div><div style="padding:9px;">D<sub>4</sub></div><div style="padding:9px;">d<sub>2</sub></div></div>
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); font-size:15px; text-align:center; border-bottom:1px solid var(--color-divider);"><div style="padding:8px;">3</div><div style="padding:8px;">1,023</div><div style="padding:8px;">0</div><div style="padding:8px;">2,575</div><div style="padding:8px;">1,693</div></div>
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); font-size:15px; text-align:center; border-bottom:1px solid var(--color-divider);"><div style="padding:8px;">4</div><div style="padding:8px;">0,729</div><div style="padding:8px;">0</div><div style="padding:8px;">2,282</div><div style="padding:8px;">2,059</div></div>
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); font-size:15px; text-align:center; border-bottom:1px solid var(--color-divider);"><div style="padding:8px;">5</div><div style="padding:8px;">0,577</div><div style="padding:8px;">0</div><div style="padding:8px;">2,115</div><div style="padding:8px;">2,326</div></div>
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); font-size:15px; text-align:center;"><div style="padding:8px;">6</div><div style="padding:8px;">0,483</div><div style="padding:8px;">0</div><div style="padding:8px;">2,004</div><div style="padding:8px;">2,534</div></div>
+  </div>
+  <p>Pour n ≤ 6, D<sub>3</sub> = 0 : la carte R n'a pas de limite basse, une étendue nulle (toutes les pièces identiques) n'étant jamais un défaut. Le lien avec la capabilité passe par d<sub>2</sub>, déjà vu au cours 2 : σ̂ = R̄/d<sub>2</sub>.</p>
+
+  <div class="cle-box blueprint" style="padding:18px 22px; margin:24px 0; background:var(--color-accent-100);">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div style="font-family:var(--font-heading); font-weight:600; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--color-accent-700); margin-bottom:6px;">◆ L'ordre de lecture</div>
+    <p style="margin:0; font-size:16px;">On analyse <strong>la carte R avant la carte X̄</strong>. Si la dispersion (R) est instable, l'estimation de σ n'est pas fiable, donc les limites de la carte X̄ ne veulent rien dire. On stabilise d'abord la dispersion, on juge la position ensuite.</p>
+  </div>
+
+  <sc-if value="{{ showTP }}" hint-placeholder-val="{{ true }}">
+  <a href="../TP_Activites/TP5_Construction_Carte_XbarR.html" class="tp-card blueprint" style="display:block; text-decoration:none; color:inherit; padding:16px 20px; margin:18px 0;">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;"><span class="tag tag-accent">TP 5</span><span style="font-family:var(--font-heading); font-weight:600; font-size:18px; color:var(--color-accent-800);">Construction d'une carte X̄-R</span></div>
+    <p style="margin:0; font-size:14.5px; color:var(--color-neutral-700);">Bâtir une carte de A à Z : sous-groupes, R̄, constantes, limites. Le geste complet, une fois pour toutes. <span style="color:var(--color-accent);">→</span></p>
+  </a>
+  </sc-if>
+
+  <h2>Lire une carte : les 8 règles</h2>
+  <p>Un point hors limites n'est pas le seul signal. Des motifs à l'intérieur des limites trahissent aussi une cause spéciale. On découpe chaque moitié de carte en trois zones : <strong>C</strong> (±1σ), <strong>B</strong> (±2σ), <strong>A</strong> (±3σ).</p>
+
+  <figure class="fig-frame blueprint" style="padding:22px 26px 16px; margin:22px 0 6px;">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    {{ zonesFig }}
+    <figcaption style="font-size:12.5px; margin-top:10px;">Les six bandes de la carte : C, B, A de part et d'autre de la ligne centrale, chacune large de 1σ. Les règles se lisent en comptant les points par zone.</figcaption>
+  </figure>
+
+  <div style="margin:20px 0; border:1px solid var(--color-divider);">
+    <div style="display:grid; grid-template-columns:.7fr 2.2fr 1.6fr; background:var(--color-accent); color:#fff; font-family:var(--font-heading); font-weight:600; font-size:14.5px;"><div style="padding:9px 12px;">Règle</div><div style="padding:9px 12px;">Motif</div><div style="padding:9px 12px;">Interprétation</div></div>
+    {{ rulesRows }}
+  </div>
+  <p>Pas besoin de les retenir par cœur : l'idée commune est qu'une répartition trop régulière, trop d'un côté, ou une pente, sont trop improbables sous le seul hasard pour être du bruit.</p>
+
+  <sc-if value="{{ showTP }}" hint-placeholder-val="{{ true }}">
+  <a href="../TP_Activites/TP6_Lecture_Cartes_Normal_Alarme.html" class="tp-card blueprint" style="display:block; text-decoration:none; color:inherit; padding:16px 20px; margin:18px 0;">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;"><span class="tag tag-accent">TP 6</span><span style="font-family:var(--font-heading); font-weight:600; font-size:18px; color:var(--color-accent-800);">Lecture de cartes — normal ou alarme</span></div>
+    <p style="margin:0; font-size:14.5px; color:var(--color-neutral-700);">S'entraîner à trancher : ce point, ce motif, est-ce du bruit qu'on laisse passer, ou une alarme qui appelle une action ? <span style="color:var(--color-accent);">→</span></p>
+  </a>
+  </sc-if>
+
+  <h2>Réagir sans sur-réagir : l'OCAP</h2>
+  <p>Détecter une alarme ne sert à rien sans plan de réaction. L'<strong>OCAP</strong> (Out of Control Action Plan, plan de réaction) est une procédure écrite d'avance : quand telle alarme tombe, qui vérifie quoi, dans quel ordre, et qui décide de l'arrêt. Il évite les deux erreurs symétriques : ignorer un vrai signal, ou s'agiter sur un faux.</p>
+
+  <figure class="fig-frame blueprint" style="padding:22px 26px 16px; margin:22px 0 6px;">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    {{ ocapFig }}
+    <figcaption style="font-size:12.5px; margin-top:10px;">Un OCAP transforme une alarme en une suite d'actions ordonnées, décidée à froid — pas en panique improvisée à chaud.</figcaption>
+  </figure>
+
+  <sc-if value="{{ showTP }}" hint-placeholder-val="{{ true }}">
+  <a href="../TP_Activites/TP10_OCAP_Reaction_Alarme.html" class="tp-card blueprint" style="display:block; text-decoration:none; color:inherit; padding:16px 20px; margin:18px 0;">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;"><span class="tag tag-accent">TP 10</span><span style="font-family:var(--font-heading); font-weight:600; font-size:18px; color:var(--color-accent-800);">OCAP — réaction à une alarme</span></div>
+    <p style="margin:0; font-size:14.5px; color:var(--color-neutral-700);">Construire et dérouler un plan de réaction : transformer une alarme en actions ordonnées plutôt qu'en panique. <span style="color:var(--color-accent);">→</span></p>
+  </a>
+  </sc-if>
+
+  <h2>Quand on compte au lieu de mesurer : les cartes aux attributs</h2>
+  <p>Toutes les caractéristiques ne se mesurent pas. Parfois on constate seulement conforme ou non conforme, présence ou absence d'un défaut. On utilise alors les cartes aux attributs.</p>
+  <div style="margin:16px 0; border:1px solid var(--color-divider);">
+    <div style="display:grid; grid-template-columns:.7fr 2fr .9fr 1fr; background:var(--color-accent); color:#fff; font-family:var(--font-heading); font-weight:600; font-size:14.5px;"><div style="padding:9px 12px;">Carte</div><div style="padding:9px 12px;">Ce qu'on suit</div><div style="padding:9px 12px;">Taille</div><div style="padding:9px 12px;">Loi</div></div>
+    <div style="display:grid; grid-template-columns:.7fr 2fr .9fr 1fr; font-size:14.5px; border-bottom:1px solid var(--color-divider);"><div style="padding:8px 12px;">p</div><div style="padding:8px 12px;">proportion de non-conformes</div><div style="padding:8px 12px;">variable</div><div style="padding:8px 12px;">binomiale</div></div>
+    <div style="display:grid; grid-template-columns:.7fr 2fr .9fr 1fr; font-size:14.5px; border-bottom:1px solid var(--color-divider);"><div style="padding:8px 12px;">np</div><div style="padding:8px 12px;">nombre de non-conformes</div><div style="padding:8px 12px;">fixe</div><div style="padding:8px 12px;">binomiale</div></div>
+    <div style="display:grid; grid-template-columns:.7fr 2fr .9fr 1fr; font-size:14.5px; border-bottom:1px solid var(--color-divider);"><div style="padding:8px 12px;">c</div><div style="padding:8px 12px;">nombre de défauts par unité</div><div style="padding:8px 12px;">fixe</div><div style="padding:8px 12px;">Poisson</div></div>
+    <div style="display:grid; grid-template-columns:.7fr 2fr .9fr 1fr; font-size:14.5px;"><div style="padding:8px 12px;">u</div><div style="padding:8px 12px;">taux de défauts par unité</div><div style="padding:8px 12px;">variable</div><div style="padding:8px 12px;">Poisson</div></div>
+  </div>
+  <div style="text-align:center; background:var(--color-surface); border:1px solid var(--color-divider); padding:16px; margin:14px 0; font-size:17px; line-height:2.4;">
+    Carte p :&nbsp; p̄ ± 3√( p̄(1−p̄) / n )&nbsp;&nbsp;·&nbsp;&nbsp; Carte c :&nbsp; c̄ ± 3√c̄
+  </div>
+  <p>Compter est moins riche que mesurer : il faut de plus grands échantillons (n ≥ 50 pour une carte p) pour un signal fiable.</p>
+
+  <sc-if value="{{ showTP }}" hint-placeholder-val="{{ true }}">
+  <a href="../TP_Activites/TP11_Carte_Attributs_P_C.html" class="tp-card blueprint" style="display:block; text-decoration:none; color:inherit; padding:16px 20px; margin:18px 0;">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;"><span class="tag tag-accent">TP 11</span><span style="font-family:var(--font-heading); font-weight:600; font-size:18px; color:var(--color-accent-800);">Cartes aux attributs — p et c</span></div>
+    <p style="margin:0; font-size:14.5px; color:var(--color-neutral-700);">Construire une carte p et une carte c, choisir la bonne selon qu'on compte des pièces non conformes ou des défauts. <span style="color:var(--color-accent);">→</span></p>
+  </a>
+  </sc-if>
+
+  <div style="border:1px dashed var(--color-accent-400); background:var(--color-accent-100); padding:14px 18px; margin:22px 0; font-size:14px; color:var(--color-neutral-700);">
+    <strong style="color:var(--color-accent-800);">Pour aller plus loin.</strong> Un exemple entièrement corrigé de cartes de Shewhart, avec le détail des calculs et l'interprétation, est disponible dans <a href="https://sjaubert.github.io/SPCR/TP_cartes_Shewhart.html">Correction sur les cartes de Shewhart</a> du site SPCR.
+  </div>
+
+  <h2 style="color:var(--color-accent);">À retenir</h2>
+  <ul>
+    <li>La carte de contrôle sépare le signal (cause spéciale) du bruit (causes communes) dans le temps.</li>
+    <li>Limites de contrôle (voix du procédé, ±3σ) ≠ tolérances (voix du client). Jamais mélangées.</li>
+    <li>Carte X̄-R : X̄̄ ± A<sub>2</sub>R̄ et D<sub>3</sub>R̄ / D<sub>4</sub>R̄. On lit la carte R avant la carte X̄.</li>
+    <li>Un point hors limites, mais aussi 8 motifs (règles R1 à R8, zones A/B/C), signalent une cause spéciale.</li>
+    <li>Une alarme se traite avec un OCAP écrit d'avance. Compter (attributs) demande de plus gros échantillons que mesurer.</li>
+  </ul>
+
+  <div class="no-print" style="display:flex; justify-content:space-between; align-items:center; border-top:2px solid var(--color-divider); margin-top:40px; padding-top:16px; font-size:14px;">
+    <a href="Cours_2_Capabilite.dc.html" style="color:var(--color-neutral-600); text-decoration:none;">← Cours 2</a>
+    <a href="index_Cours.dc.html" style="color:var(--color-neutral-600); text-decoration:none;">Sommaire</a>
+    <a href="Cours_4_MSA.dc.html" style="color:var(--color-accent); font-family:var(--font-heading); font-weight:600; font-size:16px; text-decoration:none;">Cours 4 — La confiance dans la mesure →</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:900,&quot;height&quot;:760},&quot;showTP&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenu&quot;}}">
+class Component extends DCLogic {
+  el(t, p, ...k) { return React.createElement(t, p, ...k); }
+  svg(w, h, ...k) { return this.el('svg', { viewBox: `0 0 ${w} ${h}`, width: '100%', style: { maxWidth: w + 'px', display: 'block', margin: '0 auto', overflow: 'visible' } }, ...k); }
+  lcg(seed) { let s = seed % 2147483647; if (s <= 0) s += 2147483646; return () => (s = (s * 16807) % 2147483647) / 2147483647; }
+  randn(g) { let u = 0, v = 0; while (!u) u = g(); while (!v) v = g(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+
+  buildVoices() {
+    const W = 800, H = 210, cx = W / 2;
+    const accent = 'var(--color-accent)';
+    const bracket = (y, half, col, top, bot) => this.el('g', { key: top },
+      this.el('line', { x1: cx - half, y1: y, x2: cx + half, y2: y, stroke: col, strokeWidth: 1.8 }),
+      this.el('line', { x1: cx - half, y1: y - 7, x2: cx - half, y2: y + 7, stroke: col, strokeWidth: 1.8 }),
+      this.el('line', { x1: cx + half, y1: y - 7, x2: cx + half, y2: y + 7, stroke: col, strokeWidth: 1.8 }),
+      this.el('text', { x: cx, y: y - 12, textAnchor: 'middle', fontSize: 14, fill: col, fontFamily: 'var(--font-heading)', fontWeight: 600 }, top),
+      this.el('text', { x: cx, y: y + 24, textAnchor: 'middle', fontSize: 12, fill: 'var(--color-neutral-600)' }, bot)
+    );
+    return this.svg(W, H,
+      this.el('line', { x1: cx, y1: 20, x2: cx, y2: H - 20, stroke: 'var(--color-neutral-300)', strokeDasharray: '2 3' }),
+      bracket(70, 140, accent, 'Limites de contrôle (±3σ)', 'voix du procédé — ce qu\u2019il sait faire'),
+      bracket(155, 230, '#c0392b', 'Tolérances (LSI … LSS)', 'voix du client — ce qu\u2019il exige')
+    );
+  }
+
+  buildXbarR() {
+    const W = 800, Htop = 190, cx0 = 60, cxN = W - 60, N = 12;
+    const g = this.lcg(42);
+    const xs = [10.0, 10.2, 9.8, 10.1, 9.9, 10.3, 10.0, 9.7, 10.2, 10.75, 10.1, 9.9];
+    const rs = [0.4, 0.5, 0.3, 0.6, 0.35, 0.5, 0.45, 0.4, 0.55, 0.5, 0.42, 0.38];
+    const X = i => cx0 + i * (cxN - cx0) / (N - 1);
+    // X-bar chart mapping: value 9.2..10.95 -> y 170..30
+    const yX = v => 170 - (v - 9.2) * (140 / 1.75);
+    const accent = 'var(--color-accent)';
+    const alarmIdx = 9;
+    const seg = (arr, yf, cc, lcs, lci, center, labels) => this.el('g', null,
+      this.el('rect', { x: cx0, y: yf(lcs), width: cxN - cx0, height: yf(lci) - yf(lcs), fill: 'var(--color-accent-100)' }),
+      this.el('line', { x1: cx0, y1: yf(center), x2: cxN, y2: yf(center), stroke: accent, strokeDasharray: '4 4' }),
+      this.el('line', { x1: cx0, y1: yf(lcs), x2: cxN, y2: yf(lcs), stroke: '#c0392b', strokeWidth: 1.3, strokeDasharray: '5 4' }),
+      this.el('line', { x1: cx0, y1: yf(lci), x2: cxN, y2: yf(lci), stroke: '#c0392b', strokeWidth: 1.3, strokeDasharray: '5 4' }),
+      this.el('text', { x: cxN + 4, y: yf(lcs) + 4, fontSize: 11, fill: '#c0392b' }, labels[0]),
+      this.el('text', { x: cxN + 4, y: yf(center) + 4, fontSize: 11, fill: accent }, labels[1]),
+      this.el('text', { x: cxN + 4, y: yf(lci) + 4, fontSize: 11, fill: '#c0392b' }, labels[2]),
+      this.el('path', { d: arr.map((v, i) => (i ? 'L' : 'M') + X(i) + ',' + yf(v)).join(' '), fill: 'none', stroke: 'var(--color-accent-700)', strokeWidth: 1.5 }),
+      ...arr.map((v, i) => this.el('circle', { key: i, cx: X(i), cy: yf(v), r: (cc && i === alarmIdx) ? 5.5 : 3, fill: (cc && i === alarmIdx) ? '#c0392b' : 'var(--color-accent-700)' })),
+      (cc ? this.el('text', { x: X(alarmIdx), y: yf(arr[alarmIdx]) - 12, textAnchor: 'middle', fontSize: 11.5, fill: '#c0392b', fontFamily: 'var(--font-heading)', fontWeight: 600 }, 'alarme') : null)
+    );
+    // R chart y: 0..0.9 -> y 60..0 within its own svg
+    const yR = v => 250 - v * (60 / 0.9);
+    return this.svg(W, 300,
+      this.el('text', { x: cx0, y: 16, fontSize: 12.5, fill: 'var(--color-accent-800)', fontFamily: 'var(--font-heading)', fontWeight: 600 }, 'Carte X̄ — position'),
+      seg(xs, yX, true, 10.6, 9.4, 10.0, ['LCS', 'X̄̄', 'LCI']),
+      this.el('text', { x: cx0, y: 208, fontSize: 12.5, fill: 'var(--color-accent-800)', fontFamily: 'var(--font-heading)', fontWeight: 600 }, 'Carte R — dispersion'),
+      this.el('rect', { x: cx0, y: yR(0.78), width: cxN - cx0, height: yR(0) - yR(0.78), fill: 'var(--color-accent-100)' }),
+      this.el('line', { x1: cx0, y1: yR(0.44), x2: cxN, y2: yR(0.44), stroke: accent, strokeDasharray: '4 4' }),
+      this.el('line', { x1: cx0, y1: yR(0.78), x2: cxN, y2: yR(0.78), stroke: '#c0392b', strokeWidth: 1.3, strokeDasharray: '5 4' }),
+      this.el('text', { x: cxN + 4, y: yR(0.78) + 4, fontSize: 11, fill: '#c0392b' }, 'LCS'),
+      this.el('text', { x: cxN + 4, y: yR(0.44) + 4, fontSize: 11, fill: accent }, 'R̄'),
+      this.el('path', { d: rs.map((v, i) => (i ? 'L' : 'M') + X(i) + ',' + yR(v)).join(' '), fill: 'none', stroke: 'var(--color-accent-700)', strokeWidth: 1.5 }),
+      ...rs.map((v, i) => this.el('circle', { key: 'r' + i, cx: X(i), cy: yR(v), r: 3, fill: 'var(--color-accent-700)' })),
+      this.el('text', { x: W / 2, y: 296, textAnchor: 'middle', fontSize: 11, fill: 'var(--color-neutral-600)' }, 'numéro de sous-groupe (temps →)')
+    );
+  }
+
+  buildZones() {
+    const W = 800, H = 230, cx0 = 70, cxN = W - 90, cy = 115, band = 30;
+    const zones = [
+      { y: cy - 3 * band, h: band, lbl: 'A', tint: 'var(--color-accent-300)' },
+      { y: cy - 2 * band, h: band, lbl: 'B', tint: 'var(--color-accent-200)' },
+      { y: cy - 1 * band, h: band, lbl: 'C', tint: 'var(--color-accent-100)' },
+      { y: cy, h: band, lbl: 'C', tint: 'var(--color-accent-100)' },
+      { y: cy + 1 * band, h: band, lbl: 'B', tint: 'var(--color-accent-200)' },
+      { y: cy + 2 * band, h: band, lbl: 'A', tint: 'var(--color-accent-300)' },
+    ];
+    const g = this.lcg(11);
+    const N = 12, X = i => cx0 + i * (cxN - cx0) / (N - 1);
+    const pts = Array.from({ length: N }, () => cy + this.randn(g) * band * 0.8);
+    return this.svg(W, H,
+      ...zones.map((z, i) => this.el('rect', { key: i, x: cx0, y: z.y, width: cxN - cx0, height: z.h, fill: z.tint, stroke: 'var(--color-neutral-200)' })),
+      ...zones.map((z, i) => this.el('text', { key: 'l' + i, x: cx0 - 12, y: z.y + z.h / 2 + 4, textAnchor: 'middle', fontSize: 13, fill: 'var(--color-accent-800)', fontFamily: 'var(--font-heading)', fontWeight: 600 }, z.lbl)),
+      this.el('line', { x1: cx0, y1: cy, x2: cxN, y2: cy, stroke: 'var(--color-accent)', strokeWidth: 1.4 }),
+      this.el('text', { x: cxN + 6, y: cy - 3 * band + 4, fontSize: 11, fill: '#c0392b' }, '+3σ'),
+      this.el('text', { x: cxN + 6, y: cy + 4, fontSize: 11, fill: 'var(--color-accent)' }, 'CL'),
+      this.el('text', { x: cxN + 6, y: cy + 3 * band + 4, fontSize: 11, fill: '#c0392b' }, '−3σ'),
+      this.el('path', { d: pts.map((v, i) => (i ? 'L' : 'M') + X(i) + ',' + v.toFixed(1)).join(' '), fill: 'none', stroke: 'var(--color-accent-700)', strokeWidth: 1.4 }),
+      ...pts.map((v, i) => this.el('circle', { key: 'p' + i, cx: X(i), cy: v, r: 3, fill: 'var(--color-accent-700)' }))
+    );
+  }
+
+  // mini sparkline per rule
+  spark(kind) {
+    const w = 150, h = 40, cy = 20, x0 = 6, x1 = w - 6;
+    const X = (i, n) => x0 + i * (x1 - x0) / (n - 1);
+    const acc = 'var(--color-accent-700)', red = '#c0392b';
+    const base = (...k) => this.el('svg', { viewBox: `0 0 ${w} ${h}`, width: w, height: h, style: { display: 'block' } },
+      this.el('line', { x1: x0, y1: 6, x2: x1, y2: 6, stroke: 'var(--color-neutral-300)', strokeDasharray: '2 2' }),
+      this.el('line', { x1: x0, y1: cy, x2: x1, y2: cy, stroke: 'var(--color-neutral-300)' }),
+      this.el('line', { x1: x0, y1: h - 6, x2: x1, y2: h - 6, stroke: 'var(--color-neutral-300)', strokeDasharray: '2 2' }),
+      ...k);
+    const dots = (ys, hot) => ys.map((y, i) => this.el('circle', { key: i, cx: X(i, ys.length), cy: y, r: 2.4, fill: hot && hot.includes(i) ? red : acc }));
+    const line = (ys) => this.el('path', { d: ys.map((y, i) => (i ? 'L' : 'M') + X(i, ys.length) + ',' + y).join(' '), fill: 'none', stroke: acc, strokeWidth: 1 });
+    if (kind === 1) { const ys = [20, 16, 24, 18, 3, 22]; return base(line(ys), ...dots(ys, [4])); }
+    if (kind === 2) { const ys = [12, 10, 13, 11, 9, 12, 10, 11, 13]; return base(line(ys), ...dots(ys)); }
+    if (kind === 3) { const ys = [30, 27, 24, 20, 16, 12]; return base(line(ys), ...dots(ys)); }
+    if (kind === 4) { const ys = [12, 28, 12, 28, 12, 28, 12, 28]; return base(line(ys), ...dots(ys)); }
+    if (kind === 5) { const ys = [20, 8, 22, 8, 20]; return base(line(ys), ...dots(ys, [1, 3])); }
+    if (kind === 6) { const ys = [20, 12, 10, 11, 9]; return base(line(ys), ...dots(ys, [1, 2, 3, 4])); }
+    if (kind === 7) { const ys = [19, 21, 20, 22, 18, 21, 19]; return base(line(ys), ...dots(ys)); }
+    const ys = [8, 32, 7, 33, 8, 31, 9, 32]; return base(line(ys), ...dots(ys));
+  }
+  buildRules() {
+    const rules = [
+      ['R1', '1 point hors ±3σ', 'cause spéciale'],
+      ['R2', '9 points du même côté', 'changement de niveau'],
+      ['R3', '6 points croissants / décroissants', 'tendance, dérive'],
+      ['R4', '14 points alternant haut/bas', 'deux populations'],
+      ['R5', '2 points sur 3 en zone A', 'décalage probable'],
+      ['R6', '4 points sur 5 en zone B ou au-delà', 'décalage'],
+      ['R7', '15 points en zone C', 'stratification'],
+      ['R8', '8 points hors zone C (alternés)', 'sur-contrôle'],
+    ];
+    return rules.map((r, i) => this.el('div', { key: r[0], style: { display: 'grid', gridTemplateColumns: '.7fr 2.2fr 1.6fr', fontSize: '14px', borderBottom: i < 7 ? '1px solid var(--color-divider)' : 'none', alignItems: 'center' } },
+      this.el('div', { style: { padding: '8px 12px', fontFamily: 'var(--font-heading)', fontWeight: 600, color: 'var(--color-accent-800)' } }, r[0]),
+      this.el('div', { style: { padding: '6px 12px', display: 'flex', alignItems: 'center', gap: '12px' } },
+        this.el('span', { className: 'blueprint', style: { padding: '2px', flex: 'none' } }, this.spark(i + 1)),
+        this.el('span', null, r[1])),
+      this.el('div', { style: { padding: '8px 12px', color: 'var(--color-neutral-700)' } }, r[2])
+    ));
+  }
+
+  buildOcap() {
+    const W = 800, H = 150;
+    const steps = [
+      { t: 'ALARME', c: '#c0392b', s: 'un point / motif détecté' },
+      { t: 'Vérifier', c: 'var(--color-accent)', s: 'mesure, instrument, réglage' },
+      { t: 'Identifier', c: 'var(--color-accent)', s: 'la cause spéciale' },
+      { t: 'Corriger', c: 'var(--color-accent)', s: 'action + décision d\u2019arrêt' },
+      { t: 'Tracer', c: '#2e7d32', s: 'consigner, reprendre' },
+    ];
+    const bw = 140, gap = 20, total = steps.length * bw + (steps.length - 1) * gap, x0 = (W - total) / 2;
+    return this.svg(W, H,
+      ...steps.map((st, i) => {
+        const x = x0 + i * (bw + gap);
+        return this.el('g', { key: i },
+          this.el('rect', { x, y: 40, width: bw, height: 60, fill: 'none', stroke: st.c, strokeWidth: 1.6 }),
+          this.el('text', { x: x + bw / 2, y: 66, textAnchor: 'middle', fontSize: 14, fill: st.c, fontFamily: 'var(--font-heading)', fontWeight: 600 }, st.t),
+          this.el('text', { x: x + bw / 2, y: 85, textAnchor: 'middle', fontSize: 10.5, fill: 'var(--color-neutral-600)' }, st.s),
+          i < steps.length - 1 ? this.el('text', { x: x + bw + gap / 2, y: 74, textAnchor: 'middle', fontSize: 18, fill: 'var(--color-neutral-500)' }, '→') : null
+        );
+      })
+    );
+  }
+
+  renderVals() {
+    return {
+      showTP: this.props.showTP ?? true,
+      voicesFig: this.buildVoices(),
+      xbarRFig: this.buildXbarR(),
+      zonesFig: this.buildZones(),
+      rulesRows: this.buildRules(),
+      ocapFig: this.buildOcap(),
+    };
+  }
+}
+</script>
+</body>
+</html>
