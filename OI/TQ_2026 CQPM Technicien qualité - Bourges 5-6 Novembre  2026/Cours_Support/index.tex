@@ -1,0 +1,55 @@
+\documentclass[11pt]{article}
+\usepackage{uimmcours}
+\renewcommand{\coursnumero}{Sommaire}
+
+\newcommand{\tplink}[2]{\href{../TP_Activites/#1}{#2}}
+
+\begin{document}
+
+\coursheader{Cours support – Capabilité \& SPC}{Sommaire des cours}
+{Le sens derrière les 13 TP \quad|\quad Pôle Formation UIMM CVDL – S. Jaubert}
+{4 cours progressifs · renvois vers les TP · références pour aller plus loin}
+
+\begin{lead}
+\textbf{\color{uimmblue}À quoi servent ces cours.} Les 13 TP font calculer et manipuler. Ces quatre cours donnent le \emph{sens} des notions : ce que veulent dire les formules, pourquoi on procède ainsi, et à quel moment chaque outil intervient. Chaque notion renvoie au TP qui la met en pratique. À lire avant, pendant ou après les TP, dans l'ordre ou en piochant.
+\end{lead}
+
+\renvoitp{Cours 1}{Comprendre la variabilité}{Le socle : causes communes et spéciales, moyenne, étendue, écart-type, loi normale et règle des $6\sigma$, vérification de la normalité. Rien à calculer encore, tout à comprendre.}{1_Comprendre_la_Variabilite.pdf}
+\noindent\hspace{6pt}\textbf{\footnotesize\color{uimmgrey}TP associés :} \footnotesize \tplink{TP1_Decouverte_Variabilite.html}{TP 1 Variabilité} \,·\, \tplink{TP08_Entonnoir_Deming_Sur-reglage.html}{TP 8 Entonnoir de Deming} \,·\, \tplink{TP12_Normalite_Droite_Henry.html}{TP 12 Droite de Henry}
+\medskip
+
+\renvoitp{Cours 2}{La capabilité}{Tolérance contre dispersion, $C_p$, $C_{pk}$, court et long terme ($C_m/C_{mk}$, $P_p/P_{pk}$), lien avec le rebut (ppm), cible et sur-réglage. Le cœur de la qualification d'un procédé.}{2_La_Capabilite.pdf}
+\noindent\hspace{6pt}\textbf{\footnotesize\color{uimmgrey}TP associés :} \footnotesize \tplink{TP2_Capabilite_Machine_Cm_Cmk.html}{TP 2 $C_m/C_{mk}$} \,·\, \tplink{TP3_Capabilite_Procede_Cp_Cpk.html}{TP 3 $C_p/C_{pk}$} \,·\, \tplink{TP4_Cas_Client_Cpk_Exige.html}{TP 4 Cas client} \,·\, \tplink{TP09_Tir_sur_Cible_Cp_Cpk.html}{TP 9 Tir sur cible} \,·\, \tplink{TP08_Entonnoir_Deming_Sur-reglage.html}{TP 8 Sur-réglage}
+\medskip
+
+\renvoitp{Cours 3}{Les cartes de contrôle}{Piloter dans le temps : carte $\bar{X}$-R, constantes, limites de contrôle contre tolérances, les 8 règles et les zones A/B/C, plan de réaction OCAP, cartes aux attributs.}{3_Les_Cartes_de_Controle.pdf}
+\noindent\hspace{6pt}\textbf{\footnotesize\color{uimmgrey}TP associés :} \footnotesize \tplink{TP5_Construction_Carte_XbarR.html}{TP 5 Construction $\bar{X}$-R} \,·\, \tplink{TP6_Lecture_Cartes_Normal_Alarme.html}{TP 6 Lecture de cartes} \,·\, \tplink{TP10_OCAP_Reaction_Alarme.html}{TP 10 OCAP} \,·\, \tplink{TP11_Carte_Attributs_P_C.html}{TP 11 Attributs p/c}
+\medskip
+
+\renvoitp{Cours 4}{La confiance dans la mesure (MSA)}{Le préalable oublié : justesse et fidélité, répétabilité et reproductibilité, Gage R\&R, \%GRR et ndc. Pourquoi on qualifie la mesure avant le procédé.}{4_La_Confiance_dans_la_Mesure_MSA.pdf}
+\noindent\hspace{6pt}\textbf{\footnotesize\color{uimmgrey}TP associé :} \footnotesize \tplink{TP13_Gage_RR_Capabilite_Instrument.html}{TP 13 Gage R\&R}
+\medskip
+
+\section{L'ordre logique de la démarche}
+
+Les quatre cours suivent l'ordre dans lequel on qualifie réellement une production. On ne saute pas d'étape.
+
+\begin{uimmtable}{c p{0.30\linewidth} p{0.46\linewidth}}
+\rowcolor{uimmblue}\textcolor{white}{\bfseries Étape} & \textcolor{white}{\bfseries Question} & \textcolor{white}{\bfseries Cours}\\
+0 & Peut-on croire la mesure ? & Cours 4 — MSA / Gage R\&R\\
+1 & Comment varie un procédé ? & Cours 1 — Variabilité\\
+2 & Le procédé tient-il la tolérance ? & Cours 2 — Capabilité\\
+3 & Reste-t-il bon dans le temps ? & Cours 3 — Cartes de contrôle\\
+\end{uimmtable}
+Dans la pratique on découvre souvent les notions dans l'ordre 1, 2, 3, 4 (du plus simple au plus fin), mais sur le terrain la mesure (cours 4) est le tout premier maillon à sécuriser.
+
+\begin{plusloin}
+Le \textbf{TP 7 — Intégratif Ellistat} n'est rattaché à aucun cours en particulier : c'est la synthèse. Il mobilise capabilité et cartes sur un cas complet, avec le logiciel. À faire une fois les notions des cours 1 à 3 en place.\\[4pt]
+Toutes les références « pour aller plus loin » de ces cours pointent vers le site \href{https://sjaubert.github.io/SPCR/}{SPCR} (capabilité normale et non normale, cartes de Shewhart, étude R\&R, ANOVA), qui donne le détail mathématique et le code R.
+\end{plusloin}
+
+\vfill
+\noindent\hrulefill\\[2pt]
+{\footnotesize\color{uimmgrey}Commencer par le \href{1_Comprendre_la_Variabilite.pdf}{Cours 1 — Comprendre la variabilité $\rightarrow$}}
+
+\end{document}
