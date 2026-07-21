@@ -1,0 +1,159 @@
+\documentclass[11pt]{article}
+\usepackage{uimmcours}
+\renewcommand{\coursnumero}{Cours 2/4}
+
+\begin{document}
+
+\coursheader{Cours support – Capabilité \& SPC}{Cours 2 — La capabilité}
+{Le procédé est-il à la hauteur de la tolérance ? \quad|\quad Pôle Formation UIMM CVDL – S. Jaubert}
+{$C_p$ · $C_{pk}$ · $P_p$/$P_{pk}$ · $C_m$/$C_{mk}$ · court et long terme · lien avec le rebut}
+
+\begin{lead}
+\textbf{\color{uimmblue}Le fil du cours.} Le cours 1 a montré qu'un procédé stable occupe une largeur naturelle de $6\sigma$. La capabilité répond à une seule question : cette largeur tient-elle dans ce que le client autorise, la tolérance ? Les indices $C_p$ et $C_{pk}$ sont deux façons de répondre. Aucune formule ici n'est nouvelle par rapport à ton aide-mémoire ; on explique ce qu'elles \emph{veulent dire}.
+\end{lead}
+
+\section{Tolérance contre dispersion : les deux largeurs}
+
+Le client fixe une \textbf{tolérance} : une cote nominale et deux limites à ne pas franchir, la limite spécifiée inférieure (LSI) et supérieure (LSS). L'écart entre les deux est l'intervalle de tolérance :
+\begin{formulebox}
+$\displaystyle IT = LSS - LSI$
+\end{formulebox}
+Face à cette largeur autorisée, le procédé oppose sa largeur naturelle, $6\sigma$. Toute la capabilité tient dans la comparaison de ces deux largeurs.
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[width=13.5cm,height=6cm,axis lines=none,ymin=-0.16,ymax=0.45,
+  xmin=-5,xmax=5,domain=-5:5,samples=140,clip=false]
+\addplot[uimmcyan,thick,fill=uimmcyan!12] {exp(-x^2/2)/sqrt(2*pi)} \closedcycle;
+\draw[red!70,dashed,thick] (axis cs:-4,0) -- (axis cs:-4,0.43);
+\draw[red!70,dashed,thick] (axis cs:4,0)  -- (axis cs:4,0.43);
+\node[red!70,above] at (axis cs:-4,0.40) {\footnotesize LSI};
+\node[red!70,above] at (axis cs:4,0.40)  {\footnotesize LSS};
+\draw[<->,uimmblue,thick] (axis cs:-3,-0.06) -- (axis cs:3,-0.06)
+  node[midway,fill=white,inner sep=1pt] {\footnotesize $6\sigma$ (largeur du procédé)};
+\draw[<->,red!70,thick] (axis cs:-4,-0.13) -- (axis cs:4,-0.13)
+  node[midway,fill=white,inner sep=1pt] {\footnotesize $IT$ (tolérance client)};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\begin{center}\footnotesize\color{uimmgrey}Ici la tolérance est plus large que la dispersion du procédé : il reste de la marge. C'est le cas favorable.\end{center}
+
+\section{$C_p$ : le potentiel, la dispersion seule}
+
+Le premier indice met simplement les deux largeurs en rapport.
+\begin{formulebox}
+$\displaystyle C_p = \frac{IT}{6\hat{\sigma}} \qquad\text{avec}\qquad \hat{\sigma} = \frac{\bar{R}}{d_2}$
+\end{formulebox}
+On lit $C_p$ comme un rapport de place : combien de fois la largeur naturelle du procédé tient dans la tolérance.
+\begin{itemize}
+\item $C_p = 1$ : le procédé remplit tout juste la tolérance, sans marge. Le moindre décentrage fait sortir des pièces.
+\item $C_p < 1$ : la dispersion est trop grande, le procédé déborde. Aucun réglage ne sauvera ça ; il faut \emph{réduire la variabilité}.
+\item $C_p \ge 1{,}33$ : il y a de la marge (au moins $4\sigma$ de chaque côté). Seuil courant de procédé capable.
+\end{itemize}
+\begin{cle}[Ce que $C_p$ ne dit pas]
+$C_p$ ne regarde que la \textbf{largeur}, jamais la \textbf{position}. Un procédé peut avoir un excellent $C_p$ et produire du rebut s'il est décalé sur un bord. D'où le second indice.
+\end{cle}
+
+\section{$C_{pk}$ : le centrage entre en jeu}
+
+$C_{pk}$ mesure la distance au bord le plus proche, ramenée à un demi-procédé ($3\sigma$).
+\begin{formulebox}
+$\displaystyle C_{pk} = \min\!\left(\frac{LSS-\bar{x}}{3\hat{\sigma}},\;\frac{\bar{x}-LSI}{3\hat{\sigma}}\right)$
+\end{formulebox}
+On calcule la marge des deux côtés et on garde la plus petite : c'est toujours le bord le plus proche qui décide, car c'est par là que le rebut sortira d'abord.
+\begin{itemize}
+\item $C_p = C_{pk}$ : le procédé est parfaitement centré sur le milieu de la tolérance.
+\item $C_p > C_{pk}$ : le procédé est décentré. Bonne nouvelle : un \emph{recentrage} (un réglage) suffit, sans toucher à la dispersion.
+\end{itemize}
+
+\begin{exemple}[Décentrage : $C_p$ bon, $C_{pk}$ mauvais]
+Tolérance $LSI = 9{,}95$, $LSS = 10{,}05$ (donc $IT = 0{,}10$). Dispersion estimée $\hat{\sigma} = 0{,}015$.\\[3pt]
+$C_p = \dfrac{0{,}10}{6 \times 0{,}015} = \dfrac{0{,}10}{0{,}09} \approx 1{,}11$ : la largeur passe, il y a un peu de marge.\\[3pt]
+Mais la moyenne réelle est $\bar{x} = 10{,}01$, décalée vers le haut. Alors :\\[2pt]
+$C_{pk} = \min\!\left(\dfrac{10{,}05-10{,}01}{0{,}045},\ \dfrac{10{,}01-9{,}95}{0{,}045}\right) = \min(0{,}89,\ 1{,}33) = \mathbf{0{,}89}$.\\[3pt]
+Le côté haut est trop proche du bord : le procédé n'est pas capable, alors que sa dispersion, elle, conviendrait. En recentrant sur $10{,}00$, on remonterait $C_{pk}$ jusqu'à $C_p \approx 1{,}11$. Le problème n'était pas la machine, mais le réglage.
+\end{exemple}
+
+L'image mentale qui colle à cette différence est celle du tir : être groupé (faible dispersion, bon $C_p$) et être dans le mille (bon centrage, bon $C_{pk}$) sont deux qualités distinctes.
+
+\renvoitp{TP 9}{Tir sur cible — $C_p$ et $C_{pk}$}{Le lien entre groupement, centrage et indices, rendu visuel par un exercice de tir. La meilleure façon d'ancrer la différence $C_p$ / $C_{pk}$.}{../TP_Activites/TP09_Tir_sur_Cible_Cp_Cpk.html}
+
+\section{Court terme, long terme, et la machine seule}
+
+Le même calcul change de nom selon la dispersion qu'on y met.
+
+\begin{uimmtable}{l l p{0.5\linewidth}}
+\rowcolor{uimmblue}\textcolor{white}{\bfseries Indices} & \textcolor{white}{\bfseries Dispersion utilisée} & \textcolor{white}{\bfseries Ce qu'on mesure}\\
+$C_m$ / $C_{mk}$ & court terme, machine & la machine seule, sur $\approx$ 50 pièces consécutives, autres 5M figés\\
+$C_p$ / $C_{pk}$ & court terme, intra-groupe & le procédé « instantané », $\hat{\sigma} = \bar{R}/d_2$\\
+$P_p$ / $P_{pk}$ & long terme, globale & le procédé « vécu », $\sigma$ calculé sur toutes les données\\
+\end{uimmtable}
+
+La dispersion court terme ($\bar{R}/d_2$) ne voit que la variation à l'intérieur des petits échantillons : la machine à un instant donné. La dispersion long terme ($\sigma$ global) intègre en plus les dérives entre échantillons : usure, changements d'équipe, de lot, de température. Elle est donc en général plus grande.
+
+\begin{cle}[Deux diagnostics par comparaison]
+\textbf{$C_p$ vs $C_{pk}$} : écart = décentrage $\rightarrow$ on rerègle.\\
+\textbf{$C_p$ vs $P_p$} : $C_p$ nettement supérieur à $P_p$ = le procédé est bon à court terme mais dérive dans le temps $\rightarrow$ causes spéciales, instabilité. En conditions normales, on a la hiérarchie $C_m \ge C_p \ge P_p$ (et de même pour les versions $k$).
+\end{cle}
+
+\renvoitp{TP 2}{Capabilité machine — $C_m$ et $C_{mk}$}{Calcul et interprétation sur des mesures réelles de butée : qualifier une machine avant de la lâcher en production.}{../TP_Activites/TP2_Capabilite_Machine_Cm_Cmk.html}
+
+\renvoitp{TP 3}{Capabilité procédé — $C_p$ et $C_{pk}$}{Passer de la machine au procédé complet : calculer $C_p$/$C_{pk}$ et conclure sur la capabilité.}{../TP_Activites/TP3_Capabilite_Procede_Cp_Cpk.html}
+
+\section{Les seuils de décision}
+
+Les valeurs de référence utilisées en formation (voir ton aide-mémoire) :
+
+\begin{uimmtable}{l l l}
+\rowcolor{uimmblue}\textcolor{white}{\bfseries Indice} & \textcolor{white}{\bfseries Valeur} & \textcolor{white}{\bfseries Verdict}\\
+$C_m$ / $C_{mk}$ & $\ge 1{,}67$ & machine qualifiée\\
+$C_p$ / $C_{pk}$ & $\ge 1{,}33$ & procédé capable\\
+$C_p$ / $C_{pk}$ & $1{,}00$ à $1{,}33$ & limite, sous surveillance\\
+$C_p$ / $C_{pk}$ & $< 1{,}00$ & non capable\\
+\end{uimmtable}
+
+Ces seuils ne sont pas universels : un client, une pièce sécuritaire ou un référentiel qualité peuvent exiger davantage. Le premier réflexe reste de lire l'exigence \emph{du client}.
+
+\renvoitp{TP 4}{Cas client — le $C_{pk}$ exigé}{Confronter un résultat mesuré à l'exigence contractuelle du client et décider : accepter, rerégler, ou améliorer.}{../TP_Activites/TP4_Cas_Client_Cpk_Exige.html}
+
+\section{Ce que la capabilité coûte vraiment : le rebut}
+
+Un indice n'est pas qu'une note. Sous l'hypothèse de normalité et procédé centré, chaque valeur de $C_p$ correspond à une proportion de pièces hors tolérance.
+
+\begin{uimmtable}{l l l}
+\rowcolor{uimmblue}\textcolor{white}{\bfseries $C_p$ (centré)} & \textcolor{white}{\bfseries Largeur} & \textcolor{white}{\bfseries Hors tolérance ($\approx$)}\\
+1{,}00 & $\pm 3\sigma$ & 2700 ppm (0,27 \%)\\
+1{,}33 & $\pm 4\sigma$ & 63 ppm\\
+1{,}67 & $\pm 5\sigma$ & 0,6 ppm\\
+2{,}00 & $\pm 6\sigma$ & 0,002 ppm\\
+\end{uimmtable}
+
+On voit pourquoi passer de $C_p = 1$ à $C_p = 1{,}33$ n'est pas un détail : le rebut est divisé par plus de 40. C'est tout l'enjeu de la réduction de variabilité.
+
+\begin{plusloin}
+Le fameux « 3,4 défauts par million » de la démarche Six Sigma correspond à $\pm 6\sigma$ en tolérant une dérive de la moyenne de $1{,}5\sigma$ sur le long terme : ce n'est pas la valeur centrée du tableau, mais la même idée décalée. Le détail des calculs (loi normale, fonction de répartition) est dans le chapitre \href{https://sjaubert.github.io/SPCR/capability.html}{Capability — cas normal} du site SPCR.
+\end{plusloin}
+
+\subsection*{\color{uimmcyan}Viser la cible, pas seulement rester dans les bornes}
+Rester à l'intérieur de la tolérance n'est pas la même chose que viser la cible. Taguchi a montré qu'une pièce juste sous la limite coûte déjà, par la variation qu'elle transmet en aval. L'objectif n'est donc pas « ne pas dépasser », mais « approcher la cible avec le moins de variation possible ». Les indices de Taguchi ($C_{pm}$) formalisent cette idée : voir le chapitre SPCR ci-dessus.
+
+\section{Le sur-réglage détruit la capabilité}
+
+Dernier point, qui relie ce cours au cours 1. Régler un procédé stable et centré n'améliore pas les indices : cela \emph{ajoute} de la variation, donc augmente $\sigma$, donc \textbf{baisse $C_p$ et $C_{pk}$}. Chercher à corriger chaque pièce est le plus sûr moyen de dégrader une bonne capabilité.
+
+\renvoitp{TP 8}{Entonnoir de Deming : le piège du sur-réglage}{À revoir ici sous l'angle capabilité : mesurer combien le sur-réglage gonfle la dispersion et fait chuter les indices.}{../TP_Activites/TP08_Entonnoir_Deming_Sur-reglage.html}
+
+\section*{\color{uimmblue}À retenir}
+\begin{itemize}
+\item Capabilité = comparer la tolérance ($IT$) à la largeur naturelle du procédé ($6\sigma$).
+\item $C_p = IT / 6\hat{\sigma}$ juge la dispersion seule ; $C_{pk}$ ajoute le centrage (bord le plus proche).
+\item $C_p = C_{pk}$ centré ; $C_p > C_{pk}$ décentré (rerégler) ; $C_p > P_p$ instable dans le temps (causes spéciales).
+\item Seuils usuels : $C_{mk} \ge 1{,}67$, $C_{pk} \ge 1{,}33$. Toujours vérifier l'exigence du client.
+\item Gagner en $C_p$ réduit fortement le rebut. Viser la cible, pas seulement les bornes. Ne jamais sur-régler.
+\end{itemize}
+
+\vfill
+\noindent\hrulefill\\[2pt]
+{\footnotesize\color{uimmgrey}\href{1_Comprendre_la_Variabilite.pdf}{$\leftarrow$ Cours 1}\qquad\qquad\href{3_Les_Cartes_de_Controle.pdf}{Cours 3 — Les cartes de contrôle $\rightarrow$}}
+
+\end{document}

@@ -1,0 +1,117 @@
+\documentclass[11pt]{article}
+\usepackage{uimmcours}
+\renewcommand{\coursnumero}{Cours 4/4}
+
+\begin{document}
+
+\coursheader{Cours support – Capabilité \& SPC}{Cours 4 — La confiance dans la mesure}
+{MSA et Gage R\&R : le préalable à tout \quad|\quad Pôle Formation UIMM CVDL – S. Jaubert}
+{Justesse · répétabilité · reproductibilité · Gage R\&R · \%GRR · ndc}
+
+\begin{lead}
+\textbf{\color{uimmblue}Le fil du cours.} Tout ce qui précède, capabilité et cartes, repose sur les mesures. Or une mesure n'est jamais parfaite : l'instrument et l'opérateur ajoutent leur propre variation. Ce cours pose la question qui devrait venir en premier : peut-on faire confiance à nos mesures ? Sans y répondre, les $C_p$, $C_{pk}$ et cartes de contrôle sont bâtis sur du sable.
+\end{lead}
+
+\section{La variation qu'on observe n'est pas que celle du procédé}
+
+Quand on relève une cote, on ne voit pas la variation du procédé toute seule. On voit la variation du procédé \emph{plus} celle du système de mesure. Comme ces sources sont indépendantes, ce sont leurs variances qui s'additionnent :
+\begin{formulebox}
+$\displaystyle \sigma^2_{\text{observé}} = \sigma^2_{\text{procédé}} + \sigma^2_{\text{mesure}}$
+\end{formulebox}
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+% Bar 1 : observé = procédé + mesure
+\fill[uimmcyan!30] (0,0) rectangle (8.2,0.8);
+\fill[uimmorange!45] (8.2,0) rectangle (10,0.8);
+\draw (0,0) rectangle (10,0.8);
+\node at (4.1,0.4) {\footnotesize variation du procédé};
+\node at (9.1,0.4) {\footnotesize mesure};
+\node[left] at (0,0.4) {\footnotesize\bfseries\color{uimmblue}Observé};
+% Bar 2 : zoom mesure = répétabilité + reproductibilité
+\fill[uimmorange!30] (5.5,-1.4) rectangle (8.4,-0.6);
+\fill[uimmorange!60] (8.4,-1.4) rectangle (10,-0.6);
+\draw (5.5,-1.4) rectangle (10,-0.6);
+\node at (6.95,-1.0) {\footnotesize répétabilité};
+\node at (9.2,-1.0) {\footnotesize reprod.};
+\draw[dashed,uimmorange] (8.2,0) -- (5.5,-0.6);
+\draw[dashed,uimmorange] (10,0) -- (10,-0.6);
+\node[left] at (5.5,-1.0) {\footnotesize\bfseries\color{uimmorange}Mesure};
+\end{tikzpicture}
+\end{center}
+\begin{center}\footnotesize\color{uimmgrey}Si la part « mesure » est grosse, une bonne partie de ce qu'on attribue au procédé vient en réalité de l'instrument et de l'opérateur.\end{center}
+
+\section{Décomposer l'erreur de mesure}
+
+Un système de mesure se juge sur deux qualités distinctes, à ne pas confondre.
+
+\begin{uimmtable}{l p{0.62\linewidth}}
+\rowcolor{uimmblue}\textcolor{white}{\bfseries Qualité} & \textcolor{white}{\bfseries Question à laquelle elle répond}\\
+Justesse (biais) & Mes mesures tombent-elles, en moyenne, sur la vraie valeur de référence ? Un décalage systématique est un défaut de justesse.\\
+Fidélité & Si je remesure, est-ce que je retrouve la même valeur ? C'est la dispersion des mesures répétées.\\
+\end{uimmtable}
+
+La fidélité se décompose elle-même en deux :
+\begin{itemize}
+\item \textbf{Répétabilité} : même opérateur, même instrument, même pièce, mesures répétées. C'est la variation propre à l'instrument.
+\item \textbf{Reproductibilité} : la variation \emph{entre opérateurs} (ou entre instruments) mesurant les mêmes pièces. C'est l'effet de la personne qui mesure.
+\end{itemize}
+
+\begin{cle}[Justesse et fidélité sont indépendantes]
+Un instrument peut être fidèle mais faux (il répète toujours la même valeur, mais décalée), ou juste mais infidèle (bon en moyenne, mais dispersé). Les deux se corrigent différemment : la justesse par un étalonnage, la fidélité par l'instrument ou la méthode.
+\end{cle}
+
+\section{Le Gage R\&R}
+
+L'étude Gage R\&R (Répétabilité \& Reproductibilité) quantifie la fidélité du système de mesure en combinant ses deux composantes :
+\begin{formulebox}
+$\displaystyle \sigma^2_{R\&R} = \sigma^2_{\text{répétabilité}} + \sigma^2_{\text{reproductibilité}}$
+\end{formulebox}
+On rapporte ensuite cette variation de mesure soit à la \textbf{tolérance} (le système est-il assez fin pour trier bon/mauvais ?), soit à la \textbf{variation totale} observée. Ce rapport, en pourcentage, est le \textbf{\%GRR}.
+
+\begin{uimmtable}{l l}
+\rowcolor{uimmblue}\textcolor{white}{\bfseries \%GRR} & \textcolor{white}{\bfseries Décision (référentiel AIAG)}\\
+$< 10\,\%$ & système de mesure acceptable\\
+$10\,\%$ à $30\,\%$ & acceptable selon la criticité et le coût\\
+$> 30\,\%$ & inacceptable, à améliorer avant tout\\
+\end{uimmtable}
+
+Un second indicateur complète le \%GRR : le \textbf{ndc} (nombre de catégories distinctes), qui dit en combien de niveaux le système sait vraiment distinguer les pièces.
+\begin{formulebox}
+$\displaystyle ndc = 1{,}41 \times \frac{\sigma_{\text{pièces}}}{\sigma_{R\&R}} \qquad (\text{objectif : } ndc \ge 5)$
+\end{formulebox}
+En dessous de 5, le système « voit » trop peu de niveaux : il classe les pièces en gros paquets, insuffisant pour piloter finement.
+
+\section{Pourquoi c'est le préalable à tout}
+
+Un système de mesure médiocre ne se contente pas d'ajouter du flou. Il fausse activement les décisions :
+\begin{itemize}
+\item Il gonfle $\sigma_{\text{observé}}$, donc \textbf{écrase artificiellement $C_p$ et $C_{pk}$} : on croit le procédé mauvais alors que c'est la mesure.
+\item Il déclenche de \textbf{fausses alarmes} sur les cartes de contrôle, et pousse au sur-réglage.
+\item Il fait \textbf{accepter des pièces mauvaises et rejeter des bonnes}, près des limites.
+\end{itemize}
+
+\begin{cle}[L'ordre correct]
+Le Gage R\&R se fait \textbf{avant} l'étude de capabilité, pas après. Qualifier le système de mesure, puis qualifier la machine, puis le procédé, puis surveiller. Inverser cet ordre, c'est risquer de conclure sur des chiffres qui ne mesurent pas ce qu'on croit.
+\end{cle}
+
+\renvoitp{TP 13}{Gage R\&R — capabilité de l'instrument}{Mener une étude R\&R complète : répétabilité, reproductibilité, \%GRR, ndc, et conclure sur la confiance à accorder au système de mesure.}{../TP_Activites/TP13_Gage_RR_Capabilite_Instrument.html}
+
+\begin{plusloin}
+La méthode de calcul du Gage R\&R par analyse de la variance est détaillée dans \href{https://sjaubert.github.io/SPCR/R-R-Six-Sigma.html}{Étude R\&R} du site SPCR. Le socle statistique (le test F qui compare les sources de variation) est présenté dans \href{https://sjaubert.github.io/SPCR/ANOVA.html}{Test F pour une ANOVA}.
+\end{plusloin}
+
+\section*{\color{uimmblue}À retenir}
+\begin{itemize}
+\item Ce qu'on observe mélange variation du procédé et variation de mesure : $\sigma^2_{\text{observé}} = \sigma^2_{\text{procédé}} + \sigma^2_{\text{mesure}}$.
+\item Justesse (biais, sur la référence) et fidélité (répétabilité + reproductibilité) sont deux qualités distinctes.
+\item Le Gage R\&R quantifie la fidélité ; on juge par \%GRR ($<10\,\%$ bon, $>30\,\%$ à revoir) et $ndc \ge 5$.
+\item Une mauvaise mesure écrase la capabilité et crée de fausses alarmes.
+\item On qualifie le système de mesure \emph{avant} le procédé. C'est le tout premier maillon.
+\end{itemize}
+
+\vfill
+\noindent\hrulefill\\[2pt]
+{\footnotesize\color{uimmgrey}\href{3_Les_Cartes_de_Controle.pdf}{$\leftarrow$ Cours 3}\qquad\qquad\href{index.pdf}{Sommaire des cours}}
+
+\end{document}

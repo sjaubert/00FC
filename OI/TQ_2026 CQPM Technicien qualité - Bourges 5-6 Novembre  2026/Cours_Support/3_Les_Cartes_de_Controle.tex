@@ -1,0 +1,132 @@
+\documentclass[11pt]{article}
+\usepackage{uimmcours}
+\renewcommand{\coursnumero}{Cours 3/4}
+
+\begin{document}
+
+\coursheader{Cours support – Capabilité \& SPC}{Cours 3 — Les cartes de contrôle}
+{Piloter le procédé dans le temps \quad|\quad Pôle Formation UIMM CVDL – S. Jaubert}
+{Carte $\bar{X}$-R · constantes · 8 règles · zones A/B/C · OCAP · attributs}
+
+\begin{lead}
+\textbf{\color{uimmblue}Le fil du cours.} La capabilité (cours 2) est une photo : le procédé est-il bon aujourd'hui ? La carte de contrôle est le film : le procédé reste-t-il bon dans le temps ? Son rôle unique est de séparer, en direct, le signal (une cause spéciale à traiter) du bruit (les causes communes qu'on laisse tranquilles). C'est l'outil anti-sur-réglage par excellence.
+\end{lead}
+
+\section{Pourquoi une carte plutôt qu'une simple mesure}
+
+Sans repère, tout écart ressemble à un problème, et on est tenté de rerégler à chaque pièce, ce qui dégrade le procédé (cours 1 et 2). La carte de contrôle trace des \textbf{limites naturelles} du procédé, à $\pm 3\sigma$ de sa moyenne. Tant que les points restent dedans et sans motif suspect, c'est du bruit : on ne touche à rien. Un point dehors, ou un motif anormal, c'est un signal : on agit.
+
+\begin{cle}[La distinction qui change tout]
+Les \textbf{limites de contrôle} sont la « voix du procédé » : ce qu'il sait faire, calculé sur ses propres mesures. Les \textbf{tolérances} sont la « voix du client » : ce qu'il exige. Ce sont deux choses différentes, et on ne les mélange jamais sur une carte. Un procédé peut être sous contrôle (stable) tout en étant hors tolérance (non capable), et inversement.
+\end{cle}
+
+\section{La carte $\bar{X}$-R aux mesures}
+
+On prélève régulièrement de petits sous-groupes (souvent $n = 3$ à $5$ pièces consécutives). Pour chacun, on calcule sa moyenne $\bar{X}$ et son étendue $R$. On trace alors deux cartes couplées : une pour la \textbf{position} (les $\bar{X}$), une pour la \textbf{dispersion} (les $R$).
+
+\begin{formulebox}
+Limites de la carte $\bar{X}$ : \quad $\bar{\bar{X}} \pm A_2\,\bar{R}$ \qquad\qquad
+Limites de la carte $R$ : \quad $LCS_R = D_4\,\bar{R} \quad;\quad LCI_R = D_3\,\bar{R}$
+\end{formulebox}
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[width=13.5cm,height=6cm,xmin=0,xmax=13,ymin=9.2,ymax=10.95,
+  axis lines=left,xtick=\empty,ytick=\empty,clip=false,
+  xlabel={\footnotesize\color{uimmgrey}numéro de sous-groupe (temps $\rightarrow$)}]
+\draw[uimmblue,dashed] (axis cs:0,10) -- (axis cs:13,10);
+\draw[red!70,dashed,thick] (axis cs:0,10.6) -- (axis cs:13,10.6);
+\draw[red!70,dashed,thick] (axis cs:0,9.4) -- (axis cs:13,9.4);
+\node[uimmblue,right] at (axis cs:13,10) {\footnotesize $\bar{\bar{X}}$};
+\node[red!70,right] at (axis cs:13,10.6) {\footnotesize LCS};
+\node[red!70,right] at (axis cs:13,9.4) {\footnotesize LCI};
+\addplot[uimmblue,thick,mark=*,mark size=1.4pt] coordinates
+  {(1,10.0)(2,10.2)(3,9.8)(4,10.1)(5,9.9)(6,10.3)(7,10.0)(8,9.7)(9,10.2)(10,10.75)(11,10.1)(12,9.9)};
+\addplot[only marks,red,mark=*,mark size=2.6pt] coordinates {(10,10.75)};
+\node[red,above right] at (axis cs:10,10.75) {\footnotesize alarme};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\begin{center}\footnotesize\color{uimmgrey}Carte $\bar{X}$ : les points parlent tant qu'ils restent dans les limites. Le point hors LCS est un signal à traiter.\end{center}
+
+\section{D'où sortent les constantes}
+
+Les coefficients $A_2$, $D_3$, $D_4$, $d_2$ ne sont pas magiques : ils traduisent l'étendue moyenne $\bar{R}$ en écart-type, puis en limites à $\pm 3\sigma$. Ils ne dépendent que de la taille du sous-groupe.
+
+\begin{uimmtable}{c c c c c}
+\rowcolor{uimmblue}\textcolor{white}{\bfseries $n$} & \textcolor{white}{\bfseries $A_2$} & \textcolor{white}{\bfseries $D_3$} & \textcolor{white}{\bfseries $D_4$} & \textcolor{white}{\bfseries $d_2$}\\
+3 & 1,023 & 0 & 2,575 & 1,693\\
+4 & 0,729 & 0 & 2,282 & 2,059\\
+5 & 0,577 & 0 & 2,115 & 2,326\\
+6 & 0,483 & 0 & 2,004 & 2,534\\
+\end{uimmtable}
+Pour $n \le 6$, $D_3 = 0$ : la carte $R$ n'a pas de limite basse, une étendue nulle (toutes les pièces identiques) n'étant jamais un défaut. Le lien avec la capabilité passe par $d_2$, déjà vu au cours 2 : $\hat{\sigma} = \bar{R}/d_2$.
+
+\begin{cle}[L'ordre de lecture]
+On analyse \textbf{la carte $R$ avant la carte $\bar{X}$}. Si la dispersion ($R$) est instable, l'estimation de $\sigma$ n'est pas fiable, donc les limites de la carte $\bar{X}$ ne veulent rien dire. On stabilise d'abord la dispersion, on juge la position ensuite.
+\end{cle}
+
+\renvoitp{TP 5}{Construction d'une carte $\bar{X}$-R}{Bâtir une carte de A à Z : sous-groupes, $\bar{R}$, constantes, limites. Le geste complet, une fois pour toutes.}{../TP_Activites/TP5_Construction_Carte_XbarR.html}
+
+\section{Lire une carte : les 8 règles}
+
+Un point hors limites n'est pas le seul signal. Des motifs à l'intérieur des limites trahissent aussi une cause spéciale. On découpe chaque moitié de carte en trois zones : \textbf{C} ($\pm 1\sigma$), \textbf{B} ($\pm 2\sigma$), \textbf{A} ($\pm 3\sigma$).
+
+\begin{uimmtable}{c p{0.44\linewidth} p{0.34\linewidth}}
+\rowcolor{uimmblue}\textcolor{white}{\bfseries Règle} & \textcolor{white}{\bfseries Motif} & \textcolor{white}{\bfseries Interprétation}\\
+R1 & 1 point hors $\pm 3\sigma$ & cause spéciale\\
+R2 & 9 points du même côté & changement de niveau\\
+R3 & 6 points croissants ou décroissants & tendance, dérive\\
+R4 & 14 points alternant haut/bas & deux populations\\
+R5 & 2 points sur 3 en zone A & décalage probable\\
+R6 & 4 points sur 5 en zone B ou au-delà & décalage\\
+R7 & 15 points en zone C & stratification\\
+R8 & 8 points hors zone C (alternés) & sur-contrôle\\
+\end{uimmtable}
+Pas besoin de les retenir par cœur : l'idée commune est qu'une répartition trop régulière, trop d'un côté, ou une pente, sont trop improbables sous le seul hasard pour être du bruit.
+
+\renvoitp{TP 6}{Lecture de cartes — normal ou alarme}{S'entraîner à trancher : ce point, ce motif, est-ce du bruit qu'on laisse passer, ou une alarme qui appelle une action ?}{../TP_Activites/TP6_Lecture_Cartes_Normal_Alarme.html}
+
+\section{Réagir sans sur-réagir : l'OCAP}
+
+Détecter une alarme ne sert à rien sans plan de réaction. L'\textbf{OCAP} (Out of Control Action Plan, plan de réaction) est une procédure écrite d'avance : quand telle alarme tombe, qui vérifie quoi, dans quel ordre, et qui décide de l'arrêt. Il évite les deux erreurs symétriques : ignorer un vrai signal, ou s'agiter sur un faux.
+
+\renvoitp{TP 10}{OCAP — réaction à une alarme}{Construire et dérouler un plan de réaction : transformer une alarme en actions ordonnées plutôt qu'en panique.}{../TP_Activites/TP10_OCAP_Reaction_Alarme.html}
+
+\section{Quand on compte au lieu de mesurer : les cartes aux attributs}
+
+Toutes les caractéristiques ne se mesurent pas. Parfois on constate seulement conforme ou non conforme, présence ou absence d'un défaut. On utilise alors les cartes aux attributs.
+
+\begin{uimmtable}{c p{0.34\linewidth} c c}
+\rowcolor{uimmblue}\textcolor{white}{\bfseries Carte} & \textcolor{white}{\bfseries Ce qu'on suit} & \textcolor{white}{\bfseries Taille} & \textcolor{white}{\bfseries Loi}\\
+p  & proportion de non-conformes & variable & binomiale\\
+np & nombre de non-conformes & fixe & binomiale\\
+c  & nombre de défauts par unité & fixe & Poisson\\
+u  & taux de défauts par unité & variable & Poisson\\
+\end{uimmtable}
+\begin{formulebox}
+Carte $p$ : \quad $\bar{p} \pm 3\sqrt{\dfrac{\bar{p}(1-\bar{p})}{n}}$ \qquad\qquad
+Carte $c$ : \quad $\bar{c} \pm 3\sqrt{\bar{c}}$
+\end{formulebox}
+Compter est moins riche que mesurer : il faut de plus grands échantillons ($n \ge 50$ pour une carte $p$) pour un signal fiable.
+
+\renvoitp{TP 11}{Cartes aux attributs — p et c}{Construire une carte $p$ et une carte $c$, choisir la bonne selon qu'on compte des pièces non conformes ou des défauts.}{../TP_Activites/TP11_Carte_Attributs_P_C.html}
+
+\begin{plusloin}
+Un exemple entièrement corrigé de cartes de Shewhart, avec le détail des calculs et l'interprétation, est disponible dans \href{https://sjaubert.github.io/SPCR/TP_cartes_Shewhart.html}{Correction sur les cartes de Shewhart} du site SPCR.
+\end{plusloin}
+
+\section*{\color{uimmblue}À retenir}
+\begin{itemize}
+\item La carte de contrôle sépare le signal (cause spéciale) du bruit (causes communes) dans le temps.
+\item Limites de contrôle (voix du procédé, $\pm 3\sigma$) $\ne$ tolérances (voix du client). Jamais mélangées.
+\item Carte $\bar{X}$-R : $\bar{\bar{X}} \pm A_2\bar{R}$ et $D_3\bar{R}$ / $D_4\bar{R}$. On lit la carte $R$ avant la carte $\bar{X}$.
+\item Un point hors limites, mais aussi 8 motifs (règles R1 à R8, zones A/B/C), signalent une cause spéciale.
+\item Une alarme se traite avec un OCAP écrit d'avance. Compter (attributs) demande de plus gros échantillons que mesurer.
+\end{itemize}
+
+\vfill
+\noindent\hrulefill\\[2pt]
+{\footnotesize\color{uimmgrey}\href{2_La_Capabilite.pdf}{$\leftarrow$ Cours 2}\qquad\qquad\href{4_La_Confiance_dans_la_Mesure_MSA.pdf}{Cours 4 — La confiance dans la mesure $\rightarrow$}}
+
+\end{document}

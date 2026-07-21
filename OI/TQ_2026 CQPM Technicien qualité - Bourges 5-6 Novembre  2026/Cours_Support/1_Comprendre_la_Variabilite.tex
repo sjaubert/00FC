@@ -1,0 +1,149 @@
+\documentclass[11pt]{article}
+\usepackage{uimmcours}
+\renewcommand{\coursnumero}{Cours 1/4}
+
+\begin{document}
+
+\coursheader{Cours support – Capabilité \& SPC}{Cours 1 — Comprendre la variabilité}
+{Le socle avant tout calcul \quad|\quad Pôle Formation UIMM CVDL – S. Jaubert}
+{Causes communes et spéciales · Moyenne, étendue, écart-type · Loi normale · Normalité}
+
+\begin{lead}
+\textbf{\color{uimmblue}Pourquoi ce cours.} Les TP te donnent les formules et te font calculer. Ici, on prend le temps du \emph{sens}. Avant de parler de $C_p$, de $C_{pk}$ ou de cartes de contrôle, il faut être au clair sur une seule idée : tout procédé produit de la variabilité, et cette variabilité obéit à des lois. Comprendre ces lois, c'est comprendre tout le reste.
+\end{lead}
+
+\section{Rien n'est jamais deux fois identique}
+
+Prends 30 pièces qui sortent de la même machine, réglée sur la même cote. Mesure-les au micron. Tu n'obtiendras jamais 30 fois la même valeur. Les nombres se serrent autour d'une valeur centrale, mais ils se dispersent.
+
+Cette dispersion n'est pas un défaut de la mesure ni une malchance. C'est une propriété du procédé. La vraie question n'est donc pas «~y a-t-il de la variation~?~» (la réponse est toujours oui), mais~:
+
+\begin{itemize}
+\item \textbf{Combien} de variation ? C'est la question de la dispersion.
+\item \textbf{D'où} vient-elle ? C'est la question des causes.
+\item Est-elle \textbf{compatible} avec ce que le client tolère ? C'est la question de la capabilité (cours 2).
+\end{itemize}
+
+\section{Deux familles de causes : communes et spéciales}
+
+Walter Shewhart, puis W.~E.~Deming, ont posé une distinction qui commande toute la démarche SPC.
+
+\begin{uimmtable}{p{0.46\linewidth} p{0.46\linewidth}}
+\rowcolor{uimmblue}\textcolor{white}{\bfseries Causes communes} & \textcolor{white}{\bfseries Causes spéciales}\\
+Le bruit de fond du procédé, présent en permanence. & Un événement précis et identifiable.\\
+Nombreuses, petites, sans coupable unique. & Rare, isolée, avec une origine repérable.\\
+Jeu dans une glissière, micro-variations de matière, de température. & Outil cassé, mauvais lot de matière, erreur de réglage.\\
+Procédé dit \textbf{stable} (sous contrôle). & Procédé \textbf{instable}.\\
+\end{uimmtable}
+
+\begin{cle}[La règle d'or]
+On ne règle jamais un procédé qui ne subit que des causes communes. Réagir à chaque petit écart d'un procédé stable, c'est du \emph{sur-réglage} : loin de corriger, on ajoute de la variation. On ne «~chasse~» que les causes spéciales.
+\end{cle}
+
+Cette idée est contre-intuitive. La meilleure façon de la comprendre est de la vivre, entonnoir en main.
+
+\renvoitp{TP 8}{Entonnoir de Deming : le piège du sur-réglage}{Manip physique sans calcul. Tu lâches une bille selon 4 stratégies de réglage et tu vois, de tes yeux, comment «~corriger~» un procédé stable dégrade le résultat.}{../TP_Activites/TP08_Entonnoir_Deming_Sur-reglage.html}
+
+\section{Décrire un lot avec trois nombres}
+
+Pour parler d'un ensemble de mesures, trois grandeurs suffisent à démarrer.
+
+\subsection{La moyenne : où se situe le procédé}
+\begin{formulebox}
+$\displaystyle \bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$
+\end{formulebox}
+Elle donne la \textbf{position} du nuage de points~: «~en moyenne, on tombe où~?~». À elle seule, elle ne dit rien de la dispersion.
+
+\subsection{L'étendue : la mesure la plus simple de la dispersion}
+\begin{formulebox}
+$\displaystyle R = x_{\max} - x_{\min}$
+\end{formulebox}
+Facile à calculer à la main, l'étendue est la largeur brute d'un petit échantillon. C'est elle qu'on utilise sur les cartes de contrôle (cours 3), justement parce qu'elle est rapide à l'atelier.
+
+\subsection{L'écart-type : la dispersion « moyenne »}
+L'écart-type mesure de combien, en moyenne, les valeurs s'écartent de la moyenne. C'est l'indicateur central de toute la capabilité.
+\begin{formulebox}
+$\displaystyle s = \sqrt{\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}}$
+\end{formulebox}
+On divise par $n-1$ et non par $n$ : quand on estime la dispersion d'un procédé à partir d'un échantillon, ce correctif évite de sous-estimer la vraie dispersion. Sur la population complète, on parle de $\sigma$.
+
+\begin{cle}[Idée clé]
+\textbf{Moyenne et écart-type sont indépendants.} Deux procédés peuvent avoir la même moyenne et des dispersions très différentes, ou la même dispersion et des positions différentes. La qualité se joue sur les deux : être \emph{bien placé} (centré) \textbf{et} \emph{peu dispersé}.
+\end{cle}
+
+\section{La loi normale et la règle des 6 sigma}
+
+Quand un procédé n'est soumis qu'à des causes communes, ses mesures se répartissent le plus souvent selon une courbe en cloche : la \textbf{loi normale}. Elle est symétrique autour de la moyenne, et sa largeur est entièrement fixée par l'écart-type.
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[width=13.5cm,height=6.2cm,axis lines=none,ymin=0,ymax=0.45,
+  xmin=-4,xmax=4,domain=-4:4,samples=140,clip=false]
+\addplot[uimmcyan,thick,fill=uimmcyan!12] {exp(-x^2/2)/sqrt(2*pi)} \closedcycle;
+\draw[uimmblue,dashed,thick] (axis cs:0,0) -- (axis cs:0,0.399);
+\draw[gray!55] (axis cs:-1,0) -- (axis cs:-1,0.242);
+\draw[gray!55] (axis cs:1,0)  -- (axis cs:1,0.242);
+\draw[gray!55] (axis cs:-2,0) -- (axis cs:-2,0.054);
+\draw[gray!55] (axis cs:2,0)  -- (axis cs:2,0.054);
+\draw[gray!55] (axis cs:-3,0) -- (axis cs:-3,0.0044);
+\draw[gray!55] (axis cs:3,0)  -- (axis cs:3,0.0044);
+\node[below] at (axis cs:0,0)  {\footnotesize$\mu$};
+\node[below] at (axis cs:-1,0) {\footnotesize$-1\sigma$};
+\node[below] at (axis cs:1,0)  {\footnotesize$+1\sigma$};
+\node[below] at (axis cs:-2,0) {\footnotesize$-2\sigma$};
+\node[below] at (axis cs:2,0)  {\footnotesize$+2\sigma$};
+\node[below] at (axis cs:-3,0) {\footnotesize$-3\sigma$};
+\node[below] at (axis cs:3,0)  {\footnotesize$+3\sigma$};
+\node[uimmblue] at (axis cs:0,0.20) {\footnotesize\bfseries 68,3\,\%};
+\node[uimmblue] at (axis cs:0,0.115){\footnotesize 95,4\,\%};
+\node[uimmblue] at (axis cs:0,0.048){\footnotesize 99,73\,\%};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\begin{center}\footnotesize\color{uimmgrey}Répartition des mesures d'un procédé stable. La largeur $\pm 3\sigma$ contient 99,73~\% de la production.\end{center}
+
+\begin{uimmtable}{l c p{0.42\linewidth}}
+\rowcolor{uimmblue}\textcolor{white}{\bfseries Intervalle} & \textcolor{white}{\bfseries Production} & \textcolor{white}{\bfseries Ce qui sort}\\
+$\pm 1\sigma$ & 68,3\,\% & $\approx$ 1 pièce sur 3 hors de l'intervalle\\
+$\pm 2\sigma$ & 95,4\,\% & $\approx$ 1 pièce sur 22\\
+$\pm 3\sigma$ & 99,73\,\% & $\approx$ 2,7 pièces sur 1000\\
+\end{uimmtable}
+
+De $-3\sigma$ à $+3\sigma$, on couvre \textbf{$6\sigma$} : c'est la «~largeur naturelle~» d'un procédé, la place qu'il occupe vraiment. Retiens ce chiffre. Toute la capabilité consiste à comparer cette largeur naturelle de $6\sigma$ à la largeur que le client autorise, la tolérance. C'est exactement le sujet du cours 2.
+
+Pour poser ces notions sur des données concrètes, avant tout indice, le TP1 fait le tour de la variabilité et de sa lecture.
+
+\renvoitp{TP 1}{Découverte de la variabilité}{Premier contact avec des mesures réelles : moyenne, étendue, dispersion, et lecture d'un nuage de points.}{../TP_Activites/TP1_Decouverte_Variabilite.html}
+
+\section{Vérifier que la loi normale s'applique vraiment}
+
+Tout ce qui précède, et presque tous les indices de capabilité, reposent sur une hypothèse : les mesures suivent une loi normale. Ce n'est pas toujours vrai. Une cote bornée (une excentration, une planéité qui ne peut pas être négative), un mélange de deux réglages ou un tri en amont peuvent casser la normalité.
+
+D'où un réflexe avant de calculer un $C_p$ ou un $C_{pk}$ : \textbf{vérifier la normalité}. Deux outils simples :
+
+\begin{itemize}
+\item L'\textbf{histogramme} : la forme en cloche est-elle là, à peu près symétrique, à un seul sommet ?
+\item La \textbf{droite de Henry} : on place les mesures sur un repère spécial où une loi normale donne des points alignés. Si les points suivent la droite, la normalité est plausible. S'ils s'en écartent en courbe ou en marche d'escalier, il faut se méfier.
+\end{itemize}
+
+\renvoitp{TP 12}{Normalité et droite de Henry}{Construire et lire une droite de Henry, décider si l'hypothèse de normalité tient avant de qualifier un procédé.}{../TP_Activites/TP12_Normalite_Droite_Henry.html}
+
+\begin{plusloin}
+Le fondement mathématique de la normalité et son rôle dans les indices sont détaillés dans le chapitre \href{https://sjaubert.github.io/SPCR/capability.html}{Capability — cas normal} du site SPCR.\\[3pt]
+Quand la normalité ne tient pas, la capabilité se calcule autrement : voir \href{https://sjaubert.github.io/SPCR/Capability_non_normal_data.html}{Capability — cas non normal}.
+\end{plusloin}
+
+\section*{\color{uimmblue}À retenir}
+\begin{itemize}
+\item La variabilité est inévitable ; elle se mesure (dispersion) et elle a des causes.
+\item Causes communes = bruit de fond du procédé stable. Causes spéciales = événement identifiable. On ne règle pas les premières, on chasse les secondes.
+\item Trois nombres pour commencer : moyenne (position), étendue $R$ (dispersion simple), écart-type $\sigma$ (dispersion moyenne).
+\item Un procédé stable suit une loi normale : $\pm 3\sigma$ couvre 99,73~\%, soit une largeur naturelle de $6\sigma$.
+\item Avant tout indice de capabilité, on vérifie la normalité (histogramme, droite de Henry).
+\end{itemize}
+
+\vfill
+\noindent\hrulefill\\[2pt]
+{\footnotesize\color{uimmgrey}\href{2_La_Capabilite.pdf}{Cours suivant : Cours 2 — La capabilité $\rightarrow$}}
+
+\end{document}
