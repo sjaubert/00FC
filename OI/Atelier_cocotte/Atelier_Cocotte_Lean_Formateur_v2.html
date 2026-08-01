@@ -1,0 +1,2371 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Atelier Cocotte LEAN, Le Contrat Cadencé, Guide Formateur</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <style>
+   /* === BASE === */
+      :root {
+        --color-bg: #ffffff;
+        --color-text: #1a1a2e;
+        --color-heading: #16213e;
+        --color-accent: #0f3460;
+        --color-accent-light: #e8eef6;
+        --color-border: #d1d5db;
+        --color-table-header: #16213e;
+        --color-table-stripe: #f8f9fc;
+        --color-link: #2563eb;
+        --color-note-bg: #eff6ff;
+        --color-note-border: #3b82f6;
+        --color-tip-bg: #f0fdf4;
+        --color-tip-border: #22c55e;
+        --color-warning-bg: #fefce8;
+        --color-warning-border: #eab308;
+        --color-important-bg: #fef2f2;
+        --color-important-border: #ef4444;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 15px;
+        line-height: 1.7;
+        color: var(--color-text);
+        background: var(--color-bg);
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 2rem 2.5rem;
+      }
+
+      /* === HEADINGS === */
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: var(--color-heading);
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.3;
+      }
+
+      h1 {
+        font-size: 1.9rem;
+        border-bottom: 3px solid var(--color-accent);
+        padding-bottom: 0.5rem;
+      }
+
+      h2 {
+        font-size: 1.45rem;
+        border-bottom: 2px solid var(--color-border);
+        padding-bottom: 0.4rem;
+      }
+
+      h3 {
+        font-size: 1.15rem;
+        color: var(--color-accent);
+      }
+
+      h4 {
+        font-size: 1rem;
+      }
+
+      header#title-block-header {
+        display: none;
+      }
+
+      /* === TABLES === */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.2rem 0;
+        font-size: 0.92rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        border-radius: 6px;
+        overflow: hidden;
+      }
+
+      thead tr {
+        background: var(--color-table-header);
+        color: #fff;
+      }
+
+      thead th {
+        padding: 0.7rem 0.9rem;
+        font-weight: 600;
+        text-transform: none;
+        letter-spacing: 0.02em;
+        border: none;
+      }
+
+      tbody td {
+        padding: 0.6rem 0.9rem;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      tbody tr:nth-child(even) {
+        background: var(--color-table-stripe);
+      }
+
+      tbody tr:hover {
+        background: #eef2ff;
+      }
+
+      /* === BLOCKQUOTES / ALERTS === */
+      blockquote {
+        margin: 1.2rem 0;
+        padding: 1rem 1.2rem;
+        border-left: 4px solid var(--color-note-border);
+        background: var(--color-note-bg);
+        border-radius: 4px;
+        font-size: 0.95rem;
+      }
+
+      blockquote p {
+        margin: 0.4rem 0;
+      }
+
+      /* === CODE === */
+      pre {
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 1.2rem 1.4rem;
+        border-radius: 6px;
+        overflow-x: auto;
+        font-size: 0.88rem;
+        line-height: 1.5;
+        margin: 1rem 0;
+      }
+
+      code {
+        font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+        white-space: pre-wrap;
+      }
+
+      :not(pre)>code {
+        background: #f1f5f9;
+        padding: 0.15em 0.4em;
+        border-radius: 3px;
+        font-size: 0.9em;
+        color: #334155;
+      }
+
+      /* === LISTS === */
+      ul,
+      ol {
+        padding-left: 1.5rem;
+      }
+
+      li {
+        margin-bottom: 0.3rem;
+      }
+
+      ul.task-list[class] {
+        list-style: none;
+        padding-left: 0.5rem;
+      }
+
+      ul.task-list li input[type="checkbox"] {
+        font-size: inherit;
+        width: 1em;
+        height: 1em;
+        margin: 0 0.6em 0.2em 0;
+        vertical-align: middle;
+        accent-color: var(--color-accent);
+      }
+
+      /* === HORIZONTAL RULES === */
+      hr {
+        border: none;
+        border-top: 2px solid #e5e7eb;
+        margin: 2rem 0;
+      }
+
+      /* === MATH === */
+      .math.display {
+        overflow-x: auto;
+        margin: 1rem 0;
+        padding: 0.5rem;
+        background: #fafbfd;
+        border-radius: 4px;
+        border: 1px solid #e5e7eb;
+      }
+
+      /* === STRONG / EM === */
+      strong {
+        color: var(--color-heading);
+      }
+
+      /* === LINKS === */
+      a {
+        color: var(--color-link);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* === LOGO HEADER === */
+      .logo-header {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid var(--color-border);
+      }
+
+      .logo-header img {
+        max-width: 180px;
+        height: auto;
+        margin-bottom: 0.5rem;
+      }
+
+      .logo-header .structure-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--color-accent);
+      }
+
+      /* === PAGE BREAKS === */
+      .page-break {
+        page-break-before: always;
+      }
+
+      /* === FOLDING IMAGE === */
+      .folding-image {
+        text-align: center;
+        margin: 1.5rem 0;
+      }
+
+      .folding-image img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid var(--color-border);
+        border-radius: 6px;
+      }
+
+      /* === TAKT TIME HIGHLIGHT === */
+      .takt-highlight {
+        background: #fef3c7;
+        border: 2px solid #f59e0b;
+        border-radius: 8px;
+        padding: 1rem 1.5rem;
+        margin: 1.2rem 0;
+      }
+
+      .takt-highlight table {
+        box-shadow: none;
+        margin: 0.8rem 0;
+      }
+
+      .takt-highlight p {
+        margin: 0.3rem 0;
+      }
+
+      /* === PRINT === */
+      @media print {
+        body {
+          max-width: 100%;
+          padding: 0.5cm;
+          font-size: 11pt;
+        }
+
+        pre {
+          background: #f8f9fa !important;
+          color: #1a1a2e !important;
+          border: 1px solid #ccc;
+        }
+
+        table {
+          box-shadow: none;
+        }
+
+        thead tr {
+          background: #333 !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        h1,
+        h2 {
+          page-break-after: avoid;
+        }
+
+        h2.page-break {
+          page-break-before: always;
+        }
+
+        table,
+        pre {
+          page-break-inside: avoid;
+        }
+      }
+
+      /* === RESPONSIVE === */
+      @media (max-width: 768px) {
+        body {
+          padding: 1rem;
+          font-size: 14px;
+        }
+
+        table {
+          font-size: 0.85rem;
+        }
+
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        h2 {
+          font-size: 1.25rem;
+        }
+      } 
+      /* === ALERTES (ajout v2) === */
+      .alert {
+        border-left: 4px solid;
+        border-radius: 6px;
+        padding: 0.85rem 1.1rem;
+        margin: 1.3rem 0;
+      }
+
+      .alert > p:first-child {
+        margin-top: 0;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+      }
+
+      .alert > p:last-child {
+        margin-bottom: 0;
+      }
+
+      .alert table {
+        box-shadow: none;
+        margin: 0.8rem 0;
+      }
+
+      .alert-note {
+        background: var(--color-note-bg);
+        border-color: var(--color-note-border);
+      }
+
+      .alert-note > p:first-child {
+        color: var(--color-note-border);
+      }
+
+      .alert-tip {
+        background: var(--color-tip-bg);
+        border-color: var(--color-tip-border);
+      }
+
+      .alert-tip > p:first-child {
+        color: #15803d;
+      }
+
+      .alert-warning,
+      .alert-caution {
+        background: var(--color-warning-bg);
+        border-color: var(--color-warning-border);
+      }
+
+      .alert-warning > p:first-child,
+      .alert-caution > p:first-child {
+        color: #a16207;
+      }
+
+      .alert-important {
+        background: var(--color-important-bg);
+        border-color: var(--color-important-border);
+      }
+
+      .alert-important > p:first-child {
+        color: var(--color-important-border);
+      }
+
+      /* === REPERES DE VERSION === */
+      .version-badge {
+        display: inline-block;
+        background: var(--color-accent);
+        color: #fff;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        vertical-align: middle;
+        margin-left: 0.5rem;
+      }
+
+      /* === SOMMAIRE (ajout v2) === */
+      nav#TOC {
+        background: var(--color-accent-light);
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        padding: 1.1rem 1.5rem 1.3rem;
+        margin: 1.5rem 0 2.5rem;
+      }
+
+      nav#TOC > h2 {
+        margin: 0 0 0.6rem;
+        font-size: 1.05rem;
+        border: none;
+        padding: 0;
+        color: var(--color-accent);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      nav#TOC ul {
+        list-style: none;
+        margin: 0;
+        padding-left: 0;
+        columns: 2;
+        column-gap: 2.5rem;
+      }
+
+      nav#TOC ul ul {
+        display: none;
+      }
+
+      nav#TOC li {
+        margin: 0.22rem 0;
+        break-inside: avoid;
+      }
+
+      nav#TOC a {
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
+      nav#TOC a:hover {
+        text-decoration: underline;
+      }
+
+      @media print {
+        nav#TOC {
+          break-after: page;
+        }
+      }
+
+  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<div class="logo-header"><img src="logo_uimm_placeholder.jpg" alt="Logo UIMM" /><div class="structure-name">Pôle Formation UIMM - CVDL</div></div>
+<header id="title-block-header">
+<h1 class="title">Atelier Cocotte LEAN, Le Contrat Cadencé, Guide
+Formateur</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 class="page-break" id="toc-title">Sommaire</h2>
+<ul>
+<li><a href="#atelier-cocotte-lean-le-contrat-cadencé"
+id="toc-atelier-cocotte-lean-le-contrat-cadencé">Atelier Cocotte LEAN, «
+Le Contrat Cadencé »</a>
+<ul>
+<li><a href="#guide-formateur-version-2.0"
+id="toc-guide-formateur-version-2.0">Guide Formateur, version
+2.0</a></li>
+<li><a href="#pourquoi-la-version-1-échouait"
+id="toc-pourquoi-la-version-1-échouait">1. Pourquoi la version 1
+échouait</a></li>
+<li><a href="#le-scénario" id="toc-le-scénario">2. Le scénario</a></li>
+<li><a href="#le-protocole-de-mesure" id="toc-le-protocole-de-mesure">3.
+Le protocole de mesure</a></li>
+<li><a href="#organisation-et-rôles" id="toc-organisation-et-rôles">4.
+Organisation et rôles</a></li>
+<li><a href="#standard-de-pliage-fip" id="toc-standard-de-pliage-fip">5.
+Standard de pliage (FIP)</a></li>
+<li><a href="#round-1-flux-poussé-transfert-par-lots-de-5"
+id="toc-round-1-flux-poussé-transfert-par-lots-de-5">6. Round 1 : Flux
+poussé, transfert par lots de 5</a></li>
+<li><a href="#round-2-flux-tiré-conwip-à-6-jetons"
+id="toc-round-2-flux-tiré-conwip-à-6-jetons">7. Round 2 : Flux tiré,
+CONWIP à 6 jetons</a></li>
+<li><a href="#chantier-kaizen-45-minutes"
+id="toc-chantier-kaizen-45-minutes">8. Chantier Kaizen : 45
+minutes</a></li>
+<li><a href="#round-3-ligne-équilibrée-conwip-à-4-jetons"
+id="toc-round-3-ligne-équilibrée-conwip-à-4-jetons">9. Round 3 : Ligne
+équilibrée, CONWIP à 4 jetons</a></li>
+<li><a href="#synthèse-30-minutes" id="toc-synthèse-30-minutes">10.
+Synthèse : 30 minutes</a></li>
+<li><a href="#déroulé-de-la-journée" id="toc-déroulé-de-la-journée">11.
+Déroulé de la journée</a></li>
+<li><a href="#matériel" id="toc-matériel">12. Matériel</a></li>
+<li><a href="#annexes" id="toc-annexes">13. Annexes</a></li>
+<li><a href="#objectifs-pédagogiques-évaluables"
+id="toc-objectifs-pédagogiques-évaluables">14. Objectifs pédagogiques
+évaluables</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="atelier-cocotte-lean-le-contrat-cadencé">Atelier Cocotte LEAN, «
+Le Contrat Cadencé »</h1>
+<h2 class="page-break" id="guide-formateur-version-2.0">Guide Formateur, version 2.0</h2>
+<div class="alert alert-important">
+<p>Important</p>
+<p><strong>Ce que cette version change.</strong> La v1 mesurait le Lead
+Time par la loi de Little, à partir d’un WIP compté à la volée. Le
+calcul ne tenait pas : la loi de Little suppose un régime permanent, or
+un round de 20 minutes en flux poussé n’atteint jamais ce régime. La v2
+mesure les trois indicateurs séparément et n’utilise la loi de Little
+qu’en fin de journée, comme test de cohérence. C’est plus rigoureux, et
+c’est devenu un temps fort du débriefing.</p>
+</div>
+<hr />
+<h2 class="page-break" id="pourquoi-la-version-1-échouait">1. Pourquoi la version 1
+échouait</h2>
+<p>Un point d’arithmétique avant tout le reste, parce qu’il explique
+l’essentiel des séances ratées.</p>
+<p>La v1 utilisait 5 postes de temps de cycle 25, 35, 40, 20 et 30
+secondes, soit 150 secondes de contenu travail, avec des transferts par
+lots de 10 et un round de 20 minutes.</p>
+<p>En flux poussé par lots, la première pièce ne peut sortir du dernier
+poste qu’après que chaque poste ait traité son lot complet :</p>
+<p><span class="math display">\[
+10 \times 25 + 10 \times 35 + 10 \times 40 + 10 \times 20 + 10 \times 30
+= 1\,500\ \text{s} = 25\ \text{min}
+\]</span></p>
+<p><strong>Le round durait 20 minutes. Aucune cocotte ne
+sortait.</strong> Production nulle, taux de qualité indéfini, Lead Time
+non mesurable. L’atelier ne pouvait produire aucune donnée exploitable,
+quelle que soit l’énergie mise par le groupe.</p>
+<p>Trois autres incohérences accompagnaient celle-là :</p>
+<table>
+<colgroup>
+<col style="width: 64%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Affirmation v1</th>
+<th style="text-align: left;">Réalité</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Round 1 : 45 cocottes, débit 2,3 /min</td>
+<td style="text-align: left;">Le goulot à 40 s plafonne le débit à 1,5
+/min</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Round 3 : débit 3,4 /min</td>
+<td style="text-align: left;">Exigerait un goulot à 17,6 s sur 5
+postes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Takt Time de 36 s</td>
+<td style="text-align: left;">Inférieur au goulot de 40 s : demande
+inatteignable avant même le Kaizen</td>
+</tr>
+</tbody>
+</table>
+<p>La v2 repose sur un modèle vérifié par simulation à événements
+discrets, avec variabilité opératoire et taux de rebut. Les valeurs
+attendues données dans ce guide en sont issues.</p>
+<div class="alert alert-note">
+<p>Note</p>
+<p><strong>Statut des chiffres.</strong> Les valeurs « attendues » de ce
+document sont des résultats de simulation, moyennés sur 200 réplications
+avec une variabilité de 12 à 18 % sur les temps opératoires. Ce ne sont
+pas des relevés terrain. Elles servent au formateur à savoir si sa
+séance dérive, pas à être annoncées comme vérité aux participants.</p>
+</div>
+<hr />
+<h2 class="page-break" id="le-scénario">2. Le scénario</h2>
+<h3 id="le-contrat">2.1 Le contrat</h3>
+<p>L’atelier est présenté comme un sous-traitant de rang 2 qui vient de
+décrocher un contrat cadencé. Le formateur incarne le donneur d’ordre au
+premier round, puis délègue ce rôle à un participant.</p>
+<p>Les termes du contrat sont affichés au mur pendant toute la journée
+:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Clause</th>
+<th style="text-align: left;">Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Volume par vacation</strong></td>
+<td style="text-align: left;">24 pièces conformes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Durée de la vacation</strong></td>
+<td style="text-align: left;">16 minutes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Enlèvements</strong></td>
+<td style="text-align: left;">1 camion toutes les 4 minutes, 6 pièces
+par camion</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Qualité</strong></td>
+<td style="text-align: left;">Zéro défaut accepté, tri à la charge du
+fournisseur</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Retard</strong></td>
+<td style="text-align: left;">Toute pièce manquante à l’enlèvement est
+reportée et reste due</td>
+</tr>
+</tbody>
+</table>
+<p>Le <strong>Takt Time</strong> découle directement du contrat :</p>
+<p><span class="math display">\[
+\text{Takt Time} = \frac{\text{Temps disponible}}{\text{Demande client}}
+= \frac{16 \times 60}{24} = 40\ \text{s/pièce}
+\]</span></p>
+<h3 id="pourquoi-ce-dispositif-fonctionne">2.2 Pourquoi ce dispositif
+fonctionne</h3>
+<p>Le camion transforme le takt time en événement physique. Un
+participant ne retient pas une division, il retient un carton vide qui
+part sans lui. Au round 1, les deux premiers camions partent à vide et
+le troisième repart à moitié plein. Personne ne conteste ensuite
+l’intérêt du flux tiré.</p>
+<p>Le rôle de client, joué par un participant, produit le second effet :
+quelqu’un refuse physiquement les pièces non conformes, devant tout le
+monde. Le taux de qualité cesse d’être une case à remplir.</p>
+<hr />
+<h2 class="page-break" id="le-protocole-de-mesure">3. Le protocole de mesure</h2>
+<p>C’est le cœur de la refonte. Trois problèmes de la v1 sont traités
+par un seul objet : le jeton.</p>
+<h3 id="le-jeton-suiveur">3.1 Le jeton suiveur</h3>
+<p>Chaque pièce lancée en production reçoit un <strong>jeton
+numéroté</strong> (carton plastifié, numéros 1 à 60), fixé par un
+trombone et qui voyage avec elle jusqu’à la sortie.</p>
+<p>Le jeton résout trois choses à la fois :</p>
+<table>
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Problème v1</th>
+<th style="text-align: left;">Ce que le jeton apporte</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Lead Time calculé indirectement, résultat
+aberrant</td>
+<td style="text-align: left;">Mesure directe : heure d’entrée et heure
+de sortie relevées sur registre</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">En-cours difficiles à faire
+apparaître</td>
+<td style="text-align: left;">WIP = nombre de jetons absents du tableau,
+lisible en une seconde</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Kanban abstrait au round 2</td>
+<td style="text-align: left;">Limiter le nombre de jetons plafonne
+physiquement le WIP (mécanisme <strong>CONWIP</strong>)</td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-tip">
+<p>Conseil</p>
+<p><strong>Le tableau des jetons</strong> est un simple panneau A3 avec
+60 emplacements numérotés. Un jeton sur le panneau signifie une place
+libre dans le système. Un emplacement vide signifie une pièce en cours
+quelque part sur la ligne. En un coup d’œil, sans compter, le groupe
+voit le WIP monter au round 1 et rester plat au round 2.</p>
+</div>
+<h3 id="les-deux-registres">3.2 Les deux registres</h3>
+<p><strong>Registre de lancement</strong>, tenu par le Lanceur : numéro
+de jeton, heure de lancement en mm:ss.</p>
+<p><strong>Registre d’expédition</strong>, tenu par le Client : numéro
+de jeton, heure de sortie, conforme oui ou non, motif de rejet.</p>
+<p>La base de temps est un <strong>chronomètre projeté au mur</strong>
+en mm:ss, démarré au top départ et visible depuis tous les postes. Un
+chronomètre de smartphone affiché au vidéoprojecteur suffit.</p>
+<p>Le Lead Time de chaque pièce s’obtient par simple soustraction. On
+dispose ainsi d’une distribution complète, pas d’une moyenne
+devinée.</p>
+<h3 id="les-zones-den-cours">3.3 Les zones d’en-cours</h3>
+<p>Entre chaque poste, une feuille A3 posée sur la table, marquée
+<strong>ZONE D’EN-COURS P1 → P2</strong>, et ainsi de suite. Règle
+absolue : une pièce en attente est dans la zone, jamais ailleurs.</p>
+<p>Cette contrainte matérielle est ce qui rend les stocks visibles. Sans
+elle, les piles se dispersent et l’effet visuel disparaît. C’est le
+point que la v1 ratait.</p>
+<p>Au signal STOP, chaque zone est comptée séparément. Le profil
+d’en-cours poste par poste désigne le goulot sans aucun calcul.</p>
+<h3 id="ce-que-chaque-indicateur-mesure-et-comment">3.4 Ce que chaque
+indicateur mesure, et comment</h3>
+<table>
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 25%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicateur</th>
+<th style="text-align: left;">Source</th>
+<th style="text-align: left;">Qui relève</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Takt Time</strong></td>
+<td style="text-align: left;">Imposé par le contrat, non mesuré</td>
+<td style="text-align: left;">Formateur, affiché</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Temps de cycle par
+poste</strong></td>
+<td style="text-align: left;">Chronométrage de 5 cycles consécutifs, on
+retient la <strong>médiane</strong></td>
+<td style="text-align: left;">Chronométreur</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Temps de cycle de la
+ligne</strong></td>
+<td style="text-align: left;">Durée du round divisée par le nombre de
+pièces sorties</td>
+<td style="text-align: left;">Client</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Lead Time</strong></td>
+<td style="text-align: left;">Heure de sortie moins heure d’entrée, par
+pièce</td>
+<td style="text-align: left;">Calculé après coup</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>WIP</strong></td>
+<td style="text-align: left;">Comptage par zone au signal STOP</td>
+<td style="text-align: left;">Observateur</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Débit</strong></td>
+<td style="text-align: left;">Pièces sorties divisées par la durée</td>
+<td style="text-align: left;">Calculé</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Taux de service</strong></td>
+<td style="text-align: left;">Pièces livrées à l’heure sur pièces
+dues</td>
+<td style="text-align: left;">Client</td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-note">
+<p>Note</p>
+<p><strong>Médiane et non moyenne</strong> pour les temps de cycle. Sur
+5 relevés, un incident unique (chute de ciseaux, question posée au
+voisin) déforme la moyenne de 20 à 30 %. La médiane l’ignore. C’est
+aussi un point de méthode qui parle à un public industriel habitué aux
+relevés de production.</p>
+</div>
+<hr />
+<h2 class="page-break" id="organisation-et-rôles">4. Organisation et rôles</h2>
+<h3 id="une-seule-ligne-de-6-à-8-participants">4.1 Une seule ligne, de 6
+à 8 participants</h3>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 40%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Rôle</th>
+<th style="text-align: center;">Effectif</th>
+<th style="text-align: left;">Mission</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Opérateur P1 à P4</strong></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: left;">Production</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Lanceur</strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">Attribue les jetons, tient le registre de
+lancement, gère le stock matière</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Client / Expéditeur</strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">Contrôle final, tient le registre
+d’expédition, charge les camions, refuse les non-conformes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Chronométreur</strong></td>
+<td style="text-align: center;">0 ou 1</td>
+<td style="text-align: left;">Relève les temps de cycle poste par
+poste</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Observateur</strong></td>
+<td style="text-align: center;">0 ou 1</td>
+<td style="text-align: left;">Compte les en-cours par zone, remplit la
+grille d’observation des comportements</td>
+</tr>
+</tbody>
+</table>
+<p>À 6 participants, le formateur assure chronométrage et observation. À
+7, il ne garde que l’observation. À 8, il est libre d’observer le
+groupe, ce qui est préférable.</p>
+<h3 id="rotation-entre-les-rounds">4.2 Rotation entre les rounds</h3>
+<p>Les rôles non productifs tournent entre les rounds. Les opérateurs
+restent à leur poste.</p>
+<p>C’est un arbitrage assumé : faire tourner les opérateurs remettrait à
+zéro la courbe d’apprentissage et les gains du round 3 deviendraient
+ininterprétables. On perd en équité de vécu, on gagne en lisibilité des
+données. Annoncer cet arbitrage au groupe, sinon il est perçu comme un
+oubli.</p>
+<h3 id="les-postes">4.3 Les postes</h3>
+<p>Le carré n’est pas fourni découpé. Le poste 1 fait le débit matière,
+ce qui maintient l’étape la plus génératrice de rebuts dans le périmètre
+et ouvre la principale piste Kaizen.</p>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 25%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Poste</th>
+<th style="text-align: left;">Opérations</th>
+<th style="text-align: center;">Temps de cycle de référence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>P1</strong></td>
+<td style="text-align: left;">Débit matière : triangle, découpe de la
+chute, carré 210 × 210</td>
+<td style="text-align: center;">25 s</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>P2</strong></td>
+<td style="text-align: left;">Diagonales puis premier blintz, 4 coins au
+centre</td>
+<td style="text-align: center;">30 s</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>P3</strong></td>
+<td style="text-align: left;">Retournement puis second blintz, 4 coins
+au centre</td>
+<td style="text-align: center;">35 s</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>P4</strong></td>
+<td style="text-align: left;">Pré-formage, mise en volume</td>
+<td style="text-align: center;">25 s</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: left;"><strong>Contenu travail
+total</strong></td>
+<td style="text-align: center;"><strong>115 s</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Goulot initial : P3 à 35 secondes.</strong> Débit maximal
+théorique de la ligne : 1,71 pièce par minute, soit 27 pièces sur une
+vacation de 16 minutes. La demande de 24 pièces est donc atteignable,
+mais seulement si le système ne perd rien en attente, en reprise ou en
+rebut. C’est la tension qui fait tenir la journée.</p>
+<hr />
+<h2 class="page-break" id="standard-de-pliage-fip">5. Standard de pliage (FIP)</h2>
+<blockquote>
+<p><strong>Objectif</strong> : produire une cocotte symétrique,
+fonctionnelle, sans déchirure.</p>
+<p><strong>Matière</strong> : 1 feuille A4 blanche 80 g/m².</p>
+</blockquote>
+<h3 id="obtenir-le-carré">5.1 Obtenir le carré</h3>
+<ol type="1">
+<li><strong>Le triangle</strong> : rabattre le coin supérieur gauche sur
+le bord droit pour former un triangle rectangle isocèle.</li>
+<li><strong>La chute</strong> : découper ou déchirer proprement le long
+du pli la bande rectangulaire restante.</li>
+<li><strong>Résultat</strong> : carré de 210 × 210 mm.</li>
+</ol>
+<div class="alert alert-tip">
+<p>Conseil</p>
+<p>La majorité des rebuts du round 1 vient d’un carré mal équerré. Ne
+pas le dire au groupe avant le débriefing. C’est ce constat qui
+déclenchera la proposition du gabarit au round 3.</p>
+</div>
+<h3 id="les-étapes">5.2 Les étapes</h3>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 23%" />
+<col style="width: 32%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Étape</th>
+<th style="text-align: left;">Action</th>
+<th style="text-align: left;">Point clé</th>
+<th style="text-align: left;">Raison</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: left;"><strong>Les diagonales</strong></td>
+<td style="text-align: left;">Marquer les deux plis en croix coin à
+coin</td>
+<td style="text-align: left;">Localiser le centre exact</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: left;"><strong>Premier blintz</strong></td>
+<td style="text-align: left;">Rabattre les 4 coins vers le centre</td>
+<td style="text-align: left;">Les bords ne doivent pas se
+chevaucher</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: left;"><strong>Le retournement</strong></td>
+<td style="text-align: left;">Retourner la feuille, face lisse vers
+soi</td>
+<td style="text-align: left;">Conditionne la cinématique
+d’ouverture</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: left;"><strong>Second blintz</strong></td>
+<td style="text-align: left;">Rabattre les 4 nouveaux coins vers le
+centre</td>
+<td style="text-align: left;">Appuyer fort, marquer le pli</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: left;"><strong>Pré-formage</strong></td>
+<td style="text-align: left;">Plier en deux horizontalement puis
+verticalement</td>
+<td style="text-align: left;">Marquer les plis extérieurs</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>6</strong></td>
+<td style="text-align: left;"><strong>Mise en volume</strong></td>
+<td style="text-align: left;">Glisser les doigts dans les 4 poches,
+pousser vers le centre</td>
+<td style="text-align: left;">Ne pas déchirer</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<img src="Plan_Cocotte_simple.jpg" alt="Plan de pliage" />
+<figcaption aria-hidden="true">Plan de pliage</figcaption>
+</figure>
+<h3 id="critères-de-conformité">5.3 Critères de conformité</h3>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 40%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">#</th>
+<th style="text-align: left;">Critère</th>
+<th style="text-align: left;">Contrôle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: left;"><strong>Symétrie</strong></td>
+<td style="text-align: left;">Les 4 pointes à même hauteur, vérification
+visuelle sur plan</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: left;"><strong>Mobilité</strong></td>
+<td style="text-align: left;">Ouverture et fermeture sans résistance, 3
+actionnements dans les deux axes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: left;"><strong>Intégrité</strong></td>
+<td style="text-align: left;">Aucune déchirure, aucun pli parasite</td>
+</tr>
+</tbody>
+</table>
+<p>Le contrôle est fait par le Client, à réception. Une pièce refusée
+est posée dans le <strong>bac rouge</strong>, comptée en rebut, et n’est
+jamais recomptée.</p>
+<hr />
+<h2 class="page-break" id="round-1-flux-poussé-transfert-par-lots-de-5">6. Round 1 : Flux
+poussé, transfert par lots de 5</h2>
+<h3 id="règles-annoncées-au-groupe">6.1 Règles annoncées au groupe</h3>
+<div class="alert alert-warning">
+<p>Attention</p>
+<ul>
+<li>Transfert par <strong>lots de 5</strong>. Un poste ne transmet que
+lorsque ses 5 pièces sont finies.</li>
+<li>Chaque poste produit <strong>au maximum de sa capacité</strong>,
+sans jamais attendre l’aval.</li>
+<li><strong>Communication interdite</strong> entre postes.</li>
+<li>Objectif donné : « produire le maximum ».</li>
+<li>Le Lanceur dispose des <strong>60 jetons</strong>. Il lance sans
+limite.</li>
+</ul>
+</div>
+<h3 id="pièges-de-conduite">6.2 Pièges de conduite</h3>
+<div class="alert alert-caution">
+<p>Point de vigilance</p>
+<p><strong>Ne pas faire circuler un seul lot à la fois.</strong> Tous
+les postes doivent tourner en parallèle dès qu’ils ont de la matière.
+C’est le parallélisme qui crée l’accumulation. Si le formateur laisse le
+groupe traiter un lot du début à la fin, l’effet ne se produit pas.</p>
+<p><strong>Le P1 ne s’arrête jamais.</strong> Il a un stock matière de
+60 feuilles devant lui. C’est lui qui alimente la montagne d’en-cours.
+Si le P1 ralentit par empathie pour l’aval, l’expérience s’effondre. Le
+formateur le relance : « votre indicateur à vous, c’est votre production
+».</p>
+</div>
+<h3 id="déroulé">6.3 Déroulé</h3>
+<table>
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 58%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Temps</th>
+<th style="text-align: left;">Séquence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0 à 5 min</td>
+<td style="text-align: left;">Briefing, distribution des jetons, mise en
+place du chrono projeté</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5 à 21 min</td>
+<td style="text-align: left;"><strong>Vacation de 16 minutes.</strong>
+Le formateur circule sans intervenir. Camions à 4, 8, 12 et 16 min</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">21 à 29 min</td>
+<td style="text-align: left;"><strong>STOP.</strong> Comptage par zone,
+clôture des registres, remplissage du tableau de marche</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">29 à 50 min</td>
+<td style="text-align: left;">Débriefing</td>
+</tr>
+</tbody>
+</table>
+<h3 id="résultats-attendus">6.4 Résultats attendus</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicateur</th>
+<th style="text-align: center;">Valeur attendue</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Pièces lancées</td>
+<td style="text-align: center;">38 à 42</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pièces sorties</td>
+<td style="text-align: center;">13 à 16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pièces conformes</td>
+<td style="text-align: center;">10 à 12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>WIP en fin de
+vacation</strong></td>
+<td style="text-align: center;"><strong>24 à 28</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Lead Time moyen</strong></td>
+<td style="text-align: center;"><strong>environ 10 min</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Débit</td>
+<td style="text-align: center;">0,9 /min</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Temps de cycle de la ligne</td>
+<td style="text-align: center;">environ 66 s, pour un takt de 40 s</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Taux de service
+client</strong></td>
+<td style="text-align: center;"><strong>environ 45 %</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Camions partis vides</td>
+<td style="text-align: center;"><strong>les deux premiers</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="le-chiffre-qui-frappe">6.5 Le chiffre qui frappe</h3>
+<p><span class="math display">\[
+\text{Ratio d&#39;efficacité du processus} = \frac{\text{Contenu
+travail}}{\text{Lead Time}} = \frac{115\ \text{s}}{620\ \text{s}}
+\approx 18\ \%
+\]</span></p>
+<p>Sur les dix minutes que passe une cocotte dans l’atelier, moins de
+deux minutes servent à la transformer. Le reste, elle attend. Écrire ce
+ratio au paperboard et le laisser affiché toute la journée.</p>
+<h3 id="questions-de-débriefing">6.6 Questions de débriefing</h3>
+<p>Dans cet ordre, sans en sauter :</p>
+<ol type="1">
+<li>« Qui a eu le sentiment de bien travailler ? » (presque tous lèvent
+la main, alors que le client n’a reçu que la moitié de sa commande)</li>
+<li>« Regardez les zones d’en-cours. Où est la plus haute pile ? » (le
+groupe désigne le goulot lui-même, sans calcul)</li>
+<li>« Combien de temps une cocotte a-t-elle passé dans l’atelier ?
+Combien de temps a-t-elle été travaillée ? »</li>
+<li>« Quand avez-vous su qu’il y avait un défaut de découpe ? » (à la
+sortie, sur des pièces produites dix minutes plus tôt)</li>
+<li>« Le standard était scotché sur votre table. Qui l’a lu pendant la
+vacation ? »</li>
+<li>Identification des gaspillages observés, au paperboard, en
+s’appuyant sur ce qui vient d’être vécu et non sur la liste
+théorique</li>
+</ol>
+<h3 id="gaspillages-à-faire-émerger">6.7 Gaspillages à faire
+émerger</h3>
+<table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Gaspillage</th>
+<th style="text-align: left;">Manifestation observable ce jour</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Surproduction</td>
+<td style="text-align: left;">40 pièces lancées pour 24 demandées</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Stocks</td>
+<td style="text-align: left;">Les zones d’en-cours saturées</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Attentes</td>
+<td style="text-align: left;">P4 inactif pendant les 7 premières
+minutes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Défauts</td>
+<td style="text-align: left;">Rebuts détectés en fin de ligne, sur des
+pièces anciennes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sur-processus</td>
+<td style="text-align: left;">Reprises de pliage sur des carrés mal
+équerrés</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mouvements</td>
+<td style="text-align: left;">Recherche de place pour poser les
+piles</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Transports</td>
+<td style="text-align: left;">Déplacements pour transférer les lots</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sous-emploi des compétences</td>
+<td style="text-align: left;">Personne n’a le droit de parler ni de
+proposer quoi que ce soit</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 class="page-break" id="round-2-flux-tiré-conwip-à-6-jetons">7. Round 2 : Flux tiré,
+CONWIP à 6 jetons</h2>
+<h3 id="apport-préalable-30-minutes">7.1 Apport préalable, 30
+minutes</h3>
+<p>Trois notions, dans cet ordre :</p>
+<p><strong>Flux tiré.</strong> On ne produit que sur demande de l’aval.
+Inversion du sens de l’information.</p>
+<p><strong>Kanban.</strong> Le signal de production. Ici, le jeton libre
+remplace la carte : pas de jeton, pas de lancement.</p>
+<p><strong>CONWIP.</strong> Plafonner le nombre de jetons en circulation
+revient à plafonner le WIP. Le lien avec le Lead Time se déduit ensuite
+du relevé du round 1, sans avoir besoin de la formule.</p>
+<h3 id="règles">7.2 Règles</h3>
+<div class="alert alert-tip">
+<p>Conseil</p>
+<ul>
+<li>Transfert <strong>pièce à pièce</strong>. Aucun lot.</li>
+<li>Le Lanceur ne dispose que de <strong>6 jetons</strong>. Il ne peut
+lancer une pièce que si un jeton est revenu.</li>
+<li>Un poste ne prend une pièce que lorsqu’il est libre. Une seule pièce
+en attente maximum entre deux postes.</li>
+<li><strong>Communication autorisée et encouragée.</strong> Un poste qui
+reçoit une pièce douteuse la renvoie immédiatement en amont.</li>
+<li>Réimplantation autorisée : rapprocher les tables.</li>
+<li>Objectif donné : « livrer les 4 camions ».</li>
+</ul>
+</div>
+<h3 id="déroulé-1">7.3 Déroulé</h3>
+<table>
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 58%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Temps</th>
+<th style="text-align: left;">Séquence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0 à 8 min</td>
+<td style="text-align: left;">Briefing, réimplantation, retrait de 54
+jetons du tableau</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8 à 12 min</td>
+<td style="text-align: left;">Essai à blanc, 4 pièces</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">12 à 28 min</td>
+<td style="text-align: left;"><strong>Vacation de 16
+minutes</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">28 à 34 min</td>
+<td style="text-align: left;">STOP, comptage, registres, tableau de
+marche</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">34 à 50 min</td>
+<td style="text-align: left;">Débriefing</td>
+</tr>
+</tbody>
+</table>
+<h3 id="résultats-attendus-1">7.4 Résultats attendus</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicateur</th>
+<th style="text-align: center;">Round 1</th>
+<th style="text-align: center;">Round 2 attendu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Pièces sorties</td>
+<td style="text-align: center;">13 à 16</td>
+<td style="text-align: center;">23 à 26</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pièces conformes</td>
+<td style="text-align: center;">10 à 12</td>
+<td style="text-align: center;">20 à 23</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>WIP</strong></td>
+<td style="text-align: center;">24 à 28</td>
+<td style="text-align: center;"><strong>6, par
+construction</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Lead Time</strong></td>
+<td style="text-align: center;">environ 10 min</td>
+<td style="text-align: center;"><strong>environ 3,5 min</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Débit</td>
+<td style="text-align: center;">0,9 /min</td>
+<td style="text-align: center;">1,5 /min</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Temps de cycle ligne</td>
+<td style="text-align: center;">66 s</td>
+<td style="text-align: center;">environ 39 s, takt à 40 s</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ratio d’efficacité</td>
+<td style="text-align: center;">18 %</td>
+<td style="text-align: center;"><strong>environ 55 %</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Taux de service</td>
+<td style="text-align: center;">45 %</td>
+<td style="text-align: center;">80 à 100 %</td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-important">
+<p>Important</p>
+<p><strong>Le point à ne pas manquer.</strong> Le débit n’a pas augmenté
+parce que les gens travaillent plus vite. Les temps de cycle par poste
+sont les mêmes. Ce qui a changé, c’est que la ligne ne fabrique plus ce
+dont personne n’a besoin. Poser la question ainsi : « qui a travaillé
+plus vite ce round ? Personne. Alors d’où viennent les 10 pièces de plus
+? »</p>
+</div>
+<h3 id="questions-de-débriefing-1">7.5 Questions de débriefing</h3>
+<ol type="1">
+<li>« Combien de pièces avez-vous eu sous la main en même temps ? »
+(six, jamais plus, et ils l’ont senti)</li>
+<li>« Quand avez-vous détecté les défauts cette fois ? »</li>
+<li>« Le premier camion est-il parti plein ? » (non, la montée en charge
+existe toujours, mais le retard se rattrape au lieu de se creuser)</li>
+<li>« Qu’est-ce qui vous a le plus gêné ? » (l’attente devant le goulot,
+ce qui ouvre le round 3)</li>
+</ol>
+<hr />
+<h2 class="page-break" id="chantier-kaizen-45-minutes">8. Chantier Kaizen : 45 minutes</h2>
+<h3 id="yamazumi">8.1 Yamazumi</h3>
+<p>Le chronométreur a relevé les temps de cycle des deux rounds. On
+construit le diagramme au paperboard :</p>
+<pre><code>Temps (s)
+  40 │                    Takt Time = 40 s
+     ├ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+  35 │              ████
+  30 │       ████   ████
+  25 │ ████  ████   ████   ████
+  20 │ ████  ████   ████   ████
+  15 │ ████  ████   ████   ████
+  10 │ ████  ████   ████   ████
+   5 │ ████  ████   ████   ████
+   0 └──┬─────┬──────┬──────┬───
+        P1    P2     P3     P4
+       25 s  30 s   35 s   25 s</code></pre>
+<p>Aucun poste ne dépasse le takt. Le problème n’est donc pas la
+capacité, c’est le <strong>déséquilibre</strong> : 10 secondes d’écart
+entre P1 et P3 signifient que P1 et P4 attendent en permanence. C’est du
+<strong>Mura</strong>, et c’est ce qui limite le débit réel.</p>
+<h3 id="conduite-du-brainstorming">8.2 Conduite du brainstorming</h3>
+<p>Ne pas donner les solutions. Poser la question et laisser chercher 15
+minutes en équipe complète, formateur en retrait.</p>
+<p>Solutions généralement trouvées par les groupes :</p>
+<table>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 31%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Piste</th>
+<th style="text-align: left;">Effet</th>
+<th style="text-align: left;">Nature</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Gabarit carton 210 × 210</strong>
+au P1, on trace au lieu de mesurer</td>
+<td style="text-align: left;">P1 : 25 s → 20 s, et rebuts de découpe
+quasi éliminés</td>
+<td style="text-align: left;">Poka-yoké</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Retournement transféré à
+P2</strong>, qui a la pièce en main en fin d’opération</td>
+<td style="text-align: left;">P3 : 35 s → 30 s, coût marginal nul pour
+P2</td>
+<td style="text-align: left;">Rééquilibrage</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Un coin du second blintz transféré
+à P4</strong></td>
+<td style="text-align: left;">P3 : 30 s → 28 s, P4 : 25 s → 27 s</td>
+<td style="text-align: left;">Rééquilibrage</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Pliage contre le bord d’une
+règle</strong></td>
+<td style="text-align: left;">P2 : 30 s → 27 s, plis mieux marqués</td>
+<td style="text-align: left;">Standard de geste</td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-tip">
+<p>Conseil</p>
+<p>Le formateur garde un gabarit carton prêt, caché. Si le groupe ne
+trouve pas au bout de 10 minutes, il pose la question : « qu’est-ce qui
+prend du temps dans la découpe, le geste ou la vérification ? ». La
+réponse mène au gabarit sans le donner.</p>
+</div>
+<p>Résultat cible après chantier :</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Poste</th>
+<th style="text-align: center;">Avant</th>
+<th style="text-align: center;">Après</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">P1</td>
+<td style="text-align: center;">25 s</td>
+<td style="text-align: center;">20 s</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P2</td>
+<td style="text-align: center;">30 s</td>
+<td style="text-align: center;">27 s</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">P3</td>
+<td style="text-align: center;"><strong>35 s</strong></td>
+<td style="text-align: center;">28 s</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P4</td>
+<td style="text-align: center;">25 s</td>
+<td style="text-align: center;">27 s</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Contenu travail</strong></td>
+<td style="text-align: center;">115 s</td>
+<td style="text-align: center;"><strong>102 s</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Goulot</strong></td>
+<td style="text-align: center;">35 s</td>
+<td style="text-align: center;"><strong>28 s</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Le gain sur le contenu travail est de 11 %. Le gain sur le goulot est
+de 20 %. Ne pas promettre davantage : un chantier de 45 minutes ne
+produit pas de miracle, et annoncer des gains irréalistes discrédite la
+méthode auprès d’un public qui connaît son atelier.</p>
+<h3 id="chantier-5s-15-minutes">8.3 Chantier 5S : 15 minutes</h3>
+<table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 19%" />
+<col style="width: 72%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">#</th>
+<th style="text-align: left;">Terme</th>
+<th style="text-align: left;">Action concrète au poste</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: left;"><strong>Seiri</strong></td>
+<td style="text-align: left;">Retirer de la table tout ce qui ne sert
+pas à l’opération</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: left;"><strong>Seiton</strong></td>
+<td style="text-align: left;">Placer ciseaux, règle et gabarit dans la
+zone de préhension, toujours au même endroit</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: left;"><strong>Seiso</strong></td>
+<td style="text-align: left;">Évacuer les chutes de découpe au fur et à
+mesure</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: left;"><strong>Seiketsu</strong></td>
+<td style="text-align: left;">Photographier le poste rangé, afficher la
+photo au poste</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: left;"><strong>Shitsuke</strong></td>
+<td style="text-align: left;">Le poste est remis dans l’état de la photo
+à chaque fin de vacation</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 class="page-break" id="round-3-ligne-équilibrée-conwip-à-4-jetons">9. Round 3 : Ligne
+équilibrée, CONWIP à 4 jetons</h2>
+<h3 id="règles-1">9.1 Règles</h3>
+<p>Identiques au round 2, avec les améliorations en place et <strong>4
+jetons seulement</strong>.</p>
+<p>Réduire encore le WIP est contre-intuitif pour le groupe : « on va
+produire moins ». C’est le moment de le laisser tester et constater
+l’inverse.</p>
+<h3 id="résultats-attendus-2">9.2 Résultats attendus</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicateur</th>
+<th style="text-align: center;">R1</th>
+<th style="text-align: center;">R2</th>
+<th style="text-align: center;">R3 attendu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Pièces sorties</td>
+<td style="text-align: center;">13-16</td>
+<td style="text-align: center;">23-26</td>
+<td style="text-align: center;">28-32</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pièces conformes</td>
+<td style="text-align: center;">10-12</td>
+<td style="text-align: center;">21-23</td>
+<td style="text-align: center;">28-30</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>WIP</strong></td>
+<td style="text-align: center;">24-28</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"><strong>4</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Lead Time</strong></td>
+<td style="text-align: center;">~10 min</td>
+<td style="text-align: center;">~3,5 min</td>
+<td style="text-align: center;"><strong>~2 min</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Débit</td>
+<td style="text-align: center;">0,9 /min</td>
+<td style="text-align: center;">1,5 /min</td>
+<td style="text-align: center;">1,9 /min</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Temps de cycle ligne</td>
+<td style="text-align: center;">66 s</td>
+<td style="text-align: center;">39 s</td>
+<td style="text-align: center;">32 s</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Ratio d’efficacité</strong></td>
+<td style="text-align: center;">18 %</td>
+<td style="text-align: center;">55 %</td>
+<td style="text-align: center;"><strong>85 %</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Taux de service</td>
+<td style="text-align: center;">45 %</td>
+<td style="text-align: center;">90-100 %</td>
+<td style="text-align: center;">100 %</td>
+</tr>
+</tbody>
+</table>
+<h3 id="le-piège-volontaire-du-round-3">9.3 Le piège volontaire du round
+3</h3>
+<p>La ligne équilibrée produit environ 29 pièces conformes. Le client en
+demande 24.</p>
+<p><strong>Les 5 pièces excédentaires sont de la surproduction.</strong>
+Elles ne sont pas vendues, elles ont consommé de la matière et du temps,
+elles encombrent.</p>
+<p>Poser la question au débriefing : « vous avez fait 29 pièces, le
+client en voulait 24. C’est une bonne ou une mauvaise performance ? » Le
+groupe répond spontanément « bonne ». C’est le moment d’introduire la
+règle du takt : <strong>produire au rythme du client, ni plus vite ni
+moins vite.</strong> Une ligne qui produit trop vite doit ralentir et
+affecter le temps libéré à autre chose, pas fabriquer du stock.</p>
+<p>C’est le point le plus contre-intuitif de la journée et celui qui
+reste le plus longtemps.</p>
+<h3 id="variante-pour-public-confirmé">9.4 Variante pour public
+confirmé</h3>
+<p>Porter la demande à 32 pièces (8 par camion, takt de 30 s) uniquement
+au round 3. La ligne équilibrée en est tout juste capable, à condition
+de zéro arrêt et de zéro rebut. On perd la comparabilité directe avec
+les rounds précédents, on gagne une tension réaliste. À réserver aux
+groupes qui ont bien tenu les rounds 1 et 2.</p>
+<hr />
+<h2 class="page-break" id="synthèse-30-minutes">10. Synthèse : 30 minutes</h2>
+<h3 id="les-trois-indicateurs">10.1 Les trois indicateurs</h3>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 28%" />
+<col style="width: 33%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Définition</th>
+<th style="text-align: left;">Ce qu’il dit</th>
+<th style="text-align: left;">Qui le fixe</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Takt Time</strong></td>
+<td style="text-align: left;">Temps disponible / demande client</td>
+<td style="text-align: left;">À quel rythme il <strong>faut</strong>
+produire</td>
+<td style="text-align: left;">Le client</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Temps de cycle</strong></td>
+<td style="text-align: left;">Temps de traitement / pièces
+produites</td>
+<td style="text-align: left;">À quel rythme on produit
+<strong>réellement</strong></td>
+<td style="text-align: left;">Le processus</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Lead Time</strong></td>
+<td style="text-align: left;">Temps entre entrée matière et
+livraison</td>
+<td style="text-align: left;">Combien de temps le client
+<strong>attend</strong></td>
+<td style="text-align: left;">Le système entier</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+\text{Takt Time} = \frac{\text{Temps disponible}}{\text{Demande client}}
+\qquad
+\text{Temps de cycle} = \frac{\text{Temps de traitement}}{\text{Nombre
+de pièces}}
+\]</span></p>
+<p><span class="math display">\[
+\text{Lead Time} = \sum \text{Temps d&#39;attente} + \sum \text{Temps de
+transport} + \sum \text{Temps de traitement}
+\]</span></p>
+<p><strong>La règle</strong> : si le temps de cycle dépasse le takt
+time, la demande ne peut pas être tenue. S’il est très inférieur, on
+surproduit. On vise l’égalité.</p>
+<h3 id="la-loi-de-little-en-test-et-non-en-outil">10.2 La loi de Little,
+en test et non en outil</h3>
+<p><span class="math display">\[
+\boxed{\text{WIP} = \text{Débit} \times \text{Lead Time}}
+\]</span></p>
+<p>On dispose maintenant des trois grandeurs <strong>mesurées
+séparément</strong>. On confronte.</p>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 12%" />
+<col style="width: 14%" />
+<col style="width: 34%" />
+<col style="width: 23%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Round</th>
+<th style="text-align: center;">WIP mesuré</th>
+<th style="text-align: center;">Débit mesuré</th>
+<th style="text-align: center;">Lead Time <strong>prédit</strong> par
+Little</th>
+<th style="text-align: center;">Lead Time <strong>mesuré</strong></th>
+<th style="text-align: center;">Écart</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">0,90 /min</td>
+<td style="text-align: center;">28,9 min</td>
+<td style="text-align: center;">10,4 min</td>
+<td style="text-align: center;"><strong>facteur 2,8</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">1,53 /min</td>
+<td style="text-align: center;">3,9 min</td>
+<td style="text-align: center;">3,5 min</td>
+<td style="text-align: center;">11 %</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1,89 /min</td>
+<td style="text-align: center;">2,1 min</td>
+<td style="text-align: center;">2,0 min</td>
+<td style="text-align: center;">5 %</td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-important">
+<p>Important</p>
+<p><strong>C’est le moment intellectuel fort de la journée.</strong> La
+loi de Little est exacte, mais elle suppose un <strong>régime
+permanent</strong> : un système dont le WIP moyen ne dérive pas. Aux
+rounds 2 et 3, le CONWIP force ce régime, et la loi tombe juste à 5 %
+près. Au round 1, le WIP grimpe sans arrêt pendant toute la vacation, le
+système n’est jamais stationnaire, et la loi donne un résultat faux.</p>
+<p>Traduction pour l’atelier : <strong>une usine en flux poussé est une
+usine dont on ne sait pas prédire les délais.</strong> Ce n’est pas un
+problème de formule, c’est un problème de pilotage. On ne peut pas
+promettre une date de livraison à un client quand on ne maîtrise pas son
+propre WIP.</p>
+</div>
+<p>Cette démonstration remplace avantageusement l’usage de la loi de
+Little comme méthode de calcul, qui donnait des Lead Times aberrants et
+décrédibilisait l’ensemble.</p>
+<h3 id="trg">10.3 TRG</h3>
+<p>Définitions conformes à la <strong>norme NF E 60-182</strong> :</p>
+<p><span class="math display">\[
+\text{TRS} = \frac{\text{Temps utile}}{\text{Temps requis}}
+\qquad
+\text{TRG} = \frac{\text{Temps utile}}{\text{Temps d&#39;ouverture}}
+\qquad
+\text{TRE} = \frac{\text{Temps utile}}{\text{Temps total}}
+\]</span></p>
+<p>Dans l’atelier, temps d’ouverture et temps requis sont confondus, il
+n’y a pas d’arrêt planifié dans une vacation. Le TRG et le TRS
+coïncident donc, et on retient le <strong>TRG</strong>.</p>
+<p><strong>Deux conventions à figer avant la journée, et à annoncer
+:</strong></p>
+<ol type="1">
+<li>Le <strong>temps de cycle de référence</strong> est celui du goulot
+initial, soit <strong>35 s</strong>, gardé identique aux trois rounds.
+Sinon le TRG s’améliore mécaniquement quand on améliore la ligne, et
+perd tout sens comparatif.</li>
+<li>Le <strong>temps utile ne compte que les pièces
+valorisables</strong>, c’est-à-dire les pièces conformes dans la limite
+de la demande client. La surproduction ne crée pas de valeur.</li>
+</ol>
+<p><span class="math display">\[
+\text{Temps utile} = \min(\text{pièces conformes}\,;\ 24) \times 35\
+\text{s}
+\]</span></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Round</th>
+<th style="text-align: center;">Pièces valorisables</th>
+<th style="text-align: center;">Temps utile</th>
+<th style="text-align: center;">TRG</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">10 à 12</td>
+<td style="text-align: center;">350 à 420 s</td>
+<td style="text-align: center;"><strong>environ 40 %</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">20 à 23</td>
+<td style="text-align: center;">700 à 805 s</td>
+<td style="text-align: center;"><strong>73 à 84 %</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">24, plafonné par la demande</td>
+<td style="text-align: center;">840 s</td>
+<td style="text-align: center;"><strong>environ 88 %</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Décomposition, à faire calculer par le groupe. La composante
+<strong>Valorisation</strong> remplace ici le taux de qualité classique,
+parce qu’elle englobe les deux façons de produire une pièce sans créer
+de valeur : la rebuter, ou la fabriquer alors que personne ne
+l’attend.</p>
+<table>
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 27%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Composante</th>
+<th style="text-align: left;">Formule</th>
+<th style="text-align: center;">R1</th>
+<th style="text-align: center;">R2</th>
+<th style="text-align: center;">R3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Disponibilité</strong></td>
+<td style="text-align: left;">Temps de fonctionnement / temps
+requis</td>
+<td style="text-align: center;">~100 %</td>
+<td style="text-align: center;">~98 %</td>
+<td style="text-align: center;">~97 %</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Performance</strong></td>
+<td style="text-align: left;">(Pièces réalisées × 35 s) / temps de
+fonctionnement</td>
+<td style="text-align: center;">55 %</td>
+<td style="text-align: center;">89 %</td>
+<td style="text-align: center;"><strong>112 %</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Valorisation</strong></td>
+<td style="text-align: left;">Pièces valorisables / pièces
+réalisées</td>
+<td style="text-align: center;">73 %</td>
+<td style="text-align: center;">83 %</td>
+<td style="text-align: center;">80 %</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>TRG</strong></td>
+<td style="text-align: left;">Produit des trois</td>
+<td style="text-align: center;">40 %</td>
+<td style="text-align: center;">73 %</td>
+<td style="text-align: center;">88 %</td>
+</tr>
+</tbody>
+</table>
+<p>Le taux de qualité classique, pièces conformes sur pièces réalisées,
+reste affiché à part : 73 %, 83 %, 93 %.</p>
+<div class="alert alert-important">
+<p>Important</p>
+<p><strong>La Performance dépasse 100 % au round 3, et c’est
+voulu.</strong> La ligne équilibrée tourne plus vite que le temps de
+cycle de référence figé à 35 s. En atelier réel, ce dépassement est le
+signal qu’il faut réviser la cadence de référence et redéfinir le
+standard. Le dire au groupe : un indicateur qui sort de sa plage n’est
+pas forcément une erreur de calcul, c’est parfois une information sur le
+référentiel.</p>
+<p>Noter aussi que la Valorisation <strong>baisse</strong> entre le
+round 2 et le round 3 alors que la qualité s’améliore. La raison est la
+surproduction : 30 pièces réalisées pour 24 vendables. C’est la
+meilleure porte d’entrée vers la discussion du paragraphe 9.3.</p>
+</div>
+<div class="alert alert-note">
+<p>Note</p>
+<p>Sans panne dans l’atelier, la disponibilité reste proche de 100 % et
+le TRG se joue sur la performance et la valorisation. Le signaler : dans
+un atelier réel, c’est souvent la disponibilité qui constitue le premier
+gisement. On peut simuler une panne au round 3 pour l’introduire (voir
+variantes).</p>
+</div>
+<h3 id="tableau-de-synthèse-à-remplir-avec-le-groupe">10.4 Tableau de
+synthèse à remplir avec le groupe</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicateur</th>
+<th style="text-align: center;">R1 Poussé</th>
+<th style="text-align: center;">R2 Tiré</th>
+<th style="text-align: center;">R3 Kaizen</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Pièces conformes</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">WIP</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Lead Time</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Débit</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Temps de cycle ligne</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Takt Time</td>
+<td style="text-align: center;">40 s</td>
+<td style="text-align: center;">40 s</td>
+<td style="text-align: center;">40 s</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ratio d’efficacité</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Taux de service</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TRG</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 class="page-break" id="déroulé-de-la-journée">11. Déroulé de la journée</h2>
+<table>
+<colgroup>
+<col style="width: 39%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Horaire</th>
+<th style="text-align: left;">Phase</th>
+<th style="text-align: center;">Durée</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">09 h 00</td>
+<td style="text-align: left;">Accueil, présentation du contrat client,
+constitution de l’équipe</td>
+<td style="text-align: center;">20 min</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">09 h 20</td>
+<td style="text-align: left;">Fondamentaux : valeur, Muda, Muri, Mura,
+les 8 gaspillages</td>
+<td style="text-align: center;">45 min</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10 h 05</td>
+<td style="text-align: left;">Standard de pliage, entraînement
+individuel obligatoire (2 cocottes chacun)</td>
+<td style="text-align: center;">30 min</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10 h 35</td>
+<td style="text-align: left;">Pause</td>
+<td style="text-align: center;">15 min</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10 h 50</td>
+<td style="text-align: left;">Montage de la ligne, affectation des
+rôles, chronométrage initial, calcul du takt</td>
+<td style="text-align: center;">30 min</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">11 h 20</td>
+<td style="text-align: left;"><strong>Round 1 : Flux
+poussé</strong></td>
+<td style="text-align: center;">50 min</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">12 h 10</td>
+<td style="text-align: left;">Déjeuner</td>
+<td style="text-align: center;">60 min</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">13 h 10</td>
+<td style="text-align: left;">Apport : flux tiré, Kanban, CONWIP</td>
+<td style="text-align: center;">30 min</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">13 h 40</td>
+<td style="text-align: left;"><strong>Round 2 : Flux tiré</strong></td>
+<td style="text-align: center;">50 min</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">14 h 30</td>
+<td style="text-align: left;">Chantier Kaizen : Yamazumi, brainstorming,
+5S</td>
+<td style="text-align: center;">45 min</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15 h 15</td>
+<td style="text-align: left;">Pause</td>
+<td style="text-align: center;">15 min</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">15 h 30</td>
+<td style="text-align: left;"><strong>Round 3 : Ligne
+équilibrée</strong></td>
+<td style="text-align: center;">50 min</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">16 h 20</td>
+<td style="text-align: left;">Synthèse : comparatif, loi de Little,
+TRG</td>
+<td style="text-align: center;">30 min</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">16 h 50</td>
+<td style="text-align: left;">Plan d’action personnel et clôture</td>
+<td style="text-align: center;">10 min</td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-tip">
+<p>Conseil</p>
+<p><strong>L’entraînement individuel de 10 h 05 n’est pas
+optionnel.</strong> Chaque participant plie deux cocottes complètes
+avant le premier round. Sans cela, les temps de cycle du round 1 sont
+pollués par l’apprentissage du geste, le taux de rebut explose pour de
+mauvaises raisons, et la comparaison avec le round 3 mesure surtout la
+dextérité acquise. C’est une des causes fréquentes d’échec de ce type
+d’atelier.</p>
+</div>
+<hr />
+<h2 class="page-break" id="matériel">12. Matériel</h2>
+<h3 id="consommables">12.1 Consommables</h3>
+<ul>
+<li>200 feuilles A4 blanches 80 g/m²</li>
+<li>60 trombones</li>
+<li>Post-its 3 couleurs, marqueurs, scotch</li>
+</ul>
+<h3 id="kit-de-mesure-fourni-imprimable">12.2 Kit de mesure (fourni
+imprimable)</h3>
+<ul>
+<li>60 jetons numérotés, à plastifier, réutilisables d’une session à
+l’autre</li>
+<li>1 tableau des jetons A3</li>
+<li>5 étiquettes de zones d’en-cours et 1 étiquette de bac rouge, format
+A4</li>
+<li>2 registres (lancement, expédition)</li>
+<li>1 tableau de marche par round</li>
+<li>1 feuille de relevé Yamazumi</li>
+<li>1 feuille de synthèse comparative</li>
+</ul>
+<h3 id="équipement">12.3 Équipement</h3>
+<ul>
+<li>Vidéoprojecteur, avec un chronomètre mm:ss affiché en grand pendant
+les vacations</li>
+<li>2 chronomètres</li>
+<li>4 paires de ciseaux, 4 règles</li>
+<li>1 gabarit carton 210 × 210 (tenu en réserve par le formateur)</li>
+<li>1 bac rouge pour les rebuts, 5 zones d’en-cours matérialisées sur
+les tables</li>
+<li>1 carton « CAMION » pour matérialiser l’enlèvement</li>
+<li>Paperboard</li>
+</ul>
+<h3 id="checklist-j-1">12.4 Checklist J-1</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />Jetons imprimés, découpés,
+plastifiés, numérotés, rangés sur le tableau</label></li>
+<li><label><input type="checkbox" />Registres et tableaux de marche
+imprimés en 3 exemplaires (un par round)</label></li>
+<li><label><input type="checkbox" />Étiquettes de zones imprimées et
+scotchées sur les tables</label></li>
+<li><label><input type="checkbox" />Standard FIP imprimé en A3, un par
+poste</label></li>
+<li><label><input type="checkbox" />Chronomètre projeté testé et visible
+depuis les 4 postes</label></li>
+<li><label><input type="checkbox" />Contrat client affiché au mur en
+A3</label></li>
+<li><label><input type="checkbox" />Gabarit carton découpé et
+<strong>rangé hors de vue</strong></label></li>
+<li><label><input type="checkbox" />Une cocotte témoin pliée par le
+formateur, conforme, servant de référence de contrôle</label></li>
+<li><label><input type="checkbox" />Tables disposées en ligne, avec
+espace pour réimplantation au round 2</label></li>
+<li><label><input type="checkbox" />Classeur de calcul des KPI ouvert
+sur le poste formateur</label></li>
+</ul>
+<hr />
+<h2 class="page-break" id="annexes">13. Annexes</h2>
+<h3 id="grille-dobservation-des-comportements">13.1 Grille d’observation
+des comportements</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Dimension</th>
+<th style="text-align: left;">Round 1</th>
+<th style="text-align: left;">Round 2</th>
+<th style="text-align: left;">Round 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Communication</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Réaction face à un défaut</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Posture physique, tension</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Initiative, propositions</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Regard porté sur le standard</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p>Remplie par l’Observateur, restituée par lui au débriefing final.
+C’est souvent le témoignage le plus marquant de la journée, parce qu’il
+vient d’un pair et non du formateur.</p>
+<h3 id="variantes">13.2 Variantes</h3>
+<p><strong>Format demi-journée, 3 h 30</strong> : conserver rounds 1 et
+2, supprimer le round 3, remplacer le chantier Kaizen par un
+brainstorming de 20 minutes sans mise en œuvre. La démonstration Little
+tient toujours, avec deux points au lieu de trois.</p>
+<p><strong>Public confirmé</strong> : demande portée à 32 pièces au
+round 3, ou introduction d’un aléa (panne simulée de 90 secondes sur un
+poste, ou variation de la demande client entre deux camions) pour
+aborder le <strong>Heijunka</strong> et faire chuter la composante
+Disponibilité du TRG.</p>
+<p><strong>Public en insertion ou en reconversion</strong> : conserver
+les trois rounds, abandonner le TRG, se limiter au triptyque Takt /
+Cycle / Lead Time et au taux de service. La démonstration reste
+entière.</p>
+<h3 id="ce-qui-fait-rater-cet-atelier">13.3 Ce qui fait rater cet
+atelier</h3>
+<p>Par ordre de fréquence observée sur ce format :</p>
+<ol type="1">
+<li>Des temps de cycle qui rendent le premier round mathématiquement
+stérile (corrigé en v2)</li>
+<li>L’absence d’entraînement préalable, qui transforme le round 1 en
+cours de pliage</li>
+<li>Des en-cours non matérialisés, qui se dispersent et cessent d’être
+visibles</li>
+<li>Un formateur qui intervient pendant le round 1 pour aider, et qui
+détruit l’expérience qu’il veut produire</li>
+<li>Un débriefing qui commence par la théorie au lieu de commencer par
+le vécu</li>
+<li>Des indicateurs annoncés sans être relevés, qui décrédibilisent tout
+le reste</li>
+</ol>
+<h3 id="message-de-clôture">13.4 Message de clôture</h3>
+<blockquote>
+<p>Le Lean ne consiste pas à faire travailler les gens plus vite. Aux
+trois rounds, les temps de cycle par poste ont à peine bougé. Ce qui a
+changé, c’est ce que le système leur demandait de faire.</p>
+<p><em>« Le pire gaspillage, c’est de faire efficacement quelque chose
+qui ne devrait pas être fait du tout. »</em>, Taiichi Ohno</p>
+</blockquote>
+<hr />
+<h2 class="page-break" id="objectifs-pédagogiques-évaluables">14. Objectifs pédagogiques
+évaluables</h2>
+<p>À l’issue de la journée, le participant est capable de :</p>
+<ol type="1">
+<li>Calculer un Takt Time à partir d’une demande client et d’un temps
+d’ouverture</li>
+<li>Distinguer temps de cycle et Lead Time, et expliquer pourquoi ils
+diffèrent d’un facteur 5 à 10</li>
+<li>Identifier un goulot d’étranglement à partir d’un profil d’en-cours
+ou d’un diagramme Yamazumi</li>
+<li>Expliquer l’effet d’une réduction du WIP sur le Lead Time</li>
+<li>Énoncer la condition de validité de la loi de Little et dire
+pourquoi elle échoue en flux poussé</li>
+<li>Calculer un TRG à partir de relevés bruts et en identifier la
+composante limitante</li>
+<li>Reconnaître la surproduction comme un gaspillage, y compris quand
+elle prend la forme d’une performance apparente</li>
+</ol>
+<hr />
+<p><em>Pôle Formation UIMM CVDL | S. Jaubert | Guide Formateur v2.0 |
+Juillet 2026</em></p>
+</body>
+</html>
