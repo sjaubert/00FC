@@ -1,0 +1,2177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Atelier Cocotte LEAN, Le Contrat Cadencé, Livret Participant</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <style>
+   /* === BASE === */
+      :root {
+        --color-bg: #ffffff;
+        --color-text: #1a1a2e;
+        --color-heading: #16213e;
+        --color-accent: #0f3460;
+        --color-accent-light: #e8eef6;
+        --color-border: #d1d5db;
+        --color-table-header: #16213e;
+        --color-table-stripe: #f8f9fc;
+        --color-link: #2563eb;
+        --color-note-bg: #eff6ff;
+        --color-note-border: #3b82f6;
+        --color-tip-bg: #f0fdf4;
+        --color-tip-border: #22c55e;
+        --color-warning-bg: #fefce8;
+        --color-warning-border: #eab308;
+        --color-important-bg: #fef2f2;
+        --color-important-border: #ef4444;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 15px;
+        line-height: 1.7;
+        color: var(--color-text);
+        background: var(--color-bg);
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 2rem 2.5rem;
+      }
+
+      /* === HEADINGS === */
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: var(--color-heading);
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.3;
+      }
+
+      h1 {
+        font-size: 1.9rem;
+        border-bottom: 3px solid var(--color-accent);
+        padding-bottom: 0.5rem;
+      }
+
+      h2 {
+        font-size: 1.45rem;
+        border-bottom: 2px solid var(--color-border);
+        padding-bottom: 0.4rem;
+      }
+
+      h3 {
+        font-size: 1.15rem;
+        color: var(--color-accent);
+      }
+
+      h4 {
+        font-size: 1rem;
+      }
+
+      header#title-block-header {
+        display: none;
+      }
+
+      /* === TABLES === */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.2rem 0;
+        font-size: 0.92rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        border-radius: 6px;
+        overflow: hidden;
+      }
+
+      thead tr {
+        background: var(--color-table-header);
+        color: #fff;
+      }
+
+      thead th {
+        padding: 0.7rem 0.9rem;
+        font-weight: 600;
+        text-transform: none;
+        letter-spacing: 0.02em;
+        border: none;
+      }
+
+      tbody td {
+        padding: 0.6rem 0.9rem;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      tbody tr:nth-child(even) {
+        background: var(--color-table-stripe);
+      }
+
+      tbody tr:hover {
+        background: #eef2ff;
+      }
+
+      /* === BLOCKQUOTES / ALERTS === */
+      blockquote {
+        margin: 1.2rem 0;
+        padding: 1rem 1.2rem;
+        border-left: 4px solid var(--color-note-border);
+        background: var(--color-note-bg);
+        border-radius: 4px;
+        font-size: 0.95rem;
+      }
+
+      blockquote p {
+        margin: 0.4rem 0;
+      }
+
+      /* === CODE === */
+      pre {
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 1.2rem 1.4rem;
+        border-radius: 6px;
+        overflow-x: auto;
+        font-size: 0.88rem;
+        line-height: 1.5;
+        margin: 1rem 0;
+      }
+
+      code {
+        font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+        white-space: pre-wrap;
+      }
+
+      :not(pre)>code {
+        background: #f1f5f9;
+        padding: 0.15em 0.4em;
+        border-radius: 3px;
+        font-size: 0.9em;
+        color: #334155;
+      }
+
+      /* === LISTS === */
+      ul,
+      ol {
+        padding-left: 1.5rem;
+      }
+
+      li {
+        margin-bottom: 0.3rem;
+      }
+
+      ul.task-list[class] {
+        list-style: none;
+        padding-left: 0.5rem;
+      }
+
+      ul.task-list li input[type="checkbox"] {
+        font-size: inherit;
+        width: 1em;
+        height: 1em;
+        margin: 0 0.6em 0.2em 0;
+        vertical-align: middle;
+        accent-color: var(--color-accent);
+      }
+
+      /* === HORIZONTAL RULES === */
+      hr {
+        border: none;
+        border-top: 2px solid #e5e7eb;
+        margin: 2rem 0;
+      }
+
+      /* === MATH === */
+      .math.display {
+        overflow-x: auto;
+        margin: 1rem 0;
+        padding: 0.5rem;
+        background: #fafbfd;
+        border-radius: 4px;
+        border: 1px solid #e5e7eb;
+      }
+
+      /* === STRONG / EM === */
+      strong {
+        color: var(--color-heading);
+      }
+
+      /* === LINKS === */
+      a {
+        color: var(--color-link);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* === LOGO HEADER === */
+      .logo-header {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid var(--color-border);
+      }
+
+      .logo-header img {
+        max-width: 180px;
+        height: auto;
+        margin-bottom: 0.5rem;
+      }
+
+      .logo-header .structure-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--color-accent);
+      }
+
+      /* === PAGE BREAKS === */
+      .page-break {
+        page-break-before: always;
+      }
+
+      /* === FOLDING IMAGE === */
+      .folding-image {
+        text-align: center;
+        margin: 1.5rem 0;
+      }
+
+      .folding-image img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid var(--color-border);
+        border-radius: 6px;
+      }
+
+      /* === TAKT TIME HIGHLIGHT === */
+      .takt-highlight {
+        background: #fef3c7;
+        border: 2px solid #f59e0b;
+        border-radius: 8px;
+        padding: 1rem 1.5rem;
+        margin: 1.2rem 0;
+      }
+
+      .takt-highlight table {
+        box-shadow: none;
+        margin: 0.8rem 0;
+      }
+
+      .takt-highlight p {
+        margin: 0.3rem 0;
+      }
+
+      /* === PRINT === */
+      @media print {
+        body {
+          max-width: 100%;
+          padding: 0.5cm;
+          font-size: 11pt;
+        }
+
+        pre {
+          background: #f8f9fa !important;
+          color: #1a1a2e !important;
+          border: 1px solid #ccc;
+        }
+
+        table {
+          box-shadow: none;
+        }
+
+        thead tr {
+          background: #333 !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        h1,
+        h2 {
+          page-break-after: avoid;
+        }
+
+        h2.page-break {
+          page-break-before: always;
+        }
+
+        table,
+        pre {
+          page-break-inside: avoid;
+        }
+      }
+
+      /* === RESPONSIVE === */
+      @media (max-width: 768px) {
+        body {
+          padding: 1rem;
+          font-size: 14px;
+        }
+
+        table {
+          font-size: 0.85rem;
+        }
+
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        h2 {
+          font-size: 1.25rem;
+        }
+      } 
+      /* === ALERTES (ajout v2) === */
+      .alert {
+        border-left: 4px solid;
+        border-radius: 6px;
+        padding: 0.85rem 1.1rem;
+        margin: 1.3rem 0;
+      }
+
+      .alert > p:first-child {
+        margin-top: 0;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+      }
+
+      .alert > p:last-child {
+        margin-bottom: 0;
+      }
+
+      .alert table {
+        box-shadow: none;
+        margin: 0.8rem 0;
+      }
+
+      .alert-note {
+        background: var(--color-note-bg);
+        border-color: var(--color-note-border);
+      }
+
+      .alert-note > p:first-child {
+        color: var(--color-note-border);
+      }
+
+      .alert-tip {
+        background: var(--color-tip-bg);
+        border-color: var(--color-tip-border);
+      }
+
+      .alert-tip > p:first-child {
+        color: #15803d;
+      }
+
+      .alert-warning,
+      .alert-caution {
+        background: var(--color-warning-bg);
+        border-color: var(--color-warning-border);
+      }
+
+      .alert-warning > p:first-child,
+      .alert-caution > p:first-child {
+        color: #a16207;
+      }
+
+      .alert-important {
+        background: var(--color-important-bg);
+        border-color: var(--color-important-border);
+      }
+
+      .alert-important > p:first-child {
+        color: var(--color-important-border);
+      }
+
+      /* === REPERES DE VERSION === */
+      .version-badge {
+        display: inline-block;
+        background: var(--color-accent);
+        color: #fff;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        vertical-align: middle;
+        margin-left: 0.5rem;
+      }
+
+      /* === SOMMAIRE (ajout v2) === */
+      nav#TOC {
+        background: var(--color-accent-light);
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        padding: 1.1rem 1.5rem 1.3rem;
+        margin: 1.5rem 0 2.5rem;
+      }
+
+      nav#TOC > h2 {
+        margin: 0 0 0.6rem;
+        font-size: 1.05rem;
+        border: none;
+        padding: 0;
+        color: var(--color-accent);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      nav#TOC ul {
+        list-style: none;
+        margin: 0;
+        padding-left: 0;
+        columns: 2;
+        column-gap: 2.5rem;
+      }
+
+      nav#TOC ul ul {
+        display: none;
+      }
+
+      nav#TOC li {
+        margin: 0.22rem 0;
+        break-inside: avoid;
+      }
+
+      nav#TOC a {
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
+      nav#TOC a:hover {
+        text-decoration: underline;
+      }
+
+      @media print {
+        nav#TOC {
+          break-after: page;
+        }
+      }
+
+  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<div class="logo-header"><img src="logo_uimm_placeholder.jpg" alt="Logo UIMM" /><div class="structure-name">Pôle Formation UIMM - CVDL</div></div>
+<header id="title-block-header">
+<h1 class="title">Atelier Cocotte LEAN, Le Contrat Cadencé, Livret
+Participant</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 class="page-break" id="toc-title">Sommaire</h2>
+<ul>
+<li><a href="#atelier-cocotte-lean-le-contrat-cadencé"
+id="toc-atelier-cocotte-lean-le-contrat-cadencé">Atelier Cocotte LEAN, «
+Le Contrat Cadencé »</a>
+<ul>
+<li><a href="#livret-participant" id="toc-livret-participant">Livret
+Participant</a></li>
+<li><a href="#le-contrat-client" id="toc-le-contrat-client">1. Le
+contrat client</a></li>
+<li><a href="#les-rôles" id="toc-les-rôles">2. Les rôles</a></li>
+<li><a href="#le-standard-de-fabrication-fip"
+id="toc-le-standard-de-fabrication-fip">3. Le standard de fabrication
+(FIP)</a></li>
+<li><a href="#les-postes" id="toc-les-postes">4. Les postes</a></li>
+<li><a href="#comment-on-mesure" id="toc-comment-on-mesure">5. Comment
+on mesure</a></li>
+<li><a href="#round-1-flux-poussé" id="toc-round-1-flux-poussé">6. Round
+1 : Flux poussé</a></li>
+<li><a href="#round-2-flux-tiré" id="toc-round-2-flux-tiré">7. Round 2 :
+Flux tiré</a></li>
+<li><a href="#chantier-kaizen" id="toc-chantier-kaizen">8. Chantier
+Kaizen</a></li>
+<li><a href="#round-3-ligne-équilibrée"
+id="toc-round-3-ligne-équilibrée">9. Round 3 : Ligne équilibrée</a></li>
+<li><a href="#synthèse" id="toc-synthèse">10. Synthèse</a></li>
+<li><a href="#ce-quil-faut-retenir" id="toc-ce-quil-faut-retenir">11. Ce
+qu’il faut retenir</a></li>
+<li><a href="#mon-plan-daction" id="toc-mon-plan-daction">12. Mon plan
+d’action</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="atelier-cocotte-lean-le-contrat-cadencé">Atelier Cocotte LEAN, «
+Le Contrat Cadencé »</h1>
+<h2 class="page-break" id="livret-participant">Livret Participant</h2>
+<div class="alert alert-important">
+<p>Important</p>
+<p>Aujourd’hui, vous êtes une ligne de production. Vous avez un client,
+un contrat, une cadence et des délais.</p>
+<p>Vous allez produire trois vacations dans trois organisations
+différentes, et <strong>mesurer vous-même</strong> ce qui change. Aucun
+chiffre de ce livret n’est donné à l’avance : ce sont les vôtres qui
+rempliront les tableaux.</p>
+</div>
+<hr />
+<h2 class="page-break" id="le-contrat-client">1. Le contrat client</h2>
+<p>Affiché au mur pendant toute la journée. Vous vous y référerez
+souvent.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Clause</th>
+<th style="text-align: left;">Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Volume par vacation</strong></td>
+<td style="text-align: left;">24 pièces conformes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Durée de la vacation</strong></td>
+<td style="text-align: left;">16 minutes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Enlèvements</strong></td>
+<td style="text-align: left;">1 camion toutes les 4 minutes, 6 pièces
+par camion</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Qualité</strong></td>
+<td style="text-align: left;">Zéro défaut accepté, le tri est à votre
+charge</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Retard</strong></td>
+<td style="text-align: left;">Toute pièce manquante à un enlèvement
+reste due</td>
+</tr>
+</tbody>
+</table>
+<h3 id="le-rythme-imposé-par-le-client">Le rythme imposé par le
+client</h3>
+<p><span class="math display">\[
+\text{Takt Time} = \frac{\text{Temps disponible}}{\text{Demande client}}
+= \frac{16 \times 60\ \text{s}}{24\ \text{pièces}} = 40\ \text{s/pièce}
+\]</span></p>
+<p><strong>Une pièce doit sortir de la ligne toutes les 40
+secondes.</strong> Ni plus vite, ni moins vite. Vous verrez au cours de
+la journée pourquoi « plus vite » n’est pas un bon résultat.</p>
+<hr />
+<h2 class="page-break" id="les-rôles">2. Les rôles</h2>
+<table>
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Rôle</th>
+<th style="text-align: left;">Mission</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Opérateur P1 à P4</strong></td>
+<td style="text-align: left;">Réaliser l’opération de son poste, selon
+le standard affiché</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Lanceur</strong></td>
+<td style="text-align: left;">Attribuer les jetons, noter l’heure de
+lancement, gérer le stock matière</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Client / Expéditeur</strong></td>
+<td style="text-align: left;">Contrôler les pièces à réception, noter
+l’heure de sortie, charger les camions, refuser les non-conformes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Chronométreur</strong></td>
+<td style="text-align: left;">Relever les temps de cycle poste par
+poste</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Observateur</strong></td>
+<td style="text-align: left;">Compter les en-cours par zone, observer
+les comportements</td>
+</tr>
+</tbody>
+</table>
+<p>Les rôles hors production tournent entre les rounds. Les opérateurs
+restent à leur poste, pour que les mesures restent comparables d’un
+round à l’autre.</p>
+<p><strong>Mon rôle</strong> :</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Round 1</th>
+<th style="text-align: left;">Round 2</th>
+<th style="text-align: left;">Round 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 class="page-break" id="le-standard-de-fabrication-fip">3. Le standard de fabrication
+(FIP)</h2>
+<blockquote>
+<p><strong>Objectif</strong> : une cocotte symétrique, qui s’ouvre et se
+ferme sans forcer, sans déchirure.</p>
+<p><strong>Matière</strong> : 1 feuille A4 blanche 80 g/m².</p>
+</blockquote>
+<h3 id="obtenir-le-carré">3.1 Obtenir le carré</h3>
+<ol type="1">
+<li><strong>Le triangle</strong> : rabattre le coin supérieur gauche sur
+le bord droit, pour former un triangle rectangle isocèle.</li>
+<li><strong>La chute</strong> : découper ou déchirer proprement le long
+du pli la bande restante.</li>
+<li><strong>Résultat</strong> : un carré de 210 × 210 mm.</li>
+</ol>
+<h3 id="les-étapes-de-pliage">3.2 Les étapes de pliage</h3>
+<table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 30%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Étape</th>
+<th style="text-align: left;">Action</th>
+<th style="text-align: left;">Point clé</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: left;"><strong>Les diagonales</strong></td>
+<td style="text-align: left;">Marquer les deux plis en croix, coin à
+coin. Ils localisent le centre.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: left;"><strong>Premier blintz</strong></td>
+<td style="text-align: left;">Rabattre les 4 coins vers le centre. Les
+bords ne se chevauchent pas.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: left;"><strong>Le retournement</strong></td>
+<td style="text-align: left;">Retourner la feuille, face lisse vers soi.
+Conditionne l’ouverture finale.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: left;"><strong>Second blintz</strong></td>
+<td style="text-align: left;">Rabattre les 4 nouveaux coins vers le
+centre. Appuyer fort.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: left;"><strong>Pré-formage</strong></td>
+<td style="text-align: left;">Plier en deux horizontalement, puis
+verticalement. Bien marquer.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>6</strong></td>
+<td style="text-align: left;"><strong>Mise en volume</strong></td>
+<td style="text-align: left;">Glisser les doigts dans les 4 poches et
+pousser vers le centre.</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<img src="Plan_Cocotte_simple.jpg" alt="Plan de pliage" />
+<figcaption aria-hidden="true">Plan de pliage</figcaption>
+</figure>
+<h3 id="les-3-critères-de-conformité">3.3 Les 3 critères de
+conformité</h3>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 40%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">#</th>
+<th style="text-align: left;">Critère</th>
+<th style="text-align: left;">Contrôle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: left;"><strong>Symétrie</strong></td>
+<td style="text-align: left;">Les 4 pointes à la même hauteur</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: left;"><strong>Mobilité</strong></td>
+<td style="text-align: left;">S’ouvre et se ferme sans résistance, 3
+actionnements dans les deux axes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: left;"><strong>Intégrité</strong></td>
+<td style="text-align: left;">Aucune déchirure, aucun pli parasite</td>
+</tr>
+</tbody>
+</table>
+<p>Une pièce refusée par le client va dans le <strong>bac
+rouge</strong>. Elle est comptée en rebut et n’est jamais recomptée.</p>
+<hr />
+<h2 class="page-break" id="les-postes">4. Les postes</h2>
+<table>
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Poste</th>
+<th style="text-align: left;">Opérations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>P1</strong></td>
+<td style="text-align: left;">Débit matière : triangle, découpe de la
+chute, carré 210 × 210</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>P2</strong></td>
+<td style="text-align: left;">Diagonales puis premier blintz</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>P3</strong></td>
+<td style="text-align: left;">Retournement puis second blintz</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>P4</strong></td>
+<td style="text-align: left;">Pré-formage et mise en volume</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 class="page-break" id="comment-on-mesure">5. Comment on mesure</h2>
+<h3 id="le-jeton-suiveur">5.1 Le jeton suiveur</h3>
+<p>Chaque pièce lancée reçoit un <strong>jeton numéroté</strong>, fixé
+par un trombone, qui l’accompagne jusqu’à la sortie.</p>
+<ul>
+<li>Le <strong>Lanceur</strong> note le numéro du jeton et l’heure de
+lancement, lue sur le chronomètre projeté.</li>
+<li>Le <strong>Client</strong> note le numéro du jeton, l’heure de
+sortie et la conformité.</li>
+<li>Le <strong>Lead Time</strong> de chaque pièce est la différence
+entre les deux.</li>
+</ul>
+<p>Le <strong>tableau des jetons</strong> affiche les jetons
+disponibles. Un emplacement vide signifie une pièce quelque part dans
+l’atelier. Regardez-le pendant la production : il vous dit en un coup
+d’œil combien de travail est en cours.</p>
+<h3 id="les-zones-den-cours">5.2 Les zones d’en-cours</h3>
+<p>Entre chaque poste, une zone matérialisée sur la table.</p>
+<div class="alert alert-warning">
+<p>Attention</p>
+<p><strong>Règle absolue</strong> : une pièce en attente est dans sa
+zone. Jamais sur le bord de la table, jamais dans les mains, jamais par
+terre.</p>
+<p>C’est cette règle qui rend les stocks visibles. Sans elle, on ne
+mesure rien.</p>
+</div>
+<h3 id="les-indicateurs-à-relever">5.3 Les indicateurs à relever</h3>
+<table>
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicateur</th>
+<th style="text-align: left;">Comment on l’obtient</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Temps de cycle par
+poste</strong></td>
+<td style="text-align: left;">Chronométrage de 5 cycles consécutifs, on
+retient la <strong>médiane</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Pièces sorties</strong></td>
+<td style="text-align: left;">Registre d’expédition</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Pièces conformes</strong></td>
+<td style="text-align: left;">Registre d’expédition, colonne
+conformité</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>WIP</strong></td>
+<td style="text-align: left;">Comptage zone par zone au signal STOP</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Lead Time</strong></td>
+<td style="text-align: left;">Heure de sortie moins heure d’entrée, par
+pièce</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Débit</strong></td>
+<td style="text-align: left;">Pièces sorties divisées par 16
+minutes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Taux de service</strong></td>
+<td style="text-align: left;">Pièces livrées à l’heure sur pièces
+dues</td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-tip">
+<p>Conseil</p>
+<p><strong>Pourquoi la médiane et pas la moyenne ?</strong> Sur 5
+relevés, un seul incident (une chute de ciseaux, une question posée au
+voisin) déforme la moyenne de 20 à 30 %. La médiane l’ignore. C’est la
+pratique courante en relevé de production.</p>
+</div>
+<hr />
+<h2 class="page-break" id="round-1-flux-poussé">6. Round 1 : Flux poussé</h2>
+<h3 id="les-règles">6.1 Les règles</h3>
+<div class="alert alert-warning">
+<p>Attention</p>
+<ul>
+<li>Transfert par <strong>lots de 5</strong>. Un poste ne transmet que
+lorsque ses 5 pièces sont terminées.</li>
+<li>Chaque poste produit <strong>au maximum de sa capacité</strong>,
+sans attendre l’aval.</li>
+<li><strong>Communication interdite</strong> entre les postes.</li>
+<li>Le Lanceur dispose de <strong>60 jetons</strong>, sans limite de
+lancement.</li>
+<li>Objectif : <strong>produire le maximum</strong>.</li>
+</ul>
+</div>
+<h3 id="mon-relevé-round-1">6.2 Mon relevé : Round 1</h3>
+<p><strong>Temps de cycle par poste</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Poste</th>
+<th style="text-align: center;">C1</th>
+<th style="text-align: center;">C2</th>
+<th style="text-align: center;">C3</th>
+<th style="text-align: center;">C4</th>
+<th style="text-align: center;">C5</th>
+<th style="text-align: center;"><strong>Médiane</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">P1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P2</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">P3</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P4</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><strong>Somme</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>En-cours au signal STOP</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Zone</th>
+<th style="text-align: center;">Nombre de pièces</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Stock matière → P1</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">P1 → P2</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">P2 → P3</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">P3 → P4</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">P4 → Client</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>WIP total</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tableau de marche</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Camion</th>
+<th style="text-align: center;">Heure</th>
+<th style="text-align: center;">Dû</th>
+<th style="text-align: center;">Livré</th>
+<th style="text-align: center;">Retard cumulé</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4 min</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">8 min</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">12 min</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">16 min</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Synthèse</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicateur</th>
+<th style="text-align: center;">Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Pièces lancées</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pièces sorties</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pièces conformes</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">WIP</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Lead Time moyen</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Débit (pièces/min)</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Temps de cycle de la ligne</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Takt Time</td>
+<td style="text-align: center;">40 s</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Taux de service</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="le-calcul-qui-compte">6.3 Le calcul qui compte</h3>
+<p><span class="math display">\[
+\text{Ratio d&#39;efficacité} = \frac{\text{Contenu travail (somme des
+temps de cycle)}}{\text{Lead Time}} = \frac{\ \ \ \ \ \ \ \ }{\ \ \ \ \
+\ \ \ } = \ \ \ \ \ \%
+\]</span></p>
+<p>Sur tout le temps qu’une cocotte passe dans l’atelier, quelle
+fraction sert réellement à la fabriquer ?</p>
+<h3 id="mes-observations">6.4 Mes observations</h3>
+<p><em>Ce que j’ai ressenti à mon poste :</em></p>
+<p><br><br></p>
+<p><em>Ce que j’ai vu ailleurs sur la ligne :</em></p>
+<p><br><br></p>
+<p><em>Les gaspillages que j’ai identifiés :</em></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Gaspillage</th>
+<th style="text-align: left;">Où je l’ai vu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Surproduction</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Stocks</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Attentes</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Défauts</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sur-processus</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mouvements inutiles</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Transports</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sous-emploi des compétences</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 class="page-break" id="round-2-flux-tiré">7. Round 2 : Flux tiré</h2>
+<h3 id="trois-notions">7.1 Trois notions</h3>
+<p><strong>Flux tiré</strong> : on ne produit que si l’aval le demande.
+L’information remonte la ligne, en sens inverse de la matière.</p>
+<p><strong>Kanban</strong> : le signal qui autorise à produire. Ici,
+c’est le jeton. Pas de jeton libre, pas de lancement.</p>
+<p><strong>CONWIP</strong> <em>(Constant Work In Progress)</em> :
+limiter le nombre de jetons en circulation revient à plafonner le nombre
+de pièces dans l’atelier. Le WIP devient une décision, pas une
+conséquence.</p>
+<h3 id="les-règles-1">7.2 Les règles</h3>
+<div class="alert alert-tip">
+<p>Conseil</p>
+<ul>
+<li>Transfert <strong>pièce à pièce</strong>. Aucun lot.</li>
+<li>Le Lanceur ne dispose plus que de <strong>6 jetons</strong>. Il ne
+lance que si un jeton est revenu.</li>
+<li>Un poste ne prend une pièce que lorsqu’il est libre. <strong>Une
+seule pièce en attente maximum</strong> entre deux postes.</li>
+<li><strong>Communication autorisée et encouragée.</strong> Une pièce
+douteuse repart immédiatement en amont.</li>
+<li>Vous pouvez rapprocher les tables.</li>
+<li>Objectif : <strong>livrer les 4 camions</strong>.</li>
+</ul>
+</div>
+<h3 id="mon-relevé-round-2">7.3 Mon relevé : Round 2</h3>
+<p><strong>Temps de cycle par poste</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Poste</th>
+<th style="text-align: center;">C1</th>
+<th style="text-align: center;">C2</th>
+<th style="text-align: center;">C3</th>
+<th style="text-align: center;">C4</th>
+<th style="text-align: center;">C5</th>
+<th style="text-align: center;"><strong>Médiane</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">P1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P2</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">P3</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P4</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><strong>Somme</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>En-cours au signal STOP</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Zone</th>
+<th style="text-align: center;">Nombre de pièces</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Stock matière → P1</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">P1 → P2</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">P2 → P3</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">P3 → P4</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">P4 → Client</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>WIP total</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tableau de marche</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Camion</th>
+<th style="text-align: center;">Heure</th>
+<th style="text-align: center;">Dû</th>
+<th style="text-align: center;">Livré</th>
+<th style="text-align: center;">Retard cumulé</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4 min</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">8 min</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">12 min</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">16 min</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Synthèse</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicateur</th>
+<th style="text-align: center;">Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Pièces sorties</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pièces conformes</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">WIP</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lead Time moyen</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Débit (pièces/min)</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Temps de cycle de la ligne</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ratio d’efficacité</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Taux de service</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="la-question-à-se-poser">7.4 La question à se poser</h3>
+<p>Comparez vos temps de cycle par poste entre le round 1 et le round
+2.</p>
+<p>Ont-ils baissé ?</p>
+<p><br></p>
+<p>Et pourtant, combien de pièces conformes de plus avez-vous livrées
+?</p>
+<p><br></p>
+<p><strong>D’où vient la différence ?</strong></p>
+<p><br><br></p>
+<hr />
+<h2 class="page-break" id="chantier-kaizen">8. Chantier Kaizen</h2>
+<h3 id="le-diagramme-yamazumi">8.1 Le diagramme Yamazumi</h3>
+<p>Reportez les médianes relevées au round 2, et tracez la ligne du Takt
+Time à 40 secondes.</p>
+<pre><code>Temps (s)
+  45 │
+  40 │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  Takt Time = 40 s
+  35 │
+  30 │
+  25 │
+  20 │
+  15 │
+  10 │
+   5 │
+   0 └───┬──────┬──────┬──────┬───
+        P1     P2     P3     P4</code></pre>
+<p><strong>Le poste le plus long</strong> : ______ , à ______
+secondes.</p>
+<p><strong>L’écart entre le poste le plus long et le plus court</strong>
+: ______ secondes.</p>
+<div class="alert alert-important">
+<p>Important</p>
+<p>Aucun poste ne dépasse le Takt Time. La ligne a donc la capacité de
+tenir la demande.</p>
+<p>Le problème n’est pas la vitesse, c’est le
+<strong>déséquilibre</strong>. Chaque seconde d’écart entre deux postes
+est une seconde d’attente pour l’un des deux. C’est du
+<strong>Mura</strong>, l’irrégularité.</p>
+</div>
+<h3 id="nos-pistes-damélioration">8.2 Nos pistes d’amélioration</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Piste proposée</th>
+<th style="text-align: center;">Poste visé</th>
+<th style="text-align: center;">Gain estimé</th>
+<th style="text-align: center;">Retenue ?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nouvelle répartition des opérations</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Poste</th>
+<th style="text-align: left;">Opérations après modification</th>
+<th style="text-align: center;">Temps visé</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">P1</td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P2</td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">P3</td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P4</td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="chantier-5s">8.3 Chantier 5S</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">#</th>
+<th style="text-align: left;">Terme</th>
+<th style="text-align: left;">Ce que nous avons fait à notre poste</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: left;"><strong>Seiri</strong>, Trier</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: left;"><strong>Seiton</strong>, Ranger</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: left;"><strong>Seiso</strong>, Nettoyer</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: left;"><strong>Seiketsu</strong>,
+Standardiser</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: left;"><strong>Shitsuke</strong>, Maintenir</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 class="page-break" id="round-3-ligne-équilibrée">9. Round 3 : Ligne équilibrée</h2>
+<h3 id="les-règles-2">9.1 Les règles</h3>
+<p>Identiques au round 2, avec vos améliorations en place, et <strong>4
+jetons seulement</strong>.</p>
+<div class="alert alert-note">
+<p>Note</p>
+<p>Réduire encore le nombre de jetons paraît absurde : moins de pièces
+lancées devrait vouloir dire moins de pièces livrées.</p>
+<p>Notez ici ce que vous en pensez <strong>avant</strong> de commencer
+:</p>
+<p><br></p>
+</div>
+<h3 id="mon-relevé-round-3">9.2 Mon relevé : Round 3</h3>
+<p><strong>Temps de cycle par poste</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Poste</th>
+<th style="text-align: center;">C1</th>
+<th style="text-align: center;">C2</th>
+<th style="text-align: center;">C3</th>
+<th style="text-align: center;">C4</th>
+<th style="text-align: center;">C5</th>
+<th style="text-align: center;"><strong>Médiane</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">P1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P2</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">P3</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">P4</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><strong>Somme</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>En-cours au signal STOP</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Zone</th>
+<th style="text-align: center;">Nombre de pièces</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Stock matière → P1</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">P1 → P2</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">P2 → P3</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">P3 → P4</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">P4 → Client</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>WIP total</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tableau de marche</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Camion</th>
+<th style="text-align: center;">Heure</th>
+<th style="text-align: center;">Dû</th>
+<th style="text-align: center;">Livré</th>
+<th style="text-align: center;">Retard cumulé</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4 min</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">8 min</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">12 min</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">16 min</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Synthèse</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicateur</th>
+<th style="text-align: center;">Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Pièces sorties</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pièces conformes</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">WIP</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lead Time moyen</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Débit (pièces/min)</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Temps de cycle de la ligne</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ratio d’efficacité</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Taux de service</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="la-question-piège">9.3 La question piège</h3>
+<p>Combien de pièces conformes avez-vous produites ? ______</p>
+<p>Combien le client en demandait-il ? ______</p>
+<p><strong>Est-ce une bonne performance ?</strong></p>
+<p><br><br></p>
+<hr />
+<h2 class="page-break" id="synthèse">10. Synthèse</h2>
+<h3 id="les-trois-temps">10.1 Les trois temps</h3>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 23%" />
+<col style="width: 35%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Formule</th>
+<th style="text-align: left;">Ce qu’il dit</th>
+<th style="text-align: left;">Qui le fixe</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Takt Time</strong></td>
+<td style="text-align: left;">Temps disponible / demande client</td>
+<td style="text-align: left;">À quel rythme il <strong>faut</strong>
+produire</td>
+<td style="text-align: left;">Le client</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Temps de cycle</strong></td>
+<td style="text-align: left;">Temps de traitement / pièces
+produites</td>
+<td style="text-align: left;">À quel rythme on produit
+<strong>réellement</strong></td>
+<td style="text-align: left;">Le processus</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Lead Time</strong></td>
+<td style="text-align: left;">Attentes + transports + traitement</td>
+<td style="text-align: left;">Combien de temps le client
+<strong>attend</strong></td>
+<td style="text-align: left;">Le système entier</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+\text{Takt Time} = \frac{\text{Temps disponible}}{\text{Demande client}}
+\]</span></p>
+<p><span class="math display">\[
+\text{Temps de cycle} = \frac{\text{Temps de traitement}}{\text{Nombre
+de pièces produites}}
+\]</span></p>
+<p><span class="math display">\[
+\text{Lead Time} = \sum \text{Attentes} + \sum \text{Transports} + \sum
+\text{Temps de traitement}
+\]</span></p>
+<p><strong>La règle</strong> :</p>
+<ul>
+<li>Temps de cycle <strong>supérieur</strong> au Takt Time : la demande
+ne peut pas être tenue.</li>
+<li>Temps de cycle <strong>très inférieur</strong> au Takt Time : on
+surproduit, on fabrique du stock.</li>
+<li>On vise l’<strong>égalité</strong>.</li>
+</ul>
+<h3 id="la-loi-de-little">10.2 La loi de Little</h3>
+<p><span class="math display">\[
+\boxed{\text{WIP} = \text{Débit} \times \text{Lead Time}}
+\qquad\text{soit}\qquad
+\text{Lead Time} = \frac{\text{WIP}}{\text{Débit}}
+\]</span></p>
+<p>Vous avez mesuré les trois grandeurs séparément. Confrontons.</p>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 12%" />
+<col style="width: 14%" />
+<col style="width: 34%" />
+<col style="width: 23%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Round</th>
+<th style="text-align: center;">WIP mesuré</th>
+<th style="text-align: center;">Débit mesuré</th>
+<th style="text-align: center;">Lead Time <strong>prédit</strong> par
+Little</th>
+<th style="text-align: center;">Lead Time <strong>mesuré</strong></th>
+<th style="text-align: center;">Écart</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-important">
+<p>Important</p>
+<p><strong>Que constatez-vous au round 1 ?</strong></p>
+<p>La loi de Little n’est pas fausse. Elle suppose un <strong>régime
+permanent</strong> : un atelier dont la quantité de travail en cours ne
+dérive pas.</p>
+<p>Aux rounds 2 et 3, le nombre de jetons force ce régime, et la loi
+tombe juste. Au round 1, le WIP grimpe pendant toute la vacation,
+l’atelier n’est jamais stable, et la prédiction s’effondre.</p>
+<p><strong>Conséquence pratique : un atelier en flux poussé est un
+atelier dont on ne sait pas prédire les délais.</strong> On ne peut pas
+s’engager sur une date de livraison quand on ne maîtrise pas son propre
+en-cours.</p>
+</div>
+<h3 id="le-trg">10.3 Le TRG</h3>
+<p>Conformément à la norme <strong>NF E 60-182</strong> :</p>
+<p><span class="math display">\[
+\text{TRG} = \frac{\text{Temps utile}}{\text{Temps d&#39;ouverture}}
+\]</span></p>
+<p><span class="math display">\[
+\text{Temps utile} = \text{Pièces valorisables} \times \text{Temps de
+cycle de référence}
+\]</span></p>
+<p>Deux conventions pour l’atelier :</p>
+<ol type="1">
+<li>Le <strong>temps de cycle de référence</strong> est celui du goulot
+initial, gardé identique aux trois rounds.</li>
+<li>Les <strong>pièces valorisables</strong> sont les pièces conformes,
+dans la limite de la demande client. La surproduction ne compte
+pas.</li>
+</ol>
+<table>
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 27%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Composante</th>
+<th style="text-align: left;">Formule</th>
+<th style="text-align: center;">R1</th>
+<th style="text-align: center;">R2</th>
+<th style="text-align: center;">R3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Disponibilité</strong></td>
+<td style="text-align: left;">Temps de fonctionnement / temps
+requis</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Performance</strong></td>
+<td style="text-align: left;">(Pièces réalisées × TC réf) / temps de
+fonctionnement</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Valorisation</strong></td>
+<td style="text-align: left;">Pièces valorisables / pièces
+réalisées</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>TRG</strong></td>
+<td style="text-align: left;">Produit des trois</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-note">
+<p>Note</p>
+<p>La composante <strong>Valorisation</strong> remplace ici le taux de
+qualité habituel. Elle compte les deux façons de produire une pièce sans
+créer de valeur : la rebuter, ou la fabriquer alors que personne ne
+l’attend.</p>
+<p>Regardez ce que devient cette composante entre le round 2 et le round
+3, alors même que votre qualité s’est améliorée. Vous saurez expliquer
+pourquoi.</p>
+</div>
+<h3 id="tableau-comparatif-final">10.4 Tableau comparatif final</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Indicateur</th>
+<th style="text-align: center;">R1 Poussé</th>
+<th style="text-align: center;">R2 Tiré</th>
+<th style="text-align: center;">R3 Kaizen</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Pièces conformes</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">WIP</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Lead Time</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Débit</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Temps de cycle ligne</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Takt Time</td>
+<td style="text-align: center;">40 s</td>
+<td style="text-align: center;">40 s</td>
+<td style="text-align: center;">40 s</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ratio d’efficacité</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Taux de service</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TRG</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 class="page-break" id="ce-quil-faut-retenir">11. Ce qu’il faut retenir</h2>
+<div class="alert alert-important">
+<p>Important</p>
+<p>Vos temps de cycle par poste n’ont presque pas bougé entre le premier
+et le dernier round. Vous n’avez pas travaillé plus vite.</p>
+<p>Ce qui a changé, c’est ce que le système vous demandait de faire.</p>
+</div>
+<ol type="1">
+<li>Le <strong>Takt Time</strong> vient du client, pas de l’atelier. Il
+se subit, il ne se négocie pas.</li>
+<li>Le <strong>temps de cycle</strong> est ce que le processus sait
+faire. C’est là-dessus que porte le Kaizen.</li>
+<li>Le <strong>Lead Time</strong> est ce que le client ressent. Il
+dépend surtout des attentes, pas du travail.</li>
+<li>Réduire le <strong>WIP</strong> réduit le Lead Time, sans toucher à
+la vitesse de personne.</li>
+<li><strong>Produire plus que la demande n’est pas une
+performance</strong>, c’est de la surproduction.</li>
+<li>Un <strong>défaut détecté tard</strong> coûte tout ce qui a été fait
+entre-temps.</li>
+<li>Le <strong>déséquilibre</strong> entre postes coûte plus cher que la
+lenteur d’un poste.</li>
+</ol>
+<p>Les trois démons : <strong>Muda</strong> le gaspillage,
+<strong>Muri</strong> la surcharge, <strong>Mura</strong>
+l’irrégularité.</p>
+<hr />
+<h2 class="page-break" id="mon-plan-daction">12. Mon plan d’action</h2>
+<p><em>Trois actions concrètes, dans mon poste réel, applicables dans
+les 30 jours.</em></p>
+<table>
+<colgroup>
+<col style="width: 3%" />
+<col style="width: 21%" />
+<col style="width: 16%" />
+<col style="width: 20%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">#</th>
+<th style="text-align: left;">Ce que je change</th>
+<th style="text-align: left;">Où, avec qui</th>
+<th style="text-align: left;">Sous quel délai</th>
+<th style="text-align: left;">Comment je saurai que ça marche</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p><em>Le gaspillage que je vais chasser en premier dans mon atelier
+:</em></p>
+<p><br><br></p>
+<hr />
+<p><em>Pôle Formation UIMM CVDL | S. Jaubert | Livret Participant v2.0 |
+Juillet 2026</em></p>
+</body>
+</html>
