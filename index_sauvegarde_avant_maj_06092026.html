@@ -20,7 +20,6 @@
       --resolution: #2e7d32;
       --simulation: #4527a0;
       --ressources: #37474f;
-      --sessions:   #00695c;
     }
 
     body {
@@ -345,69 +344,6 @@
 
     footer strong { color: var(--blanc); }
 
-
-    /* ---- BADGE DE MISE A JOUR ---- */
-    .maj {
-      display: inline-block;
-      font-size: 0.72em;
-      font-weight: 700;
-      background: #fff3e0;
-      color: #b45f06;
-      padding: 1px 7px;
-      border-radius: 10px;
-      margin-left: 6px;
-      letter-spacing: 0.02em;
-      vertical-align: 1px;
-      white-space: nowrap;
-    }
-
-    .card h3 .maj, .jdr-card h4 .maj { vertical-align: 2px; }
-
-    /* ---- REPLI SOURCES ---- */
-    details.sources {
-      margin-top: 6px;
-      border-top: 1px solid var(--gris-fond);
-      padding-top: 6px;
-    }
-
-    details.sources summary {
-      cursor: pointer;
-      font-size: 0.76em;
-      font-weight: 700;
-      color: var(--texte-sec);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      list-style: none;
-      padding: 3px 0;
-    }
-
-    details.sources summary::before { content: "\25B8  "; }
-    details.sources[open] summary::before { content: "\25BE  "; }
-    details.sources summary::-webkit-details-marker { display: none; }
-    details.sources summary:hover { color: var(--texte); }
-    details.sources a { padding-left: 12px; font-weight: 500; }
-
-    /* ---- SESSIONS ---- */
-    .s-sessions { color: var(--sessions); }
-    .card.sessions { border-left-color: var(--sessions); }
-    .card.sessions .module-code { background: var(--sessions); }
-    .card.sessions .card-links a { color: var(--sessions); }
-    nav ul li.sessions a:hover { color: var(--sessions); border-bottom-color: var(--sessions); }
-
-    .session-dates {
-      display: inline-block;
-      font-size: 0.72em;
-      font-weight: 700;
-      background: #ede7f6;
-      color: #4527a0;
-      padding: 2px 9px;
-      border-radius: 11px;
-      margin: 4px 0 8px;
-      letter-spacing: 0.03em;
-    }
-
-    .session-dates.passe { background: var(--gris-fond); color: var(--texte-sec); }
-
     /* ---- RESPONSIVE ---- */
     @media (max-width: 640px) {
       header { flex-wrap: wrap; padding: 20px 16px; }
@@ -430,7 +366,7 @@
   </div>
   <div class="header-meta">
     S. Jaubert<br>
-    Mis à jour : 6 septembre 2026
+    Mis à jour : Août 2026
   </div>
 </header>
 
@@ -441,7 +377,6 @@
     <li class="qualite">   <a href="#qualite">Qualite et SPC</a></li>
     <li class="resolution"><a href="#resolution">Resolution de Problemes</a></li>
     <li class="simulation"><a href="#simulation">Simulation et Outils</a></li>
-    <li class="sessions">  <a href="#sessions">Sessions de formation</a></li>
     <li>                   <a href="#ressources">Ressources Formateur</a></li>
   </ul>
 </nav>
@@ -510,7 +445,7 @@
       <div class="card lean">
         <div class="card-title-row">
           <span class="module-code">V2</span>
-          <h3>Atelier Cocotte LEAN, « Le Contrat Cadencé » <span class="maj">1er août 2026</span></h3>
+          <h3>Atelier Cocotte LEAN, « Le Contrat Cadencé »</h3>
         </div>
         <p>Simulation de production sur une journée, 6 à 8 participants. Trois vacations sous contrat client cadencé : flux poussé par lots, flux tiré CONWIP, ligne équilibrée après Kaizen. Mesure directe du Takt Time, du Temps de Cycle et du Lead Time par jetons suiveurs. La loi de Little sert de test de cohérence, pas d'outil de calcul.</p>
         <div class="card-links">
@@ -520,23 +455,12 @@
           <a href="OI/Atelier_cocotte/KPI_Cocotte_Lean.xlsx"><span class="link-label">v2</span> - Classeur de calcul des KPI (Excel)</a>
           <a href="OI/Atelier_cocotte/Atelier_Cocotte_Lean.html"><span class="link-label">v1</span> - Guide formateur (archive)</a>
           <a href="OI/Atelier_cocotte/Atelier_Cocotte_Lean_Apprenant.html"><span class="link-label">v1</span> - Livret participant (archive)</a>
-          <details class="sources"><summary>Fichiers sources et visuels</summary>
-          <a href="OI/Atelier_cocotte/Atelier_Cocotte_Lean_Formateur_v2.docx">Guide formateur v2 (Word)</a>
-          <a href="OI/Atelier_cocotte/Atelier_Cocotte_Lean_Apprenant_v2.docx">Livret participant v2 (Word)</a>
-          <a href="OI/Atelier_cocotte/Atelier_Cocotte_Lean_Formateur_v2.md">Guide formateur v2 (Markdown)</a>
-          <a href="OI/Atelier_cocotte/Atelier_Cocotte_Lean_Apprenant_v2.md">Livret participant v2 (Markdown)</a>
-          <a href="OI/Atelier_cocotte/Atelier_Cocotte_Lean_Formateur_v2.tex">Guide formateur v2 (LaTeX)</a>
-          <a href="OI/Atelier_cocotte/Slides_Indicateurs_Flux_Cocotte.docx">Slides indicateurs de flux (Word)</a>
-          <a href="OI/Atelier_cocotte/TT_CT_LT.jpg">Schéma Takt Time, Temps de Cycle, Lead Time</a>
-          <a href="OI/Atelier_cocotte/Plan_Cocotte_simple.jpg">Plan de pliage simplifié</a>
-          <a href="OI/Atelier_cocotte/cocotte_tuto.jpg">Tutoriel de pliage</a>
-          </details>
         </div>
       </div>
 
       <div class="card lean">
         <div class="card-title-row">
-          <h3>Jeu du Kanban <span class="maj">1er sept. 2026</span></h3>
+          <h3>Jeu du Kanban</h3>
         </div>
         <p>Simulation de gestion de production en flux tire avec cartes Kanban. Decouverte du systeme Kanban en conditions realistes.</p>
         <div class="card-links">
@@ -553,18 +477,6 @@
           <a href="OI/jeu_du_kanban/Approche%20Lean_Toyota%20Production%20System%20KANBAN.pdf"><span class="link-label">Ref.</span> - Approche Lean / Toyota / KANBAN</a>
           <a href="OI/jeu_du_kanban/Pr%C3%A9sentation%20Jeu%20du%20Kanban.docx"><span class="link-label">Word</span> - Presentation du jeu</a>
           <a href="OI/jeu_du_kanban/README.md">Documentation complete</a>
-          <a href="OI/jeu_du_kanban/cl%C3%A9%20USB%20Jeu%20du%20Kanban/Animation/Guide%20d%27animation_V2.pptx"><span class="link-label">Kit clé USB</span> - Guide d'animation V2 (PowerPoint) <span class="maj">1er sept. 2026</span></a>
-          <a href="OI/jeu_du_kanban/cl%C3%A9%20USB%20Jeu%20du%20Kanban/Animation/Tableau%20de%20bord.xlsx"><span class="link-label">Kit clé USB</span> - Tableau de bord du jeu (Excel) <span class="maj">1er sept. 2026</span></a>
-          <details class="sources"><summary>Kit clé USB : animation et consommables</summary>
-          <a href="OI/jeu_du_kanban/cl%C3%A9%20USB%20Jeu%20du%20Kanban/Animation/Guide%20d%27animation.pdf">Guide d'animation (PDF)</a>
-          <a href="OI/jeu_du_kanban/cl%C3%A9%20USB%20Jeu%20du%20Kanban/Animation/Cartes%20incident.pdf">Cartes incident (PDF)</a>
-          <a href="OI/jeu_du_kanban/cl%C3%A9%20USB%20Jeu%20du%20Kanban/Animation/Cartes%20incident.pptx">Cartes incident (PowerPoint)</a>
-          <a href="OI/jeu_du_kanban/cl%C3%A9%20USB%20Jeu%20du%20Kanban/Consommables/Tickets%20Kanban.pdf">Tickets Kanban à imprimer (PDF)</a>
-          <a href="OI/jeu_du_kanban/cl%C3%A9%20USB%20Jeu%20du%20Kanban/Consommables/Documents.pdf">Documents de jeu (PDF)</a>
-          <a href="OI/jeu_du_kanban/cl%C3%A9%20USB%20Jeu%20du%20Kanban/Consommables/Documents.xlsx">Documents de jeu (Excel)</a>
-          <a href="OI/jeu_du_kanban/cl%C3%A9%20USB%20Jeu%20du%20Kanban/Consommables/Analyse%20des%20progr%C3%A8s.pdf">Analyse des progrès (PDF)</a>
-          <a href="OI/jeu_du_kanban/cl%C3%A9%20USB%20Jeu%20du%20Kanban/Tableau%20de%20bord%2025032026.xlsx">Tableau de bord, version mars 2026 (Excel)</a>
-          </details>
         </div>
       </div>
 
@@ -630,7 +542,7 @@
       <div class="card qualite">
         <div class="card-title-row">
           <span class="module-code">A4</span>
-          <h3>Capabilite et Cartes de Controle <span class="maj">27 août 2026</span></h3>
+          <h3>Capabilite et Cartes de Controle</h3>
         </div>
         <p>Maitrise statistique des procedes (SPC). Cartes de Shewhart, indices de capabilite Cp et Cpk.</p>
         <div class="card-links">
@@ -645,31 +557,6 @@
           <a href="OI/a4_capability_cartes/Activite_08_Etude_Cas_Integree.html"><span class="link-label">Activite 8</span> - Etude de cas integree</a>
           <a href="OI/a4_capability_cartes/QCM_Evaluation_Finale.html">QCM - Evaluation finale</a>
           <a href="OI/a4_capability_cartes/Aide_Memoire_SPC.html">Aide-memoire SPC</a>
-          <a href="OI/a4_capability_cartes/Cours_00_Comprendre_la_variabilite.docx"><span class="link-label">Amorçage</span> - Comprendre la variabilité, support formateur (Word) <span class="maj">27 août 2026</span></a>
-          <a href="OI/a4_capability_cartes/Livret_stagiaire_Comprendre_la_variabilite.docx"><span class="link-label">Amorçage</span> - Comprendre la variabilité, livret stagiaire (Word) <span class="maj">27 août 2026</span></a>
-          <details class="sources"><summary>Ressources de cours et jeux de données</summary>
-          <a href="OI/a4_capability_cartes/CFAI%20COURS%20MSP.pdf">CFAI - Cours MSP (PDF)</a>
-          <a href="OI/a4_capability_cartes/Pilotage_Qualit%C3%A9_Cartes_de_Contr%C3%B4le_et_Capabilit%C3%A9.pdf">Pilotage qualité, cartes et capabilité (PDF)</a>
-          <a href="OI/a4_capability_cartes/Bachelor%20-%20Cartes%20Controle-Attributs.pdf">Cartes de contrôle aux attributs (PDF)</a>
-          <a href="OI/a4_capability_cartes/Exercices-%20cartes%20de%20Shewhart.pdf">Exercices, cartes de Shewhart (PDF)</a>
-          <a href="OI/a4_capability_cartes/TP_cartes_Shewhart%20corrig%C3%A9.pdf">Corrigé des exercices Shewhart (PDF)</a>
-          <a href="OI/a4_capability_cartes/TP%20Controle%20statistique%20Butee%20diametre.pdf">TP contrôle statistique, butée (PDF)</a>
-          <a href="OI/a4_capability_cartes/TP%20But%C3%A9es%20-%20correction.xlsx">TP butées, correction (Excel)</a>
-          <a href="OI/a4_capability_cartes/infographie.png">Infographie MSP (image)</a>
-          <a href="OI/a4_capability_cartes/infographie2.png">Infographie MSP, seconde version (image)</a>
-          <a href="OI/a4_capability_cartes/diameter.csv">Jeu de données, diameter (CSV)</a>
-          <a href="OI/a4_capability_cartes/diameter.xlsx">Jeu de données, diameter (Excel)</a>
-          <a href="OI/a4_capability_cartes/SPC-1-inspection.csv">SPC-1 inspection (CSV)</a>
-          <a href="OI/a4_capability_cartes/SPC-2-pression.csv">SPC-2 pression (CSV)</a>
-          <a href="OI/a4_capability_cartes/SPC-3-liquide.csv">SPC-3 liquide (CSV)</a>
-          <a href="OI/a4_capability_cartes/SPC-4-silice.csv">SPC-4 silice (CSV)</a>
-          <a href="OI/a4_capability_cartes/SPC-5-ohm.csv">SPC-5 ohm (CSV)</a>
-          <a href="OI/a4_capability_cartes/SPC-8-billes.csv">SPC-8 billes (CSV)</a>
-          <a href="OI/a4_capability_cartes/SPC-9-remplissage.csv">SPC-9 remplissage (CSV)</a>
-          <a href="OI/a4_capability_cartes/SPC-10-dimension.csv">SPC-10 dimension (CSV)</a>
-          <a href="OI/a4_capability_cartes/SPC-15-convoyeur.csv">SPC-15 convoyeur (CSV)</a>
-          <a href="OI/a4_capability_cartes/SPC-16-intervention.csv">SPC-16 intervention (CSV)</a>
-          </details>
         </div>
       </div>
 
@@ -684,58 +571,22 @@
         </div>
         <p>Capabilité machine et procédé (Cm, Cmk, Cp, Cpk) · Cartes Shewhart X̅/R · Mise en œuvre SPC avec Ellistat. Public profil opérateur – AFPI Bourges – 3 jours. 13 activités TP (dont manips concrètes, attributs, normalité, Gage R&amp;R).</p>
         <div class="card-links" style="--qualite:#7b1fa2;">
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/Plan_Formation_Capabilite_SPC_TQ6.html" style="color:#7b1fa2;">Plan de formation interactif (HTML)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/Plan_Formation_Capabilite_SPC_TQ6.docx" style="color:#7b1fa2;"><span class="link-label">Word</span> – Plan de formation (.docx)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/Capabilite_SPC_Formation_2jours.pptx" style="color:#7b1fa2;"><span class="link-label">Diaporama</span> – Présentation 28 slides (.pptx)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_Activites/index.html" style="color:#7b1fa2;font-weight:700;background:#f3e5f5;padding:4px 8px;border-radius:4px;margin-top:4px;display:block;">&#9658; 13 activités TP – Capabilité &amp; SPC (Ellistat)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_Activites/Guide_Animateur_TP08-13.html" style="color:#7b1fa2;"><span class="link-label">Formateur</span> – Guide animateur (TP 8 à 13)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_Activites/Kit_Materiel_Gabarits_TP08-13.html" style="color:#7b1fa2;"><span class="link-label">Kit</span> – Matériel et gabarits imprimables</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_Activites/Agenda_3jours_Integration_TP.html" style="color:#7b1fa2;"><span class="link-label">Agenda</span> – Intégration sur 3 jours</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/Illustration%20des%20cours%20avec%20sch%C3%A9mas/0%20-%20Sommaire.html" style="color:#7b1fa2;font-weight:700;background:#f3e5f5;padding:4px 8px;border-radius:4px;margin-top:4px;display:block;">&#9658; Cours illustrés : 4 cours avec schémas (variabilité, capabilité, cartes, MSA)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/Plan_Formation_Capabilite_SPC_TQ6.html" style="color:#7b1fa2;">Plan de formation interactif (HTML)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/Plan_Formation_Capabilite_SPC_TQ6.docx" style="color:#7b1fa2;"><span class="link-label">Word</span> – Plan de formation (.docx)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/Capabilite_SPC_Formation_2jours.pptx" style="color:#7b1fa2;"><span class="link-label">Diaporama</span> – Présentation 28 slides (.pptx)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/TP_Activites/index.html" style="color:#7b1fa2;font-weight:700;background:#f3e5f5;padding:4px 8px;border-radius:4px;margin-top:4px;display:block;">&#9658; 13 activités TP – Capabilité &amp; SPC (Ellistat)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/TP_Activites/Guide_Animateur_TP08-13.html" style="color:#7b1fa2;"><span class="link-label">Formateur</span> – Guide animateur (TP 8 à 13)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/TP_Activites/Kit_Materiel_Gabarits_TP08-13.html" style="color:#7b1fa2;"><span class="link-label">Kit</span> – Matériel et gabarits imprimables</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/TP_Activites/Agenda_3jours_Integration_TP.html" style="color:#7b1fa2;"><span class="link-label">Agenda</span> – Intégration sur 3 jours</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/Illustration des cours avec schémas/0 - Sommaire.html" style="color:#7b1fa2;font-weight:700;background:#f3e5f5;padding:4px 8px;border-radius:4px;margin-top:4px;display:block;">&#9658; Cours illustrés : 4 cours avec schémas (variabilité, capabilité, cartes, MSA)</a>
           <span style="font-size:0.72em;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#6a1b9a;margin-top:8px;padding-top:6px;border-top:1px solid #eee;display:block;">Fichiers sources et données du TP</span>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_MSP_app.xlsx" style="color:#7b1fa2;"><span class="link-label">Classeur</span> – Calcul de capabilité Cm/Cmk (.xlsx)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/diam%C3%A8tre_but%C3%A9e.csv" style="color:#7b1fa2;"><span class="link-label">Données J1</span> – 50 mesures butée Ø11,88 (.csv)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/Exercices%20Cartes%20de%20Shewhart.xlsx" style="color:#7b1fa2;"><span class="link-label">Exercices</span> – Cartes de Shewhart (.xlsx)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/Cours%20MSP.pdf" style="color:#7b1fa2;"><span class="link-label">Cours</span> – MSP (PDF)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP%20Carte%20de%20contr%C3%B4le.pdf" style="color:#7b1fa2;"><span class="link-label">TP</span> – Carte de contrôle, exercices lecture (PDF)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/SPC%20Ellistat.pdf" style="color:#7b1fa2;"><span class="link-label">Guide logiciel</span> – SPC Ellistat (PDF)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/DIAPO%205%20Keys%20to%20MSP%20Excellence.pdf" style="color:#7b1fa2;"><span class="link-label">Référence</span> – 5 Keys to MSP Excellence (PDF)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/chapitre-1-capabilite-machine-processus.pdf" style="color:#7b1fa2;"><span class="link-label">Cours</span> - Chapitre 1, capabilité machine et processus (PDF) <span class="maj">22 juil. 2026</span></a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/chapitre-3-maitrise-statistique-procedes.pdf" style="color:#7b1fa2;"><span class="link-label">Cours</span> - Chapitre 3, maîtrise statistique des procédés (PDF) <span class="maj">22 juil. 2026</span></a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/chapitre-4-plans-echantillonnage.pdf" style="color:#7b1fa2;"><span class="link-label">Cours</span> - Chapitre 4, plans d'échantillonnage (PDF) <span class="maj">22 juil. 2026</span></a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/capabilite-mesure.pdf" style="color:#7b1fa2;"><span class="link-label">Fiche</span> - Capabilité de mesure (PDF) <span class="maj">22 juil. 2026</span></a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/capabilite-process.pdf" style="color:#7b1fa2;"><span class="link-label">Fiche</span> - Capabilité process (PDF) <span class="maj">22 juil. 2026</span></a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/carte_xb_r_trame.pdf" style="color:#7b1fa2;"><span class="link-label">Trame</span> - Trame vierge de carte X̄-R à imprimer (PDF) <span class="maj">22 juil. 2026</span></a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_Controle_statistique_Butee_diametre.docx" style="color:#7b1fa2;"><span class="link-label">TP</span> - TP contrôle statistique, butée diamètre (Word) <span class="maj">22 juil. 2026</span></a>
-          <details class="sources"><summary>Les 13 activités TP en accès direct</summary>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_Activites/TP1_Decouverte_Variabilite.html" style="color:#7b1fa2;">TP 1 - Découverte de la variabilité</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_Activites/TP2_Capabilite_Machine_Cm_Cmk.html" style="color:#7b1fa2;">TP 2 - Capabilité machine, Cm et Cmk</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_Activites/TP3_Capabilite_Procede_Cp_Cpk.html" style="color:#7b1fa2;">TP 3 - Capabilité procédé, Cp et Cpk</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_Activites/TP4_Cas_Client_Cpk_Exige.html" style="color:#7b1fa2;">TP 4 - Cas client, Cpk exigé</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_Activites/TP5_Construction_Carte_XbarR.html" style="color:#7b1fa2;">TP 5 - Construction d'une carte X̄-R</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_Activites/TP6_Lecture_Cartes_Normal_Alarme.html" style="color:#7b1fa2;">TP 6 - Lecture des cartes, normal et alarme</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_Activites/TP7_Integratif_Ellistat.html" style="color:#7b1fa2;">TP 7 - Intégratif sous Ellistat</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_Activites/TP08_Entonnoir_Deming_Sur-reglage.html" style="color:#7b1fa2;">TP 8 - Entonnoir de Deming et sur-réglage</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_Activites/TP09_Tir_sur_Cible_Cp_Cpk.html" style="color:#7b1fa2;">TP 9 - Tir sur cible, Cp et Cpk</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_Activites/TP10_OCAP_Reaction_Alarme.html" style="color:#7b1fa2;">TP 10 - OCAP, réaction à une alarme</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_Activites/TP11_Carte_Attributs_P_C.html" style="color:#7b1fa2;">TP 11 - Cartes aux attributs p et c</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_Activites/TP12_Normalite_Droite_Henry.html" style="color:#7b1fa2;">TP 12 - Normalité, droite de Henry</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_Activites/TP13_Gage_RR_Capabilite_Instrument.html" style="color:#7b1fa2;">TP 13 - Gage R&R, capabilité de l'instrument</a>
-          </details>
-          <details class="sources"><summary>Relevés et données du TP MSP</summary>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_MSP_relev%C3%A91_df1.csv" style="color:#7b1fa2;">Relevé 1, série 1 (CSV)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_MSP_relev%C3%A91_df2.csv" style="color:#7b1fa2;">Relevé 1, série 2 (CSV)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_MSP_relev%C3%A91_df3.csv" style="color:#7b1fa2;">Relevé 1, série 3 (CSV)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_MSP_relev%C3%A91_df4.csv" style="color:#7b1fa2;">Relevé 1, série 4 (CSV)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_MSP_relev%C3%A91_df5.csv" style="color:#7b1fa2;">Relevé 1, série 5 (CSV)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_MSP_relev%C3%A91_df6.csv" style="color:#7b1fa2;">Relevé 1, série 6 (CSV)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_MSP_relev%C3%A91_df7.csv" style="color:#7b1fa2;">Relevé 1, série 7 (CSV)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_MSP_relev%C3%A91_df8.csv" style="color:#7b1fa2;">Relevé 1, série 8 (CSV)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/TP_MSP_relev%C3%A91_df9.csv" style="color:#7b1fa2;">Relevé 1, série 9 (CSV)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/diam%C3%A8tre_but%C3%A9e.xlsx" style="color:#7b1fa2;">Diamètre butée (Excel)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/diam%C3%A8tre_but%C3%A9e_TPU53_2.csv" style="color:#7b1fa2;">Diamètre butée TPU53, seconde série (CSV)</a>
-          <a href="OI/TQ_2026%20CQPM%20Technicien%20qualit%C3%A9%20-%20Bourges%205-6%20Novembre%20%202026/turning_default_simulation_Ellistat.csv" style="color:#7b1fa2;">Simulation de tournage Ellistat (CSV)</a>
-          </details>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/TP_MSP_app.xlsx" style="color:#7b1fa2;"><span class="link-label">Classeur</span> – Calcul de capabilité Cm/Cmk (.xlsx)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/diamètre_butée.csv" style="color:#7b1fa2;"><span class="link-label">Données J1</span> – 50 mesures butée Ø11,88 (.csv)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/Exercices Cartes de Shewhart.xlsx" style="color:#7b1fa2;"><span class="link-label">Exercices</span> – Cartes de Shewhart (.xlsx)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/Cours MSP.pdf" style="color:#7b1fa2;"><span class="link-label">Cours</span> – MSP (PDF)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/TP Carte de contrôle.pdf" style="color:#7b1fa2;"><span class="link-label">TP</span> – Carte de contrôle, exercices lecture (PDF)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/SPC Ellistat.pdf" style="color:#7b1fa2;"><span class="link-label">Guide logiciel</span> – SPC Ellistat (PDF)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/DIAPO 5 Keys to MSP Excellence.pdf" style="color:#7b1fa2;"><span class="link-label">Référence</span> – 5 Keys to MSP Excellence (PDF)</a>
         </div>
       </div>
 
@@ -955,70 +806,7 @@
     </div>
   </section>
 
-  <!-- ======================================================== 5. SESSIONS DE FORMATION -->
-  <section id="sessions">
-    <div class="section-header s-sessions">
-      <h2>Sessions de formation</h2>
-      <span class="section-sub">Dossiers de session en cours et a venir - rentree 2026-2027</span>
-    </div>
-
-    <div class="cards-grid">
-
-      <div class="card sessions">
-        <div class="card-title-row">
-          <span class="module-code">TI18</span>
-          <h3>TPFP Bourges, organisation industrielle</h3>
-        </div>
-        <span class="session-dates">&#128197; 15 et 16 juil. &#183; 31 août &#183; 1er et 16 sept. 2026</span>
-        <p>Groupe de 9 stagiaires, chaudronnerie, maintenance et usinage. Parcours en trois temps : principes du Lean et jeux d'atelier, puis variabilité, capabilité et cartes de contrôle, puis une journée de résolution de problèmes construite autour de deux affaires d'enquête.</p>
-        <div class="card-links">
-          <a href="OI/TI18_CH_TPFP_Bourges_15-16_Juillet_31-Aout_1-16_Sept/Dossier_formateur_16_septembre.docx"><span class="link-label">Formateur</span> - Éclaircir une situation, conduite de la journée (Word) <span class="maj">4 sept. 2026</span></a>
-          <a href="OI/TI18_CH_TPFP_Bourges_15-16_Juillet_31-Aout_1-16_Sept/Livret_stagiaire_eclaircir_une_situation.docx"><span class="link-label">Stagiaire</span> - Livret stagiaire, les quatre temps (Word) <span class="maj">3 sept. 2026</span></a>
-          <a href="OI/TI18_CH_TPFP_Bourges_15-16_Juillet_31-Aout_1-16_Sept/Dossier_affaire_4712.docx"><span class="link-label">Enquête</span> - Affaire 4712, la platine refusée (Word) <span class="maj">4 sept. 2026</span></a>
-          <a href="OI/TI18_CH_TPFP_Bourges_15-16_Juillet_31-Aout_1-16_Sept/Dossier_affaire_AS2.docx"><span class="link-label">Enquête</span> - Affaire AS2, les onze interventions (Word) <span class="maj">4 sept. 2026</span></a>
-          <a href="OI/TI18_CH_TPFP_Bourges_15-16_Juillet_31-Aout_1-16_Sept/PS-340_indice_B.pdf"><span class="link-label">Pièce 11</span> - Plan PS-340 indice B (PDF) <span class="maj">4 sept. 2026</span></a>
-          <a href="OI/TI18_CH_TPFP_Bourges_15-16_Juillet_31-Aout_1-16_Sept/PS-340_indice_C.pdf"><span class="link-label">Pièce 12</span> - Plan PS-340 indice C (PDF) <span class="maj">4 sept. 2026</span></a>
-          <a href="OI/TI18_CH_TPFP_Bourges_15-16_Juillet_31-Aout_1-16_Sept/SC-204_plan_indice_A_a_distribuer.pdf"><span class="link-label">Ouverture</span> - Plan SC-204 indice A, séquence d'ouverture (PDF) <span class="maj">3 sept. 2026</span></a>
-          <a href="OI/TI18_CH_TPFP_Bourges_15-16_Juillet_31-Aout_1-16_Sept/SC-204_plan_indice_B_corrige.pdf"><span class="link-label">Ouverture</span> - Plan SC-204 indice B, version complète (PDF) <span class="maj">3 sept. 2026</span></a>
-          <a href="OI/TI18_CH_TPFP_Bourges_15-16_Juillet_31-Aout_1-16_Sept/Cas_metiers_a_distribuer.docx"><span class="link-label">Appoint</span> - Trois cas métier, chaudronnerie, maintenance, usinage (Word) <span class="maj">1er sept. 2026</span></a>
-          <a href="OI/TI18_CH_TPFP_Bourges_15-16_Juillet_31-Aout_1-16_Sept/Fiche_conduite_ouverture_31aout.docx"><span class="link-label">Archive</span> - Reprendre le groupe, ouverture du 31 août (Word) <span class="maj">30 août 2026</span></a>
-          <details class="sources"><summary>Documents de contexte et planning</summary>
-          <a href="OI/TI18_CH_TPFP_Bourges_15-16_Juillet_31-Aout_1-16_Sept/TI18_CH_006_TPFP%20Bourges%20Mai%202026.xlsx">Planning prévisionnel de la formation (Excel)</a>
-          <a href="OI/TI18_CH_TPFP_Bourges_15-16_Juillet_31-Aout_1-16_Sept/Support_stagiaire_intro_organisation_industrielle.pdf">Support stagiaire, introduction à l'OI (PDF)</a>
-          <a href="OI/TI18_CH_TPFP_Bourges_15-16_Juillet_31-Aout_1-16_Sept/8D%20FA02%20aide.pdf">Support UIMM, les outils de la méthode 8D (PDF)</a>
-          <a href="OI/TI18_CH_TPFP_Bourges_15-16_Juillet_31-Aout_1-16_Sept/Mudas%20en%20formation.png">Infographie, les 8 gaspillages en formation (image)</a>
-          </details>
-        </div>
-      </div>
-
-      <div class="card sessions">
-        <div class="card-title-row">
-          <span class="module-code">TQ 6</span>
-          <h3>CQPM Technicien qualité, Bourges</h3>
-        </div>
-        <span class="session-dates">&#128197; 5, 6 et 25 nov. 2026</span>
-        <p>Capabilité machine et procédé, cartes de Shewhart, mise en oeuvre du SPC sous Ellistat. Public profil opérateur, AFPI Bourges, trois jours et treize activités TP.</p>
-        <div class="card-links">
-          <a href="#qualite">Voir le plan de formation et les ressources, section Qualité</a>
-        </div>
-      </div>
-
-      <div class="card sessions">
-        <div class="card-title-row">
-          <span class="module-code">TR8</span>
-          <h3>Filière Logistique CQPM</h3>
-        </div>
-        <span class="session-dates">&#128197; octobre 2026</span>
-        <p>Dossier en préparation. Seul le planning prévisionnel est disponible à ce jour.</p>
-        <div class="card-links">
-          <a href="OI/Fili%C3%A8re_LOGISTIQUE_CQPM_TR8-07-10-2026/E41_SB_024%20Planning%20Fili%C3%A8re%20LOG%20TR8V2.xlsx">Planning prévisionnel filière LOG TR8 (Excel)</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ======================================================== 6. RESSOURCES FORMATEUR -->
+  <!-- ======================================================== 5. RESSOURCES FORMATEUR -->
   <section id="ressources">
     <div class="section-header s-ressources">
       <h2>Ressources Formateur</h2>
@@ -1053,13 +841,12 @@
 
   </section>
 
-
 </main>
 
 <!-- ============================================================ FOOTER -->
 <footer>
   <strong>Pôle Formation UIMM CVDL</strong><br>
-  S. Jaubert &nbsp;|&nbsp; Organisation Industrielle &nbsp;|&nbsp; Mis à jour : 6 septembre 2026
+  S. Jaubert &nbsp;|&nbsp; Organisation Industrielle &nbsp;|&nbsp; Mis à jour : Août 2026
 </footer>
 
 </body>
