@@ -1,6 +1,7 @@
 # Tirage des incidents, Jeu du Kanban
 
-Page web autonome qui remplace la manipulation des dés et du paquet de cartes incident.
+Deux pages web autonomes qui remplacent la manipulation des dés et du paquet de cartes incident, puis rassemblent les résultats des tables en fin de séance.
+
 Une équipe, un appareil.
 
 ---
@@ -9,23 +10,48 @@ Une équipe, un appareil.
 
 | Fichier | Rôle |
 |---|---|
-| `index.html` | La page complète. Un seul fichier, aucune dépendance, fonctionne hors connexion une fois chargé. |
-| `donnees_cartes.json` | Les 80 cartes extraites de `Cartes incident.pptx`, pour référence et contrôle. La page embarque sa propre copie de ces données. |
+| `index.html` | La page des équipes. Jet d'ouverture, tirage de carte, jet de gravité, historique. |
+| `synthese.html` | La page du formateur. Rassemble les bilans des tables et les compare. |
+| `donnees_cartes.json` | Les 80 cartes extraites de `Cartes incident.pptx`, pour référence et contrôle. Les deux pages embarquent leur propre copie de ces données. |
+| `Affiche_QR_tirage_incidents.pdf` | Affiche A4 à imprimer ou à projeter, avec le QR code d'accès. |
+| `qr_tirage_incidents.png` et `.svg` | Le QR code seul, à insérer dans un diaporama. Le SVG s'agrandit sans perte. |
+
+Aucune des deux pages ne dépend d'Internet une fois chargée, ni d'un compte, ni d'un serveur. Rien n'est envoyé nulle part.
 
 ---
 
-## Déroulement
+## Déroulement d'une séance
 
-1. Chaque table saisit son nom d'équipe et démarre la séance.
+### Côté table
+
+1. Chaque table scanne le QR code, saisit son nom d'équipe et démarre.
 2. Au début de chaque heure, la table appuie sur **Lancer le dé**.
 3. Un **1** ou un **6** déclenche un incident. Toute autre valeur : la production continue, la table passe à l'heure suivante.
-4. En cas d'incident, une carte est tirée au hasard : code, atelier concerné, énoncé, et la table des gravités.
+4. En cas d'incident, une carte est tirée au hasard : code, atelier concerné, énoncé, table des gravités.
 5. La table appuie sur **Lancer le dé de gravité**. La ligne correspondante est surlignée, les autres sont estompées.
 6. L'historique de la séance conserve chaque heure, chaque jet et chaque conséquence.
 
+### En fin de séance
+
+7. Chaque table ouvre son historique et appuie sur **Terminer et transmettre le bilan**. Son écran affiche un QR code.
+8. Le formateur scanne ce code avec l'appareil photo de son téléphone. La page de synthèse s'ouvre et l'équipe y est ajoutée.
+9. Il répète l'opération pour chaque table. Trois scans, trois équipes.
+
+Si un scan échoue, la table peut déplier **Le formateur n'arrive pas à scanner**, copier le code et le transmettre par message. Le formateur le colle dans le champ prévu au bas de la page de synthèse.
+
 ---
 
-## Options au démarrage
+## Ce que montre la synthèse
+
+- **Vue d'ensemble** : nombre d'équipes, heures jouées, incidents, taux d'incident, répartition par famille (Qualité, Panne, Effectifs, Appros).
+- **Heure par heure** : un tableau croisé, une colonne par équipe. Chaque table ayant lancé son propre dé, les incidents ne coïncident pas, et deux tables touchées par la même carte peuvent subir des gravités différentes. C'est le matériau du débriefing.
+- **Détail par équipe** : pour chaque incident, l'heure, la carte, l'atelier, les deux dés, la conséquence et l'énoncé de la carte.
+
+La page s'imprime proprement, les boutons disparaissent à l'impression.
+
+---
+
+## Options au démarrage, côté table
 
 **Tirage sans remise** (activé par défaut)
 La page simule un vrai paquet de 80 cartes. Une carte tirée ne ressort pas tant que le paquet n'est pas épuisé. Décocher pour un tirage indépendant à chaque fois.
@@ -37,28 +63,15 @@ Chaque carte du diaporama d'origine porte un commentaire qui explique pourquoi l
 
 ## Points techniques
 
-- **Correspondance dé / gravité.** Elle n'est pas uniforme d'une carte à l'autre. Certaines cartes découpent 1-2 / 3-4-5 / 6, d'autres 1-2-3 / 4-5 / 6, d'autres 1-2-3-4 / 5-6, et huit cartes n'ont que deux niveaux. Chaque table a été extraite dé par dé depuis les formes vectorielles du fichier `Cartes incident.pptx`, puis vérifiée contre les diapos rendues.
-- **Reprise après fermeture.** L'état de la séance est conservé dans le navigateur de l'appareil. Fermer l'onglet ou rafraîchir la page ne perd rien. Le bouton **Réinitialiser la séance** efface tout.
-- **Modification du contenu.** Les cartes sont dans la variable `CARTES` au début du bloc `<script>` du fichier `index.html`.
+**Correspondance dé et gravité.** Elle n'est pas uniforme d'une carte à l'autre. Certaines cartes découpent 1-2 / 3-4-5 / 6, d'autres 1-2-3 / 4-5 / 6, d'autres 1-2-3-4 / 5-6, et huit cartes n'ont que deux niveaux. Chaque table a été extraite dé par dé depuis les formes vectorielles du fichier `Cartes incident.pptx`, puis vérifiée contre les diapos rendues.
 
----
+**Cloisonnement des équipes.** Il n'y a pas de gestion multi-équipes dans la page des tables. Chaque navigateur a son propre espace de stockage : historique, compteur d'heures et paquet de cartes sont indépendants d'un appareil à l'autre. Ne partagez pas un téléphone entre deux tables, la seconde écraserait l'historique de la première.
 
-## Mise à disposition des équipes
+**Reprise après fermeture.** L'état est conservé dans le navigateur de l'appareil. Fermer l'onglet ou rafraîchir la page ne perd rien. Le bouton **Réinitialiser la séance** efface tout.
 
-La page est un fichier local. Pour qu'elle soit atteignable depuis les smartphones des stagiaires, il faut la publier. Trois voies possibles :
+**Le QR code du bilan.** Il contient le bilan lui-même, pas un identifiant renvoyant à un serveur. Rien ne transite par le réseau et la synthèse fonctionne hors connexion. Le générateur de QR est intégré à la page. Il a été validé en comparant ses symboles à ceux d'une bibliothèque de référence, puis en les faisant relire par un décodeur.
 
-1. **Hébergement web (GitHub Pages, ou tout hébergement statique).** Une URL, un QR code projeté au tableau, chaque table scanne. C'est la voie la plus simple en séance.
-2. **Serveur local sur le poste formateur.** `python -m http.server 8000` dans ce dossier, puis les téléphones ouvrent `http://ADRESSE-IP-DU-POSTE:8000`. Dépend de la configuration du réseau du site : l'isolation des clients Wi-Fi, fréquente en établissement, bloque cette voie.
-3. **Envoi du fichier.** Le fichier est transmis à chaque stagiaire, qui l'ouvre depuis son gestionnaire de fichiers. Fonctionne, mais l'ouverture d'un fichier HTML local est peu commode sur téléphone.
-
----
-
-## Diffusion aux équipes
-
-`Affiche_QR_tirage_incidents.pdf` : affiche A4 prête à imprimer ou à projeter. Elle porte le QR code, l'adresse en clair et les quatre gestes de la table.
-`qr_tirage_incidents.png` et `.svg` : le QR seul, à insérer dans un diaporama. Le SVG se redimensionne sans perte.
-
-Le QR pointe vers `https://sjaubert.github.io/00FC/OI/jeu_du_kanban/tirage_incidents/`. Il ne fonctionnera qu'une fois le dépôt poussé sur GitHub et la page publiée.
+**Modification du contenu.** Les cartes sont dans la variable `CARTES`, au début du bloc `<script>` de chaque page.
 
 ---
 
