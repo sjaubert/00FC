@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jeu du Kanban, tirage des incidents</title>
+<style>
+:root{
+  --bleu:#00457c; --bleu-clair:#0a72c4; --bleu-pale:#e8f1f9;
+  --rouge:#c62828; --vert:#1b7a3e; --or:#f5d76e;
+  --gris:#5a6672; --bord:#d3dbe3; --fond:#f4f6f8; --blanc:#fff;
+  --ombre:0 1px 3px rgba(0,0,0,.12),0 6px 18px rgba(0,0,0,.06);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  background:var(--fond); color:#1c2530; line-height:1.5;
+  -webkit-text-size-adjust:100%;
+}
+.wrap{max-width:620px;margin:0 auto;padding:0 14px 40px}
+header{
+  background:var(--bleu); color:#fff; padding:12px 14px;
+  display:flex; align-items:center; gap:12px;
+  position:sticky; top:0; z-index:10; box-shadow:0 2px 8px rgba(0,0,0,.18);
+}
+header img{height:34px;width:auto;background:#fff;border-radius:4px;padding:3px}
+header .t{font-size:.95rem;font-weight:600;line-height:1.2}
+header .s{font-size:.72rem;opacity:.85;font-weight:400}
+.bandeau{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  background:var(--blanc);border:1px solid var(--bord);border-radius:10px;
+  padding:10px 14px;margin:14px 0;box-shadow:var(--ombre);
+}
+.bandeau .eq{font-weight:700;color:var(--bleu);font-size:1.05rem}
+.bandeau .hr{font-size:.85rem;color:var(--gris)}
+.carte{
+  background:var(--blanc);border:1px solid var(--bord);border-radius:12px;
+  padding:18px;margin-bottom:14px;box-shadow:var(--ombre);
+}
+h2{margin:0 0 12px;font-size:1.05rem;color:var(--bleu)}
+label{display:block;font-size:.85rem;font-weight:600;color:var(--gris);margin-bottom:5px}
+input[type=text]{
+  width:100%;padding:12px;font-size:1rem;border:1px solid var(--bord);
+  border-radius:8px;font-family:inherit;
+}
+input[type=text]:focus{outline:2px solid var(--bleu-clair);border-color:var(--bleu-clair)}
+.opt{display:flex;align-items:flex-start;gap:10px;margin:14px 0;font-size:.9rem}
+.opt input{width:20px;height:20px;margin-top:2px;flex:0 0 auto}
+.opt span small{display:block;color:var(--gris);font-size:.8rem;line-height:1.35}
+button{
+  font-family:inherit;font-size:1rem;font-weight:600;cursor:pointer;
+  border:none;border-radius:10px;padding:15px 18px;width:100%;
+  background:var(--bleu);color:#fff;transition:filter .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+button:hover{filter:brightness(1.1)}
+button:active{filter:brightness(.9)}
+button:disabled{background:#b8c2cc;cursor:default;filter:none}
+button.sec{background:var(--blanc);color:var(--bleu);border:1.5px solid var(--bleu)}
+button.gr{background:var(--bleu-clair)}
+button.ln{background:none;color:var(--gris);border:none;font-size:.85rem;font-weight:500;padding:10px;text-decoration:underline}
+.de-zone{text-align:center;padding:10px 0 4px}
+.de{display:inline-block;filter:drop-shadow(0 3px 5px rgba(0,0,0,.18))}
+.de.roule{animation:sec .4s linear infinite}
+@keyframes sec{0%{transform:rotate(-9deg) scale(.96)}50%{transform:rotate(9deg) scale(1.04)}100%{transform:rotate(-9deg) scale(.96)}}
+.verdict{text-align:center;font-weight:700;font-size:1.15rem;margin:10px 0 4px}
+.verdict.ok{color:var(--vert)}
+.verdict.ko{color:var(--rouge)}
+.verdict small{display:block;font-weight:400;font-size:.85rem;color:var(--gris);margin-top:4px}
+.inc-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.code{
+  background:var(--bleu);color:#fff;font-weight:700;font-size:1rem;
+  padding:5px 12px;border-radius:6px;letter-spacing:.5px;
+}
+.atelier{
+  background:var(--bleu-pale);color:var(--bleu);font-weight:600;font-size:.85rem;
+  padding:5px 12px;border-radius:6px;border:1px solid #c2d8ea;
+}
+.enonce{font-size:1.08rem;color:var(--rouge);font-weight:500;margin:4px 0 16px;line-height:1.45}
+table.grav{width:100%;border-collapse:collapse;font-size:.92rem}
+table.grav td{border:1px solid var(--bord);padding:9px 8px;vertical-align:middle}
+table.grav td.d{width:44%;text-align:center;line-height:0}
+table.grav td.e{color:var(--bleu);font-weight:500}
+table.grav tr.on td{background:#fff8e1;border-color:var(--or);border-width:2px}
+table.grav tr.on td.e{font-weight:700;color:#8a5a00}
+table.grav tr.off{opacity:.4}
+.mini{display:inline-block;margin:0 3px}
+.note{
+  margin-top:14px;padding:11px 13px;background:#fffbe8;border-left:4px solid var(--or);
+  border-radius:0 8px 8px 0;font-size:.87rem;color:#5c4a10;
+}
+.note b{display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.hist{font-size:.85rem}
+.hist table{width:100%;border-collapse:collapse}
+.hist th{text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.4px;color:var(--gris);padding:6px 6px;border-bottom:2px solid var(--bord)}
+.hist td{padding:8px 6px;border-bottom:1px solid #eef2f5;vertical-align:top}
+.hist td.c{font-weight:700;color:var(--bleu);white-space:nowrap}
+.hist .vide{color:var(--gris);font-style:italic;padding:14px 0;text-align:center}
+details summary{cursor:pointer;font-weight:600;color:var(--bleu);font-size:.95rem;padding:4px 0}
+.regle{font-size:.87rem;color:#33414f}
+.regle ol{margin:8px 0 0;padding-left:20px}
+.regle li{margin-bottom:6px}
+footer{text-align:center;font-size:.75rem;color:var(--gris);padding:18px 0 6px}
+.pile{font-size:.78rem;color:var(--gris);text-align:center;margin-top:6px}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<header>
+  <img id="logo" alt="Pôle Formation UIMM CVDL">
+  <div>
+    <div class="t">Jeu du Kanban</div>
+    <div class="s">Tirage des incidents, Pôle Formation UIMM CVDL</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ECRAN 1 : REGLAGE -->
+<section id="setup">
+  <div class="carte">
+    <h2>Réglage de la table</h2>
+    <label for="nom">Nom ou numéro de l'équipe</label>
+    <input type="text" id="nom" placeholder="Équipe 1" autocomplete="off">
+    <div class="opt">
+      <input type="checkbox" id="sansRemise" checked>
+      <span><b>Tirage sans remise</b>
+      <small>Une carte déjà tirée ne ressort pas tant que le paquet n'est pas épuisé.</small></span>
+    </div>
+    <div class="opt">
+      <input type="checkbox" id="voirNote">
+      <span><b>Afficher le commentaire animateur</b>
+      <small>Réservé à l'animateur. Il donne la raison pour laquelle un même incident a des conséquences différentes. À laisser décoché si la table joue seule.</small></span>
+    </div>
+    <button id="btnStart">Démarrer la séance</button>
+  </div>
+  <div class="carte">
+    <details class="regle">
+      <summary>Rappel de la règle</summary>
+      <ol>
+        <li>Au début de chaque heure, chaque équipe lance son propre dé.</li>
+        <li>Un <b>1</b> ou un <b>6</b> déclenche un incident. Toute autre valeur : la production continue.</li>
+        <li>En cas d'incident, l'équipe tire une carte, puis relance le dé pour déterminer la gravité.</li>
+        <li>La correspondance dé / gravité est propre à chaque carte. Elle est affichée sur la carte.</li>
+      </ol>
+    </details>
+  </div>
+</section>
+
+<!-- ECRAN 2 : JEU -->
+<section id="jeu" class="hidden">
+  <div class="bandeau">
+    <span class="eq" id="labEq">Équipe</span>
+    <span class="hr" id="labHr">Heure 1</span>
+  </div>
+
+  <!-- etape A : de d'ouverture -->
+  <div class="carte" id="etapeA">
+    <h2 id="titreA">Jet d'ouverture</h2>
+    <div class="de-zone"><span id="deA" class="de"></span></div>
+    <div class="verdict hidden" id="verdictA"></div>
+    <button id="btnDeA">Lancer le dé</button>
+    <button id="btnSuite" class="sec hidden" style="margin-top:10px">Heure suivante</button>
+  </div>
+
+  <!-- etape B : carte -->
+  <div class="carte hidden" id="etapeB">
+    <div class="inc-head">
+      <span class="code" id="cCode"></span>
+      <span class="atelier" id="cAtelier"></span>
+    </div>
+    <div class="enonce" id="cEnonce"></div>
+    <table class="grav"><tbody id="cGrav"></tbody></table>
+    <div class="de-zone hidden" id="zoneDeB"><span id="deB" class="de"></span></div>
+    <div class="note hidden" id="cNote"></div>
+    <button id="btnDeB" style="margin-top:12px">Lancer le dé de gravité</button>
+    <button id="btnFin" class="gr hidden" style="margin-top:10px">Valider et passer à l'heure suivante</button>
+    <div class="pile" id="pile"></div>
+  </div>
+
+  <div class="carte">
+    <details class="regle">
+      <summary>Rappel de la règle</summary>
+      <ol>
+        <li>Au début de chaque heure, chaque équipe lance son propre dé.</li>
+        <li>Un <b>1</b> ou un <b>6</b> déclenche un incident. Toute autre valeur : la production continue.</li>
+        <li>En cas d'incident, l'équipe tire une carte, puis relance le dé pour déterminer la gravité.</li>
+        <li>La correspondance dé / gravité est propre à chaque carte. Elle est affichée sur la carte.</li>
+      </ol>
+    </details>
+  </div>
+
+  <div class="carte">
+    <details>
+      <summary>Historique de la séance</summary>
+      <div class="hist" id="hist"></div>
+      <button class="ln" id="btnReset">Réinitialiser la séance</button>
+    </details>
+  </div>
+</section>
+
+<footer>S. Jaubert, Pôle Formation UIMM CVDL<br>Cartes incident : Jeu du Kanban, CIPE</footer>
+</div>
+
+<script>
+const CARTES = [{"code":"A8","atelier":"Montage","enonce":"Panne d’un chariot élévateur utilisé dans le magasin des pièces usinées.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4],"effet":"2 heures d’arrêt"},{"des":[5,6],"effet":"4 heures d’arrêt"}],"note":"Utilisation des autres élévateurs, qui sont polyvalents."},{"code":"E7","atelier":"Engrenages","enonce":"Ouvrier inexpérimenté sur le poste, suite au départ à la retraite du titulaire.","gravites":[{"des":[1,2],"effet":"1 conteneur rebuté ? Le noter dans la colonne prévue à cet effet 1 heure d’arrêt"},{"des":[3,4],"effet":"2 heures d’arrêt"},{"des":[5,6],"effet":"3 heures d’arrêt et 1 conteneur rebuté"}],"note":"Le retraité avait consigné ses connaissances sur des modes opératoires très précis. La montée en compétences est rapide."},{"code":"E2","atelier":"Tous","enonce":"Grève de la société qui assure le transport du personnel","gravites":[{"des":[1,2,3],"effet":"1 heure d’arrêt, sur un poste au choix"},{"des":[4,5],"effet":"1 heure d’arrêt, de tout l’usinage"},{"des":[6],"effet":"1 heure d’arrêt de toute l’usine"}],"note":"La société avait prévenu des risques de grève. La majorité du personnel est venue en transport individuel."},{"code":"Q17","atelier":"Montage","enonce":"Arrêt pour mise en œuvre d’une nouvelle méthode de montage plus efficace","gravites":[{"des":[1,2],"effet":"1 heure d’arrêt"},{"des":[3,4,5],"effet":"2 heures d’arrêt"},{"des":[6],"effet":"3 heures d’arrêt"}],"note":"Le service des méthodes a prévu les essais de façon à limiter au maximum l’arrêt des machines."},{"code":"P22","atelier":"Engrenages","enonce":"La machine est jugée dangereuse par l’inspecteur du travail. Elle doit être arrêtée pour être modifiée.","gravites":[{"des":[1,2,3],"effet":"1 heure d’arrêt, programmée à n’importe quel moment de la semaine"},{"des":[4,5],"effet":"2 heures d’arrêt, programmées à n’importe quel moment de la semaine"},{"des":[6],"effet":"3 heures d’arrêt"}],"note":"Une machine du même type avait été équipée récemment d’un dispositif de sécurité, ce qui a permis d’équiper rapidement la machine arrêtée."},{"code":"E9","atelier":"Carters","enonce":"Accident du travail (choc à la main droite).","gravites":[{"des":[1,2,3],"effet":"1 heure d’arrêt"},{"des":[4,5],"effet":"2 heures d’arrêt, (entaille profonde)"},{"des":[6],"effet":"2 heures d’arrêt de tout le personnel de l’usine avec le Délégué du personnel"}],"note":"L’opérateur portait des gants de protection. L’arrêt d’une heure est nécessaire pour déclarer l’incident."},{"code":"E3","atelier":"Tous","enonce":"Le compresseur est très bruyant car le capot d’insonorisation est cassé. Le personnel proteste contre la nuisance.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4,5],"effet":"1 heure d’arrêt d’un des postes d’usinage"},{"des":[6],"effet":"1 heure d’arrêt aux Engrenages et Carters"}],"note":"La chef de fabrication annonce immédiatement au personnel que capot sera réparé rapidement. Il distribue des bouchons d’oreille à ceux qui le veulent."},{"code":"E13","atelier":"Engrenages","enonce":"Pour faire face à la hausse des commandes, on travaille un jour férié et cela désorganise la production.","gravites":[{"des":[1,2,3],"effet":"Pas d’arrêt"},{"des":[4,5],"effet":"1 heure d’arrêt aux Engrenages"},{"des":[6],"effet":"2 heures d’arrêt pour l’ensemble de l’usinage"}],"note":"Le bureau de production a étudié très soigneusement la répartition du personnel et la production s’effectue sans difficulté."},{"code":"P2","atelier":"Carters","enonce":"Montage d’un nouveau dispositif de serrage des pièces","gravites":[{"des":[1,2,3],"effet":"Pas d’arrêt"},{"des":[4,5],"effet":"1 heure d’arrêt"},{"des":[6],"effet":"4 heures d’arrêt"}],"note":"Le dispositif avait été testé sur une autre machine avant d’être monté. Le montage se fait en quelques minutes."},{"code":"Q28","atelier":"Usinage","enonce":"Un actionnaire important a demandé un audit comptable. Un inventaire des en-cours doit être réalisé rapidement.","gravites":[{"des":[1,2,3],"effet":"1 heure d’arrêt du poste Couronnes ph. B"},{"des":[4,5],"effet":"1 heure d’arrêt, du poste Cour. ph B et Carters"},{"des":[6],"effet":"1 heure d’arrêt de toute l’usine"}],"note":"Bon rangement des ateliers, l’inventaire est rapide."},{"code":"Q2","atelier":"Carters","enonce":"Défaut dans les pièces de fonderie livrées par le nouveau fournisseur.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4],"effet":"1 heure d’arrêt"},{"des":[5,6],"effet":"2 heures d’arrêt"}],"note":"Le fournisseur s’est aperçu lui-même du défaut. Il a pris les dispositions nécessaires pour ne pas arrêter la production chez son client."},{"code":"Q4","atelier":"Engrenages","enonce":"Défaut sur les pièces, une opération d’usinage a été oubliée","gravites":[{"des":[1,2],"effet":"1 conteneur à reprendre (pièces en-cours)"},{"des":[3,4,5],"effet":"2 conteneurs à reprendre"},{"des":[6],"effet":"4 conteneurs à reprendre"}],"note":"L’opérateur vérifie lui-même les pièces, le défaut est détecté à temps et les conséquences sont limitées."},{"code":"E11","atelier":"Couronnes (phase A)","enonce":"Opérateur malade","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4],"effet":"1 heure d’arrêt"},{"des":[5,6],"effet":"4 heures d’arrêt"}],"note":"Les opérateurs ont l’habitude de changer régulièrement de poste au sein de l’équipe. Un autre opérateur le remplace."},{"code":"P4","atelier":"Montage","enonce":"Usure du moteur d’entraînement sur une machine.","gravites":[{"des":[1,2,3],"effet":"1 heure d’arrêt, à programmer dans la semaine"},{"des":[4,5],"effet":"1 heure d’arrêt immédiatement"},{"des":[6],"effet":"4 heures d’arrêt immédiatement"}],"note":"Le vieillissement avait été détecté lors d’une visite de routine. Un remplacement préventif a été programmé."},{"code":"A4","atelier":"Engrenages","enonce":"Erreur d’approvisionnement. La moitié des manutentionnaires ont la grippe, on a dû faire appel à des intérimaires.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4],"effet":"1 heure d’arrêt"},{"des":[5,6],"effet":"1 heure d’arrêt + 1 conteneur à rebuter"}],"note":"Les intérimaires ont été bien accueillis et formés."},{"code":"A6","atelier":"Carters","enonce":"Des micro-coupures ont provoqué des interruptions dans le traitement informatique des ordres de fabrication. Le lancement a pris du retard.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4],"effet":"2 heures d’arrêt"},{"des":[5,6],"effet":"4 heures d’arrêt"}],"note":"Le responsable de fabrication a utilisé une procédure de sauvegarde non informatisée."},{"code":"Q16","atelier":"Carters","enonce":"Pièces de fonderie livrées déformées","gravites":[{"des":[1,2],"effet":"1 heure d’arrêt"},{"des":[3,4,5],"effet":"2 heures d’arrêt"},{"des":[6],"effet":"2 heures d’arrêt et 1 conteneur de pièces usinées à rebuter"}],"note":"Le fournisseur avait constaté le défaut et pris contact avec l’usine avant la livraison. Le responsable qualité fait en sorte que le défaut puisse être corrigé."},{"code":"Q9","atelier":"Montage","enonce":"Le client se plaint que certains réducteurs se desserrent. Pendant plusieurs jours le montage n’a pas respecté le couple de serrage des boulons.","gravites":[{"des":[1,2,3],"effet":"Pas d’arrêt"},{"des":[4,5,6],"effet":"Le client demande l’envoi immédiat de 1 R6 en remplacement du mauvais (qu’il renverra plus tard)"}],"note":"la client accepte qu’un technicien vienne chez lui pour réparer l’erreur."},{"code":"A10","atelier":"Usinage","enonce":"Panne d’un chariot élévateur. Le chariot de remplacement est en révision.","gravites":[{"des":[1,2,3],"effet":"1 heure d’arrêt d’un poste d’usinage (au choix)"},{"des":[4,5],"effet":"2 heures d’arrêt d’un poste d’usinage (au choix)"},{"des":[6],"effet":"4 heures d’arrêt d’un poste d’usinage (au choix)"}],"note":"On utilise un tire-palette manuel. Chacun y met du sien pour ne pas arrêter la production trop longtemps."},{"code":"A13","atelier":"Couronnes (phase A)","enonce":"Le fournisseur a déménagé son usine. Il est désolé mais ne peut pas livrer à la date prévue.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4],"effet":"1 heure d’arrêt"},{"des":[5,6],"effet":"4 heures d’arrêt"}],"note":"Le service achats était au courant, il a prévu un stock de sécurité."},{"code":"A11","atelier":"Couronnes (phase A)","enonce":"Les pièces ont été achetées en Chine. Grève dans le port de débarquement.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4],"effet":"2 heures d’indisponibilité pour les matières vertes et rouges"},{"des":[5,6],"effet":"4 heures d’indisponibilité pour les matières vertes et rouges"}],"note":"Compte tenu du risque, un stock de sécurité avait été prévu."},{"code":"Q15","atelier":"Couronnes (phase B)","enonce":"Erreur de mise à jour de la gamme de fabrication.","gravites":[{"des":[1,2],"effet":"1 conteneur à reprendre en usinage"},{"des":[3,4,5],"effet":"2 conteneurs à reprendre en usinage"},{"des":[6],"effet":"4 conteneurs à reprendre en usinage"}],"note":"L’opérateur constate une anomalie et prévient son responsable. Les dégâts sont limités."},{"code":"P18","atelier":"Couronnes (phase B)","enonce":"Arrêt machine, le fusible a sauté","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4,5],"effet":"1 heure d’arrêt"},{"des":[6],"effet":"4 heures d’arrêt"}],"note":"Des fusibles sont disponibles près de la machine, on peut redémarrer en attendant de trouver l’origine de la panne."},{"code":"P9","atelier":"Couronnes (phase A)","enonce":"Panne machine due à la défaillance d’un micro-processeur de l’armoire de commande.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4],"effet":"1 heure d’arrêt"},{"des":[5,6],"effet":"3 heures d’arrêt"}],"note":"Dépannage rapide grâce à l’échange standard d’un module complet."},{"code":"Q26","atelier":"Carters","enonce":"Le service commercial a promis à un client de faire un prototype de réducteur. La machine est arrêtée pour faire un carter spécial.","gravites":[{"des":[1,2],"effet":"1 heure d’arrêt, programmée à n’importe quel moment de la semaine"},{"des":[3,4],"effet":"1 heure d’arrêt"},{"des":[5,6],"effet":"2 heures d’arrêt"}],"note":"Le service commercial a prévenu à temps le service de fabrication qui a pu prendre des dispositions."},{"code":"Q20","atelier":"Carters","enonce":"Une pile de carters usinées s’est effondrée dans le stock.","gravites":[{"des":[1,2],"effet":"1 heure d’arrêt"},{"des":[3,4,5],"effet":"1 heure d’arrêt et 1 conteneur de pièces usinées à rebuter"},{"des":[6],"effet":"3 conteneurs de pièces usinées à rebuter"}],"note":"Les piles de conteneurs ne sont pas très hautes. Les dégâts sont limités."},{"code":"P20","atelier":"Engrenages","enonce":"Manque de lubrification, le roulement est grippé et la machine s’arrête.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4,5],"effet":"2 heures d’arrêt"},{"des":[6],"effet":"4 heures d’arrêt"}],"note":"La machine est équipée d’un dispositif qui signale l’échauffement de l’huile. Le régleur intervient avant qu’il ne soit trop tard."},{"code":"P8","atelier":"Engrenages","enonce":"Panne machine due à l’usure d’une vis-mère.","gravites":[{"des":[1,2],"effet":"1 heure d’arrêt à programmer dans la semaine"},{"des":[3,4],"effet":"1 heure d’arrêt immédiatement"},{"des":[5,6],"effet":"1 heure d’arrêt immédiatement + 1 conteneur rebuté"}],"note":"L’opérateur avait vu qu’elle vibrait de façon anormale. Il a prévenu le dépanneur avant qu’elle ne tombe en panne."},{"code":"E10","atelier":"Carters","enonce":"Opérateur malade","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4],"effet":"1 heure d’arrêt + 1 conteneur de pièces non-conformes à reprendre"},{"des":[5,6],"effet":"4 conteneurs de pièces non-conformes à reprendre"}],"note":"Un autre opérateur accepte de rattraper le retard en heures supplémentaires."},{"code":"Q7","atelier":"Engrenages","enonce":"Forte proportion de matières hors tolérance dans la dernière livraison du fournisseur.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4],"effet":"1 heure d’arrêt"},{"des":[5,6],"effet":"3 conteneurs de pièces usinées à reprendre (les derniers entrés)"}],"note":"Le fournisseur contrôle lui-même ses produits. Il réagit très vite pour respecter les délais promis."},{"code":"Q5","atelier":"Carters","enonce":"Le magasinier marie sa fille. Le manutentionnaire se sert dans le magasin et se trompe de matière.","gravites":[{"des":[1,2],"effet":"1 heure d’arrêt"},{"des":[3,4,5],"effet":"2 conteneurs de carters rebutés"},{"des":[6],"effet":"4 conteneurs de carters rebutés"}],"note":"L’opérateur a comme consigne de vérifier la matière qui lui est livrée. Il constate l’erreur à temps."},{"code":"Q21","atelier":"Couronnes (phase B)","enonce":"Le manutentionnaire a manqué son virage et percuté une pile de conteneurs.","gravites":[{"des":[1,2],"effet":"1 heure d’arrêt"},{"des":[3,4,5],"effet":"1 heure d’arrêt et 1 conteneur de pièces usinées à rebuter"},{"des":[6],"effet":"2 heures d’arrêt et 2 conteneurs de pièces usinées à rebuter"}],"note":"Une barrière de protection délimite les allées de circulation. Les dégâts sont limités."},{"code":"P23","atelier":"Tous","enonce":"Coupure de courant","gravites":[{"des":[1,2,3],"effet":"Pas d’arrêt"},{"des":[4,5,6],"effet":"1 heure d’arrêt, de toute l’usine"}],"note":"Il existe un système de secours."},{"code":"E5","atelier":"Montage","enonce":"Opérateur absent pour maladie","gravites":[{"des":[1,2,3],"effet":"1 heure d’arrêt"},{"des":[4,5,6],"effet":"1 heure d’arrêt, plus 3 conteneurs à reprendre en raison d’une erreur du remplaçant"}],"note":"La plupart des opérateurs de l’équipe sont polyvalents. Un collègue apporte de l’aide en attendant de trouver un remplaçant."},{"code":"Q27","atelier":"Tous","enonce":"La Direction générale fait visiter l’usine à un important client japonais. Un rangement général est programmé.","gravites":[{"des":[1,2],"effet":"1 heure d’arrêt sur le poste des carters"},{"des":[3,4,5],"effet":"1 heure d’arrêt sur 2 postes de travail"},{"des":[6],"effet":"1 heure d’arrêt de tout l’atelier"}],"note":"L’usine est bien rangée en temps normal, une légère remise à niveau est suffisante."},{"code":"Q25","atelier":"Couronnes (phase A)","enonce":"L’opérateur s’est trompé en lisant les instructions de travail","gravites":[{"des":[1,2],"effet":"1 conteneur à rebuter"},{"des":[3,4,5],"effet":"2 conteneurs de pièces usinées à rebuter"},{"des":[6],"effet":"5 conteneurs de pièces usinées à rebuter"}],"note":"Le poste suivant a vu le défaut immédiatement car il y avait peu de stock d’en cours entre les deux opérations. Les dégâts sont limités."},{"code":"Q18","atelier":"Montage","enonce":"L’opérateur confond les pièces bleues et jaunes.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4,5],"effet":"1 conteneur à refaire"},{"des":[6],"effet":"2 heures d’arrêt et 2 conteneurs à refaire"}],"note":"La visite médicale d’embauche a permis de constater qu’il était daltonien. Il a été placé sur un poste qui ne dépend pas des couleurs."},{"code":"Q19","atelier":"Engrenages","enonce":"Le fournisseur avait des anciens plans. Il a fabriqué des pièces non-conformes.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4],"effet":"2 conteneurs de pièces usinées à renvoyer"},{"des":[5,6],"effet":"3 conteneurs de pièces usinées à renvoyer"}],"note":"Le fournisseur s’est aperçu du défaut au moment du contrôle. Il a fabriqué en urgence des pièces bonnes."},{"code":"P10","atelier":"Couronnes (phase A)","enonce":"Arrêt machine du à une erreur de programmation.","gravites":[{"des":[1,2,3],"effet":"1 heure d’arrêt"},{"des":[4,5],"effet":"2 heures d’arrêt"},{"des":[6],"effet":"4 heures d’arrêt"}],"note":"Le programme a été conçu en installant des fonctions de détection d’anomalies. Il est corrigé rapidement."},{"code":"P13","atelier":"Engrenages","enonce":"Arrêt machine, rupture d’une canalisation d’air comprimé","gravites":[{"des":[1,2,3],"effet":"1 heure d’arrêt"},{"des":[4,5,6],"effet":"2 heures d’arrêt"}],"note":"Le soudeur du service entretien, conscient de la gravité de l’incident, intervient rapidement."},{"code":"A7","atelier":"Montage","enonce":"Le revêtement de l’allée principale du magasin est très dégradé. Les travaux de réfection perturbent la manutention.","gravites":[{"des":[1,2,3],"effet":"Pas d’arrêt"},{"des":[4,5],"effet":"1 heure d’arrêt"},{"des":[6],"effet":"3 heures d’arrêt"}],"note":"Un trajet de remplacement a été étudié pour éviter toute perturbation."},{"code":"P14","atelier":"Montage","enonce":"Panne machine, robot de palettisation en panne","gravites":[{"des":[1,2],"effet":"1 heure d’arrêt"},{"des":[3,4],"effet":"2 heures d’arrêt"},{"des":[5,6],"effet":"3 heures d’arrêt"}],"note":"Le fournisseur de robot avait bien formé le personnel du service maintenance, qui peut dépanner rapidement."},{"code":"A12","atelier":"Engrenages","enonce":"Routes coupées à la suite d’inondations. Le transporteur livre en retard.","gravites":[{"des":[1,2,3],"effet":"Pas d’arrêt"},{"des":[4,5],"effet":"2 heures d’indisponibilité de la matière blanche"},{"des":[6],"effet":"4 heures d’indisponibilité de toutes les matières"}],"note":"Le service des achats avait prévu les difficultés en écoutant les prévisions météorologiques, une livraison spéciale de pièces urgentes a été faite par une autre route."},{"code":"A2","atelier":"Couronnes (phase A)","enonce":"Le magasinier est malade. L’approvisionnement de l’atelier des couronnes est perturbé.","gravites":[{"des":[1,2,3],"effet":"Pas d’arrêt"},{"des":[4,5],"effet":"2 heures d’arrêt"},{"des":[6],"effet":"3 heures d’arrêt"}],"note":"Il a laissé des consignes claires. Un de ses employés le remplace."},{"code":"A5","atelier":"Engrenages","enonce":"Erreur d’inventaire. Le stock est à 0 alors que le système informatique signale qu’il reste du stock.","gravites":[{"des":[1,2,3],"effet":"Pas d’arrêt"},{"des":[4,5,6],"effet":"2 heures d’arrêt"}],"note":"Le magasinier s’est aperçu de l’écart en circulant dans le magasin. Le fournisseur, prévenu immédiatement, a réagi rapidement et les pièces sont arrivées à temps."},{"code":"E8","atelier":"Engrenages","enonce":"Opérateur absent (en formation)","gravites":[{"des":[1,2],"effet":"1 heure d’arrêt, programmée dans la semaine"},{"des":[3,4],"effet":"1 heure d’arrêt immédiat"},{"des":[5,6],"effet":"2 heures d’arrêt immédiat"}],"note":"Les opérateurs participent au planning des formations. Ils s’organisent avec leur responsable pour limiter les perturbations."},{"code":"Q8","atelier":"Couronnes (phase B)","enonce":"A la suite de l’utilisation d’un mauvais calibre de contrôle, des pièces ont été fabriquées hors tolérance.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4,5],"effet":"1 conteneur de pièces usinées à rebuter"},{"des":[6],"effet":"1 heure d’arrêt et 2 conteneurs de pièces usinées à rebuter"}],"note":"Le défaut a été détecté très rapidement grâce à l’utilisation des cartes de contrôle (maîtrise statistique des processus)."},{"code":"A1","atelier":"Carters","enonce":"En raison de la hausse des commandes, le fournisseur n’a pu livrer à temps les pièces de fonderie pour les carters. Arrêt des machines.","gravites":[{"des":[1,2,3],"effet":"1 heure d’arrêt"},{"des":[4,5],"effet":"2 heures d’arrêt"},{"des":[6],"effet":"3 heures d’arrêt"}],"note":"Le fournisseur avait été averti suffisamment tôt de cette augmentation, ce qui lui a permis de réduire au maximum son retard."},{"code":"Q24","atelier":"Engrenages","enonce":"Le régleur s’est trompé en faisant un contrôle dimensionnel.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4,5],"effet":"1 conteneur de pièces usinées à rebuter"},{"des":[6],"effet":"5 conteneurs de pièces usinées à rebuter"}],"note":"L’opérateur a vu le défaut sur son gabarit de contrôle et le réglage de la machine est corrigé."},{"code":"Q10","atelier":"Carters","enonce":"Chocs pendant le transport des matières. Une partie des approvisionnements doit être renvoyée au fournisseur.","gravites":[{"des":[1,2],"effet":"1 heure d’arrêt"},{"des":[3,4,5],"effet":"2 heures d’arrêt"},{"des":[6],"effet":"5 heures d’arrêt"}],"note":"Le transporteur fait le nécessaire pour bien arrimer les palettes pendant le transport. Les défauts sont des rayures superficielles sans conséquences sur la qualité des produits."},{"code":"Q11","atelier":"Engrenages","enonce":"Utilisation par erreur d’une vieille matière obsolète qui était dans le stock.","gravites":[{"des":[1,2,3],"effet":"Pas d’arrêt"},{"des":[4,5],"effet":"2 heures d’arrêt"},{"des":[6],"effet":"3 heures d’arrêt"}],"note":"Le magasin est régulièrement débarrassé des matières obsolètes. Les dégâts sont limités."},{"code":"E14","atelier":"Couronnes (phase A)","enonce":"Accident du travail : l’opérateur a cherché à enlever les copeaux avec la main.","gravites":[{"des":[1,2,3],"effet":"1 heure d’arrêt"},{"des":[4,5],"effet":"2 heures d’arrêt (blessure légère au doigt)"},{"des":[6],"effet":"4 heures d’arrêt (blessure sévère)"}],"note":"La machine disposait d’un mécanisme d’arrêt d’urgence qui a pu être activé à temps. Une heure perdue pour remplir la déclaration d’incident."},{"code":"Q13","atelier":"Montage","enonce":"Une pile de palettes stockées dans le magasin s’est effondrée","gravites":[{"des":[1,2],"effet":"1 heure d’arrêt"},{"des":[3,4],"effet":"2 heures d’arrêt"},{"des":[5,6],"effet":"3 heures d’arrêt"}],"note":"L’emballage a résisté au choc. Il faut peu de temps pour réparer l’incident."},{"code":"Q12","atelier":"Engrenages","enonce":"On a accepté une commande du client, mais il s’avère très difficile de respecter ses exigences qualité.","gravites":[{"des":[1,2],"effet":"1 heure d’arrêt"},{"des":[3,4,5],"effet":"1 heure d’arrêt et 1 conteneur à reprendre"},{"des":[6],"effet":"1 heure d’arrêt + 2 conteneurs à reprendre"}],"note":"Le bureau d’études, conscient des difficultés, était présent au début de la fabrication. Il aide à régler la machine."},{"code":"E16","atelier":"Montage","enonce":"Opérateurs absents (en réunion de résolution de problèmes)","gravites":[{"des":[1,2],"effet":"1 heure d’arrêt, a un moment choisi dans la semaine"},{"des":[3,4],"effet":"1 heure d’arrêt immédiatement"},{"des":[5,6],"effet":"2 heures d’arrêt immédiatement"}],"note":"Le planning des réunions est établi avec les opérateurs de façon à minimiser les conséquences sur la production."},{"code":"A3","atelier":"Couronnes (phase A)","enonce":"A la suite d’une erreur de virgule dans une nomenclature, la commande de matière est 10 fois moindre que les besoins.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4,5],"effet":"1 heure d’arrêt"},{"des":[6],"effet":"5 heures d’arrêt"}],"note":"Le fournisseur s’est douté de l’anomalie, qui a pu être corrigée à temps."},{"code":"E4","atelier":"Carters","enonce":"Contestation dans l’atelier à la suite d’une erreur de calcul des primes de fin d’année.","gravites":[{"des":[1,2],"effet":"1 heure d’arrêt"},{"des":[3,4,5],"effet":"2 heures d’arrêt du poste Carter"},{"des":[6],"effet":"1 heure d’arrêt de l’ensemble de l’usine"}],"note":"Le responsable de la paie reconnaît immédiatement l’erreur et annonce qu’elle sera rapidement corrigée."},{"code":"P12","atelier":"Engrenages","enonce":"Au moment du changement d’outillage on s’aperçoit que le magasinier, absent temporairement, a oublié de dire où il rangeait la clef du magasin.","gravites":[{"des":[1,2,3,4],"effet":"Pas d’arrêt"},{"des":[5,6],"effet":"3 heures d’arrêt au prochain changement d’outil"}],"note":"L’armoire de rangement des clefs était parfaitement organisée, avec des clefs identifiées par des étiquettes."},{"code":"E12","atelier":"Carters","enonce":"Opérateur malade","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4],"effet":"1 heure d’arrêt"},{"des":[5,6],"effet":"4 conteneurs de pièces rebutées"}],"note":"Il était le seul à avoir refusé le vaccin. Les autres membres de l’équipe sont en pleine forme et le remplacent au pied levé."},{"code":"P3","atelier":"Couronnes (phase A)","enonce":"Régleur absent (en formation)","gravites":[{"des":[1,2],"effet":"1 heure d’arrêt"},{"des":[3,4],"effet":"2 heures d’arrêt"},{"des":[5,6],"effet":"3 heures d’arrêt"}],"note":"L’opérateur a été formé au réglage. Il peut intervenir dans les cas simples."},{"code":"Q14","atelier":"Ventes","enonce":"1 palette de R3 a été expédiée, alors que le client avait commandé 1 palette de R4","gravites":[{"des":[1,2,3,4],"effet":"Pas d’arrêt"},{"des":[5,6],"effet":"Envoi immédiat de la palette manquante. Le client renverra les autres plus tard"}],"note":"Le magasinier s’est aperçu de l’erreur sur le listing de contrôle. Il a averti le transporter et le camion fait demi-tour. L’erreur est corrigée."},{"code":"P15","atelier":"Montage","enonce":"Système automatique d’alimentation du montage en panne","gravites":[{"des":[1,2,3],"effet":"1 heure d’arrêt"},{"des":[4,5,6],"effet":"3 heures d’arrêt"}],"note":"Le système manuel a été conservé en attendant que le système automatique soit au point. On l’utilise comme secours."},{"code":"P16","atelier":"Couronnes (phase A)","enonce":"Mauvaise manœuvre sur la machine de l’opérateur nouvellement embauché.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4,5],"effet":"1 heure d’arrêt"},{"des":[6],"effet":"3 heures d’arrêt"}],"note":"Les systèmes de sécurité ont été conçus pour empêcher les fausses manœuvres."},{"code":"Q22","atelier":"Couronnes (phase A)","enonce":"Le cariste s’est trompé dans le choix des matières dans le stock, une matière trop dure a été utilisée et l’outillage s’est cassé.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4,5],"effet":"2 heures d’arrêt"},{"des":[6],"effet":"5 heures d’arrêt"}],"note":"Il existe un outillage de rechange."},{"code":"P17","atelier":"Couronnes (phase A)","enonce":"Outillage usé","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4,5],"effet":"2 heures d’arrêt"},{"des":[6],"effet":"5 heures d’arrêt"}],"note":"L’opérateur avait noté que l’outillage était usé. Un ré-usinage avait été prévu."},{"code":"A9","atelier":"Montage","enonce":"Des conteneurs d’engrenages ont été égarés dans le magasin. Il s’agit de la référence en cours de montage.","gravites":[{"des":[1,2],"effet":"1 heure pendant laquelle les engrenages sont indisponibles"},{"des":[3,4],"effet":"2 heures d’indisponibilité"},{"des":[5,6],"effet":"4 heures d’indisponibilité"}],"note":"Le manutentionnaire connaît parfaitement le magasin, les conteneurs sont retrouvés rapidement."},{"code":"Q1","atelier":"Montage","enonce":"Le client vient contrôler sa commande spéciale. Pendant ce temps les engrenages ne sont plus disponibles pour le montage.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4],"effet":"2 heures d’arrêt"},{"des":[5,6],"effet":"3 heures d’arrêt"}],"note":"La visite était prévue et le chef de fabrication a pris ses dispositions pour que d’autres pièces puissent alimenter le montage pendant le contrôle."},{"code":"P11","atelier":"Couronnes (phase B)","enonce":"Panne machine due à la rupture d’un pignon réducteur","gravites":[{"des":[1,2],"effet":"1 heure d’arrêt"},{"des":[3,4],"effet":"2 heures d’arrêt"},{"des":[5,6],"effet":"3 heures d’arrêt"}],"note":"La maintenance a été décentralisée dans l’atelier. Le technicien intervient rapidement."},{"code":"P7","atelier":"Engrenages","enonce":"Un nouveau régleur remplace le régleur habituel qui est absent. Le réglage est plus long que d’habitude.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4,5],"effet":"1 heure d’arrêt"},{"des":[6],"effet":"5 heures d’arrêt"}],"note":"Les régleurs savent régler plusieurs machines grâce au fait que les consignes de réglage sont très claires. Pas de perturbation."},{"code":"E1","atelier":"Engrenages","enonce":"Un opérateur est malade. Son remplaçant présente un certificat médical lui interdisant de porter des charges lourdes.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4],"effet":"1 heure d’arrêt"},{"des":[5,6],"effet":"3 heures d’arrêt"}],"note":"Le poste a été aménagé pour ne pas avoir à transporter des charges lourdes (avec un élévateur de pièces)."},{"code":"P1","atelier":"Engrenages","enonce":"Matière première non conforme","gravites":[{"des":[1,2],"effet":"1 heure d’arrêt"},{"des":[3,4,5],"effet":"2 heures d’arrêt"},{"des":[6],"effet":"3 heures d’arrêt"}],"note":"Le fournisseur fait lui-même le contrôle avant l’expédition. Il s’est aperçu de l’erreur et l’a corrigée rapidement."},{"code":"P19","atelier":"Carters","enonce":"Arrêt machine, rupture de la vis de chariotage du tour","gravites":[{"des":[1,2],"effet":"1 heure d’arrêt"},{"des":[3,4,5],"effet":"2 heures d’arrêt"},{"des":[6],"effet":"5 heures d’arrêt"}],"note":"L’usure avait été détectée lors d’une visite de routine, une vis de remplacement avait été préparée."},{"code":"P6","atelier":"Couronnes (phase A)","enonce":"Le cariste intérimaire percute une machine en prenant un virage trop rapidement.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4,5],"effet":"2 heures d’arrêt"},{"des":[6],"effet":"3 heures d’arrêt"}],"note":"Les intérimaires sont formés au moment de l’accueil et ils respectent les consignes de sécurité."},{"code":"Q23","atelier":"Engrenages","enonce":"Le fournisseur s’est trompé de référence dans une livraison.","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4,5],"effet":"1 conteneur de pièces à renvoyer"},{"des":[6],"effet":"4 conteneurs de pièces à renvoyer"}],"note":"Le magasinier a vu l’erreur à temps. Le fournisseur effectue un dépannage d’urgence."},{"code":"E6","atelier":"Tous","enonce":"Conditions de travail difficiles en raison de la forte chute de la température extérieure ( - 16°C)","gravites":[{"des":[1,2,3],"effet":"Pas d’arrêt"},{"des":[4,5],"effet":"1 heure d’arrêt sur 2 postes de travail"},{"des":[6],"effet":"1 heure d’arrêt de l’ensemble de l’usine"}],"note":"Le bâtiment est bien isolé. Un chauffage d’appoint permet de maintenir la température à un niveau satisfaisant."},{"code":"Q6","atelier":"Couronnes (phase A)","enonce":"La matière en stock ne peut plus être utilisée du fait d’une modification du cahier des charges du client","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4,5],"effet":"2 heures d’arrêt"},{"des":[6],"effet":"2 heures d’arrêt + 2 conteneurs à reprendre"}],"note":"Grâce à ses bonnes relations avec le client, le bureau d’études a été informé très tôt de ce changement. Le responsable des approvisionnements a pris ses dispositions."},{"code":"P21","atelier":"Couronnes (phase B)","enonce":"Arrêt machine, élévation de la température dans l’armoire de commande.","gravites":[{"des":[1,2],"effet":"1 heure d’arrêt"},{"des":[3,4],"effet":"2 heures d’arrêt"},{"des":[5,6],"effet":"3 heures d’arrêt et 1 conteneur de pièces usinées à rebuter"}],"note":"La machine est équipée d’un système de contrôle. Le défaut est détecté avant d’entraîner des conséquences plus graves."},{"code":"Q3","atelier":"Couronnes (phase B)","enonce":"La machine s’est déréglée","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4,5],"effet":"2 heures d’arrêt"},{"des":[6],"effet":"3 heures d’arrêt"}],"note":"La dérive a été constatée par l’opérateur grâce aux cartes de contrôle (maîtrise statistique des procédés). Le régleur intervient rapidement."},{"code":"P5","atelier":"Engrenages","enonce":"Panne machine, micro-rupteur hors service","gravites":[{"des":[1,2],"effet":"Pas d’arrêt"},{"des":[3,4],"effet":"1 heure d’arrêt"},{"des":[5,6],"effet":"5 heures d’arrêt"}],"note":"L’opérateur sait faire lui-même le remplacement, qui ne prend que quelques minutes."},{"code":"E15","atelier":"Couronnes (phase B)","enonce":"Accident du travail : l’opérateur a reçu un éclat dans l’œil.","gravites":[{"des":[1,2,3],"effet":"Pas d’arrêt"},{"des":[4,5],"effet":"1 heure d’arrêt"},{"des":[6],"effet":"2 heures d’arrêt + 1 conteneur rebuté"}],"note":"Il portait des lunettes de sécurité."}];
+const LOGO = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAyADIAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCACuAKMDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5koooJxX6afhQUUmfb9KAc0ALRSbqN2KAFopu+gOD0IP0oAdRTd455HFKGzQAtFFBOKACim7wOpAoLgdSAPegB1FJupaACiikLYoAWim7we4pwoAKKKKACo5+IpCDghSR+RqSmXH+ok/3G/kaAR+k/wAeP2evhv4c/ZX17xFpfgvSLHW4dEguI76CDbKkh8rLA56/Mfzr82sY3V+tP7Sf/Jl/iT/sXrf/ANo1+S5714mVSlOnNyd9T6niCnCnWpqCS93p6s9V/ZT8LaT40/aD8HaLrmnwappV3cSpPaXK7o5AIJWAI9iAfwr2r/gob8JvB/wuuPAi+E/DthoAvUvTc/YYtnm7DDt3c843Nj6mvKv2LP8Ak5/wF/19Tf8ApNLX0J/wVL/4+/hv/wBc9Q/nb1VaUlmFON9Lf5kYeEHk9abSupLXr9k8b/Yf+BPhn45fEPV7bxUlzc6fpNnHeLZwS+WlwzSbdshHzbcdlIz61lftv+G9L8J/tEaxpWi6da6VptvY2KxWlnEsUaDyB0Ufz7161/wS/wD+SkeNf+wRB/6PNecft/8A/Jz/AIh/687H/wBECnGcnmEot6KP+QqlKEcnhUS95y1fXqemfs8fsw6D+0J+yhKHWHTPFVprN6dP1lY/mHEf7qXHLxH06r1XuD8ieN/BGt/DjxTf+HfEVhJpurWT7JYJOmD0ZT0ZGHIYcEV+lP8AwTgOP2dn/wCw5efyjre+NPwa8FftifDuHVNE1C2GsW3mx6brcanMUisRJbzr97ZuBDKeVPzD34YY+WHxM4VNYX+49WplUMZgqVSlpU5V8/8Ag+Z+TwbiptO0671nULawsLaW9vbmRYYLaBC8krscKqqOSSe1bniX4b+JvCHjibwdqej3UPiOO4W2FhGhd5XY4Ty8ffDcFSOCD9a/Rb9ln9lrRv2c/DM/jnx1NaL4pW1eee4nceRo8G3LqrdN+PvyD/dXjJb18TjKeHpqW7ey7nzmBy2rjKrg1yqPxN9P+CeXxfseWXwZ/ZZ8f+JfFFvBf+ObjRZCqsBJHpakr+7jPQyf3pB9F4yW+Wv2c9OtdX+PngGxvraG8srjWoIpreeMPHIhJBVlPBB9DX6fftSanb61+yv46v7R/NtLrQmnhkwRuRgrKcHkZBFfmX+zH/ycX8Of+w7bf+hGvPwVWdahWnUeuv5HtZnh6WGxeHpUl7unz1PUv2wP2Prr4L3s3inwtDLdeBrh/nj5d9KdjwjnqYieFc9OFbsT8vq3av3F8V+I/Dlne6Z4b16e2D+IvOtLWzvE3R3hVMvFz8pJUn5T94Zxmvza/bA/ZAufgtfTeKfC0Mt34FuJMvGMu+lux4Rz1MRPCuenCt2JWX4/ntSrb9H3FnGUKk3iMN8PVdv+B+XofMBbFe3/ALLn7LusftC+JPOl83TfB9jKBqGpquGc9fIhzwZCOp6IDk84BP2Xf2XdY/aG8SGWUy6Z4QsZQNQ1QLy56+RDngyEdT0QHJ5wD+o3gp/B3gi8tPhz4dFtYXGmact2mlWwJMNsX2K7n1Zs8sdzEMeetaY/H+xTpUtZdfIwyjKfrLVfEaQ6Lv8A8D8z8yP24vBmi+APjfHoXh7TYNK0q00SxSK3gXA6ONzHqzHAyxyT3NeBDpX0z/wUT/5ORuf+wRZf+1K+ZhXoYNt4eDfY8jMoqOMqpbXYUUUV2HmhUdwf3Ev+4f5GpKZIoYEHoRg0AfrT+0kwP7F/iTnj/hHrf/2jX5Mk9a/V/wCBOvaJ+01+ylBoFzOombSf7A1SJP8AWW8yRBA+PcBJF7HPsa/Pf4gfsqfFL4ea9Pptz4Q1TVolcrFqGkWr3VvcL2ZSgJXI/hYAjpXz2WVI0XUo1HZ3Pss8pVMQqOIpK8XHoaX7Fh/4yg8Bf9fU3/pNLX0J/wAFSz/pfw2/656h/OCrH7Cn7KHinwh40X4g+MdOl0L7LbyQ6bp10MXDvINjSunVAFLAA8ktnAA580/4KLfFKy8cfF2w8PadOLi38MWz29w6nK/apGDSKP8AdCop98jtVc8a+YxdN3UVr+P+ZCpSwuTTjWVnOSsuvT/JnS/8Ev8A/kpHjX/sEQf+jzXnH7f/APyc/wCIf+vOx/8ARAr0f/gl/wD8lI8a/wDYIg/9HmvOP+CgH/Jz/iH/AK87H/0QK0h/yMp/4f8AIyq/8iSn/i/zPrr/AIJv/wDJu7/9hy8/lHXxb8Gv2kNe/Z5+K+t3drv1Dw7ealONT0gvhZlEzjzEzwsqjoehHynjGPtL/gm9/wAm7v8A9hy8/lHX5n+KxnxVrf8A1/3P/o56xw1ONXEYiE1dP/gm+OrVKGDwlSm7NL9Efsfpes/DnxvpWk/FeJtKuobKxle28QTqqvaQHmVSx5QgghgeVO4cZOfzr/a9/a5vvjnf3GgaBJNY+BLRiUjIKPqLrnEso7IOqRnp9484C+DW3izXLPwzeeHINWvIdBvJ0ubnTklIgllUYV2ToSOPyGegxjTDEEv+438q6cLlsKFTnk7228v+CceOzqpi6SpQjy3+Lzf+R+tfxt/5Mj1v/sUof/RMdfnL+zH/AMnF/Dn/ALDtt/6Ea/Rv42/8mR63/wBilB/6Kjr85P2Y/wDk4v4c/wDYdtv/AEI1yZf/ALvW+f5Ho5v/AL7hvRfmfYH/AAU/mktfC3w8mhkeGaPVLh0kjYqyMIVIYEcggjII6V0P7IH7Wtj8ZtGj8CeOJIW8VrAYElugpj1iLbhsg8ebt+8n8Qyw7gc5/wAFRf8AkT/AH/YRuf8A0QK/Peyup9Pu4Lq1nktrmCRZYpoWKvG6nKspHIIIyCKMLhYYrBRjLdXs/mTjsfUwGZznHVNK676H6n/tBfH/AMJfskeAbTwv4T0+xTXngI0vRLdcQ2qEn9/MByFzkgE7nPfGSPDP+Cc3ibVfGfxu+IGt63fTanqt9pcc1xdTtlnY3A/IAcADgAADgV8X+IvEGqeLdbvNY1rULjVNUu38ye7unLySNjHJ9gAAOgAwK+vf+CYH/JT/ABl/2Bov/SgVdXCRwuDn1k938yMPmM8fmVJbQT0XyZxv/BRP/k5G5/7BFl/7Ur5mFfTP/BRP/k5G5/7BFl/7Ur5mFepgv92p+h4Waf77V9WFFFFdh5YUjDNLmjNAHafCH4zeKfgf4oGueF70QSuojubWdd9vdxg52SJ39iCGGeCOa+y/D/8AwVE01rFRrngS+ivQPmbTL6N4mPqA4Uj9a/P/ABRgVxV8HQxD5qkdT08LmWKwceWjPTtufXvxg/4KOeKvGWlTaX4M0hfB0EylZNQknFxe4PXyyAFj/wB7DH0IPNfITs0rtI7M7sdzMxySTySSepowKWtaOHpYdctNWMMTjK+MlzV5X/rsew/sy/tGy/s3+Ita1WLQE8QHUrRLUxPdm38vbJv3ZCNn0xxXOfHz4uv8c/ibqHjCTS10ZruGCL7Gs5mC+WgTO8quc4z0rgMCjApqhTVV1kveehLxVaVBYZv3E7203/M+mf2c/wBtqf8AZ++Hp8LR+D49cU30179qbUTAfn2/LtEbdNvXPevm7U746pqt7elPL+03Ek+zOdu9y2M98ZxVfAowKIUKdOUpxWr3Criq1anGlUleMdttBaZKu9GX1BFPzQea3OU+qvG37edx4x+Ct78PT4KitEudJTS/7QGplyoVFXf5flDOducZ79a+d/hp41b4c/ETw74pWzF+2j30d6LUyeWJdhzt3YOM+uDXOYFGBXNTw1KlFwgrJ7nbWxuIrzjUqSu47aI9/wD2nf2tZv2kdH0Gxl8Lx6ANKuJLgSJfG483egXGCi4xjOea8AXpRgUvStKVKFGPJTVkZV8RUxNR1arvJgelewfsy/tFy/s4eJtZ1ePQU19tRs1tDE92bcR4k37shGz6Y4rx+kwKdSnGrFwmrpk0a1TD1FVpuzR6R+0L8aZPj58R5PFkmkLojPaQ2v2RbgzgeXu+bdtXru6Y7V5wOlJgUtOEI04qEdkKrVnWm6k3dsKKM0VZkdv/AMKk1D/n/tf++X/wo/4VJqH/AD/2v/fL/wCFeqYoxX1v9n4ft+J8Z/aeJ7r7jyv/AIVJqH/P/a/98v8A4Uf8Kk1D/n/tf++X/wAK9TI4rr/CmgeH5fBniDxDr39pyR6dd2lrHBp00URbzhKSWMisOPL7etY1cJhqMeZxe6X3uyN6GNxdefJGSWjevZK7/BHz4fhNfrydQtAPUq/+FA+EuoH/AJf7X/vl/wDCvrBvBOkfDTV9W166vL2603T3tIdOiWCE3Ms1zbeeu/zA0amJDkna3O3ArO1rwNpOs6gNZsJ7iPStV0O/1uCFoo45IJ4CweFlQbdu9eqgZDcAVwx+pyd1F8rWj13te33a/et0enKOPimnJc6eq00V+W//AIFp9z2Z8w/8Kk1D/n/tf++X/wAKP+FSah/z/wBr/wB8v/hX0J4D8K6TrGg+J9W1aPVLmPSFtTHbaUyLJIZpShyWRuBgHpUfhTwzpPi/4oaRoMKalp+lX12luwunRrqMFSWyQoXORx8vSuh0cJFzTi/cV39yf5M5I18bJUmpK9R2S+bj2tuj5/8A+FSah/z/ANr/AN8v/hR/wqTUP+f+1/75f/Cvo7R/D/hDxNeXclp/bmmaXpNpNf6lNczwTyPEhVVjhCooDs7KuWyBnParNl4E8O+J4dBv9En1W2s7jXINFv7XUHieWIy/MkkboACCoYYK8EdxUShg4fFFq2/l5fP/AC7msZY6fwTi77efdq/Rfo+zPmj/AIVJqH/P/a/98v8A4Uf8Kk1D/n/tf++X/wAK+pLD4b+GvEx06bSZtYs4W8S2/h+5ivnhkLiXd+8idFABG05Ug9Qakj+Dmmt8XptAfULr/hF44F1D+0VC+c1qwVUxxt3GVhH065rK+AV1JNNJt79P17I2UMzlyuLTUmknp1/TTVvY+V/+FSah/wA/9r/3y/8AhR/wqTUP+f8Atf8Avl/8K+nPAPwu0zxJ4p1+x1TULmx0+xvF0u2ni27pLuWdooFbIxj5GZsc4HFQeFvC3hS88MeIbrWLbxBHqegQxveRW11AkcjtcCEqgaMldpOeSehrSUcHFuKi21y/+Tbfp95lB5hKMZOUUnzWv/d3/J+tnY+av+FSah/z/wBr/wB8v/hR/wAKk1D/AJ/7X/vl/wDCvpmy+GWl6p/witzHe3djpupWOo6pfSzBJHtre2lcfIAAGcogHPBZuw4qpJ4U8NeIPDk2reHZdXtWstQtbS7tNVeGQtFcMVSVHjAwQVIKkHqDmhRwTez7ddHdx19WrCvmCV7ra62u1yqTt6Jp/fa9j5x/4VJqH/P/AGv/AHy/+FH/AAqTUP8An/tf++X/AMK+pvE3wg07SPiBNplnfXdzoMunX95aXbhRKZLWOXzInwMZWWIg4H3WB715THyoPrzW1Chg8QlKmnsn163/AMnc58TiMdhJctVrdrp0t+FmrPqeX/8ACpNQ/wCf+1/75f8Awo/4VJqH/P8A2v8A3y/+FeqYoxXV/Z+H7ficf9p4nuvuPK/+FSah/wA/9r/3y/8AhRXqmKKP7Pw/b8Q/tPE919wUUUV6J5QHpXdeCviC/gzwH4mtbC8W21q9vrKSAPbJMDEgmEhG9WVSN689eeO9cLTSvWsK1GFeHJNXV0/ud/0OnD4iphZ+0pOzs196a+/XQ9A0jxNZeMfDGtaN4n1+TT9SutUi1eDVbyKSeOSQRtFIkuwFlypUhgCPlxgVr2vinw3bXmnaDDq4XSrLw7qGmNrEtpKqS3VyWcuIwC4QFgoyMnBOBXm+g6Be+JdQNnYRI8qxvNI8sixRxRqMs7uxAVQOpJ9PWmalo0+mXs9tvgvTCod5tPlFxCAe+9Mj8+lcM8JRlNwU2utlbTS11pf79PI9OnjsRCCqezT6czvd2fNZ6233a10Wp6X4I1rS/BWmeK9O0/x9Fp97qUFmbbV7O1u4whjmZpIzhN4yuOcYOfrWL4S8QWfh34z6Lrmp+IP7atYL9Lu61dYpiZPlO4lXAckEgdOa4m2028vJ7eGC0nlluJFhiVYz+8dsYUcck5HHvS3mlXthcXEFzZ3EE1uzJMkkTAxkHB3ccYqvqlO9S87ua1+G+yXa/T0v0I+vVuWk400lTd18Vt3K2smt3626nd+H/iTPrt/rNn4w1u9lsdV0uXTVvnTzjaEyJLG+xQCy74xkDnB9qu6Vr3hzwTF4f0u21pNaI8R2usahqFtbSxwQwwjaiIHAdz88jE7cdAM15l9llW4jhkjaGRyoAmBTqcAnOMD3rVufBur2k2txS2ZEmjTLb3ihgSkjOUVVx98lgcbc8AnpU1MJQvbm5U+isl2T281tpexVLHYprm5OaS+07tpbtb22T3V7X17el6R8WrXXrrRbrxRq0sl7oPieDULO5kiZjJZNJ++Q7R1TYjjIzgkD0qgvxdsmsLHTTauk0Wrx+bqu7IfTUvWuki2YzkO+fooFedp4fu20K+1UqscFncw2kscmVkDyK7L8pHTEbZ/Cnad4cvNU0fVtTiULaaZEk0zuCAwaVYwFOMEhmGRnpmsvqOE1fRNadE+lvVu/qzdZlj3ZW1ad3u2ut79lG19HZHf3/wAUbbw5orReHksNQvb7XLzWLp9QsBMIyJMWu3eOGC7nyOm/HXNL4j8ZeHru6+JlxY3JVfElrZz20PksMXBnjmuI+nG1hJg9DxgmvM4NPuJ7y2tVhdZ7l0SJZAU3FyAvXsSRz0p15pd1Zapc6dJAzXtvM8EkUQ3kOjFWA25zgg8itVgqCkmnrv0195PX0skvIwlmWKlFppcuy0dleMou2u7Um33ep6boHj/QrTTPB2nXtxMtqui6po+qPBCWe2FzM7I6jjfjKMQD0yOtZv2/w94N8MXGl2OuxeIb3U9RsZ57i1tJYYba3gcvjMgDM7M3QDAC9STXB/2fJ9ijuAyOXleHyFyZVKgEkrjgc469QeKie3mjQu8MqorbCzIQA390nHX2601gqXM7Sdm7taavmcu19G+j6K9yXmNblXNBXSsnrdLlUX1tql1XV2sezaN8TPD8t544i1O6dYGudTv9CuRE7FnuopYnhIxlVcNE+T0Kc9a8Vj6AHqAKcFzSgYrfD4WGGcnC+tvw/wA935nLisbUxcYqol7t/wAX19LJLyVhaKKK7TgCiiigBM0Zrk/7Quv+fiT/AL6o/tG6/wCfiT/vqvx//iJWA/58T/8AJf8AM/rX/iXLPv8AoOo/+T//ACJ1maCeK5T+0br/AJ+JP++qT+0br/n4k/76o/4iVgP+fE//ACX/ADD/AIlyz7/oOo/+T/8AyJ6n4C1Cwi/4SHTdQvk0yPVtMezjvJkZ44pBLHKu/aCwU+WVJAOMg4rtfB/iyx8GeFbnTrHXtIfUbfUJLuR5ZbxLa9ie3CBRsQebtIddki7TvyO9fO/9o3X/AD8Sf99Uv9o3f/PxJ/31Xn1+Pstr35qNSzs7e7utO/Y9XDeAXEOGUeTGULpNJ/vL2ev8tt9T6Mt/itZW7Mh1i7Npb2nh/wCywKZMRy2zRfadg6KwVZBkY3ZIyc1JdfEqy07WIxL4il1izk8XHU7v7NJMyTWBVNisHC7wuMeWeMrgcV83/wBo3X/PxJ/31R/aN1/z8Sf99Vh/rtlN7+wqf+S9kv0v6nU/Azidq312h/5U7t9vO3poe2/EPxlBqd/bx3baV4qhjguI4bmO6vXaPzJN25nkKtuHUJkqu4it9/HHhzVZNEaTVp7K71F11DWJ4mltzDdw2fkQqZUBYK8m92dASBIe9fOf9o3R/wCXiT/vqj+0br/n4k/76q3x1lbhGHsaml+sevztvrp1SMl4D8SKpKo8ZQfM09p9PPlvtda30bPoP4heMNG8SaDq8FvqkEl75WjyE5ncXMkEM0UwSSRdzsC6Hc+NwBOeMVZt/HWkWvhZEl15bmwOmaVbL4eVJS0c0F1FJckxlfL+YJI2/OW34NfOf9o3X/PxJ/31R/aN1/z8Sf8AfVSuOMrUFD2NSyaf2elv8vXc0fgVxI6kqn1yhdpr/l51bfb+8/LbQ97+IXjiDVvFGiSf2nYanp1pqz30dzbS3UsscTzRsVfzh8gwmRGnCkNjqKkGq6VZ6143m0zxlZWd5r3mPY6lEt1F9mBuxKyO/lBkLocZXP3cHg14B/aN3/z8Sf8AfVH9o3f/AD8Sf99VS46yyMFCNGpZf4Ndb6/MzfgPxFKpKrLGUG2/+numnLpZdvu6H0prPxR0Z7+6utP1SaO5FxqkkdykTxu8kunQwJMMD5TJLG59RnJxWTrvj+G/+GttY22pWUry6XHZX1leT3RuTcC4MjzJHjySzHDeaTuwWB5rwH+0br/n4k/76o/tG6/5+JP++qmHG+Uw5LUKnu2/l6X8/M0n4FcTVOe+Noe8mn/E62X8vkdUDS5rk/7Ruv8An4k/76o/tG6/5+JP++q9b/iJWA/58T/8l/zPB/4lyz7/AKDqP/k//wAidZmjNcn/AGjdf8/En/fVH9o3X/PxJ/31R/xErAf8+J/+S/5h/wAS5Z9/0HUf/J//AJE6zNFcn/aF1/z8Sf8AfVFH/ESsB/z4n/5L/mH/ABLln3/QdR/8n/8AkSGiijBZ1UHGSB+Zr+ej+/27ahmjNbfj3wfd/D7xjq3hy+uIbm702byZJrfPlsdqtlc4OMMOtS+APAerfEjxHHpGlLGjbWlnu7ltlvaQr96WV/4VHr3JAFaezm5+ztrtY5Hi6Cw/1tzSp25r9LNXv9xz+aM1oeJvDWqeDdevdG1m0ksdSs5PLmgk6g9iD0KkYII4IIIrrvC/wlj17wZb+JdR8Y6F4Ysbi9msYU1Xzt8kkaqzY2IwxhhTjSnKTilqt+n5kVsfhqFKNac/dlazScr3V1blTvpqcDmjNdD4i8HJpmvWOk6Jrlh4xnvAojfRFkYGRmKrFh1UlzweBjBFWviP8Ldf+Fl9aW2txQlbqIyQ3FpMJoXZTiSPeON8bZVl7EehBodKaTdtFuOGOw0506fPaU03FPRtLfR2f4HKZozXpU3wQ/s+20p9V8eeE9FuNSsoL+G0v7i4WVYpl3RltsJUfn2NUNA+Dmrar438QeGNQ1Cw0C60K2nu766vmZoI44tu5soCSCHDAgcir+rVU0rbnKs3wLjKaqaRV3o9r2utNdWlpfddzhM0ZrvNd+EosdA1DV9F8X+H/FlvpqpLfRaVLKJreNnCCQpIi5XcVBIJxkZFUovhVrd7deCrSxaG9vPFdsbqzhRivlqJHQ+YTwMbGYkcACk6FRO1v6vb89DSOZ4OUef2llqtU1a0eZ3TSatHXW2mpyGaM16ba/Cbwzqupro2mfE7Sb3XZGEMEL6dcxWk8xOBGlyw28ngMQAfxrkZfA2pWvh7XtVuilqdF1GHS7qzlB80TSeZ6cYUxMDz6YolQqR6fc09vQVLM8LW0UmnppKMov3nZWUkm03pdaGBmjNa+keFrnWfDniTWYp4o7fQ4YJp43zvkEsoiUL2yCcnPau5u/ghYaSLRNW+JXhbSL2e1guzZ3X2nzY0ljWRA22MjO1h0NEaFSaulp6pfn6MdbM8Lh5+zqS969rJSbuknsk+kov5nl+aKsapaR6dqt3aQXsGpQwStGl5bbvKnAOA6bgDtPUZANV6was7HpRkpRUl1CiiikUFFFFABSx/66P/AH1/nSUchgw4IIIpomSumj0f9pqRB8fPG4LqD9vHBI/55R1taFZpN8CtJ01PEOm+FLbXdWv/AO07y/EgS9W3WDyYXaNGYgea7BcbTyTzisa+/aF8Zancy3N42h3dzKcyTz+H7N5HOMZLGPJOAOtcPdeIdQvNAsdFlnDadZXE11BEIwCskoUSHPU52Lx0GOK9GVakqk6kbvmv0tu12fa6PkqGX4yeDw2ErKMfZcuqfNflg1ezglpLlavfvuken/FmFZ/hH4HuZ9Vs/EV9aahfaUmtWoc+faxJE8Ue51V2CF2A3DI5A4qzptz4Wt/2dvDn/CT2OsXsR8Sah5A0e7igZW8iHJcyI2RjpjFeU3XiXUrzw1YaDNOG0qxuJrqCHywCskoUSHdjJyFHB6YrvfDXgDxJ41+F+n7/ABH4b0bwxDqtybWPW79bR2utiCUglCWG3Zxnj0qoVXUqScI3bil91u/oYV8FHB4WlTxNXljGrKV02nZ87SXKlZ66pWW9tDa+ENxplnN8R9d8NSy6A9hpMC6ZqWsyLPNp3nXEcMspeNMZ2s/zKuQDxzU+jaNb6f8ACf4j6KPFej+L9Mt9NXWbeLTxM32K8FxFH5oMsaFWdXYHbndg59+M1zwr4t+Fvhm+cXGn3Xh3xGg0+a/0q6ivbeby3EvleYvKMCA2OCQPrXV23wa8S+Do9c0dvHHgXTH1O2Wy1G0u9bRZfL3LIEIZMochTxzW0HOyhybJ36fFe3lrp93kefiY4ZylXWJVpyg49W1T5E7ys5Jp82z3lr8TNP4seJfBWjXHgtNf8IXOu3qeE9JkMya69pGyeSSEMYjPocnPOe1dFajTz8cviXqWpC8l0jVvBdxq0sEGyO5ignt4H8lSRtDovygkY4BNeXWHxo8aS32l6HHPoV9JbGHSrSe50e0nwqsIogJXjJKjjB9DmsjWPFHjLTPiF4pgu79r/wAS6i1xoWoyhVlNxucRPGnAABKKq7QMADGKp4mF+e19V0S6Pr1+ZlDJsRy+wlJJ8kl/ElK6c4O6TVoJW+z1t207jUR4P0j4M69rXgWx1mZtVnj0LVjrd3E76fGXWeNlSNQG80x7Q5PylSMZNdX8P3X/AISz4FofmeXwlqUUa4yWdvtYVQPUngV5Jp3h/wAYeGPGWt/DrSnt77UtVK6TfWlqVnhkYEPjcwwpjbJLjGwq3NWpvD/jq4+JHhrwNc3CaV4i0Vhp+kvI/kLF8zSxlJVHzBmOUfnO4ClCq4yUuR6WVktLqV7fP8/I0r4GnUp1KX1hNSU6nNKTcuSVJwUmu0W7aacqX2r34rwNby3PjDw5axRtJdNqFrGIFGXLeany7eueDx7V6346Q3Xhv43PFiRYPGltPIVIO2My3aBvpuYDPvSeFP2jtdt9W1Cz8SQRC7uoZbP+2dH0q2h1e0uT8olVwq723fKwOCQTgg1N4P8Ahf47+Huqa5f2virwtohtrs6NqB1nUE+zXMpjSZoXWRGWTAcZB5DBsHjNTShFQ5ad5J3vpto1tf57m2PxFV1/aYtQpSioOK5m1O04yevKmtlH4W7u9rWvxngUE/CD4sS4zF9k0yLePu7zeAhc+uATj0Fdz8V/Efw9sPENjb674R1XVNWXQtK8y8tte+zRtmyi24j8s4wMDrzjNZnjpfGfjfXdA8Dv4h8JX8Gq3G+C18LSQx2KzYKhpjEg+bGcFs4HSqfiv4m/EHwRr8nhzWo9Dk1DTkisw9xolpcFo1RViIlaMl1KbcN3FPmVOHK07Kyu4p66vZvzM/ZTxmJVeLi5T5p8sas4PlapwT5oxTavTd9Ertb2PIlIJyOR69akzXZ+KfA3iGbxN46bUPsAv/DzefqgtQI4stKkX7lVUDG514AUYzVy0+Ct9LoWj6pe+KfCmiQ6rai9tYNW1UwTNEWK7ivlnupHXtXnewqOTSX9Xt+Z9h/aeFjTjOdRK9ttdXFS0010d9ttTgKK1fFvhLU/A2vTaTqscaXUapIrwSiWKWN1DJJG44ZWUggisocisJRcW4yWp6FKrCtBVKbvFq6a2aCiiipNQooooAKKKKAA9K9I1zH/AAzf4S/7GbUv/RENebnpXc+FPjJqvhPwsnh5dG8O6xp0d1JeRrrWlrdtHI4AYqWbjhR2rpoyiuZTdrq34o8fMqVep7GdCKk4T5rN205ZLez7l/Qj5f7N/jQzg+RL4h01bUn7pmWKYy7fcRkZ9iK6n46Xfw6X4neKU1DTPFEusiYCWa1vrVbYy+SmCqtGWC9OCc9a8x8ZfEfXPHNtY2movawadY7vsun6bZx2ltCW+8wjQAbj3Y5Ndhe/tGaxql3JdX3hHwRfXcmDJc3Xh9JJJCABlmLZJwBzXYq1Jw9nfa26vtzX06bngTy/GxxCxXJrJzbUZuNub2aWttdIXei1fXc4DwVx4x8PZ6/2laZx/wBdkrpvG3iO88JfHfxNrWnNCt/Y+Ib2e3eaJZVVxcSbW2twSDyM9CAe1cemrzRa6urRRQQXCXQvEiij2xI4feAq9lBAAHpxXouoftC6pqk9zPdeDvA09zcu8k1w/h5DI7sSWYsWyWJJOfWuanKChyuVmndaHrYujiJYhVYUVOLg4yTlbdp9ndWujS+HP24/C3xFf6bqVhpOv63rS6Rc63ql0INtq1tJPLGJm4QyOvJHLdM1f8XR6hpnwY0jUbzVNN1jxB4Y8QwWOl6xpd2LnyrZoDOsBlX7wSRAQDyoOOhryFPE98nhGTw2PK/s2S/XUm+T955yxGIfNn7u1jxjrUieLtQj8FS+Fh5P9lSaiuqN+7/eecsRiHzZ+7tJ4x1rZYiKjy67W+e/563OKeUVp4j211b2ila2vLZRev8AhuuXa3qe6S6Dpr/Gk/EprdT4U/sgeODFkFTNjH2f6/bOMelYul6xoep/s/3Oo+NIdW1E3njWadm0q4iilM72gZmYyKwK8twOeledN8VPED/DZfAxlg/sNZ/PH7r9/jeZPL35/wBXvO7bjrVzwZ8YdV8F+GpdAi0jQNY0x7w3/la3pq3eyYoE3Llhj5Rjp3Na/WaXN2TTb0vq/Lt2PPeTYxUk5e9KEoxjaTT9nC9tbaSd9fRam18IZNDm/aD8Fnw9b6hbaYdQiAj1OaOWbdtfdlo1C49BirAz8Xfh2OsvjDwbH9Xv9ID/AKvbk/8Aftvaufu/jHqcvifQdes9D8OaNfaNMZ7caTpS20cjH/nqqt84HbpjJ9a5vwl4t1PwR4mste0iYQahaSGRGZdyMCCGVl/iVgSCO4NZKtCK5N4tu+lt7bejX9XPQqZfiq0vrKXLUjGPLeXNrFzupO2qlGSTfnfdI9t8bHPjf9pD/rin/pwtqTWdE8EeIdD+DuneJ9Z1nRry78PwW8VxZW0ElrGjXMoDys7BhhjzgEAYPrXkupfEvWtV1HxffT/ZvP8AFKhNQ2Q4XAlSX92M/L80a+vGaytf8U6h4lstGtL5o3g0iyGn2gSMKVhDs+GP8Ry7c1pPFU3zaXvff/E3+RyUMkxUY0oufI421i9VajGnpdW+JfcdN8b715PiFc6YdOn0qHQbeDQ4LW6kEkwjt12KzsvBLcvxxhhiuHHStbxZ4v1PxtqMF/qzxz30VtDaG4SMI8qRrtRpCPvPtABbqcCskdK8+tJTqSktmz6rL6MsNhKVGaScUk7NtX66vXXfXUKKKKxO8KKKKACiiigAoxRRQAYoxRRQAYoxRRQAYoxRRQAYoxRRQAYoxRRQAYoxRRQAYooooAKKKKAP/9k=";
+document.getElementById('logo').src = LOGO;
+
+const $ = id => document.getElementById(id);
+const CLE = 'kanban_incidents_v1';
+
+let S = { nom:'', heure:1, sansRemise:true, voirNote:false, pioche:[], histo:[], phase:'A', carte:null, deA:null, deB:null };
+
+/* ---------- de en SVG ---------- */
+const PIPS = {1:[[.5,.5]],2:[[.28,.28],[.72,.72]],3:[[.26,.26],[.5,.5],[.74,.74]],
+ 4:[[.28,.28],[.72,.28],[.28,.72],[.72,.72]],
+ 5:[[.28,.28],[.72,.28],[.5,.5],[.28,.72],[.72,.72]],
+ 6:[[.28,.25],[.72,.25],[.28,.5],[.72,.5],[.28,.75],[.72,.75]]};
+function deSVG(v,t){
+  t = t || 76;
+  const r = t*0.075;
+  let p = (PIPS[v]||[]).map(c=>`<circle cx="${(c[0]*t).toFixed(1)}" cy="${(c[1]*t).toFixed(1)}" r="${r.toFixed(1)}" fill="#1c2530"/>`).join('');
+  return `<svg width="${t}" height="${t}" viewBox="0 0 ${t} ${t}" role="img" aria-label="dé : ${v}">
+  <rect x="1.5" y="1.5" width="${t-3}" height="${t-3}" rx="${t*.18}" fill="#fdf6c9" stroke="#8a7a20" stroke-width="2.5"/>${p}</svg>`;
+}
+function lancer(el, cb){
+  el.classList.add('roule');
+  let n = 0;
+  const it = setInterval(()=>{
+    el.innerHTML = deSVG(1+Math.floor(Math.random()*6));
+    if(++n >= 11){
+      clearInterval(it);
+      el.classList.remove('roule');
+      const v = 1+Math.floor(Math.random()*6);
+      el.innerHTML = deSVG(v);
+      cb(v);
+    }
+  }, 70);
+}
+
+/* ---------- pioche ---------- */
+function melanger(){
+  const a = CARTES.map((_,i)=>i);
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+function tirer(){
+  if(!S.sansRemise) return CARTES[Math.floor(Math.random()*CARTES.length)];
+  if(!S.pioche.length) S.pioche = melanger();
+  return CARTES[S.pioche.pop()];
+}
+
+/* ---------- persistance ---------- */
+function sauver(){ try{ localStorage.setItem(CLE, JSON.stringify(S)); }catch(e){} }
+function charger(){
+  try{ const v = localStorage.getItem(CLE); if(v) return JSON.parse(v); }catch(e){}
+  return null;
+}
+
+/* ---------- rendu ---------- */
+function rendreCarte(c, deB){
+  $('cCode').textContent = c.code;
+  $('cAtelier').textContent = c.atelier;
+  $('cEnonce').textContent = c.enonce;
+  $('cGrav').innerHTML = c.gravites.map(g=>{
+    const on = deB && g.des.includes(deB);
+    const cl = deB ? (on ? 'on' : 'off') : '';
+    const des = g.des.map(v=>`<span class="mini">${deSVG(v,34)}</span>`).join('');
+    return `<tr class="${cl}"><td class="d">${des}</td><td class="e">${g.effet}</td></tr>`;
+  }).join('');
+  const n = $('cNote');
+  if(S.voirNote && c.note){ n.innerHTML = '<b>Commentaire animateur</b>' + c.note; n.classList.remove('hidden'); }
+  else n.classList.add('hidden');
+  $('pile').textContent = S.sansRemise ? (S.pioche.length + ' cartes restantes dans le paquet') : '';
+}
+function rendreHisto(){
+  const h = $('hist');
+  if(!S.histo.length){ h.innerHTML = '<div class="vide">Aucun jet enregistré.</div>'; return; }
+  h.innerHTML = '<table><thead><tr><th>H</th><th>Dé</th><th>Carte</th><th>Conséquence</th></tr></thead><tbody>' +
+    S.histo.map(l=>`<tr><td>${l.h}</td><td>${l.d1}${l.d2?' puis '+l.d2:''}</td>`+
+      `<td class="c">${l.code||'-'}</td><td>${l.effet||"Pas d'incident"}</td></tr>`).join('') +
+    '</tbody></table>';
+}
+function majBandeau(){
+  $('labEq').textContent = S.nom;
+  $('labHr').textContent = 'Heure ' + S.heure;
+}
+
+/* ---------- etats ---------- */
+function etatA(){
+  S.phase='A'; S.carte=null; S.deA=null; S.deB=null;
+  $('etapeB').classList.add('hidden');
+  $('etapeA').classList.remove('hidden');
+  $('titreA').textContent = "Jet d'ouverture";
+  $('deA').innerHTML = deSVG(6);
+  $('deA').style.opacity = .25;
+  $('verdictA').classList.add('hidden');
+  $('btnDeA').classList.remove('hidden');
+  $('btnDeA').disabled = false;
+  $('btnDeA').textContent = 'Lancer le dé';
+  $('btnSuite').classList.add('hidden');
+  majBandeau(); rendreHisto(); sauver();
+}
+function restaurer(){
+  majBandeau(); rendreHisto();
+  if(S.phase==='A' || !S.carte){ etatA(); return; }
+  $('etapeA').classList.add('hidden');
+  $('etapeB').classList.remove('hidden');
+  rendreCarte(S.carte, S.deB);
+  if(S.deB){
+    $('zoneDeB').classList.remove('hidden');
+    $('deB').innerHTML = deSVG(S.deB);
+    $('btnDeB').classList.add('hidden');
+    $('btnFin').classList.remove('hidden');
+  } else {
+    $('zoneDeB').classList.add('hidden');
+    $('btnDeB').classList.remove('hidden');
+    $('btnDeB').disabled = false;
+    $('btnFin').classList.add('hidden');
+  }
+}
+
+/* ---------- evenements ---------- */
+$('btnStart').onclick = ()=>{
+  S.nom = ($('nom').value || 'Équipe').trim();
+  S.sansRemise = $('sansRemise').checked;
+  S.voirNote = $('voirNote').checked;
+  S.pioche = melanger();
+  S.heure = 1; S.histo = [];
+  $('setup').classList.add('hidden');
+  $('jeu').classList.remove('hidden');
+  etatA();
+};
+
+$('btnDeA').onclick = ()=>{
+  $('btnDeA').disabled = true;
+  $('deA').style.opacity = 1;
+  lancer($('deA'), v=>{
+    S.deA = v;
+    const inc = (v===1 || v===6);
+    const vd = $('verdictA');
+    vd.className = 'verdict ' + (inc?'ko':'ok');
+    vd.innerHTML = inc
+      ? 'Incident<small>Le dé est tombé sur ' + v + '. Tirez une carte incident.</small>'
+      : 'Pas d\'incident<small>Le dé est tombé sur ' + v + '. La production continue normalement.</small>';
+    vd.classList.remove('hidden');
+    $('btnDeA').classList.add('hidden');
+    if(inc){
+      S.carte = tirer(); S.phase='B'; sauver();
+      setTimeout(()=>{
+        $('etapeA').classList.add('hidden');
+        $('etapeB').classList.remove('hidden');
+        rendreCarte(S.carte, null);
+        $('zoneDeB').classList.add('hidden');
+        $('btnDeB').classList.remove('hidden');
+        $('btnDeB').disabled = false;
+        $('btnFin').classList.add('hidden');
+        window.scrollTo({top:0,behavior:'smooth'});
+      }, 900);
+    } else {
+      S.histo.push({h:S.heure, d1:v, code:null, effet:null});
+      $('btnSuite').classList.remove('hidden');
+      rendreHisto(); sauver();
+    }
+  });
+};
+
+$('btnSuite').onclick = ()=>{ S.heure++; etatA(); };
+
+$('btnDeB').onclick = ()=>{
+  $('btnDeB').disabled = true;
+  $('zoneDeB').classList.remove('hidden');
+  lancer($('deB'), v=>{
+    S.deB = v;
+    rendreCarte(S.carte, v);
+    const g = S.carte.gravites.find(x=>x.des.includes(v));
+    S.histo.push({h:S.heure, d1:S.deA, d2:v, code:S.carte.code, effet:(g?g.effet:'')});
+    $('btnDeB').classList.add('hidden');
+    $('btnFin').classList.remove('hidden');
+    rendreHisto(); sauver();
+  });
+};
+
+$('btnFin').onclick = ()=>{ S.heure++; etatA(); window.scrollTo({top:0,behavior:'smooth'}); };
+
+$('btnReset').onclick = ()=>{
+  try{ localStorage.removeItem(CLE); }catch(e){}
+  location.reload();
+};
+
+/* ---------- demarrage ---------- */
+(function(){
+  const v = charger();
+  if(v && v.nom){
+    S = Object.assign(S, v);
+    $('setup').classList.add('hidden');
+    $('jeu').classList.remove('hidden');
+    restaurer();
+  } else {
+    $('deA').innerHTML = deSVG(6);
+  }
+})();
+</script>
+</body>
+</html>

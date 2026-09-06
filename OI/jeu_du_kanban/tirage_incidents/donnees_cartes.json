@@ -1,0 +1,2282 @@
+[
+ {
+  "code": "A8",
+  "atelier": "Montage",
+  "enonce": "Panne d’un chariot élévateur utilisé dans le magasin des pièces usinées.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "4 heures d’arrêt"
+   }
+  ],
+  "note": "Utilisation des autres élévateurs, qui sont polyvalents."
+ },
+ {
+  "code": "E7",
+  "atelier": "Engrenages",
+  "enonce": "Ouvrier inexpérimenté sur le poste, suite au départ à la retraite du titulaire.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 conteneur rebuté ? Le noter dans la colonne prévue à cet effet 1 heure d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "3 heures d’arrêt et 1 conteneur rebuté"
+   }
+  ],
+  "note": "Le retraité avait consigné ses connaissances sur des modes opératoires très précis. La montée en compétences est rapide."
+ },
+ {
+  "code": "E2",
+  "atelier": "Tous",
+  "enonce": "Grève de la société qui assure le transport du personnel",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "1 heure d’arrêt, sur un poste au choix"
+   },
+   {
+    "des": [
+     4,
+     5
+    ],
+    "effet": "1 heure d’arrêt, de tout l’usinage"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "1 heure d’arrêt de toute l’usine"
+   }
+  ],
+  "note": "La société avait prévenu des risques de grève. La majorité du personnel est venue en transport individuel."
+ },
+ {
+  "code": "Q17",
+  "atelier": "Montage",
+  "enonce": "Arrêt pour mise en œuvre d’une nouvelle méthode de montage plus efficace",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "3 heures d’arrêt"
+   }
+  ],
+  "note": "Le service des méthodes a prévu les essais de façon à limiter au maximum l’arrêt des machines."
+ },
+ {
+  "code": "P22",
+  "atelier": "Engrenages",
+  "enonce": "La machine est jugée dangereuse par l’inspecteur du travail. Elle doit être arrêtée pour être modifiée.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "1 heure d’arrêt, programmée à n’importe quel moment de la semaine"
+   },
+   {
+    "des": [
+     4,
+     5
+    ],
+    "effet": "2 heures d’arrêt, programmées à n’importe quel moment de la semaine"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "3 heures d’arrêt"
+   }
+  ],
+  "note": "Une machine du même type avait été équipée récemment d’un dispositif de sécurité, ce qui a permis d’équiper rapidement la machine arrêtée."
+ },
+ {
+  "code": "E9",
+  "atelier": "Carters",
+  "enonce": "Accident du travail (choc à la main droite).",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     4,
+     5
+    ],
+    "effet": "2 heures d’arrêt, (entaille profonde)"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "2 heures d’arrêt de tout le personnel de l’usine avec le Délégué du personnel"
+   }
+  ],
+  "note": "L’opérateur portait des gants de protection. L’arrêt d’une heure est nécessaire pour déclarer l’incident."
+ },
+ {
+  "code": "E3",
+  "atelier": "Tous",
+  "enonce": "Le compresseur est très bruyant car le capot d’insonorisation est cassé. Le personnel proteste contre la nuisance.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "1 heure d’arrêt d’un des postes d’usinage"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "1 heure d’arrêt aux Engrenages et Carters"
+   }
+  ],
+  "note": "La chef de fabrication annonce immédiatement au personnel que capot sera réparé rapidement. Il distribue des bouchons d’oreille à ceux qui le veulent."
+ },
+ {
+  "code": "E13",
+  "atelier": "Engrenages",
+  "enonce": "Pour faire face à la hausse des commandes, on travaille un jour férié et cela désorganise la production.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     4,
+     5
+    ],
+    "effet": "1 heure d’arrêt aux Engrenages"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "2 heures d’arrêt pour l’ensemble de l’usinage"
+   }
+  ],
+  "note": "Le bureau de production a étudié très soigneusement la répartition du personnel et la production s’effectue sans difficulté."
+ },
+ {
+  "code": "P2",
+  "atelier": "Carters",
+  "enonce": "Montage d’un nouveau dispositif de serrage des pièces",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     4,
+     5
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "4 heures d’arrêt"
+   }
+  ],
+  "note": "Le dispositif avait été testé sur une autre machine avant d’être monté. Le montage se fait en quelques minutes."
+ },
+ {
+  "code": "Q28",
+  "atelier": "Usinage",
+  "enonce": "Un actionnaire important a demandé un audit comptable. Un inventaire des en-cours doit être réalisé rapidement.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "1 heure d’arrêt du poste Couronnes ph. B"
+   },
+   {
+    "des": [
+     4,
+     5
+    ],
+    "effet": "1 heure d’arrêt, du poste Cour. ph B et Carters"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "1 heure d’arrêt de toute l’usine"
+   }
+  ],
+  "note": "Bon rangement des ateliers, l’inventaire est rapide."
+ },
+ {
+  "code": "Q2",
+  "atelier": "Carters",
+  "enonce": "Défaut dans les pièces de fonderie livrées par le nouveau fournisseur.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "2 heures d’arrêt"
+   }
+  ],
+  "note": "Le fournisseur s’est aperçu lui-même du défaut. Il a pris les dispositions nécessaires pour ne pas arrêter la production chez son client."
+ },
+ {
+  "code": "Q4",
+  "atelier": "Engrenages",
+  "enonce": "Défaut sur les pièces, une opération d’usinage a été oubliée",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 conteneur à reprendre (pièces en-cours)"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "2 conteneurs à reprendre"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "4 conteneurs à reprendre"
+   }
+  ],
+  "note": "L’opérateur vérifie lui-même les pièces, le défaut est détecté à temps et les conséquences sont limitées."
+ },
+ {
+  "code": "E11",
+  "atelier": "Couronnes (phase A)",
+  "enonce": "Opérateur malade",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "4 heures d’arrêt"
+   }
+  ],
+  "note": "Les opérateurs ont l’habitude de changer régulièrement de poste au sein de l’équipe. Un autre opérateur le remplace."
+ },
+ {
+  "code": "P4",
+  "atelier": "Montage",
+  "enonce": "Usure du moteur d’entraînement sur une machine.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "1 heure d’arrêt, à programmer dans la semaine"
+   },
+   {
+    "des": [
+     4,
+     5
+    ],
+    "effet": "1 heure d’arrêt immédiatement"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "4 heures d’arrêt immédiatement"
+   }
+  ],
+  "note": "Le vieillissement avait été détecté lors d’une visite de routine. Un remplacement préventif a été programmé."
+ },
+ {
+  "code": "A4",
+  "atelier": "Engrenages",
+  "enonce": "Erreur d’approvisionnement. La moitié des manutentionnaires ont la grippe, on a dû faire appel à des intérimaires.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "1 heure d’arrêt + 1 conteneur à rebuter"
+   }
+  ],
+  "note": "Les intérimaires ont été bien accueillis et formés."
+ },
+ {
+  "code": "A6",
+  "atelier": "Carters",
+  "enonce": "Des micro-coupures ont provoqué des interruptions dans le traitement informatique des ordres de fabrication. Le lancement a pris du retard.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "4 heures d’arrêt"
+   }
+  ],
+  "note": "Le responsable de fabrication a utilisé une procédure de sauvegarde non informatisée."
+ },
+ {
+  "code": "Q16",
+  "atelier": "Carters",
+  "enonce": "Pièces de fonderie livrées déformées",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "2 heures d’arrêt et 1 conteneur de pièces usinées à rebuter"
+   }
+  ],
+  "note": "Le fournisseur avait constaté le défaut et pris contact avec l’usine avant la livraison. Le responsable qualité fait en sorte que le défaut puisse être corrigé."
+ },
+ {
+  "code": "Q9",
+  "atelier": "Montage",
+  "enonce": "Le client se plaint que certains réducteurs se desserrent. Pendant plusieurs jours le montage n’a pas respecté le couple de serrage des boulons.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     4,
+     5,
+     6
+    ],
+    "effet": "Le client demande l’envoi immédiat de 1 R6 en remplacement du mauvais (qu’il renverra plus tard)"
+   }
+  ],
+  "note": "la client accepte qu’un technicien vienne chez lui pour réparer l’erreur."
+ },
+ {
+  "code": "A10",
+  "atelier": "Usinage",
+  "enonce": "Panne d’un chariot élévateur. Le chariot de remplacement est en révision.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "1 heure d’arrêt d’un poste d’usinage (au choix)"
+   },
+   {
+    "des": [
+     4,
+     5
+    ],
+    "effet": "2 heures d’arrêt d’un poste d’usinage (au choix)"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "4 heures d’arrêt d’un poste d’usinage (au choix)"
+   }
+  ],
+  "note": "On utilise un tire-palette manuel. Chacun y met du sien pour ne pas arrêter la production trop longtemps."
+ },
+ {
+  "code": "A13",
+  "atelier": "Couronnes (phase A)",
+  "enonce": "Le fournisseur a déménagé son usine. Il est désolé mais ne peut pas livrer à la date prévue.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "4 heures d’arrêt"
+   }
+  ],
+  "note": "Le service achats était au courant, il a prévu un stock de sécurité."
+ },
+ {
+  "code": "A11",
+  "atelier": "Couronnes (phase A)",
+  "enonce": "Les pièces ont été achetées en Chine. Grève dans le port de débarquement.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "2 heures d’indisponibilité pour les matières vertes et rouges"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "4 heures d’indisponibilité pour les matières vertes et rouges"
+   }
+  ],
+  "note": "Compte tenu du risque, un stock de sécurité avait été prévu."
+ },
+ {
+  "code": "Q15",
+  "atelier": "Couronnes (phase B)",
+  "enonce": "Erreur de mise à jour de la gamme de fabrication.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 conteneur à reprendre en usinage"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "2 conteneurs à reprendre en usinage"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "4 conteneurs à reprendre en usinage"
+   }
+  ],
+  "note": "L’opérateur constate une anomalie et prévient son responsable. Les dégâts sont limités."
+ },
+ {
+  "code": "P18",
+  "atelier": "Couronnes (phase B)",
+  "enonce": "Arrêt machine, le fusible a sauté",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "4 heures d’arrêt"
+   }
+  ],
+  "note": "Des fusibles sont disponibles près de la machine, on peut redémarrer en attendant de trouver l’origine de la panne."
+ },
+ {
+  "code": "P9",
+  "atelier": "Couronnes (phase A)",
+  "enonce": "Panne machine due à la défaillance d’un micro-processeur de l’armoire de commande.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "3 heures d’arrêt"
+   }
+  ],
+  "note": "Dépannage rapide grâce à l’échange standard d’un module complet."
+ },
+ {
+  "code": "Q26",
+  "atelier": "Carters",
+  "enonce": "Le service commercial a promis à un client de faire un prototype de réducteur. La machine est arrêtée pour faire un carter spécial.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 heure d’arrêt, programmée à n’importe quel moment de la semaine"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "2 heures d’arrêt"
+   }
+  ],
+  "note": "Le service commercial a prévenu à temps le service de fabrication qui a pu prendre des dispositions."
+ },
+ {
+  "code": "Q20",
+  "atelier": "Carters",
+  "enonce": "Une pile de carters usinées s’est effondrée dans le stock.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "1 heure d’arrêt et 1 conteneur de pièces usinées à rebuter"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "3 conteneurs de pièces usinées à rebuter"
+   }
+  ],
+  "note": "Les piles de conteneurs ne sont pas très hautes. Les dégâts sont limités."
+ },
+ {
+  "code": "P20",
+  "atelier": "Engrenages",
+  "enonce": "Manque de lubrification, le roulement est grippé et la machine s’arrête.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "4 heures d’arrêt"
+   }
+  ],
+  "note": "La machine est équipée d’un dispositif qui signale l’échauffement de l’huile. Le régleur intervient avant qu’il ne soit trop tard."
+ },
+ {
+  "code": "P8",
+  "atelier": "Engrenages",
+  "enonce": "Panne machine due à l’usure d’une vis-mère.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 heure d’arrêt à programmer dans la semaine"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "1 heure d’arrêt immédiatement"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "1 heure d’arrêt immédiatement + 1 conteneur rebuté"
+   }
+  ],
+  "note": "L’opérateur avait vu qu’elle vibrait de façon anormale. Il a prévenu le dépanneur avant qu’elle ne tombe en panne."
+ },
+ {
+  "code": "E10",
+  "atelier": "Carters",
+  "enonce": "Opérateur malade",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "1 heure d’arrêt + 1 conteneur de pièces non-conformes à reprendre"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "4 conteneurs de pièces non-conformes à reprendre"
+   }
+  ],
+  "note": "Un autre opérateur accepte de rattraper le retard en heures supplémentaires."
+ },
+ {
+  "code": "Q7",
+  "atelier": "Engrenages",
+  "enonce": "Forte proportion de matières hors tolérance dans la dernière livraison du fournisseur.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "3 conteneurs de pièces usinées à reprendre (les derniers entrés)"
+   }
+  ],
+  "note": "Le fournisseur contrôle lui-même ses produits. Il réagit très vite pour respecter les délais promis."
+ },
+ {
+  "code": "Q5",
+  "atelier": "Carters",
+  "enonce": "Le magasinier marie sa fille. Le manutentionnaire se sert dans le magasin et se trompe de matière.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "2 conteneurs de carters rebutés"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "4 conteneurs de carters rebutés"
+   }
+  ],
+  "note": "L’opérateur a comme consigne de vérifier la matière qui lui est livrée. Il constate l’erreur à temps."
+ },
+ {
+  "code": "Q21",
+  "atelier": "Couronnes (phase B)",
+  "enonce": "Le manutentionnaire a manqué son virage et percuté une pile de conteneurs.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "1 heure d’arrêt et 1 conteneur de pièces usinées à rebuter"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "2 heures d’arrêt et 2 conteneurs de pièces usinées à rebuter"
+   }
+  ],
+  "note": "Une barrière de protection délimite les allées de circulation. Les dégâts sont limités."
+ },
+ {
+  "code": "P23",
+  "atelier": "Tous",
+  "enonce": "Coupure de courant",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     4,
+     5,
+     6
+    ],
+    "effet": "1 heure d’arrêt, de toute l’usine"
+   }
+  ],
+  "note": "Il existe un système de secours."
+ },
+ {
+  "code": "E5",
+  "atelier": "Montage",
+  "enonce": "Opérateur absent pour maladie",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     4,
+     5,
+     6
+    ],
+    "effet": "1 heure d’arrêt, plus 3 conteneurs à reprendre en raison d’une erreur du remplaçant"
+   }
+  ],
+  "note": "La plupart des opérateurs de l’équipe sont polyvalents. Un collègue apporte de l’aide en attendant de trouver un remplaçant."
+ },
+ {
+  "code": "Q27",
+  "atelier": "Tous",
+  "enonce": "La Direction générale fait visiter l’usine à un important client japonais. Un rangement général est programmé.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 heure d’arrêt sur le poste des carters"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "1 heure d’arrêt sur 2 postes de travail"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "1 heure d’arrêt de tout l’atelier"
+   }
+  ],
+  "note": "L’usine est bien rangée en temps normal, une légère remise à niveau est suffisante."
+ },
+ {
+  "code": "Q25",
+  "atelier": "Couronnes (phase A)",
+  "enonce": "L’opérateur s’est trompé en lisant les instructions de travail",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 conteneur à rebuter"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "2 conteneurs de pièces usinées à rebuter"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "5 conteneurs de pièces usinées à rebuter"
+   }
+  ],
+  "note": "Le poste suivant a vu le défaut immédiatement car il y avait peu de stock d’en cours entre les deux opérations. Les dégâts sont limités."
+ },
+ {
+  "code": "Q18",
+  "atelier": "Montage",
+  "enonce": "L’opérateur confond les pièces bleues et jaunes.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "1 conteneur à refaire"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "2 heures d’arrêt et 2 conteneurs à refaire"
+   }
+  ],
+  "note": "La visite médicale d’embauche a permis de constater qu’il était daltonien. Il a été placé sur un poste qui ne dépend pas des couleurs."
+ },
+ {
+  "code": "Q19",
+  "atelier": "Engrenages",
+  "enonce": "Le fournisseur avait des anciens plans. Il a fabriqué des pièces non-conformes.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "2 conteneurs de pièces usinées à renvoyer"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "3 conteneurs de pièces usinées à renvoyer"
+   }
+  ],
+  "note": "Le fournisseur s’est aperçu du défaut au moment du contrôle. Il a fabriqué en urgence des pièces bonnes."
+ },
+ {
+  "code": "P10",
+  "atelier": "Couronnes (phase A)",
+  "enonce": "Arrêt machine du à une erreur de programmation.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     4,
+     5
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "4 heures d’arrêt"
+   }
+  ],
+  "note": "Le programme a été conçu en installant des fonctions de détection d’anomalies. Il est corrigé rapidement."
+ },
+ {
+  "code": "P13",
+  "atelier": "Engrenages",
+  "enonce": "Arrêt machine, rupture d’une canalisation d’air comprimé",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     4,
+     5,
+     6
+    ],
+    "effet": "2 heures d’arrêt"
+   }
+  ],
+  "note": "Le soudeur du service entretien, conscient de la gravité de l’incident, intervient rapidement."
+ },
+ {
+  "code": "A7",
+  "atelier": "Montage",
+  "enonce": "Le revêtement de l’allée principale du magasin est très dégradé. Les travaux de réfection perturbent la manutention.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     4,
+     5
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "3 heures d’arrêt"
+   }
+  ],
+  "note": "Un trajet de remplacement a été étudié pour éviter toute perturbation."
+ },
+ {
+  "code": "P14",
+  "atelier": "Montage",
+  "enonce": "Panne machine, robot de palettisation en panne",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "3 heures d’arrêt"
+   }
+  ],
+  "note": "Le fournisseur de robot avait bien formé le personnel du service maintenance, qui peut dépanner rapidement."
+ },
+ {
+  "code": "A12",
+  "atelier": "Engrenages",
+  "enonce": "Routes coupées à la suite d’inondations. Le transporteur livre en retard.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     4,
+     5
+    ],
+    "effet": "2 heures d’indisponibilité de la matière blanche"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "4 heures d’indisponibilité de toutes les matières"
+   }
+  ],
+  "note": "Le service des achats avait prévu les difficultés en écoutant les prévisions météorologiques, une livraison spéciale de pièces urgentes a été faite par une autre route."
+ },
+ {
+  "code": "A2",
+  "atelier": "Couronnes (phase A)",
+  "enonce": "Le magasinier est malade. L’approvisionnement de l’atelier des couronnes est perturbé.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     4,
+     5
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "3 heures d’arrêt"
+   }
+  ],
+  "note": "Il a laissé des consignes claires. Un de ses employés le remplace."
+ },
+ {
+  "code": "A5",
+  "atelier": "Engrenages",
+  "enonce": "Erreur d’inventaire. Le stock est à 0 alors que le système informatique signale qu’il reste du stock.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     4,
+     5,
+     6
+    ],
+    "effet": "2 heures d’arrêt"
+   }
+  ],
+  "note": "Le magasinier s’est aperçu de l’écart en circulant dans le magasin. Le fournisseur, prévenu immédiatement, a réagi rapidement et les pièces sont arrivées à temps."
+ },
+ {
+  "code": "E8",
+  "atelier": "Engrenages",
+  "enonce": "Opérateur absent (en formation)",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 heure d’arrêt, programmée dans la semaine"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "1 heure d’arrêt immédiat"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "2 heures d’arrêt immédiat"
+   }
+  ],
+  "note": "Les opérateurs participent au planning des formations. Ils s’organisent avec leur responsable pour limiter les perturbations."
+ },
+ {
+  "code": "Q8",
+  "atelier": "Couronnes (phase B)",
+  "enonce": "A la suite de l’utilisation d’un mauvais calibre de contrôle, des pièces ont été fabriquées hors tolérance.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "1 conteneur de pièces usinées à rebuter"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "1 heure d’arrêt et 2 conteneurs de pièces usinées à rebuter"
+   }
+  ],
+  "note": "Le défaut a été détecté très rapidement grâce à l’utilisation des cartes de contrôle (maîtrise statistique des processus)."
+ },
+ {
+  "code": "A1",
+  "atelier": "Carters",
+  "enonce": "En raison de la hausse des commandes, le fournisseur n’a pu livrer à temps les pièces de fonderie pour les carters. Arrêt des machines.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     4,
+     5
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "3 heures d’arrêt"
+   }
+  ],
+  "note": "Le fournisseur avait été averti suffisamment tôt de cette augmentation, ce qui lui a permis de réduire au maximum son retard."
+ },
+ {
+  "code": "Q24",
+  "atelier": "Engrenages",
+  "enonce": "Le régleur s’est trompé en faisant un contrôle dimensionnel.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "1 conteneur de pièces usinées à rebuter"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "5 conteneurs de pièces usinées à rebuter"
+   }
+  ],
+  "note": "L’opérateur a vu le défaut sur son gabarit de contrôle et le réglage de la machine est corrigé."
+ },
+ {
+  "code": "Q10",
+  "atelier": "Carters",
+  "enonce": "Chocs pendant le transport des matières. Une partie des approvisionnements doit être renvoyée au fournisseur.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "5 heures d’arrêt"
+   }
+  ],
+  "note": "Le transporteur fait le nécessaire pour bien arrimer les palettes pendant le transport. Les défauts sont des rayures superficielles sans conséquences sur la qualité des produits."
+ },
+ {
+  "code": "Q11",
+  "atelier": "Engrenages",
+  "enonce": "Utilisation par erreur d’une vieille matière obsolète qui était dans le stock.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     4,
+     5
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "3 heures d’arrêt"
+   }
+  ],
+  "note": "Le magasin est régulièrement débarrassé des matières obsolètes. Les dégâts sont limités."
+ },
+ {
+  "code": "E14",
+  "atelier": "Couronnes (phase A)",
+  "enonce": "Accident du travail : l’opérateur a cherché à enlever les copeaux avec la main.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     4,
+     5
+    ],
+    "effet": "2 heures d’arrêt (blessure légère au doigt)"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "4 heures d’arrêt (blessure sévère)"
+   }
+  ],
+  "note": "La machine disposait d’un mécanisme d’arrêt d’urgence qui a pu être activé à temps. Une heure perdue pour remplir la déclaration d’incident."
+ },
+ {
+  "code": "Q13",
+  "atelier": "Montage",
+  "enonce": "Une pile de palettes stockées dans le magasin s’est effondrée",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "3 heures d’arrêt"
+   }
+  ],
+  "note": "L’emballage a résisté au choc. Il faut peu de temps pour réparer l’incident."
+ },
+ {
+  "code": "Q12",
+  "atelier": "Engrenages",
+  "enonce": "On a accepté une commande du client, mais il s’avère très difficile de respecter ses exigences qualité.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "1 heure d’arrêt et 1 conteneur à reprendre"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "1 heure d’arrêt + 2 conteneurs à reprendre"
+   }
+  ],
+  "note": "Le bureau d’études, conscient des difficultés, était présent au début de la fabrication. Il aide à régler la machine."
+ },
+ {
+  "code": "E16",
+  "atelier": "Montage",
+  "enonce": "Opérateurs absents (en réunion de résolution de problèmes)",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 heure d’arrêt, a un moment choisi dans la semaine"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "1 heure d’arrêt immédiatement"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "2 heures d’arrêt immédiatement"
+   }
+  ],
+  "note": "Le planning des réunions est établi avec les opérateurs de façon à minimiser les conséquences sur la production."
+ },
+ {
+  "code": "A3",
+  "atelier": "Couronnes (phase A)",
+  "enonce": "A la suite d’une erreur de virgule dans une nomenclature, la commande de matière est 10 fois moindre que les besoins.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "5 heures d’arrêt"
+   }
+  ],
+  "note": "Le fournisseur s’est douté de l’anomalie, qui a pu être corrigée à temps."
+ },
+ {
+  "code": "E4",
+  "atelier": "Carters",
+  "enonce": "Contestation dans l’atelier à la suite d’une erreur de calcul des primes de fin d’année.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "2 heures d’arrêt du poste Carter"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "1 heure d’arrêt de l’ensemble de l’usine"
+   }
+  ],
+  "note": "Le responsable de la paie reconnaît immédiatement l’erreur et annonce qu’elle sera rapidement corrigée."
+ },
+ {
+  "code": "P12",
+  "atelier": "Engrenages",
+  "enonce": "Au moment du changement d’outillage on s’aperçoit que le magasinier, absent temporairement, a oublié de dire où il rangeait la clef du magasin.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "3 heures d’arrêt au prochain changement d’outil"
+   }
+  ],
+  "note": "L’armoire de rangement des clefs était parfaitement organisée, avec des clefs identifiées par des étiquettes."
+ },
+ {
+  "code": "E12",
+  "atelier": "Carters",
+  "enonce": "Opérateur malade",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "4 conteneurs de pièces rebutées"
+   }
+  ],
+  "note": "Il était le seul à avoir refusé le vaccin. Les autres membres de l’équipe sont en pleine forme et le remplacent au pied levé."
+ },
+ {
+  "code": "P3",
+  "atelier": "Couronnes (phase A)",
+  "enonce": "Régleur absent (en formation)",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "3 heures d’arrêt"
+   }
+  ],
+  "note": "L’opérateur a été formé au réglage. Il peut intervenir dans les cas simples."
+ },
+ {
+  "code": "Q14",
+  "atelier": "Ventes",
+  "enonce": "1 palette de R3 a été expédiée, alors que le client avait commandé 1 palette de R4",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "Envoi immédiat de la palette manquante. Le client renverra les autres plus tard"
+   }
+  ],
+  "note": "Le magasinier s’est aperçu de l’erreur sur le listing de contrôle. Il a averti le transporter et le camion fait demi-tour. L’erreur est corrigée."
+ },
+ {
+  "code": "P15",
+  "atelier": "Montage",
+  "enonce": "Système automatique d’alimentation du montage en panne",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     4,
+     5,
+     6
+    ],
+    "effet": "3 heures d’arrêt"
+   }
+  ],
+  "note": "Le système manuel a été conservé en attendant que le système automatique soit au point. On l’utilise comme secours."
+ },
+ {
+  "code": "P16",
+  "atelier": "Couronnes (phase A)",
+  "enonce": "Mauvaise manœuvre sur la machine de l’opérateur nouvellement embauché.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "3 heures d’arrêt"
+   }
+  ],
+  "note": "Les systèmes de sécurité ont été conçus pour empêcher les fausses manœuvres."
+ },
+ {
+  "code": "Q22",
+  "atelier": "Couronnes (phase A)",
+  "enonce": "Le cariste s’est trompé dans le choix des matières dans le stock, une matière trop dure a été utilisée et l’outillage s’est cassé.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "5 heures d’arrêt"
+   }
+  ],
+  "note": "Il existe un outillage de rechange."
+ },
+ {
+  "code": "P17",
+  "atelier": "Couronnes (phase A)",
+  "enonce": "Outillage usé",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "5 heures d’arrêt"
+   }
+  ],
+  "note": "L’opérateur avait noté que l’outillage était usé. Un ré-usinage avait été prévu."
+ },
+ {
+  "code": "A9",
+  "atelier": "Montage",
+  "enonce": "Des conteneurs d’engrenages ont été égarés dans le magasin. Il s’agit de la référence en cours de montage.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 heure pendant laquelle les engrenages sont indisponibles"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "2 heures d’indisponibilité"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "4 heures d’indisponibilité"
+   }
+  ],
+  "note": "Le manutentionnaire connaît parfaitement le magasin, les conteneurs sont retrouvés rapidement."
+ },
+ {
+  "code": "Q1",
+  "atelier": "Montage",
+  "enonce": "Le client vient contrôler sa commande spéciale. Pendant ce temps les engrenages ne sont plus disponibles pour le montage.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "3 heures d’arrêt"
+   }
+  ],
+  "note": "La visite était prévue et le chef de fabrication a pris ses dispositions pour que d’autres pièces puissent alimenter le montage pendant le contrôle."
+ },
+ {
+  "code": "P11",
+  "atelier": "Couronnes (phase B)",
+  "enonce": "Panne machine due à la rupture d’un pignon réducteur",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "3 heures d’arrêt"
+   }
+  ],
+  "note": "La maintenance a été décentralisée dans l’atelier. Le technicien intervient rapidement."
+ },
+ {
+  "code": "P7",
+  "atelier": "Engrenages",
+  "enonce": "Un nouveau régleur remplace le régleur habituel qui est absent. Le réglage est plus long que d’habitude.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "5 heures d’arrêt"
+   }
+  ],
+  "note": "Les régleurs savent régler plusieurs machines grâce au fait que les consignes de réglage sont très claires. Pas de perturbation."
+ },
+ {
+  "code": "E1",
+  "atelier": "Engrenages",
+  "enonce": "Un opérateur est malade. Son remplaçant présente un certificat médical lui interdisant de porter des charges lourdes.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "3 heures d’arrêt"
+   }
+  ],
+  "note": "Le poste a été aménagé pour ne pas avoir à transporter des charges lourdes (avec un élévateur de pièces)."
+ },
+ {
+  "code": "P1",
+  "atelier": "Engrenages",
+  "enonce": "Matière première non conforme",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "3 heures d’arrêt"
+   }
+  ],
+  "note": "Le fournisseur fait lui-même le contrôle avant l’expédition. Il s’est aperçu de l’erreur et l’a corrigée rapidement."
+ },
+ {
+  "code": "P19",
+  "atelier": "Carters",
+  "enonce": "Arrêt machine, rupture de la vis de chariotage du tour",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "5 heures d’arrêt"
+   }
+  ],
+  "note": "L’usure avait été détectée lors d’une visite de routine, une vis de remplacement avait été préparée."
+ },
+ {
+  "code": "P6",
+  "atelier": "Couronnes (phase A)",
+  "enonce": "Le cariste intérimaire percute une machine en prenant un virage trop rapidement.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "3 heures d’arrêt"
+   }
+  ],
+  "note": "Les intérimaires sont formés au moment de l’accueil et ils respectent les consignes de sécurité."
+ },
+ {
+  "code": "Q23",
+  "atelier": "Engrenages",
+  "enonce": "Le fournisseur s’est trompé de référence dans une livraison.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "1 conteneur de pièces à renvoyer"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "4 conteneurs de pièces à renvoyer"
+   }
+  ],
+  "note": "Le magasinier a vu l’erreur à temps. Le fournisseur effectue un dépannage d’urgence."
+ },
+ {
+  "code": "E6",
+  "atelier": "Tous",
+  "enonce": "Conditions de travail difficiles en raison de la forte chute de la température extérieure ( - 16°C)",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     4,
+     5
+    ],
+    "effet": "1 heure d’arrêt sur 2 postes de travail"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "1 heure d’arrêt de l’ensemble de l’usine"
+   }
+  ],
+  "note": "Le bâtiment est bien isolé. Un chauffage d’appoint permet de maintenir la température à un niveau satisfaisant."
+ },
+ {
+  "code": "Q6",
+  "atelier": "Couronnes (phase A)",
+  "enonce": "La matière en stock ne peut plus être utilisée du fait d’une modification du cahier des charges du client",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "2 heures d’arrêt + 2 conteneurs à reprendre"
+   }
+  ],
+  "note": "Grâce à ses bonnes relations avec le client, le bureau d’études a été informé très tôt de ce changement. Le responsable des approvisionnements a pris ses dispositions."
+ },
+ {
+  "code": "P21",
+  "atelier": "Couronnes (phase B)",
+  "enonce": "Arrêt machine, élévation de la température dans l’armoire de commande.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "3 heures d’arrêt et 1 conteneur de pièces usinées à rebuter"
+   }
+  ],
+  "note": "La machine est équipée d’un système de contrôle. Le défaut est détecté avant d’entraîner des conséquences plus graves."
+ },
+ {
+  "code": "Q3",
+  "atelier": "Couronnes (phase B)",
+  "enonce": "La machine s’est déréglée",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4,
+     5
+    ],
+    "effet": "2 heures d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "3 heures d’arrêt"
+   }
+  ],
+  "note": "La dérive a été constatée par l’opérateur grâce aux cartes de contrôle (maîtrise statistique des procédés). Le régleur intervient rapidement."
+ },
+ {
+  "code": "P5",
+  "atelier": "Engrenages",
+  "enonce": "Panne machine, micro-rupteur hors service",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     3,
+     4
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     5,
+     6
+    ],
+    "effet": "5 heures d’arrêt"
+   }
+  ],
+  "note": "L’opérateur sait faire lui-même le remplacement, qui ne prend que quelques minutes."
+ },
+ {
+  "code": "E15",
+  "atelier": "Couronnes (phase B)",
+  "enonce": "Accident du travail : l’opérateur a reçu un éclat dans l’œil.",
+  "gravites": [
+   {
+    "des": [
+     1,
+     2,
+     3
+    ],
+    "effet": "Pas d’arrêt"
+   },
+   {
+    "des": [
+     4,
+     5
+    ],
+    "effet": "1 heure d’arrêt"
+   },
+   {
+    "des": [
+     6
+    ],
+    "effet": "2 heures d’arrêt + 1 conteneur rebuté"
+   }
+  ],
+  "note": "Il portait des lunettes de sécurité."
+ }
+]
