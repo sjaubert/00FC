@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pole Formation UIMM CVDL - Organisation Industrielle</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bleu:       #1b3a6b;
+      --rouge:      #c8102e;
+      --gris-fond:  #f2f3f6;
+      --gris-bord:  #d6dae4;
+      --texte:      #222831;
+      --texte-sec:  #56637a;
+      --blanc:      #ffffff;
+      --lean:       #1565c0;
+      --qualite:    #b71c1c;
+      --resolution: #2e7d32;
+      --simulation: #4527a0;
+      --ressources: #37474f;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 15px;
+      color: var(--texte);
+      background: var(--gris-fond);
+      line-height: 1.6;
+    }
+
+    /* ---- HEADER ---- */
+    header {
+      background: var(--bleu);
+      color: var(--blanc);
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .logo-wrap {
+      background: white;
+      padding: 8px 12px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .logo-wrap img {
+      height: 56px;
+      display: block;
+    }
+
+    .header-text h1 {
+      font-size: 1.55em;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .header-text p {
+      font-size: 0.9em;
+      opacity: 0.82;
+      margin-top: 5px;
+    }
+
+    .header-meta {
+      margin-left: auto;
+      text-align: right;
+      font-size: 0.8em;
+      opacity: 0.7;
+      line-height: 1.8;
+      flex-shrink: 0;
+    }
+
+    /* ---- NAVIGATION ---- */
+    nav {
+      background: var(--blanc);
+      border-bottom: 3px solid var(--bleu);
+      padding: 0 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      overflow-x: auto;
+    }
+
+    nav ul li a {
+      display: block;
+      padding: 13px 16px;
+      text-decoration: none;
+      color: var(--texte-sec);
+      font-size: 0.82em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -3px;
+      white-space: nowrap;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    nav ul li a:hover { color: var(--bleu); border-bottom-color: var(--bleu); }
+    nav ul li.lean     a:hover { color: var(--lean);       border-bottom-color: var(--lean); }
+    nav ul li.qualite  a:hover { color: var(--qualite);    border-bottom-color: var(--qualite); }
+    nav ul li.resolution a:hover { color: var(--resolution); border-bottom-color: var(--resolution); }
+    nav ul li.simulation a:hover { color: var(--simulation); border-bottom-color: var(--simulation); }
+
+    /* ---- MAIN ---- */
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 44px 24px 60px;
+    }
+
+    /* ---- SECTION ---- */
+    section {
+      margin-bottom: 56px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 22px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid currentColor;
+    }
+
+    .section-header h2 {
+      font-size: 1.22em;
+      font-weight: 700;
+    }
+
+    .section-header .section-sub {
+      font-size: 0.82em;
+      color: var(--texte-sec);
+      font-weight: 400;
+    }
+
+    .s-lean       { color: var(--lean); }
+    .s-qualite    { color: var(--qualite); }
+    .s-resolution { color: var(--resolution); }
+    .s-simulation { color: var(--simulation); }
+    .s-ressources { color: var(--ressources); }
+
+    /* ---- SUB-LABEL ---- */
+    .sub-label {
+      font-size: 0.75em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--texte-sec);
+      margin: 28px 0 12px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--gris-bord);
+    }
+
+    /* ---- CARDS GRID ---- */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 14px;
+    }
+
+    /* ---- CARD ---- */
+    .card {
+      background: var(--blanc);
+      border-radius: 7px;
+      padding: 18px 20px;
+      border-left: 4px solid var(--bleu);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+    }
+
+    .card.lean       { border-left-color: var(--lean); }
+    .card.qualite    { border-left-color: var(--qualite); }
+    .card.resolution { border-left-color: var(--resolution); }
+    .card.simulation { border-left-color: var(--simulation); }
+
+    .card-title-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 5px;
+    }
+
+    .module-code {
+      font-size: 0.68em;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 3px;
+      color: var(--blanc);
+      background: var(--bleu);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+    }
+
+    .card.lean       .module-code { background: var(--lean); }
+    .card.qualite    .module-code { background: var(--qualite); }
+    .card.resolution .module-code { background: var(--resolution); }
+    .card.simulation .module-code { background: var(--simulation); }
+
+    .card h3 {
+      font-size: 0.97em;
+      font-weight: 700;
+    }
+
+    .card p {
+      font-size: 0.82em;
+      color: var(--texte-sec);
+      margin: 6px 0 12px;
+    }
+
+    .card-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .card-links a {
+      font-size: 0.8em;
+      font-weight: 600;
+      color: var(--lean);
+      text-decoration: none;
+      padding: 5px 0;
+      border-bottom: 1px solid var(--gris-fond);
+      transition: opacity 0.15s;
+    }
+
+    .card-links a:last-child { border-bottom: none; }
+    .card-links a:hover { opacity: 0.65; }
+
+    .card.lean       .card-links a { color: var(--lean); }
+    .card.qualite    .card-links a { color: var(--qualite); }
+    .card.resolution .card-links a { color: var(--resolution); }
+    .card.simulation .card-links a { color: var(--simulation); }
+
+    .link-label {
+      color: var(--texte-sec);
+      font-weight: 400;
+      font-size: 0.95em;
+    }
+
+    /* ---- JDR GRID ---- */
+    .jdr-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 12px;
+    }
+
+    .jdr-card {
+      background: var(--blanc);
+      border-radius: 7px;
+      padding: 15px 17px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+      border-top: 3px solid var(--resolution);
+    }
+
+    .jdr-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 7px;
+    }
+
+    .level {
+      font-size: 0.68em;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .level-d { background: #e8f5e9; color: #1b5e20; }
+    .level-i { background: #fff3e0; color: #bf360c; }
+    .level-a { background: #fce4ec; color: #880e4f; }
+
+    .jdr-duration {
+      font-size: 0.75em;
+      color: var(--texte-sec);
+      margin-left: auto;
+    }
+
+    .jdr-card h4 {
+      font-size: 0.9em;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .jdr-card .jdr-outils {
+      font-size: 0.76em;
+      color: var(--texte-sec);
+      margin-bottom: 9px;
+    }
+
+    .jdr-card a {
+      font-size: 0.78em;
+      color: var(--resolution);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .jdr-card a:hover { opacity: 0.65; }
+
+    /* ---- TOOLS ROW ---- */
+    .tools-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .tool-btn {
+      background: var(--blanc);
+      border: 1px solid var(--gris-bord);
+      border-radius: 5px;
+      padding: 9px 16px;
+      font-size: 0.82em;
+      font-weight: 600;
+      color: var(--ressources);
+      text-decoration: none;
+      transition: box-shadow 0.15s;
+    }
+
+    .tool-btn:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: var(--bleu);
+      color: rgba(255,255,255,0.78);
+      text-align: center;
+      padding: 22px 40px;
+      font-size: 0.82em;
+      line-height: 1.9;
+    }
+
+    footer strong { color: var(--blanc); }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 640px) {
+      header { flex-wrap: wrap; padding: 20px 16px; }
+      .header-meta { margin-left: 0; text-align: left; }
+      nav { padding: 0 12px; }
+      main { padding: 28px 14px 48px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================ HEADER -->
+<header>
+  <div class="logo-wrap">
+    <img src="logo_uimm_placeholder.jpg" alt="Logo UIMM CVDL">
+  </div>
+  <div class="header-text">
+    <h1>Pole Formation UIMM CVDL</h1>
+    <p>Portail des ressources pedagogiques - Organisation Industrielle</p>
+  </div>
+  <div class="header-meta">
+    S. Jaubert<br>
+    Mis à jour : Août 2026
+  </div>
+</header>
+
+<!-- ============================================================ NAVIGATION -->
+<nav>
+  <ul>
+    <li class="lean">      <a href="#lean">Lean et Flux</a></li>
+    <li class="qualite">   <a href="#qualite">Qualite et SPC</a></li>
+    <li class="resolution"><a href="#resolution">Resolution de Problemes</a></li>
+    <li class="simulation"><a href="#simulation">Simulation et Outils</a></li>
+    <li>                   <a href="#ressources">Ressources Formateur</a></li>
+  </ul>
+</nav>
+
+<!-- ============================================================ MAIN -->
+<main>
+
+  <!-- ======================================================== 1. LEAN & FLUX -->
+  <section id="lean">
+    <div class="section-header s-lean">
+      <h2>Lean et Flux</h2>
+      <span class="section-sub">VSM - TRS - Gestion des stocks - Simulations Lean</span>
+    </div>
+
+    <div class="sub-label">Modules pedagogiques</div>
+    <div class="cards-grid">
+
+      <div class="card lean">
+        <div class="card-title-row">
+          <h3>Introduction a l'Organisation Industrielle (support interactif)</h3>
+        </div>
+        <p>Support de cours interactif : l'entreprise comme coordination, fondamentaux LEAN (Muda, Gemba, Kaizen, PDCA, flux pousse / tire) et revolutions industrielles. Mode presentateur et ecran projete synchronise.</p>
+        <div class="card-links">
+          <a href="OI/00_lean_ss/support_interactif_uimm_V3_final.html">Ouvrir le support interactif (HTML)</a>
+        </div>
+      </div>
+
+      <div class="card lean">
+        <div class="card-title-row">
+          <span class="module-code">A1</span>
+          <h3>Value Stream Mapping (VSM)</h3>
+        </div>
+        <p>Cartographie de la chaine de valeur, identification des gaspillages et des flux de production.</p>
+        <div class="card-links">
+          <a href="OI/a1_vsm/index.html">Acceder au module complet</a>
+        </div>
+      </div>
+
+      <div class="card lean">
+        <div class="card-title-row">
+          <span class="module-code">A2</span>
+          <h3>Taux de Rendement Synthetique (TRS)</h3>
+        </div>
+        <p>Analyse de performance des equipements industriels - disponibilite, performance, qualite.</p>
+        <div class="card-links">
+          <a href="OI/a2_trs/index.html">Acceder au module complet</a>
+        </div>
+      </div>
+
+      <div class="card lean">
+        <div class="card-title-row">
+          <span class="module-code">A3</span>
+          <h3>Gestion des Stocks et Flux Kanban</h3>
+        </div>
+        <p>Optimisation des stocks, calcul du stock de securite, point de commande, systeme Kanban.</p>
+        <div class="card-links">
+          <a href="OI/a3_stock/index.html">Acceder au module complet</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sub-label">Jeux et simulations</div>
+    <div class="cards-grid">
+
+      <div class="card lean">
+        <div class="card-title-row">
+          <span class="module-code">V2</span>
+          <h3>Atelier Cocotte LEAN, « Le Contrat Cadencé »</h3>
+        </div>
+        <p>Simulation de production sur une journée, 6 à 8 participants. Trois vacations sous contrat client cadencé : flux poussé par lots, flux tiré CONWIP, ligne équilibrée après Kaizen. Mesure directe du Takt Time, du Temps de Cycle et du Lead Time par jetons suiveurs. La loi de Little sert de test de cohérence, pas d'outil de calcul.</p>
+        <div class="card-links">
+          <a href="OI/Atelier_cocotte/Atelier_Cocotte_Lean_Formateur_v2.html"><span class="link-label">v2</span> - Guide formateur : scénario, protocole et conduite</a>
+          <a href="OI/Atelier_cocotte/Atelier_Cocotte_Lean_Apprenant_v2.html"><span class="link-label">v2</span> - Livret participant : relevés à compléter</a>
+          <a href="OI/Atelier_cocotte/Kit_Mesure_Cocotte_Lean.pdf"><span class="link-label">v2</span> - Kit de mesure imprimable, 17 pages (PDF)</a>
+          <a href="OI/Atelier_cocotte/KPI_Cocotte_Lean.xlsx"><span class="link-label">v2</span> - Classeur de calcul des KPI (Excel)</a>
+          <a href="OI/Atelier_cocotte/Atelier_Cocotte_Lean.html"><span class="link-label">v1</span> - Guide formateur (archive)</a>
+          <a href="OI/Atelier_cocotte/Atelier_Cocotte_Lean_Apprenant.html"><span class="link-label">v1</span> - Livret participant (archive)</a>
+        </div>
+      </div>
+
+      <div class="card lean">
+        <div class="card-title-row">
+          <h3>Jeu du Kanban</h3>
+        </div>
+        <p>Simulation de gestion de production en flux tire avec cartes Kanban. Decouverte du systeme Kanban en conditions realistes.</p>
+        <div class="card-links">
+          <a href="OI/jeu_du_kanban/Intro_Flux_Pousse_Tire_Kanban.pptx"><span class="link-label">Diaporama</span> - Intro Flux Pousse / Tire / Kanban</a>
+          <a href="OI/jeu_du_kanban/Intro_Jeu_Kanban.html"><span class="link-label">Introduction</span> - Presentation du jeu (HTML)</a>
+          <a href="OI/jeu_du_kanban/simulation_kanban.html"><span class="link-label">Simulation</span> - Interactive (navigateur)</a>
+          <a href="OI/jeu_du_kanban/qcm_kanban.html"><span class="link-label">QCM</span> - Evaluation Kanban</a>
+          <a href="OI/jeu_du_kanban/Fiche_Notation_Equipes.html"><span class="link-label">Fiche</span> - Notation des equipes (HTML)</a>
+          <a href="OI/jeu_du_kanban/Feedback_Semaine1.html"><span class="link-label">Bilan</span> - Feedback semaine 1</a>
+          <a href="OI/jeu_du_kanban/infographie_kanban.html"><span class="link-label">Infographie</span> - Systeme Kanban (HTML)</a>
+          <a href="OI/jeu_du_kanban/infographie_kanban.pdf"><span class="link-label">PDF</span> - Infographie Kanban imprimable</a>
+          <a href="OI/jeu_du_kanban/Suivi_Jeu_Kanban.xlsx"><span class="link-label">Tableau</span> - Suivi du jeu (Excel)</a>
+          <a href="OI/jeu_du_kanban/Jeu%20du%20Kanban%20-%20Fiche%20de%20Notation%20des%20%C3%89quipes.pdf"><span class="link-label">PDF</span> - Fiche de notation imprimable</a>
+          <a href="OI/jeu_du_kanban/Approche%20Lean_Toyota%20Production%20System%20KANBAN.pdf"><span class="link-label">Ref.</span> - Approche Lean / Toyota / KANBAN</a>
+          <a href="OI/jeu_du_kanban/Pr%C3%A9sentation%20Jeu%20du%20Kanban.docx"><span class="link-label">Word</span> - Presentation du jeu</a>
+          <a href="OI/jeu_du_kanban/README.md">Documentation complete</a>
+        </div>
+      </div>
+
+      <div class="card lean">
+        <div class="card-title-row">
+          <h3>Beer Game</h3>
+        </div>
+        <p>Simulation de chaine logistique pour comprendre l'effet coup de fouet (bullwhip effect) et la gestion des stocks en flux tire.</p>
+        <div class="card-links">
+          <a href="OI/a5_mrprb/Jeux_Resolution_Problemes/Jeu_02_Beer_Game/Guide_Formateur_Beer_Game.md">Guide formateur</a>
+          <a href="OI/a5_mrprb/Jeux_Resolution_Problemes/Jeu_02_Beer_Game/Livret_Stagiaire_Beer_Game.md">Livret stagiaire</a>
+        </div>
+      </div>
+
+      <div class="card lean">
+        <div class="card-title-row">
+          <h3>Jeu du Lean Manufacturing</h3>
+        </div>
+        <p>Jeu de plateau pour comprendre les principes du Lean Manufacturing en equipe.</p>
+        <div class="card-links">
+          <a href="OI/jeu_du_lean_manufacturing/">Acceder aux ressources</a>
+        </div>
+      </div>
+
+      <div class="card lean">
+        <div class="card-title-row">
+          <h3>Jeu du Kaizen</h3>
+        </div>
+        <p>Mise en pratique de l'amelioration continue et du SMED. Simulation d'un chantier Kaizen.</p>
+        <div class="card-links">
+          <a href="OI/jeu_du_kaizen/">Acceder aux ressources</a>
+          <a href="OI/jeu_du_kaizen/Fiches_Concepts_Kaizen_UIMM.html">Fiches concepts Kaizen</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== 2. QUALITE & SPC -->
+  <section id="qualite">
+    <div class="section-header s-qualite">
+      <h2>Qualite et Maitrise Statistique</h2>
+      <span class="section-sub">Pareto - Ishikawa - Capabilite - Cartes de controle - AMDEC</span>
+    </div>
+
+    <div class="cards-grid">
+
+      <div class="card qualite">
+        <div class="card-title-row">
+          <span class="module-code">A0</span>
+          <h3>Pareto et Ishikawa (5M)</h3>
+        </div>
+        <p>Analyse et priorisation des problemes. Diagramme de Pareto (loi 80/20) et diagramme Ishikawa.</p>
+        <div class="card-links">
+          <a href="OI/a0_pareto_ishikawa/index.html">Acceder au module complet</a>
+          <a href="OI/a0_pareto_ishikawa/Pareto_Cours_Chaudronnier.html"><span class="link-label">Cours interactif</span> - Chaudronnerie</a>
+          <a href="OI/a0_pareto_ishikawa/Activite1_Pareto_Decouverte.html"><span class="link-label">Activite 1</span> - Decouverte guidee</a>
+          <a href="OI/a0_pareto_ishikawa/Activite2_Pareto_Soudure.html"><span class="link-label">Activite 2</span> - Cas tuyauterie</a>
+          <a href="OI/a0_pareto_ishikawa/Activite3_Pareto_Autonome.html"><span class="link-label">Activite 3</span> - Evaluation autonome</a>
+        </div>
+      </div>
+
+      <div class="card qualite">
+        <div class="card-title-row">
+          <span class="module-code">A4</span>
+          <h3>Capabilite et Cartes de Controle</h3>
+        </div>
+        <p>Maitrise statistique des procedes (SPC). Cartes de Shewhart, indices de capabilite Cp et Cpk.</p>
+        <div class="card-links">
+          <a href="OI/a4_capability_cartes/index.html">Acceder au module complet</a>
+          <a href="OI/a4_capability_cartes/Activite_01_Quiz_Variabilite.html"><span class="link-label">Activite 1</span> - Quiz variabilite</a>
+          <a href="OI/a4_capability_cartes/Activite_02_TP_Histogramme_Normalite.html"><span class="link-label">Activite 2</span> - TP Histogramme et normalite</a>
+          <a href="OI/a4_capability_cartes/Activite_03_TP_Capabilite_Machine.html"><span class="link-label">Activite 3</span> - TP Capabilite machine</a>
+          <a href="OI/a4_capability_cartes/Activite_04_TP_Capabilite_Procede.html"><span class="link-label">Activite 4</span> - TP Capabilite procede</a>
+          <a href="OI/a4_capability_cartes/Activite_05_TP_Cartes_XbarR.html"><span class="link-label">Activite 5</span> - TP Cartes X-barre/R</a>
+          <a href="OI/a4_capability_cartes/Activite_06_TP_Interpretation_Cartes.html"><span class="link-label">Activite 6</span> - TP Interpretation des cartes</a>
+          <a href="OI/a4_capability_cartes/Activite_07_TP_Cartes_Attributs.html"><span class="link-label">Activite 7</span> - TP Cartes attributs</a>
+          <a href="OI/a4_capability_cartes/Activite_08_Etude_Cas_Integree.html"><span class="link-label">Activite 8</span> - Etude de cas integree</a>
+          <a href="OI/a4_capability_cartes/QCM_Evaluation_Finale.html">QCM - Evaluation finale</a>
+          <a href="OI/a4_capability_cartes/Aide_Memoire_SPC.html">Aide-memoire SPC</a>
+        </div>
+      </div>
+
+      <div class="card qualite" style="border-left-color:#7b1fa2;">
+        <div class="card-title-row">
+          <span class="module-code" style="background:#7b1fa2;">CQPM</span>
+          <h3>Plan de formation – Capabilité &amp; SPC</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;margin:6px 0 10px;">
+          <span style="font-size:0.72em;font-weight:700;background:#f3e5f5;color:#6a1b9a;padding:3px 10px;border-radius:12px;letter-spacing:0.04em;">Promo TQ 6</span>
+          <span style="font-size:0.72em;font-weight:700;background:#fff3e0;color:#e65100;padding:3px 10px;border-radius:12px;letter-spacing:0.04em;">&#128197; 5, 6 et 25 nov. 2026</span>
+        </div>
+        <p>Capabilité machine et procédé (Cm, Cmk, Cp, Cpk) · Cartes Shewhart X̅/R · Mise en œuvre SPC avec Ellistat. Public profil opérateur – AFPI Bourges – 3 jours. 13 activités TP (dont manips concrètes, attributs, normalité, Gage R&amp;R).</p>
+        <div class="card-links" style="--qualite:#7b1fa2;">
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/Plan_Formation_Capabilite_SPC_TQ6.html" style="color:#7b1fa2;">Plan de formation interactif (HTML)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/Plan_Formation_Capabilite_SPC_TQ6.docx" style="color:#7b1fa2;"><span class="link-label">Word</span> – Plan de formation (.docx)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/Capabilite_SPC_Formation_2jours.pptx" style="color:#7b1fa2;"><span class="link-label">Diaporama</span> – Présentation 28 slides (.pptx)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/TP_Activites/index.html" style="color:#7b1fa2;font-weight:700;background:#f3e5f5;padding:4px 8px;border-radius:4px;margin-top:4px;display:block;">&#9658; 13 activités TP – Capabilité &amp; SPC (Ellistat)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/TP_Activites/Guide_Animateur_TP08-13.html" style="color:#7b1fa2;"><span class="link-label">Formateur</span> – Guide animateur (TP 8 à 13)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/TP_Activites/Kit_Materiel_Gabarits_TP08-13.html" style="color:#7b1fa2;"><span class="link-label">Kit</span> – Matériel et gabarits imprimables</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/TP_Activites/Agenda_3jours_Integration_TP.html" style="color:#7b1fa2;"><span class="link-label">Agenda</span> – Intégration sur 3 jours</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/Illustration des cours avec schémas/0 - Sommaire.html" style="color:#7b1fa2;font-weight:700;background:#f3e5f5;padding:4px 8px;border-radius:4px;margin-top:4px;display:block;">&#9658; Cours illustrés : 4 cours avec schémas (variabilité, capabilité, cartes, MSA)</a>
+          <span style="font-size:0.72em;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#6a1b9a;margin-top:8px;padding-top:6px;border-top:1px solid #eee;display:block;">Fichiers sources et données du TP</span>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/TP_MSP_app.xlsx" style="color:#7b1fa2;"><span class="link-label">Classeur</span> – Calcul de capabilité Cm/Cmk (.xlsx)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/diamètre_butée.csv" style="color:#7b1fa2;"><span class="link-label">Données J1</span> – 50 mesures butée Ø11,88 (.csv)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/Exercices Cartes de Shewhart.xlsx" style="color:#7b1fa2;"><span class="link-label">Exercices</span> – Cartes de Shewhart (.xlsx)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/Cours MSP.pdf" style="color:#7b1fa2;"><span class="link-label">Cours</span> – MSP (PDF)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/TP Carte de contrôle.pdf" style="color:#7b1fa2;"><span class="link-label">TP</span> – Carte de contrôle, exercices lecture (PDF)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/SPC Ellistat.pdf" style="color:#7b1fa2;"><span class="link-label">Guide logiciel</span> – SPC Ellistat (PDF)</a>
+          <a href="OI/TQ_2026 CQPM Technicien qualité - Bourges 5-6 Novembre  2026/DIAPO 5 Keys to MSP Excellence.pdf" style="color:#7b1fa2;"><span class="link-label">Référence</span> – 5 Keys to MSP Excellence (PDF)</a>
+        </div>
+      </div>
+
+      <div class="card qualite">
+        <div class="card-title-row">
+          <span class="module-code">A6</span>
+          <h3>AMDEC</h3>
+        </div>
+        <p>Analyse des Modes de Defaillance, de leurs Effets et de leur Criticite. Evaluation du risque et plan d'actions.</p>
+        <div class="card-links">
+          <a href="OI/a6_amdec/index.html">Acceder au module complet</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== 3. RESOLUTION DE PROBLEMES -->
+  <section id="resolution">
+    <div class="section-header s-resolution">
+      <h2>Resolution de Problemes</h2>
+      <span class="section-sub">QRQC - 8D - 5 Pourquoi - Poka-Yoke - Biais cognitifs - Jeux de role</span>
+    </div>
+
+    <div class="sub-label">Modules pedagogiques</div>
+    <div class="cards-grid">
+
+      <div class="card resolution">
+        <div class="card-title-row">
+          <span class="module-code">A5</span>
+          <h3>Methodes de Resolution de Problemes</h3>
+        </div>
+        <p>QRQC, 8 Disciplines, 5 Pourquoi, Poka-Yoke, Kaizen. Approche structuree de la resolution de problemes industriels.</p>
+        <div class="card-links">
+          <a href="OI/a5_mrprb/index.html">Acceder au module complet</a>
+        </div>
+      </div>
+
+      <div class="card resolution">
+        <div class="card-title-row">
+          <h3>Biais Cognitifs en Resolution de Problemes</h3>
+        </div>
+        <p>Collection de cartes et activites sur les biais cognitifs appliques a l'industrie. Jeu d'animation en equipe.</p>
+        <div class="card-links">
+          <a href="OI/a5_mrprb/Biais_cognitifs/Accueil_Activites.html">Acceder aux activites</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sub-label">Jeux de role - Collection de 6 scenarios</div>
+    <div class="jdr-grid">
+
+      <div class="jdr-card">
+        <div class="jdr-meta">
+          <span class="level level-d">Debutant</span>
+          <span class="jdr-duration">60 min</span>
+        </div>
+        <h4>JdR 1 - QRQC</h4>
+        <p class="jdr-outils">Quick Response Quality Control - QQOQCP, San Gen Shugi</p>
+        <a href="OI/a5_mrprb/Ressources/JdR1_QRQC/index.html">Acceder aux ressources</a>
+      </div>
+
+      <div class="jdr-card">
+        <div class="jdr-meta">
+          <span class="level level-a">Avance</span>
+          <span class="jdr-duration">105 min</span>
+        </div>
+        <h4>JdR 2 - Methode 8D</h4>
+        <p class="jdr-outils">8 Disciplines - Ishikawa, 5 Pourquoi</p>
+        <a href="OI/a5_mrprb/Ressources/JdR2_Methode_8D/index.html">Acceder aux ressources</a>
+      </div>
+
+      <div class="jdr-card">
+        <div class="jdr-meta">
+          <span class="level level-i">Intermediaire</span>
+          <span class="jdr-duration">60 min</span>
+        </div>
+        <h4>JdR 3 - 5 Pourquoi</h4>
+        <p class="jdr-outils">Recherche de cause racine - Ishikawa</p>
+        <a href="OI/a5_mrprb/Ressources/JdR3_5_Pourquoi/index.html">Acceder aux ressources</a>
+      </div>
+
+      <div class="jdr-card">
+        <div class="jdr-meta">
+          <span class="level level-i">Intermediaire</span>
+          <span class="jdr-duration">70 min</span>
+        </div>
+        <h4>JdR 4 - Pareto</h4>
+        <p class="jdr-outils">Loi 80/20 - Diagramme de Pareto</p>
+        <a href="OI/a5_mrprb/Ressources/JdR4_Pareto/index.html">Acceder aux ressources</a>
+      </div>
+
+      <div class="jdr-card">
+        <div class="jdr-meta">
+          <span class="level level-i">Intermediaire</span>
+          <span class="jdr-duration">70 min</span>
+        </div>
+        <h4>JdR 5 - Poka-Yoke</h4>
+        <p class="jdr-outils">Systemes anti-erreur - Grille Poka-Yoke</p>
+        <a href="OI/a5_mrprb/Ressources/JdR5_Poka_Yoke/index.html">Acceder aux ressources</a>
+      </div>
+
+      <div class="jdr-card">
+        <div class="jdr-meta">
+          <span class="level level-a">Avance</span>
+          <span class="jdr-duration">90 min</span>
+        </div>
+        <h4>JdR 6 - Kaizen</h4>
+        <p class="jdr-outils">Amelioration continue / SMED - Diagramme Spaghetti</p>
+        <a href="OI/a5_mrprb/Ressources/JdR6_Kaizen/index.html">Acceder aux ressources</a>
+      </div>
+
+    </div>
+
+    <div class="sub-label">Jeux pedagogiques - Mise en situation</div>
+    <div class="cards-grid">
+
+      <div class="card resolution">
+        <div class="card-title-row">
+          <h3>Avion en Papier</h3>
+        </div>
+        <p>Simulation de production pour decouvrir les principes du Lean Manufacturing. Fabrication d'avions en papier en conditions d'atelier.</p>
+        <div class="card-links">
+          <a href="OI/a5_mrprb/Jeux_Resolution_Problemes/Jeu_01_Avion_Papier/Guide_Formateur_Avion_Papier.md">Guide formateur</a>
+          <a href="OI/a5_mrprb/Jeux_Resolution_Problemes/Jeu_01_Avion_Papier/Livret_Stagiaire_Avion_Papier.md">Livret stagiaire</a>
+        </div>
+      </div>
+
+      <div class="card resolution">
+        <div class="card-title-row">
+          <h3>5S Numbers</h3>
+        </div>
+        <p>Jeu rapide pour illustrer les 5S (Seiri, Seiton, Seiso, Seiketsu, Shitsuke) par un exercice de recherche de numeros chronometre.</p>
+        <div class="card-links">
+          <a href="OI/a5_mrprb/Jeux_Resolution_Problemes/Jeu_03_5S_Numbers/Guide_Formateur_5S_Numbers.html">Guide formateur</a>
+          <a href="OI/a5_mrprb/Jeux_Resolution_Problemes/Jeu_03_5S_Numbers/Livret_Stagiaire_5S_Numbers.md">Livret stagiaire</a>
+        </div>
+      </div>
+
+      <div class="card resolution">
+        <div class="card-title-row">
+          <h3>Methode 8D - Cas industriel</h3>
+        </div>
+        <p>Mise en pratique complete de la methode 8 Disciplines sur un cas industriel realiste. Travail en sous-groupes.</p>
+        <div class="card-links">
+          <a href="OI/a5_mrprb/Jeux_Resolution_Problemes/Jeu_04_Methode_8D/Guide_Formateur_8D.html">Guide formateur</a>
+          <a href="OI/a5_mrprb/Jeux_Resolution_Problemes/Jeu_04_Methode_8D/Livret_Stagiaire_8D.md">Livret stagiaire</a>
+          <a href="OI/a5_mrprb/Jeux_Resolution_Problemes/Jeu_04_Methode_8D/Corrige_Animateur_8D.md">Corrige animateur</a>
+        </div>
+      </div>
+
+      <div class="card resolution">
+        <div class="card-title-row">
+          <h3>TPM Maintenance</h3>
+        </div>
+        <p>Simulation de Total Productive Maintenance. Comprehension de la maintenance preventive et de l'auto-maintenance.</p>
+        <div class="card-links">
+          <a href="OI/a5_mrprb/Jeux_Resolution_Problemes/Jeu_05_TPM_Maintenance/Guide_Formateur_TPM.md">Guide formateur</a>
+          <a href="OI/a5_mrprb/Jeux_Resolution_Problemes/Jeu_05_TPM_Maintenance/Livret_Stagiaire_TPM.md">Livret stagiaire</a>
+        </div>
+      </div>
+
+      <div class="card resolution">
+        <div class="card-title-row">
+          <h3>8D – Ressources terrain</h3>
+        </div>
+        <p>Fiches d'activités 8D (FA01 à FA03), etudes de cas industrielles, analyse TRS et historiques de non-qualite pour mise en situation.</p>
+        <div class="card-links">
+          <a href="OI/8D/8D%20FA01.pdf"><span class="link-label">FA01</span> - Cours 8D (PDF)</a>
+          <a href="OI/8D/8D%20FA02%20aide.pdf"><span class="link-label">FA02</span> - Fiche d'aide (PDF)</a>
+          <a href="OI/8D/correction%20ex%208D%20FA02.pdf"><span class="link-label">FA02</span> - Correction exercice (PDF)</a>
+          <a href="OI/8D/8D%20FA03%20etude%20de%20cas.pdf"><span class="link-label">FA03</span> - Etude de cas (PDF)</a>
+          <a href="OI/8D/8D%20FA03%20etude%20de%20cas%208D%20application%20questions.pdf"><span class="link-label">FA03</span> - Questions application (PDF)</a>
+          <a href="OI/8D/8D%20FA03%20etude%20de%20cas%208D%20application%20corrige.pdf"><span class="link-label">FA03</span> - Corrige application (PDF)</a>
+          <a href="OI/8D/Analyse_TRS.docx"><span class="link-label">Word</span> - Analyse TRS (terrain)</a>
+          <a href="OI/8D/historique_non_qualite_ilot120%20M115.xlsx"><span class="link-label">Excel</span> - Historique non-qualite ilot 120</a>
+          <a href="OI/8D/historique%20maintenance%20ilot120.xls"><span class="link-label">Excel</span> - Historique maintenance ilot 120</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== 4. SIMULATION & OUTILS -->
+  <section id="simulation">
+    <div class="section-header s-simulation">
+      <h2>Simulation et Outils Numeriques</h2>
+      <span class="section-sub">FlexSim - Modelisation des flux - Jeux de plateau</span>
+    </div>
+
+    <div class="cards-grid">
+
+      <div class="card simulation">
+        <div class="card-title-row">
+          <span class="module-code">A7</span>
+          <h3>Simulation de Flux avec FlexSim</h3>
+        </div>
+        <p>Modelisation et optimisation des processus industriels avec FlexSim 24.0. 42 modeles de simulation : production, palettisation, convoyeurs, routage.</p>
+        <div class="card-links">
+          <a href="OI/a7_flexsim/Tutoriel_FLEXSIM_Usine_ABC.html">Acceder au module complet</a>
+        </div>
+      </div>
+
+      <div class="card simulation">
+        <div class="card-title-row">
+          <h3>Jeu Puissance 7</h3>
+        </div>
+        <p>Jeu pedagogique d'animation pour l'amelioration continue et la resolution de problemes en equipe.</p>
+        <div class="card-links">
+          <a href="OI/jeu_puissance_7/Guide_Animateur_Puissance7.html"><span class="link-label">Guide</span> - Animateur (HTML complet)</a>
+          <a href="OI/jeu_puissance_7/Project_P7/Puissance%207/Feuille%20de%20route%20animation%20-%20Puissance%207.docx"><span class="link-label">Word</span> - Feuille de route animation</a>
+          <a href="OI/jeu_puissance_7/Pr%C3%A9sentation%20Puissance%207.pdf"><span class="link-label">PDF</span> - Présentation générale</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== 5. RESSOURCES FORMATEUR -->
+  <section id="ressources">
+    <div class="section-header s-ressources">
+      <h2>Ressources Formateur</h2>
+      <span class="section-sub">Supports de cours - Aide-memoire - Outils de conversion</span>
+    </div>
+
+    <div class="sub-label">Supports de cours</div>
+    <div class="cards-grid">
+
+      <div class="card">
+        <div class="card-title-row">
+          <h3>Fondamentaux de l'Organisation Industrielle</h3>
+        </div>
+        <p>Support de formation interactif (7h) - Introduction au Lean Six Sigma et aux outils de l'OI.</p>
+        <div class="card-links">
+          <a href="OI/00_lean_ss/Support_Formation_Organisation_Industrielle.html">Support de formation</a>
+          <a href="OI/00_lean_ss/support_interactif_uimm_V3_final.html"><span class="link-label">Interactif</span> - Support interactif UIMM</a>
+          <a href="OI/00_lean_ss/Fiche_Memo_Frise_Historique.html">Frise historique de l'industrie</a>
+          <a href="OI/00_lean_ss/Pense-bete_formation_organisation_industrielle.docx"><span class="link-label">Word</span> - Pense-bete formateur OI</a>
+          <a href="OI/00_lean_ss/Diaporama_intro_organisation_industrielle.pptx"><span class="link-label">Diaporama</span> - Intro OI : entreprise, Lean, revolutions (.pptx)</a>
+          <a href="OI/00_lean_ss/Support_stagiaire_intro_organisation_industrielle.pdf"><span class="link-label">PDF stagiaire</span> - Intro OI, sources et bibliographie</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sub-label">Outils formateur</div>
+    <div class="tools-row">
+      <a class="tool-btn" href="OI/md2pdf.bat">md2pdf.bat - Convertisseur Markdown vers PDF</a>
+      <a class="tool-btn" href="OI/md2html.bat">md2html.bat - Convertisseur Markdown vers HTML</a>
+    </div>
+
+  </section>
+
+</main>
+
+<!-- ============================================================ FOOTER -->
+<footer>
+  <strong>Pôle Formation UIMM CVDL</strong><br>
+  S. Jaubert &nbsp;|&nbsp; Organisation Industrielle &nbsp;|&nbsp; Mis à jour : Août 2026
+</footer>
+
+</body>
+</html>
