@@ -53,5 +53,14 @@ La page est un fichier local. Pour qu'elle soit atteignable depuis les smartphon
 
 ---
 
+## Diffusion aux équipes
+
+`Affiche_QR_tirage_incidents.pdf` : affiche A4 prête à imprimer ou à projeter. Elle porte le QR code, l'adresse en clair et les quatre gestes de la table.
+`qr_tirage_incidents.png` et `.svg` : le QR seul, à insérer dans un diaporama. Le SVG se redimensionne sans perte.
+
+Le QR pointe vers `https://sjaubert.github.io/00FC/OI/jeu_du_kanban/tirage_incidents/`. Il ne fonctionnera qu'une fois le dépôt poussé sur GitHub et la page publiée.
+
+---
+
 S. Jaubert, Pôle Formation UIMM Centre-Val de Loire
 Cartes incident : Jeu du Kanban, CIPE
