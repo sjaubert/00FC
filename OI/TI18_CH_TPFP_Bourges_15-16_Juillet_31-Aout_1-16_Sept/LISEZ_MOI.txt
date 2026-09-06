@@ -1,0 +1,33 @@
+DOSSIER DU GROUPE TI18 TPFP BOURGES
+Organisation du repertoire, mise a jour le 6 septembre 2026
+
+1_A_IMPRIMER_16_septembre
+   Ce qui sert le jour J, et rien d'autre. Les fichiers sont numerotes
+   dans l'ordre ou tu t'en sers.
+   1 Dossier formateur : deroule de la journee et corrige de l'enquete.
+     Pour toi seul.
+   2 Dossier d'enquete a distribuer : pieces P1 a P4, la demande d'indice
+     et le vocabulaire. 3 exemplaires, un par cellule.
+   3 Pieces sur demande P5 a P18 : 3 exemplaires, decoupees par piece et
+     rangees par numero dans une chemise. Ne pas distribuer en bloc.
+   4 Trame A3 terrain : 6 exemplaires, 3 pour l'enquete du matin et
+     3 pour le co-developpement de l'apres-midi.
+
+2_ressources_du_groupe
+   Supports permanents : aide 8D FA02, support d'introduction a
+   l'organisation industrielle, visuel mudas, liste du groupe.
+
+3_journees_precedentes
+   Fiche de conduite de l'ouverture du 31 aout.
+
+9_abandonne
+   Deux pistes explorees puis ecartees. Rien la-dedans ne sert le 16.
+   v1_dossier_papier : l'affaire 4712 et l'affaire AS2 sous forme de
+     dossiers papier, avec les plans PS-340 et SC-204. Ecarte parce que
+     dix a treize pages de courriels pour un public fache avec l'ecrit
+     etait un pari perdu d'avance.
+   v2_dispositif_physique : les plans de fabrication des platines, des
+     gabarits, des piges et des batis d'essai, plus la note a l'atelier.
+     Ecarte au profit du scenario d'enquete. Les plans sont valides
+     numeriquement, ils restent utilisables si tu changes d'avis.
+     La note atelier n'a pas ete envoyee.
