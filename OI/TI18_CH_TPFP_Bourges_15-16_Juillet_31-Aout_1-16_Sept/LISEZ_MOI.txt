@@ -1,17 +1,27 @@
 DOSSIER DU GROUPE TI18 TPFP BOURGES
-Organisation du repertoire, mise a jour le 6 septembre 2026
+Organisation du repertoire, mise a jour le 7 septembre 2026
 
 1_A_IMPRIMER_16_septembre
-   Ce qui sert le jour J, et rien d'autre. Les fichiers sont numerotes
-   dans l'ordre ou tu t'en sers.
-   1 Dossier formateur : deroule de la journee et corrige de l'enquete.
-     Pour toi seul.
-   2 Dossier d'enquete a distribuer : pieces P1 a P4, la demande d'indice
-     et le vocabulaire. 3 exemplaires, un par cellule.
-   3 Pieces sur demande P5 a P18 : 3 exemplaires, decoupees par piece et
+   Ce qui sert le jour J, et rien d'autre. Sept sequences notees A a G.
+   Aucun materiel a fabriquer : impression et papeterie courante.
+   1 Dossier formateur : deroule, conduite des sept sequences, corrige
+     de l'enquete. Pour toi seul.
+   2 Dossier d'enquete a distribuer : pieces P1 a P4, la demande
+     d'indice et le vocabulaire. 3 exemplaires, un par cellule.
+   3 Pieces sur demande P5 a P18 : 3 exemplaires, decoupees par piece,
      rangees par numero dans une chemise. Ne pas distribuer en bloc.
-   4 Trame A3 terrain : 6 exemplaires, 3 pour l'enquete du matin et
-     3 pour le co-developpement de l'apres-midi.
+   4 Trame A3 terrain : 2 pages, l'imprimer 3 fois en A3 paysage.
+     3 pour l'enquete du matin, 3 pour le co-developpement.
+   5 Poster Ishikawa 5M : 2 pages, l'imprimer 3 fois en A3 paysage.
+   6 Fiche memo stagiaire : page 1 en 9 exemplaires. Page 2, les cartes
+     du comite d'amelioration, 1 exemplaire a decouper.
+   7 Pochettes apprenant : une fiche par sequence. Pages 2 a 7 en
+     9 exemplaires chacune. Une chemise par sequence, remise au debut
+     et ramassee a la fin.
+
+   Les trois sequences du matin sont independantes les unes des autres.
+   Celles de l'apres-midi forment un bloc, mais ce bloc ne suppose rien
+   du matin.
 
 2_ressources_du_groupe
    Supports permanents : aide 8D FA02, support d'introduction a
@@ -31,3 +41,7 @@ Organisation du repertoire, mise a jour le 6 septembre 2026
      Ecarte au profit du scenario d'enquete. Les plans sont valides
      numeriquement, ils restent utilisables si tu changes d'avis.
      La note atelier n'a pas ete envoyee.
+   v3_defi_anti_erreur : le defi anti-erreur d'ouverture, avec le plan
+     du cadre CA-01 et les deux instructions de montage. Ecarte faute de
+     temps pour preparer le materiel. Les documents sont complets et
+     verifies, reutilisables tels quels si tu as une heure devant toi.
