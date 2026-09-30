@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dossier de cas CMY, commande BT-200</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .recit p { margin: 0 0 9px; text-align: justify; }
+  @media print { .recit p { margin: 0 0 5px; } .temoin { padding: 6px 10px; margin-bottom: 6px; } .temoin p { margin: 4px 0 0; } .grand td { height: 36px; } .courriel { padding: 8px 12px; } }
+  .temoin { border: 1px solid var(--trait); border-radius: 6px; padding: 10px 14px; margin-bottom: 10px; }
+  .temoin h3 { margin: 0 0 4px; font-size: 1.02em; }
+  .temoin .role { color: var(--gris); font-size: .88em; }
+  .courriel { border: 1px solid var(--trait); border-radius: 6px; background: var(--gris-pale); padding: 12px 16px; font-family: Consolas, "Courier New", monospace; font-size: .92em; white-space: pre-wrap; }
+  .grand td { height: 44px; }
+  .consigne { background: var(--orange-pale); border-left: 5px solid var(--orange); padding: 8px 12px; margin-bottom: 12px; border-radius: 4px; }
+</style>
+</head>
+<body>
+<div class="barre-impr"><a href="../index.html">Retour au plan</a><span>Dossier stagiaire : 3 exemplaires, un par équipe. Impression recto, pages 1 à 10.</span><button onclick="window.print()">Imprimer</button></div>
+
+<!-- PAGE DE GARDE -->
+<section class="page">
+  <div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · Organisation industrielle · 8 octobre 2026</span></div>
+  <h1 style="color:var(--bleu-fonce);font-size:2em;margin:40px 0 6px">Affaire BT-200</h1>
+  <p style="font-size:1.25em;margin:0 0 30px">Pourquoi sommes-nous en retard, et par quoi commencer ?</p>
+  <div class="encadre orange">
+    <p><strong>Cas d'étude.</strong> L'entreprise CMY, ses clients, ses salariés et tous les chiffres de ce dossier sont inventés pour la formation. Toute ressemblance avec une entreprise réelle serait fortuite.</p>
+  </div>
+  <h2>Votre mission</h2>
+  <p>Le directeur de CMY vous réunit en groupe de travail. Une commande importante est livrée en retard. Chacun dans l'atelier a son explication. Vous devez lui dire ce qui se passe vraiment, et lui proposer <strong>trois actions</strong>.</p>
+  <h2>Contenu du dossier</h2>
+  <table>
+    <tr><th>Pièce</th><th>Contenu</th><th class="num">Page</th></tr>
+    <tr><td>P1</td><td>Présentation de CMY et plan de l'atelier</td><td class="num">1</td></tr>
+    <tr><td>P2</td><td>Le courriel du client et la demande du directeur</td><td class="num">2</td></tr>
+    <tr><td>P3</td><td>Une journée à l'atelier, racontée par Lucas</td><td class="num">3</td></tr>
+    <tr><td>P4</td><td>Quatre témoignages</td><td class="num">4</td></tr>
+    <tr><td>P5</td><td>Relevé des heures perdues sur quatre semaines</td><td class="num">5</td></tr>
+    <tr><td>P6</td><td>Fiche suiveuse du bâti n° 07</td><td class="num">6</td></tr>
+    <tr><td>FT1</td><td>Feuille de travail 1 : la chasse aux gaspillages</td><td class="num">7</td></tr>
+    <tr><td>FT2</td><td>Feuille de travail 2 : les causes du retard</td><td class="num">8</td></tr>
+    <tr><td>FT3</td><td>Feuille de travail 3 : par où commencer ?</td><td class="num">9</td></tr>
+    <tr><td>FT4</td><td>Feuille de travail 4 : la réponse au directeur</td><td class="num">10</td></tr>
+  </table>
+  <p><strong>Règle du jeu :</strong> quand vous avancez une idée, dites d'où elle vient. Par exemple : « P3, paragraphe 7 » ou « P4, Sandra ». Une idée sans source reste une opinion.</p>
+  <p style="margin-top:30px">Équipe : ........................................................................................</p>
+</section>
+
+<!-- P1 -->
+<section class="page">
+  <div class="entete-page"><img src="../logo_uimm.jpg" alt=""><span>Affaire BT-200 · Dossier stagiaire</span></div>
+  <h2 style="margin-top:0"><span class="piece">P1</span>Présentation de CMY</h2>
+  <p><strong>CMY, Chaudronnerie Mécanique de l'Yèvre</strong>, est une PME installée près de Bourges. Elle emploie 38 salariés, dont 22 en atelier. Elle travaille en sous-traitance : bâtis mécano-soudés, carters, petites cuves, et l'usinage des pièces qui vont avec. Ses clients fabriquent des machines agricoles et des équipements pour l'agroalimentaire.</p>
+  <table>
+    <tr><th>Secteur</th><th>Moyens</th><th>Effectif</th></tr>
+    <tr><td>Débit et pliage</td><td>Cisaille, découpe plasma, presse plieuse</td><td class="num">4</td></tr>
+    <tr><td>Chaudronnerie et soudure</td><td>3 postes de soudure, 1 pont roulant de 5 t pour toute la halle</td><td class="num">9</td></tr>
+    <tr><td>Usinage</td><td>1 centre d'usinage vertical (CU-1), 1 tour CN</td><td class="num">3</td></tr>
+    <tr><td>Contrôle et expédition</td><td>Marbre, instruments de mesure, quai</td><td class="num">2</td></tr>
+    <tr><td>Maintenance</td><td>Atelier maintenance, magasin de pièces</td><td class="num">2</td></tr>
+    <tr><td>Encadrement atelier</td><td>Chef d'atelier, chef d'équipe chaudronnerie</td><td class="num">2</td></tr>
+  </table>
+  <p>L'atelier est ouvert <strong>8 heures par jour</strong>, du lundi au vendredi, en une équipe. La peinture est sous-traitée : le camion du peintre passe <strong>une fois par semaine, le jeudi</strong>.</p>
+  <h3>Plan simplifié de l'atelier et trajet d'un bâti BT-200</h3>
+  <svg viewBox="0 0 760 380" width="100%" role="img" aria-label="Plan de l'atelier CMY" style="font-family:Segoe UI,Arial,sans-serif;font-size:11px">
+    <rect x="5" y="15" width="750" height="340" fill="#fff" stroke="#003d7a" stroke-width="3"/>
+    <g stroke="#5f6b76" fill="#f4f6f8">
+      <rect x="15" y="25" width="80" height="95"/><rect x="15" y="250" width="80" height="95"/>
+      <rect x="105" y="235" width="125" height="110"/><rect x="105" y="135" width="125" height="90"/>
+      <rect x="240" y="135" width="210" height="210"/><rect x="240" y="25" width="95" height="95"/>
+      <rect x="345" y="25" width="105" height="95"/><rect x="470" y="185" width="125" height="160"/>
+      <rect x="470" y="25" width="125" height="50"/><rect x="655" y="25" width="90" height="120"/>
+      <rect x="655" y="250" width="90" height="95"/>
+    </g>
+    <g fill="#1f2933" text-anchor="middle">
+      <text x="55" y="65">Magasin</text><text x="55" y="80">outillage</text>
+      <text x="55" y="290">Réception</text><text x="55" y="305">tôles</text>
+      <text x="150" y="285">Débit</text><text x="150" y="300">cisaille, plasma</text>
+      <text x="150" y="175">Pliage</text><text x="150" y="190">presse plieuse</text>
+      <text x="345" y="275">Halle soudure</text><text x="345" y="290">3 postes</text>
+      <text x="287" y="70">Contrôle</text>
+      <text x="397" y="65">Bureau</text><text x="397" y="80">chef d'atelier</text>
+      <text x="532" y="270">Usinage</text><text x="532" y="285">CU-1 et tour CN</text>
+      <text x="532" y="54">Rack platines</text>
+      <text x="700" y="75">Zone</text><text x="700" y="90">« À usiner »</text>
+      <text x="700" y="290">Quai</text><text x="700" y="305">expédition</text>
+    </g>
+    <line x1="105" y1="129" x2="450" y2="129" stroke="#d9681a" stroke-width="3" stroke-dasharray="8 5"/>
+    <g fill="#d9681a" font-weight="600" text-anchor="middle"><text x="167" y="100">Pont roulant 5 t</text><text x="167" y="115">un seul pour la halle</text></g>
+    <defs><marker id="fl" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#b3261e"/></marker></defs>
+    <g stroke="#b3261e" stroke-width="2.5" fill="none" marker-end="url(#fl)">
+      <path d="M212 320 L212 205"/>
+      <path d="M225 200 L300 215"/>
+      <path d="M430 190 L655 105"/>
+      <path d="M690 145 L597 235"/>
+      <path d="M597 320 L653 320"/>
+    </g>
+    <g fill="#b3261e"><circle cx="212" cy="245" r="10"/><circle cx="262" cy="207" r="10"/><circle cx="545" cy="147" r="10"/><circle cx="643" cy="195" r="10"/><circle cx="625" cy="320" r="10"/></g>
+    <g fill="#fff" font-weight="700" text-anchor="middle"><text x="212" y="249">1</text><text x="262" y="211">2</text><text x="545" y="151">3</text><text x="643" y="199">4</text><text x="625" y="324">5</text></g>
+    <text x="10" y="372" fill="#5f6b76">Bâtiment d'environ 75 m × 35 m. Plan sans échelle exacte. En rouge : trajet d'un bâti BT-200.</text>
+  </svg>
+  <p class="discret">Trajet : <b>1</b> débit vers pliage, 15 m · <b>2</b> pliage vers soudure, 20 m · <b>3</b> soudure vers zone « À usiner », 80 m · <b>4</b> zone « À usiner » vers centre d'usinage, 45 m · <b>5</b> centre d'usinage vers quai, 30 m.</p>
+  <div class="num-page">Page 1</div>
+</section>
+
+<!-- P2 -->
+<section class="page">
+  <div class="entete-page"><img src="../logo_uimm.jpg" alt=""><span>Affaire BT-200 · Dossier stagiaire</span></div>
+  <h2 style="margin-top:0"><span class="piece">P2</span>Le courriel du client et la demande du directeur</h2>
+  <h3>La commande</h3>
+  <table>
+    <tr><th>Élément</th><th>Détail</th></tr>
+    <tr><td>Client</td><td>TCM, Terres du Centre Machines, constructeur d'épandeurs agricoles</td></tr>
+    <tr><td>Produit</td><td>Bâti BT-200 : bâti mécano-soudé de trémie, acier S235, environ 180 kg, deux flancs, quatre traverses, deux platines usinées (4 alésages)</td></tr>
+    <tr><td>Quantité</td><td>20 bâtis</td></tr>
+    <tr><td>Commande reçue</td><td>lundi 20 juillet 2026</td></tr>
+    <tr><td>Livraison promise</td><td>lundi 21 septembre 2026, en totalité</td></tr>
+    <tr><td>Pénalité prévue au contrat</td><td>1 % du montant de la commande par semaine de retard</td></tr>
+    <tr><td>Situation au 29 septembre</td><td>8 bâtis livrés, 12 restants</td></tr>
+  </table>
+  <h3>Le courriel reçu le lundi 28 septembre</h3>
+  <div class="courriel">De : Service achats TCM
+À : Direction CMY
+Objet : Commande BT-200, retard
+
+Bonjour,
+
+Nous avons reçu 8 bâtis BT-200 sur les 20 commandés pour le 21 septembre.
+Notre chaîne de montage des épandeurs démarre le 12 octobre.
+Sans les 12 bâtis restants, elle s'arrête.
+
+Merci de nous donner sous 48 heures une date ferme et crédible.
+Nous appliquerons les pénalités prévues au contrat.
+
+Cordialement,
+Le responsable des achats</div>
+  <h3>Le mot du directeur au groupe de travail</h3>
+  <div class="encadre">
+    <p>« Tout le monde a son explication. L'usinage accuse la chaudronnerie, la chaudronnerie accuse la machine, la maintenance dit qu'on ne la laisse pas travailler. Je ne veux pas savoir qui est coupable. Je veux savoir <strong>ce qui nous fait perdre du temps</strong>, et <strong>par quoi on commence</strong>. Pas un roman : trois actions, avec ce que chacune coûte et ce qu'elle rapporte. »</p>
+  </div>
+  <div class="num-page">Page 2</div>
+</section>
+
+<!-- P3 -->
+<section class="page recit">
+  <div class="entete-page"><img src="../logo_uimm.jpg" alt=""><span>Affaire BT-200 · Dossier stagiaire</span></div>
+  <h2 style="margin-top:0"><span class="piece">P3</span>Une journée à l'atelier, racontée par Lucas</h2>
+  <p class="discret">Lucas est chaudronnier intérimaire. Il est arrivé chez CMY la semaine dernière. Il raconte sa journée du mardi 22 septembre 2026.</p>
+  <p><span class="para">§1</span><strong>7 h 30.</strong> Julien, le chef d'équipe, me montre la pile de flancs pour les bâtis BT-200. « On a débité 60 flancs d'un coup la semaine dernière. Comme ça, la cisaille n'est réglée qu'une fois. » La pile bloque à moitié l'allée. Un bâti, c'est deux flancs, et la commande est de 20 bâtis.</p>
+  <p><span class="para">§2</span><strong>7 h 45.</strong> Il nous faut le gabarit de pointage du BT-200. Personne ne sait où il est. On le cherche à deux pendant vingt minutes. Il était sous une palette, derrière la presse plieuse.</p>
+  <p><span class="para">§3</span><strong>8 h 30.</strong> Le premier bâti est pointé. Il faut le retourner pour souder l'autre face. Le pont roulant est pris par l'équipe d'assemblage, qui déplace une cuve. On attend vingt-cinq minutes. Julien soupire : « Tous les jours pareil. Un pont pour toute la halle. »</p>
+  <p><span class="para">§4</span><strong>9 h 45.</strong> Julien meule tous les cordons pour qu'ils soient « propres », y compris ceux de la face intérieure, qui sera cachée et peinte. Je regarde le plan : aucun arasage n'est demandé. « Chez nous, un cordon, ça se finit. » Environ quarante minutes par bâti.</p>
+  <p><span class="para">§5</span><strong>10 h 30.</strong> Le contrôleur mesure les deux bâtis soudés hier. Sur l'un, l'entraxe des platines est décalé de 3 mm. La tolérance est de plus ou moins 1 mm. Le bâti s'est déformé au soudage. Il repart en soudure pour être redressé à la flamme : une heure et demie. Julien : « Ça arrive à peu près une fois sur trois. On redresse, on a toujours fait comme ça. »</p>
+  <p><span class="para">§6</span><strong>13 h 00.</strong> J'emmène un bâti conforme au transpalette vers la zone « À usiner », au fond de la halle, près du quai. Quatre-vingts mètres. Arrivé là, on me dit que la zone est pleine et que la machine attend justement ce bâti. Je repars dans l'autre sens jusqu'au centre d'usinage : quarante-cinq mètres.</p>
+  <p><span class="para">§7</span><strong>13 h 30.</strong> Sandra, la régleuse, prend le bâti. Il est un peu voilé. Pour le brider sur la table du centre d'usinage, elle glisse des cales, mesure, recommence. Une heure vingt de calage pour une heure d'usinage. Elle me dit : « En juin, j'ai dessiné un montage de bridage pour le BT-200. Je l'ai donné au chef. Pas de nouvelles. »</p>
+  <p><span class="para">§8</span><strong>14 h 50.</strong> Alarme sur le centre d'usinage : le convoyeur à copeaux est bourré. Sandra appelle la maintenance. Mehdi arrive un quart d'heure plus tard et dégage le convoyeur. Quarante-cinq minutes d'arrêt en tout. Mehdi : « Le nettoyage du convoyeur est prévu chaque jour en fin de poste. Dix minutes. Il n'est jamais fait. »</p>
+  <p><span class="para">§9</span><strong>15 h 05.</strong> Pendant la panne, Sandra part chercher des plaquettes neuves au magasin d'outillage, à l'autre bout du bâtiment. Le magasin est fermé, le magasinier est en pause. Elle revient les mains vides et repart dix minutes plus tard.</p>
+  <p><span class="para">§10</span><strong>15 h 40.</strong> J'aide à ranger. Dans le rack près de l'usinage, douze platines usinées pour l'ancien modèle BT-150 occupent deux étages. « Elles datent de l'an dernier. Le client les veut encore ? Personne ne sait. »</p>
+  <p><span class="para">§11</span><strong>15 h 55.</strong> Six bâtis usinés attendent sur le quai. Le camion du peintre ne passe que le jeudi. Ils vont attendre deux jours de plus.</p>
+  <p><span class="para">§12</span><strong>16 h 10.</strong> Patrick, le chef d'atelier, recopie dans un tableur les heures que chacun a notées à la main sur la feuille du poste. « Quarante minutes tous les soirs, après le départ des gars. »</p>
+  <p><span class="para">§13</span><strong>16 h 30.</strong> Fin de poste. Tout le monde part. Personne n'a nettoyé le convoyeur à copeaux.</p>
+  <div class="num-page">Page 3</div>
+</section>
+
+<!-- P4 -->
+<section class="page">
+  <div class="entete-page"><img src="../logo_uimm.jpg" alt=""><span>Affaire BT-200 · Dossier stagiaire</span></div>
+  <h2 style="margin-top:0"><span class="piece">P4</span>Quatre témoignages</h2>
+  <p class="discret">Recueillis par le directeur le lundi 28 septembre, chacun séparément. Chacun est sincère. Aucun n'a toute la vérité.</p>
+  <div class="temoin">
+    <h3>Julien</h3><div class="role">Chef d'équipe chaudronnerie, 22 ans dans l'entreprise</div>
+    <p>« On n'est pas le problème. Nous, on sort les bâtis. Après, ils dorment devant l'usinage, et la machine est une fois sur deux en panne. Et un pont pour toute la halle, c'est intenable. La déformation ? Sur un bâti comme ça, ça bouge toujours un peu. On n'a pas de séquence de soudage écrite, chacun a sa méthode, mais on redresse et ça finit bon. »</p>
+  </div>
+  <div class="temoin">
+    <h3>Sandra</h3><div class="role">Régleuse sur centre d'usinage, 8 ans dans l'entreprise</div>
+    <p>« Les bâtis arrivent tordus. Je passe plus de temps à caler qu'à usiner. Mon montage de bridage, il dort dans un tiroir depuis juin. Et la semaine dernière, j'ai failli usiner deux bâtis sur un plan à l'indice B alors que le bureau d'études avait sorti l'indice C. Personne ne me l'avait dit. Je m'en suis rendu compte par hasard. »</p>
+  </div>
+  <div class="temoin">
+    <h3>Mehdi</h3><div class="role">Technicien de maintenance, 4 ans dans l'entreprise</div>
+    <p>« On m'appelle quand c'est cassé. Jamais avant. Le préventif de la broche du centre d'usinage était prévu début août : reporté trois fois, parce qu'on ne peut pas arrêter la machine en ce moment. Le nettoyage du convoyeur, c'est à l'opérateur, dix minutes par jour, c'est écrit sur la fiche au poste. Ce qui me fait peur, c'est la broche. Si elle lâche, la machine est arrêtée pour des semaines. »</p>
+  </div>
+  <div class="temoin">
+    <h3>Patrick</h3><div class="role">Chef d'atelier, 12 ans dans l'entreprise</div>
+    <p>« J'ai trois commandes urgentes en même temps. Dès que la tôle arrive, je lance tout, pour que personne ne reste les bras croisés. Les intérimaires changent souvent, je n'ai pas le temps de les former. Le montage de Sandra ? Il faut le fabriquer, ça bloque la cisaille et un soudeur pendant une demi-journée. Je n'ai jamais trouvé le moment. »</p>
+  </div>
+  <div class="num-page">Page 4</div>
+</section>
+
+<!-- P5 -->
+<section class="page">
+  <div class="entete-page"><img src="../logo_uimm.jpg" alt=""><span>Affaire BT-200 · Dossier stagiaire</span></div>
+  <h2 style="margin-top:0"><span class="piece">P5</span>Relevé des heures perdues sur quatre semaines</h2>
+  <p>Relevé établi par Patrick à partir des feuilles de poste, pour <strong>tout l'atelier</strong> (toutes commandes confondues), du lundi 31 août au vendredi 25 septembre 2026 (semaines 36 à 39). Une « heure perdue » est une heure où une personne ou une machine était payée ou disponible sans produire.</p>
+  <table>
+    <tr><th>Code</th><th>Cause relevée</th><th class="num">Heures perdues</th></tr>
+    <tr><td>A</td><td>Attente du pont roulant</td><td class="num">35</td></tr>
+    <tr><td>B</td><td>Recherche d'outillage, de gabarits, de plaquettes</td><td class="num">18</td></tr>
+    <tr><td>C</td><td>Reprises de soudure et redressage des pièces déformées</td><td class="num">45</td></tr>
+    <tr><td>D</td><td>Pannes du centre d'usinage</td><td class="num">22</td></tr>
+    <tr><td>E</td><td>Calage et réglage longs au centre d'usinage</td><td class="num">55</td></tr>
+    <tr><td>F</td><td>Attente de plans, plans pas à jour</td><td class="num">8</td></tr>
+    <tr><td>G</td><td>Attente de matière (tôle non livrée)</td><td class="num">12</td></tr>
+    <tr><td>H</td><td>Divers</td><td class="num">5</td></tr>
+    <tr><td></td><td><strong>Total</strong></td><td class="num"><strong>200</strong></td></tr>
+  </table>
+  <div class="encadre orange">
+    <p><strong>Aide au calcul.</strong> Le total fait 200 heures. Pour obtenir le pourcentage d'une cause, il suffit de diviser ses heures par 2. Exemple : 35 heures, c'est 17,5 % du total.</p>
+  </div>
+  <p class="discret">Patrick précise : « Les chiffres sont notés à la main par les gars. Ils ne sont pas parfaits, mais c'est ce qu'on a. »</p>
+  <div class="num-page">Page 5</div>
+</section>
+
+<!-- P6 -->
+<section class="page">
+  <div class="entete-page"><img src="../logo_uimm.jpg" alt=""><span>Affaire BT-200 · Dossier stagiaire</span></div>
+  <h2 style="margin-top:0"><span class="piece">P6</span>Fiche suiveuse du bâti n° 07</h2>
+  <p>La fiche suiveuse accompagne le bâti dans l'atelier. Chaque poste y note la date et le temps passé.</p>
+  <table>
+    <tr><th>Opération</th><th>Date</th><th class="num">Temps passé</th><th>Remarque</th></tr>
+    <tr><td>Débit des flancs et des traverses</td><td>lundi 7 septembre</td><td class="num">1 h 00</td><td></td></tr>
+    <tr><td>Pliage des traverses</td><td>mercredi 9 septembre</td><td class="num">0 h 30</td><td></td></tr>
+    <tr><td>Pointage et soudage</td><td>lundi 14 et mardi 15 septembre</td><td class="num">6 h 00</td><td></td></tr>
+    <tr><td>Contrôle dimensionnel</td><td>mercredi 16 septembre</td><td class="num">0 h 30</td><td>Entraxe des platines décalé de 3 mm : non conforme</td></tr>
+    <tr><td>Redressage à la flamme</td><td>mercredi 16 septembre</td><td class="num">1 h 30</td><td>Reprise</td></tr>
+    <tr><td>Second contrôle</td><td>jeudi 17 septembre</td><td class="num">0 h 15</td><td>Conforme</td></tr>
+    <tr><td>Calage sur le centre d'usinage</td><td>lundi 21 septembre</td><td class="num">1 h 20</td><td></td></tr>
+    <tr><td>Usinage des platines</td><td>lundi 21 septembre</td><td class="num">1 h 00</td><td></td></tr>
+    <tr><td>Chargement du camion du peintre</td><td>jeudi 24 septembre</td><td class="num">0 h 15</td><td>Départ en peinture</td></tr>
+  </table>
+  <div class="encadre">
+    <p><strong>Rappel :</strong> l'atelier est ouvert 8 heures par jour, du lundi au vendredi (P1). Du lundi 7 au jeudi 24 septembre, il y a 14 jours ouvrés.</p>
+  </div>
+  <p class="discret">Pour mémoire, la peinture chez le sous-traitant n'est pas comptée ici. La fiche s'arrête au départ du camion.</p>
+  <div class="num-page">Page 6</div>
+</section>
+
+<!-- FT1 -->
+<section class="page">
+  <div class="entete-page"><img src="../logo_uimm.jpg" alt=""><span>Affaire BT-200 · Feuille de travail</span></div>
+  <h2 style="margin-top:0"><span class="piece">FT1</span>La chasse aux gaspillages</h2>
+  <div class="consigne"><strong>35 minutes. Source : P3.</strong> Relisez la journée de Lucas. Pour chacun des 8 gaspillages, retrouvez au moins un paragraphe où il apparaît. Un même paragraphe peut contenir plusieurs gaspillages.</div>
+  <table class="grand">
+    <tr><th style="width:24%">Gaspillage</th><th style="width:14%">Paragraphe(s)</th><th>Ce qui se passe, en quelques mots</th></tr>
+    <tr><td>Surproduction</td><td></td><td></td></tr>
+    <tr><td>Attente</td><td></td><td></td></tr>
+    <tr><td>Transport</td><td></td><td></td></tr>
+    <tr><td>Stocks</td><td></td><td></td></tr>
+    <tr><td>Mouvements inutiles</td><td></td><td></td></tr>
+    <tr><td>Surqualité, tâches en trop</td><td></td><td></td></tr>
+    <tr><td>Défauts, reprises</td><td></td><td></td></tr>
+    <tr><td>Talents non utilisés</td><td></td><td></td></tr>
+  </table>
+  <p><strong>Question de débat.</strong> Lequel de ces gaspillages avez-vous déjà vécu dans un atelier ? Lequel vous énerve le plus ? Pourquoi ?</p>
+  <div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+  <div class="num-page">Page 7</div>
+</section>
+
+<!-- FT2 -->
+<section class="page">
+  <div class="entete-page"><img src="../logo_uimm.jpg" alt=""><span>Affaire BT-200 · Feuille de travail</span></div>
+  <h2 style="margin-top:0"><span class="piece">FT2</span>Les causes du retard</h2>
+  <div class="consigne"><strong>40 minutes. Sources : P1, P3, P4.</strong> Chaque membre de l'équipe défend un personnage de P4 pendant 10 minutes, de préférence celui qui n'est pas de son métier. Ensuite, rangez toutes les causes trouvées dans les cinq familles. Notez la source de chaque cause.</div>
+  <svg viewBox="0 0 700 330" width="100%" role="img" aria-label="Diagramme d'Ishikawa vierge" style="font-family:Segoe UI,Arial,sans-serif">
+    <line x1="30" y1="165" x2="560" y2="165" stroke="#003d7a" stroke-width="4"/>
+    <rect x="560" y="120" width="135" height="90" rx="6" fill="#fbeceb" stroke="#b3261e" stroke-width="2"/>
+    <text x="627" y="150" text-anchor="middle" font-size="13" font-weight="700" fill="#b3261e">Effet</text>
+    <text x="627" y="170" text-anchor="middle" font-size="12">12 bâtis BT-200</text>
+    <text x="627" y="186" text-anchor="middle" font-size="12">en retard</text>
+    <g stroke="#0066cc" stroke-width="3">
+      <line x1="120" y1="30" x2="200" y2="165"/><line x1="290" y1="30" x2="370" y2="165"/><line x1="460" y1="30" x2="540" y2="165"/>
+      <line x1="150" y1="300" x2="230" y2="165"/><line x1="360" y1="300" x2="440" y2="165"/>
+    </g>
+    <g font-size="14" font-weight="700" fill="#003d7a" text-anchor="middle">
+      <text x="115" y="20">Main-d'œuvre</text><text x="285" y="20">Méthodes</text><text x="455" y="20">Matériel</text>
+      <text x="145" y="322">Matière</text><text x="355" y="322">Milieu</text>
+    </g>
+  </svg>
+  <p><strong>Question de débat.</strong> Qui a le plus raison : Julien, Sandra, Mehdi ou Patrick ? Votre équipe doit se mettre d'accord et justifier avec le dossier.</p>
+  <div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+  <div class="num-page">Page 8</div>
+</section>
+
+<!-- FT3 -->
+<section class="page">
+  <div class="entete-page"><img src="../logo_uimm.jpg" alt=""><span>Affaire BT-200 · Feuille de travail</span></div>
+  <h2 style="margin-top:0"><span class="piece">FT3</span>Par où commencer ?</h2>
+  <div class="consigne"><strong>25 minutes. Sources : P5, P6.</strong> Calculatrice autorisée.</div>
+  <h3>A. Classer les pertes (P5)</h3>
+  <p>Rangez les causes de la plus grosse à la plus petite. Calculez le pourcentage de chacune (heures divisées par 2), puis le cumul.</p>
+  <table>
+    <tr><th>Rang</th><th>Code</th><th>Cause</th><th class="num">Heures</th><th class="num">%</th><th class="num">% cumulé</th></tr>
+    <tr><td>1</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>4</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>5</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>6</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>7</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>8</td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table>
+  <p>1. Combien de causes faut-il traiter pour couvrir environ 80 % des heures perdues ? ...............................</p>
+  <p>2. Relisez P3 (§5 et §7) et P4 (Julien, Sandra). Les deux premières causes ont-elles un point commun ? Lequel ?</p>
+  <div class="ligne-ecriture"></div>
+  <p>3. Tout le monde parle des pannes. Quelle place ont-elles réellement dans le classement ?</p>
+  <div class="ligne-ecriture"></div>
+  <h3>B. Le temps qui compte vraiment (P6)</h3>
+  <p>4. Combien d'heures d'atelier se sont écoulées entre le début du débit et le départ en peinture ? ............. h</p>
+  <p>5. Combien d'heures de travail ont été passées sur le bâti n° 07 au total ? ............. h</p>
+  <p>6. Parmi ces heures, lesquelles <strong>transforment</strong> vraiment le bâti, celles pour lesquelles le client paie ? Total : ............. h</p>
+  <p>7. Quelle part du temps le bâti a-t-il été réellement transformé ? ............. %</p>
+  <div class="num-page">Page 9</div>
+</section>
+
+<!-- FT4 -->
+<section class="page">
+  <div class="entete-page"><img src="../logo_uimm.jpg" alt=""><span>Affaire BT-200 · Feuille de travail</span></div>
+  <h2 style="margin-top:0"><span class="piece">FT4</span>La réponse au directeur</h2>
+  <div class="consigne"><strong>15 minutes de préparation, 5 minutes de présentation.</strong> Le formateur joue le directeur. Il posera des questions.</div>
+  <h3>Ce qui nous fait perdre du temps, en une phrase</h3>
+  <div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+  <h3>Nos trois actions</h3>
+  <table class="grand">
+    <tr><th style="width:5%">N°</th><th style="width:31%">Action : quoi, concrètement ?</th><th style="width:16%">Qui ?</th><th style="width:22%">Ce que ça coûte</th><th style="width:26%">Ce que ça rapporte (source)</th></tr>
+    <tr><td>1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>2</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>3</td><td></td><td></td><td></td><td></td></tr>
+  </table>
+  <h3>Ce qu'on ne fait pas tout de suite, et pourquoi</h3>
+  <div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+  <h3>Et pour les 12 bâtis en retard, que peut-on faire dès demain ?</h3>
+  <div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+  <div class="num-page">Page 10</div>
+</section>
+
+<div class="pied noprint">Pôle Formation UIMM CVDL · S. Jaubert · Cas d'étude inventé pour la formation</div>
+</body>
+</html>

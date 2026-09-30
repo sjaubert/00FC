@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diaporama, 8 octobre</title>
+<style>
+  :root { --bf:#003d7a; --b:#0066cc; --o:#d9681a; --g:#5f6b76; --pale:#e8f1fa; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #1b2530; font-family: "Segoe UI", Tahoma, Arial, sans-serif; color: #1f2933; }
+  .scene { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .diapo { display: none; width: min(96vw, calc(92vh * 16 / 9)); aspect-ratio: 16 / 9; background: #fff; border-radius: 6px; position: relative; overflow: hidden; padding: 4.5% 6% 5%; font-size: min(2.3vw, 4.1vh); flex-direction: column; }
+  .diapo.active { display: flex; }
+  .diapo::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1.2%; background: linear-gradient(var(--bf), var(--b)); }
+  .diapo::after { content: attr(data-n); position: absolute; right: 2.5%; bottom: 3%; font-size: .6em; color: var(--g); }
+  .diapo .logo { position: absolute; right: 2.5%; top: 4%; height: 9%; }
+  h1 { color: var(--bf); font-size: 2.2em; margin: 0 0 .3em; line-height: 1.15; }
+  h2 { color: var(--bf); font-size: 1.55em; margin: 0 0 .6em; padding-right: 12%; }
+  p, li { line-height: 1.35; margin: .25em 0; }
+  ul { margin: .2em 0; padding-left: 1.2em; }
+  .grande { font-size: 1.9em; font-weight: 700; color: var(--bf); text-align: center; margin: auto 0; line-height: 1.25; }
+  .sous { color: var(--g); }
+  .orange { color: var(--o); }
+  .col2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4%; }
+  .col3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3%; }
+  .bloc { background: var(--pale); border-radius: 8px; padding: 4% 5%; }
+  .bloc h3 { margin: 0 0 .3em; color: var(--b); font-size: 1.05em; }
+  table { border-collapse: collapse; width: 100%; font-size: .78em; }
+  th { background: var(--bf); color: #fff; text-align: left; padding: .35em .6em; }
+  td { border-bottom: 1px solid #d5dbe1; padding: .35em .6em; vertical-align: top; }
+  .muda { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5%; font-size: .8em; }
+  .muda div { border: 2px solid var(--b); border-radius: 8px; padding: 4% 6%; }
+  .muda b { color: var(--bf); display: block; font-size: 1.1em; margin-bottom: .2em; }
+  .muda .n8 { border-color: var(--o); }
+  .pied-diapo { margin-top: auto; font-size: .62em; color: var(--g); }
+  .nav { position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; opacity: .25; transition: opacity .2s; }
+  .nav:hover { opacity: 1; }
+  .nav button, .nav a { background: #fff; border: 0; border-radius: 4px; padding: 6px 12px; cursor: pointer; font: inherit; font-size: 14px; color: var(--bf); text-decoration: none; }
+  @media print {
+    html, body { background: #fff; height: auto; }
+    .scene { position: static; display: block; }
+    .diapo { display: flex !important; width: 100%; page-break-after: always; border: 1px solid #ccc; font-size: 15pt; }
+    .nav { display: none; }
+    @page { size: A4 landscape; margin: 10mm; }
+  }
+</style>
+</head>
+<body>
+<div class="scene">
+
+<section class="diapo active" data-n="1">
+  <img class="logo" src="../logo_uimm.jpg" alt="Logo UIMM">
+  <p class="sous" style="margin-top:8%">Trajectoire Industrie E18 · Bourges · jeudi 8 octobre 2026</p>
+  <h1>Organisation industrielle</h1>
+  <p style="font-size:1.4em">Qui produit quoi, et qu'est-ce qui nous fait perdre du temps ?</p>
+  <p class="pied-diapo">Pôle Formation UIMM CVDL · S. Jaubert</p>
+</section>
+
+<section class="diapo" data-n="2">
+  <img class="logo" src="../logo_uimm.jpg" alt="">
+  <h2>Le parcours : quatre journées</h2>
+  <table>
+    <tr><th>Date</th><th>Thème</th></tr>
+    <tr><td><b>Jeudi 8 octobre</b></td><td><b>Comprendre l'entreprise et apprendre à voir les gaspillages</b></td></tr>
+    <tr><td>Vendredi 11 décembre</td><td>À construire ensemble</td></tr>
+    <tr><td>Jeudi 17 décembre</td><td>À construire ensemble</td></tr>
+    <tr><td>Vendredi 18 décembre</td><td>À construire ensemble</td></tr>
+  </table>
+  <p style="margin-top:1em">Entre octobre et décembre : une mission d'observation.</p>
+</section>
+
+<section class="diapo" data-n="3">
+  <img class="logo" src="../logo_uimm.jpg" alt="">
+  <h2>Trois règles pour débattre</h2>
+  <ul style="font-size:1.25em">
+    <li>On parle d'un <b>exemple vécu</b>, pas d'une généralité.</li>
+    <li>On critique <b>une idée</b>, jamais une personne.</li>
+    <li><b>Personne</b> n'a « la » bonne réponse, pas même le formateur.</li>
+  </ul>
+</section>
+
+<section class="diapo" data-n="4">
+  <img class="logo" src="../logo_uimm.jpg" alt="">
+  <h2>Interview croisée</h2>
+  <div class="col2" style="font-size:.88em">
+    <div>
+      <p>Interrogez votre binôme sur <b>une entreprise qu'il connaît de l'intérieur</b> : ancien emploi, stage, entreprise visée.</p>
+      <p><b>7 minutes</b> chacun, avec la grille.</p>
+      <p>Puis vous présentez <b>votre binôme</b> au groupe : <b>3 minutes</b>.</p>
+    </div>
+    <div class="bloc">
+      <h3>La grille</h3>
+      <ul>
+        <li>Qu'est-ce qui sort de la porte, et pour qui ?</li>
+        <li>Combien : 1 pièce, 10, 10 000 ?</li>
+        <li>Qui te dit ce que tu fais à 8 h ?</li>
+        <li>Qu'est-ce qui arrête la production ?</li>
+        <li>Où est ton poste dans le parcours du produit ?</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="diapo" data-n="5">
+  <img class="logo" src="../logo_uimm.jpg" alt="">
+  <h2>Où placer vos entreprises ?</h2>
+  <svg viewBox="0 0 800 330" width="100%" style="font-family:Segoe UI,Arial;font-size:15px">
+    <line x1="120" y1="290" x2="780" y2="290" stroke="#003d7a" stroke-width="3"/>
+    <line x1="120" y1="290" x2="120" y2="20" stroke="#003d7a" stroke-width="3"/>
+    <g fill="#5f6b76" text-anchor="middle"><text x="200" y="315">1 pièce</text><text x="370" y="315">quelques dizaines</text><text x="550" y="315">milliers</text><text x="720" y="315">en continu</text></g>
+    <text x="450" y="16" text-anchor="middle" fill="#003d7a" font-weight="700">Combien de produits identiques ?  →</text>
+    <g fill="#0066cc" font-weight="700" text-anchor="end"><text x="110" y="70">Pointe</text><text x="110" y="160">Transformation</text><text x="110" y="250">Base</text></g>
+    <g stroke="#d5dbe1" stroke-dasharray="5 5"><line x1="120" y1="110" x2="780" y2="110"/><line x1="120" y1="200" x2="780" y2="200"/></g>
+  </svg>
+</section>
+
+<section class="diapo" data-n="6"><img class="logo" src="../logo_uimm.jpg" alt=""><p class="sous">Ligne de désaccord · 1</p><p class="grande">« Un technicien de maintenance<br>ne produit rien. »</p></section>
+<section class="diapo" data-n="7"><img class="logo" src="../logo_uimm.jpg" alt=""><p class="sous">Ligne de désaccord · 2</p><p class="grande">« Un chaudronnier est un artisan,<br>pas un industriel. »</p></section>
+<section class="diapo" data-n="8"><img class="logo" src="../logo_uimm.jpg" alt=""><p class="sous">Ligne de désaccord · 3</p><p class="grande">« Une bourrellerie,<br>c'est de l'industrie. »</p></section>
+<section class="diapo" data-n="9"><img class="logo" src="../logo_uimm.jpg" alt=""><p class="sous">Ligne de désaccord · 4</p><p class="grande">« Celui qui connaît le mieux un poste,<br>c'est l'opérateur, pas l'ingénieur. »</p></section>
+<section class="diapo" data-n="10"><img class="logo" src="../logo_uimm.jpg" alt=""><p class="sous">Ligne de désaccord · en réserve</p><p class="grande">« Un intérimaire fait partie<br>de l'entreprise. »</p></section>
+
+<section class="diapo" data-n="11"><img class="logo" src="../logo_uimm.jpg" alt=""><p class="grande">Qui, dans la salle, sait fabriquer<br>un crayon à papier, tout seul, de A à Z ?</p></section>
+
+<section class="diapo" data-n="12">
+  <img class="logo" src="../logo_uimm.jpg" alt="">
+  <h2>Personne. Ni ici, ni ailleurs.</h2>
+  <div class="col2" style="font-size:.84em">
+    <ul>
+      <li><b>Le bois</b> : cèdre coupé en Californie et en Oregon.</li>
+      <li><b>La mine</b> : graphite du Sri Lanka, mélangé à de l'argile du Mississippi, puis cuit.</li>
+      <li><b>La peinture</b> : plusieurs couches de laque.</li>
+      <li><b>La bague métallique</b> : du laiton, donc du cuivre et du zinc extraits et fondus.</li>
+      <li><b>La gomme</b> : un produit à base d'huile et de soufre, avec de la pierre ponce d'Italie.</li>
+    </ul>
+    <div class="bloc">
+      <p>Bûcherons, mineurs, chimistes, marins, transporteurs... des milliers de personnes, sur plusieurs continents.</p>
+      <p><b>Personne ne pilote l'ensemble.</b> Et le crayon coûte quelques centimes.</p>
+      <p class="sous" style="font-size:.75em">D'après <i>I, Pencil</i>, Leonard Read, 1958.</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapo" data-n="13">
+  <img class="logo" src="../logo_uimm.jpg" alt="">
+  <h2>Une entreprise, c'est quoi ?</h2>
+  <div style="font-size:.88em">
+  <p class="bloc">Une organisation humaine qui <b>produit des biens ou des services</b> pour les délivrer à des <b>clients</b>, avec un objectif d'équilibre ou d'excédent financier.</p>
+  <div class="col3" style="margin-top:4%">
+    <div class="bloc"><h3>Concevoir</h3><p>Bureau d'études, méthodes</p></div>
+    <div class="bloc"><h3>Produire</h3><p>Fabrication, contrôle, logistique</p></div>
+    <div class="bloc"><h3>Vendre</h3><p>Commercial, relation client</p></div>
+  </div>
+  <p style="margin-top:3%">Autour : <b>acheter, maintenir, gérer, améliorer</b>. Et vous, vous êtes où ?</p>
+  </div>
+</section>
+
+<section class="diapo" data-n="14">
+  <img class="logo" src="../logo_uimm.jpg" alt="">
+  <h2>Classez les 12 entreprises</h2>
+  <div class="col3">
+    <div class="bloc"><h3>Industrie de base</h3><p>Transforme les matières premières en produits semi-finis : acier, ciment, carburant.</p></div>
+    <div class="bloc"><h3>Industrie de transformation</h3><p>Utilise ces produits pour fabriquer des produits finis.</p></div>
+    <div class="bloc"><h3>Industrie de pointe</h3><p>Technologies avancées, forte part de recherche.</p></div>
+  </div>
+  <p style="margin-top:4%">20 minutes par équipe. Puis on compare. <b>Là où vous n'êtes pas d'accord, c'est là que ça devient intéressant.</b></p>
+</section>
+
+<section class="diapo" data-n="15">
+  <img class="logo" src="../logo_uimm.jpg" alt="">
+  <h2>Produire à l'unité, en série, en continu</h2>
+  <table>
+    <tr><th>Type</th><th>Principe</th><th>Exemple</th></tr>
+    <tr><td><b>Unitaire</b></td><td>Chaque produit est différent, fabriqué à la commande</td><td>Une cuve sur plan, une charpente</td></tr>
+    <tr><td><b>Petite et moyenne série</b></td><td>Des lots de produits identiques, répétés</td><td>Des bâtis mécano-soudés, des pièces usinées</td></tr>
+    <tr><td><b>Grande série</b></td><td>Des milliers de produits identiques, souvent sur ligne</td><td>Automobile, électroménager</td></tr>
+    <tr><td><b>Continu</b></td><td>Le produit s'écoule sans interruption</td><td>Raffinerie, papeterie, sidérurgie</td></tr>
+  </table>
+  <p style="margin-top:2%">Chaque type a ses problèmes d'organisation. Un chaudronnier et un régleur CN ne se battent pas contre les mêmes choses.</p>
+</section>
+
+<section class="diapo" data-n="16">
+  <img class="logo" src="../logo_uimm.jpg" alt="">
+  <h2>Cet après-midi : CMY</h2>
+  <div class="col2">
+    <div>
+      <p><b>Chaudronnerie Mécanique de l'Yèvre</b>, près de Bourges.</p>
+      <p>38 salariés, dont 22 en atelier.</p>
+      <p>Sous-traitant : bâtis mécano-soudés, cuves, usinage.</p>
+      <p>Petite série.</p>
+    </div>
+    <div class="bloc">
+      <p>Dans cette entreprise, il y a un chaudronnier, une régleuse CN, un technicien de maintenance et un chef d'atelier.</p>
+      <p><b>Une commande est en retard. Chacun accuse l'autre.</b></p>
+    </div>
+  </div>
+  <p class="pied-diapo">Entreprise inventée pour la formation.</p>
+</section>
+
+<section class="diapo" data-n="17">
+  <img class="logo" src="../logo_uimm.jpg" alt="">
+  <p class="grande">Sur une journée de travail,<br>quelle part du temps crée vraiment<br>de la valeur pour le client ?</p>
+  <p style="text-align:center" class="orange">Écrivez un pourcentage sur votre post-it. Sans le montrer.</p>
+</section>
+
+<section class="diapo" data-n="18">
+  <img class="logo" src="../logo_uimm.jpg" alt="">
+  <h2>Les 8 gaspillages</h2>
+  <div class="muda">
+    <div><b>Surproduction</b>Produire plus, ou plus tôt, que le besoin</div>
+    <div><b>Attente</b>Une pièce, une info ou une personne qui patiente</div>
+    <div><b>Transport</b>Déplacer les produits sans nécessité</div>
+    <div><b>Stocks</b>Tout ce qui dort en attendant d'être utilisé</div>
+    <div><b>Mouvements</b>Gestes et déplacements inutiles des personnes</div>
+    <div><b>Surqualité</b>Faire plus que ce que le client demande</div>
+    <div><b>Défauts</b>Rebuts, retouches, reprises</div>
+    <div class="n8"><b>Talents non utilisés</b>Ne pas écouter ceux qui savent</div>
+  </div>
+  <p style="margin-top:2.5%">Le client paie la <b>transformation</b> du produit. Tout le reste est à questionner.</p>
+</section>
+
+<section class="diapo" data-n="19">
+  <img class="logo" src="../logo_uimm.jpg" alt="">
+  <h2>Cas CMY · 1 · La chasse aux gaspillages</h2>
+  <ul>
+    <li>Un dossier par équipe. Lisez <b>P1, P2 et P3</b>.</li>
+    <li>Feuille <b>FT1</b> : retrouvez les 8 gaspillages dans la journée de Lucas.</li>
+    <li>Chaque idée cite sa source : « P3, paragraphe 7 ».</li>
+  </ul>
+  <p style="margin-top:3%" class="orange"><b>35 minutes</b>, puis mise en commun.</p>
+</section>
+
+<section class="diapo" data-n="20">
+  <img class="logo" src="../logo_uimm.jpg" alt="">
+  <h2>Cas CMY · 2 · Les causes du retard</h2>
+  <ul>
+    <li>Lisez <b>P4</b> : Julien, Sandra, Mehdi, Patrick.</li>
+    <li>Chacun défend un personnage, <b>de préférence pas de son métier</b>. Deux minutes de plaidoirie.</li>
+    <li>Rangez toutes les causes dans l'<b>Ishikawa</b> : Main-d'œuvre, Méthodes, Matériel, Matière, Milieu.</li>
+    <li>Puis débat : <b>qui a le plus raison ?</b></li>
+  </ul>
+  <p style="margin-top:3%" class="orange"><b>40 minutes</b>, puis 15 minutes de débat entre équipes.</p>
+</section>
+
+<section class="diapo" data-n="21">
+  <img class="logo" src="../logo_uimm.jpg" alt="">
+  <h2>Cas CMY · 3 · Par où commencer ?</h2>
+  <div class="col2">
+    <div class="bloc"><h3>P5 : les heures perdues</h3><p>Classez les causes de la plus grosse à la plus petite. Combien de causes font 80 % des pertes ?</p></div>
+    <div class="bloc"><h3>P6 : le bâti n° 07</h3><p>Combien d'heures dans l'atelier ? Combien d'heures à le transformer vraiment ?</p></div>
+  </div>
+  <p style="margin-top:3%" class="orange"><b>25 minutes</b>. Calculatrice autorisée.</p>
+</section>
+
+<section class="diapo" data-n="22">
+  <img class="logo" src="../logo_uimm.jpg" alt="">
+  <h2>Cas CMY · 4 · La réponse au directeur</h2>
+  <p class="bloc">« Je ne veux pas savoir qui est coupable. Je veux savoir ce qui nous fait perdre du temps, et par quoi on commence. <b>Trois actions.</b> »</p>
+  <ul style="margin-top:3%">
+    <li>Pour chaque action : <b>quoi, qui, ce que ça coûte, ce que ça rapporte</b>.</li>
+    <li>Et d'où vient votre chiffre.</li>
+  </ul>
+  <p class="orange"><b>15 minutes</b> de préparation, <b>5 minutes</b> devant le directeur.</p>
+</section>
+
+<section class="diapo" data-n="23"><img class="logo" src="../logo_uimm.jpg" alt=""><p class="grande">Si demain vous entrez dans un atelier,<br>quelle est la première chose<br>que vous regardez d'un œil critique ?</p></section>
+
+<section class="diapo" data-n="24">
+  <img class="logo" src="../logo_uimm.jpg" alt="">
+  <h2>D'ici le 11 décembre : votre mission</h2>
+  <ul style="font-size:1.15em">
+    <li>Repérez <b>trois gaspillages</b>, en entreprise ou ailleurs : un garage, un supermarché, une administration.</li>
+    <li>Pour chacun : où, quoi, lequel des 8, et ce que vous proposeriez.</li>
+    <li>Une photo ou un croquis si c'est possible et autorisé.</li>
+  </ul>
+  <p style="margin-top:4%">On démarre décembre avec vos observations.</p>
+</section>
+
+</div>
+<div class="nav"><a href="../index.html">Plan</a><button onclick="aller(-1)">Précédente</button><button onclick="aller(1)">Suivante</button><button onclick="plein()">Plein écran</button></div>
+<script>
+  const d = document.querySelectorAll('.diapo'); let i = 0;
+  try { const h = parseInt(location.hash.slice(1), 10); if (h >= 1 && h <= d.length) i = h - 1; } catch (e) {}
+  function montre() { d.forEach((x, k) => x.classList.toggle('active', k === i)); history.replaceState(null, '', '#' + (i + 1)); }
+  function aller(s) { i = Math.max(0, Math.min(d.length - 1, i + s)); montre(); }
+  function plein() { if (!document.fullscreenElement) document.documentElement.requestFullscreen(); else document.exitFullscreen(); }
+  document.addEventListener('keydown', e => {
+    if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); aller(1); }
+    if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); aller(-1); }
+    if (e.key === 'f') plein();
+  });
+  montre();
+</script>
+</body>
+</html>

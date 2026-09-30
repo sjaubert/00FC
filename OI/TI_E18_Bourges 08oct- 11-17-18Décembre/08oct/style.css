@@ -1,0 +1,109 @@
+/* Feuille de style commune, parcours TI E18 Bourges, Pôle Formation UIMM CVDL */
+:root {
+  --bleu-fonce: #003d7a;
+  --bleu: #0066cc;
+  --bleu-pale: #e8f1fa;
+  --orange: #d9681a;
+  --orange-pale: #fdf1e7;
+  --vert: #2e7d32;
+  --vert-pale: #eaf5eb;
+  --rouge: #b3261e;
+  --rouge-pale: #fbeceb;
+  --gris: #5f6b76;
+  --gris-pale: #f4f6f8;
+  --trait: #d5dbe1;
+  --texte: #1f2933;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  color: var(--texte);
+  background: #eef2f6;
+  line-height: 1.5;
+  font-size: 15px;
+}
+a { color: var(--bleu); }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 16px; }
+.carte {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+  padding: 28px 32px;
+  margin-bottom: 20px;
+}
+header.bandeau {
+  background: linear-gradient(135deg, var(--bleu-fonce), var(--bleu));
+  color: #fff;
+  border-radius: 8px 8px 0 0;
+  padding: 22px 32px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  border-bottom: 5px solid var(--orange);
+}
+header.bandeau img { height: 64px; background: #fff; padding: 6px; border-radius: 6px; }
+header.bandeau h1 { margin: 0; font-size: 1.7em; }
+header.bandeau p { margin: 4px 0 0; opacity: .9; }
+h2 { color: var(--bleu-fonce); border-bottom: 2px solid var(--bleu-pale); padding-bottom: 4px; margin-top: 1.6em; }
+h3 { color: var(--bleu); margin-bottom: .3em; }
+table { border-collapse: collapse; width: 100%; margin: 10px 0 16px; font-size: .95em; }
+th { background: var(--bleu-fonce); color: #fff; text-align: left; padding: 7px 9px; }
+td { border: 1px solid var(--trait); padding: 6px 9px; vertical-align: top; }
+tr:nth-child(even) td { background: var(--gris-pale); }
+.num { text-align: right; white-space: nowrap; }
+.encadre { border-left: 5px solid var(--bleu); background: var(--bleu-pale); padding: 12px 16px; margin: 14px 0; border-radius: 4px; }
+.encadre.orange { border-color: var(--orange); background: var(--orange-pale); }
+.encadre.vert { border-color: var(--vert); background: var(--vert-pale); }
+.encadre.rouge { border-color: var(--rouge); background: var(--rouge-pale); }
+.encadre > :first-child { margin-top: 0; }
+.encadre > :last-child { margin-bottom: 0; }
+.etiquette { display: inline-block; font-size: .78em; font-weight: 600; padding: 2px 8px; border-radius: 10px; background: var(--bleu-pale); color: var(--bleu-fonce); margin-right: 4px; }
+.etiquette.form { background: var(--rouge-pale); color: var(--rouge); }
+.etiquette.stag { background: var(--vert-pale); color: var(--vert); }
+.etiquette.proj { background: var(--orange-pale); color: var(--orange); }
+.discret { color: var(--gris); font-size: .9em; }
+.ligne-ecriture { border-bottom: 1px dotted #999; height: 30px; }
+.case { display: inline-block; width: 14px; height: 14px; border: 1.5px solid #333; vertical-align: middle; margin-right: 6px; }
+.pied { text-align: center; color: var(--gris); font-size: .85em; margin: 24px 0 8px; }
+.barre-impr { position: sticky; top: 0; z-index: 5; background: var(--bleu-fonce); color: #fff; padding: 8px 16px; display: flex; gap: 12px; align-items: center; font-size: .9em; }
+.barre-impr a, .barre-impr button { color: #fff; }
+.barre-impr button { background: var(--orange); border: 0; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: 600; }
+
+/* Pages imprimables A4 */
+.page {
+  background: #fff;
+  width: 210mm;
+  min-height: 297mm;
+  margin: 16px auto;
+  padding: 16mm 16mm 14mm;
+  box-shadow: 0 2px 12px rgba(0,0,0,.12);
+  position: relative;
+}
+.page.paysage { width: 297mm; min-height: 210mm; }
+.entete-page { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--bleu-fonce); padding-bottom: 6px; margin-bottom: 14px; font-size: .85em; color: var(--gris); }
+.entete-page img { height: 30px; }
+.num-page { position: absolute; bottom: 8mm; right: 16mm; font-size: .85em; color: var(--gris); }
+.piece { display: inline-block; background: var(--bleu-fonce); color: #fff; font-weight: 700; padding: 3px 10px; border-radius: 4px; margin-right: 8px; }
+.para { display: inline-block; min-width: 2.2em; font-weight: 700; color: var(--bleu); }
+
+@media (max-width: 800px) {
+  .page, .page.paysage { width: auto; min-height: 0; padding: 16px; }
+  header.bandeau { flex-direction: column; align-items: flex-start; }
+}
+@media print {
+  body { background: #fff; font-size: 10pt; line-height: 1.38; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  h2 { margin: .5em 0 .4em; }
+  h3 { margin: .6em 0 .25em; }
+  td, th { padding: 3px 6px; }
+  .entete-page { margin-bottom: 8px; }
+  .encadre { margin: 8px 0; padding: 8px 12px; }
+  .barre-impr, .noprint { display: none !important; }
+  .page, .page.paysage { box-shadow: none; margin: 0; width: auto; min-height: 0; padding: 0; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+  .num-page { position: static; text-align: right; margin-top: 8px; }
+  .carte { box-shadow: none; padding: 0; }
+  tr, .encadre { page-break-inside: avoid; }
+  a { color: inherit; text-decoration: none; }
+}
+@page { size: A4; margin: 14mm; }
