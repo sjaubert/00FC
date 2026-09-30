@@ -41,21 +41,22 @@
 <h2 id="groupe">Le groupe</h2>
 <p>12 demandeurs d'emploi en parcours métier PRF. Horaires supposés : 9 h 00 à 12 h 30 et 13 h 30 à 17 h 00 (à confirmer).</p>
 <table>
-<tr><th>Stagiaire</th><th>Filière</th><th>Entreprise renseignée</th><th>Binôme du matin</th><th>Équipe</th></tr>
-<tr><td>BIRAIS Brendan</td><td>Chaudronnerie</td><td>INVEHO UFO</td><td>KHEUM</td><td class="num">1</td></tr>
-<tr><td>BLONDY Baptiste</td><td>Chaudronnerie</td><td></td><td>PETIT</td><td class="num">1</td></tr>
-<tr><td>CREUZE Karine</td><td>ORMOCN</td><td></td><td>MANCHET</td><td class="num">1</td></tr>
-<tr><td>DESLIERS Claire</td><td>ORMOCN</td><td>L'Atelier de Bourrellerie</td><td>TUR-JOUANNEAU</td><td class="num">2</td></tr>
-<tr><td>GATEAU Mayeul</td><td>ORMOCN</td><td>SYNERGIE</td><td>VIDALIE</td><td class="num">3</td></tr>
-<tr><td>KHEUM Brandon</td><td>TMI</td><td></td><td>BIRAIS</td><td class="num">1</td></tr>
-<tr><td>LOJOWSKI Corentin</td><td>Chaudronnerie</td><td></td><td>VANG</td><td class="num">2</td></tr>
-<tr><td>MANCHET Mikaël</td><td>Chaudronnerie</td><td></td><td>CREUZE</td><td class="num">2</td></tr>
-<tr><td>PETIT Jérôme</td><td>TMI</td><td></td><td>BLONDY</td><td class="num">2</td></tr>
-<tr><td>TUR-JOUANNEAU Paul</td><td>Chaudronnerie</td><td></td><td>DESLIERS</td><td class="num">3</td></tr>
-<tr><td>VANG Corentin</td><td>TMI</td><td></td><td>LOJOWSKI</td><td class="num">3</td></tr>
-<tr><td>VIDALIE Jean-Luc</td><td>TMI</td><td></td><td>GATEAU</td><td class="num">3</td></tr>
+<tr><th>Repère</th><th>Filière</th><th>Entreprise renseignée</th><th>Binôme du matin</th><th>Équipe</th></tr>
+<tr><td>C1</td><td>Chaudronnerie</td><td>oui</td><td>T1</td><td class="num">1</td></tr>
+<tr><td>C2</td><td>Chaudronnerie</td><td></td><td>T2</td><td class="num">1</td></tr>
+<tr><td>C3</td><td>Chaudronnerie</td><td></td><td>T3</td><td class="num">2</td></tr>
+<tr><td>C4</td><td>Chaudronnerie</td><td></td><td>O1</td><td class="num">2</td></tr>
+<tr><td>C5</td><td>Chaudronnerie</td><td></td><td>O2</td><td class="num">3</td></tr>
+<tr><td>O1</td><td>ORMOCN</td><td></td><td>C4</td><td class="num">1</td></tr>
+<tr><td>O2</td><td>ORMOCN</td><td>oui</td><td>C5</td><td class="num">2</td></tr>
+<tr><td>O3</td><td>ORMOCN</td><td>oui</td><td>T4</td><td class="num">3</td></tr>
+<tr><td>T1</td><td>TMI</td><td></td><td>C1</td><td class="num">1</td></tr>
+<tr><td>T2</td><td>TMI</td><td></td><td>C2</td><td class="num">2</td></tr>
+<tr><td>T3</td><td>TMI</td><td></td><td>C3</td><td class="num">3</td></tr>
+<tr><td>T4</td><td>TMI</td><td></td><td>O3</td><td class="num">3</td></tr>
 </table>
 <p class="discret">ORMOCN : opérateur régleur sur machine-outil à commande numérique. TMI : technicien de maintenance industrielle. Binômes et équipes : proposition à ajuster selon les présents.</p>
+<p class="discret">Cette page est publiée : aucun nom n'y figure. La correspondance entre repères et stagiaires est dans <code>_PRIVE_correspondance_stagiaires.html</code>, exclu de la publication par le fichier <code>.gitignore</code> du dépôt.</p>
 
 <hr style="border:0;border-top:2px solid var(--bleu-pale);margin:28px 0">
 
@@ -116,12 +117,14 @@
   <li>Confirmer les horaires de la journée à Bourges.</li>
   <li>Ajuster binômes et équipes selon les présents le 8 octobre.</li>
   <li>Vérifier que la durée et l'effectif prévus pour les jeux de décembre tiennent avec 12 stagiaires.</li>
-  <li>Le fichier <code>Plan_Formation_OI_08_Octobre.md</code> de ce dossier correspond à une version antérieure du programme. Cette page le remplace.</li>
+  <li>Le fichier <code>Plan_Formation_OI_08_Octobre.md</code> est une version antérieure, vidée de ses données nominatives. Il peut être supprimé.</li>
 </ul>
 
 <h2 id="journal">Journal</h2>
 <table>
 <tr><th>Date</th><th>Évolution</th></tr>
+<tr><td>30 septembre 2026</td><td>Noms des stagiaires retirés des pages publiées, remplacés par des repères (C, O, T). Correspondance dans un fichier privé exclu du dépôt.</td></tr>
+<tr><td>30 septembre 2026</td><td>Cartes des 12 entreprises corrigées sur place (<code>00_lean_ss</code>) : plus de couleurs ni de numéros qui trahissaient la réponse, cartes mélangées, étiquettes de catégorie à découper, répartition attendue visible à l'écran seulement.</td></tr>
 <tr><td>30 septembre 2026</td><td>Création de la page. Journée du 8 octobre construite autour d'un cas commun (CMY, affaire BT-200). Atelier Cocotte retiré du parcours. Jeux réservés à décembre.</td></tr>
 </table>
 </div>
