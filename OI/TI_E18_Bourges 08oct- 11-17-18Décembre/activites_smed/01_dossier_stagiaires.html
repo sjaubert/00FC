@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMED, dossier stagiaire</title>
+<link rel="stylesheet" href="style.css">
+<style>
+svg.grille { width: 100%; height: auto; display: block; margin: 6px 0 10px; font-family: "Segoe UI", Tahoma, Arial, sans-serif; }
+.q { margin: 12px 0 4px; }
+.q b.n { display: inline-block; background: var(--orange); color: #fff; border-radius: 4px; padding: 0 7px; margin-right: 6px; }
+.duree { color: var(--gris); font-size: .88em; }
+.titre-act { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.titre-act h2 { margin: 0; border: 0; font-size: 1.45em; }
+.vide td { height: 24px; }
+td.c { text-align: center; }
+.fiction { font-size: .82em; color: var(--gris); font-style: italic; }
+.citation { border-left: 4px solid var(--gris); padding: 4px 12px; margin: 10px 0; font-style: italic; }
+@media print { .q { margin: 7px 0 2px; } .vide td { height: 19px; } .ligne-ecriture { height: 24px; } }
+
+</style>
+</head>
+<body>
+<div class="barre-impr"><a href="../index.html">Retour au plan</a><span>Dossier stagiaire SMED. Chaque activité s’imprime séparément, avec le mémo.</span><button onclick="window.print()">Imprimer</button></div>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · SMED · Dossier stagiaire</span></div>
+
+<h1 style="color:var(--bleu-fonce);margin:10mm 0 2mm;font-size:2em">Changer de série vite et bien</h1>
+<p style="font-size:1.2em;margin:0 0 8mm">Cinq situations SMED chez ADS</p>
+<h2>ADS en bref</h2>
+<p><b>ADS, Ateliers de la Sauldre</b>, PME du Cher, fabrique des réservoirs, des cuves et des châssis mécano-soudés en petites et moyennes séries. Chaque machine change souvent de référence. Chaque changement arrête la machine.</p>
+<h2>Les activités</h2>
+<table>
+<tr><th>Code</th><th>Titre</th><th>Machine</th><th>Métier d’appui</th><th>Durée</th><th>Pages</th></tr>
+<tr><td><b>S1</b></td><td>25 minutes pour changer d’outils</td><td>Presse plieuse PP-1</td><td>Chaudronnerie</td><td>50 min</td><td>S1 · 1 à 3</td></tr>
+<tr><td><b>S2</b></td><td>Quand le changement finit-il ?</td><td>Centre d’usinage CU-1</td><td>Usinage CN</td><td>45 min</td><td>S2 · 1 à 3</td></tr>
+<tr><td><b>S3</b></td><td>Le posage de la cellule</td><td>Cellule de soudage R2</td><td>Maintenance</td><td>45 min</td><td>S3 · 1 et 2</td></tr>
+<tr><td><b>S4</b></td><td>Que faire des minutes gagnées ?</td><td>Presse plieuse PP-1</td><td>Les trois métiers</td><td>45 min</td><td>S4 · 1 et 2</td></tr>
+<tr><td><b>S5</b></td><td>Changer à deux</td><td>Presse plieuse PP-1</td><td>Les trois métiers</td><td>50 min</td><td>S5 · 1 et 2</td></tr>
+</table>
+<div class="encadre orange">
+<p><b>Règle du jeu.</b> Toute réponse cite sa source : « S1, chronologie, opération 5 ». Tout calcul est posé.</p>
+<p><b>Matériel.</b> Calculatrice, crayon, règle, deux couleurs.</p>
+</div>
+<p style="margin-top:6mm">Nom ou équipe : ................................................................................................</p>
+<p class="fiction">Cas d’étude. L’entreprise ADS, ses salariés et tous les chiffres sont inventés pour la formation.</p>
+
+<div class="num-page">Page de garde</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · SMED · Mémo</span></div>
+
+<h2 style="margin-top:0">Mémo SMED</h2>
+<p><b>SMED</b> : <i>Single Minute Exchange of Die</i>, méthode formalisée par Shigeo Shingo. L’objectif affiché : changer d’outillage en un nombre de minutes à un chiffre, donc en moins de 10 minutes. C’est un cap, pas une promesse : on ne l’atteint pas toujours.</p>
+<div class="encadre">
+<p><b>Le temps de changement</b> se mesure du <b>dernier produit bon</b> de la série qui se termine au <b>premier produit bon</b> de la nouvelle série, <b>à la cadence normale</b>. Les essais, les retouches et la montée en cadence en font partie.</p>
+</div>
+<table>
+<tr><th style="width:22%">Mot</th><th>Sens</th><th style="width:30%">Exemple</th></tr>
+<tr><td><b>Opération interne</b></td><td>Ne peut se faire que machine arrêtée.</td><td>Démonter l’outil en place.</td></tr>
+<tr><td><b>Opération externe</b></td><td>Peut se faire pendant que la machine produit encore l’ancienne série, ou produit déjà la nouvelle.</td><td>Aller chercher le nouvel outil au magasin.</td></tr>
+</table>
+<h3>Les étapes</h3>
+<table>
+<tr><th style="width:8%">Étape</th><th>Ce qu’on fait</th></tr>
+<tr><td class="c">1</td><td><b>Observer et chronométrer</b> un vrai changement, opération par opération, sans rien corriger.</td></tr>
+<tr><td class="c">2</td><td><b>Séparer</b> l’interne et l’externe. Pour chaque opération : peut-on la faire machine en marche ?</td></tr>
+<tr><td class="c">3</td><td><b>Convertir</b> de l’interne en externe : préparer, préchauffer, prérégler avant l’arrêt.</td></tr>
+<tr><td class="c">4</td><td><b>Réduire</b> ce qui reste interne : fixations rapides, centrage par pions, suppression des réglages, travail à deux.</td></tr>
+<tr><td class="c">5</td><td><b>Réduire l’externe et standardiser</b> : écrire la façon de faire, la former, la tenir.</td></tr>
+</table>
+<div class="encadre rouge"><p><b>Ce qu’on ne touche jamais pour gagner du temps</b> : la consignation des énergies et les dispositifs de sécurité. On peut rendre la consignation plus rapide, jamais la supprimer.</p></div>
+
+<div class="num-page">Mémo</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · SMED · S1 Chaudronnerie</span></div>
+
+<div class="titre-act"><span class="piece">S1</span><h2>25 minutes pour changer d’outils</h2><span class="etiquette stag">Chaudronnerie</span><span class="duree">50 min</span></div>
+<p>Presse plieuse PP-1. Hugo change d’outils trois fois par jour en moyenne, 25 minutes à chaque fois. Le méthodiste a chronométré un changement. Aujourd’hui, <b>tout</b> se fait presse arrêtée.</p>
+<table style="font-size:.88em">
+<tr><th style="width:5%">Op.</th><th>Opération observée</th><th class="num" style="width:7%">Min</th><th style="width:8%">Interne</th><th style="width:8%">Externe</th><th style="width:18%">Remarque</th></tr>
+<tr><td class="c">1</td><td>Lire l’OF et le plan de la nouvelle pièce, au poste</td><td class="num">1,5</td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td></td></tr><tr><td class="c">2</td><td>Aller chercher le poinçon et la matrice au magasin d’outillage (60 m aller-retour, attente du magasinier)</td><td class="num">5</td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td></td></tr><tr><td class="c">3</td><td>Desserrer les brides et démonter le poinçon de l’OF précédent</td><td class="num">1,5</td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td></td></tr><tr><td class="c">4</td><td>Démonter la matrice de l’OF précédent</td><td class="num">2</td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td></td></tr><tr><td class="c">5</td><td>Chercher la clé des brides de matrice, pas rangée au poste</td><td class="num">1,5</td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td></td></tr><tr><td class="c">6</td><td>Monter la nouvelle matrice et l’aligner</td><td class="num">2,5</td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td></td></tr><tr><td class="c">7</td><td>Monter le nouveau poinçon</td><td class="num">1,5</td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td></td></tr><tr><td class="c">8</td><td>Saisir le programme de pliage à la main dans la commande (aucun programme enregistré)</td><td class="num">3</td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td></td></tr><tr><td class="c">9</td><td>Plier une pièce d’essai et la mesurer</td><td class="num">1,5</td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td></td></tr><tr><td class="c">10</td><td>Corriger la butée arrière et l’angle, plier et mesurer une deuxième pièce</td><td class="num">2,5</td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td></td></tr><tr><td class="c">11</td><td>Ramener les outils de l’OF précédent au magasin</td><td class="num">2,5</td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td></td></tr>
+<tr><td></td><td><b>Total</b></td><td class="num"><b>25</b></td><td></td><td></td><td></td></tr>
+</table>
+<p class="q"><b class="n">1</b><b>Séparer.</b> Pour chaque opération, la question n’est pas « comment Hugo la fait-il aujourd’hui ? » mais « <b>pourrait</b>-on la faire presse en marche ? ». Cochez. Si une opération ne devrait pas exister du tout, écrivez « à supprimer » dans la remarque. <span class="duree">10 min</span></p>
+<p class="q"><b class="n">2</b>Si l’on fait toutes les opérations externes avant l’arrêt ou après le redémarrage, combien de minutes la presse reste-t-elle arrêtée ? <span class="duree">5 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="fiction">Cas d’étude. L’entreprise ADS, ses salariés et tous les chiffres sont inventés pour la formation.</p>
+
+<div class="num-page">S1 · page 1 sur 3</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · SMED · S1 Chaudronnerie</span></div>
+
+<p>L’équipe propose cinq améliorations. Les gains sont des estimations du méthodiste, à confirmer par un essai.</p>
+<table style="font-size:.9em">
+<tr><th style="width:6%"></th><th>Proposition</th><th style="width:30%">Effet estimé</th><th style="width:17%">Coût estimé</th></tr>
+<tr><td><b>P1</b></td><td>Préparer l’OF, le plan et les outils sur un chariot au poste, avant la fin de l’OF en cours</td><td>Op. 1 et 2 faites presse en marche</td><td>Chariot : 350 €</td></tr><tr><td><b>P2</b></td><td>Ranger les outils de l’OF précédent après le redémarrage</td><td>Op. 11 faite presse en marche</td><td>0 €</td></tr><tr><td><b>P3</b></td><td>Clé dédiée accrochée à la presse, sur un tableau à ombres</td><td>Op. 5 supprimée</td><td>40 €</td></tr><tr><td><b>P4</b></td><td>Programmes de pliage enregistrés et validés pour chaque référence</td><td>Op. 8 : 3 → 0,5 min · Op. 10 : 2,5 → 1 min</td><td>2 jours de méthodiste</td></tr><tr><td><b>P5</b></td><td>Brides à serrage rapide sur le poinçon et la matrice</td><td>Op. 3, 4, 6, 7 : 7,5 → 4 min au total</td><td>6 500 €</td></tr>
+</table>
+<p class="q"><b class="n">3</b><b>Calculer, étape par étape.</b> Temps d’arrêt de la presse après chaque groupe de propositions. <span class="duree">12 min</span></p>
+<table class="vide">
+<tr><th style="width:40%">Situation</th><th>Calcul</th><th class="num" style="width:16%">Arrêt (min)</th></tr>
+<tr><td>Aujourd’hui</td><td></td><td class="num">25</td></tr>
+<tr><td>Après P1, P2, P3</td><td></td><td></td></tr>
+<tr><td>Après P1 à P4</td><td></td><td></td></tr>
+<tr><td>Après P1 à P5</td><td></td><td></td></tr>
+</table>
+<p class="q"><b class="n">4</b>Les quatre premières propositions coûtent peu. Atteignent-elles l’objectif des 10 minutes ? Que faut-il de plus ? <span class="duree">4 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">5</b>Avec trois changements par jour, combien de minutes de presse gagne-t-on par jour avec P1 à P4 ? Avec P1 à P5 ? <span class="duree">4 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+
+<div class="num-page">S1 · page 2 sur 3</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · SMED · S1 Chaudronnerie</span></div>
+
+<h3>Questions de réflexion <span class="duree">15 min</span></h3>
+<p class="q"><b class="n">6</b>Les opérations externes ne disparaissent pas : il faut toujours 9 minutes pour lire l’OF, chercher et ranger les outils. Qui les fait, pendant que la presse tourne ? Hugo peut-il quitter sa presse ? Proposez une organisation.</p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">7</b>L’opération 10 (corriger la butée et l’angle) est un réglage. Pourquoi dit-on souvent qu’un réglage est le signe d’un problème non résolu ? Qu’est-ce que P4 change à cela ?</p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">8</b>Hugo dit : « Ça fait vingt ans que je change comme ça, et je n’ai jamais raté une pièce. » Que lui répondez-vous, sans le vexer, et en parlant de sa presse plutôt que de lui ?</p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">9</b>Qu’est-ce que P5 apporte de plus que P1 à P4, en minutes par jour ? En combien de jours de travail les 6 500 € sont-ils remboursés si une minute de presse vaut 1,50 € ? Ce chiffre de 1,50 € vous paraît-il suffisant pour décider ?</p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+
+<div class="num-page">S1 · page 3 sur 3</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · SMED · S2 Usinage CN</span></div>
+
+<div class="titre-act"><span class="piece">S2</span><h2>Quand le changement finit-il ?</h2><span class="etiquette stag">Usinage CN</span><span class="duree">45 min</span></div>
+<p>Centre d’usinage CU-1. Passage de la bride B7 au support S2. Sur sa fiche, l’opérateur note un changement de série de 35 minutes. Le méthodiste a suivi la matinée minute par minute.</p>
+<table style="font-size:.9em">
+<tr><th style="width:20%">Heure</th><th>Ce qui se passe</th></tr>
+<tr><td style="white-space:nowrap">10 h 02</td><td>Dernière bride B7 bonne. Arrêt de la machine.</td></tr><tr><td style="white-space:nowrap">10 h 02 à 10 h 05</td><td>Évacuation des copeaux, nettoyage de la table.</td></tr><tr><td style="white-space:nowrap">10 h 05 à 10 h 40</td><td>Changement de série. C’est ce temps que l’opérateur note sur sa fiche : 35 min.</td></tr><tr><td style="white-space:nowrap">10 h 40</td><td>Support S2 n° 1 : alésage hors tolérance. Rebuté.</td></tr><tr><td style="white-space:nowrap">10 h 40 à 10 h 48</td><td>Correction d’outil. Support n° 2 : encore hors tolérance. Rebuté.</td></tr><tr><td style="white-space:nowrap">10 h 48 à 10 h 56</td><td>Nouvelle correction. Support n° 3 : bon.</td></tr><tr><td style="white-space:nowrap">10 h 56 à 11 h 26</td><td>Supports n° 4 à 8, bons, usinés à vitesse réduite « par prudence » : 5 pièces en 30 min. Le temps de cycle normal est de 4 min.</td></tr><tr><td style="white-space:nowrap">11 h 26</td><td>Retour à la vitesse normale.</td></tr>
+</table>
+<p class="q"><b class="n">1</b><b>La frise.</b> Placez les instants clés sur la frise. Coloriez en rouge ce que la fiche appelle « changement », en orange ce qui est perdu en plus. <span class="duree">5 min</span></p>
+<svg viewBox="0 0 700 90" class="grille" role="img" aria-label="Frise horaire de 10 h 00 à 11 h 30">
+<line x1="30" y1="40" x2="680" y2="40" stroke="#1f2933" stroke-width="1.5"/>
+<line x1="30.0" y1="34" x2="30.0" y2="46" stroke="#1f2933" stroke-width="1.2"/>
+<text x="30.0" y="62" font-size="11" text-anchor="middle">10 h 00</text>
+<line x1="44.4" y1="37" x2="44.4" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="58.9" y1="37" x2="58.9" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="73.3" y1="37" x2="73.3" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="87.8" y1="37" x2="87.8" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="102.2" y1="34" x2="102.2" y2="46" stroke="#1f2933" stroke-width="1.2"/>
+<text x="102.2" y="62" font-size="11" text-anchor="middle">10 h 10</text>
+<line x1="116.7" y1="37" x2="116.7" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="131.1" y1="37" x2="131.1" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="145.6" y1="37" x2="145.6" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="160.0" y1="37" x2="160.0" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="174.4" y1="34" x2="174.4" y2="46" stroke="#1f2933" stroke-width="1.2"/>
+<text x="174.4" y="62" font-size="11" text-anchor="middle">10 h 20</text>
+<line x1="188.9" y1="37" x2="188.9" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="203.3" y1="37" x2="203.3" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="217.8" y1="37" x2="217.8" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="232.2" y1="37" x2="232.2" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="246.7" y1="34" x2="246.7" y2="46" stroke="#1f2933" stroke-width="1.2"/>
+<text x="246.7" y="62" font-size="11" text-anchor="middle">10 h 30</text>
+<line x1="261.1" y1="37" x2="261.1" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="275.6" y1="37" x2="275.6" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="290.0" y1="37" x2="290.0" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="304.4" y1="37" x2="304.4" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="318.9" y1="34" x2="318.9" y2="46" stroke="#1f2933" stroke-width="1.2"/>
+<text x="318.9" y="62" font-size="11" text-anchor="middle">10 h 40</text>
+<line x1="333.3" y1="37" x2="333.3" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="347.8" y1="37" x2="347.8" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="362.2" y1="37" x2="362.2" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="376.7" y1="37" x2="376.7" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="391.1" y1="34" x2="391.1" y2="46" stroke="#1f2933" stroke-width="1.2"/>
+<text x="391.1" y="62" font-size="11" text-anchor="middle">10 h 50</text>
+<line x1="405.6" y1="37" x2="405.6" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="420.0" y1="37" x2="420.0" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="434.4" y1="37" x2="434.4" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="448.9" y1="37" x2="448.9" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="463.3" y1="34" x2="463.3" y2="46" stroke="#1f2933" stroke-width="1.2"/>
+<text x="463.3" y="62" font-size="11" text-anchor="middle">11 h 00</text>
+<line x1="477.8" y1="37" x2="477.8" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="492.2" y1="37" x2="492.2" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="506.7" y1="37" x2="506.7" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="521.1" y1="37" x2="521.1" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="535.6" y1="34" x2="535.6" y2="46" stroke="#1f2933" stroke-width="1.2"/>
+<text x="535.6" y="62" font-size="11" text-anchor="middle">11 h 10</text>
+<line x1="550.0" y1="37" x2="550.0" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="564.4" y1="37" x2="564.4" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="578.9" y1="37" x2="578.9" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="593.3" y1="37" x2="593.3" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="607.8" y1="34" x2="607.8" y2="46" stroke="#1f2933" stroke-width="1.2"/>
+<text x="607.8" y="62" font-size="11" text-anchor="middle">11 h 20</text>
+<line x1="622.2" y1="37" x2="622.2" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="636.7" y1="37" x2="636.7" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="651.1" y1="37" x2="651.1" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="665.6" y1="37" x2="665.6" y2="43" stroke="#1f2933" stroke-width="0.6"/>
+<line x1="680.0" y1="34" x2="680.0" y2="46" stroke="#1f2933" stroke-width="1.2"/>
+<text x="680.0" y="62" font-size="11" text-anchor="middle">11 h 30</text>
+<text x="30" y="20" font-size="11" fill="#5f6b76">Marquez les instants clés et coloriez les périodes</text>
+</svg>
+<p class="q"><b class="n">2</b><b>Le vrai temps de changement.</b> Relisez la définition du mémo. Calculez : <span class="duree">10 min</span></p>
+<table class="vide">
+<tr><th>Morceau</th><th>Calcul</th><th class="num" style="width:16%">Minutes</th></tr>
+<tr><td>Du dernier bon B7 au premier bon S2</td><td></td><td></td></tr>
+<tr><td>Temps perdu par la vitesse réduite (pièces 4 à 8)</td><td></td><td></td></tr>
+<tr><td><b>Temps de changement réel</b></td><td></td><td></td></tr>
+<tr><td>Temps noté sur la fiche</td><td></td><td class="num">35</td></tr>
+<tr><td><b>Temps caché</b></td><td></td><td></td></tr>
+</table>
+<p class="fiction">Cas d’étude. L’entreprise ADS, ses salariés et tous les chiffres sont inventés pour la formation.</p>
+
+<div class="num-page">S2 · page 1 sur 3</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · SMED · S2 Usinage CN</span></div>
+
+<p class="q"><b class="n">3</b>Où passent ces minutes cachées dans le TRS de la machine, si l’opérateur ne note que 35 minutes d’arrêt ? Dans Do, dans TP ou dans TQ ? <span class="duree">5 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p><b>Détail des 35 minutes notées</b>, chronométré par le méthodiste :</p>
+<table style="font-size:.9em">
+<tr><th style="width:5%">Op.</th><th>Opération</th><th class="num" style="width:7%">Min</th><th style="width:12%">I, E ou à supprimer</th><th style="width:28%">Comment ?</th></tr>
+<tr><td class="c">a</td><td>Démonter le montage de bridage B7</td><td class="num">4</td><td></td><td></td></tr><tr><td class="c">b</td><td>Aller ranger le montage B7 à l’armoire de l’atelier et rapporter le montage S2</td><td class="num">5</td><td></td><td></td></tr><tr><td class="c">c</td><td>Monter et brider le montage S2, le dégauchir au comparateur</td><td class="num">7</td><td></td><td></td></tr><tr><td class="c">d</td><td>Chercher les 4 outils S2 et les charger dans le magasin d’outils (il y a des places libres)</td><td class="num">4</td><td></td><td></td></tr><tr><td class="c">e</td><td>Mesurer les 4 outils sur la machine, au palpeur</td><td class="num">6</td><td></td><td></td></tr><tr><td class="c">f</td><td>Charger le programme S2 depuis le PC de l’atelier, la clé USB étant introuvable</td><td class="num">3</td><td></td><td></td></tr><tr><td class="c">g</td><td>Prendre l’origine pièce au palpeur</td><td class="num">3</td><td></td><td></td></tr><tr><td class="c">h</td><td>Attendre le contrôleur pour qu’il valide le premier article</td><td class="num">3</td><td></td><td></td></tr>
+</table>
+<p class="q"><b class="n">4</b><b>Séparer et convertir.</b> Pour chaque opération : I (interne), E (pourrait se faire machine en marche), ou S (à supprimer). Dans « Comment ? », dites ce qu’il faut prévoir. Pensez au banc de préréglage des outils, aux programmes sur le réseau, au contrôleur prévenu à l’avance. <span class="duree">10 min</span></p>
+
+<div class="num-page">S2 · page 2 sur 3</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · SMED · S2 Usinage CN</span></div>
+
+<p class="q"><b class="n">5</b><b>Calculer.</b> Hypothèses du méthodiste : avec un préréglage hors machine, l’opération e devient externe ; avec les programmes sur le réseau, f passe à 0,5 min ; si le contrôleur est prévenu une heure avant, h disparaît ; un montage S2 centré par pions ramène c à 2 min. Que devient l’arrêt ? <span class="duree">6 min</span></p>
+<table class="vide">
+<tr><th style="width:45%">Situation</th><th>Calcul</th><th class="num" style="width:16%">Arrêt (min)</th></tr>
+<tr><td>Aujourd’hui (temps noté)</td><td></td><td class="num">35</td></tr>
+<tr><td>b, d, e passées en externe</td><td></td><td></td></tr>
+<tr><td>Puis f réduite et h supprimée</td><td></td><td></td></tr>
+<tr><td>Puis montage à pions (c)</td><td></td><td></td></tr>
+</table>
+<p class="q"><b class="n">6</b>Ces actions réduisent les 35 minutes notées. Lesquelles réduisent aussi le temps caché (essais, rebuts, prudence) ? Pourquoi ? <span class="duree">5 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">7</b><b>Le temps disponible pendant le cycle.</b> Sur la bride B7, le cycle dure 4,5 min. L’opérateur passe 1 min à décharger et recharger la pièce, et 0,5 min à contrôler. Combien de minutes libres a-t-il par cycle ? Combien de cycles faut-il pour faire 15 minutes de préparation externe ? Combien de brides avant la fin de l’OF faut-il commencer ? <span class="duree">6 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+
+<div class="num-page">S2 · page 3 sur 3</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · SMED · S3 Maintenance</span></div>
+
+<div class="titre-act"><span class="piece">S3</span><h2>Le posage de la cellule</h2><span class="etiquette stag">Maintenance</span><span class="duree">45 min</span></div>
+<p>Cellule robotisée R2. Pour passer du châssis CH-30 au CH-40, il faut changer le posage, le gabarit qui tient les pièces pendant le soudage. Cela arrive 4 fois par semaine. Chronométrage du dernier changement :</p>
+<table style="font-size:.88em">
+<tr><th style="width:5%">Op.</th><th>Opération</th><th class="num" style="width:7%">Min</th></tr>
+<tr><td class="c">1</td><td>Arrêter la cellule et consigner les énergies électrique et pneumatique, selon la procédure</td><td class="num">3</td></tr><tr><td class="c">2</td><td>Débrancher les 6 raccords pneumatiques du posage (raccords vissés, clés de 14 et de 17)</td><td class="num">4</td></tr><tr><td class="c">3</td><td>Dévisser les 8 vis de fixation du posage (vis M10 et M12, deux clés)</td><td class="num">5</td></tr><tr><td class="c">4</td><td>Sortir le posage CH-30 au pont roulant, dont 6 min d’attente du pont</td><td class="num">10</td></tr><tr><td class="c">5</td><td>Amener et poser le posage CH-40 au pont</td><td class="num">4</td></tr><tr><td class="c">6</td><td>Positionner le posage CH-40 au comparateur, puis revisser</td><td class="num">7</td></tr><tr><td class="c">7</td><td>Rebrancher les 6 raccords pneumatiques</td><td class="num">4</td></tr><tr><td class="c">8</td><td>Déconsigner, remettre en service, sélectionner le programme</td><td class="num">2</td></tr><tr><td class="c">9</td><td>Souder le premier châssis CH-40 et le contrôler</td><td class="num">6</td></tr>
+<tr><td></td><td><b>Total</b></td><td class="num"><b>45</b></td></tr>
+</table>
+<p>Réunion de l’équipe. Sept idées sont proposées.</p>
+<table style="font-size:.86em">
+<tr><th style="width:5%"></th><th>Idée</th><th style="width:24%">Effet estimé</th><th style="width:10%">Coût</th><th style="width:13%">Retenue ? Pourquoi ?</th></tr>
+<tr><td><b>Q1</b></td><td>Ne plus consigner l’air : le posage est à l’arrêt, on gagne du temps</td><td>Op. 1 : 3 → 1,5 min</td><td>0 €</td><td></td></tr><tr><td><b>Q2</b></td><td>Shunter le contact de porte pour travailler cellule ouverte, robot sous tension</td><td>Op. 1 et 8 : −2 min</td><td>0 €</td><td></td></tr><tr><td><b>Q3</b></td><td>Raccords pneumatiques regroupés sur une embase à connexion rapide</td><td>Op. 2 et 7 : 8 → 1 min au total</td><td>1 800 €</td><td></td></tr><tr><td><b>Q4</b></td><td>Vis toutes identiques et brides quart de tour</td><td>Op. 3 : 5 → 1,5 min</td><td>600 €</td><td></td></tr><tr><td><b>Q5</b></td><td>Chariot de transfert à rouleaux, à la hauteur de la table ; posage CH-40 amené à côté de la cellule avant l’arrêt</td><td>Op. 4 : 10 → 2 min · Op. 5 : 4 → 2 min</td><td>2 500 €</td><td></td></tr><tr><td><b>Q6</b></td><td>Pions de centrage sur la table, douilles sous chaque posage</td><td>Op. 6 : 7 → 1,5 min</td><td>1 200 €</td><td></td></tr><tr><td><b>Q7</b></td><td>Points de consignation regroupés près de la porte, procédure affichée</td><td>Op. 1 : 3 → 2 min · Op. 8 : 2 → 1,5 min</td><td>300 €</td><td></td></tr>
+</table>
+<p class="q"><b class="n">1</b><b>Trier.</b> Pour chaque idée, dites si vous la retenez. Deux idées doivent être refusées quel que soit le gain : lesquelles, et pourquoi ? <span class="duree">8 min</span></p>
+<p class="fiction">Cas d’étude. L’entreprise ADS, ses salariés et tous les chiffres sont inventés pour la formation.</p>
+
+<div class="num-page">S3 · page 1 sur 2</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · SMED · S3 Maintenance</span></div>
+
+<p class="q"><b class="n">2</b><b>Calculer.</b> Appliquez les idées retenues une par une. <span class="duree">12 min</span></p>
+<table class="vide">
+<tr><th style="width:28%">Après</th><th>Calcul</th><th class="num" style="width:16%">Changement (min)</th></tr>
+<tr><td>Aujourd’hui</td><td></td><td class="num">45</td></tr>
+<tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr>
+</table>
+<p class="q"><b class="n">3</b>Atteint-on 10 minutes ? Quelle opération pèse le plus dans ce qui reste ? Que proposeriez-vous encore ? <span class="duree">5 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">4</b><b>Le retour sur investissement.</b> Calculez le gain par changement, puis par semaine. La cellule R2 est la machine qui limite la production des châssis : chaque tranche de 2 minutes gagnée donne un châssis de plus, dont 96 % sont bons. Chaque châssis bon rapporte 40 € de marge. En combien de semaines les idées retenues sont-elles payées ? <span class="duree">10 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">5</b>Ce calcul suppose deux choses. Lesquelles ? Que devient-il si la cellule R2 n’est plus la machine qui limite, ou si les clients ne commandent pas plus de châssis ? <span class="duree">5 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">6</b>Qui conçoit et installe ces améliorations ? Qui les utilise chaque semaine ? Que faut-il prévoir pour qu’elles tiennent dans le temps ? <span class="duree">5 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+
+<div class="num-page">S3 · page 2 sur 2</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · SMED · S4 Trois métiers</span></div>
+
+<div class="titre-act"><span class="piece">S4</span><h2>Que faire des minutes gagnées ?</h2><span class="etiquette stag">Les trois métiers</span><span class="duree">45 min</span></div>
+<p>La presse plieuse PP-1 fabrique six références pour le magasin de l’atelier. Aujourd’hui, chaque référence est pliée <b>une fois par semaine</b>, en un seul lot qui couvre la semaine. Chaque changement dure 25 min. Grâce au chantier SMED (activité S1), il va descendre à <b>10 min</b>.</p>
+<p>La presse n’est pas la machine qui limite la production : elle a déjà de la marge. Le magasin, lui, est plein : on y range les palettes au sol, faute de place.</p>
+<div class="encadre"><p><b>Stock moyen.</b> Quand on consomme régulièrement un lot, on a en moyenne la moitié du lot en stock. Un lot de 800 pièces donne un stock moyen d’environ 400 pièces. Une palette de 1 200 × 800 mm occupe 0,96 m² au sol.</p></div>
+<table style="font-size:.9em">
+<tr><th rowspan="2">Réf.</th><th rowspan="2">Pièce</th><th rowspan="2" class="num">Besoin par semaine</th><th rowspan="2" class="num">Pièces par palette</th><th colspan="3" style="text-align:center">Stock moyen en palettes</th></tr>
+<tr><th class="num">1 lot par semaine</th><th class="num">2 lots par semaine</th><th class="num">1 lot par jour (5 par semaine)</th></tr>
+<tr><td>E40</td><td>Équerre</td><td class="num">800</td><td class="num">200</td><td></td><td></td><td></td></tr><tr><td>F12</td><td>Flasque</td><td class="num">500</td><td class="num">100</td><td></td><td></td><td></td></tr><tr><td>C3</td><td>Capot</td><td class="num">150</td><td class="num">25</td><td></td><td></td><td></td></tr><tr><td>R5</td><td>Renfort</td><td class="num">600</td><td class="num">150</td><td></td><td></td><td></td></tr><tr><td>P8</td><td>Patte de fixation</td><td class="num">1000</td><td class="num">250</td><td></td><td></td><td></td></tr><tr><td>T2</td><td>Tôle de fond</td><td class="num">250</td><td class="num">50</td><td></td><td></td><td></td></tr>
+<tr><td colspan="4"><b>Total</b></td><td></td><td></td><td></td></tr>
+</table>
+<p class="q"><b class="n">1</b>Complétez le tableau. <span class="duree">12 min</span></p>
+<p class="q"><b class="n">2</b>Pour chaque option, calculez le temps de changement par semaine, avant et après SMED. <span class="duree">6 min</span></p>
+<table class="vide">
+<tr><th>Option</th><th>Changements par semaine</th><th>Avant SMED (25 min)</th><th>Après SMED (10 min)</th><th>Gain ou perte par rapport à aujourd’hui</th></tr>
+<tr><td>A · 1 lot par semaine</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>B · 2 lots par semaine</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>C · 1 lot par jour</td><td></td><td></td><td></td><td></td></tr>
+</table>
+<p class="fiction">Cas d’étude. L’entreprise ADS, ses salariés et tous les chiffres sont inventés pour la formation.</p>
+
+<div class="num-page">S4 · page 1 sur 2</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · SMED · S4 Trois métiers</span></div>
+
+<p class="q"><b class="n">3</b>Le directeur veut « plus de capacité <b>et</b> moins de stock ». Avec ces chiffres, peut-il avoir les deux à fond ? Montrez-le avec le tableau de la question 2. <span class="duree">6 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">4</b>Sachant que la presse a déjà de la marge et que le magasin déborde, quelle option choisissez-vous ? Combien de palettes, et combien de mètres carrés, libère-t-elle par rapport à aujourd’hui ? <span class="duree">8 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">5</b>Un client demande en urgence 100 capots C3 un mardi. Le stock de C3 est vide. Combien de temps attend-il au pire avec l’option A ? Avec l’option B ? <span class="duree">5 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">6</b>Le stock moyen « égal à la moitié du lot » suppose une consommation régulière. Dans quels cas est-ce faux ? Que faut-il ajouter au stock dans la vraie vie ? <span class="duree">8 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+
+<div class="num-page">S4 · page 2 sur 2</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · SMED · S5 Trois métiers</span></div>
+
+<div class="titre-act"><span class="piece">S5</span><h2>Changer à deux</h2><span class="etiquette stag">Les trois métiers</span><span class="duree">50 min</span></div>
+<p>Presse plieuse PP-1, après les premières améliorations de S1. Voici le changement d’outils tel qu’il reste, presse arrêtée. Règle de sécurité de l’atelier : <b>une seule personne par moitié de presse</b>.</p>
+<table style="font-size:.9em">
+<tr><th style="width:5%">Op.</th><th>Opération</th><th class="num" style="width:7%">Min</th><th style="width:20%">Condition</th></tr>
+<tr><td class="c">1</td><td>Arrêter la presse et la consigner : chaque intervenant pose son propre cadenas</td><td class="num">0,5</td><td>Avant tout le reste</td></tr><tr><td class="c">2</td><td>Démonter le poinçon, moitié gauche</td><td class="num">1</td><td>Après 1</td></tr><tr><td class="c">3</td><td>Démonter le poinçon, moitié droite</td><td class="num">1</td><td>Après 1</td></tr><tr><td class="c">4</td><td>Démonter la matrice, moitié gauche</td><td class="num">1</td><td>Après 2</td></tr><tr><td class="c">5</td><td>Démonter la matrice, moitié droite</td><td class="num">1</td><td>Après 3</td></tr><tr><td class="c">6</td><td>Monter la matrice, moitié gauche</td><td class="num">1</td><td>Après 4</td></tr><tr><td class="c">7</td><td>Monter la matrice, moitié droite</td><td class="num">1</td><td>Après 5</td></tr><tr><td class="c">8</td><td>Monter le poinçon, moitié gauche</td><td class="num">1</td><td>Après 6</td></tr><tr><td class="c">9</td><td>Monter le poinçon, moitié droite</td><td class="num">1</td><td>Après 7</td></tr><tr><td class="c">10</td><td>Tout le monde hors zone, retirer les cadenas, remettre en service</td><td class="num">0,5</td><td>Après 8 et 9</td></tr><tr><td class="c">11</td><td>Charger le programme enregistré</td><td class="num">0,5</td><td>Après 10</td></tr><tr><td class="c">12</td><td>Plier la pièce d’essai et la contrôler</td><td class="num">1,5</td><td>Après 11</td></tr>
+</table>
+<p class="q"><b class="n">1</b><b>Seul.</b> Combien de temps la presse est-elle arrêtée si Hugo fait tout seul ? <span class="duree">3 min</span></p>
+<div class="ligne-ecriture"></div>
+<p class="q"><b class="n">2</b><b>À deux.</b> Hugo (A) est aidé par Léa (B), régleuse. Placez les opérations sur la grille, en respectant les conditions. Combien de temps la presse est-elle arrêtée ? <span class="duree">15 min</span></p>
+<svg viewBox="0 0 700 148" class="grille" role="img" aria-label="Grille de Gantt vierge">
+<line x1="120.0" y1="26" x2="120.0" y2="118" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="120.0" y="18" font-size="11" text-anchor="middle">0</text>
+<line x1="143.8" y1="26" x2="143.8" y2="118" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="167.5" y1="26" x2="167.5" y2="118" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="167.5" y="18" font-size="11" text-anchor="middle">1</text>
+<line x1="191.2" y1="26" x2="191.2" y2="118" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="215.0" y1="26" x2="215.0" y2="118" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="215.0" y="18" font-size="11" text-anchor="middle">2</text>
+<line x1="238.8" y1="26" x2="238.8" y2="118" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="262.5" y1="26" x2="262.5" y2="118" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="262.5" y="18" font-size="11" text-anchor="middle">3</text>
+<line x1="286.2" y1="26" x2="286.2" y2="118" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="310.0" y1="26" x2="310.0" y2="118" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="310.0" y="18" font-size="11" text-anchor="middle">4</text>
+<line x1="333.8" y1="26" x2="333.8" y2="118" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="357.5" y1="26" x2="357.5" y2="118" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="357.5" y="18" font-size="11" text-anchor="middle">5</text>
+<line x1="381.2" y1="26" x2="381.2" y2="118" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="405.0" y1="26" x2="405.0" y2="118" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="405.0" y="18" font-size="11" text-anchor="middle">6</text>
+<line x1="428.8" y1="26" x2="428.8" y2="118" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="452.5" y1="26" x2="452.5" y2="118" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="452.5" y="18" font-size="11" text-anchor="middle">7</text>
+<line x1="476.2" y1="26" x2="476.2" y2="118" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="500.0" y1="26" x2="500.0" y2="118" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="500.0" y="18" font-size="11" text-anchor="middle">8</text>
+<line x1="523.8" y1="26" x2="523.8" y2="118" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="547.5" y1="26" x2="547.5" y2="118" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="547.5" y="18" font-size="11" text-anchor="middle">9</text>
+<line x1="571.2" y1="26" x2="571.2" y2="118" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="595.0" y1="26" x2="595.0" y2="118" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="595.0" y="18" font-size="11" text-anchor="middle">10</text>
+<line x1="618.8" y1="26" x2="618.8" y2="118" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="642.5" y1="26" x2="642.5" y2="118" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="642.5" y="18" font-size="11" text-anchor="middle">11</text>
+<line x1="666.2" y1="26" x2="666.2" y2="118" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="690.0" y1="26" x2="690.0" y2="118" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="690.0" y="18" font-size="11" text-anchor="middle">12</text>
+<line x1="120" y1="26" x2="690" y2="26" stroke="#9aa5b1"/>
+<text x="112" y="53.0" font-size="12" text-anchor="end" font-weight="600" fill="#003d7a">Hugo (A)</text>
+<line x1="120" y1="72" x2="690" y2="72" stroke="#9aa5b1"/>
+<text x="112" y="99.0" font-size="12" text-anchor="end" font-weight="600" fill="#003d7a">Léa (B)</text>
+<line x1="120" y1="118" x2="690" y2="118" stroke="#9aa5b1"/>
+<text x="405.0" y="142" font-size="11" text-anchor="middle" fill="#5f6b76">Minutes depuis l’arrêt de la presse</text>
+</svg>
+<p class="fiction">Cas d’étude. L’entreprise ADS, ses salariés et tous les chiffres sont inventés pour la formation.</p>
+
+<div class="num-page">S5 · page 1 sur 2</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · SMED · S5 Trois métiers</span></div>
+
+<p class="q"><b class="n">3</b>Combien de minutes de travail cela coûte-t-il au total, si Léa repart dès qu’elle n’est plus utile ? Comparez avec le travail seul. Qu’est-ce qui a diminué, qu’est-ce qui n’a presque pas bougé ? <span class="duree">5 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">4</b>Une troisième personne ferait-elle gagner du temps ? Pourquoi ? <span class="duree">3 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">5</b>Léa travaillait sur une autre machine. Pendant qu’elle aide Hugo, que devient cette machine ? Dans quel cas le changement à deux vaut-il le coup ? Revoyez S4, et B4 dans la banque TRS si vous l’avez faite. <span class="duree">6 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">6</b><b>Le standard.</b> Rédigez la fiche standard du changement à deux, celle qui sera affichée sur la presse. <span class="duree">15 min</span></p>
+<table class="vide" style="font-size:.9em">
+<tr><th style="width:6%">Étape</th><th style="width:10%">Qui</th><th>Ce qu’on fait</th><th style="width:9%">Min</th><th style="width:28%">Point clé (sécurité, qualité, astuce)</th></tr>
+<tr style="height:34px"><td></td><td></td><td></td><td></td><td></td></tr>
+<tr style="height:34px"><td></td><td></td><td></td><td></td><td></td></tr>
+<tr style="height:34px"><td></td><td></td><td></td><td></td><td></td></tr>
+<tr style="height:34px"><td></td><td></td><td></td><td></td><td></td></tr>
+<tr style="height:34px"><td></td><td></td><td></td><td></td><td></td></tr>
+<tr style="height:34px"><td></td><td></td><td></td><td></td><td></td></tr>
+<tr style="height:34px"><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+
+<div class="num-page">S5 · page 2 sur 2</div>
+</section>
+
+</body>
+</html>

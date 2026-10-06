@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRS, dossier stagiaire</title>
+<link rel="stylesheet" href="style.css">
+<style>
+svg.grille { width: 100%; height: auto; display: block; margin: 6px 0 10px; font-family: "Segoe UI", Tahoma, Arial, sans-serif; }
+.q { margin: 12px 0 4px; }
+.q b.n { display: inline-block; background: var(--orange); color: #fff; border-radius: 4px; padding: 0 7px; margin-right: 6px; }
+.duree { color: var(--gris); font-size: .88em; }
+.titre-act { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.titre-act h2 { margin: 0; border: 0; font-size: 1.45em; }
+.vide td { height: 24px; }
+td.c { text-align: center; }
+.fiction { font-size: .82em; color: var(--gris); font-style: italic; }
+.citation { border-left: 4px solid var(--gris); padding: 4px 12px; margin: 10px 0; font-style: italic; }
+@media print { .q { margin: 7px 0 2px; } .vide td { height: 19px; } .ligne-ecriture { height: 24px; } }
+
+</style>
+</head>
+<body>
+<div class="barre-impr"><a href="../index.html">Retour au plan</a><span>Dossier stagiaire TRS. Chaque activité s’imprime séparément, avec le mémo.</span><button onclick="window.print()">Imprimer</button></div>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · TRS · Dossier stagiaire</span></div>
+
+<h1 style="color:var(--bleu-fonce);margin:10mm 0 2mm;font-size:2em">Le TRS sur le terrain</h1>
+<p style="font-size:1.2em;margin:0 0 8mm">Cinq situations chez ADS, pour savoir ce que dit vraiment un TRS, et ce qu’il ne dit pas</p>
+<h2>ADS en bref</h2>
+<p><b>ADS, Ateliers de la Sauldre</b>, PME du Cher : 64 salariés, réservoirs d’air comprimé, cuves, châssis mécano-soudés, usinage des pièces associées. L’atelier tourne en une équipe, de 7 h 30 à 16 h 00, avec une pause déjeuner de 30 minutes hors temps d’ouverture.</p>
+<h2>Les activités</h2>
+<table>
+<tr><th>Code</th><th>Titre</th><th>Machine</th><th>Métier d’appui</th><th>Durée</th><th>Pages</th></tr>
+<tr><td><b>B1</b></td><td>La journée de la plieuse</td><td>Presse plieuse PP-1</td><td>Chaudronnerie</td><td>50 min</td><td>B1 · 1 à 3</td></tr>
+<tr><td><b>B2</b></td><td>Un TRS trop beau</td><td>Centre d’usinage CU-1</td><td>Usinage CN</td><td>45 min</td><td>B2 · 1 et 2</td></tr>
+<tr><td><b>B3</b></td><td>Les minutes qui manquent</td><td>Cellule de soudage R2</td><td>Maintenance</td><td>45 min</td><td>B3 · 1 et 2</td></tr>
+<tr><td><b>B4</b></td><td>Où gagner des châssis ?</td><td>Les trois machines du flux</td><td>Les trois métiers</td><td>45 min</td><td>B4 · 1 et 2</td></tr>
+<tr><td><b>B5</b></td><td>La moyenne qui arrange</td><td>CU-1 et tour T2</td><td>Les trois métiers</td><td>40 min</td><td>B5 · 1 et 2</td></tr>
+</table>
+<div class="encadre orange">
+<p><b>Règle du jeu.</b> Toute réponse cite sa source : « B1, journal, ligne 10 » ou « B3, journal des alarmes ». Tout calcul est posé : on doit pouvoir le refaire.</p>
+<p><b>Matériel.</b> Calculatrice, crayon, règle, deux couleurs.</p>
+</div>
+<p style="margin-top:6mm">Nom ou équipe : ................................................................................................</p>
+<p class="fiction">Cas d’étude. L’entreprise ADS, ses salariés et tous les chiffres sont inventés pour la formation.</p>
+
+<div class="num-page">Page de garde</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · TRS · Mémo</span></div>
+
+<h2 style="margin-top:0">Mémo TRS</h2>
+<p>Le temps d’une machine se décompose en cascade. À chaque marche, une famille de pertes.</p>
+<svg viewBox="0 0 700 272" class="grille" role="img" aria-label="Cascade des temps du TRS">
+<text x="42" y="26" font-size="14" font-weight="700" text-anchor="end" fill="#003d7a">TO</text>
+<rect x="50" y="6" width="620" height="28" fill="#0066cc" rx="2"/>
+<text x="58" y="25" font-size="12" fill="#fff" font-weight="600">Temps d’ouverture</text>
+<text x="42" y="79" font-size="14" font-weight="700" text-anchor="end" fill="#003d7a">TR</text>
+<rect x="50" y="59" width="560" height="28" fill="#0066cc" rx="2"/>
+<text x="58" y="78" font-size="12" fill="#fff" font-weight="600">Temps requis</text>
+<rect x="610" y="59" width="60" height="28" fill="#fdf1e7" stroke="#d9681a" stroke-dasharray="4 3" rx="2"/>
+<text x="670" y="101" font-size="10.5" fill="#d9681a" text-anchor="end">Perte · Arrêts programmés : pauses, réunions, nettoyage prévu, préventif planifié</text>
+<text x="42" y="132" font-size="14" font-weight="700" text-anchor="end" fill="#003d7a">TF</text>
+<rect x="50" y="112" width="420" height="28" fill="#0066cc" rx="2"/>
+<text x="58" y="131" font-size="12" fill="#fff" font-weight="600">Temps de fonctionnement</text>
+<rect x="470" y="112" width="140" height="28" fill="#fdf1e7" stroke="#d9681a" stroke-dasharray="4 3" rx="2"/>
+<text x="610" y="154" font-size="10.5" fill="#d9681a" text-anchor="end">Perte · Arrêts non programmés : pannes, changements de série, réglages, attentes</text>
+<text x="42" y="185" font-size="14" font-weight="700" text-anchor="end" fill="#003d7a">TN</text>
+<rect x="50" y="165" width="350" height="28" fill="#0066cc" rx="2"/>
+<text x="58" y="184" font-size="12" fill="#fff" font-weight="600">Temps net</text>
+<rect x="400" y="165" width="70" height="28" fill="#fdf1e7" stroke="#d9681a" stroke-dasharray="4 3" rx="2"/>
+<text x="470" y="207" font-size="10.5" fill="#d9681a" text-anchor="end">Perte · Écarts de cadence : ralentissements, micro-arrêts non déclarés</text>
+<text x="42" y="238" font-size="14" font-weight="700" text-anchor="end" fill="#003d7a">TU</text>
+<rect x="50" y="218" width="320" height="28" fill="#0066cc" rx="2"/>
+<text x="58" y="237" font-size="12" fill="#fff" font-weight="600">Temps utile</text>
+<rect x="370" y="218" width="30" height="28" fill="#fdf1e7" stroke="#d9681a" stroke-dasharray="4 3" rx="2"/>
+<text x="400" y="260" font-size="10.5" fill="#d9681a" text-anchor="end">Perte · Non-qualité : rebuts, pièces reprises</text>
+</svg>
+<table>
+<tr><th style="width:30%">Taux</th><th>Formule</th><th>Ce qu’il mesure</th></tr>
+<tr><td><b>Disponibilité opérationnelle</b> Do</td><td>TF ÷ TR</td><td>La machine tourne-t-elle quand on a besoin d’elle ?</td></tr>
+<tr><td><b>Taux de performance</b> TP</td><td>TN ÷ TF</td><td>Quand elle tourne, va-t-elle à la bonne vitesse ?</td></tr>
+<tr><td><b>Taux de qualité</b> TQ</td><td>TU ÷ TN</td><td>Ce qu’elle produit est-il bon ?</td></tr>
+<tr><td><b>TRS</b></td><td>Do × TP × TQ = TU ÷ TR</td><td>Part du temps requis réellement utile</td></tr>
+<tr><td><b>TRG</b></td><td>TU ÷ TO</td><td>Même chose, rapportée au temps d’ouverture</td></tr>
+</table>
+<div class="encadre">
+<p><b>Le temps de cycle de référence</b> (tc) est le temps prévu pour faire une pièce. C’est lui qui transforme des pièces en minutes.</p>
+<p>TN = somme, pour chaque référence, de (nombre de pièces produites × tc)<br>
+TU = somme, pour chaque référence, de (nombre de pièces bonnes × tc)</p>
+<p><b>Rappel de calcul.</b> 4 min 30 s = 4,5 min, et non 4,30 min. Pour convertir des secondes en minutes, on divise par 60.</p>
+</div>
+<p class="discret">Définitions conformes au mémo « Le Taux de Rendement Synthétique » utilisé en formation.</p>
+
+<div class="num-page">Mémo</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · TRS · B1 Chaudronnerie</span></div>
+
+<div class="titre-act"><span class="piece">B1</span><h2>La journée de la plieuse</h2><span class="etiquette stag">Chaudronnerie</span><span class="duree">50 min</span></div>
+<p>Presse plieuse PP-1, mardi. Hugo, le plieur, a tenu le journal de son poste. Le soir, le chef d’atelier affiche le TRS de la plieuse et dit : « Avec un TRS pareil, Hugo va devoir accélérer. »</p>
+<table style="font-size:.88em">
+<tr><th style="width:6%">Ligne</th><th style="width:17%">Horaire</th><th>Ce qui s’est passé</th><th class="num" style="width:8%">Min</th><th style="width:9%">Code</th></tr>
+<tr><td class="c">1</td><td>7 h 30 à 7 h 40</td><td>Réunion d’équipe de début de poste (prévue au planning)</td><td class="num">10</td><td></td></tr><tr><td class="c">2</td><td>7 h 40 à 8 h 05</td><td>Changement d’outils (poinçon et matrice) pour l’OF 1</td><td class="num">25</td><td></td></tr><tr><td class="c">3</td><td>8 h 05 à 9 h 40</td><td>Production OF 1</td><td class="num">95</td><td></td></tr><tr><td class="c">4</td><td>9 h 40 à 9 h 50</td><td>Pause</td><td class="num">10</td><td></td></tr><tr><td class="c">5</td><td>9 h 50 à 10 h 20</td><td>Attente des flans de l’OF 2 : le débit plasma est en retard</td><td class="num">30</td><td></td></tr><tr><td class="c">6</td><td>10 h 20 à 10 h 45</td><td>Changement d’outils pour l’OF 2</td><td class="num">25</td><td></td></tr><tr><td class="c">7</td><td>10 h 45 à 11 h 00</td><td>Premières pièces hors cote, réglage de la butée arrière</td><td class="num">15</td><td></td></tr><tr><td class="c">8</td><td>11 h 00 à 12 h 00</td><td>Production OF 2</td><td class="num">60</td><td></td></tr><tr><td class="c">9</td><td>12 h 30 à 13 h 05</td><td>Production OF 2</td><td class="num">35</td><td></td></tr><tr><td class="c">10</td><td>13 h 05 à 13 h 40</td><td>Barrière immatérielle de la presse en défaut. Attente du technicien, puis réparation</td><td class="num">35</td><td></td></tr><tr><td class="c">11</td><td>13 h 40 à 14 h 05</td><td>Changement d’outils pour l’OF 3</td><td class="num">25</td><td></td></tr><tr><td class="c">12</td><td>14 h 05 à 14 h 15</td><td>Attente du pont roulant pour amener les tôles de l’OF 3</td><td class="num">10</td><td></td></tr><tr><td class="c">13</td><td>14 h 15 à 14 h 55</td><td>Production OF 3</td><td class="num">40</td><td></td></tr><tr><td class="c">14</td><td>14 h 55 à 15 h 05</td><td>Pause</td><td class="num">10</td><td></td></tr><tr><td class="c">15</td><td>15 h 05 à 15 h 40</td><td>Production OF 3</td><td class="num">35</td><td></td></tr><tr><td class="c">16</td><td>15 h 40 à 16 h 00</td><td>Rangement et nettoyage du poste (prévu au planning)</td><td class="num">20</td><td></td></tr>
+</table>
+<p class="discret">12 h 00 à 12 h 30 : déjeuner, hors temps d’ouverture.</p>
+<table style="font-size:.88em">
+<tr><th>OF</th><th>Pièce</th><th class="num">Pièces pliées</th><th class="num">Dont non bonnes</th><th class="num">tc de référence</th></tr>
+<tr><td>OF 1</td><td>Équerre E40</td><td class="num">160</td><td class="num">0</td><td class="num">0,5 min</td></tr>
+<tr><td>OF 2</td><td>Flasque F12</td><td class="num">100</td><td class="num">6 rebutées (premières pièces)</td><td class="num">0,8 min</td></tr>
+<tr><td>OF 3</td><td>Capot C3</td><td class="num">30</td><td class="num">2 reprises au marteau</td><td class="num">2,0 min</td></tr>
+</table>
+<p class="q"><b class="n">1</b><b>Classer.</b> Codez chaque ligne du journal : <b>P</b> arrêt programmé · <b>A</b> arrêt propre à la machine (panne, changement d’outils, réglage) · <b>I</b> arrêt induit, venu de l’extérieur (matière, pont, information) · <b>F</b> fonctionnement. <span class="duree">8 min</span></p>
+<p class="fiction">Cas d’étude. L’entreprise ADS, ses salariés et tous les chiffres sont inventés pour la formation.</p>
+
+<div class="num-page">B1 · page 1 sur 3</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · TRS · B1 Chaudronnerie</span></div>
+
+<p class="q"><b class="n">2</b><b>Les temps.</b> À partir de vos codes. <span class="duree">8 min</span></p>
+<table class="vide">
+<tr><th style="width:40%">Temps</th><th>Calcul</th><th class="num" style="width:16%">Minutes</th></tr>
+<tr><td>TO, temps d’ouverture</td><td></td><td></td></tr>
+<tr><td>Arrêts programmés (P)</td><td></td><td></td></tr>
+<tr><td>TR, temps requis</td><td></td><td></td></tr>
+<tr><td>Arrêts propres (A)</td><td></td><td></td></tr>
+<tr><td>Arrêts induits (I)</td><td></td><td></td></tr>
+<tr><td>TF, temps de fonctionnement</td><td></td><td></td></tr>
+</table>
+<p class="q"><b class="n">3</b><b>Les pièces en minutes.</b> <span class="duree">10 min</span></p>
+<table class="vide">
+<tr><th>OF</th><th>Calcul : pièces pliées × tc</th><th class="num" style="width:14%">Minutes</th><th>Calcul : pièces bonnes × tc</th><th class="num" style="width:14%">Minutes</th></tr>
+<tr><td>OF 1</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>OF 2</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>OF 3</td><td></td><td></td><td></td><td></td></tr>
+<tr><td><b>Total</b></td><td></td><td>TN =</td><td></td><td>TU =</td></tr>
+</table>
+<p class="q"><b class="n">4</b><b>Les taux.</b> Calculez Do, TP, TQ, puis le TRS de deux façons : Do × TP × TQ, et TU ÷ TR. Les deux résultats doivent être égaux. <span class="duree">6 min</span></p>
+<table class="vide">
+<tr><th>Do = TF ÷ TR</th><th>TP = TN ÷ TF</th><th>TQ = TU ÷ TN</th><th>Do × TP × TQ</th><th>TU ÷ TR</th></tr>
+<tr style="height:44px"><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+<p class="q"><b class="n">5</b><b>La cascade.</b> Dessinez les cinq barres. Entre deux barres, écrivez le nom de la perte et ses minutes. <span class="duree">6 min</span></p>
+<svg viewBox="0 0 700 300" class="grille" role="img" aria-label="Grille vierge pour la cascade des temps">
+<line x1="60" y1="262.0" x2="680" y2="262.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="54" y="266.0" font-size="11" text-anchor="end">0</text>
+<line x1="60" y1="257.0" x2="680" y2="257.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="252.0" x2="680" y2="252.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="247.0" x2="680" y2="247.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="242.0" x2="680" y2="242.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="237.0" x2="680" y2="237.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="54" y="241.0" font-size="11" text-anchor="end">50</text>
+<line x1="60" y1="232.0" x2="680" y2="232.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="227.0" x2="680" y2="227.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="222.0" x2="680" y2="222.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="217.0" x2="680" y2="217.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="212.0" x2="680" y2="212.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="54" y="216.0" font-size="11" text-anchor="end">100</text>
+<line x1="60" y1="207.0" x2="680" y2="207.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="202.0" x2="680" y2="202.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="197.0" x2="680" y2="197.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="192.0" x2="680" y2="192.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="187.0" x2="680" y2="187.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="54" y="191.0" font-size="11" text-anchor="end">150</text>
+<line x1="60" y1="182.0" x2="680" y2="182.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="177.0" x2="680" y2="177.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="172.0" x2="680" y2="172.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="167.0" x2="680" y2="167.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="162.0" x2="680" y2="162.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="54" y="166.0" font-size="11" text-anchor="end">200</text>
+<line x1="60" y1="157.0" x2="680" y2="157.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="152.0" x2="680" y2="152.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="147.0" x2="680" y2="147.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="142.0" x2="680" y2="142.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="137.0" x2="680" y2="137.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="54" y="141.0" font-size="11" text-anchor="end">250</text>
+<line x1="60" y1="132.0" x2="680" y2="132.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="127.0" x2="680" y2="127.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="122.0" x2="680" y2="122.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="117.0" x2="680" y2="117.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="112.0" x2="680" y2="112.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="54" y="116.0" font-size="11" text-anchor="end">300</text>
+<line x1="60" y1="107.0" x2="680" y2="107.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="102.0" x2="680" y2="102.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="97.0" x2="680" y2="97.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="92.0" x2="680" y2="92.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="87.0" x2="680" y2="87.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="54" y="91.0" font-size="11" text-anchor="end">350</text>
+<line x1="60" y1="82.0" x2="680" y2="82.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="77.0" x2="680" y2="77.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="72.0" x2="680" y2="72.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="67.0" x2="680" y2="67.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="62.0" x2="680" y2="62.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="54" y="66.0" font-size="11" text-anchor="end">400</text>
+<line x1="60" y1="57.0" x2="680" y2="57.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="52.0" x2="680" y2="52.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="47.0" x2="680" y2="47.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="42.0" x2="680" y2="42.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="37.0" x2="680" y2="37.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="54" y="41.0" font-size="11" text-anchor="end">450</text>
+<line x1="60" y1="32.0" x2="680" y2="32.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="27.0" x2="680" y2="27.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="22.0" x2="680" y2="22.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="17.0" x2="680" y2="17.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="12.0" x2="680" y2="12.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="54" y="16.0" font-size="11" text-anchor="end">500</text>
+<text x="122.0" y="280" font-size="13" font-weight="700" text-anchor="middle" fill="#003d7a">TO</text>
+<text x="246.0" y="280" font-size="13" font-weight="700" text-anchor="middle" fill="#003d7a">TR</text>
+<text x="370.0" y="280" font-size="13" font-weight="700" text-anchor="middle" fill="#003d7a">TF</text>
+<text x="494.0" y="280" font-size="13" font-weight="700" text-anchor="middle" fill="#003d7a">TN</text>
+<text x="618.0" y="280" font-size="13" font-weight="700" text-anchor="middle" fill="#003d7a">TU</text>
+<line x1="60" y1="12" x2="60" y2="262" stroke="#1f2933" stroke-width="1.4"/>
+<line x1="60" y1="262" x2="680" y2="262" stroke="#1f2933" stroke-width="1.4"/>
+<text x="14" y="137.0" font-size="11" fill="#5f6b76" transform="rotate(-90 14 137.0)" text-anchor="middle">Minutes</text>
+</svg>
+
+<div class="num-page">B1 · page 2 sur 3</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · TRS · B1 Chaudronnerie</span></div>
+
+<h3>Questions de réflexion <span class="duree">12 min</span></h3>
+<p class="q"><b class="n">6</b>Additionnez les pertes par famille : changements d’outils et réglage, panne, attentes, écarts de cadence (TF − TN), non-qualité (TN − TU). Quelle est la plus grosse ?</p>
+<table class="vide">
+<tr><th>Changements et réglage</th><th>Panne</th><th>Attentes</th><th>Écarts de cadence</th><th>Non-qualité</th></tr>
+<tr style="height:36px"><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+<p class="q"><b class="n">7</b>Le chef d’atelier veut qu’Hugo accélère. Parmi ces pertes, lesquelles dépendent d’Hugo ? Lesquelles ne dépendent pas de lui du tout ? Répondez au chef d’atelier en trois lignes, avec des minutes.</p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">8</b>Un chantier de changement rapide d’outils ramène chaque changement de 25 à 10 minutes. Combien de minutes de fonctionnement gagne-t-on par jour ? Si ces minutes sont utilisées comme le reste de la journée (même TP, même TQ), combien de minutes utiles gagne-t-on ? Combien d’équerres E40 cela représente-t-il ? Que devient le TRS ?</p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">9</b>Les 30 minutes d’attente de flans comptent dans le TRS de la plieuse. Est-ce juste ? Où ce problème devrait-il apparaître ?</p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+
+<div class="num-page">B1 · page 3 sur 3</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · TRS · B2 Usinage CN</span></div>
+
+<div class="titre-act"><span class="piece">B2</span><h2>Un TRS trop beau</h2><span class="etiquette stag">Usinage CN</span><span class="duree">45 min</span></div>
+<p>Centre d’usinage CU-1, jeudi. L’objectif fixé par la direction est un TRS de 85 %. Le responsable de production affiche fièrement ce tableau :</p>
+<table>
+<tr><th colspan="2">Tableau affiché au poste CU-1, jeudi</th></tr>
+<tr><td>Temps requis TR</td><td class="num">450 min</td></tr>
+<tr><td>Arrêts non programmés : changement de série 35 min, attente du contrôle premier article 15 min, casse d’outil 10 min</td><td class="num">60 min</td></tr>
+<tr><td>Temps de fonctionnement TF</td><td class="num">390 min</td></tr>
+<tr><td>Bride B7 : 40 usinées, dont 2 rebutées · tc gamme 6,0 min</td><td class="num"></td></tr>
+<tr><td>Support S2 : 45 usinés, dont 3 retouchés à l’ébavureuse puis livrés · tc gamme 4,0 min</td><td class="num"></td></tr>
+<tr><td><b>TRS du jour</b></td><td class="num"><b>90,7 %</b></td></tr>
+</table>
+<p class="citation">« J’ai réécrit le programme de la bride en juin, avec de nouveaux outils. Mais si on change la gamme, mon TRS va baisser alors que je travaille mieux. » Karim, régleur</p>
+<p><b>Chronométrage du cycle de la bride B7</b>, relevé par le méthodiste sur cinq pièces consécutives, en marche normale :</p>
+<table style="width:70%">
+<tr><th>Pièce</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+<tr><td>Cycle</td><td>4 min 28 s</td><td>4 min 31 s</td><td>4 min 30 s</td><td>4 min 29 s</td><td>4 min 32 s</td></tr>
+</table>
+<p class="q"><b class="n">1</b><b>Refaire le calcul du tableau.</b> Calculez TN avec les temps de la gamme, puis TP. Que remarquez-vous ? Est-ce possible ? <span class="duree">8 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">2</b><b>Le vrai temps de cycle.</b> Moyenne des cinq cycles de la bride, en minutes décimales. <span class="duree">5 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="fiction">Cas d’étude. L’entreprise ADS, ses salariés et tous les chiffres sont inventés pour la formation.</p>
+
+<div class="num-page">B2 · page 1 sur 2</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · TRS · B2 Usinage CN</span></div>
+
+<p class="q"><b class="n">3</b><b>Recalculer.</b> Avec le temps de cycle chronométré pour la bride, et 4,0 min pour le support. <span class="duree">10 min</span></p>
+<table class="vide">
+<tr><th></th><th>Avec la gamme (tableau affiché)</th><th>Avec le temps chronométré</th></tr>
+<tr><td>TN</td><td></td><td></td></tr>
+<tr><td>TP</td><td></td><td></td></tr>
+</table>
+<p class="q"><b class="n">4</b><b>Les supports retouchés.</b> Sont-ils des pièces bonnes ? Calculez TU et le TRS dans les deux cas, avec le temps chronométré. Quelle règle retenez-vous, et pourquoi ? <span class="duree">8 min</span></p>
+<table class="vide">
+<tr><th></th><th>Retouchés comptés bons</th><th>Retouchés comptés non bons</th></tr>
+<tr><td>TU</td><td></td><td></td></tr>
+<tr><td>TQ = TU ÷ TN</td><td></td><td></td></tr>
+<tr><td>TRS = TU ÷ TR</td><td></td><td></td></tr>
+</table>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">5</b>Le TRS réel atteint-il l’objectif de 85 % ? De combien de points le tableau affiché se trompait-il ? D’où viennent ces points ? <span class="duree">4 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">6</b>Répondez à Karim. Son amélioration de juin a-t-elle servi à quelque chose ? Où se voit-elle si on corrige la gamme ? Qui devrait avoir le droit de changer un temps de cycle de référence, et quand ? <span class="duree">10 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+
+<div class="num-page">B2 · page 2 sur 2</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · TRS · B3 Maintenance</span></div>
+
+<div class="titre-act"><span class="piece">B3</span><h2>Les minutes qui manquent</h2><span class="etiquette stag">Maintenance</span><span class="duree">45 min</span></div>
+<p>Cellule robotisée de soudage R2, vendredi. La cellule soude les châssis CH-30. Le robot exécute un programme fixe : son temps de cycle est de <b>2,0 min</b> par châssis, il ne ralentit pas tout seul.</p>
+<table>
+<tr><th colspan="2">Fiche de poste remplie par l’opérateur</th></tr>
+<tr><td>Temps d’ouverture : 7 h 30 à 16 h 00, déjeuner de 30 min hors ouverture</td><td class="num">480 min</td></tr>
+<tr><td>Arrêts programmés : 2 pauses de 10 min, nettoyage de la cellule en fin de poste 10 min</td><td class="num">30 min</td></tr>
+<tr><td>Arrêt 1 : bobine de fil vide, pas de bobine d’avance</td><td class="num">20 min</td></tr>
+<tr><td>Arrêt 2 : vérin de bridage bloqué, distributeur changé</td><td class="num">35 min</td></tr>
+<tr><td>Arrêt 3 : câble du capteur de présence écrasé, remplacé</td><td class="num">15 min</td></tr>
+<tr><td colspan="2" class="discret">Consigne du poste : noter les arrêts de 5 minutes et plus.</td></tr>
+</table>
+<table style="width:70%">
+<tr><th colspan="2">Compteur de l’automate, fin de poste</th></tr>
+<tr><td>Châssis soudés</td><td class="num">150</td></tr>
+<tr><td>Châssis rebutés au contrôle</td><td class="num">6</td></tr>
+</table>
+<p class="q"><b class="n">1</b><b>Le TRS déclaré.</b> À partir de la fiche de poste et du compteur, calculez TR, TF, TN, TU, puis Do, TP, TQ et le TRS. <span class="duree">10 min</span></p>
+<table class="vide">
+<tr><th>TR</th><th>TF</th><th>TN</th><th>TU</th><th>Do</th><th>TP</th><th>TQ</th><th>TRS</th></tr>
+<tr style="height:40px"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+<p class="q"><b class="n">2</b>D’après ces chiffres, quelle est la plus grosse perte ? Le responsable de production conclut : « Le robot est lent. » Qu’en pensez-vous, sachant que son programme est fixe ? <span class="duree">5 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="fiction">Cas d’étude. L’entreprise ADS, ses salariés et tous les chiffres sont inventés pour la formation.</p>
+
+<div class="num-page">B3 · page 1 sur 2</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · TRS · B3 Maintenance</span></div>
+
+<p>Le technicien de maintenance extrait le <b>journal des alarmes</b> de l’automate pour la même journée :</p>
+<table style="width:85%">
+<tr><th>Alarme</th><th class="num">Nombre</th><th class="num">Durée moyenne</th><th>Ce que fait l’opérateur</th></tr>
+<tr><td>Défaut arc</td><td class="num">14</td><td class="num">2 min</td><td>Nettoie la buse, réarme</td></tr>
+<tr><td>Pièce non détectée</td><td class="num">12</td><td class="num">3 min</td><td>Essuie le capteur, repositionne la pièce, réarme</td></tr>
+<tr><td>Porte mal fermée</td><td class="num">8</td><td class="num">2 min</td><td>Referme, réarme</td></tr>
+</table>
+<p class="q"><b class="n">3</b>Combien de minutes représentent ces alarmes ? Comparez avec TF − TN. Où sont passées les minutes ? <span class="duree">5 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">4</b><b>Le TRS corrigé.</b> Recalculez en comptant ces alarmes comme des arrêts. <span class="duree">5 min</span></p>
+<table class="vide">
+<tr><th>TF corrigé</th><th>Do</th><th>TP</th><th>TQ</th><th>TRS</th></tr>
+<tr style="height:40px"><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+<p>Le TRS a-t-il changé ? Qu’est-ce qui a changé ? Qui doit agir maintenant, et sur quoi ?</p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">5</b><b>Une action à chiffrer.</b> On propose un nettoyage systématique de la buse toutes les 25 pièces, en 1 minute. Combien de minutes coûte-t-il par jour ? À quelle condition est-il rentable ? <span class="duree">7 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">6</b><b>La tentation.</b> Le responsable propose de déclarer les 80 minutes d’alarmes en « arrêts programmés de nettoyage ». Calculez le nouveau TRS. Calculez le TRG (TU ÷ TO) avant et après. Qu’en pensez-vous ? <span class="duree">8 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+
+<div class="num-page">B3 · page 2 sur 2</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · TRS · B4 Trois métiers</span></div>
+
+<div class="titre-act"><span class="piece">B4</span><h2>Où gagner des châssis ?</h2><span class="etiquette stag">Les trois métiers</span><span class="duree">45 min</span></div>
+<p>Le châssis CH-30 passe par trois machines, dans cet ordre. Le client en demande <b>150 par jour</b>. Les stocks entre machines sont suffisants pour que chacune travaille sans attendre l’autre.</p>
+<svg viewBox="0 0 720 130" class="grille" role="img" aria-label="Flux du châssis CH-30">
+<rect x="10" y="10" width="170" height="104" rx="6" fill="#e8f1fa" stroke="#003d7a" stroke-width="1.5"/>
+<text x="95" y="32" font-size="13" font-weight="700" text-anchor="middle" fill="#003d7a">Débit plasma</text>
+<text x="95" y="58" font-size="12.5" text-anchor="middle">TR 450 min</text>
+<text x="95" y="78" font-size="12.5" text-anchor="middle">TRS 70 %</text>
+<text x="95" y="98" font-size="12.5" text-anchor="middle">1,8 min par châssis</text>
+<line x1="182" y1="62" x2="210" y2="62" stroke="#003d7a" stroke-width="2.5"/><polygon points="210,56 218,62 210,68" fill="#003d7a"/>
+<rect x="215" y="10" width="170" height="104" rx="6" fill="#e8f1fa" stroke="#003d7a" stroke-width="1.5"/>
+<text x="300" y="32" font-size="13" font-weight="700" text-anchor="middle" fill="#003d7a">Presse plieuse PP-1</text>
+<text x="300" y="58" font-size="12.5" text-anchor="middle">TR 430 min</text>
+<text x="300" y="78" font-size="12.5" text-anchor="middle">TRS 49 %</text>
+<text x="300" y="98" font-size="12.5" text-anchor="middle">1,2 min par châssis</text>
+<line x1="387" y1="62" x2="415" y2="62" stroke="#003d7a" stroke-width="2.5"/><polygon points="415,56 423,62 415,68" fill="#003d7a"/>
+<rect x="420" y="10" width="170" height="104" rx="6" fill="#e8f1fa" stroke="#003d7a" stroke-width="1.5"/>
+<text x="505" y="32" font-size="13" font-weight="700" text-anchor="middle" fill="#003d7a">Cellule de soudage R2</text>
+<text x="505" y="58" font-size="12.5" text-anchor="middle">TR 450 min</text>
+<text x="505" y="78" font-size="12.5" text-anchor="middle">TRS 64 %</text>
+<text x="505" y="98" font-size="12.5" text-anchor="middle">2,0 min par châssis</text>
+<line x1="627" y1="62" x2="652" y2="62" stroke="#003d7a" stroke-width="2.5"/><polygon points="652,56 660,62 652,68" fill="#003d7a"/>
+<text x="680" y="58" font-size="12" text-anchor="middle" font-weight="700" fill="#d9681a">Client</text>
+<text x="680" y="76" font-size="11" text-anchor="middle" fill="#d9681a">150 / jour</text>
+</svg>
+<p class="citation">« La plieuse a le pire TRS de l’atelier. On lance le chantier sur la plieuse. » Le directeur</p>
+<div class="encadre"><p><b>Capacité utile d’une machine</b>, en châssis bons par jour = TR × TRS ÷ tc.<br>Exemple : 100 min requises, TRS 50 %, tc 2 min → 100 × 0,50 ÷ 2 = 25 châssis bons.</p></div>
+<p class="q"><b class="n">1</b>Calculez la capacité utile de chaque machine. <span class="duree">6 min</span></p>
+<table class="vide">
+<tr><th>Machine</th><th>Calcul</th><th class="num" style="width:22%">Châssis bons par jour</th></tr>
+<tr><td>Débit plasma</td><td></td><td></td></tr>
+<tr><td>Presse plieuse PP-1</td><td></td><td></td></tr>
+<tr><td>Cellule R2</td><td></td><td></td></tr>
+</table>
+<p class="q"><b class="n">2</b>Combien de châssis le flux livre-t-il par jour ? Quelle machine fixe ce nombre ? La demande est-elle satisfaite ? <span class="duree">4 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">3</b>Calculez l’effet de chaque action, seule, sur la machine concernée puis sur le flux. <span class="duree">15 min</span></p>
+<table class="vide" style="font-size:.9em">
+<tr><th style="width:11%"></th><th style="width:26%">Action</th><th>Effet annoncé</th><th style="width:15%">Nouvelle capacité de la machine</th><th style="width:13%">Châssis livrés par jour</th></tr>
+<tr><td><b>Action 1</b></td><td>Changement rapide d’outils sur la plieuse</td><td>TRS de la plieuse : 49 % → 57 %</td><td></td><td></td></tr><tr><td><b>Action 2</b></td><td>Capteur de présence de R2 protégé des projections</td><td>Les 36 min d’alarmes « pièce non détectée » disparaissent : TF de R2 passe de 300 à 336 min, TP et TQ inchangés</td><td></td><td></td></tr><tr><td><b>Action 3</b></td><td>Réglage des paramètres de soudage de R2</td><td>Rebuts de R2 : 6 → 3 châssis sur 150, Do et TP inchangés</td><td></td><td></td></tr><tr><td><b>Action 4</b></td><td>Nouvelle torche sur le plasma</td><td>TRS du plasma : 70 % → 75 %</td><td></td><td></td></tr>
+</table>
+<p class="fiction">Cas d’étude. L’entreprise ADS, ses salariés et tous les chiffres sont inventés pour la formation.</p>
+
+<div class="num-page">B4 · page 1 sur 2</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · TRS · B4 Trois métiers</span></div>
+
+<p class="q"><b class="n">4</b>Quelle action lancer en premier ? Le directeur avait-il raison ? Répondez-lui en trois lignes, avec des châssis. <span class="duree">8 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">5</b>Une fois l’action choisie réalisée, quelle machine limite encore le flux ? Avec quelle marge sur la demande ? Quelle machine vient juste après ? Faut-il oublier la plieuse ? Pensez aux autres pièces qu’elle plie (voir B1, si vous l’avez faite). <span class="duree">6 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">6</b><b>L’effet de la multiplication.</b> Une machine a Do = 90 %, TP = 90 %, TQ = 90 %. Quel est son TRS ? Une autre a Do = 70 %, TP = 90 %, TQ = 95 %. Calculez son TRS, puis son TRS si on gagne 5 points sur Do seulement, sur TP seulement, sur TQ seulement. Sur quel taux vaut-il mieux gagner ces 5 points ? <span class="duree">6 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+
+<div class="num-page">B4 · page 2 sur 2</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · TRS · B5 Trois métiers</span></div>
+
+<div class="titre-act"><span class="piece">B5</span><h2>La moyenne qui arrange</h2><span class="etiquette stag">Les trois métiers</span><span class="duree">40 min</span></div>
+<p>Fin de semaine. Le responsable de production prépare le point du lundi matin. Voici les relevés du centre d’usinage CU-1 :</p>
+<table>
+<tr><th>Jour</th><th class="num">TR (min)</th><th class="num">TU (min)</th><th class="num" style="width:14%">TRS du jour</th><th>Remarque</th></tr>
+<tr><td>Lundi</td><td class="num">450</td><td class="num">380</td><td></td><td class="discret"></td></tr><tr><td>Mardi</td><td class="num">450</td><td class="num">370</td><td></td><td class="discret"></td></tr><tr><td>Mercredi</td><td class="num">570</td><td class="num">300</td><td></td><td class="discret">Poste prolongé de 2 h pour rattraper un retard. Panne de broche de 1 h 40.</td></tr><tr><td>Jeudi</td><td class="num">450</td><td class="num">385</td><td></td><td class="discret"></td></tr><tr><td>Vendredi</td><td class="num">240</td><td class="num">228</td><td></td><td class="discret">Poste court, fin à 12 h 00.</td></tr>
+<tr><td><b>Semaine</b></td><td></td><td></td><td></td><td></td></tr>
+</table>
+<p class="citation">« Moyenne des cinq TRS : 80 %. On tient presque l’objectif. » Le responsable de production</p>
+<p class="q"><b class="n">1</b>Calculez le TRS de chaque jour. Vérifiez la moyenne annoncée. <span class="duree">6 min</span></p>
+<p class="q"><b class="n">2</b>Calculez le TRS de la semaine à partir des totaux : TU de la semaine ÷ TR de la semaine. Comparez. D’où vient l’écart ? Quel jour pèse trop peu dans la moyenne des cinq TRS, et pourquoi ? <span class="duree">8 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">3</b>Le tour T2 a eu cette semaine-là un TR de 900 min et un TRS de 60 %. Le responsable annonce un « TRS moyen de l’atelier » égal à la moyenne des deux machines. Calculez sa valeur, puis le vrai TRS des deux machines ensemble. Cette fois, dans quel sens est l’erreur ? <span class="duree">8 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="fiction">Cas d’étude. L’entreprise ADS, ses salariés et tous les chiffres sont inventés pour la formation.</p>
+
+<div class="num-page">B5 · page 1 sur 2</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · TRS · B5 Trois métiers</span></div>
+
+<p class="q"><b class="n">4</b>Quelle règle retenez-vous pour regrouper des TRS de plusieurs jours ou de plusieurs machines ? Écrivez-la en une phrase. <span class="duree">3 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">5</b><b>Le point de cinq minutes.</b> Lundi, 7 h 35, devant le tableau du CU-1. Vous avez cinq minutes debout avec l’équipe. Préparez ce que vous écrivez au tableau. Puis une personne de l’équipe le présente au groupe, debout, en cinq minutes maximum. <span class="duree">15 min</span></p>
+<table class="vide">
+<tr><th style="width:33%">Le chiffre de la semaine, juste</th><th style="width:33%">La perte qui pèse le plus</th><th>L’action de la semaine : quoi, qui, pour quand</th></tr>
+<tr style="height:150px"><td></td><td></td><td></td></tr>
+</table>
+<p class="q"><b class="n">6</b>Le mercredi, le poste a été prolongé de deux heures. Ces deux heures ont-elles « fait baisser le TRS » ? Ont-elles fait baisser la production ? Que faut-il regarder en plus du TRS pour juger une semaine ? <span class="duree">5 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+
+<div class="num-page">B5 · page 2 sur 2</div>
+</section>
+
+</body>
+</html>
