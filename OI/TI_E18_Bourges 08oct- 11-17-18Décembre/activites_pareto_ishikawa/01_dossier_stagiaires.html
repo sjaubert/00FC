@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pareto et Ishikawa, dossier stagiaire</title>
+<link rel="stylesheet" href="style.css">
+<style>
+svg.grille { width: 100%; height: auto; display: block; margin: 6px 0 10px; font-family: "Segoe UI", Tahoma, Arial, sans-serif; }
+.q { margin: 12px 0 4px; }
+.q b.n { display: inline-block; background: var(--orange); color: #fff; border-radius: 4px; padding: 0 7px; margin-right: 6px; }
+.duree { color: var(--gris); font-size: .88em; }
+.titre-act { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.titre-act h2 { margin: 0; border: 0; font-size: 1.45em; }
+.vide td { height: 24px; }
+td.c { text-align: center; }
+.fiction { font-size: .82em; color: var(--gris); font-style: italic; }
+.citation { border-left: 4px solid var(--gris); padding: 4px 12px; margin: 10px 0; font-style: italic; }
+@media print { .q { margin: 7px 0 2px; } .vide td { height: 19px; } .ligne-ecriture { height: 24px; } }
+
+.postits { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.postit { position: relative; background: #fff7c2; border: 1px solid #e3d77a; border-radius: 3px; padding: 22px 8px 6px; min-height: 64px; font-size: .86em; line-height: 1.25; }
+.postit p { margin: 0; }
+.postit .pn { position: absolute; top: 2px; left: 6px; font-weight: 700; color: var(--bleu-fonce); font-size: .9em; }
+.postit .pc { position: absolute; top: 3px; right: 4px; width: 22px; height: 16px; border: 1.5px solid #333; background: #fff; }
+@media print { .postit { min-height: 52px; padding: 20px 6px 4px; font-size: 8.5pt; } }
+
+</style>
+</head>
+<body>
+<div class="barre-impr"><a href="../index.html">Retour au plan</a><span>Dossier stagiaire. Chaque activité s’imprime séparément (voir les numéros de page).</span><button onclick="window.print()">Imprimer</button></div>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · Pareto et Ishikawa · Dossier stagiaire</span></div>
+
+<h1 style="color:var(--bleu-fonce);margin:10mm 0 2mm;font-size:2em">Pareto et Ishikawa</h1>
+<p style="font-size:1.2em;margin:0 0 8mm">Cinq situations chez ADS, pour apprendre à choisir ses causes et ses chiffres</p>
+
+<h2>ADS en bref</h2>
+<p><b>ADS, Ateliers de la Sauldre</b>, est une PME du Cher. 64 salariés, dont 41 en production. Elle fabrique des réservoirs d’air comprimé, des cuves et des châssis mécano-soudés, et usine une partie des pièces qui vont avec.</p>
+<table>
+<tr><th>Atelier</th><th>Moyens</th><th>Activité concernée</th></tr>
+<tr><td>Chaudronnerie</td><td>Débit, pliage, 5 postes de soudure, banc d’épreuve hydraulique</td><td>A1, A4</td></tr>
+<tr><td>Usinage</td><td>2 tours CN, 1 centre d’usinage</td><td>A2, A4</td></tr>
+<tr><td>Cellule robotisée</td><td>Cellule de soudage R2 (robot, torche, dévidoir, bridage pneumatique)</td><td>A3</td></tr>
+<tr><td>Maintenance</td><td>3 techniciens, GMAO</td><td>A3, A4</td></tr>
+<tr><td>Toute l’usine</td><td>Contrôle final</td><td>A5</td></tr>
+</table>
+
+<h2>Les activités</h2>
+<table>
+<tr><th>Code</th><th>Titre</th><th>Métier d’appui</th><th>Durée</th><th>Pages</th></tr>
+<tr><td><b>A1</b></td><td>Un défaut, deux classements</td><td>Chaudronnerie</td><td>50 min</td><td>A1 · 1 à 3</td></tr>
+<tr><td><b>A2</b></td><td>La cote qui dérive</td><td>Usinage CN</td><td>50 min</td><td>A2 · 1 à 3</td></tr>
+<tr><td><b>A3</b></td><td>Ce que dit la GMAO</td><td>Maintenance</td><td>50 min</td><td>A3 · 1 à 4</td></tr>
+<tr><td><b>A4</b></td><td>Le tri des post-its</td><td>Les trois métiers</td><td>50 min</td><td>A4 · 1 à 3</td></tr>
+<tr><td><b>A5</b></td><td>Avant, après</td><td>Les trois métiers</td><td>45 min</td><td>A5 · 1 et 2</td></tr>
+</table>
+
+<div class="encadre orange">
+<p><b>Règle du jeu.</b> Quand vous avancez une réponse, dites d’où elle vient : « A3, page 2, bon 14 » ou « A2, carnet de bord, pièce 171 ». Une idée sans source reste une opinion.</p>
+<p><b>Matériel.</b> Calculatrice, crayon, gomme, règle, deux couleurs.</p>
+</div>
+<p style="margin-top:8mm">Nom ou équipe : ................................................................................................</p>
+<p class="fiction">Cas d’étude. L’entreprise ADS, ses salariés et tous les chiffres sont inventés pour la formation.</p>
+
+<div class="num-page">Page de garde</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · Pareto et Ishikawa · A1 Chaudronnerie</span></div>
+
+<div class="titre-act"><span class="piece">A1</span><h2>Un défaut, deux classements</h2><span class="etiquette stag">Chaudronnerie</span><span class="duree">50 min</span></div>
+<h3>La situation</h3>
+<p>Atelier chaudronnerie d’ADS. De juillet à septembre 2026, le contrôle interne a relevé <b>120 non-conformités</b> sur les réservoirs et les châssis. Pour chacune, le chef d’équipe a noté le temps passé à la reprendre : meulage, gougeage, ressoudage, redressage, nouveau contrôle.</p>
+<p class="citation">« Les projections, c’est un tiers de nos défauts. On commence par là. Un produit anti-adhérent, un coup de brosse, et c’est réglé. » Le chef d’atelier</p>
+<table>
+<tr><th>Défaut</th><th class="num">Nombre</th><th class="num">Temps moyen de reprise<br>par défaut (h)</th><th>Heures de reprise<br>(nombre × temps)</th></tr>
+<tr><td>Projections de soudure non retirées</td><td class="num">40</td><td class="num">0,25</td><td></td></tr><tr><td>Caniveaux</td><td class="num">22</td><td class="num">0,5</td><td></td></tr><tr><td>Déformation, défaut d’équerrage</td><td class="num">18</td><td class="num">3</td><td></td></tr><tr><td>Cote de pliage hors tolérance</td><td class="num">16</td><td class="num">1,5</td><td></td></tr><tr><td>Porosités</td><td class="num">12</td><td class="num">2</td><td></td></tr><tr><td>Manque de pénétration</td><td class="num">7</td><td class="num">4</td><td></td></tr><tr><td>Erreur de repérage (pièce montée à l’envers)</td><td class="num">4</td><td class="num">6</td><td></td></tr><tr><td>Fissure en racine, sur un réservoir d’air comprimé</td><td class="num">1</td><td class="num">25</td><td></td></tr>
+<tr><td><b>Total</b></td><td class="num"><b>120</b></td><td></td><td></td></tr>
+</table>
+<p class="discret">Le temps de la fissure comprend le gougeage, le ressoudage et le nouveau contrôle par ressuage.</p>
+
+<p class="q"><b class="n">1</b><b>Le Pareto en nombre.</b> Classez les défauts du plus fréquent au moins fréquent. Calculez le pourcentage et le pourcentage cumulé. Tracez ensuite le diagramme sur la grille A (page 2). <span class="duree">15 min</span></p>
+<table class="vide">
+<tr><th style="width:9%">Rang</th><th>Défaut</th><th class="num" style="width:13%">Nombre</th><th class="num" style="width:13%">%</th><th class="num" style="width:15%">% cumulé</th></tr>
+<tr><td class="c">1</td><td></td><td></td><td></td><td></td></tr><tr><td class="c">2</td><td></td><td></td><td></td><td></td></tr><tr><td class="c">3</td><td></td><td></td><td></td><td></td></tr><tr><td class="c">4</td><td></td><td></td><td></td><td></td></tr><tr><td class="c">5</td><td></td><td></td><td></td><td></td></tr><tr><td class="c">6</td><td></td><td></td><td></td><td></td></tr><tr><td class="c">7</td><td></td><td></td><td></td><td></td></tr><tr><td class="c">8</td><td></td><td></td><td></td><td></td></tr>
+</table>
+<p class="fiction">Cas d’étude. L’entreprise ADS, ses salariés et tous les chiffres sont inventés pour la formation.</p>
+
+<div class="num-page">A1 · page 1 sur 3</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · Pareto et Ishikawa · A1 Chaudronnerie</span></div>
+
+<p><b>Grille A · Pareto en nombre de défauts.</b> Axe de gauche gradué de 0 à 120 : le total. Ainsi, la hauteur de 120 correspond à 100 % sur l’axe de droite, et les barres et la courbe se lisent sur la même grille.</p>
+<svg viewBox="0 0 700 250" class="grille" role="img" aria-label="Grille A, Pareto en nombre">
+<line x1="70" y1="200.0" x2="630" y2="200.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="204.0" font-size="11" text-anchor="end" fill="#1f2933">0</text>
+<text x="636" y="204.0" font-size="11" fill="#1f2933">0 %</text>
+<line x1="70" y1="196.3" x2="630" y2="196.3" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="192.6" x2="630" y2="192.6" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="188.8" x2="630" y2="188.8" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="185.1" x2="630" y2="185.1" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="181.4" x2="630" y2="181.4" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="185.4" font-size="11" text-anchor="end" fill="#1f2933">12</text>
+<text x="636" y="185.4" font-size="11" fill="#1f2933">10 %</text>
+<line x1="70" y1="177.7" x2="630" y2="177.7" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="174.0" x2="630" y2="174.0" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="170.2" x2="630" y2="170.2" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="166.5" x2="630" y2="166.5" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="162.8" x2="630" y2="162.8" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="166.8" font-size="11" text-anchor="end" fill="#1f2933">24</text>
+<text x="636" y="166.8" font-size="11" fill="#1f2933">20 %</text>
+<line x1="70" y1="159.1" x2="630" y2="159.1" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="155.4" x2="630" y2="155.4" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="151.6" x2="630" y2="151.6" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="147.9" x2="630" y2="147.9" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="144.2" x2="630" y2="144.2" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="148.2" font-size="11" text-anchor="end" fill="#1f2933">36</text>
+<text x="636" y="148.2" font-size="11" fill="#1f2933">30 %</text>
+<line x1="70" y1="140.5" x2="630" y2="140.5" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="136.8" x2="630" y2="136.8" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="133.0" x2="630" y2="133.0" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="129.3" x2="630" y2="129.3" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="125.6" x2="630" y2="125.6" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="129.6" font-size="11" text-anchor="end" fill="#1f2933">48</text>
+<text x="636" y="129.6" font-size="11" fill="#1f2933">40 %</text>
+<line x1="70" y1="121.9" x2="630" y2="121.9" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="118.2" x2="630" y2="118.2" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="114.4" x2="630" y2="114.4" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="110.7" x2="630" y2="110.7" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="107.0" x2="630" y2="107.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="111.0" font-size="11" text-anchor="end" fill="#1f2933">60</text>
+<text x="636" y="111.0" font-size="11" fill="#1f2933">50 %</text>
+<line x1="70" y1="103.3" x2="630" y2="103.3" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="99.6" x2="630" y2="99.6" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="95.8" x2="630" y2="95.8" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="92.1" x2="630" y2="92.1" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="88.4" x2="630" y2="88.4" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="92.4" font-size="11" text-anchor="end" fill="#1f2933">72</text>
+<text x="636" y="92.4" font-size="11" fill="#1f2933">60 %</text>
+<line x1="70" y1="84.7" x2="630" y2="84.7" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="81.0" x2="630" y2="81.0" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="77.2" x2="630" y2="77.2" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="73.5" x2="630" y2="73.5" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="69.8" x2="630" y2="69.8" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="73.8" font-size="11" text-anchor="end" fill="#1f2933">84</text>
+<text x="636" y="73.8" font-size="11" fill="#1f2933">70 %</text>
+<line x1="70" y1="66.1" x2="630" y2="66.1" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="62.4" x2="630" y2="62.4" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="58.6" x2="630" y2="58.6" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="54.9" x2="630" y2="54.9" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="51.2" x2="630" y2="51.2" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="55.2" font-size="11" text-anchor="end" fill="#1f2933">96</text>
+<text x="636" y="55.2" font-size="11" fill="#1f2933">80 %</text>
+<line x1="70" y1="47.5" x2="630" y2="47.5" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="43.8" x2="630" y2="43.8" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="40.0" x2="630" y2="40.0" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="36.3" x2="630" y2="36.3" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="32.6" x2="630" y2="32.6" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="36.6" font-size="11" text-anchor="end" fill="#1f2933">108</text>
+<text x="636" y="36.6" font-size="11" fill="#1f2933">90 %</text>
+<line x1="70" y1="28.9" x2="630" y2="28.9" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="25.2" x2="630" y2="25.2" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="21.4" x2="630" y2="21.4" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="17.7" x2="630" y2="17.7" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="14.0" x2="630" y2="14.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="18.0" font-size="11" text-anchor="end" fill="#1f2933">120</text>
+<text x="636" y="18.0" font-size="11" fill="#1f2933">100 %</text>
+<line x1="70.0" y1="14" x2="70.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="140.0" y1="14" x2="140.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="210.0" y1="14" x2="210.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="280.0" y1="14" x2="280.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="350.0" y1="14" x2="350.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="420.0" y1="14" x2="420.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="490.0" y1="14" x2="490.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="560.0" y1="14" x2="560.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="630.0" y1="14" x2="630.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<text x="105.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">1</text>
+<text x="175.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">2</text>
+<text x="245.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">3</text>
+<text x="315.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">4</text>
+<text x="385.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">5</text>
+<text x="455.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">6</text>
+<text x="525.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">7</text>
+<text x="595.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">8</text>
+<line x1="70" y1="14" x2="70" y2="200" stroke="#1f2933" stroke-width="1.4"/>
+<line x1="630" y1="14" x2="630" y2="200" stroke="#1f2933" stroke-width="1.4"/>
+<line x1="70" y1="200" x2="630" y2="200" stroke="#1f2933" stroke-width="1.4"/>
+<text x="70" y="234" font-size="11" fill="#5f6b76">Rang (voir votre tableau)</text>
+<text x="14" y="107.0" font-size="11" fill="#5f6b76" transform="rotate(-90 14 107.0)" text-anchor="middle">Nombre de défauts</text>
+<text x="692" y="107.0" font-size="11" fill="#5f6b76" transform="rotate(90 692 107.0)" text-anchor="middle">% cumulé</text>
+</svg>
+
+<p class="q"><b class="n">2</b><b>Le Pareto en heures.</b> Complétez la dernière colonne du tableau de la page 1. Classez à nouveau, calculez, puis tracez sur la grille B. <span class="duree">15 min</span></p>
+<table class="vide">
+<tr><th style="width:9%">Rang</th><th>Défaut</th><th class="num" style="width:13%">Heures</th><th class="num" style="width:13%">%</th><th class="num" style="width:15%">% cumulé</th></tr>
+<tr><td class="c">1</td><td></td><td></td><td></td><td></td></tr><tr><td class="c">2</td><td></td><td></td><td></td><td></td></tr><tr><td class="c">3</td><td></td><td></td><td></td><td></td></tr><tr><td class="c">4</td><td></td><td></td><td></td><td></td></tr><tr><td class="c">5</td><td></td><td></td><td></td><td></td></tr><tr><td class="c">6</td><td></td><td></td><td></td><td></td></tr><tr><td class="c">7</td><td></td><td></td><td></td><td></td></tr><tr><td class="c">8</td><td></td><td></td><td></td><td></td></tr>
+</table>
+<p><b>Grille B · Pareto en heures de reprise.</b> Axe de gauche gradué de 0 à 200 h.</p>
+<svg viewBox="0 0 700 250" class="grille" role="img" aria-label="Grille B, Pareto en heures">
+<line x1="70" y1="200.0" x2="630" y2="200.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="204.0" font-size="11" text-anchor="end" fill="#1f2933">0</text>
+<text x="636" y="204.0" font-size="11" fill="#1f2933">0 %</text>
+<line x1="70" y1="196.3" x2="630" y2="196.3" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="192.6" x2="630" y2="192.6" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="188.8" x2="630" y2="188.8" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="185.1" x2="630" y2="185.1" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="181.4" x2="630" y2="181.4" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="185.4" font-size="11" text-anchor="end" fill="#1f2933">20</text>
+<text x="636" y="185.4" font-size="11" fill="#1f2933">10 %</text>
+<line x1="70" y1="177.7" x2="630" y2="177.7" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="174.0" x2="630" y2="174.0" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="170.2" x2="630" y2="170.2" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="166.5" x2="630" y2="166.5" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="162.8" x2="630" y2="162.8" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="166.8" font-size="11" text-anchor="end" fill="#1f2933">40</text>
+<text x="636" y="166.8" font-size="11" fill="#1f2933">20 %</text>
+<line x1="70" y1="159.1" x2="630" y2="159.1" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="155.4" x2="630" y2="155.4" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="151.6" x2="630" y2="151.6" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="147.9" x2="630" y2="147.9" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="144.2" x2="630" y2="144.2" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="148.2" font-size="11" text-anchor="end" fill="#1f2933">60</text>
+<text x="636" y="148.2" font-size="11" fill="#1f2933">30 %</text>
+<line x1="70" y1="140.5" x2="630" y2="140.5" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="136.8" x2="630" y2="136.8" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="133.0" x2="630" y2="133.0" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="129.3" x2="630" y2="129.3" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="125.6" x2="630" y2="125.6" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="129.6" font-size="11" text-anchor="end" fill="#1f2933">80</text>
+<text x="636" y="129.6" font-size="11" fill="#1f2933">40 %</text>
+<line x1="70" y1="121.9" x2="630" y2="121.9" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="118.2" x2="630" y2="118.2" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="114.4" x2="630" y2="114.4" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="110.7" x2="630" y2="110.7" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="107.0" x2="630" y2="107.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="111.0" font-size="11" text-anchor="end" fill="#1f2933">100</text>
+<text x="636" y="111.0" font-size="11" fill="#1f2933">50 %</text>
+<line x1="70" y1="103.3" x2="630" y2="103.3" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="99.6" x2="630" y2="99.6" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="95.8" x2="630" y2="95.8" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="92.1" x2="630" y2="92.1" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="88.4" x2="630" y2="88.4" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="92.4" font-size="11" text-anchor="end" fill="#1f2933">120</text>
+<text x="636" y="92.4" font-size="11" fill="#1f2933">60 %</text>
+<line x1="70" y1="84.7" x2="630" y2="84.7" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="81.0" x2="630" y2="81.0" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="77.2" x2="630" y2="77.2" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="73.5" x2="630" y2="73.5" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="69.8" x2="630" y2="69.8" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="73.8" font-size="11" text-anchor="end" fill="#1f2933">140</text>
+<text x="636" y="73.8" font-size="11" fill="#1f2933">70 %</text>
+<line x1="70" y1="66.1" x2="630" y2="66.1" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="62.4" x2="630" y2="62.4" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="58.6" x2="630" y2="58.6" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="54.9" x2="630" y2="54.9" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="51.2" x2="630" y2="51.2" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="55.2" font-size="11" text-anchor="end" fill="#1f2933">160</text>
+<text x="636" y="55.2" font-size="11" fill="#1f2933">80 %</text>
+<line x1="70" y1="47.5" x2="630" y2="47.5" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="43.8" x2="630" y2="43.8" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="40.0" x2="630" y2="40.0" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="36.3" x2="630" y2="36.3" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="32.6" x2="630" y2="32.6" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="36.6" font-size="11" text-anchor="end" fill="#1f2933">180</text>
+<text x="636" y="36.6" font-size="11" fill="#1f2933">90 %</text>
+<line x1="70" y1="28.9" x2="630" y2="28.9" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="25.2" x2="630" y2="25.2" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="21.4" x2="630" y2="21.4" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="17.7" x2="630" y2="17.7" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="14.0" x2="630" y2="14.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="18.0" font-size="11" text-anchor="end" fill="#1f2933">200</text>
+<text x="636" y="18.0" font-size="11" fill="#1f2933">100 %</text>
+<line x1="70.0" y1="14" x2="70.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="140.0" y1="14" x2="140.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="210.0" y1="14" x2="210.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="280.0" y1="14" x2="280.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="350.0" y1="14" x2="350.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="420.0" y1="14" x2="420.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="490.0" y1="14" x2="490.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="560.0" y1="14" x2="560.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="630.0" y1="14" x2="630.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<text x="105.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">1</text>
+<text x="175.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">2</text>
+<text x="245.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">3</text>
+<text x="315.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">4</text>
+<text x="385.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">5</text>
+<text x="455.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">6</text>
+<text x="525.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">7</text>
+<text x="595.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">8</text>
+<line x1="70" y1="14" x2="70" y2="200" stroke="#1f2933" stroke-width="1.4"/>
+<line x1="630" y1="14" x2="630" y2="200" stroke="#1f2933" stroke-width="1.4"/>
+<line x1="70" y1="200" x2="630" y2="200" stroke="#1f2933" stroke-width="1.4"/>
+<text x="70" y="234" font-size="11" fill="#5f6b76">Rang (voir votre tableau)</text>
+<text x="14" y="107.0" font-size="11" fill="#5f6b76" transform="rotate(-90 14 107.0)" text-anchor="middle">Heures de reprise</text>
+<text x="692" y="107.0" font-size="11" fill="#5f6b76" transform="rotate(90 692 107.0)" text-anchor="middle">% cumulé</text>
+</svg>
+
+<div class="num-page">A1 · page 2 sur 3</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · Pareto et Ishikawa · A1 Chaudronnerie</span></div>
+
+<h3>Questions de réflexion <span class="duree">20 min</span></h3>
+<p class="q"><b class="n">3</b>Quel défaut est premier dans chaque Pareto ? Où se trouvent les projections dans le second ? Expliquez ce changement en une phrase.</p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">4</b>Dans le Pareto en heures, quels défauts forment les 80 % ? Comparez votre liste avec celle d’une autre équipe. Si elles diffèrent, d’où vient la différence ? Que vous apprend-elle sur la « règle des 80 % » ?</p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">5</b>La fissure ne s’est produite qu’une fois. Quel est son rang dans chaque Pareto ? Imaginez qu’elle n’ait pas été détectée avant la livraison du réservoir. Un Pareto peut-il mesurer ce risque ? Quelle règle proposez-vous pour ce type de défaut ?</p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">6</b>Répondez au chef d’atelier en quatre lignes, avec des chiffres. Attention : il n’a pas forcément tort sur tout.</p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">7</b>Le client, le comptable et le soudeur ne choisiraient pas le même critère de classement. Lequel choisirait chacun, et pourquoi ?</p>
+<table class="vide">
+<tr><th style="width:20%">Personne</th><th>Critère qu’il choisirait</th><th>Pourquoi</th></tr>
+<tr><td>Le client</td><td></td><td></td></tr>
+<tr><td>Le comptable</td><td></td><td></td></tr>
+<tr><td>Le soudeur</td><td></td><td></td></tr>
+</table>
+
+<div class="num-page">A1 · page 3 sur 3</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · Pareto et Ishikawa · A2 Usinage CN</span></div>
+
+<div class="titre-act"><span class="piece">A2</span><h2>La cote qui dérive</h2><span class="etiquette stag">Usinage CN</span><span class="duree">50 min</span></div>
+<h3>La situation</h3>
+<p>Tour CN n° 2 d’ADS. Série de 300 arbres de convoyeur. La cote critique est le diamètre de portée de roulement : <b>Ø 40 h7</b>, c’est-à-dire entre <b>39,975 mm</b> et <b>40,000 mm</b>. L’opérateur mesure une pièce sur dix au micromètre numérique (résolution 1 µm, soit 0,001 mm).</p>
+<p>À 15 h 00, le contrôleur qualité mesure la pièce 250 au marbre : elle est hors tolérance. Il fait arrêter la production. À 15 h 30, réunion au pied de la machine. Chacun a son explication.</p>
+
+<p class="q"><b class="n">1</b><b>L’Ishikawa à froid.</b> Ne tournez pas la page. Chaque membre de l’équipe écrit au moins trois causes possibles d’une cote qui dérive sur un tour CN, tirées de son expérience. Rangez ensuite toutes les causes de l’équipe dans le diagramme. <span class="duree">10 min</span></p>
+<svg viewBox="0 0 700 300" class="grille" role="img" aria-label="Diagramme d'Ishikawa vierge">
+<line x1="20" y1="150" x2="545" y2="150" stroke="#003d7a" stroke-width="3"/>
+<polygon points="545,142 560,150 545,158" fill="#003d7a"/>
+<rect x="562" y="98" width="132" height="104" rx="6" fill="#fdf1e7" stroke="#d9681a" stroke-width="2"/>
+<text x="628" y="120" font-size="12" text-anchor="middle" font-weight="600">Diamètre Ø 40</text>
+<text x="628" y="137" font-size="12" text-anchor="middle" font-weight="600">qui sort de</text>
+<text x="628" y="154" font-size="12" text-anchor="middle" font-weight="600">tolérance en</text>
+<text x="628" y="171" font-size="12" text-anchor="middle" font-weight="600">cours de série</text>
+<line x1="60" y1="22" x2="150" y2="150" stroke="#003d7a" stroke-width="2"/>
+<rect x="0" y="4" width="120" height="22" rx="4" fill="#003d7a"/>
+<text x="60" y="20" font-size="12" text-anchor="middle" fill="#fff" font-weight="600">Matière</text>
+<line x1="230" y1="22" x2="320" y2="150" stroke="#003d7a" stroke-width="2"/>
+<rect x="170" y="4" width="120" height="22" rx="4" fill="#003d7a"/>
+<text x="230" y="20" font-size="12" text-anchor="middle" fill="#fff" font-weight="600">Matériel</text>
+<line x1="400" y1="22" x2="490" y2="150" stroke="#003d7a" stroke-width="2"/>
+<rect x="340" y="4" width="120" height="22" rx="4" fill="#003d7a"/>
+<text x="400" y="20" font-size="12" text-anchor="middle" fill="#fff" font-weight="600">Méthode</text>
+<line x1="60" y1="278" x2="150" y2="150" stroke="#003d7a" stroke-width="2"/>
+<rect x="0" y="274" width="120" height="22" rx="4" fill="#003d7a" stroke="#003d7a"/>
+<text x="60" y="290" font-size="12" text-anchor="middle" fill="#fff" font-weight="600">Main-d’œuvre</text>
+<line x1="230" y1="278" x2="320" y2="150" stroke="#003d7a" stroke-width="2"/>
+<rect x="170" y="274" width="120" height="22" rx="4" fill="#003d7a" stroke="#003d7a"/>
+<text x="230" y="290" font-size="12" text-anchor="middle" fill="#fff" font-weight="600">Milieu</text>
+</svg>
+<div class="encadre"><p><b>Rappel des 5M.</b> Matière : barres, matière première. Matériel : machine, outils, instruments. Méthode : gamme, réglages, consignes. Main-d’œuvre : savoir-faire, information, organisation des personnes. Milieu : température, propreté, environnement du poste.</p></div>
+<p class="fiction">Cas d’étude. L’entreprise ADS, ses salariés et tous les chiffres sont inventés pour la formation.</p>
+
+<div class="num-page">A2 · page 1 sur 3</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · Pareto et Ishikawa · A2 Usinage CN</span></div>
+
+<h3>Le carnet de bord du poste</h3>
+<p class="discret">Écart = diamètre mesuré moins 40,000 mm, en µm. Exemple : −14 signifie 39,986 mm. La tolérance va donc de −25 à 0.</p>
+<table style="font-size:.86em">
+<tr><th class="num" style="width:9%">Pièce</th><th style="width:11%">Heure</th><th class="num" style="width:10%">Écart (µm)</th><th>Événement noté</th></tr>
+<tr><td class="num">1</td><td>7 h 30</td><td class="num"><b>−24</b></td><td>Démarrage. Machine arrêtée depuis la veille. Plaquette neuve. Opératrice : Inès.</td></tr><tr><td class="num">10</td><td>7 h 44</td><td class="num"><b>−17</b></td><td></td></tr><tr><td class="num">20</td><td>7 h 58</td><td class="num"><b>−14</b></td><td></td></tr><tr><td class="num">30</td><td>8 h 14</td><td class="num"><b>−13</b></td><td></td></tr><tr><td class="num">40</td><td>8 h 28</td><td class="num"><b>−10</b></td><td></td></tr><tr><td class="num">50</td><td>8 h 44</td><td class="num"><b>−8</b></td><td></td></tr><tr><td class="num">60</td><td>8 h 58</td><td class="num"><b>−7</b></td><td>9 h 00 : début d’un nouveau lot de barres (même fournisseur, autre coulée).</td></tr><tr><td class="num">70</td><td>9 h 14</td><td class="num"><b>−7</b></td><td></td></tr><tr><td class="num">80</td><td>9 h 28</td><td class="num"><b>−4</b></td><td></td></tr><tr><td class="num">90</td><td>9 h 44</td><td class="num"><b>−2</b></td><td></td></tr><tr><td class="num">100</td><td>9 h 58</td><td class="num"><b>−1</b></td><td></td></tr><tr><td class="num">110</td><td>10 h 14</td><td class="num"><b>0</b></td><td>Limite haute atteinte. Inès change la plaquette et refait le réglage (10 h 15 à 10 h 21).</td></tr><tr><td class="num">111</td><td>10 h 21</td><td class="num"><b>−16</b></td><td></td></tr><tr><td class="num">120</td><td>10 h 34</td><td class="num"><b>−15</b></td><td></td></tr><tr><td class="num">130</td><td>10 h 50</td><td class="num"><b>−12</b></td><td></td></tr><tr><td class="num">140</td><td>11 h 04</td><td class="num"><b>−12</b></td><td>11 h 00 : concentration de l’huile soluble contrôlée : 5 %, conforme à la consigne.</td></tr><tr><td class="num">150</td><td>11 h 20</td><td class="num"><b>−11</b></td><td></td></tr><tr><td class="num">160</td><td>11 h 34</td><td class="num"><b>−9</b></td><td></td></tr><tr><td class="num">170</td><td>11 h 50</td><td class="num"><b>−6</b></td><td>12 h 00 à 13 h 00 : pause, machine arrêtée. À 13 h 00, Karim remplace Inès.</td></tr><tr><td class="num">171</td><td>13 h 00</td><td class="num"><b>−15</b></td><td></td></tr><tr><td class="num">180</td><td>13 h 14</td><td class="num"><b>−9</b></td><td></td></tr><tr><td class="num">190</td><td>13 h 28</td><td class="num"><b>−6</b></td><td></td></tr><tr><td class="num">200</td><td>13 h 44</td><td class="num"><b>−2</b></td><td></td></tr><tr><td class="num">210</td><td>13 h 58</td><td class="num"><b>−1</b></td><td></td></tr><tr><td class="num">220</td><td>14 h 14</td><td class="num"><b>−1</b></td><td></td></tr><tr><td class="num">230</td><td>14 h 28</td><td class="num"><b>+2</b></td><td></td></tr><tr><td class="num">240</td><td>14 h 44</td><td class="num"><b>+4</b></td><td></td></tr><tr><td class="num">250</td><td>14 h 58</td><td class="num"><b>+5</b></td><td>15 h 00 : le contrôleur mesure cette pièce au marbre. Arrêt de la production.</td></tr>
+</table>
+
+<div class="num-page">A2 · page 2 sur 3</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · Pareto et Ishikawa · A2 Usinage CN</span></div>
+
+<p class="q"><b class="n">2</b><b>Tracer.</b> Placez les 28 points du carnet sur la grille. Reliez-les. Marquez chaque événement par une flèche. <span class="duree">10 min</span></p>
+<svg viewBox="0 0 700 290" class="grille" role="img" aria-label="Écart au diamètre nominal en fonction du numéro de pièce">
+<line x1="60" y1="252.0" x2="680" y2="252.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="54" y="256.0" font-size="11" text-anchor="end">-30</text>
+<line x1="60" y1="246.0" x2="680" y2="246.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="240.0" x2="680" y2="240.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="234.0" x2="680" y2="234.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="228.0" x2="680" y2="228.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="222.0" x2="680" y2="222.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="54" y="226.0" font-size="11" text-anchor="end">-25</text>
+<line x1="60" y1="216.0" x2="680" y2="216.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="210.0" x2="680" y2="210.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="204.0" x2="680" y2="204.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="198.0" x2="680" y2="198.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="192.0" x2="680" y2="192.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="54" y="196.0" font-size="11" text-anchor="end">-20</text>
+<line x1="60" y1="186.0" x2="680" y2="186.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="180.0" x2="680" y2="180.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="174.0" x2="680" y2="174.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="168.0" x2="680" y2="168.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="162.0" x2="680" y2="162.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="54" y="166.0" font-size="11" text-anchor="end">-15</text>
+<line x1="60" y1="156.0" x2="680" y2="156.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="150.0" x2="680" y2="150.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="144.0" x2="680" y2="144.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="138.0" x2="680" y2="138.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="132.0" x2="680" y2="132.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="54" y="136.0" font-size="11" text-anchor="end">-10</text>
+<line x1="60" y1="126.0" x2="680" y2="126.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="120.0" x2="680" y2="120.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="114.0" x2="680" y2="114.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="108.0" x2="680" y2="108.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="102.0" x2="680" y2="102.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="54" y="106.0" font-size="11" text-anchor="end">-5</text>
+<line x1="60" y1="96.0" x2="680" y2="96.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="90.0" x2="680" y2="90.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="84.0" x2="680" y2="84.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="78.0" x2="680" y2="78.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="72.0" x2="680" y2="72.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="54" y="76.0" font-size="11" text-anchor="end">0</text>
+<line x1="60" y1="66.0" x2="680" y2="66.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="60.0" x2="680" y2="60.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="54.0" x2="680" y2="54.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="48.0" x2="680" y2="48.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="42.0" x2="680" y2="42.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="54" y="46.0" font-size="11" text-anchor="end">+5</text>
+<line x1="60" y1="36.0" x2="680" y2="36.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="30.0" x2="680" y2="30.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="24.0" x2="680" y2="24.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="18.0" x2="680" y2="18.0" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="12.0" x2="680" y2="12.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="54" y="16.0" font-size="11" text-anchor="end">+10</text>
+<line x1="60.0" y1="12" x2="60.0" y2="252" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="60.0" y="267" font-size="11" text-anchor="middle">0</text>
+<line x1="83.8" y1="12" x2="83.8" y2="252" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="107.7" y1="12" x2="107.7" y2="252" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="131.5" y1="12" x2="131.5" y2="252" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="155.4" y1="12" x2="155.4" y2="252" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="179.2" y1="12" x2="179.2" y2="252" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="179.2" y="267" font-size="11" text-anchor="middle">50</text>
+<line x1="203.1" y1="12" x2="203.1" y2="252" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="226.9" y1="12" x2="226.9" y2="252" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="250.8" y1="12" x2="250.8" y2="252" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="274.6" y1="12" x2="274.6" y2="252" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="298.5" y1="12" x2="298.5" y2="252" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="298.5" y="267" font-size="11" text-anchor="middle">100</text>
+<line x1="322.3" y1="12" x2="322.3" y2="252" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="346.2" y1="12" x2="346.2" y2="252" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="370.0" y1="12" x2="370.0" y2="252" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="393.8" y1="12" x2="393.8" y2="252" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="417.7" y1="12" x2="417.7" y2="252" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="417.7" y="267" font-size="11" text-anchor="middle">150</text>
+<line x1="441.5" y1="12" x2="441.5" y2="252" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="465.4" y1="12" x2="465.4" y2="252" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="489.2" y1="12" x2="489.2" y2="252" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="513.1" y1="12" x2="513.1" y2="252" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="536.9" y1="12" x2="536.9" y2="252" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="536.9" y="267" font-size="11" text-anchor="middle">200</text>
+<line x1="560.8" y1="12" x2="560.8" y2="252" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="584.6" y1="12" x2="584.6" y2="252" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="608.5" y1="12" x2="608.5" y2="252" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="632.3" y1="12" x2="632.3" y2="252" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="656.2" y1="12" x2="656.2" y2="252" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="656.2" y="267" font-size="11" text-anchor="middle">250</text>
+<line x1="680.0" y1="12" x2="680.0" y2="252" stroke="#e3e8ed" stroke-width="0.5"/>
+<line x1="60" y1="72.0" x2="680" y2="72.0" stroke="#b3261e" stroke-width="2"/>
+<text x="676" y="67.0" font-size="11" text-anchor="end" fill="#b3261e" font-weight="600">Limite haute : 40,000 mm</text>
+<line x1="60" y1="222.0" x2="680" y2="222.0" stroke="#b3261e" stroke-width="2"/>
+<text x="676" y="217.0" font-size="11" text-anchor="end" fill="#b3261e" font-weight="600">Limite basse : 39,975 mm</text>
+<line x1="60" y1="12" x2="60" y2="252" stroke="#1f2933" stroke-width="1.4"/>
+<text x="370.0" y="284" font-size="11" text-anchor="middle" fill="#5f6b76">Numéro de pièce</text>
+<text x="14" y="132.0" font-size="11" fill="#5f6b76" transform="rotate(-90 14 132.0)" text-anchor="middle">Écart au nominal (µm)</text>
+</svg>
+<p class="q"><b class="n">3</b><b>Juger les hypothèses de la réunion.</b> Pour chacune, cochez une case et citez les lignes du carnet qui le montrent. <span class="duree">15 min</span></p>
+<table style="font-size:.9em">
+<tr><th>Hypothèse</th><th style="width:9%">Confirmée</th><th style="width:8%">Écartée</th><th style="width:10%">Impossible de trancher</th><th style="width:24%">Preuve (pièces du carnet)</th></tr>
+<tr><td><b>H1</b> « La plaquette s’use. » <span class="discret">(Inès)</span></td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td></td></tr><tr><td><b>H2</b> « La machine n’est pas chaude au démarrage. » <span class="discret">(le régleur)</span></td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td></td></tr><tr><td><b>H3</b> « Ça a dérapé depuis que Karim est arrivé. » <span class="discret">(le contrôleur)</span></td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td></td></tr><tr><td><b>H4</b> « Le nouveau lot de barres est plus dur. » <span class="discret">(Karim)</span></td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td></td></tr><tr><td><b>H5</b> « Le micromètre est faux. » <span class="discret">(Karim)</span></td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td></td></tr><tr><td><b>H6</b> « L’huile soluble est mal dosée. » <span class="discret">(un technicien de maintenance)</span></td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td class="c"><span class="case"></span></td><td></td></tr>
+</table>
+<p class="q"><b class="n">4</b><b>Calculer.</b> De combien de µm la cote monte-t-elle par pièce entre la pièce 120 et la pièce 170 ? Entre la pièce 30 et la pièce 110 ? Après un réglage à −16, combien de pièces peut-on faire avant d’atteindre la limite haute ? Que proposez-vous ? <span class="duree">10 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">5</b>Karim a noté +2 à 14 h 28. Il a continué : il croyait la tolérance à ± 0,025 mm. Il y a donc <b>deux problèmes</b> dans cette journée. Lesquels ? Combien de pièces faut-il trier, et lesquelles ?</p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">6</b>Revenez à votre Ishikawa de la page 1. Combien de vos causes sont confirmées par le carnet ? Votre Ishikawa était-il faux ? <span class="duree">5 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+
+<div class="num-page">A2 · page 3 sur 3</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · Pareto et Ishikawa · A3 Maintenance</span></div>
+
+<div class="titre-act"><span class="piece">A3</span><h2>Ce que dit la GMAO</h2><span class="etiquette stag">Maintenance</span><span class="duree">50 min</span></div>
+<h3>La situation</h3>
+<p>Cellule robotisée de soudage R2 d’ADS : un robot, une torche MAG, un dévidoir, un posage avec bridage pneumatique, une enceinte protégée par une porte et une barrière immatérielle. En septembre 2026, la cellule a connu <b>30 arrêts</b> qui ont donné lieu à un bon d’intervention, pour <b>800 minutes</b> d’arrêt au total.</p>
+<p>À chaque bon, le technicien choisit un code dans une liste de la GMAO : ELEC, MECA, PNEU ou AUTRE. Voici l’export que le responsable maintenance a présenté en réunion :</p>
+<table style="width:75%">
+<tr><th>Code GMAO</th><th class="num">Nombre de bons</th><th class="num">Arrêt (min)</th><th class="num">%</th><th class="num">% cumulé</th></tr>
+<tr><td>ELEC</td><td class="num">11</td><td class="num">285</td><td class="num">35,6</td><td class="num">35,6</td></tr>
+<tr><td>AUTRE</td><td class="num">13</td><td class="num">215</td><td class="num">26,9</td><td class="num">62,5</td></tr>
+<tr><td>MECA</td><td class="num">3</td><td class="num">180</td><td class="num">22,5</td><td class="num">85,0</td></tr>
+<tr><td>PNEU</td><td class="num">3</td><td class="num">120</td><td class="num">15,0</td><td class="num">100,0</td></tr>
+<tr><td><b>Total</b></td><td class="num"><b>30</b></td><td class="num"><b>800</b></td><td></td><td></td></tr>
+</table>
+<p class="citation">« Le Pareto est clair : c’est l’électrique. On fait venir l’automaticien la semaine prochaine. » Le responsable maintenance</p>
+
+<p class="q"><b class="n">1</b>Lisez les bons 1, 6, 13 et 25 (page 2). Qu’est-ce qui a vraiment lâché ? Est-ce une panne électrique ? <span class="duree">5 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<div class="encadre">
+<p><b>Les familles pour recoder les bons</b> (une lettre par bon, page 2)</p>
+<table style="margin:4px 0 0">
+<tr><td><b>T</b> Torche et consommables : buse, tube contact, gaine, col de cygne</td><td><b>F</b> Alimentation fil : dévidoir, galets, bobine</td></tr>
+<tr><td><b>D</b> Détection pièce : capteurs et leurs câbles</td><td><b>B</b> Bridage pneumatique : vérins, distributeurs, raccords</td></tr>
+<tr><td><b>S</b> Sécurité : porte, barrière immatérielle, arrêt d’urgence</td><td><b>R</b> Robot et programme : axes, origines, trajectoires</td></tr>
+<tr><td colspan="2"><b>?</b> Non classable : le bon ne permet pas de savoir ce qui a lâché</td></tr>
+</table>
+</div>
+<p class="fiction">Cas d’étude. L’entreprise ADS, ses salariés et tous les chiffres sont inventés pour la formation.</p>
+
+<div class="num-page">A3 · page 1 sur 4</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · Pareto et Ishikawa · A3 Maintenance</span></div>
+
+<p class="q"><b class="n">2</b><b>Recoder.</b> Pour chaque bon, écrivez la lettre de la famille dans la dernière colonne. Quand vous hésitez, notez le numéro du bon : on en discutera. <span class="duree">10 min</span></p>
+<table style="font-size:.86em">
+<tr><th class="num" style="width:7%">Bon</th><th style="width:11%">Code saisi</th><th>Texte du technicien</th><th class="num" style="width:11%">Arrêt (min)</th><th style="width:10%">Famille</th></tr>
+<tr><td class="num">1</td><td>ELEC</td><td>Défaut arc, robot en alarme. Changé tube contact.</td><td class="num">15</td><td></td></tr><tr><td class="num">2</td><td>AUTRE</td><td>Buse pleine de projections, nettoyée.</td><td class="num">10</td><td></td></tr><tr><td class="num">3</td><td>MECA</td><td>Vérin de bridage gauche ne sort plus. Distributeur changé.</td><td class="num">75</td><td></td></tr><tr><td class="num">4</td><td>AUTRE</td><td>Fil emmêlé dans le dévidoir.</td><td class="num">25</td><td></td></tr><tr><td class="num">5</td><td>ELEC</td><td>Capteur présence pièce HS ? Nettoyé, ça repart.</td><td class="num">20</td><td></td></tr><tr><td class="num">6</td><td>AUTRE</td><td>Arc instable. Tube contact usé remplacé.</td><td class="num">15</td><td></td></tr><tr><td class="num">7</td><td>ELEC</td><td>Barrière immatérielle en défaut, réalignée.</td><td class="num">30</td><td></td></tr><tr><td class="num">8</td><td>AUTRE</td><td>Nettoyage buse.</td><td class="num">10</td><td></td></tr><tr><td class="num">9</td><td>PNEU</td><td>Fuite raccord bridage droit.</td><td class="num">40</td><td></td></tr><tr><td class="num">10</td><td>ELEC</td><td>Robot perte origine axe 4, recalage.</td><td class="num">90</td><td></td></tr><tr><td class="num">11</td><td>AUTRE</td><td>RAS au redémarrage.</td><td class="num">15</td><td></td></tr><tr><td class="num">12</td><td>AUTRE</td><td>Bobine de fil vide, pas de bobine d’avance au poste.</td><td class="num">35</td><td></td></tr><tr><td class="num">13</td><td>ELEC</td><td>Défaut arc. Tube contact et buse changés.</td><td class="num">20</td><td></td></tr><tr><td class="num">14</td><td>MECA</td><td>Gaine fil bouchée, remplacée.</td><td class="num">45</td><td></td></tr><tr><td class="num">15</td><td>AUTRE</td><td>Capteur pièce encrassé par les projections.</td><td class="num">15</td><td></td></tr><tr><td class="num">16</td><td>ELEC</td><td>Défaut arc.</td><td class="num">15</td><td></td></tr><tr><td class="num">17</td><td>AUTRE</td><td>Buse colmatée.</td><td class="num">10</td><td></td></tr><tr><td class="num">18</td><td>PNEU</td><td>Vérin bridage gauche lent.</td><td class="num">30</td><td></td></tr><tr><td class="num">19</td><td>ELEC</td><td>Porte cellule mal fermée, défaut sécurité.</td><td class="num">10</td><td></td></tr><tr><td class="num">20</td><td>AUTRE</td><td>Tube contact + nettoyage buse.</td><td class="num">15</td><td></td></tr><tr><td class="num">21</td><td>AUTRE</td><td>Fil coincé au galet du dévidoir.</td><td class="num">20</td><td></td></tr><tr><td class="num">22</td><td>ELEC</td><td>Capteur présence pièce nettoyé.</td><td class="num">15</td><td></td></tr><tr><td class="num">23</td><td>MECA</td><td>Col de cygne tordu après collision, torche complète changée.</td><td class="num">60</td><td></td></tr><tr><td class="num">24</td><td>AUTRE</td><td>Divers.</td><td class="num">20</td><td></td></tr><tr><td class="num">25</td><td>ELEC</td><td>Défaut arc, tube contact.</td><td class="num">15</td><td></td></tr><tr><td class="num">26</td><td>AUTRE</td><td>Nettoyage buse + produit anti-adhérent.</td><td class="num">10</td><td></td></tr><tr><td class="num">27</td><td>PNEU</td><td>Distributeur bridage droit HS.</td><td class="num">50</td><td></td></tr><tr><td class="num">28</td><td>ELEC</td><td>Capteur présence pièce : câble écrasé, remplacé.</td><td class="num">45</td><td></td></tr><tr><td class="num">29</td><td>AUTRE</td><td>Buse et tube contact.</td><td class="num">15</td><td></td></tr><tr><td class="num">30</td><td>ELEC</td><td>Arrêt d’urgence déclenché par l’opérateur, réarmement.</td><td class="num">10</td><td></td></tr>
+</table>
+
+<div class="num-page">A3 · page 2 sur 4</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · Pareto et Ishikawa · A3 Maintenance</span></div>
+
+<p class="q"><b class="n">3</b><b>Le nouveau Pareto.</b> Faites les totaux par famille, puis classez, calculez et tracez. Par convention, « Non classable » se met toujours en dernier, comme « Autres ». <span class="duree">15 min</span></p>
+<table class="vide">
+<tr><th>Famille</th><th style="width:13%">Numéros de bons</th><th class="num" style="width:11%">Nombre de bons</th><th class="num" style="width:11%">Arrêt (min)</th><th class="num" style="width:9%">%</th><th class="num" style="width:11%">% cumulé</th></tr>
+<tr><td>T Torche et consommables</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>F Alimentation fil</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>D Détection pièce</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>B Bridage pneumatique</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>S Sécurité</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>R Robot et programme</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>? Non classable</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td><b>Total</b></td><td></td><td class="num"><b>30</b></td><td class="num"><b>800</b></td><td></td><td></td></tr>
+</table>
+<p><b>Grille C · Pareto des arrêts par famille.</b> Axe de gauche gradué de 0 à 800 min.</p>
+<svg viewBox="0 0 700 250" class="grille" role="img" aria-label="Grille C, Pareto des arrêts par famille">
+<line x1="70" y1="200.0" x2="630" y2="200.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="204.0" font-size="11" text-anchor="end" fill="#1f2933">0</text>
+<text x="636" y="204.0" font-size="11" fill="#1f2933">0 %</text>
+<line x1="70" y1="196.3" x2="630" y2="196.3" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="192.6" x2="630" y2="192.6" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="188.8" x2="630" y2="188.8" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="185.1" x2="630" y2="185.1" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="181.4" x2="630" y2="181.4" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="185.4" font-size="11" text-anchor="end" fill="#1f2933">80</text>
+<text x="636" y="185.4" font-size="11" fill="#1f2933">10 %</text>
+<line x1="70" y1="177.7" x2="630" y2="177.7" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="174.0" x2="630" y2="174.0" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="170.2" x2="630" y2="170.2" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="166.5" x2="630" y2="166.5" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="162.8" x2="630" y2="162.8" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="166.8" font-size="11" text-anchor="end" fill="#1f2933">160</text>
+<text x="636" y="166.8" font-size="11" fill="#1f2933">20 %</text>
+<line x1="70" y1="159.1" x2="630" y2="159.1" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="155.4" x2="630" y2="155.4" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="151.6" x2="630" y2="151.6" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="147.9" x2="630" y2="147.9" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="144.2" x2="630" y2="144.2" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="148.2" font-size="11" text-anchor="end" fill="#1f2933">240</text>
+<text x="636" y="148.2" font-size="11" fill="#1f2933">30 %</text>
+<line x1="70" y1="140.5" x2="630" y2="140.5" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="136.8" x2="630" y2="136.8" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="133.0" x2="630" y2="133.0" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="129.3" x2="630" y2="129.3" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="125.6" x2="630" y2="125.6" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="129.6" font-size="11" text-anchor="end" fill="#1f2933">320</text>
+<text x="636" y="129.6" font-size="11" fill="#1f2933">40 %</text>
+<line x1="70" y1="121.9" x2="630" y2="121.9" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="118.2" x2="630" y2="118.2" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="114.4" x2="630" y2="114.4" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="110.7" x2="630" y2="110.7" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="107.0" x2="630" y2="107.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="111.0" font-size="11" text-anchor="end" fill="#1f2933">400</text>
+<text x="636" y="111.0" font-size="11" fill="#1f2933">50 %</text>
+<line x1="70" y1="103.3" x2="630" y2="103.3" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="99.6" x2="630" y2="99.6" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="95.8" x2="630" y2="95.8" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="92.1" x2="630" y2="92.1" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="88.4" x2="630" y2="88.4" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="92.4" font-size="11" text-anchor="end" fill="#1f2933">480</text>
+<text x="636" y="92.4" font-size="11" fill="#1f2933">60 %</text>
+<line x1="70" y1="84.7" x2="630" y2="84.7" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="81.0" x2="630" y2="81.0" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="77.2" x2="630" y2="77.2" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="73.5" x2="630" y2="73.5" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="69.8" x2="630" y2="69.8" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="73.8" font-size="11" text-anchor="end" fill="#1f2933">560</text>
+<text x="636" y="73.8" font-size="11" fill="#1f2933">70 %</text>
+<line x1="70" y1="66.1" x2="630" y2="66.1" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="62.4" x2="630" y2="62.4" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="58.6" x2="630" y2="58.6" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="54.9" x2="630" y2="54.9" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="51.2" x2="630" y2="51.2" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="55.2" font-size="11" text-anchor="end" fill="#1f2933">640</text>
+<text x="636" y="55.2" font-size="11" fill="#1f2933">80 %</text>
+<line x1="70" y1="47.5" x2="630" y2="47.5" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="43.8" x2="630" y2="43.8" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="40.0" x2="630" y2="40.0" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="36.3" x2="630" y2="36.3" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="32.6" x2="630" y2="32.6" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="36.6" font-size="11" text-anchor="end" fill="#1f2933">720</text>
+<text x="636" y="36.6" font-size="11" fill="#1f2933">90 %</text>
+<line x1="70" y1="28.9" x2="630" y2="28.9" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="25.2" x2="630" y2="25.2" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="21.4" x2="630" y2="21.4" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="17.7" x2="630" y2="17.7" stroke="#dde3e9" stroke-width="0.5"/>
+<line x1="70" y1="14.0" x2="630" y2="14.0" stroke="#9aa5b1" stroke-width="0.9"/>
+<text x="64" y="18.0" font-size="11" text-anchor="end" fill="#1f2933">800</text>
+<text x="636" y="18.0" font-size="11" fill="#1f2933">100 %</text>
+<line x1="70.0" y1="14" x2="70.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="150.0" y1="14" x2="150.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="230.0" y1="14" x2="230.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="310.0" y1="14" x2="310.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="390.0" y1="14" x2="390.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="470.0" y1="14" x2="470.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="550.0" y1="14" x2="550.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<line x1="630.0" y1="14" x2="630.0" y2="200" stroke="#dde3e9" stroke-width="0.6"/>
+<text x="110.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">1</text>
+<text x="190.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">2</text>
+<text x="270.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">3</text>
+<text x="350.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">4</text>
+<text x="430.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">5</text>
+<text x="510.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">6</text>
+<text x="590.0" y="216" font-size="12" text-anchor="middle" fill="#1f2933">7</text>
+<line x1="70" y1="14" x2="70" y2="200" stroke="#1f2933" stroke-width="1.4"/>
+<line x1="630" y1="14" x2="630" y2="200" stroke="#1f2933" stroke-width="1.4"/>
+<line x1="70" y1="200" x2="630" y2="200" stroke="#1f2933" stroke-width="1.4"/>
+<text x="70" y="234" font-size="11" fill="#5f6b76">Rang (voir votre tableau)</text>
+<text x="14" y="107.0" font-size="11" fill="#5f6b76" transform="rotate(-90 14 107.0)" text-anchor="middle">Arrêt (min)</text>
+<text x="692" y="107.0" font-size="11" fill="#5f6b76" transform="rotate(90 692 107.0)" text-anchor="middle">% cumulé</text>
+</svg>
+
+<div class="num-page">A3 · page 3 sur 4</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · Pareto et Ishikawa · A3 Maintenance</span></div>
+
+<h3>Questions de réflexion <span class="duree">20 min</span></h3>
+<p class="q"><b class="n">4</b>Quelle famille arrive en tête ? Pourquoi était-elle invisible dans l’export de la GMAO ? Même question pour la deuxième famille. Que décrit vraiment le code saisi par le technicien ?</p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">5</b>Combien de bons sont non classables, et combien de minutes représentent-ils ? Que leur manque-t-il ? Écrivez les quatre informations qu’un bon d’intervention doit contenir pour être exploitable.</p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">6</b>Les bons 14 et 23 font souvent débat. Dans quelle famille les avez-vous mis ? Une autre équipe a-t-elle choisi autrement ? Écrivez la règle de classement que vous proposez, pour que tous les techniciens codent de la même façon.</p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">7</b>Comparez la famille T et la famille B : nombre d’arrêts, durée moyenne d’un arrêt. Le même type d’action convient-il aux deux ? Pensez à correctif, préventif systématique, préventif conditionnel, amélioratif.</p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">8</b>Proposez la liste des codes de panne à créer dans la GMAO pour la cellule R2, pour que le Pareto d’octobre serve à quelque chose.</p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+
+<div class="num-page">A3 · page 4 sur 4</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · Pareto et Ishikawa · A4 Trois métiers</span></div>
+
+<div class="titre-act"><span class="piece">A4</span><h2>Le tri des post-its</h2><span class="etiquette stag">Les trois métiers</span><span class="duree">50 min</span></div>
+<h3>La situation</h3>
+<p>En septembre 2026, ADS a passé <b>60 réservoirs d’air comprimé</b> au banc d’épreuve hydraulique. <b>11 ont fui.</b> Un réservoir comporte des viroles et des fonds soudés, des piquages filetés usinés au tour, et une bride dont le plan de joint est usiné. Le banc d’épreuve est entretenu par la maintenance.</p>
+<p>Le directeur a réuni un chaudronnier, un régleur et un technicien de maintenance. En vingt minutes, ils ont écrit 24 post-its. Il faut maintenant faire le tri.</p>
+
+<div class="encadre">
+<p><b>Les cinq familles de post-its</b></p>
+<p><b>V</b> <b>Cause vérifiable</b> : on peut aller voir sur le terrain si c’est vrai, et si c’est vrai, cela peut expliquer une fuite.<br>
+<b>S</b> <b>Symptôme</b> : redit l’effet avec d’autres mots.<br>
+<b>D</b> <b>Solution déguisée</b> : une action déjà choisie (« il faut », « former », « acheter »), avant d’avoir trouvé la cause.<br>
+<b>O</b> <b>Opinion ou accusation</b> : vise une personne ou un service, ne se vérifie pas.<br>
+<b>F</b> <b>Trop flou</b> : on ne sait pas quoi aller regarder.</p>
+</div>
+<p class="q"><b class="n">1</b>Écrivez la lettre de la famille dans le coin de chaque post-it. Mettez-vous d’accord dans l’équipe. Les désaccords sont à noter : ils sont utiles. <span class="duree">12 min</span></p>
+<div class="postits"><div class="postit"><span class="pn">1</span><span class="pc"></span><p>Les soudeurs ne font pas attention.</p></div><div class="postit"><span class="pn">2</span><span class="pc"></span><p>Porosités dans les cordons des piquages.</p></div><div class="postit"><span class="pn">3</span><span class="pc"></span><p>Il faut acheter un nouveau poste de soudure.</p></div><div class="postit"><span class="pn">4</span><span class="pc"></span><p>Le réservoir fuit.</p></div><div class="postit"><span class="pn">5</span><span class="pc"></span><p>Filetages des piquages abîmés pendant la manutention.</p></div><div class="postit"><span class="pn">6</span><span class="pc"></span><p>Joint du bouchon d’épreuve du banc usé.</p></div><div class="postit"><span class="pn">7</span><span class="pc"></span><p>Manomètre du banc pas étalonné depuis deux ans.</p></div><div class="postit"><span class="pn">8</span><span class="pc"></span><p>Manque de formation.</p></div><div class="postit"><span class="pn">9</span><span class="pc"></span><p>La qualité, c’est toujours pareil.</p></div><div class="postit"><span class="pn">10</span><span class="pc"></span><p>Tôles d’un nouveau fournisseur depuis août.</p></div><div class="postit"><span class="pn">11</span><span class="pc"></span><p>Il y a des fuites.</p></div><div class="postit"><span class="pn">12</span><span class="pc"></span><p>Pas le temps de bien faire.</p></div><div class="postit"><span class="pn">13</span><span class="pc"></span><p>Chanfreins des piquages irréguliers.</p></div><div class="postit"><span class="pn">14</span><span class="pc"></span><p>Plan de joint des brides usiné trop rugueux.</p></div><div class="postit"><span class="pn">15</span><span class="pc"></span><p>Courant d’air dans la halle quand la porte du quai est ouverte.</p></div><div class="postit"><span class="pn">16</span><span class="pc"></span><p>Il faudrait contrôler 100 % des soudures au ressuage.</p></div><div class="postit"><span class="pn">17</span><span class="pc"></span><p>C’est la faute du fournisseur.</p></div><div class="postit"><span class="pn">18</span><span class="pc"></span><p>Couple de serrage des bouchons et des raccords non défini dans la gamme.</p></div><div class="postit"><span class="pn">19</span><span class="pc"></span><p>Pression d’épreuve montée trop vite.</p></div><div class="postit"><span class="pn">20</span><span class="pc"></span><p>Mauvaise soudure.</p></div><div class="postit"><span class="pn">21</span><span class="pc"></span><p>Bobines de fil entamées stockées sans protection, fil rouillé en surface.</p></div><div class="postit"><span class="pn">22</span><span class="pc"></span><p>Le banc d’épreuve est vieux.</p></div><div class="postit"><span class="pn">23</span><span class="pc"></span><p>Le contrôleur est trop sévère.</p></div><div class="postit"><span class="pn">24</span><span class="pc"></span><p>Former les soudeurs aux piquages.</p></div></div>
+<p class="fiction">Cas d’étude. L’entreprise ADS, ses salariés et tous les chiffres sont inventés pour la formation.</p>
+
+<div class="num-page">A4 · page 1 sur 3</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · Pareto et Ishikawa · A4 Trois métiers</span></div>
+
+<p class="q"><b class="n">2</b><b>Réécrire.</b> Choisissez quatre post-its qui ne sont pas des causes vérifiables. Réécrivez chacun sous forme de cause qu’on peut aller vérifier. <span class="duree">8 min</span></p>
+<table class="vide">
+<tr><th style="width:12%">Post-it n°</th><th>Cause vérifiable réécrite</th></tr>
+<tr style="height:38px"><td></td><td></td></tr><tr style="height:38px"><td></td><td></td></tr><tr style="height:38px"><td></td><td></td></tr><tr style="height:38px"><td></td><td></td></tr>
+</table>
+<p class="q"><b class="n">3</b><b>L’Ishikawa.</b> Placez dans le diagramme les causes vérifiables (lettre V) et vos causes réécrites. Notez simplement le numéro du post-it. Si une cause n’entre dans aucune branche, que faites-vous ? <span class="duree">10 min</span></p>
+<svg viewBox="0 0 700 300" class="grille" role="img" aria-label="Diagramme d'Ishikawa vierge">
+<line x1="20" y1="150" x2="545" y2="150" stroke="#003d7a" stroke-width="3"/>
+<polygon points="545,142 560,150 545,158" fill="#003d7a"/>
+<rect x="562" y="98" width="132" height="104" rx="6" fill="#fdf1e7" stroke="#d9681a" stroke-width="2"/>
+<text x="628" y="120" font-size="12" text-anchor="middle" font-weight="600">11 réservoirs</text>
+<text x="628" y="137" font-size="12" text-anchor="middle" font-weight="600">sur 60 fuient</text>
+<text x="628" y="154" font-size="12" text-anchor="middle" font-weight="600">au banc</text>
+<text x="628" y="171" font-size="12" text-anchor="middle" font-weight="600">d’épreuve</text>
+<line x1="60" y1="22" x2="150" y2="150" stroke="#003d7a" stroke-width="2"/>
+<rect x="0" y="4" width="120" height="22" rx="4" fill="#003d7a"/>
+<text x="60" y="20" font-size="12" text-anchor="middle" fill="#fff" font-weight="600">Matière</text>
+<line x1="230" y1="22" x2="320" y2="150" stroke="#003d7a" stroke-width="2"/>
+<rect x="170" y="4" width="120" height="22" rx="4" fill="#003d7a"/>
+<text x="230" y="20" font-size="12" text-anchor="middle" fill="#fff" font-weight="600">Matériel</text>
+<line x1="400" y1="22" x2="490" y2="150" stroke="#003d7a" stroke-width="2"/>
+<rect x="340" y="4" width="120" height="22" rx="4" fill="#003d7a"/>
+<text x="400" y="20" font-size="12" text-anchor="middle" fill="#fff" font-weight="600">Méthode</text>
+<line x1="60" y1="278" x2="150" y2="150" stroke="#003d7a" stroke-width="2"/>
+<rect x="0" y="274" width="120" height="22" rx="4" fill="#003d7a" stroke="#003d7a"/>
+<text x="60" y="290" font-size="12" text-anchor="middle" fill="#fff" font-weight="600">Main-d’œuvre</text>
+<line x1="230" y1="278" x2="320" y2="150" stroke="#003d7a" stroke-width="2"/>
+<rect x="170" y="274" width="120" height="22" rx="4" fill="#003d7a" stroke="#003d7a"/>
+<text x="230" y="290" font-size="12" text-anchor="middle" fill="#fff" font-weight="600">Milieu</text>
+<line x1="400" y1="278" x2="490" y2="150" stroke="#003d7a" stroke-width="2" stroke-dasharray="6 4"/>
+<rect x="340" y="274" width="120" height="22" rx="4" fill="#fff" stroke="#003d7a" stroke-dasharray="6 4"/>
+<text x="400" y="290" font-size="12" text-anchor="middle" fill="#003d7a" font-weight="600">? (à vous de voir)</text>
+</svg>
+<p class="q"><b class="n">4</b>Trois post-its posent une question qui passe avant toutes les autres : <b>est-on sûr que c’est le réservoir qui fuit ?</b> Lesquels ? Que faut-il vérifier en premier, et pourquoi ? <span class="duree">5 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+
+<div class="num-page">A4 · page 2 sur 3</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · Pareto et Ishikawa · A4 Trois métiers</span></div>
+
+<p class="q"><b class="n">5</b><b>Le plan de vérification.</b> Un Ishikawa donne des pistes, pas des réponses. Choisissez trois causes à vérifier en premier. Pour chacune, dites comment la vérifier. <span class="duree">10 min</span></p>
+<table class="vide" style="font-size:.9em">
+<tr><th style="width:9%">Post-it</th><th>Que va-t-on regarder ou mesurer ?</th><th style="width:12%">Qui ?</th><th style="width:12%">Combien de temps ?</th><th style="width:26%">Quel résultat confirme la cause ? Lequel l’écarte ?</th></tr>
+<tr style="height:62px"><td></td><td></td><td></td><td></td><td></td></tr>
+<tr style="height:62px"><td></td><td></td><td></td><td></td><td></td></tr>
+<tr style="height:62px"><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+<p class="q"><b class="n">6</b><b>Préparer le Pareto d’octobre.</b> Le directeur veut un Pareto des fuites à la fin d’octobre. Dessinez la feuille de relevé que le contrôleur remplira à chaque épreuve. Quelles colonnes ? Laquelle servira à construire le Pareto ? <span class="duree">5 min</span></p>
+<table class="vide">
+<tr><th>Colonne 1</th><th>Colonne 2</th><th>Colonne 3</th><th>Colonne 4</th><th>Colonne 5</th><th>Colonne 6</th></tr>
+<tr><td style="height:46px"></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">7</b>Comptez les causes vérifiables par métier : chaudronnerie, usinage, maintenance. Chacun de vous avait-il en tête les causes des deux autres métiers ?</p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+
+<div class="num-page">A4 · page 3 sur 3</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · Pareto et Ishikawa · A5 Trois métiers</span></div>
+
+<div class="titre-act"><span class="piece">A5</span><h2>Avant, après</h2><span class="etiquette stag">Les trois métiers</span><span class="duree">45 min</span></div>
+<h3>La situation</h3>
+<p>Au premier trimestre 2026, le Pareto du contrôle final d’ADS était dominé par la déformation après soudage. En avril, l’atelier a mis en place une séquence de soudage écrite et un gabarit de bridage. Le directeur compare les deux trimestres. Entre-temps, les commandes ont baissé.</p>
+<table>
+<tr><th rowspan="2">Type de non-conformité</th><th colspan="3" style="text-align:center">Janvier à mars<br>4 000 pièces contrôlées</th><th colspan="3" style="text-align:center">Avril à juin<br>2 500 pièces contrôlées</th></tr>
+<tr><th class="num">Nombre</th><th class="num">% du total</th><th class="num">Pour 1 000 pièces</th><th class="num">Nombre</th><th class="num">% du total</th><th class="num">Pour 1 000 pièces</th></tr>
+<tr><td>Déformation après soudage</td><td class="num">96</td><td></td><td></td><td class="num">15</td><td></td><td></td></tr><tr><td>Cote d’usinage hors tolérance</td><td class="num">40</td><td></td><td></td><td class="num">25</td><td></td><td></td></tr><tr><td>Cote de pliage hors tolérance</td><td class="num">32</td><td></td><td></td><td class="num">20</td><td></td><td></td></tr><tr><td>Filetage abîmé</td><td class="num">16</td><td></td><td></td><td class="num">10</td><td></td><td></td></tr><tr><td>Rayures et chocs de manutention</td><td class="num">12</td><td></td><td></td><td class="num">15</td><td></td><td></td></tr><tr><td>Autres</td><td class="num">8</td><td></td><td></td><td class="num">5</td><td></td><td></td></tr>
+<tr><td><b>Total</b></td><td class="num"><b>204</b></td><td class="num">100</td><td></td><td class="num"><b>90</b></td><td class="num">100</td><td></td></tr>
+</table>
+<p class="discret">« Pour 1 000 pièces » : nombre de non-conformités ÷ nombre de pièces contrôlées × 1 000.</p>
+
+<div class="encadre orange">
+<p><b>Ce que dit le directeur en réunion</b></p>
+<p><b>(a)</b> « Le nombre de non-conformités a baissé de 56 %. L’action a marché au-delà de nos espérances. »<br>
+<b>(b)</b> « L’usinage se dégrade : il est passé de 20 % à 28 % de nos non-conformités. »<br>
+<b>(c)</b> « Les rayures ont presque triplé. C’est notre nouveau problème numéro 1. »</p>
+</div>
+<p class="q"><b class="n">1</b>Complétez les colonnes « % du total » pour les deux trimestres. <span class="duree">10 min</span></p>
+<p class="q"><b class="n">2</b>Complétez les colonnes « pour 1 000 pièces ». <span class="duree">10 min</span></p>
+<p class="fiction">Cas d’étude. L’entreprise ADS, ses salariés et tous les chiffres sont inventés pour la formation.</p>
+
+<div class="num-page">A5 · page 1 sur 2</div>
+</section>
+<section class="page">
+<div class="entete-page"><img src="../logo_uimm.jpg" alt="Logo UIMM"><span>Pôle Formation UIMM CVDL · Pareto et Ishikawa · A5 Trois métiers</span></div>
+
+<p class="q"><b class="n">3</b>Jugez chaque phrase du directeur : vraie, fausse, ou à corriger. Appuyez-vous sur un chiffre de votre tableau. <span class="duree">12 min</span></p>
+<table class="vide">
+<tr><th style="width:7%">Phrase</th><th style="width:16%">Verdict</th><th>Le chiffre qui le montre, et ce qu’il faudrait dire à la place</th></tr>
+<tr style="height:70px"><td class="c"><b>(a)</b></td><td></td><td></td></tr>
+<tr style="height:70px"><td class="c"><b>(b)</b></td><td></td><td></td></tr>
+<tr style="height:70px"><td class="c"><b>(c)</b></td><td></td><td></td></tr>
+</table>
+<p class="q"><b class="n">4</b>Si le taux de rayures n’avait pas changé, combien de rayures aurait-on dû trouver d’avril à juin ? On en a trouvé 15. Hasard ou vrai changement ? Que demanderiez-vous à l’atelier avant de conclure ? <span class="duree">5 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">5</b>L’action d’avril a-t-elle marché sur sa cible ? De combien ? <span class="duree">3 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+<p class="q"><b class="n">6</b>Après une action réussie, le Pareto a toujours un nouveau premier. Pourquoi est-ce normal ? Quel indicateur afficheriez-vous dans l’atelier pour suivre les non-conformités, et pourquoi pas les deux autres ? <span class="duree">5 min</span></p>
+<div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div><div class="ligne-ecriture"></div>
+
+<div class="num-page">A5 · page 2 sur 2</div>
+</section>
+
+</body>
+</html>

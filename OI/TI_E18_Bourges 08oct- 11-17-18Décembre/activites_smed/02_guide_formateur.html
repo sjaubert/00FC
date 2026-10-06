@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMED, guide formateur</title>
+<link rel="stylesheet" href="style.css">
+<style>
+svg.grille { width: 100%; height: auto; display: block; margin: 6px 0 10px; font-family: "Segoe UI", Tahoma, Arial, sans-serif; }
+.q { margin: 12px 0 4px; }
+.q b.n { display: inline-block; background: var(--orange); color: #fff; border-radius: 4px; padding: 0 7px; margin-right: 6px; }
+.duree { color: var(--gris); font-size: .88em; }
+.titre-act { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.titre-act h2 { margin: 0; border: 0; font-size: 1.45em; }
+.vide td { height: 24px; }
+td.c { text-align: center; }
+.fiction { font-size: .82em; color: var(--gris); font-style: italic; }
+.citation { border-left: 4px solid var(--gris); padding: 4px 12px; margin: 10px 0; font-style: italic; }
+@media print { .q { margin: 7px 0 2px; } .vide td { height: 19px; } .ligne-ecriture { height: 24px; } }
+header.bandeau{color:#fff} code{background:var(--gris-pale);padding:1px 4px;border-radius:3px}
+</style>
+</head>
+<body>
+<div class="barre-impr"><a href="../index.html">Retour au plan</a><span>Guide formateur et corrigé SMED. Chaque réponse renvoie à l’activité, la page et la question du dossier stagiaire.</span><button onclick="window.print()">Imprimer</button></div>
+
+<div class="wrap">
+<header class="bandeau carte" style="margin-bottom:0;border-radius:8px 8px 0 0;padding:22px 32px">
+<img src="../logo_uimm.jpg" alt="Logo UIMM">
+<div><h1>Changer de série vite et bien, guide formateur</h1>
+<p>Cinq activités SMED chez ADS · Trajectoire Industrie E18 Bourges · Document formateur, pour toi seul</p></div>
+</header>
+
+<div class="carte">
+<h2 style="margin-top:0">Ce que cette banque apporte</h2>
+<p>Je n’ai trouvé aucune ressource SMED dans <code>00FC/OI</code>. Cette banque part donc de zéro. Elle suit les étapes classiques de la méthode, mais chaque activité vise surtout une erreur de raisonnement fréquente sur le terrain.</p>
+<table><tr><th class="">Activité</th><th class="">Machine</th><th class="">L’erreur visée</th><th class="">Ce que le stagiaire doit retenir</th></tr><tr><td class=""><b>S1</b> 25 minutes pour changer d’outils</td><td class="">Presse plieuse, chaudronnerie</td><td class="">Classer selon ce qu’on fait aujourd’hui</td><td class="">La question est « pourrait-on le faire machine en marche ? ». L’externe ne disparaît pas : il faut quelqu’un pour le faire.</td></tr><tr><td class=""><b>S2</b> Quand le changement finit-il ?</td><td class="">Centre d’usinage, usinage CN</td><td class="">Mesurer le changement de l’arrêt au redémarrage</td><td class="">Le changement va du dernier bon au premier bon à cadence. Les essais et la prudence sont du changement caché.</td></tr><tr><td class=""><b>S3</b> Le posage de la cellule</td><td class="">Cellule robotisée, maintenance</td><td class="">Gagner du temps sur la sécurité ; croire qu’un gain vaut toujours de l’argent</td><td class="">La consignation ne se négocie pas. Le retour sur investissement suppose une machine limitante et une demande.</td></tr><tr><td class=""><b>S4</b> Que faire des minutes gagnées ?</td><td class="">Presse plieuse, équipes mixtes</td><td class="">Vouloir à la fois toute la capacité et des petits lots</td><td class="">Les minutes gagnées s’utilisent une fois : en capacité ou en lots plus petits. On choisit selon ce qui manque.</td></tr><tr><td class=""><b>S5</b> Changer à deux</td><td class="">Presse plieuse, équipes mixtes</td><td class="">Croire qu’à deux, ça coûte deux fois plus, ou que ça va deux fois plus vite</td><td class="">À deux, la machine s’arrête moins longtemps pour presque le même travail. Ça vaut si la machine compte plus que la personne mobilisée.</td></tr></table>
+<h2>Enchaînement conseillé, une demi-journée</h2>
+<table><tr><th class="">Temps</th><th class="">Séquence</th><th class="">Groupes</th></tr><tr><td class="">10 min</td><td class="">Mémo SMED : la définition du temps de changement, interne et externe, les étapes</td><td class="">Collectif</td></tr><tr><td class="">50 min</td><td class="">S1, S2, S3 en parallèle</td><td class="">Chaudronniers sur S1 · ORMOCN sur S2 · TMI sur S3</td></tr><tr><td class="">30 min</td><td class="">Restitution croisée, 8 minutes par filière</td><td class="">Collectif</td></tr><tr><td class="">15 min</td><td class="">Pause</td><td class=""></td></tr><tr><td class="">45 min</td><td class="">S4</td><td class="">Équipes mixtes</td></tr><tr><td class="">50 min</td><td class="">S5, fiche standard comprise</td><td class="">Équipes mixtes</td></tr></table>
+<p><b>Liens avec les autres banques.</b> S1 reprend les trois changements d’outils de 25 minutes de B1 (TRS). S2 reprend le CU-1 et les pièces de B2. S3 et S5 renvoient à B4 : un gain sur une machine qui limite le flux ne vaut pas un gain ailleurs.</p>
+<div class="encadre rouge">
+<p><b>Points à vérifier de ton côté.</b></p>
+<p>1. Le mémo attribue la méthode à Shigeo Shingo et donne le sens habituel de « single minute » : un nombre de minutes à un chiffre. C’est la présentation courante. Je n’ai pas de source sous la main pour la citer précisément.</p>
+<p>2. Les règles de sécurité du cas (consignation de chaque intervenant avec son propre cadenas, une personne par moitié de presse) sont des règles d’atelier plausibles, inventées pour ADS. Aligne-les sur les procédures réelles que tu enseignes ou que les entreprises du groupe appliquent. Je ne cite aucun texte réglementaire.</p>
+<p>3. Les gains et les coûts des propositions sont des estimations fictives. Le cas le dit aux stagiaires.</p>
+</div>
+</div>
+
+<div class="carte">
+<h2 style="margin-top:0"><span class="piece">S1</span> 25 minutes pour changer d’outils · Chaudronnerie · 50 min</h2>
+<h3>Corrigé Q1 et Q2 (S1, page 1)</h3>
+<table><tr><th class="">Op.</th><th class="">Classement</th><th class="">Commentaire</th></tr><tr><td class="">1 Lire l’OF et le plan</td><td class="">Externe</td><td class="">Se fait avant l’arrêt.</td></tr><tr><td class="">2 Chercher les outils au magasin</td><td class="">Externe</td><td class="">Le gros morceau : 5 min.</td></tr><tr><td class="">3, 4 Démonter poinçon et matrice</td><td class="">Interne</td><td class=""></td></tr><tr><td class="">5 Chercher la clé</td><td class="">À supprimer</td><td class="">Accepte aussi « externe » : la clé peut être préparée. Le mieux est qu’on n’ait plus à la chercher.</td></tr><tr><td class="">6, 7 Monter matrice et poinçon</td><td class="">Interne</td><td class="">Réductible (P5).</td></tr><tr><td class="">8 Saisir le programme</td><td class="">Interne</td><td class="">Réductible (P4). Accepte « externe » si quelqu’un parle de programmation hors machine : c’est juste.</td></tr><tr><td class="">9, 10 Pièces d’essai et correction</td><td class="">Interne</td><td class="">La correction (10) est un réglage, à réduire.</td></tr><tr><td class="">11 Ramener les outils</td><td class="">Externe</td><td class="">Après le redémarrage.</td></tr></table>
+<p>Q2 : externe = 1,5 + 5 + 2,5 = 9 min. Arrêt : 25 − 9 = <b>16 min</b>, ou 14,5 min si l’opération 5 est supprimée ou externe.</p>
+<h3>Corrigé Q3 à Q5 (S1, page 2)</h3>
+<table><tr><th class="">Situation</th><th class="">Calcul</th><th class="num">Arrêt</th></tr><tr><td class="">Aujourd’hui</td><td class=""></td><td class="num">25 min</td></tr><tr><td class="">Après P1, P2, P3</td><td class="">25 − 1,5 − 5 − 2,5 − 1,5</td><td class="num">14,5 min</td></tr><tr><td class="">Après P1 à P4</td><td class="">14,5 − (3 − 0,5) − (2,5 − 1)</td><td class="num">10,5 min</td></tr><tr><td class="">Après P1 à P5</td><td class="">10,5 − (7,5 − 4)</td><td class="num"><b>7 min</b></td></tr></table>
+<p>Q4 : non, 10,5 min avec P1 à P4. Il faut l’investissement P5 pour passer sous 10 min. Q5 : 3 × (25 − 10,5) = <b>43,5 min par jour</b> ; 3 × (25 − 7) = <b>54 min par jour</b>.</p>
+<h3>Corrigé Q6 à Q9 (S1, page 3)</h3>
+<table><tr><th class="">Q</th><th class="">Réponse attendue</th></tr><tr><td class="">6</td><td class="">Hugo ne peut pas quitter une presse en production pendant 9 minutes. Organisations possibles : un magasinier ou un cariste prépare le chariot à partir de l’OF suivant, connu à l’avance ; ou Hugo prépare pendant les temps où il attend la presse, s’il en a. Sans organisation, l’externe redevient interne.</td></tr><tr><td class="">7</td><td class="">Un réglage, c’est corriger après coup parce que la position ou le programme n’étaient pas connus d’avance. Si le programme est enregistré et validé, la position de la butée et l’angle sont connus : on n’ajuste plus, on vérifie. P4 transforme un réglage en contrôle.</td></tr><tr><td class="">8</td><td class="">Respecter ce qu’il sait faire : il ne rate pas ses pièces, et c’est vrai. La question n’est pas sa compétence mais le temps où la presse ne plie pas : 75 minutes par jour. On parle de la presse, des déplacements, de la clé introuvable, pas de lui. On lui demande ses idées : c’est souvent l’opérateur qui en a le plus.</td></tr><tr><td class="">9</td><td class="">P5 apporte 3,5 min par changement, soit 10,5 min par jour. À 1,50 € la minute : 15,75 € par jour. 6 500 ÷ 15,75 ≈ <b>413 jours de travail</b>, presque deux ans. Le chiffre de 1,50 € ne suffit pas : une minute gagnée sur une machine qui a de la marge ne rapporte presque rien (voir S4). Ici P5 n’est pas prioritaire, sauf si la presse devient limitante.</td></tr></table>
+</div>
+
+<div class="carte">
+<h2 style="margin-top:0"><span class="piece">S2</span> Quand le changement finit-il ? · Usinage CN · 45 min</h2>
+<h3>Corrigé Q1 à Q3 (S2, pages 1 et 2)</h3>
+<table><tr><th class="">Morceau</th><th class="">Calcul</th><th class="num">Minutes</th></tr><tr><td class="">Du dernier bon B7 au premier bon S2</td><td class="">10 h 02 → 10 h 56</td><td class="num">54</td></tr><tr><td class="">Perte due à la vitesse réduite</td><td class="">5 pièces en 30 min au lieu de 5 × 4 = 20 min</td><td class="num">10</td></tr><tr><td class=""><b>Temps de changement réel</b></td><td class="">54 + 10</td><td class="num"><b>64</b></td></tr><tr><td class="">Temps noté</td><td class=""></td><td class="num">35</td></tr><tr><td class=""><b>Temps caché</b></td><td class="">64 − 35 : nettoyage 3, essais et corrections 16, prudence 10</td><td class="num"><b>29</b></td></tr></table>
+<p>Q3 : si seules 35 minutes sont notées comme arrêt, le reste est compté comme du fonctionnement. Le nettoyage, les essais et la prudence apparaissent comme une perte de performance (TP). Les deux supports rebutés apparaissent en non-qualité (TQ). La disponibilité (Do) paraît meilleure qu’elle n’est, et on accuse la cadence au lieu du changement.</p>
+<h3>Corrigé Q4 et Q5 (S2, pages 2 et 3)</h3>
+<table><tr><th class="">Op.</th><th class="">Classement</th><th class="">Comment ?</th></tr><tr><td class="">a Démonter le montage B7</td><td class="">I</td><td class=""></td></tr><tr><td class="">b Ranger B7, rapporter S2</td><td class="">E</td><td class="">Montage S2 apporté avant l’arrêt, B7 rangé après.</td></tr><tr><td class="">c Monter et dégauchir S2</td><td class="">I</td><td class="">Réductible : montage centré par pions, plus de dégauchissage.</td></tr><tr><td class="">d Charger les outils</td><td class="">E</td><td class="">Il y a des places libres dans le magasin d’outils.</td></tr><tr><td class="">e Mesurer les outils</td><td class="">E</td><td class="">Avec un banc de préréglage, les outils arrivent mesurés.</td></tr><tr><td class="">f Charger le programme</td><td class="">I, en partie S</td><td class="">La recherche de la clé USB est à supprimer : programmes sur le réseau.</td></tr><tr><td class="">g Prendre l’origine pièce</td><td class="">I</td><td class="">Réductible avec un montage à origine connue.</td></tr><tr><td class="">h Attendre le contrôleur</td><td class="">S</td><td class="">Contrôleur prévenu à l’avance, ou critères d’autocontrôle définis.</td></tr></table>
+<table><tr><th class="">Situation</th><th class="">Calcul</th><th class="num">Arrêt</th></tr><tr><td class="">Aujourd’hui</td><td class=""></td><td class="num">35 min</td></tr><tr><td class="">b, d, e en externe</td><td class="">35 − 5 − 4 − 6</td><td class="num">20 min</td></tr><tr><td class="">f réduite, h supprimée</td><td class="">20 − 2,5 − 3</td><td class="num">14,5 min</td></tr><tr><td class="">Montage à pions</td><td class="">14,5 − 5</td><td class="num"><b>9,5 min</b></td></tr></table>
+<p>Q6 : le préréglage des outils (e) et le programme validé réduisent aussi les essais et les rebuts : les outils arrivent avec leurs vraies dimensions, la première pièce a plus de chances d’être bonne. Le montage à pions supprime le dégauchissage et une source d’erreur. La prudence disparaît quand l’opérateur a confiance dans son réglage : c’est la conséquence des deux actions précédentes.</p>
+<p>Q7 : 4,5 − 1 − 0,5 = <b>3 min libres par cycle</b>. 15 min de préparation (b + d + e = 5 + 4 + 6) ÷ 3 = <b>5 cycles</b>. On commence 5 brides avant la fin de l’OF. C’est le principe même de l’externe : utiliser le temps où l’opérateur attend la machine.</p>
+</div>
+
+<div class="carte">
+<h2 style="margin-top:0"><span class="piece">S3</span> Le posage de la cellule · Maintenance · 45 min</h2>
+<h3>Corrigé Q1 (S3, page 1)</h3>
+<p><b>Refusées : Q1 et Q2.</b> Ne plus consigner l’air laisse une énergie capable de faire bouger des vérins pendant qu’on a les mains dans le posage. Shunter le contact de porte supprime la protection contre le robot. Aucun gain de temps ne justifie de supprimer une mesure de sécurité. Q7 est la bonne réponse au même besoin : la consignation reste complète, elle devient plus rapide. Les autres idées sont retenues.</p>
+<h3>Corrigé Q2 et Q3 (S3, page 2)</h3>
+<table><tr><th class="">Après</th><th class="">Calcul</th><th class="num">Changement</th></tr><tr><td class="">Aujourd’hui</td><td class=""></td><td class="num">45 min</td></tr><tr><td class="">Q3 raccords</td><td class="">45 − 7</td><td class="num">38 min</td></tr><tr><td class="">Q4 vis et brides</td><td class="">38 − 3,5</td><td class="num">34,5 min</td></tr><tr><td class="">Q5 chariot</td><td class="">34,5 − 8 − 2</td><td class="num">24,5 min</td></tr><tr><td class="">Q6 pions</td><td class="">24,5 − 5,5</td><td class="num">19 min</td></tr><tr><td class="">Q7 consignation</td><td class="">19 − 1 − 0,5</td><td class="num"><b>17,5 min</b></td></tr></table>
+<p>Q3 : non, on reste à 17,5 min. Le plus gros reste est le premier châssis et son contrôle (6 min). Pistes : contrôle du premier châssis avec un gabarit, programme sélectionné automatiquement, préparation du posage CH-40 complet sur le chariot. Le SMED vise moins de 10 minutes, mais ne le promet pas.</p>
+<h3>Corrigé Q4 à Q6 (S3, page 2)</h3>
+<p>Q4 : gain par changement 45 − 17,5 = 27,5 min. Par semaine : 4 × 27,5 = 110 min, soit 55 châssis de plus, dont 52,8 bons. Marge : 52,8 × 40 ≈ <b>2 112 € par semaine</b>. Coût des idées retenues : 1 800 + 600 + 2 500 + 1 200 + 300 = 6 400 €. Retour en <b>3 semaines</b> environ.</p>
+<p>Q5 : deux hypothèses. La cellule R2 limite la production, donc chaque minute gagnée y devient un châssis. Et les clients achètent ces châssis en plus. Si R2 cesse d’être limitante (dans B4, après l’action sur le capteur, elle limite encore, mais à 161 châssis contre 175 pour les deux autres machines : la marge est faible), ou si la demande n’augmente pas, le gain en euros s’effondre. Il reste un gain de souplesse : on peut changer plus souvent.</p>
+<p>Q6 : la maintenance conçoit et installe (raccords, pions, chariot, points de consignation). Les opérateurs les utilisent. Pour que ça tienne : un standard écrit, une formation, un contrôle de l’état des pions et des raccords dans le préventif, un emplacement fixe pour le chariot.</p>
+</div>
+
+<div class="carte">
+<h2 style="margin-top:0"><span class="piece">S4</span> Que faire des minutes gagnées ? · Trois métiers · 45 min</h2>
+<h3>Corrigé Q1 (S4, page 1)</h3>
+<table><tr><th class="">Réf.</th><th class="num">1 lot par semaine</th><th class="num">2 lots par semaine</th><th class="num">1 lot par jour</th></tr><tr><td class="">E40</td><td class="num">400 ÷ 200 = 2</td><td class="num">1</td><td class="num">0,4</td></tr><tr><td class="">F12</td><td class="num">250 ÷ 100 = 2,5</td><td class="num">1,25</td><td class="num">0,5</td></tr><tr><td class="">C3</td><td class="num">75 ÷ 25 = 3</td><td class="num">1,5</td><td class="num">0,6</td></tr><tr><td class="">R5</td><td class="num">300 ÷ 150 = 2</td><td class="num">1</td><td class="num">0,4</td></tr><tr><td class="">P8</td><td class="num">500 ÷ 250 = 2</td><td class="num">1</td><td class="num">0,4</td></tr><tr><td class="">T2</td><td class="num">125 ÷ 50 = 2,5</td><td class="num">1,25</td><td class="num">0,5</td></tr><tr><td class=""><b>Total</b></td><td class="num"><b>14 palettes</b></td><td class="num"><b>7</b></td><td class="num"><b>2,8</b></td></tr></table>
+<h3>Corrigé Q2 (S4, page 1)</h3>
+<table><tr><th class="">Option</th><th class="num">Changements</th><th class="num">Avant SMED</th><th class="num">Après SMED</th><th class="">Par rapport à aujourd’hui (150 min)</th></tr><tr><td class="">A</td><td class="num">6</td><td class="num">150 min</td><td class="num">60 min</td><td class=""><b>90 min gagnées</b></td></tr><tr><td class="">B</td><td class="num">12</td><td class="num">300 min</td><td class="num">120 min</td><td class="">30 min gagnées</td></tr><tr><td class="">C</td><td class="num">30</td><td class="num">750 min</td><td class="num">300 min</td><td class=""><b>150 min perdues</b></td></tr></table>
+<h3>Corrigé Q3 à Q6 (S4, page 2)</h3>
+<table><tr><th class="">Q</th><th class="">Réponse attendue</th></tr><tr><td class="">3</td><td class="">Non. Option A : toute la capacité (90 min), aucun stock en moins. Option C : stock divisé par 5, mais 150 min de plus par semaine. Les minutes gagnées s’utilisent une fois. Option B : un compromis, la moitié du stock et encore 30 min gagnées.</td></tr><tr><td class="">4</td><td class="">La presse a de la marge : la capacité ne sert à rien. Le magasin déborde : on choisit B, ou C si la presse a assez de marge pour 150 min de plus. B libère 14 − 7 = <b>7 palettes</b>, soit 7 × 0,96 ≈ <b>6,7 m²</b>. C en libère 11,2, soit 10,8 m², au prix de 150 min de presse.</td></tr><tr><td class="">5</td><td class="">Option A : au pire, la prochaine production de C3 est dans une semaine. Option B : au pire une demi-semaine. Des lots plus petits raccourcissent le délai de réponse.</td></tr><tr><td class="">6</td><td class="">Faux si la consommation est irrégulière : grosses commandes ponctuelles, saisonnalité, retards de production. Dans la vraie vie on ajoute un stock de sécurité, pour couvrir les écarts entre prévu et réel.</td></tr></table>
+<div class="encadre orange"><p><b>Le point à faire sortir.</b> Le SMED n’est pas d’abord un outil de productivité. C’est souvent un outil de souplesse : il rend les petits lots rentables. On choisit l’usage du gain selon ce qui manque, capacité ou place et délai. Ici, c’est S4 qui explique pourquoi P5 (S1) ne se paie pas : la presse n’est pas la machine qui limite.</p></div>
+</div>
+
+<div class="carte">
+<h2 style="margin-top:0"><span class="piece">S5</span> Changer à deux · Trois métiers · 50 min</h2>
+<h3>Corrigé Q1 et Q2 (S5, page 1)</h3>
+<p>Seul : 0,5 + 8 × 1 + 0,5 + 0,5 + 1,5 = <b>11 min</b>.</p>
+<p>À deux : 0 à 0,5 consignation, chacun pose son cadenas. 0,5 à 4,5 : Hugo fait la moitié gauche (2, 4, 6, 8), Léa la moitié droite (3, 5, 7, 9). 4,5 à 5 : remise en service (10). 5 à 5,5 : programme (11). 5,5 à 7 : essai (12). Presse arrêtée <b>7 min</b>.</p>
+<h3>Corrigé Q3 à Q6 (S5, page 2)</h3>
+<table><tr><th class="">Q</th><th class="">Réponse attendue</th></tr><tr><td class="">3</td><td class="">Hugo 7 min, Léa 4,5 min : 11,5 min de travail, contre 11 seul. L’arrêt de la presse baisse de 36 % (11 → 7). Le travail ne bouge presque pas (+0,5 min).</td></tr><tr><td class="">4</td><td class="">Non. Avec une personne par moitié, deux personnes occupent déjà toutes les places. La suite (remise en service, programme, essai) se fait de toute façon à la suite.</td></tr><tr><td class="">5</td><td class="">Pendant 4,5 min, la machine de Léa n’est pas surveillée ou s’arrête. Le changement à deux vaut le coup si une minute de presse compte plus qu’une minute de la machine de Léa : presse limitante, ou commande urgente. Avec une presse qui a de la marge (S4), le gain est faible.</td></tr><tr><td class="">6</td><td class="">Une bonne fiche standard : les étapes dans l’ordre, qui fait quoi, les durées, et des points clés concrets. Par exemple : chaque intervenant pose son cadenas ; on ne remet en service que quand les deux sont hors zone ; le poinçon se dépose sur le chariot, pas au sol ; contrôle de l’angle sur la pièce d’essai avec le rapporteur.</td></tr></table>
+<div class="encadre"><p><b>La fiche standard.</b> Fais présenter deux fiches et compare-les. Celle qui est trop vague (« monter les outils ») ne sert à rien à un nouvel arrivant. Celle qui écrit tout sans hiérarchie ne sera pas lue. Le bon niveau : ce qu’un intérimaire doit savoir pour réussir son premier changement sans danger.</p></div>
+</div>
+
+<p class="pied">Pôle Formation UIMM CVDL · S. Jaubert · Version du 6 octobre 2026</p>
+</div>
+
+</body>
+</html>
