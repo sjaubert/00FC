@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classer les 12 entreprises</title>
+<style>
+  :root {
+    --bleu-fonce: #003d7a; --bleu: #0066cc; --bleu-pale: #e8f1fa;
+    --orange: #d9681a; --orange-pale: #fdf1e7;
+    --rouge: #b3261e; --rouge-pale: #fbeceb;
+    --vert: #2e7d32; --vert-pale: #eaf5eb;
+    --gris: #5f6b76; --gris-pale: #f4f6f8; --trait: #d5dbe1; --texte: #1f2933;
+    --z1: #e7eef6; --z2: #eef3e6; --z3: #f3ecf6; --z4: #fdf4e3;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { font-family: "Segoe UI", Tahoma, Arial, sans-serif; color: var(--texte); background: #eef2f6; font-size: 15px; line-height: 1.4; }
+  header { background: linear-gradient(135deg, var(--bleu-fonce), var(--bleu)); color: #fff; padding: 12px 20px; border-bottom: 4px solid var(--orange); display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; }
+  header h1 { margin: 0; font-size: 1.35em; flex: 1 1 260px; }
+  header label { font-size: .95em; }
+  header select { font-size: 1em; padding: 4px 6px; border-radius: 4px; border: 0; }
+  button { font: inherit; cursor: pointer; border-radius: 5px; border: 0; padding: 7px 12px; background: #fff; color: var(--bleu-fonce); font-weight: 600; }
+  button.plein { background: var(--orange); color: #fff; }
+  button.contour { background: transparent; color: #fff; border: 1.5px solid #fff; }
+  button:focus-visible, .carte:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; }
+  main { padding: 14px 16px 30px; max-width: 1400px; margin: 0 auto; }
+  .consigne { background: #fff; border-left: 5px solid var(--bleu); border-radius: 6px; padding: 10px 14px; margin-bottom: 12px; }
+  .consigne p { margin: 0; }
+  .zone { background: #fff; border-radius: 8px; border: 2px solid var(--trait); padding: 8px; transition: border-color .15s, box-shadow .15s; }
+  .zone.survol, .zone.cible { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(217,104,26,.25); }
+  .zone h2 { margin: 0 0 2px; font-size: 1.02em; color: var(--bleu-fonce); display: flex; justify-content: space-between; gap: 8px; }
+  .zone h2 .nb { background: var(--bleu-fonce); color: #fff; border-radius: 10px; padding: 0 8px; font-size: .85em; }
+  .zone .def { margin: 0 0 6px; font-size: .84em; color: var(--gris); }
+  .liste { display: flex; flex-wrap: wrap; gap: 8px; min-height: 76px; align-content: flex-start; padding: 4px; border-radius: 6px; }
+  #z0 .liste { min-height: 84px; }
+  .colonnes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 12px; }
+  .colonnes .liste { flex-direction: column; flex-wrap: nowrap; min-height: 240px; }
+  .colonnes .carte { width: 100%; }
+  #z1 { background: var(--z1); } #z2 { background: var(--z2); } #z3 { background: var(--z3); } #z4 { background: var(--z4); }
+  .carte { background: #fff; border: 1.5px solid #8a96a3; border-radius: 6px; padding: 7px 10px; width: 190px; cursor: grab; user-select: none; -webkit-user-select: none; touch-action: none; box-shadow: 0 1px 3px rgba(0,0,0,.12); position: relative; }
+  .carte b { display: block; font-size: .98em; letter-spacing: .3px; overflow-wrap: anywhere; }
+  .carte span { display: block; font-size: .82em; color: #3d4752; }
+  .carte.choisie { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(217,104,26,.35); }
+  .carte.glisse { position: fixed; z-index: 50; cursor: grabbing; box-shadow: 0 8px 20px rgba(0,0,0,.25); pointer-events: none; transform: rotate(-2deg); }
+  .fantome { border: 2px dashed var(--orange); border-radius: 6px; background: var(--orange-pale); }
+  .carte .attendu { display: none; position: absolute; top: -8px; right: -6px; font-size: .7em; font-weight: 700; padding: 1px 6px; border-radius: 8px; color: #fff; }
+  body.revele .carte .attendu { display: inline-block; }
+  .c1 { background: #2f5f8f; } .c2 { background: #4f7a28; } .c3 { background: #7a3f8f; } .c4 { background: #b26a00; } .c0 { background: #8a96a3; }
+  .barre { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; background: #fff; border-radius: 8px; padding: 10px 14px; margin-top: 12px; }
+  .code { font-family: Consolas, "Courier New", monospace; font-size: 1.5em; font-weight: 700; letter-spacing: 2px; color: var(--bleu-fonce); background: var(--bleu-pale); padding: 2px 10px; border-radius: 5px; }
+  .barre button { background: var(--bleu-fonce); color: #fff; }
+  .barre button.discret { background: var(--gris-pale); color: var(--bleu-fonce); border: 1px solid var(--trait); }
+  section.panneau { background: #fff; border-radius: 8px; padding: 12px 16px; margin-top: 12px; border-top: 4px solid var(--bleu); }
+  section.panneau h2 { margin: 0 0 8px; color: var(--bleu-fonce); font-size: 1.15em; }
+  section.panneau.formateur { border-top-color: var(--rouge); }
+  .champs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px 14px; margin-bottom: 10px; }
+  .champs label { font-size: .9em; font-weight: 600; display: block; }
+  .champs input { width: 100%; font: inherit; font-family: Consolas, monospace; font-size: 1.1em; padding: 5px 8px; border: 1.5px solid var(--trait); border-radius: 5px; }
+  .champs input.erreur { border-color: var(--rouge); }
+  table { border-collapse: collapse; width: 100%; font-size: .93em; }
+  th { background: var(--bleu-fonce); color: #fff; text-align: left; padding: 6px 8px; }
+  td { border: 1px solid var(--trait); padding: 5px 8px; }
+  tr.desaccord td:first-child { border-left: 5px solid var(--orange); }
+  .pastille { display: inline-block; padding: 1px 8px; border-radius: 9px; color: #fff; font-size: .85em; font-weight: 600; }
+  .discret-txt { color: var(--gris); font-size: .9em; }
+  .qr { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+  .qr div.bloc { border: 1px solid var(--trait); border-radius: 6px; padding: 8px; text-align: center; }
+  .qr .lien { font-size: .75em; word-break: break-all; color: var(--gris); }
+  .qr .img { display: flex; justify-content: center; margin: 6px 0; min-height: 10px; }
+  .cache { display: none !important; }
+  .notes li { margin-bottom: 4px; }
+  @media (max-width: 900px) {
+    .colonnes { grid-template-columns: 1fr 1fr; }
+    .carte { width: 160px; }
+  }
+  @media (max-width: 560px) {
+    .colonnes { grid-template-columns: 1fr; }
+    .colonnes .liste { min-height: 90px; }
+    header h1 { font-size: 1.1em; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Classer les 12 entreprises</h1>
+  <label>Équipe
+    <select id="equipe">
+      <option value="1">Équipe 1</option><option value="2">Équipe 2</option>
+      <option value="3">Équipe 3</option><option value="4">Équipe 4</option>
+      <option value="G">Groupe entier</option>
+    </select>
+  </label>
+  <button class="contour" id="btn-melanger" type="button">Recommencer</button>
+  <button class="contour" id="btn-comparer" type="button">Comparer les équipes</button>
+  <button class="plein cache" id="btn-formateur" type="button">Espace formateur</button>
+</header>
+
+<main>
+  <div class="consigne">
+    <p><b>Consigne.</b> Faites glisser chaque carte dans une catégorie, avec la souris ou le doigt. Vous pouvez aussi cliquer sur une carte, puis sur une catégorie. Mettez-vous d’accord dans l’équipe. Si vous n’y arrivez pas, posez la carte dans « À débattre » : c’est une réponse.</p>
+  </div>
+
+  <div class="zone" id="z0" data-z="0">
+    <h2><span>Cartes à classer</span><span class="nb" id="n0">12</span></h2>
+    <div class="liste"></div>
+  </div>
+
+  <div class="colonnes">
+    <div class="zone" id="z1" data-z="1">
+      <h2><span>Industrie de base</span><span class="nb" id="n1">0</span></h2>
+      <p class="def">Transforme les matières premières en produits semi-finis, utilisés par d’autres industries</p>
+      <div class="liste"></div>
+    </div>
+    <div class="zone" id="z2" data-z="2">
+      <h2><span>Industrie de transformation</span><span class="nb" id="n2">0</span></h2>
+      <p class="def">Utilise des produits semi-finis pour fabriquer des produits finis</p>
+      <div class="liste"></div>
+    </div>
+    <div class="zone" id="z3" data-z="3">
+      <h2><span>Industrie de pointe</span><span class="nb" id="n3">0</span></h2>
+      <p class="def">Technologies avancées, forte part de recherche et développement</p>
+      <div class="liste"></div>
+    </div>
+    <div class="zone" id="z4" data-z="4">
+      <h2><span>À débattre</span><span class="nb" id="n4">0</span></h2>
+      <p class="def">L’équipe n’est pas d’accord, ou la carte entre dans plusieurs catégories</p>
+      <div class="liste"></div>
+    </div>
+  </div>
+
+  <div class="barre">
+    <span>Code de <b id="nom-equipe">l’équipe 1</b>, à donner au formateur :</span>
+    <span class="code" id="code">0000 0000 0000</span>
+    <span class="discret-txt" id="etat"></span>
+  </div>
+
+  <section class="panneau cache" id="panneau-comparer">
+    <h2>Comparer les équipes</h2>
+    <p class="discret-txt">Saisissez le code de chaque équipe (12 chiffres, les espaces ne comptent pas). Les cartes sur lesquelles les équipes ne sont pas d’accord passent en tête du tableau, avec un trait orange : ce sont les sujets du débat.</p>
+    <div class="champs" id="champs"></div>
+    <div id="tableau"></div>
+  </section>
+
+  <section class="panneau formateur cache" id="panneau-formateur">
+    <h2>Espace formateur</h2>
+    <p><button class="plein" id="btn-reveler" type="button">Afficher la répartition attendue</button></p>
+    <div id="notes" class="cache">
+      <p>Répartition de la version d’origine de la planche. Elle sert de repère, pas de vérité : plusieurs cartes se discutent, et c’est là que le débat a de la valeur. Une pastille apparaît sur chaque carte, et une colonne s’ajoute au tableau de comparaison.</p>
+      <ul class="notes">
+        <li><b>EDF</b> produit de l’énergie, pas un produit semi-fini au sens strict. Beaucoup de classifications mettent l’énergie à part.</li>
+        <li><b>Michelin</b> et <b>L’Oréal</b> transforment, mais investissent beaucoup en recherche. Pourquoi pas « pointe » ?</li>
+        <li><b>Dassault Aviation</b> et <b>Safran</b> fabriquent aussi des biens d’équipement. Le document « Qu’appelle-t-on industrie ? » place l’aéronautique en biens d’équipement et l’aérospatial en industrie de pointe.</li>
+        <li>Question de fond : une entreprise peut-elle appartenir à plusieurs catégories ? Une classification est un outil pour penser, pas une vérité.</li>
+      </ul>
+    </div>
+    <h2 style="margin-top:14px">Liens des équipes</h2>
+    <p class="discret-txt">À projeter : chaque équipe scanne son code QR ou ouvre son lien. Chaque équipe travaille sur son propre écran ; rien n’est partagé entre les écrans. La comparaison se fait avec les codes.</p>
+    <div class="qr" id="qr"></div>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  var CARTES = [
+    { id: "ARC", nom: "ARCELORMITTAL", act: "Sidérurgie (production d’acier)", att: 1 },
+    { id: "DAS", nom: "DASSAULT AVIATION", act: "Avions de combat et jets d’affaires", att: 3 },
+    { id: "EDF", nom: "EDF", act: "Production d’électricité (nucléaire, hydraulique)", att: 1 },
+    { id: "LAC", nom: "LACTALIS", act: "Agroalimentaire (transformation du lait)", att: 2 },
+    { id: "LAF", nom: "LAFARGE", act: "Cimenterie et matériaux de construction", att: 1 },
+    { id: "LOR", nom: "L’ORÉAL", act: "Cosmétiques et produits de beauté", att: 2 },
+    { id: "MIC", nom: "MICHELIN", act: "Fabrication de pneumatiques", att: 2 },
+    { id: "REN", nom: "RENAULT", act: "Assemblage automobile", att: 2 },
+    { id: "SAF", nom: "SAFRAN", act: "Moteurs d’avion et équipements aéronautiques", att: 3 },
+    { id: "STM", nom: "STMICROELECTRONICS", act: "Semi-conducteurs et puces électroniques", att: 3 },
+    { id: "THA", nom: "THALÈS", act: "Électronique de défense et aérospatiale", att: 3 },
+    { id: "TOT", nom: "TOTALENERGIES", act: "Extraction et raffinage de pétrole et de gaz", att: 1 }
+  ];
+  var NOMS_ZONES = ["À classer", "Base", "Transformation", "Pointe", "À débattre"];
+  var params = new URLSearchParams(window.location.search);
+  var FORMATEUR = params.has("formateur");
+  var selEquipe = document.getElementById("equipe");
+  var equipe = (params.get("equipe") || "1").toUpperCase();
+  if (!/^[1-4G]$/.test(equipe)) equipe = "1";
+  selEquipe.value = equipe;
+
+  function zoneListe(z) { return document.querySelector('#z' + z + ' .liste'); }
+  function carteEl(id) { return document.querySelector('.carte[data-id="' + id + '"]'); }
+
+  // ---------- stockage local (facultatif)
+  function cle() { return "cartes12:equipe:" + equipe; }
+  function lire() {
+    try { var t = window.localStorage.getItem(cle()); return t ? JSON.parse(t) : null; } catch (e) { return null; }
+  }
+  function ecrire() {
+    var etat = {};
+    for (var z = 0; z <= 4; z++) {
+      etat[z] = Array.prototype.map.call(zoneListe(z).querySelectorAll('.carte'), function (c) { return c.dataset.id; });
+    }
+    try { window.localStorage.setItem(cle(), JSON.stringify(etat)); } catch (e) { /* stockage indisponible : on continue */ }
+  }
+
+  // ---------- construction
+  function creerCarte(c) {
+    var d = document.createElement("div");
+    d.className = "carte";
+    d.dataset.id = c.id;
+    d.tabIndex = 0;
+    d.setAttribute("role", "button");
+    d.setAttribute("aria-label", c.nom + ", " + c.act);
+    d.innerHTML = '<b></b><span></span><em class="attendu c' + c.att + '"></em>';
+    d.querySelector("b").textContent = c.nom;
+    d.querySelector("span").textContent = c.act;
+    d.querySelector("em").textContent = NOMS_ZONES[c.att];
+    return d;
+  }
+  function melange(t) {
+    var a = t.slice();
+    for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var x = a[i]; a[i] = a[j]; a[j] = x; }
+    return a;
+  }
+  function vider() { for (var z = 0; z <= 4; z++) zoneListe(z).innerHTML = ""; }
+  function installer(etat) {
+    vider();
+    var places = {};
+    if (etat) {
+      for (var z = 0; z <= 4; z++) {
+        (etat[z] || []).forEach(function (id) {
+          var c = CARTES.filter(function (k) { return k.id === id; })[0];
+          if (c && !places[id]) { zoneListe(z).appendChild(creerCarte(c)); places[id] = true; }
+        });
+      }
+    }
+    melange(CARTES).forEach(function (c) { if (!places[c.id]) zoneListe(0).appendChild(creerCarte(c)); });
+    majCompteurs();
+  }
+
+  // ---------- code d'équipe
+  function codeActuel() {
+    var s = "";
+    CARTES.forEach(function (c) {
+      var el = carteEl(c.id);
+      s += el ? el.closest(".zone").dataset.z : "0";
+    });
+    return s;
+  }
+  function formatCode(s) { return s.slice(0, 4) + " " + s.slice(4, 8) + " " + s.slice(8, 12); }
+  function majCompteurs() {
+    for (var z = 0; z <= 4; z++) document.getElementById("n" + z).textContent = zoneListe(z).querySelectorAll(".carte").length;
+    document.getElementById("code").textContent = formatCode(codeActuel());
+    document.getElementById("nom-equipe").textContent = equipe === "G" ? "du groupe" : "l’équipe " + equipe;
+    var restantes = zoneListe(0).querySelectorAll(".carte").length;
+    document.getElementById("etat").textContent = restantes ? restantes + " carte" + (restantes > 1 ? "s" : "") + " encore à classer" : "Toutes les cartes sont placées.";
+  }
+
+  // ---------- glisser-déposer (souris, doigt, stylet)
+  var drag = null, choisie = null;
+  function insererA(liste, el, x, y) {
+    var enfants = Array.prototype.filter.call(liste.children, function (k) { return k !== el && !k.classList.contains("glisse"); });
+    for (var i = 0; i < enfants.length; i++) {
+      var r = enfants[i].getBoundingClientRect();
+      if (y < r.top || (y <= r.bottom && x < r.left + r.width / 2)) { liste.insertBefore(el, enfants[i]); return; }
+    }
+    liste.appendChild(el);
+  }
+  function zoneSous(x, y) {
+    var el = document.elementFromPoint(x, y);
+    return el ? el.closest(".zone") : null;
+  }
+  function survol(zone) {
+    document.querySelectorAll(".zone.survol").forEach(function (z) { if (z !== zone) z.classList.remove("survol"); });
+    if (zone) zone.classList.add("survol");
+  }
+  document.addEventListener("pointerdown", function (e) {
+    var c = e.target.closest(".carte");
+    if (!c || e.button > 0) return;
+    drag = { el: c, x0: e.clientX, y0: e.clientY, actif: false, id: e.pointerId };
+    try { c.setPointerCapture(e.pointerId); } catch (err) {}
+  });
+  document.addEventListener("pointermove", function (e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    var dx = e.clientX - drag.x0, dy = e.clientY - drag.y0;
+    if (!drag.actif) {
+      if (Math.abs(dx) + Math.abs(dy) < 6) return;
+      var r = drag.el.getBoundingClientRect();
+      drag.actif = true;
+      drag.ox = drag.x0 - r.left; drag.oy = drag.y0 - r.top;
+      drag.fantome = document.createElement("div");
+      drag.fantome.className = "fantome";
+      drag.fantome.style.width = r.width + "px"; drag.fantome.style.height = r.height + "px";
+      drag.el.parentNode.insertBefore(drag.fantome, drag.el);
+      drag.el.style.width = r.width + "px";
+      drag.el.classList.add("glisse");
+      deselectionner();
+    }
+    if (e.clientY < 50) window.scrollBy(0, -14);
+    else if (e.clientY > window.innerHeight - 50) window.scrollBy(0, 14);
+    drag.el.style.left = (e.clientX - drag.ox) + "px";
+    drag.el.style.top = (e.clientY - drag.oy) + "px";
+    var zone = zoneSous(e.clientX, e.clientY);
+    survol(zone);
+    if (zone) {
+      var liste = zone.querySelector(".liste");
+      drag.fantome.style.width = zone.id === "z0" ? drag.el.style.width : "100%";
+      insererA(liste, drag.fantome, e.clientX, e.clientY);
+    }
+    e.preventDefault();
+  });
+  function finDrag(e) {
+    if (!drag || (e && e.pointerId !== drag.id)) return;
+    var d = drag; drag = null;
+    if (!d.actif) { basculerSelection(d.el); return; }
+    d.fantome.parentNode.insertBefore(d.el, d.fantome);
+    d.fantome.remove();
+    d.el.classList.remove("glisse");
+    d.el.style.left = d.el.style.top = d.el.style.width = "";
+    survol(null);
+    majCompteurs(); ecrire();
+  }
+  document.addEventListener("pointerup", finDrag);
+  document.addEventListener("pointercancel", finDrag);
+
+  // ---------- clic : choisir une carte, puis une zone
+  function deselectionner() {
+    if (choisie) choisie.classList.remove("choisie");
+    choisie = null;
+    document.querySelectorAll(".zone.cible").forEach(function (z) { z.classList.remove("cible"); });
+  }
+  function basculerSelection(c) {
+    if (choisie === c) { deselectionner(); return; }
+    deselectionner();
+    choisie = c; c.classList.add("choisie");
+    document.querySelectorAll(".zone").forEach(function (z) { if (!z.contains(c)) z.classList.add("cible"); });
+  }
+  document.querySelectorAll(".zone").forEach(function (z) {
+    z.addEventListener("click", function (e) {
+      if (!choisie || e.target.closest(".carte")) return;
+      z.querySelector(".liste").appendChild(choisie);
+      deselectionner(); majCompteurs(); ecrire();
+    });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.target.tagName === "INPUT" || e.target.tagName === "SELECT") return;
+    var c = e.target.closest && e.target.closest(".carte");
+    if (c && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); basculerSelection(c); return; }
+    if (choisie && /^[0-4]$/.test(e.key)) { zoneListe(+e.key).appendChild(choisie); var k = choisie; deselectionner(); majCompteurs(); ecrire(); k.focus(); }
+    if (e.key === "Escape") deselectionner();
+  });
+
+  // ---------- recommencer, changer d'équipe
+  var btnMel = document.getElementById("btn-melanger"), confirmMel = null;
+  btnMel.addEventListener("click", function () {
+    if (!confirmMel) {
+      btnMel.textContent = "Confirmer ?";
+      confirmMel = setTimeout(function () { btnMel.textContent = "Recommencer"; confirmMel = null; }, 3000);
+      return;
+    }
+    clearTimeout(confirmMel); confirmMel = null; btnMel.textContent = "Recommencer";
+    installer(null); ecrire();
+  });
+  selEquipe.addEventListener("change", function () {
+    equipe = selEquipe.value;
+    params.set("equipe", equipe);
+    try { history.replaceState(null, "", "?" + params.toString()); } catch (e) {}
+    installer(lire());
+  });
+
+  // ---------- comparaison
+  var champsCode = {};
+  (function () {
+    var box = document.getElementById("champs");
+    ["1", "2", "3", "4"].forEach(function (k) {
+      var w = document.createElement("div");
+      w.innerHTML = '<label for="code' + k + '">Équipe ' + k + '</label><input id="code' + k + '" inputmode="numeric" autocomplete="off" placeholder="1234 1234 1234">';
+      box.appendChild(w);
+      var inp = w.querySelector("input");
+      inp.addEventListener("input", comparer);
+      champsCode[k] = inp;
+    });
+  })();
+  function lireCode(v) {
+    var s = (v || "").replace(/\s+/g, "");
+    return /^[0-4]{12}$/.test(s) ? s : null;
+  }
+  var revele = false;
+  function pastille(z) { return '<span class="pastille c' + z + '">' + NOMS_ZONES[z] + '</span>'; }
+  function comparer() {
+    var codes = [];
+    ["1", "2", "3", "4"].forEach(function (k) {
+      var inp = champsCode[k], v = inp.value.trim(), c = lireCode(v);
+      inp.classList.toggle("erreur", v !== "" && !c);
+      if (c) codes.push({ k: k, c: c });
+    });
+    var out = document.getElementById("tableau");
+    if (!codes.length) { out.innerHTML = '<p class="discret-txt">Aucun code valide pour l’instant.</p>'; return; }
+    var lignes = CARTES.map(function (carte, i) {
+      var vals = codes.map(function (q) { return +q.c[i]; });
+      var accord = vals.every(function (v) { return v === vals[0]; }) && vals[0] >= 1 && vals[0] <= 3;
+      return { carte: carte, vals: vals, accord: accord, debat: codes.length > 1 && !accord };
+    });
+    lignes.sort(function (a, b) { return (b.debat ? 1 : 0) - (a.debat ? 1 : 0); });
+    var h = "<table><tr><th>Carte</th>" + codes.map(function (q) { return "<th>Équipe " + q.k + "</th>"; }).join("") + (revele ? "<th>Repère</th>" : "") + "<th>Accord</th></tr>";
+    lignes.forEach(function (l) {
+      h += '<tr class="' + (l.debat ? "desaccord" : "") + '"><td><b>' + l.carte.nom + "</b></td>" +
+        l.vals.map(function (v) { return "<td>" + pastille(v) + "</td>"; }).join("") +
+        (revele ? "<td>" + pastille(l.carte.att) + "</td>" : "") +
+        "<td>" + (codes.length < 2 ? "" : (l.accord ? "Oui" : "<b>À débattre</b>")) + "</td></tr>";
+    });
+    h += "</table>";
+    var n = lignes.filter(function (l) { return l.debat; }).length;
+    if (codes.length > 1) h += '<p class="discret-txt">' + n + " carte" + (n > 1 ? "s" : "") + " sans accord entre les équipes.</p>";
+    out.innerHTML = h;
+  }
+  document.getElementById("btn-comparer").addEventListener("click", function () {
+    var p = document.getElementById("panneau-comparer");
+    p.classList.toggle("cache");
+    if (!p.classList.contains("cache")) { comparer(); p.scrollIntoView({ behavior: "smooth", block: "start" }); }
+  });
+
+  // ---------- espace formateur (?formateur dans l'adresse)
+  if (FORMATEUR) {
+    var bf = document.getElementById("btn-formateur");
+    bf.classList.remove("cache");
+    bf.addEventListener("click", function () {
+      var p = document.getElementById("panneau-formateur");
+      p.classList.toggle("cache");
+      if (!p.classList.contains("cache")) { construireQR(); p.scrollIntoView({ behavior: "smooth", block: "start" }); }
+    });
+    document.getElementById("btn-reveler").addEventListener("click", function () {
+      revele = !revele;
+      document.body.classList.toggle("revele", revele);
+      document.getElementById("notes").classList.toggle("cache", !revele);
+      this.textContent = revele ? "Masquer la répartition attendue" : "Afficher la répartition attendue";
+      comparer();
+    });
+  }
+  var qrFait = false;
+  function construireQR() {
+    if (qrFait) return; qrFait = true;
+    var base = window.location.origin + window.location.pathname;
+    var box = document.getElementById("qr");
+    ["1", "2", "3", "4"].forEach(function (k) {
+      var url = base + "?equipe=" + k;
+      var b = document.createElement("div");
+      b.className = "bloc";
+      b.innerHTML = "<b>Équipe " + k + '</b><div class="img"></div><div class="lien"></div>';
+      b.querySelector(".lien").textContent = url;
+      box.appendChild(b);
+      var cible = b.querySelector(".img");
+      if (window.QRCode) {
+        try { new window.QRCode(cible, { text: url, width: 150, height: 150, correctLevel: window.QRCode.CorrectLevel.M }); } catch (e) {}
+      } else {
+        cible.innerHTML = '<span class="discret-txt">Code QR indisponible hors connexion</span>';
+      }
+    });
+  }
+
+  installer(lire());
+  comparer();
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+</body>
+</html>
