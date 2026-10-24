@@ -1,0 +1,36 @@
+ARCHIVES DU MODULE CAPABILITE ET SPC, PROMO TQ 6 (rangement du 24 octobre 2026)
+
+Version de référence pour la session des 5, 6 et 25 novembre 2026 :
+  Plan_Formation_Capabilite_SPC_TQ6.html (racine du dossier)
+  V3_Formation_Salaries (supports, données, corrigés)
+  TP_Activites (TP4, TP5, TP6, TP8, TP9, TP10 et kit matériel, repris par la V3)
+
+Ce dossier contient les versions qui ne servent plus pour la session :
+
+V1_juin-juillet_2026
+  Premier plan (Word et HTML), diaporama « 2 jours » de juillet,
+  cours LaTeX (Cours_Support), cours illustrés HTML et leur zip,
+  note NotebookLM.
+  Donnees : relevés TP_MSP, fichiers diamètre_butée, simulation Ellistat.
+  Sources : documents de référence réunis en juillet, dont le dossier
+  du TP butée (TP_Capabilite_Butee_diametre.pdf) cité par la V3.
+  Attention : le diaporama « 2 jours » donne une tolérance 11,80 / 11,96.
+  La tolérance retenue est 11,85 / 12,00.
+
+TP_septembre_2026
+  Activités du 15 septembre non reprises en V3 : TP1, TP2, TP3, TP7,
+  TP11, TP12, TP13, agenda sur 3 jours, guide animateur, sommaire.
+
+V2_octobre_2026
+  Version du 1er octobre (classeurs tout faits, Gage R&R, production
+  simulée). Abandonnée au profit de la V3 le 2 octobre.
+
+V3_avant_revision_2026-10-24
+  Copie des fichiers V3 et des TP tels qu'ils étaient avant la révision
+  du 24 octobre 2026.
+
+Photos_28-09-2026
+  Photos de pièces « P19 » sans lien avec les butées du module.
+
+Les liens internes des fichiers archivés ont été mis à jour pour suivre
+le rangement.
