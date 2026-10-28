@@ -58,6 +58,7 @@ svg text{font-family:Arial,Helvetica,sans-serif}
 table.form{border-collapse:collapse;width:100%;font-size:13px}
 table.form td{border-bottom:1px solid #e3e8ef;padding:4px 6px;vertical-align:top}
 table.form td:first-child{font-weight:700;color:var(--bleu);white-space:nowrap}
+.hat{position:relative;display:inline-block}.hat::after{content:"^";position:absolute;left:0.08em;top:-0.48em;font-size:0.8em}
 .mono{font-family:Consolas,'Courier New',monospace}
 .alarmes{font-size:12.5px;margin-top:4px}
 footer{text-align:center;font-size:12px;color:#777;padding:14px 20px 24px;border-top:1px solid #ddd;margin-top:10px}
@@ -83,7 +84,7 @@ footer{text-align:center;font-size:12px;color:#777;padding:14px 20px 24px;border
   <div class="panel"><h2>Paramètres</h2>
     <div class="ctl"><label>Moyenne m (mm) <input type="number" id="m_n" step="0.001"></label><input type="range" id="m" min="11.80" max="12.05" step="0.001"><div class="aide">Où le procédé vise : le réglage.</div></div>
     <div class="ctl"><label>Écart-type σ (mm) <input type="number" id="s_n" step="0.0001"></label><input type="range" id="s" min="0.005" max="0.050" step="0.0001"><div class="aide">De combien les pièces s'écartent en général de m : la dispersion.</div></div>
-    <div class="ctl"><label>Cet écart-type est</label><select id="s_type"><option value="i">σ instantané R̄/d₂ : on lit Cp et Cpk</option><option value="g">s global : on lit Pp et Ppk</option></select><div class="aide">Mêmes formules, pas le même écart-type (onglet 2).</div></div>
+    <div class="ctl"><label>Cet écart-type est</label><select id="s_type"><option value="i">σ instantané, estimé par R̄/d₂ : on lit Cp et Cpk</option><option value="g">σ global, estimé par s : on lit Pp et Ppk</option></select><div class="aide">Mêmes formules, pas le même écart-type (onglet 2).</div></div>
     <div class="ctl"><label>TI (mm) <input type="number" id="ti" step="0.001"></label></div>
     <div class="ctl"><label>TS (mm) <input type="number" id="ts" step="0.001"></label></div>
   </div>
@@ -154,7 +155,7 @@ footer{text-align:center;font-size:12px;color:#777;padding:14px 20px 24px;border
 <div class="grid">
 <div>
   <div class="panel"><h2>Paramètres</h2>
-    <div class="ctl"><label>Réglage de départ (mm) <input type="number" id="m2_n" step="0.001"></label><input type="range" id="m2" min="11.85" max="12.00" step="0.001"></div>
+    <div class="ctl"><label>Moyenne visée au départ (mm) <input type="number" id="m2_n" step="0.001"></label><input type="range" id="m2" min="11.85" max="12.00" step="0.001"><div class="aide">Où la machine est réglée au premier échantillon. Ensuite, selon le choix ci-dessous, elle reste en place, saute au hasard autour de cette valeur (avec un rappel de 15 % vers elle à chaque échantillon), ou dérive.</div></div>
     <div class="ctl"><label>σ dans l'échantillon (mm) <input type="number" id="s2_n" step="0.0001"></label><input type="range" id="s2" min="0.005" max="0.040" step="0.0001"><div class="aide">La dispersion à court terme : 5 pièces faites d'affilée.</div></div>
     <div class="ctl"><label>Le réglage bouge entre deux échantillons</label><select id="d_type"><option value="0">Non : réglage stable</option><option value="1">Oui : petits sauts au hasard</option><option value="2">Oui : dérive régulière (usure d'outil)</option></select></div>
     <div class="ctl"><label>Ampleur du mouvement (mm) <input type="number" id="d_a_n" step="0.0005"></label><input type="range" id="d_a" min="0" max="0.030" step="0.0005"><div class="aide">Sauts : écart-type des sauts. Dérive : déplacement par échantillon.</div></div>
@@ -182,8 +183,8 @@ footer{text-align:center;font-size:12px;color:#777;padding:14px 20px 24px;border
 </div>
 <div>
   <div class="cards">
-    <div class="card"><div class="k">σ instantané = R̄ / d₂</div><div class="v" id="w_si"></div></div>
-    <div class="card"><div class="k">s global</div><div class="v" id="w_s"></div></div>
+    <div class="card"><div class="k"><span class="hat">σ</span><sub>i</sub> = R̄ / d₂ (instantané)</div><div class="v" id="w_si"></div></div>
+    <div class="card"><div class="k">s (global, toutes les pièces)</div><div class="v" id="w_s"></div></div>
     <div class="card" id="cc_cp"><div class="k">Cp · Cpk</div><div class="v" id="w_cp"></div></div>
     <div class="card" id="cc_pp"><div class="k">Pp · Ppk</div><div class="v" id="w_pp"></div></div>
     <div class="card"><div class="k">Pp / Cp</div><div class="v" id="w_ratio"></div></div>
@@ -199,7 +200,7 @@ footer{text-align:center;font-size:12px;color:#777;padding:14px 20px 24px;border
   </div>
   <div class="graph"><h3>Toutes les pièces : deux écarts-types, deux cloches</h3>
     <svg id="g5" viewBox="0 0 900 260"></svg>
-    <div class="leg"><i style="background:#9aa5b1"></i>histogramme des pièces<i style="background:var(--bleu2)"></i>cloche avec σ instantané (Cp, Cpk)<i style="background:var(--orange)"></i>cloche avec s global (Pp, Ppk)</div>
+    <div class="leg"><i style="background:#9aa5b1"></i>histogramme des pièces<i style="background:var(--bleu2)"></i>cloche avec <span class="hat">σ</span><sub>i</sub> = R̄/d₂ (Cp, Cpk)<i style="background:var(--orange)"></i>cloche avec s global (Pp, Ppk)</div>
   </div>
 </div>
 </div>
@@ -212,9 +213,9 @@ footer{text-align:center;font-size:12px;color:#777;padding:14px 20px 24px;border
     <li>Coche les tolérances sur la carte X̄ : une moyenne dans la tolérance peut cacher des pièces dehors. On ne les trace jamais sur une carte X̄.</li>
     <li>Ici, les limites sont calculées sur les échantillons tirés, comme en phase 1. Si le réglage dérive, elles s'élargissent et cachent une partie du problème (enquête E1).</li></ul></div>
   <div class="panel"><h2>Formulaire</h2><table class="form">
-    <tr><td>σ instantané</td><td>R̄ / d₂, avec d₂ = 2,326 pour n = 5</td></tr>
-    <tr><td>s global</td><td>ECARTYPE.STANDARD de toutes les pièces</td></tr>
-    <tr><td>Cp · Cpk</td><td>avec σ instantané · Pp · Ppk : mêmes formules avec s</td></tr>
+    <tr><td><span class="hat">σ</span><sub>i</sub> = R̄ / d₂</td><td>estime σ instantané, la dispersion dans un échantillon (d₂ = 2,326 pour n = 5). Ne voit pas les déplacements du réglage.</td></tr>
+    <tr><td>s</td><td>ECARTYPE.STANDARD de toutes les pièces : estime σ global, dispersion dans l'échantillon et déplacements du réglage réunis. Stable : les deux estiment le même σ.</td></tr>
+    <tr><td>Cp · Cpk</td><td>avec <span class="hat">σ</span><sub>i</sub> · Pp · Ppk : mêmes formules avec s</td></tr>
     <tr><td>AFNOR X̄</td><td>X̿ ± 0,594 R̄ (contrôle) · X̿ ± 0,377 R̄ (surveillance)</td></tr>
     <tr><td>AFNOR R</td><td>LCS = 2,36 R̄ · LSS = 1,81 R̄</td></tr>
     <tr><td>3 sigmas</td><td>X̄ : X̿ ± 0,577 R̄ · R : LCS = 2,114 R̄, LCI = 0</td></tr>
