@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Simulateur de capabilité pour le TP butées : dispersion, tolérances, limites de contrôle et de surveillance, Cp, Cpk, Pp, Ppk.">
+<title>Capabilité des butées : simulateur TQ6</title>
+<style>
+:root{--bleu:#1F3864;--bleu2:#2E75B6;--pale:#D6E4F0;--gris:#E9EFF7;--orange:#C55A11;--vert:#1a7340;--rouge:#B91C1C;--violet:#6a1b9a;--txt:#222}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;font-size:14px;color:var(--txt);background:#f4f6f9;line-height:1.5}
+header{background:#fff;border-bottom:4px solid var(--bleu2);padding:12px 20px;display:flex;align-items:center;gap:16px}
+header img{height:52px}
+header .ctx{font-size:12px;color:#666}
+header h1{font-size:21px;color:var(--bleu)}
+nav.tabs{display:flex;gap:4px;padding:10px 20px 0;background:#fff;border-bottom:1px solid #cfd8e3;flex-wrap:wrap}
+nav.tabs button{border:1px solid #cfd8e3;border-bottom:none;background:var(--gris);color:var(--bleu);padding:8px 16px;font-size:14px;font-weight:700;border-radius:6px 6px 0 0;cursor:pointer}
+nav.tabs button.on{background:var(--bleu);color:#fff;border-color:var(--bleu)}
+main{max-width:1380px;margin:0 auto;padding:16px 20px}
+.tab{display:none}.tab.on{display:block}
+.grid{display:grid;grid-template-columns:330px 1fr;gap:16px}
+@media(max-width:980px){.grid{grid-template-columns:1fr}}
+.panel{background:#fff;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:12px 14px;margin-bottom:12px}
+.panel h2{font-size:14px;color:var(--bleu2);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px}
+.ctl{margin-bottom:10px}
+.ctl label{display:flex;justify-content:space-between;align-items:center;font-weight:600;color:var(--bleu);font-size:13px}
+.ctl input[type=range]{width:100%;accent-color:var(--bleu2)}
+.ctl input[type=number]{width:92px;padding:2px 4px;border:1px solid #9fb3cf;border-radius:4px;font-size:13px;text-align:right}
+.ctl .aide{font-size:11.5px;color:#666}
+.opt{display:flex;gap:6px;align-items:flex-start;font-size:13px;margin:4px 0}
+.opt input{margin-top:3px}
+select{padding:3px;border:1px solid #9fb3cf;border-radius:4px;font-size:13px;width:100%}
+.btn{display:inline-block;border:none;background:var(--bleu2);color:#fff;padding:6px 12px;border-radius:5px;font-size:13px;font-weight:600;cursor:pointer;margin:3px 4px 3px 0}
+.btn.sec{background:var(--gris);color:var(--bleu);border:1px solid #9fb3cf}
+.btn:hover{filter:brightness(1.08)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:12px}
+.card{background:#fff;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:8px 10px;border-top:4px solid var(--bleu2)}
+.card .k{font-size:12px;color:#666}.card .v{font-size:22px;font-weight:700;color:var(--bleu)}
+.card.ok{border-top-color:var(--vert)}.card.ok .v{color:var(--vert)}
+.card.moy{border-top-color:#d4a017}.card.moy .v{color:#a07800}
+.card.ko{border-top-color:var(--rouge)}.card.ko .v{color:var(--rouge)}
+.verdict{border-left:5px solid var(--bleu2);background:var(--pale);padding:8px 12px;border-radius:0 6px 6px 0;margin-bottom:12px;font-size:14px}
+.verdict.ko{border-left-color:var(--rouge);background:#fdecec}.verdict.ok{border-left-color:var(--vert);background:#e8f5ec}.verdict.moy{border-left-color:#d4a017;background:#fff6dc}
+svg{width:100%;height:auto;display:block;background:#fff}
+svg text{font-family:Arial,Helvetica,sans-serif}
+.graph{background:#fff;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:8px 10px;margin-bottom:12px}
+.graph h3{font-size:14px;color:var(--bleu);margin-bottom:2px}
+.graph .leg{font-size:12px;color:#555;margin-top:2px}
+.leg i{display:inline-block;width:14px;height:4px;vertical-align:middle;margin:0 4px 0 10px;border-radius:2px}
+.att{background:#FFF4E5;border-left:4px solid var(--orange);padding:8px 12px;border-radius:0 6px 6px 0;margin:8px 0;font-size:13px}
+.defi{border:1px solid #cfd8e3;border-radius:6px;padding:8px 10px;margin-bottom:8px;font-size:13px}
+.defi b{color:var(--violet)}
+.defi .rep{margin-top:4px;font-size:12.5px;display:none}
+.defi .rep.ok{display:block;color:var(--vert)}.defi .rep.ko{display:block;color:var(--rouge)}
+.bas{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:980px){.bas{grid-template-columns:1fr}}
+.bas ul{padding-left:20px}.bas li{margin-bottom:4px;font-size:13.5px}
+table.form{border-collapse:collapse;width:100%;font-size:13px}
+table.form td{border-bottom:1px solid #e3e8ef;padding:4px 6px;vertical-align:top}
+table.form td:first-child{font-weight:700;color:var(--bleu);white-space:nowrap}
+.mono{font-family:Consolas,'Courier New',monospace}
+.alarmes{font-size:12.5px;margin-top:4px}
+footer{text-align:center;font-size:12px;color:#777;padding:14px 20px 24px;border-top:1px solid #ddd;margin-top:10px}
+</style>
+</head>
+<body>
+<header>
+  <img src="data:image/jpeg;base64,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" alt="Pôle Formation UIMM CVDL">
+  <div><div class="ctx">Pôle Formation UIMM Centre-Val de Loire · CQPM Technicien Qualité TQ6 · Capabilité et SPC</div>
+  <h1>Capabilité des butées : simulateur</h1>
+  <div class="ctx">Petit diamètre Ø 12 (0 ; −0,15), soit 11,85 / 12,00 mm · livret, fiches B, C et D</div></div>
+</header>
+<nav class="tabs">
+  <button class="on" data-tab="t1">1. Les pièces et la tolérance</button>
+  <button data-tab="t2">2. Cp contre Pp : quand le réglage bouge</button>
+</nav>
+<main>
+
+<!-- ======================================================= ONGLET 1 -->
+<section class="tab on" id="t1">
+<div class="grid">
+<div>
+  <div class="panel"><h2>Paramètres</h2>
+    <div class="ctl"><label>Moyenne m (mm) <input type="number" id="m_n" step="0.001"></label><input type="range" id="m" min="11.80" max="12.05" step="0.001"><div class="aide">Où le procédé vise : le réglage.</div></div>
+    <div class="ctl"><label>Écart-type σ (mm) <input type="number" id="s_n" step="0.0001"></label><input type="range" id="s" min="0.005" max="0.050" step="0.0001"><div class="aide">De combien les pièces s'écartent en général de m : la dispersion.</div></div>
+    <div class="ctl"><label>Cet écart-type est</label><select id="s_type"><option value="i">σ instantané R̄/d₂ : on lit Cp et Cpk</option><option value="g">s global : on lit Pp et Ppk</option></select><div class="aide">Mêmes formules, pas le même écart-type (onglet 2).</div></div>
+    <div class="ctl"><label>TI (mm) <input type="number" id="ti" step="0.001"></label></div>
+    <div class="ctl"><label>TS (mm) <input type="number" id="ts" step="0.001"></label></div>
+  </div>
+  <div class="panel"><h2>Options</h2>
+    <div class="opt"><input type="checkbox" id="o_bandes" checked><label for="o_bandes">Bandes m ± 1σ, ± 2σ, ± 3σ</label></div>
+    <div class="opt"><input type="checkbox" id="o_hist"><label for="o_hist">Histogramme de <select id="o_n" style="width:auto"><option>50</option><option selected>200</option><option>1000</option></select> pièces tirées au hasard</label></div>
+    <div class="opt"><input type="checkbox" id="o_moy"><label for="o_moy">Moyennes de 5 pièces et limites de la carte X̄</label></div>
+    <div class="ctl" style="margin-top:4px"><select id="o_conv"><option value="afnor">Limites AFNOR : contrôle 3,09 σ/√5, surveillance 1,96 σ/√5</option><option value="s3">Limites à 3 sigmas : 3 σ/√5</option></select></div>
+    <button class="btn" id="b_tirage">Nouveau tirage</button>
+  </div>
+  <div class="panel"><h2>Exemples</h2>
+    <button class="btn sec" data-ex="ref">Nos 30 valeurs, σ instantané</button>
+    <button class="btn sec" data-ex="refg">Nos 30 valeurs, s global</button>
+    <button class="btn sec" data-ex="centre">Même dispersion, centré</button>
+    <button class="btn sec" data-ex="capable">Procédé capable (Cpk = 1,33)</button>
+    <button class="btn sec" data-ex="c2">Client 2 : tolérance serrée</button>
+    <button class="btn sec" data-ex="c3">Client 3 : tolérance décentrée</button>
+    <div class="aide" style="font-size:11.5px;color:#666;margin-top:4px">Nos 30 valeurs : m = 11,887 ; σ instantané = 0,0215 (Cp = 1,16, Cpk = 0,57) ; s global = 0,0264 (Pp = 0,95, Ppk = 0,46). Clients 2 et 3 : les règles du guide (page G1), appliquées avec s : on lit Pp et Ppk.</div>
+  </div>
+  <div class="panel"><h2>Défis</h2>
+    <div class="defi"><b>Défi 1.</b> Trouve un réglage où le procédé serait capable s'il était centré (Cp ≥ 1,33), mais ne l'est pas (Cpk &lt; 1). Tolérance du plan.<br><button class="btn sec" data-defi="1">Vérifier</button><div class="rep" id="r1"></div></div>
+    <div class="defi"><b>Défi 2.</b> Garde σ = 0,0215 (σ instantané de nos valeurs). Règle m pour obtenir le meilleur Cpk possible. Suffit-il de régler ?<br><button class="btn sec" data-defi="2">Vérifier</button><div class="rep" id="r2"></div></div>
+    <div class="defi"><b>Défi 3.</b> Quel est le plus grand σ qui donne encore Cp = 1,33 avec la tolérance du plan ?<br><button class="btn sec" data-defi="3">Vérifier</button><div class="rep" id="r3"></div></div>
+    <div class="defi"><b>Défi 4.</b> Règle m et σ pour avoir environ 1 % de pièces sous TI et presque rien au-dessus de TS.<br><button class="btn sec" data-defi="4">Vérifier</button><div class="rep" id="r4"></div></div>
+  </div>
+</div>
+<div>
+  <div class="cards">
+    <div class="card" id="c_cp"><div class="k" id="k_cp">Cp = IT / 6σ</div><div class="v" id="v_cp"></div></div>
+    <div class="card" id="c_cpk"><div class="k" id="k_cpk">Cpk</div><div class="v" id="v_cpk"></div></div>
+    <div class="card"><div class="k">Pièces sous TI</div><div class="v" id="v_bas"></div></div>
+    <div class="card"><div class="k">Pièces au-dessus de TS</div><div class="v" id="v_haut"></div></div>
+    <div class="card"><div class="k">Hors tolérance (ppm)</div><div class="v" id="v_ppm"></div></div>
+  </div>
+  <div class="verdict" id="verdict1"></div>
+  <div class="graph"><h3>La population des pièces</h3>
+    <svg id="g1" viewBox="0 0 900 330"></svg>
+    <div class="leg"><i style="background:var(--bleu2)"></i>loi des pièces (m, σ)<i style="background:var(--rouge)"></i>part hors tolérance<i style="background:#9aa5b1"></i>histogramme simulé<i style="background:var(--orange)"></i>loi des moyennes de 5 pièces et limites de la carte</div>
+    <div class="att" id="att_moy" style="display:none"><b>Deux échelles différentes.</b> Les limites de la carte X̄ portent sur des <b>moyennes de 5 pièces</b>, dont la dispersion vaut σ/√5, soit 2,24 fois moins que celle des pièces. Elles sont donc plus serrées que la dispersion des pièces, et elles n'ont rien à voir avec les tolérances : une moyenne dans les limites ne dit pas que les 5 pièces sont bonnes.</div>
+  </div>
+  <div class="graph"><h3>Vue de dessus : la voiture et le garage</h3>
+    <svg id="g2" viewBox="0 0 900 120"></svg>
+    <div class="leg">Le garage, c'est la tolérance (le client). La voiture, c'est 6σ, centrée sur m (le procédé). Cp compare les largeurs. Cpk regarde aussi où la voiture est garée.</div>
+  </div>
+</div>
+</div>
+<div class="bas">
+  <div class="panel"><h2>À observer</h2><ul>
+    <li>Déplace m sans toucher σ : Cp ne bouge pas, Cpk change. Cpk = Cp seulement quand m est au milieu de la tolérance (11,925).</li>
+    <li>Cpk ne dépasse jamais Cp.</li>
+    <li>Avec Cpk = 1, la limite la plus proche est à 3σ de m : environ 1,35 pièce pour 1 000 dépasse de ce côté.</li>
+    <li>Avec Cpk = 1,33, elle est à 4σ : environ 32 pièces par million.</li>
+    <li>L'histogramme de 50 pièces ressemble peu à la cloche. Avec 1 000, il s'en rapproche : une forme se juge sur beaucoup de pièces (fiche H).</li>
+    <li>Coche « moyennes de 5 pièces » : la cloche orange est plus étroite. C'est elle que surveille la carte X̄ (fiche D).</li></ul></div>
+  <div class="panel"><h2>Formulaire</h2><table class="form">
+    <tr><td>IT</td><td>TS − TI (butées : 12,00 − 11,85 = 0,15 mm)</td></tr>
+    <tr><td>Cp</td><td>IT / (6σ)</td></tr>
+    <tr><td>Cpk</td><td>min(TS − m ; m − TI) / (3σ)</td></tr>
+    <tr><td>Pièces</td><td>environ 68 % dans m ± σ, 95 % dans m ± 2σ, 99,7 % dans m ± 3σ</td></tr>
+    <tr><td>Moyennes de 5</td><td>écart-type σ/√5 ≈ 0,447 σ</td></tr>
+    <tr><td>Carte X̄, σ connu</td><td>AFNOR : contrôle m ± 3,09 σ/√5, surveillance m ± 1,96 σ/√5 · Shewhart : m ± 3 σ/√5 (aide-mémoire R, p. 18)</td></tr>
+    <tr><td>Seuils usuels</td><td>Cpk ≥ 1,33 bon ; 1 à 1,33 à améliorer ; &lt; 1 insuffisant. L'exigence réelle est celle du client.</td></tr></table></div>
+</div>
+</section>
+
+<!-- ======================================================= ONGLET 2 -->
+<section class="tab" id="t2">
+<div class="grid">
+<div>
+  <div class="panel"><h2>Paramètres</h2>
+    <div class="ctl"><label>Réglage de départ (mm) <input type="number" id="m2_n" step="0.001"></label><input type="range" id="m2" min="11.85" max="12.00" step="0.001"></div>
+    <div class="ctl"><label>σ dans l'échantillon (mm) <input type="number" id="s2_n" step="0.0001"></label><input type="range" id="s2" min="0.005" max="0.040" step="0.0001"><div class="aide">La dispersion à court terme : 5 pièces faites d'affilée.</div></div>
+    <div class="ctl"><label>Le réglage bouge entre deux échantillons</label><select id="d_type"><option value="0">Non : réglage stable</option><option value="1">Oui : petits sauts au hasard</option><option value="2">Oui : dérive régulière (usure d'outil)</option></select></div>
+    <div class="ctl"><label>Ampleur du mouvement (mm) <input type="number" id="d_a_n" step="0.0005"></label><input type="range" id="d_a" min="0" max="0.030" step="0.0005"><div class="aide">Sauts : écart-type des sauts. Dérive : déplacement par échantillon.</div></div>
+    <div class="ctl"><label>Nombre d'échantillons de 5 <input type="number" id="k_n" step="1"></label><input type="range" id="k" min="6" max="40" step="1"></div>
+    <div class="ctl"><label>TI · TS (mm)</label><div style="display:flex;gap:6px"><input type="number" id="ti2" step="0.001" style="width:50%"><input type="number" id="ts2" step="0.001" style="width:50%"></div></div>
+  </div>
+  <div class="panel"><h2>Options</h2>
+    <div class="ctl"><select id="conv2"><option value="afnor">Limites AFNOR (dossier du TP) : A'c, A's, D'c2, D's2</option><option value="s3">Limites à 3 sigmas (logiciels) : A₂, D₄</option></select></div>
+    <div class="opt"><input type="checkbox" id="o_pts"><label for="o_pts">Montrer les 5 pièces de chaque échantillon</label></div>
+    <div class="opt"><input type="checkbox" id="o_tol"><label for="o_tol">Tracer TI et TS sur la carte X̄ (le piège à éviter)</label></div>
+    <button class="btn" id="b_tirage2">Nouveau tirage</button>
+  </div>
+  <div class="panel"><h2>Exemples</h2>
+    <button class="btn sec" data-ex2="ref">Nos 30 valeurs (dossier du TP)</button>
+    <button class="btn sec" data-ex2="stable">Réglage stable</button>
+    <button class="btn sec" data-ex2="sauts">Réglage qui saute</button>
+    <button class="btn sec" data-ex2="usure">Usure d'outil</button>
+    <div class="aide" style="font-size:11.5px;color:#666;margin-top:4px">« Nos 30 valeurs » affiche les 6 échantillons réels du fichier Butees_diametre.csv. Les autres exemples sont tirés au hasard.</div>
+  </div>
+  <div class="panel"><h2>Défis</h2>
+    <div class="defi"><b>Défi 5.</b> Réglage stable, 40 échantillons : relance plusieurs tirages. Pp et Cp sont-ils proches ? Le sont-ils toujours ?<br><button class="btn sec" data-defi="5">Vérifier</button><div class="rep" id="r5"></div></div>
+    <div class="defi"><b>Défi 6.</b> Trouve un mouvement du réglage qui fait tomber Pp sous 0,8 × Cp.<br><button class="btn sec" data-defi="6">Vérifier</button><div class="rep" id="r6"></div></div>
+    <div class="defi"><b>Défi 7.</b> Charge nos 30 valeurs. Passe d'AFNOR à 3 sigmas. Quelle convention alerte la première ?<br><button class="btn sec" data-defi="7">Vérifier</button><div class="rep" id="r7"></div></div>
+  </div>
+</div>
+<div>
+  <div class="cards">
+    <div class="card"><div class="k">σ instantané = R̄ / d₂</div><div class="v" id="w_si"></div></div>
+    <div class="card"><div class="k">s global</div><div class="v" id="w_s"></div></div>
+    <div class="card" id="cc_cp"><div class="k">Cp · Cpk</div><div class="v" id="w_cp"></div></div>
+    <div class="card" id="cc_pp"><div class="k">Pp · Ppk</div><div class="v" id="w_pp"></div></div>
+    <div class="card"><div class="k">Pp / Cp</div><div class="v" id="w_ratio"></div></div>
+  </div>
+  <div class="verdict" id="verdict2"></div>
+  <div class="graph"><h3>Carte X̄ : la moyenne de chaque échantillon</h3>
+    <svg id="g3" viewBox="0 0 900 260"></svg>
+    <div class="leg"><i style="background:var(--bleu2)"></i>moyennes X̄<i style="background:var(--rouge)"></i>limites de contrôle<i style="background:var(--orange)"></i>limites de surveillance (AFNOR)<i style="background:var(--violet)"></i>tolérances (piège)<br>Points en alarme : <b style="color:#B91C1C">rouge</b> R1, <b style="color:#C55A11">orange</b> R4, <b style="color:#0f766e">vert foncé</b> R2 ou R3.</div>
+    <div class="alarmes" id="alarmes"></div>
+  </div>
+  <div class="graph"><h3>Carte R : l'étendue de chaque échantillon</h3>
+    <svg id="g4" viewBox="0 0 900 170"></svg>
+  </div>
+  <div class="graph"><h3>Toutes les pièces : deux écarts-types, deux cloches</h3>
+    <svg id="g5" viewBox="0 0 900 260"></svg>
+    <div class="leg"><i style="background:#9aa5b1"></i>histogramme des pièces<i style="background:var(--bleu2)"></i>cloche avec σ instantané (Cp, Cpk)<i style="background:var(--orange)"></i>cloche avec s global (Pp, Ppk)</div>
+  </div>
+</div>
+</div>
+<div class="bas">
+  <div class="panel"><h2>À observer</h2><ul>
+    <li>Réglage stable : σ instantané et s global sont proches, Pp ≈ Cp. Les petits écarts viennent du hasard.</li>
+    <li>Réglage qui bouge : R̄ ne voit que l'intérieur des échantillons, il ne change pas. s voit aussi les déplacements : Pp tombe sous Cp.</li>
+    <li>Cp dit ce que le procédé sait faire. Pp dit ce que le client a reçu.</li>
+    <li>Usure d'outil : les points de la carte X̄ montent. Repère la règle des 6 points qui montent, ou des 7 points du même côté.</li>
+    <li>Coche les tolérances sur la carte X̄ : une moyenne dans la tolérance peut cacher des pièces dehors. On ne les trace jamais sur une carte X̄.</li>
+    <li>Ici, les limites sont calculées sur les échantillons tirés, comme en phase 1. Si le réglage dérive, elles s'élargissent et cachent une partie du problème (enquête E1).</li></ul></div>
+  <div class="panel"><h2>Formulaire</h2><table class="form">
+    <tr><td>σ instantané</td><td>R̄ / d₂, avec d₂ = 2,326 pour n = 5</td></tr>
+    <tr><td>s global</td><td>ECARTYPE.STANDARD de toutes les pièces</td></tr>
+    <tr><td>Cp · Cpk</td><td>avec σ instantané · Pp · Ppk : mêmes formules avec s</td></tr>
+    <tr><td>AFNOR X̄</td><td>X̿ ± 0,594 R̄ (contrôle) · X̿ ± 0,377 R̄ (surveillance)</td></tr>
+    <tr><td>AFNOR R</td><td>LCS = 2,36 R̄ · LSS = 1,81 R̄</td></tr>
+    <tr><td>3 sigmas</td><td>X̄ : X̿ ± 0,577 R̄ · R : LCS = 2,114 R̄, LCI = 0</td></tr>
+    <tr><td>Alarmes</td><td>R1 : 1 point hors limites de contrôle · R2 : 7 points de suite du même côté · R3 : 6 points de suite qui montent ou descendent · R4 (AFNOR) : 1 point en zone de surveillance, on refait un prélèvement</td></tr></table></div>
+</div>
+</section>
+</main>
+<footer>Pôle Formation UIMM CVDL · CQPM Technicien Qualité TQ6 · Capabilité et SPC · S. Jaubert · version 1.0 du 28 octobre 2026<br>Les calculs sont faits dans le navigateur, sans connexion. Aucune donnée n'est transmise.</footer>
+
+<script>
+(function(){
+'use strict';
+const $=id=>document.getElementById(id);
+const fr=(x,d)=>(x<0?'−':'')+Math.abs(x).toFixed(d).replace('.',',');
+const NS='http://www.w3.org/2000/svg';
+const C={bleu:'#1F3864',bleu2:'#2E75B6',pale:'#D6E4F0',orange:'#C55A11',vert:'#1a7340',rouge:'#B91C1C',violet:'#6a1b9a',gris:'#9aa5b1'};
+
+// ---------- outils numériques
+function Phi(z){ // fonction de répartition de la loi normale centrée réduite
+  const t=1/(1+0.2316419*Math.abs(z)); const d=0.3989422804014327*Math.exp(-z*z/2);
+  let p=d*t*(0.319381530+t*(-0.356563782+t*(1.781477937+t*(-1.821255978+t*1.330274429))));
+  return z>0?1-p:p;
+}
+let seed=20261105;
+function rnd(){ seed|=0; seed=seed+0x6D2B79F5|0; let t=Math.imul(seed^seed>>>15,1|seed); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }
+function gauss(){ let u=0,v=0; while(u===0)u=rnd(); v=rnd(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); }
+const mean=a=>a.reduce((s,x)=>s+x,0)/a.length;
+const sd=a=>{const m=mean(a);return Math.sqrt(a.reduce((s,x)=>s+(x-m)*(x-m),0)/(a.length-1));};
+const dens=(x,m,s)=>Math.exp(-0.5*((x-m)/s)**2)/(s*Math.sqrt(2*Math.PI));
+
+// ---------- outils SVG
+function el(tag,attrs,parent,text){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(text!==undefined)e.textContent=text;if(parent)parent.appendChild(e);return e;}
+function clear(svg){while(svg.firstChild)svg.removeChild(svg.firstChild);}
+function ticks(a,b,n){const step0=(b-a)/n;const p=Math.pow(10,Math.floor(Math.log10(step0)));let step=p;for(const k of[1,2,2.5,5,10]){if(k*p>=step0){step=k*p;break;}}const out=[];for(let x=Math.ceil(a/step)*step;x<=b+1e-9;x+=step)out.push(+x.toFixed(6));return {out,step};}
+function dec(step){return Math.max(0,Math.min(4,-Math.floor(Math.log10(step)+1e-9)));}
+
+// ---------- synchronisation curseur et saisie
+function pair(rangeId,numId,onch){const r=$(rangeId),n=$(numId);r.addEventListener('input',()=>{n.value=r.value;onch();});n.addEventListener('change',()=>{let v=parseFloat(String(n.value).replace(',','.'));if(isNaN(v))v=+r.value;v=Math.min(+r.max,Math.max(+r.min,v));r.value=v;n.value=v;onch();});}
+function setPair(rangeId,numId,v){$(rangeId).value=v;$(numId).value=v;}
+
+// ---------- onglets
+document.querySelectorAll('nav.tabs button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('nav.tabs button').forEach(x=>x.classList.toggle('on',x===b));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.id===b.dataset.tab));
+  if(b.dataset.tab==='t2')draw2();else draw1();
+}));
+
+// ======================================================= ONGLET 1
+const REF={m:11.8867,s:0.0264};
+let echant=[];
+function tirer1(){const n=+$('o_n').value,m=+$('m').value,s=+$('s').value;echant=[];for(let i=0;i<n;i++)echant.push(m+s*gauss());}
+function etat1(){const m=+$('m').value,s=+$('s').value,ti=+$('ti').value,ts=+$('ts').value;const it=ts-ti;
+  const cp=it/(6*s),cpk=Math.min(ts-m,m-ti)/(3*s);const pb=Phi((ti-m)/s),ph=1-Phi((ts-m)/s);return {m,s,ti,ts,it,cp,cpk,pb,ph};}
+function classe(c){return c>=1.33?'ok':(c>=1?'moy':'ko');}
+function pct(p){if(p<0.00005)return '< 0,01 %';return fr(100*p,p<0.001?3:(p<0.1?2:1))+' %';}
+function draw1(){
+  const E=etat1();const {m,s,ti,ts,cp,cpk,pb,ph}=E;
+  const G=$('s_type').value==='g',P=G?'Pp':'Cp',PK=G?'Ppk':'Cpk';
+  $('k_cp').textContent=G?'Pp = IT / 6s':'Cp = IT / 6σ';$('k_cpk').textContent=PK;
+  $('v_cp').textContent=fr(cp,2);$('v_cpk').textContent=fr(cpk,2);
+  $('c_cp').className='card '+classe(cp);$('c_cpk').className='card '+classe(cpk);
+  $('v_bas').textContent=pct(pb);$('v_haut').textContent=pct(ph);
+  const ppm=1e6*(pb+ph);$('v_ppm').textContent=ppm<1?'< 1':(ppm<100?fr(ppm,1):Math.round(ppm).toLocaleString('fr-FR'));
+  const v=$('verdict1');let txt,cl;
+  if(cpk>=1.33){cl='ok';txt=(G?'Performance suffisante':'Capable')+' ('+PK+' ≥ 1,33). La limite la plus proche est à '+fr(3*cpk,1)+' σ de la moyenne.';}
+  else if(cp>=1.33){cl='moy';txt='Pas suffisant tel quel, mais la dispersion suffirait : '+P+' = '+fr(cp,2)+'. Il faut <b>recentrer</b> : viser '+fr((ti+ts)/2,3)+' mm donnerait '+PK+' = '+P+'.';}
+  else if(cp>=1){cl='ko';txt='Pas suffisant. Même centré, '+P+' = '+fr(cp,2)+' &lt; 1,33 : il faut <b>réduire la dispersion</b>'+(Math.abs(m-(ti+ts)/2)>0.25*s?' et recentrer':'')+'.';}
+  else {cl='ko';txt='Pas suffisant. La voiture est plus large que le garage ('+P+' = '+fr(cp,2)+' &lt; 1) : aucun réglage n\'évite les pièces hors tolérance. Il faut <b>réduire la dispersion</b>, et trier en attendant.';}
+  v.className='verdict '+cl;v.innerHTML=txt;
+  $('att_moy').style.display=$('o_moy').checked?'block':'none';
+  // ---- graphe 1
+  const g=$('g1');clear(g);const W=900,H=330,L=50,R=20,T=40,B=50;
+  let a=Math.min(ti-0.03,m-4.2*s),b=Math.max(ts+0.03,m+4.2*s);
+  const X=x=>L+(x-a)/(b-a)*(W-L-R);
+  const sm=s/Math.sqrt(5);
+  let ymax=dens(m,m,s)*1.12; if($('o_moy').checked)ymax=dens(m,m,sm)*1.08;
+  let hb=null; if($('o_hist').checked){ if(echant.length!==+$('o_n').value)tirer1(); const w=0.005; const bins={}; echant.forEach(x=>{const k=Math.floor((x+0.0025)/w+1e-9);bins[k]=(bins[k]||0)+1;}); hb={w,bins}; for(const k in bins){ymax=Math.max(ymax,bins[k]/(echant.length*w)*1.05);} }
+  const Y=y=>H-B-(y/ymax)*(H-B-T);
+  // zones hors tolérance
+  el('rect',{x:L,y:T,width:Math.max(0,X(ti)-L),height:H-B-T,fill:'#fdecec'},g);
+  el('rect',{x:X(ts),y:T,width:Math.max(0,W-R-X(ts)),height:H-B-T,fill:'#fdecec'},g);
+  // axe
+  el('line',{x1:L,y1:H-B,x2:W-R,y2:H-B,stroke:'#333'},g);
+  const tk=ticks(a,b,9);tk.out.forEach(x=>{el('line',{x1:X(x),y1:H-B,x2:X(x),y2:H-B+5,stroke:'#333'},g);el('text',{x:X(x),y:H-B+18,'text-anchor':'middle','font-size':12,fill:'#333'},g,fr(x,dec(tk.step)));});
+  el('text',{x:L,y:H-6,'text-anchor':'start','font-size':12,fill:'#555'},g,'diamètre (mm)');
+  // bandes sigma
+  if($('o_bandes').checked){[3,2,1].forEach((k,i)=>{const y0=T-30+i*9;el('line',{x1:X(m-k*s),y1:y0+4,x2:X(m+k*s),y2:y0+4,stroke:[C.bleu,C.bleu2,'#7fb0dc'][i],'stroke-width':5,'stroke-linecap':'round'},g);el('text',{x:X(m+k*s)+6,y:y0+8,'font-size':11,fill:C.bleu},g,'m ± '+k+'σ');});
+    [-3,-2,-1,1,2,3].forEach(k=>el('line',{x1:X(m+k*s),y1:T,x2:X(m+k*s),y2:H-B,stroke:'#b9cde6','stroke-dasharray':'2,3'},g));}
+  // histogramme
+  if(hb){for(const k in hb.bins){const x0=k*hb.w-0.0025;const h=hb.bins[k]/(echant.length*hb.w);el('rect',{x:X(x0),y:Y(h),width:Math.max(1,X(x0+hb.w)-X(x0)-1),height:H-B-Y(h),fill:C.gris,opacity:0.75},g);}}
+  // courbe pièces + zones rouges
+  const N=300;let pts=[];for(let i=0;i<=N;i++){const x=a+(b-a)*i/N;pts.push([X(x),Y(dens(x,m,s))]);}
+  function aire(x1,x2){if(x2<=x1)return;let d='M'+X(x1)+','+Y(0);for(let i=0;i<=80;i++){const x=x1+(x2-x1)*i/80;d+=' L'+X(x)+','+Y(dens(x,m,s));}d+=' L'+X(x2)+','+Y(0)+' Z';el('path',{d,fill:C.rouge,opacity:0.55},g);}
+  aire(a,ti);aire(ts,b);
+  el('polyline',{points:pts.map(p=>p.join(',')).join(' '),fill:'none',stroke:C.bleu2,'stroke-width':2.5},g);
+  // moyennes de 5
+  if($('o_moy').checked){let p2=[];for(let i=0;i<=N;i++){const x=a+(b-a)*i/N;p2.push(X(x)+','+Y(dens(x,m,sm)));}
+    el('polyline',{points:p2.join(' '),fill:'none',stroke:C.orange,'stroke-width':2.2},g);
+    const af=$('o_conv').value==='afnor';const lc=(af?3.09:3)*sm,ls=1.96*sm;
+    [[m-lc,'LCI'],[m+lc,'LCS']].forEach(([x,t])=>{el('line',{x1:X(x),y1:T+10,x2:X(x),y2:H-B,stroke:C.orange,'stroke-width':2,'stroke-dasharray':'6,3'},g);el('text',{x:X(x)+(t==='LCS'?4:-4),y:T+20,'text-anchor':t==='LCS'?'start':'end','font-size':11,fill:C.orange,'font-weight':'bold'},g,t);});
+    if(af)[[m-ls,'LSI'],[m+ls,'LSS']].forEach(([x,t])=>{el('line',{x1:X(x),y1:T+24,x2:X(x),y2:H-B,stroke:C.orange,'stroke-width':1.2,'stroke-dasharray':'2,3'},g);el('text',{x:X(x)+(t==='LSS'?4:-4),y:T+34,'text-anchor':t==='LSS'?'start':'end','font-size':10,fill:C.orange},g,t);});}
+  // tolérances et moyenne
+  [[ti,'TI = '+fr(ti,3)],[ts,'TS = '+fr(ts,3)]].forEach(([x,t])=>{el('line',{x1:X(x),y1:T-6,x2:X(x),y2:H-B,stroke:C.rouge,'stroke-width':2.5},g);el('text',{x:X(x),y:H-B+34,'text-anchor':'middle','font-size':12,'font-weight':'bold',fill:C.rouge},g,t);});
+  el('line',{x1:X(m),y1:Y(dens(m,m,s)),x2:X(m),y2:H-B,stroke:C.bleu,'stroke-width':1.5},g);
+  el('text',{x:X(m),y:Y(dens(m,m,s))-6,'text-anchor':'middle','font-size':12,'font-weight':'bold',fill:C.bleu},g,'m = '+fr(m,3));
+  // ---- voiture et garage
+  const g2=$('g2');clear(g2);const W2=900,L2=50,R2=20;const X2=x=>L2+(x-a)/(b-a)*(W2-L2-R2);
+  el('rect',{x:X2(ti),y:18,width:X2(ts)-X2(ti),height:84,fill:'#f4f6f9',stroke:'none'},g2);
+  [[ti],[ts]].forEach(([x])=>el('rect',{x:X2(x)-(x===ti?8:0),y:12,width:8,height:96,fill:'#555'},g2));
+  el('text',{x:(X2(ti)+X2(ts))/2,y:116,'text-anchor':'middle','font-size':12,fill:'#555'},g2,'garage : IT = '+fr(ts-ti,3)+' mm');
+  const x1=X2(m-3*s),x2=X2(m+3*s);const touche=(m-3*s<ti)||(m+3*s>ts);
+  el('rect',{x:x1,y:34,width:x2-x1,height:50,rx:16,fill:touche?'#f6caca':'#cfe3f6',stroke:touche?C.rouge:C.bleu2,'stroke-width':2.5},g2);
+  el('rect',{x:x1+0.22*(x2-x1),y:42,width:0.56*(x2-x1),height:34,rx:8,fill:'none',stroke:touche?C.rouge:C.bleu2,'stroke-width':1.2},g2);
+  el('text',{x:(x1+x2)/2,y:64,'text-anchor':'middle','font-size':12,'font-weight':'bold',fill:touche?C.rouge:C.bleu},g2,'6σ = '+fr(6*s,3));
+}
+function setEx1(k){
+  const R=REF;let m,s,ti=11.85,ts=12.00;
+  let st='i';const SI=0.0215;
+  if(k==='ref'){m=R.m;s=SI;} if(k==='refg'){m=R.m;s=R.s;st='g';} if(k==='centre'){m=11.925;s=SI;} if(k==='capable'){s=0.015;m=11.85+4*s;}
+  if(k==='c2'){m=R.m;s=R.s;st='g';ti=+(m-2.25*s).toFixed(3);ts=+(m+2.25*s).toFixed(3);} if(k==='c3'){m=R.m;s=R.s;st='g';ti=+(m-s).toFixed(3);ts=+(m+9*s).toFixed(3);}
+  setPair('m','m_n',+m.toFixed(4));setPair('s','s_n',+s.toFixed(4));$('ti').value=ti;$('ts').value=ts;$('s_type').value=st;tirer1();draw1();
+}
+pair('m','m_n',()=>{tirer1();draw1();});pair('s','s_n',()=>{tirer1();draw1();});
+['ti','ts'].forEach(id=>$(id).addEventListener('change',()=>{let a=+String($('ti').value).replace(',','.'),b=+String($('ts').value).replace(',','.');if(!(b>a)){b=a+0.15;$('ts').value=b.toFixed(3);}draw1();}));
+['o_bandes','o_moy','o_conv','s_type'].forEach(id=>$(id).addEventListener('change',draw1));
+$('o_hist').addEventListener('change',()=>{tirer1();draw1();});$('o_n').addEventListener('change',()=>{tirer1();draw1();});
+$('b_tirage').addEventListener('click',()=>{seed=Math.floor(Math.random()*1e9);if(!$('o_hist').checked)$('o_hist').checked=true;tirer1();draw1();});
+document.querySelectorAll('[data-ex]').forEach(b=>b.addEventListener('click',()=>setEx1(b.dataset.ex)));
+
+// ======================================================= ONGLET 2
+const DATA_REF=[[11.87,11.86,11.84,11.88,11.87],[11.87,11.85,11.86,11.84,11.89],[11.91,11.90,11.86,11.88,11.87],[11.89,11.91,11.89,11.88,11.92],[11.91,11.92,11.93,11.89,11.90],[11.85,11.91,11.92,11.93,11.90]];
+let ech2=[],modeRef=false;
+function tirer2(){modeRef=false;const m0=+$('m2').value,s=+$('s2').value,k=+$('k').value,t=+$('d_type').value,a=+$('d_a').value;ech2=[];let c=m0;
+  for(let j=0;j<k;j++){if(j>0){if(t===1)c+=a*gauss();if(t===2)c+=a;}if(t===1&&j>0)c+=(m0-c)*0.15;const e=[];for(let i=0;i<5;i++)e.push(+(c+s*gauss()).toFixed(4));ech2.push(e);}}
+function stats2(){const xb=ech2.map(mean),R=ech2.map(e=>Math.max(...e)-Math.min(...e));const all=ech2.flat();const X=mean(xb),Rb=mean(R),si=Rb/2.326,s=sd(all);
+  const ti=+$('ti2').value,ts=+$('ts2').value,it=ts-ti;const mm=mean(all);
+  return {xb,R,all,X,Rb,si,s,ti,ts,cp:it/(6*si),cpk:Math.min(ts-X,X-ti)/(3*si),pp:it/(6*s),ppk:Math.min(ts-mm,mm-ti)/(3*s)};}
+function limites(S){const af=$('conv2').value==='afnor';return af?{lcs:S.X+0.594*S.Rb,lci:S.X-0.594*S.Rb,lss:S.X+0.377*S.Rb,lsi:S.X-0.377*S.Rb,rc:2.36*S.Rb,rs:1.81*S.Rb,af}:{lcs:S.X+0.577*S.Rb,lci:S.X-0.577*S.Rb,rc:2.114*S.Rb,af};}
+function alarmes(S,Lm){const res=[],k=S.xb.length,pts={};
+  S.xb.forEach((x,j)=>{if(x>Lm.lcs||x<Lm.lci){res.push('R1, échantillon '+(j+1)+' : hors limites de contrôle');pts[j]='r';}
+    else if(Lm.af&&(x>Lm.lss||x<Lm.lsi)){res.push('R4, échantillon '+(j+1)+' : zone de surveillance, refaire un prélèvement');if(!pts[j])pts[j]='o';}});
+  let run=1;for(let j=1;j<k;j++){const sg=Math.sign(S.xb[j]-S.X),sp=Math.sign(S.xb[j-1]-S.X);run=(sg===sp&&sg!==0)?run+1:1;if(run===7){res.push('R2, échantillons '+(j-5)+' à '+(j+1)+' : 7 points du même côté');for(let q=j-6;q<=j;q++)if(!pts[q])pts[q]='v';}}
+  let up=1,dn=1;for(let j=1;j<k;j++){up=S.xb[j]>S.xb[j-1]?up+1:1;dn=S.xb[j]<S.xb[j-1]?dn+1:1;if(up===6||dn===6){res.push('R3, échantillons '+(j-4)+' à '+(j+1)+' : 6 points qui '+(up===6?'montent':'descendent'));for(let q=j-5;q<=j;q++)if(!pts[q])pts[q]='v';}}
+  S.R.forEach((r,j)=>{if(r>Lm.rc)res.push('Carte R, échantillon '+(j+1)+' : étendue au-dessus de la limite de contrôle');});
+  return {res,pts};}
+function axeY(g,a,b,T,H,B,L,W,R){const Y=y=>H-B-(y-a)/(b-a)*(H-B-T);const tk=ticks(a,b,5);tk.out.forEach(y=>{el('line',{x1:L,y1:Y(y),x2:W-R,y2:Y(y),stroke:'#eef1f5'},g);el('text',{x:L-6,y:Y(y)+4,'text-anchor':'end','font-size':11,fill:'#555'},g,fr(y,dec(tk.step)));});return Y;}
+function hline(g,y,x1,x2,col,dash,w,lab){el('line',{x1,y1:y,x2,y2:y,stroke:col,'stroke-width':w||1.6,'stroke-dasharray':dash||''},g);if(lab)el('text',{x:x2+4,y:y+4,'font-size':11,fill:col,'font-weight':'bold'},g,lab);}
+function draw2(){
+  if(!ech2.length)tirer2();const S=stats2(),Lm=limites(S);
+  $('w_si').textContent=fr(S.si,4);$('w_s').textContent=fr(S.s,4);
+  $('w_cp').textContent=fr(S.cp,2)+' · '+fr(S.cpk,2);$('w_pp').textContent=fr(S.pp,2)+' · '+fr(S.ppk,2);
+  $('cc_cp').className='card '+classe(S.cpk);$('cc_pp').className='card '+classe(S.ppk);
+  const ratio=S.pp/S.cp;$('w_ratio').textContent=fr(ratio,2);
+  const v=$('verdict2');
+  if(ratio<0.85){v.className='verdict ko';v.innerHTML='Pp nettement sous Cp ('+fr(ratio,2)+' × Cp) : <b>le réglage bouge entre les échantillons</b>. Le procédé sait faire mieux (Cp = '+fr(S.cp,2)+') que ce que le client reçoit (Pp = '+fr(S.pp,2)+'). Chercher pourquoi la moyenne se déplace.';}
+  else if(ratio>1.15){v.className='verdict moy';v.innerHTML='Pp au-dessus de Cp : cela arrive par hasard sur peu d\'échantillons. Avec plus d\'échantillons, les deux se rapprochent.';}
+  else {v.className='verdict ok';v.innerHTML='Pp ≈ Cp : rien n\'indique que le réglage bouge entre les échantillons. '+(modeRef?'':'Relance un tirage pour voir la part du hasard.');}
+  if(modeRef)v.innerHTML='<b>Données réelles du fichier Butees_diametre.csv</b> (échantillons 1 à 6) : les curseurs ne s\'appliquent pas, « Nouveau tirage » ou un autre exemple reviennent au hasard.<br>'+v.innerHTML;
+  const A=alarmes(S,Lm);
+  const grp={};A.res.forEach(r=>{const i=r.indexOf(',');const key=r.slice(0,i),rest=r.slice(i+2);(grp[key]=grp[key]||[]).push(rest);});
+  const resume=Object.keys(grp).map(k=>{const v=grp[k];const quoi=v[0].split(' : ')[1];return '<b>'+k+'</b> ('+quoi+') : '+v.map(x=>x.split(' : ')[0].replace(/^échantillons? /,'')).join(', ');});
+  $('alarmes').innerHTML=A.res.length?'<b style="color:'+C.rouge+'">Alarmes ('+(Lm.af?'AFNOR':'3 sigmas')+') :</b> '+resume.join(' · '):'<b style="color:'+C.vert+'">Aucune alarme</b> avec la convention '+(Lm.af?'AFNOR':'à 3 sigmas')+'.';
+  // ---- carte X̄
+  const k=S.xb.length,g=$('g3');clear(g);const W=900,H=260,L=60,R=60,T=16,B=34;
+  const showP=$('o_pts').checked,showT=$('o_tol').checked;
+  let vals=[...S.xb,Lm.lcs,Lm.lci];if(showP)vals=vals.concat(S.all);if(showT)vals.push(S.ti,S.ts);
+  let a=Math.min(...vals),b=Math.max(...vals);const pad=(b-a)*0.08||0.01;a-=pad;b+=pad;
+  const Y=axeY(g,a,b,T,H,B,L,W,R);const X=j=>L+(j+0.5)*(W-L-R)/k;
+  for(let j=0;j<k;j++)if(k<=20||j%2===0)el('text',{x:X(j),y:H-B+16,'text-anchor':'middle','font-size':11,fill:'#555'},g,j+1);
+  el('text',{x:(L+W-R)/2,y:H-4,'text-anchor':'middle','font-size':11,fill:'#555'},g,'n° de l\'échantillon');
+  if(showT){hline(g,Y(S.ti),L,W-R,C.violet,'',2,'TI');hline(g,Y(S.ts),L,W-R,C.violet,'',2,'TS');}
+  hline(g,Y(S.X),L,W-R,C.bleu,'',1.5,'X̿');
+  hline(g,Y(Lm.lcs),L,W-R,C.rouge,'6,3',2,'LCS');hline(g,Y(Lm.lci),L,W-R,C.rouge,'6,3',2,'LCI');
+  if(Lm.af){hline(g,Y(Lm.lss),L,W-R,C.orange,'2,3',1.4,'LSS');hline(g,Y(Lm.lsi),L,W-R,C.orange,'2,3',1.4,'LSI');}
+  if(showP)ech2.forEach((e,j)=>e.forEach(x=>el('circle',{cx:X(j),cy:Y(x),r:2.4,fill:'#b9c4d0'},g)));
+  el('polyline',{points:S.xb.map((x,j)=>X(j)+','+Y(x)).join(' '),fill:'none',stroke:C.bleu2,'stroke-width':1.8},g);
+  S.xb.forEach((x,j)=>{const t=A.pts[j];el('circle',{cx:X(j),cy:Y(x),r:t?5.5:4,fill:t==='r'?C.rouge:t==='o'?C.orange:t==='v'?'#0f766e':C.bleu2,stroke:'#fff','stroke-width':1},g);});
+  // ---- carte R
+  const g4=$('g4');clear(g4);const H4=170;let rb=Math.max(...S.R,Lm.rc)*1.12;
+  const Y4=axeY(g4,0,rb,12,H4,26,L,W,R);
+  hline(g4,Y4(S.Rb),L,W-R,C.bleu,'',1.5,'R̄');hline(g4,Y4(Lm.rc),L,W-R,C.rouge,'6,3',2,'LCS');if(Lm.af)hline(g4,Y4(Lm.rs),L,W-R,C.orange,'2,3',1.4,'LSS');
+  el('polyline',{points:S.R.map((r,j)=>X(j)+','+Y4(r)).join(' '),fill:'none',stroke:C.bleu2,'stroke-width':1.8},g4);
+  S.R.forEach((r,j)=>el('circle',{cx:X(j),cy:Y4(r),r:r>Lm.rc?5.5:4,fill:r>Lm.rc?C.rouge:(Lm.af&&r>Lm.rs?C.orange:C.bleu2),stroke:'#fff'},g4));
+  for(let j=0;j<k;j++)if(k<=20||j%2===0)el('text',{x:X(j),y:H4-10,'text-anchor':'middle','font-size':11,fill:'#555'},g4,j+1);
+  // ---- histogramme et deux cloches
+  const g5=$('g5');clear(g5);const H5=260,B5=40,T5=14;const mm=mean(S.all);
+  let a5=Math.min(S.ti-0.02,mm-4*S.s,...S.all),b5=Math.max(S.ts+0.02,mm+4*S.s,...S.all);
+  const X5=x=>L+(x-a5)/(b5-a5)*(W-L-R);const w=0.01;const bins={};S.all.forEach(x=>{const q=Math.floor((x+0.005)/w+1e-9);bins[q]=(bins[q]||0)+1;});
+  let ym=Math.max(dens(S.X,S.X,S.si),dens(mm,mm,S.s));for(const q in bins)ym=Math.max(ym,bins[q]/(S.all.length*w));ym*=1.1;
+  const Y5=y=>H5-B5-(y/ym)*(H5-B5-T5);
+  el('rect',{x:L,y:T5,width:Math.max(0,X5(S.ti)-L),height:H5-B5-T5,fill:'#fdecec'},g5);el('rect',{x:X5(S.ts),y:T5,width:Math.max(0,W-R-X5(S.ts)),height:H5-B5-T5,fill:'#fdecec'},g5);
+  for(const q in bins){const x0=q*w-0.005,h=bins[q]/(S.all.length*w);el('rect',{x:X5(x0),y:Y5(h),width:Math.max(1,X5(x0+w)-X5(x0)-1),height:H5-B5-Y5(h),fill:C.gris,opacity:0.7},g5);}
+  const curve=(mu,sg,col)=>{let p=[];for(let i=0;i<=240;i++){const x=a5+(b5-a5)*i/240;p.push(X5(x)+','+Y5(dens(x,mu,sg)));}el('polyline',{points:p.join(' '),fill:'none',stroke:col,'stroke-width':2.4},g5);};
+  curve(S.X,S.si,C.bleu2);curve(mm,S.s,C.orange);
+  el('line',{x1:L,y1:H5-B5,x2:W-R,y2:H5-B5,stroke:'#333'},g5);const tk=ticks(a5,b5,8);tk.out.forEach(x=>el('text',{x:X5(x),y:H5-B5+16,'text-anchor':'middle','font-size':11,fill:'#333'},g5,fr(x,dec(tk.step))));
+  [[S.ti,'TI'],[S.ts,'TS']].forEach(([x,t])=>{el('line',{x1:X5(x),y1:T5,x2:X5(x),y2:H5-B5,stroke:C.rouge,'stroke-width':2.5},g5);el('text',{x:X5(x),y:H5-B5+32,'text-anchor':'middle','font-size':12,'font-weight':'bold',fill:C.rouge},g5,t+' = '+fr(x,3));});
+}
+function setEx2(k){
+  if(k==='ref'){ech2=DATA_REF.map(e=>e.slice());modeRef=true;setPair('k','k_n',6);$('ti2').value=11.85;$('ts2').value=12;draw2();return;}
+  const p={stable:[11.925,0.012,0,0,30],sauts:[11.925,0.012,1,0.012,30],usure:[11.895,0.012,2,0.0015,25]}[k];
+  setPair('m2','m2_n',p[0]);setPair('s2','s2_n',p[1]);$('d_type').value=p[2];setPair('d_a','d_a_n',p[3]);setPair('k','k_n',p[4]);$('ti2').value=11.85;$('ts2').value=12;tirer2();draw2();
+}
+const re2=()=>{tirer2();draw2();};
+pair('m2','m2_n',re2);pair('s2','s2_n',re2);pair('d_a','d_a_n',re2);pair('k','k_n',re2);
+$('d_type').addEventListener('change',re2);['ti2','ts2'].forEach(id=>$(id).addEventListener('change',draw2));
+['conv2','o_pts','o_tol'].forEach(id=>$(id).addEventListener('change',draw2));
+$('b_tirage2').addEventListener('click',()=>{seed=Math.floor(Math.random()*1e9);tirer2();draw2();});
+document.querySelectorAll('[data-ex2]').forEach(b=>b.addEventListener('click',()=>setEx2(b.dataset.ex2)));
+
+// ======================================================= DÉFIS
+function rep(i,ok,txt){const r=$('r'+i);r.className='rep '+(ok?'ok':'ko');r.innerHTML=txt;}
+document.querySelectorAll('[data-defi]').forEach(b=>b.addEventListener('click',()=>{
+  const i=+b.dataset.defi,E=etat1(),plan=Math.abs(E.ti-11.85)<1e-6&&Math.abs(E.ts-12)<1e-6;
+  if(i===1){if(!plan)return rep(1,false,'Remets la tolérance du plan (11,85 / 12,00).');
+    rep(1,E.cp>=1.33&&E.cpk<1,E.cp>=1.33&&E.cpk<1?'Oui : Cp = '+fr(E.cp,2)+', Cpk = '+fr(E.cpk,2)+'. La dispersion est bonne, le réglage est mauvais : on recentre, on ne change pas de machine.':'Pas encore : Cp = '+fr(E.cp,2)+', Cpk = '+fr(E.cpk,2)+'. Indice : réduis σ sous 0,0188, puis éloigne m du milieu.');}
+  if(i===2){if(!plan)return rep(2,false,'Remets la tolérance du plan.');
+    if(Math.abs(E.s-0.0215)>0.0006)return rep(2,false,'Remets σ = 0,0215 (bouton « Nos 30 valeurs, σ instantané »).');
+    const ok=Math.abs(E.m-11.925)<=0.002;rep(2,ok,ok?'Oui : centré sur 11,925, Cpk = Cp = '+fr(E.cp,2)+'. C\'est le mieux possible, et c\'est encore sous 1,33 : régler ne suffit pas, il faut aussi réduire la dispersion.':'Cpk = '+fr(E.cpk,2)+'. Indice : le meilleur Cpk s\'obtient quand m est au milieu de la tolérance.');}
+  if(i===3){if(!plan)return rep(3,false,'Remets la tolérance du plan.');
+    const ok=E.s>=0.0185&&E.s<=0.0190;rep(3,ok,ok?'Oui : σ = 0,15 / (6 × 1,33) ≈ 0,0188 mm. Au-delà, même parfaitement centré, le procédé n\'est pas capable.':'σ = '+fr(E.s,4)+' donne Cp = '+fr(E.cp,2)+'. Cherche σ tel que 6σ = 0,15 / 1,33.');}
+  if(i===4){const ok=E.pb>=0.008&&E.pb<=0.012&&E.ph<0.0001;rep(4,ok,ok?'Oui : '+pct(E.pb)+' sous TI. La limite basse est alors à environ 2,33σ de m, soit Cpk ≈ 0,78.':'Sous TI : '+pct(E.pb)+', au-dessus de TS : '+pct(E.ph)+'. Indice : 1 % correspond à TI ≈ m − 2,33σ.');}
+  if(i===5){if(+$('d_type').value!==0||modeRef)return rep(5,false,'Choisis « Réglage stable » (bouton d\'exemple), puis relance plusieurs tirages.');
+    const S=stats2();rep(5,true,'Ici Pp / Cp = '+fr(S.pp/S.cp,2)+'. Sans mouvement du réglage, le rapport reste proche de 1, mais il varie d\'un tirage à l\'autre : σ instantané et s sont deux estimations, chacune avec sa part de hasard.');}
+  if(i===6){const S=stats2();const ok=!modeRef&&S.pp<0.8*S.cp;rep(6,ok,ok?'Oui : Pp = '+fr(S.pp,2)+' et Cp = '+fr(S.cp,2)+'. R̄ n\'a presque pas bougé, s a grossi : la différence vient du réglage, pas de la machine.':'Pp / Cp = '+fr(S.pp/S.cp,2)+'. Indice : choisis « petits sauts au hasard » ou « dérive régulière » et augmente l\'ampleur.');}
+  if(i===7){if(!modeRef)return rep(7,false,'Clique d\'abord sur « Nos 30 valeurs ».');
+    rep(7,true,'Sur nos 30 valeurs, aucun point ne sort des limites de contrôle, ni en AFNOR ni à 3 sigmas. Mais en AFNOR, les échantillons 1 et 2 tombent en zone de surveillance basse et l\'échantillon 5 en zone haute : AFNOR alerte, 3 sigmas se tait (fiche D).');}
+}));
+
+// ---------- initialisation
+setEx1('ref');setEx2('stable');
+})();
+</script>
+</body>
+</html>
