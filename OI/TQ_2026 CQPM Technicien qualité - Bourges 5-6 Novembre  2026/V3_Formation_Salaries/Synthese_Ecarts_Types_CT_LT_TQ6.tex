@@ -1,0 +1,478 @@
+% Synthèse formateur : écart-type court terme et long terme
+% Compilation : xelatex (deux passes)
+\documentclass[11pt,a4paper]{article}
+\usepackage{polyglossia}
+\setmainlanguage{french}
+\usepackage{fontspec}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[a4paper,margin=2.1cm,headheight=14pt]{geometry}
+\usepackage{xcolor}
+\definecolor{uimmblue}{HTML}{005C85}
+\definecolor{uimmred}{HTML}{D31326}
+\definecolor{uimmlightblue}{HTML}{E8F1F8}
+\definecolor{orangeTQ}{HTML}{C55A11}
+\usepackage[most]{tcolorbox}
+\usepackage{booktabs,array}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+
+\titleformat{\section}{\Large\bfseries\color{uimmblue}}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{uimmblue}}{\thesubsection}{0.6em}{}
+\pagestyle{fancy}\fancyhf{}
+\lhead{\small\color{uimmblue}Capabilité et SPC · TQ6 · document formateur}
+\rhead{\small\color{uimmblue}Écarts-types court et long terme}
+\cfoot{\small\thepage}
+\lfoot{\scriptsize Pôle Formation UIMM CVDL · S. Jaubert}
+\rfoot{\scriptsize Version du 29 octobre 2026}
+
+\newtheoremstyle{tq}{6pt}{6pt}{\itshape}{}{\bfseries\color{uimmblue}}{.}{0.5em}{}
+\theoremstyle{tq}
+\newtheorem{prop}{Proposition}
+\newtheorem{defi}{Définition}
+\theoremstyle{remark}
+\newtheorem*{rem}{Remarque}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\newtcolorbox{cle}[1][]{colback=uimmlightblue,colframe=uimmblue,boxrule=0.8pt,arc=2pt,left=6pt,right=6pt,top=4pt,bottom=4pt,fonttitle=\bfseries,title={#1}}
+\newtcolorbox{alerte}[1][]{colback=orange!6,colframe=orangeTQ,boxrule=0.8pt,arc=2pt,left=6pt,right=6pt,top=4pt,bottom=4pt,fonttitle=\bfseries,title={#1}}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\Xb}{\bar{X}}
+\newcommand{\Rb}{\bar{R}}
+\newcommand{\sw}{\sigma_w}
+\newcommand{\sbt}{\sigma_b}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\dec}[2]{#1{,}#2}
+
+\setlength{\emergencystretch}{3em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+
+\begin{document}
+
+\begin{tcolorbox}[colback=uimmblue,colframe=uimmblue,coltext=white,arc=2pt]
+{\LARGE\bfseries Écart-type court terme, écart-type long terme}\\[3pt]
+{\large Modèle, estimateurs, justifications et application aux butées du TQ6}\\[3pt]
+{\small Document réservé au formateur · CQPM Technicien Qualité TQ6 · AFPI Bourges · novembre 2026}
+\end{tcolorbox}
+
+\begin{cle}[Ce que contient ce document]
+Une mise au propre, avec démonstrations, de ce que recouvrent « $\sigma$ instantané » et « $s$ global », de la raison pour laquelle Cp et Pp diffèrent, de ce qu'estime chaque formule utilisée par Excel, la carte AFNOR ou un logiciel de MSP, et de la confiance qu'on peut accorder aux valeurs trouvées sur nos butées. Le cadre est celui de trois supports existants : le test F de l'ANOVA à un facteur, la fiche « Estimation » (constantes $c_4$ et $d_2$) et l'étude R\&R par ANOVA (liens en fin de document). Tous les nombres ont été recalculés en Python le 29 octobre 2026 sur les 30 valeurs du fichier \texttt{Butees\_diametre.csv} (échantillons 1 à 6).
+\end{cle}
+
+\tableofcontents
+\vspace{4pt}
+
+%======================================================================
+\section{Le problème posé}
+
+Sur une même série de 30 diamètres (6 échantillons de 5 pièces, tolérance $11{,}85$ à $12{,}00$ mm, $IT = 0{,}15$ mm), on obtient selon la méthode :
+
+\begin{center}\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Estimation de $\sigma$ & $\hat\sigma$ (mm) & Indice de dispersion & Indice de position \\
+\midrule
+$\Rb/d_2$ (carte X̄/R, fiche C) & $0{,}0215$ & Cp $= 1{,}16$ & Cpk $= 0{,}57$\\
+écart-type groupé $s_p = \sqrt{CMR}$ (Minitab, capabilité) & $0{,}0205$ & Cp $= 1{,}22$ & Cpk $= 0{,}60$\\
+$s_p / c_4(25)$ & $0{,}0207$ & Cp $= 1{,}21$ & Cpk $= 0{,}59$\\
+$\bar S / c_4(5)$ & $0{,}0210$ & Cp $= 1{,}19$ & Cpk $= 0{,}58$\\
+$\overline{MR}/d_2(2)$, sous-groupes non déclarés & $0{,}0193$ & Cp $= 1{,}30$ & Cpk $= 0{,}63$\\
+\midrule
+$s$ global, 30 pièces & $0{,}0264$ & Pp $= 0{,}95$ & Ppk $= 0{,}46$\\
+estimateur ANOVA de $\sigma_{LT}$ & $0{,}0273$ & Pp $= 0{,}92$ & Ppk $= 0{,}45$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Deux questions distinctes se mêlent :
+\begin{enumerate}[nosep]
+\item \textbf{Quel paramètre} estime-t-on ? La dispersion à court terme $\sw$, ou la dispersion totale de la période $\sigma_{LT}$ ? C'est la différence entre Cp et Pp.
+\item \textbf{Avec quel estimateur} ? Pour un même paramètre, plusieurs formules honnêtes existent ($\Rb/d_2$, $s_p$, $\bar S/c_4$...). C'est la différence entre deux logiciels qui annoncent tous deux un « Cp ».
+\end{enumerate}
+
+\textbf{Vocabulaire.} Court terme, instantané, intra-échantillon, \emph{within} désignent le même paramètre $\sw$. Long terme, global, total, \emph{overall} désignent $\sigma_{LT}$. La convention AIAG, reprise par les logiciels, associe Cp, Cpk à $\sw$ et Pp, Ppk à $\sigma_{LT}$. Certaines entreprises françaises appellent au contraire Cp la capabilité « long terme ». La seule règle sûre est de demander la convention écrite du client.
+
+%======================================================================
+\section{Le modèle : un facteur aléatoire « échantillon »}
+
+\subsection{Écriture}
+
+On prélève $k$ échantillons de $n$ pièces consécutives, à intervalles réguliers. On note $X_{ij}$ la $j$-ième pièce ($j = 1,\dots,n$) de l'échantillon $i$ ($i = 1,\dots,k$), $N = nk$. On pose :
+\[
+X_{ij} = \mu + \alpha_i + \varepsilon_{ij},\qquad
+\alpha_i \sim \mathcal N(0,\sbt^2),\qquad
+\varepsilon_{ij} \sim \mathcal N(0,\sw^2),
+\]
+toutes ces variables étant indépendantes.
+\begin{itemize}[nosep]
+\item $\varepsilon_{ij}$ : variation d'une pièce à la suivante, réglage inchangé. C'est le \textbf{court terme}, d'écart-type $\sw$ (\emph{within}).
+\item $\alpha_i$ : position du réglage au moment du prélèvement $i$ (usure, retouche, échauffement, changement de lot). Son écart-type $\sbt$ (\emph{between}) mesure les \textbf{déplacements du réglage}.
+\end{itemize}
+
+C'est exactement le modèle de l'ANOVA à un facteur à effets aléatoires, où le facteur « opérateur » est remplacé par le facteur « instant de prélèvement » : $\sigma_r \leftrightarrow \sw$ (répétabilité, intra) et $\sigma_o \leftrightarrow \sbt$ (effet du facteur, inter).
+
+\subsection{Conséquences immédiates}
+
+\begin{prop}
+$\V(X_{ij}) = \sw^2 + \sbt^2$, et pour $j \neq j'$, $\operatorname{Cov}(X_{ij},X_{ij'}) = \sbt^2$.
+\end{prop}
+\begin{proof}
+Par indépendance, $\V(X_{ij}) = \V(\alpha_i) + \V(\varepsilon_{ij})$. Pour $j\neq j'$, la seule composante commune à $X_{ij}$ et $X_{ij'}$ est $\alpha_i$, d'où la covariance $\V(\alpha_i)$.
+\end{proof}
+
+\begin{defi}
+$\sigma_{CT} = \sw$ (court terme) et $\sigma_{LT} = \sqrt{\sw^2+\sbt^2}$ (long terme, ou global). On a toujours $\sigma_{LT} \geq \sigma_{CT}$, avec égalité si et seulement si $\sbt = 0$.
+\end{defi}
+
+Les pièces d'un même échantillon sont donc corrélées, de coefficient $\rho = \sbt^2/(\sw^2+\sbt^2)$ (corrélation intra-classe). C'est pourquoi l'écart-type calculé sur les 5 pièces d'un échantillon ne voit pas $\sbt$ : les 5 pièces partagent le même $\alpha_i$.
+
+\begin{rem}
+\begin{enumerate}[nosep]
+\item « Procédé sous contrôle » signifie, dans ce modèle, $\sbt = 0$ : seules les causes communes ($\varepsilon$) agissent. Alors $\sigma_{LT} = \sigma_{CT}$ et Pp $=$ Cp en théorie.
+\item Une dérive d'usure n'est pas un effet aléatoire : $\alpha_i = \beta\, i$ est déterministe. La décomposition de la section 3 reste valable, mais $\E(CMF)$ devient $\sw^2 + \frac{n}{k-1}\sum_i(\alpha_i-\bar\alpha)^2$. Les conclusions qualitatives sont les mêmes.
+\item « Long terme » n'a pas de durée intrinsèque : $\sigma_{LT}$ estimé couvre seulement les causes qui ont agi pendant la période échantillonnée. Pp est une propriété de cette période, pas du procédé en général.
+\end{enumerate}
+\end{rem}
+
+%======================================================================
+\section{Décomposition de la dispersion et espérances des carrés moyens}
+
+\subsection{L'équation d'analyse de la variance}
+
+Notons $\Xb_i = \frac1n\sum_j X_{ij}$ et $\Xb = \frac1N\sum_{i,j}X_{ij}$.
+
+\begin{prop}
+\[
+\underbrace{\sum_{i,j}(X_{ij}-\Xb)^2}_{SCT}
+=\underbrace{\sum_{i,j}(X_{ij}-\Xb_i)^2}_{SCR\ \text{(intra)}}
++\underbrace{n\sum_{i}(\Xb_i-\Xb)^2}_{SCF\ \text{(inter)}}.
+\]
+\end{prop}
+\begin{proof}
+On écrit $X_{ij}-\Xb = (X_{ij}-\Xb_i)+(\Xb_i-\Xb)$ et on développe le carré. Le double produit vaut
+$2\sum_i(\Xb_i-\Xb)\sum_j(X_{ij}-\Xb_i)$, et la somme intérieure est nulle par définition de $\Xb_i$. Le dernier terme ne dépend pas de $j$, d'où le facteur $n$.
+\end{proof}
+
+Degrés de liberté : $N-1 = (N-k)+(k-1)$. Carrés moyens : $CMR = \dfrac{SCR}{N-k}$, $CMF = \dfrac{SCF}{k-1}$.
+
+\subsection{Ce qu'estime chaque carré moyen}
+
+\begin{prop}\label{prop:ecm}
+Sous le modèle de la section 2 :
+\[
+\E(CMR) = \sw^2,\qquad \E(CMF) = n\,\sbt^2 + \sw^2 .
+\]
+De plus $SCR/\sw^2 \sim \chi^2(N-k)$, et $SCR$ est indépendante de $SCF$.
+\end{prop}
+\begin{proof}
+\emph{Intra.} $X_{ij}-\Xb_i = \varepsilon_{ij}-\bar\varepsilon_i$ : les $\alpha_i$ disparaissent. Pour chaque $i$, les $\varepsilon_{ij}$ forment un échantillon gaussien de taille $n$ ; par le théorème de Fisher (fiche « Estimation »), $\sum_j(\varepsilon_{ij}-\bar\varepsilon_i)^2/\sw^2 \sim \chi^2(n-1)$, indépendante de $\bar\varepsilon_i$. Les $k$ échantillons étant indépendants, la somme suit $\chi^2(k(n-1)) = \chi^2(N-k)$, d'espérance $N-k$. Donc $\E(CMR)=\sw^2$.
+
+\emph{Inter.} $\Xb_i = \mu+\alpha_i+\bar\varepsilon_i$ : les $k$ moyennes sont indépendantes, de même loi, de variance $\tau^2 = \sbt^2+\sw^2/n$. La variance empirique corrigée de $k$ valeurs i.i.d. est sans biais : $\E\!\left[\frac{1}{k-1}\sum_i(\Xb_i-\Xb)^2\right]=\tau^2$. Donc $\E(CMF) = n\tau^2 = n\sbt^2+\sw^2$.
+
+\emph{Indépendance.} $SCF$ ne dépend que des $\alpha_i$ et des $\bar\varepsilon_i$, $SCR$ que des écarts $\varepsilon_{ij}-\bar\varepsilon_i$, indépendants des $\bar\varepsilon_i$ (Fisher) et des $\alpha_i$.
+\end{proof}
+
+\begin{cle}[Conséquence : un estimateur sans biais de $\sbt^2$]
+\[
+\hat\sigma_b^{\,2} = \frac{CMF - CMR}{n}.
+\]
+Il peut être négatif par l'effet du hasard ; on le remplace alors par 0, exactement comme la composante d'interaction négative de l'étude R\&R.
+\end{cle}
+
+%======================================================================
+\section{Estimer le court terme $\sw$}
+
+Tous les estimateurs ci-dessous ont un point commun : ils n'utilisent que des écarts \emph{à l'intérieur} des échantillons, où $\alpha_i$ s'élimine. C'est ce qui en fait des estimateurs du court terme.
+
+\subsection{L'écart-type groupé (\emph{pooled})}
+
+$s_p = \sqrt{CMR}$, avec $\nu = N-k$ degrés de liberté. D'après la proposition~\ref{prop:ecm}, $s_p^2$ est sans biais pour $\sw^2$. Mais $s_p$ ne l'est pas pour $\sw$ :
+
+\begin{prop}
+$\E(s_p) = c_4(\nu+1)\,\sw$, avec $c_4(m) = \sqrt{\dfrac{2}{m-1}}\,\dfrac{\Gamma(m/2)}{\Gamma\big((m-1)/2\big)}$, et $\V(s_p) = \big(1-c_4(\nu+1)^2\big)\sw^2$.
+\end{prop}
+\begin{proof}
+$K = \nu s_p^2/\sw^2 \sim \chi^2(\nu)$, et pour une loi $\chi^2(\nu)$, $\E(\sqrt K) = \sqrt2\,\Gamma\big(\tfrac{\nu+1}{2}\big)/\Gamma\big(\tfrac{\nu}{2}\big)$ (intégration de la densité, fiche « Estimation »). Donc $\E(s_p) = \frac{\sw}{\sqrt\nu}\E(\sqrt K) = c_4(\nu+1)\,\sw$. Enfin $\V(s_p)=\E(s_p^2)-\E(s_p)^2 = \sw^2 - c_4^2\sw^2$.
+\end{proof}
+
+Ici $\nu = 24$, $c_4(25) = 0{,}9896$ : le biais est de 1 \%. $s_p = 0{,}0205$, $s_p/c_4 = 0{,}0207$ mm. D'après sa documentation, Minitab utilise par défaut l'écart-type groupé pour l'analyse de capabilité (l'option de correction par $c_4$ est à vérifier sur la version utilisée).
+
+\subsection{L'étendue moyenne $\Rb/d_2$}
+
+Dans l'échantillon $i$, $R_i = \max_j X_{ij}-\min_j X_{ij} = \max_j\varepsilon_{ij}-\min_j\varepsilon_{ij}$ : $\alpha_i$ s'élimine.
+
+\begin{prop}
+Pour $n$ variables i.i.d. $\mathcal N(\mu,\sigma^2)$, $\E(R) = d_2(n)\,\sigma$ et $\V(R) = d_3(n)^2\sigma^2$, avec
+\[
+d_2(n) = \int_{-\infty}^{+\infty}\Big[1-\Phi(t)^n-\big(1-\Phi(t)\big)^n\Big]\dd t .
+\]
+\end{prop}
+\begin{proof}
+Par centrage-réduction, $R/\sigma = M_n - m_n$ (max et min de $n$ variables $\mathcal N(0,1)$). Pour une variable intégrable $Y$, $\E(Y)=\int_0^\infty P(Y>t)\dd t-\int_{-\infty}^0 P(Y<t)\dd t$ ; on l'applique à $M_n$ et $m_n$, avec $P(M_n\le t)=\Phi(t)^n$ et $P(m_n> t)=(1-\Phi(t))^n$, et on soustrait. On retrouve aussi la forme de la fiche « Estimation » : par symétrie $\E(m_n)=-\E(M_n)$, donc $d_2 = 2\E(M_n) = 2\int t\,n\varphi(t)\Phi(t)^{n-1}\dd t$. La valeur de $d_3$ s'obtient par la loi jointe du couple (min, max).
+\end{proof}
+
+Comme $\E(R_i)=d_2\sw$ pour tout $i$, $\Rb/d_2$ est \textbf{sans biais pour $\sw$} (et non pour $\sw^2$), de variance $\dfrac{d_3^2}{k\,d_2^2}\sw^2$. Sur nos données : $\Rb = 0{,}0500$, $\Rb/d_2 = 0{,}0215$ mm.
+
+\begin{center}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+$n$ & 2 & 3 & 4 & 5 & 6 & 10\\
+\midrule
+$d_2$ & 1,128 & 1,693 & 2,059 & 2,326 & 2,534 & 3,078\\
+$d_3$ & 0,853 & 0,888 & 0,880 & 0,864 & 0,848 & 0,797\\
+$c_4$ & 0,798 & 0,886 & 0,921 & 0,940 & 0,952 & 0,973\\
+efficacité de $R/d_2$ face à $s/c_4$ & 1,000 & 0,992 & 0,975 & 0,955 & 0,933 & 0,850\\
+\bottomrule
+\end{tabular}
+\captionof{table}{Constantes recalculées par intégration numérique. Efficacité $=\dfrac{\V(s/c_4)}{\V(R/d_2)} = \dfrac{1/c_4^2-1}{d_3^2/d_2^2}$, pour un échantillon.}
+\end{center}
+
+Pour $n=5$, l'étendue perd 4,5 \% d'efficacité, c'est-à-dire qu'elle se comporte comme une estimation par $s$ sur un peu moins de pièces. Avec nos $k=6$ échantillons, l'écart-type relatif de $\Rb/d_2$ vaut 15,2 \%, celui de $s_p/c_4$ 14,5 \% (efficacité 0,915). Le choix de l'étendue en MSP est historique (calcul à la main) et cohérent avec la carte : les limites $\bar{\bar X}\pm A_2\Rb$ reposent sur la même estimation.
+
+\subsection{La moyenne des écarts-types $\bar S/c_4(n)$}
+
+$\E(S_i) = c_4(n)\sw$ pour chaque échantillon (proposition précédente avec $\nu=n-1$), donc $\bar S/c_4(n)$ est sans biais pour $\sw$. Sur nos données : $0{,}0210$ mm. C'est l'estimateur naturel de la carte X̄/S.
+
+\subsection{Les étendues mobiles : quand on oublie les sous-groupes}
+
+Si l'on donne au logiciel les 30 valeurs sans la colonne « échantillon », il traite les données comme individuelles et estime $\sigma$ par $\overline{MR}/d_2(2)$, avec $MR_t = |X_t-X_{t-1}|$ dans l'ordre du fichier et $d_2(2) = 2/\sqrt\pi \approx 1{,}128$.
+
+\begin{prop}
+Dans l'ordre « échantillon par échantillon »,
+\[\E\big(\overline{MR}/d_2(2)\big) = \frac{k(n-1)\,\sw + (k-1)\sqrt{\sw^2+\sbt^2}}{N-1}\ \geq\ \sw .\]
+\end{prop}
+\begin{proof}
+Si $D\sim\mathcal N(0,2v)$, $\E|D| = \sqrt{2\cdot 2v/\pi} = d_2(2)\sqrt v$. Parmi les $N-1$ différences consécutives, $k(n-1)$ sont internes à un échantillon ($D=\varepsilon-\varepsilon'$, $v=\sw^2$) et $k-1$ chevauchent deux échantillons ($D$ contient $\alpha_{i+1}-\alpha_i$, $v=\sw^2+\sbt^2$). On fait la moyenne des espérances.
+\end{proof}
+
+Avec nos estimations, cette espérance vaut environ $0{,}0217$ mm, très proche de $\sw$ : 24 différences sur 29 sont internes, l'estimateur ne voit presque pas les déplacements. La valeur observée, $0{,}0193$ mm (Cp $=1{,}30$), est \emph{inférieure} à $\sw$ : c'est une fluctuation d'échantillonnage (29 différences seulement, non indépendantes, valeurs arrondies au 0,01 qui créent des différences nulles), pas un effet systématique.
+
+\begin{alerte}[Corrigé de la fiche L, question 2 : formulation rectifiée le 29 octobre]
+Le corrigé disait : « le procédé paraît meilleur, à tort. Les déplacements entre échantillons tombent rarement entre deux lignes voisines, l'estimation les ignore. » La première phrase est juste pour nos données. La seconde explique pourquoi l'estimateur reste proche de $\sw$, mais pas pourquoi il est ici plus petit : c'est le hasard. Formulation retenue dans le corrigé : « sans sous-groupes, le logiciel change d'estimateur ; sur nos 30 valeurs il donne $\sigma \approx 0{,}0193$ et Cp $\approx 1{,}30$. En moyenne, cet estimateur donnerait un peu plus que $\sw$, pas moins. Un Cp différent sans changement de données montre qu'il faut toujours vérifier la méthode. »
+\end{alerte}
+
+%======================================================================
+\section{Estimer le long terme $\sigma_{LT}$}
+
+\subsection{L'écart-type global $s$}
+
+$s^2 = \dfrac{SCT}{N-1}$, calculé sur toutes les pièces comme si elles étaient indépendantes. Or elles ne le sont pas (proposition 1).
+
+\begin{prop}
+$\E(s^2) = \sw^2 + \dfrac{n(k-1)}{N-1}\,\sbt^2$.
+\end{prop}
+\begin{proof}
+$\E(SCT)=\E(SCR)+\E(SCF)=(N-k)\sw^2+(k-1)(n\sbt^2+\sw^2) = (N-1)\sw^2+n(k-1)\sbt^2$, et on divise par $N-1$.
+\end{proof}
+
+Le coefficient $\dfrac{n(k-1)}{nk-1}$ est $<1$ : dès que $\sbt>0$, $s^2$ \textbf{sous-estime} légèrement $\sigma_{LT}^2$, d'autant plus que $k$ est petit. Pour $k=6$, $n=5$ : $25/29 = 0{,}862$. Le coefficient tend vers 1 quand $k\to\infty$. S'y ajoute le biais en $c_4$ de la racine, négligeable ici ($c_4(30)=0{,}991$).
+
+\subsection{L'estimateur ANOVA}
+
+\[
+\hat\sigma_{LT}^{\,2} = CMR + \frac{CMF-CMR}{n} = \frac{n-1}{n}\,CMR + \frac1n\,CMF,
+\]
+sans biais pour $\sw^2+\sbt^2$ (proposition~\ref{prop:ecm}). Sur nos données : $\hat\sigma_{LT} = 0{,}0273$ mm contre $s = 0{,}0264$ mm, soit Pp $=0{,}92$ au lieu de $0{,}95$. La différence (3 \%) est petite devant l'incertitude (section 7) ; elle montre seulement que $s$ n'est pas « le » $\sigma_{LT}$, mais un estimateur parmi d'autres.
+
+\begin{rem}
+$s^2$ n'a pas une loi du $\chi^2$ quand $\sbt>0$ : c'est une combinaison de deux $\chi^2$ indépendants. Les intervalles de confiance « classiques » sur Pp supposent implicitement $\sbt = 0$.
+\end{rem}
+
+%======================================================================
+\section{Pp < Cp prouve-t-il que le réglage bouge ? Le test F}
+
+\subsection{Le test}
+
+Hypothèse nulle $H_0 : \sbt = 0$ (le réglage ne bouge pas). Sous $H_0$, $\E(CMF)=\E(CMR)=\sw^2$, et
+\[
+F = \frac{CMF}{CMR} \sim \mathcal F(k-1,\,N-k).
+\]
+En général, $F$ estime $1 + n\sbt^2/\sw^2$. C'est le même test que celui de la page ANOVA, où l'on se demandait si les opérateurs différaient.
+
+\subsection{Sur nos 30 valeurs}
+
+\begin{center}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+Source & ddl & Somme des carrés & Carré moyen & $F$ & $p$\\
+\midrule
+Entre échantillons & 5 & 0,010187 & 0,002037 & 4,85 & 0,0033\\
+Dans les échantillons & 24 & 0,010080 & 0,000420 & & \\
+\midrule
+Total & 29 & 0,020267 & & & \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Seuil à 5 \% : $F_{0{,}95}(5;24) = 2{,}62$. On rejette $H_0$ : \textbf{la dispersion des moyennes est trop grande pour venir du seul court terme.} D'où $\hat\sigma_b^{\,2} = (0{,}002037-0{,}000420)/5 = 0{,}000323$, $\hat\sigma_b = 0{,}0180$ mm.
+
+\begin{alerte}[Correction d'une valeur donnée oralement]
+J'avais annoncé $\hat\sigma_b \approx 0{,}016$ mm en écrivant $s^2 \approx \sw^2+\sbt^2$ avec $\sw$ estimé par $\Rb/d_2$. Cette approximation oublie le coefficient $25/29$ et mélange deux estimateurs de $\sw$. L'estimateur sans biais de l'ANOVA donne $0{,}018$ mm.
+\end{alerte}
+
+\subsection{Ce que cela change pour l'enseignement}
+
+\begin{itemize}[nosep]
+\item La phrase de la fiche C « Pp nettement plus petit que Cp : le réglage bouge » est ici \emph{justifiée par un test}, et pas seulement par l'œil.
+\item En général, Pp $<$ Cp ne suffit pas : avec peu d'échantillons et un réglage stable, Pp fluctue autour de Cp, au-dessus ou au-dessous (défi 5 du simulateur). Le test F dit si l'écart dépasse le hasard.
+\item \textbf{Lien avec la carte X̄.} Sous $H_0$, $\Xb_i \sim\mathcal N(\mu,\sw^2/n)$. La carte X̄ compare chaque moyenne, une par une, à $\pm 3\sw/\sqrt n$. Le test F compare la dispersion de \emph{toutes} les moyennes à $\sw^2/n$. Sur nos données, aucun point ne sort à 3 sigmas, mais le test F est significatif : un test global est plus puissant contre des déplacements modérés et répartis. Les limites de surveillance AFNOR ($1{,}96\,\sw/\sqrt n$), qui signalent les échantillons 1, 2 et 5, rapprochent la carte de cette sensibilité.
+\end{itemize}
+
+%======================================================================
+\section{Quelle confiance accorder à Cp et Pp ?}
+
+\subsection{Intervalle de confiance de $\sw$ et de Cp}
+
+Puisque $\nu s_p^2/\sw^2 \sim\chi^2(\nu)$, au niveau 95 \% :
+\[
+s_p\sqrt{\frac{\nu}{\chi^2_{0{,}975}(\nu)}} \leq \sw \leq s_p\sqrt{\frac{\nu}{\chi^2_{0{,}025}(\nu)}},
+\qquad\text{d'où}\qquad
+\widehat{Cp}\sqrt{\frac{\chi^2_{0{,}025}(\nu)}{\nu}}\leq Cp\leq \widehat{Cp}\sqrt{\frac{\chi^2_{0{,}975}(\nu)}{\nu}} .
+\]
+Avec $\nu=24$ ($\chi^2_{0{,}025}=12{,}40$, $\chi^2_{0{,}975}=39{,}36$) : $0{,}0160\le\sw\le0{,}0285$ mm, et
+\[
+\boxed{\,0{,}88 \leq Cp \leq 1{,}56\,}
+\]
+
+\begin{cle}[Le message le plus important de ce document]
+Les écarts entre méthodes (Cp de 1,16 à 1,22, soit 5 \%) sont \textbf{petits devant l'incertitude} due aux 6 échantillons (Cp entre 0,88 et 1,56). Sur 30 valeurs, on ne peut affirmer ni que Cp $\geq 1{,}33$, ni que Cp $<1{,}33$. Le débat « quel logiciel a raison » est secondaire ; la question première est « combien de données ».
+\end{cle}
+
+\subsection{Cpk}
+
+Approximation classique (Bissell) : $\widehat{Cpk}\pm z_{0{,}975}\sqrt{\dfrac{1}{9N}+\dfrac{\widehat{Cpk}^2}{2\nu}}$. Avec $\widehat{Cpk}=0{,}57$, $N=30$, $\nu=24$ : environ $[0{,}37 ; 0{,}77]$. Ici la conclusion est nette : le procédé n'est pas capable, \emph{à cause du centrage}, quelle que soit la méthode.
+
+\subsection{Pp}
+
+Si l'on suppose $\sbt=0$, $s$ suit le modèle $\chi^2(29)$ et Pp $\in[0{,}70 ; 1{,}19]$. Mais le test F rejette $\sbt=0$ : l'intervalle honnête repose sur l'estimateur ANOVA, avec un nombre de degrés de liberté effectif (Satterthwaite) $\nu_{\text{eff}} = \dfrac{\big(\frac{n-1}{n}CMR+\frac{1}{n}CMF\big)^2}{\frac{((n-1)CMR/n)^2}{N-k}+\frac{(CMF/n)^2}{k-1}} \approx 14{,}6$. On obtient alors Pp $\in [0{,}59 ; 1{,}25]$ environ. Avec 6 prélèvements, la composante « entre échantillons » n'a que 5 degrés de liberté : c'est elle qui limite la précision du long terme.
+
+\subsection{Combien de données faudrait-il ?}
+
+L'écart-type relatif d'un estimateur de $\sigma$ à $\nu$ ddl vaut environ $1/\sqrt{2\nu}$. Pour une demi-largeur de 10 \% à 95 \% : $1{,}96/\sqrt{2\nu}=0{,}10$, soit $\nu\approx 190$, par exemple 48 échantillons de 5 pièces pour le court terme. Et pour le long terme, c'est le \emph{nombre d'échantillons} qui compte, pas le nombre de pièces. C'est la raison des recommandations courantes d'au moins 25 sous-groupes avant de calculer des limites ou des indices.
+
+%======================================================================
+\section{La mesure s'ajoute à tout le reste}
+
+\subsection{Décomposition à trois niveaux}
+
+Ce que l'on mesure est $X^{\text{obs}}_{ij} = X_{ij} + e_{ij}$, avec $e_{ij}$ l'erreur de mesure, indépendante, de biais $b$ et d'écart-type $\sigma_m$. Alors
+\[
+\sigma_{CT,\text{obs}}^2 = \sw^2+\sigma_m^2,\qquad
+\sigma_{LT,\text{obs}}^2 = \sw^2+\sbt^2+\sigma_m^2 .
+\]
+La répétabilité de l'instrument entre dans le court terme ; un changement d'instrument ou d'opérateur entre deux prélèvements entre dans $\sbt$ (cas de nos échantillons 7 à 10 : autres micromètres, autres opérateurs, fiche D, question 3). Le Cp observé \emph{sous-estime} le Cp du procédé :
+\[
+Cp_{\text{procédé}} = \frac{Cp_{\text{obs}}}{\sqrt{1-\sigma_m^2/\sigma_{CT,\text{obs}}^2}} .
+\]
+
+\subsection{Ordre de grandeur avec l'étude Cg}
+
+Avec la procédure 1 de Bosch, $Cg = \dfrac{0{,}2\,T}{6\,s_m}$, donc $s_m = \dfrac{0{,}2\times0{,}15}{6\,Cg}$. Si le micromètre obtient $Cg = 1{,}33$ : $s_m = 0{,}0038$ mm, et le Cp du procédé passe de 1,16 à 1,18. Avec $Cg=2$ : 1,17. \textbf{Un instrument capable au sens de Cg ne modifie Cp que de 1 à 2 \%} ; c'est la réponse chiffrée à la question 5 de la fiche I. Au pied à coulisse, la seule quantification au 0,02 ajoute un écart-type $0{,}02/\sqrt{12}=0{,}0058$ mm, déjà comparable au quart de $\sw$.
+
+\subsection{Le lien avec l'étude R\&R}
+
+L'étude R\&R par ANOVA (page « R\&R Six Sigma ») est la même construction à deux facteurs aléatoires (pièce, opérateur) avec interaction : la répétabilité est le carré moyen résiduel, la reproductibilité se lit dans $(CM_{\text{op}}-CM_{\text{int}})/(p\,r)$ et $(CM_{\text{int}}-CMR)/r$, la variation pièce à pièce dans $(CM_{\text{pièce}}-CM_{\text{int}})/(o\,r)$, avec troncature à zéro des composantes négatives. Le principe est toujours celui de la proposition~\ref{prop:ecm} : chaque carré moyen estime une combinaison connue des variances, et on résout. La différence avec Cg : Cg ne voit qu'une pièce et un opérateur à la fois, donc ni la reproductibilité ni l'interaction.
+
+\subsection{L'arrondi au 0,01}
+
+Les échantillons 1 à 6 sont lus au 0,01 mm. Une quantification de pas $h$ ajoute, en première approximation (correction de Sheppard), une variance $h^2/12$, soit un écart-type $0{,}0029$ mm : 2 \% de $\sw^2$, 1 \% de $\sw$. L'approximation suppose $h$ petit devant $\sigma$ ; ici $h/\sw\approx0{,}47$, elle reste acceptable. L'arrondi crée surtout des ex aequo, qui abaissent la $p$-value des tests de normalité (fiche L, partie 3).
+
+%======================================================================
+\section{Réponses aux objections}
+
+\begin{description}[style=nextline,leftmargin=0pt,font=\bfseries\color{uimmblue}]
+\item[« Minitab me donne 1,22, votre Excel 1,16. Qui a raison ? »] Les deux. Même paramètre $\sw$, deux estimateurs sans biais (ou presque) : écart-type groupé et $\Rb/d_2$. L'écart, 5 \%, est trois fois plus petit que l'écart-type relatif de chacun (15 \%). Ce qui est faux, c'est de comparer deux Cp sans connaître leurs méthodes.
+\item[« Pourquoi $n-1$ ? »] Parce que $\E\big(\frac1n\sum(X_i-\Xb)^2\big)=\frac{n-1}{n}\sigma^2$ : un degré de liberté est consommé par l'estimation de la moyenne. Dans $CMR$, ce sont $k$ degrés qui sont consommés, d'où $N-k$.
+\item[« $s$ est sans biais, non ? »] $s^2$ l'est pour $\sigma^2$, pas $s$ pour $\sigma$ : $\E(s)=c_4\sigma$. Négligeable sur 30 pièces ($c_4=0{,}991$), pas sur 5 ($c_4=0{,}940$) : c'est pourquoi $\bar S$ se divise par $c_4$.
+\item[« Pp $<$ Cp, donc le réglage bouge. »] Seulement si le test F le confirme. Ici oui ($p=0{,}003$). Sur un procédé stable, Pp passe au-dessus ou au-dessous de Cp au hasard.
+\item[« Cp $=1{,}16 <1{,}33$, donc pas capable ? »] Pas démontrable avec 6 échantillons : l'intervalle va de 0,88 à 1,56. En revanche Cpk $\in[0{,}37;0{,}77]$ : le défaut de centrage, lui, est certain.
+\item[« Long terme, c'est combien de temps ? »] La période échantillonnée, et seulement les causes qui y ont agi. Un Pp sur une journée n'est pas un Pp sur un mois.
+\item[« Pourquoi l'étendue plutôt que l'écart-type ? »] Tradition du calcul à la main et cohérence avec la carte X̄/R. Pour $n\le6$, la perte d'efficacité est inférieure à 7 \%.
+\item[« Notre logiciel sort un Cpk sur des valeurs individuelles. »] Il utilise alors les étendues mobiles. Ce n'est ni faux ni identique : la méthode doit figurer dans le rapport.
+\end{description}
+
+%======================================================================
+\section{Récapitulatif}
+
+\begin{center}\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}>{\raggedright}p{2.1cm}>{\raggedright}p{3.9cm}>{\raggedright}p{3.1cm}>{\raggedright}p{2.5cm}p{2.6cm}@{}}
+\toprule
+Paramètre & Estimateur & Ce qu'il voit & Biais & Valeur (30 pièces)\\
+\midrule
+$\sw$ (court terme) & $\Rb/d_2$ & dispersion dans l'échantillon & sans biais pour $\sw$ & 0,0215 · Cp 1,16\\
+$\sw$ & $s_p=\sqrt{CMR}$ & idem & sans biais pour $\sw^2$ & 0,0205 · Cp 1,22\\
+$\sw$ & $\bar S/c_4$ & idem & sans biais pour $\sw$ & 0,0210 · Cp 1,19\\
+$\approx\sw$ & $\overline{MR}/1{,}128$ & surtout l'intra, un peu l'inter & léger excès en moyenne & 0,0193 · Cp 1,30\\
+$\sbt$ & $\sqrt{(CMF-CMR)/n}$ & déplacements du réglage & sans biais pour $\sbt^2$ & 0,0180\\
+$\sigma_{LT}$ & $s$ global & tout, en traitant les pièces comme indépendantes & sous-estime si $\sbt>0$ & 0,0264 · Pp 0,95\\
+$\sigma_{LT}$ & ANOVA : $\sqrt{CMR+\hat\sigma_b^{\,2}}$ & tout & sans biais pour $\sigma_{LT}^2$ & 0,0273 · Pp 0,92\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%======================================================================
+\section*{Annexe A · Les données et les calculs}
+\addcontentsline{toc}{section}{Annexe A · Les données et les calculs}
+
+\begin{center}\small
+\begin{tabular}{@{}cccccc|cc@{}}
+\toprule
+Éch. & \multicolumn{5}{c|}{Diamètres (mm)} & $\Xb_i$ & $R_i$\\
+\midrule
+1 & 11,87 & 11,86 & 11,84 & 11,88 & 11,87 & 11,864 & 0,04\\
+2 & 11,87 & 11,85 & 11,86 & 11,84 & 11,89 & 11,862 & 0,05\\
+3 & 11,91 & 11,90 & 11,86 & 11,88 & 11,87 & 11,884 & 0,05\\
+4 & 11,89 & 11,91 & 11,89 & 11,88 & 11,92 & 11,898 & 0,04\\
+5 & 11,91 & 11,92 & 11,93 & 11,89 & 11,90 & 11,910 & 0,04\\
+6 & 11,85 & 11,91 & 11,92 & 11,93 & 11,90 & 11,902 & 0,08\\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[width=0.75\linewidth,height=5.4cm,xlabel={échantillon},ylabel={diamètre (mm)},xmin=0.5,xmax=6.5,ymin=11.83,ymax=11.94,xtick={1,...,6},yticklabel style={/pgf/number format/.cd,fixed,precision=2,use comma},grid=major,grid style={gray!20},tick label style={font=\small},label style={font=\small}]
+\addplot[only marks,mark=*,mark size=1.6pt,uimmblue!60] coordinates {(1,11.87)(1,11.86)(1,11.84)(1,11.88)(1,11.87)(2,11.87)(2,11.85)(2,11.86)(2,11.84)(2,11.89)(3,11.91)(3,11.90)(3,11.86)(3,11.88)(3,11.87)(4,11.89)(4,11.91)(4,11.89)(4,11.88)(4,11.92)(5,11.91)(5,11.92)(5,11.93)(5,11.89)(5,11.90)(6,11.85)(6,11.91)(6,11.92)(6,11.93)(6,11.90)};
+\addplot[thick,mark=square*,orangeTQ] coordinates {(1,11.864)(2,11.862)(3,11.884)(4,11.898)(5,11.910)(6,11.902)};
+\addplot[dashed,uimmred,domain=0.5:6.5] {11.8867};
+\end{axis}
+\end{tikzpicture}
+\captionof{figure}{Pièces (points), moyennes d'échantillons (carrés) et moyenne générale (tirets) : la montée des moyennes est la composante $\sbt$.}
+\end{center}
+
+\medskip
+Résultats : $\bar{\bar X}=11{,}8867$ ; $SCT=0{,}020267$ ; $SCR=0{,}010080$ ; $SCF=0{,}010187$ ; $CMR=0{,}000420$ ; $CMF=0{,}002037$ ; $F=4{,}85$, $p=0{,}0033$ ; $\hat\sigma_b=0{,}0180$ ; $s_p=0{,}02049$ ; $s_p/c_4(25)=0{,}02071$ ; $\Rb/d_2=0{,}02150$ ; $\bar S/c_4(5)=0{,}02102$ ; $\overline{MR}/1{,}128=0{,}01926$ ; $s=0{,}02644$ ; $\hat\sigma_{LT}=0{,}02727$. Normalité (30 valeurs) : Shapiro-Wilk $p\approx0{,}29$, Anderson-Darling $p\approx0{,}42$.
+
+\textbf{Pour refaire le calcul sous R} (code fourni pour ta page SPCR, \emph{non exécuté dans cet environnement}, R n'y étant pas installé ; les valeurs ci-dessus viennent de Python) :
+\begin{small}
+\begin{verbatim}
+d <- read.csv2("Butees_diametre_colonne.csv",
+               fileEncoding = "UTF-8-BOM")
+d$Echantillon <- factor(d$Echantillon)
+a <- aov(Diametre ~ Echantillon, data = d); summary(a)
+ms <- summary(a)[[1]][["Mean Sq"]]          # CMF, CMR
+sb2 <- max(0, (ms[1] - ms[2]) / 5)          # sigma_b^2
+c(sp = sqrt(ms[2]), sb = sqrt(sb2),
+  sLT = sqrt(ms[2] + sb2), s = sd(d$Diametre))
+\end{verbatim}
+\end{small}
+
+\section*{Annexe B · Sources}
+\addcontentsline{toc}{section}{Annexe B · Sources}
+\begin{itemize}[nosep]
+\item S. Jaubert, « Test F pour une ANOVA à un facteur », \url{https://sjaubert.github.io/SPCR/ANOVA.html} : modèle $X_{ij}=\mu+\alpha_i+\epsilon_{ij}$, espérances des carrés moyens.
+\item S. Jaubert, « Estimation », \url{https://sjaubert.github.io/SPCR/Estimation.pdf} : biais de $S^2$, constante $c_4$, constante $d_2$ par la loi du maximum.
+\item S. Jaubert, « R \& R Six Sigma », \url{https://sjaubert.github.io/SPCR/R-R-Six-Sigma.html} : décomposition à deux facteurs, composantes de variance, troncature à zéro.
+\item Minitab, « Estimate process variation when data are in subgroups », support.minitab.com : écart-type groupé par défaut pour la capabilité, $\Rb$ pour la carte X̄-R.
+\item Ellistat, guide utilisateur, « Short term and long term capability » : écart-type « intra-série » pour le court terme, formule non détaillée.
+\item Robert Bosch GmbH, Booklet No. 10, \emph{Capability of Measurement and Test Processes}, procédure 1.
+\end{itemize}
+
+\end{document}
