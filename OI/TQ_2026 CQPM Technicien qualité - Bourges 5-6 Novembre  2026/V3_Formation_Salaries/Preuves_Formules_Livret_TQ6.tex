@@ -1,0 +1,1045 @@
+% Fiche formateur : justification et preuve des formules du livret stagiaire TQ6
+% Compilation : xelatex (deux passes)
+\documentclass[11pt,a4paper]{article}
+\usepackage{polyglossia}
+\setmainlanguage{french}
+\usepackage{fontspec}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[a4paper,margin=2.1cm,headheight=14pt]{geometry}
+\usepackage{xcolor}
+\definecolor{uimmblue}{HTML}{005C85}
+\definecolor{uimmred}{HTML}{D31326}
+\definecolor{uimmlightblue}{HTML}{E8F1F8}
+\definecolor{orangeTQ}{HTML}{C55A11}
+\definecolor{vertTQ}{HTML}{2E7D32}
+\usepackage[most]{tcolorbox}
+\usepackage{booktabs,array}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+
+\titleformat{\section}{\Large\bfseries\color{uimmblue}}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{uimmblue}}{\thesubsection}{0.6em}{}
+\pagestyle{fancy}\fancyhf{}
+\lhead{\small\color{uimmblue}Capabilité et SPC · TQ6 · document formateur}
+\rhead{\small\color{uimmblue}Les formules du livret, démontrées}
+\cfoot{\small\thepage}
+\lfoot{\scriptsize Pôle Formation UIMM CVDL · S. Jaubert}
+\rfoot{\scriptsize Version du 30 octobre 2026}
+
+\newtheoremstyle{tq}{6pt}{6pt}{\itshape}{}{\bfseries\color{uimmblue}}{.}{0.5em}{}
+\theoremstyle{tq}
+\newtheorem{lem}{Lemme}
+\newtheorem{prop}{Proposition}
+\newtheorem{defi}{Définition}
+\theoremstyle{remark}
+\newtheorem*{rem}{Remarque}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\newtcolorbox{cle}[1][]{colback=uimmlightblue,colframe=uimmblue,boxrule=0.8pt,arc=2pt,left=6pt,right=6pt,top=4pt,bottom=4pt,fonttitle=\bfseries,title={#1}}
+\newtcolorbox{alerte}[1][]{colback=orange!6,colframe=orangeTQ,boxrule=0.8pt,arc=2pt,left=6pt,right=6pt,top=4pt,bottom=4pt,fonttitle=\bfseries,title={#1}}
+\newtcolorbox{classe}[1][]{colback=white,colframe=uimmblue,boxrule=0.6pt,arc=2pt,left=6pt,right=6pt,top=3pt,bottom=3pt,fonttitle=\bfseries\small,title={#1}}
+
+% statut d'une formule
+\newcommand{\thm}{\textcolor{vertTQ}{\textbf{[Théorème]}}}
+\newcommand{\conv}{\textcolor{orangeTQ}{\textbf{[Convention]}}}
+\newcommand{\appr}{\textcolor{uimmred}{\textbf{[Approximation]}}}
+\newcommand{\num}{\textcolor{uimmblue}{\textbf{[Calcul numérique]}}}
+\newcommand{\liv}[1]{\textcolor{uimmblue}{\small[Livret p.~#1]}}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\Xb}{\bar{X}}
+\newcommand{\Xbb}{\bar{\bar{X}}}
+\newcommand{\Rb}{\bar{R}}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\mRb}{\overline{mR}}
+
+\setlength{\emergencystretch}{3em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+
+\begin{document}
+
+\begin{tcolorbox}[colback=uimmblue,colframe=uimmblue,coltext=white,arc=2pt]
+{\LARGE\bfseries Les formules du livret, justifiées et démontrées}\\[3pt]
+{\large D'où vient chaque formule, ce qu'elle suppose, ce qui se démontre et ce qui se décide}\\[3pt]
+{\small Document réservé au formateur · CQPM Technicien Qualité TQ6 · AFPI Bourges · novembre 2026}
+\end{tcolorbox}
+
+\begin{cle}[Mode d'emploi]
+Chaque formule du livret stagiaire V3 est reprise dans l'ordre des fiches, avec sa page. Elle porte un statut :
+\begin{itemize}[nosep,leftmargin=1.2em]
+\item \thm{} : conséquence démontrée des hypothèses énoncées ;
+\item \conv{} : choix d'une norme, d'un usage ou d'une méthode (AFNOR, Shewhart, Bosch) ; on justifie le choix, on ne le démontre pas ;
+\item \appr{} : vraie à une approximation près, dont on dit la nature ;
+\item \num{} : constante sans forme close ; on démontre la formule intégrale qui la définit, puis on l'évalue.
+\end{itemize}
+Les preuves s'appuient sur une boîte à outils (section~\ref{sec:outils}), démontrée une fois pour toutes. Tous les nombres ont été recalculés en Python (SciPy, quadratures adaptatives, tolérance $10^{-12}$) le 30 octobre 2026.
+\end{cle}
+
+\begin{classe}[Hypothèse de travail, sauf mention contraire]
+Les mesures d'un échantillon sont des variables aléatoires indépendantes, de même loi normale $\N(\mu,\sigma^2)$. On note $Z$ une variable de loi $\N(0,1)$, $\varphi(x)=\frac{1}{\sqrt{2\pi}}e^{-x^2/2}$ sa densité et $\Phi$ sa fonction de répartition.
+\end{classe}
+
+\tableofcontents
+
+%======================================================================
+\section{Boîte à outils}\label{sec:outils}
+
+\begin{lem}[Intégrale de Gauss]\label{lem:gauss}
+$\displaystyle I=\int_{-\infty}^{+\infty} e^{-x^2/2}\dd x=\sqrt{2\pi}$. Donc $\varphi$ est une densité de probabilité.
+\end{lem}
+\begin{proof}
+L'intégrande est positive et majorée par $e^{1/2-|x|}$ (car $x^2/2 \ge |x|-1/2$), donc $I$ converge. Par le théorème de Fubini-Tonelli (intégrande positive),
+\[
+I^2=\int_{\R}e^{-x^2/2}\dd x\int_{\R}e^{-y^2/2}\dd y=\iint_{\R^2}e^{-(x^2+y^2)/2}\dd x\dd y .
+\]
+En coordonnées polaires $x=r\cos\theta$, $y=r\sin\theta$, de jacobien $r$ :
+\[
+I^2=\int_0^{2\pi}\!\!\int_0^{+\infty}e^{-r^2/2}\,r\dd r\dd\theta=2\pi\Big[-e^{-r^2/2}\Big]_0^{+\infty}=2\pi .
+\]
+Comme $I>0$, $I=\sqrt{2\pi}$.
+\end{proof}
+
+\begin{lem}[Moments de $Z$, loi $\N(\mu,\sigma^2)$]\label{lem:moments}
+$\E(Z)=0$ et $\E(Z^2)=\V(Z)=1$. Si $X=\mu+\sigma Z$ avec $\sigma>0$, alors $\E(X)=\mu$, $\V(X)=\sigma^2$, et $\P(X\le x)=\Phi\!\big(\tfrac{x-\mu}{\sigma}\big)$. C'est la loi $\N(\mu,\sigma^2)$.
+\end{lem}
+\begin{proof}
+On a $\varphi'(x)=-x\varphi(x)$. L'intégrale $\int x\varphi(x)\dd x$ converge absolument et son intégrande est impaire : $\E(Z)=0$. Par parties, avec $u=x$ et $\dd v=x\varphi(x)\dd x$, $v=-\varphi$ :
+\[
+\E(Z^2)=\int_{\R}x\cdot x\varphi(x)\dd x=\Big[-x\varphi(x)\Big]_{-\infty}^{+\infty}+\int_{\R}\varphi(x)\dd x=0+1=1 .
+\]
+Ensuite $\E(X)=\mu+\sigma\E(Z)=\mu$, $\V(X)=\sigma^2\V(Z)=\sigma^2$, et $\P(X\le x)=\P\big(Z\le \frac{x-\mu}{\sigma}\big)$ car $\sigma>0$.
+\end{proof}
+
+\begin{lem}[Écart absolu moyen : $\E|Z|=\sqrt{2/\pi}$]\label{lem:EZ}
+Si $Z\sim\N(0,1)$, alors $\E|Z|=\sqrt{2/\pi}\approx 0{,}7979$. Si $X\sim\N(\mu,\sigma^2)$, alors $\E|X-\mu|=\sigma\sqrt{2/\pi}$.
+\end{lem}
+\begin{proof}
+La fonction $x\mapsto|x|\varphi(x)$ est paire, donc
+\[
+\E|Z|=\int_{\R}|x|\varphi(x)\dd x=2\int_0^{+\infty}x\varphi(x)\dd x .
+\]
+Comme $\varphi'(x)=-x\varphi(x)$, une primitive de $x\varphi(x)$ est $-\varphi(x)$ :
+\[
+\E|Z|=2\Big[-\varphi(x)\Big]_0^{+\infty}=2\big(0+\varphi(0)\big)=\frac{2}{\sqrt{2\pi}}=\sqrt{\frac{2}{\pi}} .
+\]
+Pour $X=\mu+\sigma Z$ : $|X-\mu|=\sigma|Z|$, d'où $\E|X-\mu|=\sigma\sqrt{2/\pi}$.
+\end{proof}
+
+\begin{lem}[Espérance et variance d'une combinaison]\label{lem:var}
+Pour des variables de variance finie et des réels $a_i$ : $\E\big(\sum a_iX_i\big)=\sum a_i\E(X_i)$ (toujours). Si les $X_i$ sont indépendantes : $\V\big(\sum a_iX_i\big)=\sum a_i^2\V(X_i)$. En particulier, pour $n$ variables indépendantes de variance $\sigma^2$, $\V(\Xb)=\sigma^2/n$.
+\end{lem}
+\begin{proof}
+La linéarité de l'espérance découle de celle de l'intégrale. Posons $Y_i=X_i-\E(X_i)$. Alors
+$\V\big(\sum a_iX_i\big)=\E\big[(\sum a_iY_i)^2\big]=\sum_i a_i^2\E(Y_i^2)+\sum_{i\neq j}a_ia_j\E(Y_iY_j)$.
+Pour $i\neq j$, l'indépendance donne $\E(Y_iY_j)=\E(Y_i)\E(Y_j)=0$. Avec $a_i=1/n$ : $\V(\Xb)=n\cdot\sigma^2/n^2=\sigma^2/n$.
+\end{proof}
+
+\begin{lem}[Somme de normales indépendantes]\label{lem:stab}
+Si $X\sim\N(\mu_1,\sigma_1^2)$ et $Y\sim\N(\mu_2,\sigma_2^2)$ sont indépendantes, alors $X+Y\sim\N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)$. Par récurrence, toute combinaison linéaire de normales indépendantes est normale ; en particulier $\Xb\sim\N(\mu,\sigma^2/n)$ et $X_1-X_2\sim\N(0,2\sigma^2)$.
+\end{lem}
+\begin{proof}
+On centre (les moyennes s'ajoutent par le lemme~\ref{lem:var}). La densité de $S=X+Y$ est le produit de convolution
+\[
+f_S(t)=\int_{\R}\frac{1}{2\pi\sigma_1\sigma_2}\exp\!\Big(-\frac{x^2}{2\sigma_1^2}-\frac{(t-x)^2}{2\sigma_2^2}\Big)\dd x .
+\]
+Posons $s^2=\sigma_1^2+\sigma_2^2$. On complète le carré en $x$ :
+\[
+\frac{x^2}{\sigma_1^2}+\frac{(t-x)^2}{\sigma_2^2}=\frac{s^2}{\sigma_1^2\sigma_2^2}\Big(x-\frac{\sigma_1^2t}{s^2}\Big)^2+\frac{t^2}{s^2}.
+\]
+L'intégrale en $x$ d'une gaussienne de variance $\tau^2=\sigma_1^2\sigma_2^2/s^2$ vaut $\tau\sqrt{2\pi}$ (lemme~\ref{lem:gauss}, changement de variable affine). Il reste
+$f_S(t)=\frac{\tau\sqrt{2\pi}}{2\pi\sigma_1\sigma_2}e^{-t^2/(2s^2)}=\frac{1}{s\sqrt{2\pi}}e^{-t^2/(2s^2)}$ : c'est la densité de $\N(0,s^2)$. Une normale multipliée par une constante $a\neq0$ reste normale (lemme~\ref{lem:moments}), d'où les combinaisons linéaires.
+\end{proof}
+
+\begin{lem}[$s^2$ est sans biais]\label{lem:s2}
+Si $X_1,\dots,X_n$ ($n\ge2$) sont indépendantes, de même espérance $\mu$ et de même variance $\sigma^2$ (loi quelconque), alors
+$s^2=\frac{1}{n-1}\sum_{i=1}^n(X_i-\Xb)^2$ vérifie $\E(s^2)=\sigma^2$.
+\end{lem}
+\begin{proof}
+Identité algébrique : $\sum(X_i-\Xb)^2=\sum(X_i-\mu)^2-n(\Xb-\mu)^2$ (développer $X_i-\mu=(X_i-\Xb)+(\Xb-\mu)$ et utiliser $\sum(X_i-\Xb)=0$). En espérance : $n\sigma^2-n\cdot\sigma^2/n=(n-1)\sigma^2$ par le lemme~\ref{lem:var}. On divise par $n-1$.
+\end{proof}
+
+\begin{rem}
+$s$ lui-même est biaisé : par l'inégalité $\big(\E(s)\big)^2\le\E(s^2)$ (car $\V(s)\ge0$), on a $\E(s)\le\sigma$, avec égalité seulement si $s$ est constant. Le facteur exact $c_4$ est démontré en section~\ref{sec:L}.
+\end{rem}
+
+\begin{lem}[Espérance par les queues]\label{lem:queues}
+Pour $Y$ intégrable : $\displaystyle\E(Y)=\int_0^{+\infty}\P(Y>t)\dd t-\int_{-\infty}^0\P(Y\le t)\dd t$.
+\end{lem}
+\begin{proof}
+Pour $y\ge0$, $y=\int_0^{+\infty}\mathbf 1_{\{t<y\}}\dd t$ ; pour $y<0$, $y=-\int_{-\infty}^0\mathbf 1_{\{t\ge y\}}\dd t$. On écrit $Y=Y^+-Y^-$, on prend l'espérance et on échange espérance et intégrale (Fubini-Tonelli, intégrandes positives).
+\end{proof}
+
+\begin{lem}[Maximum, minimum, étendue]\label{lem:etendue}
+Soient $X_1,\dots,X_n$ indépendantes de fonction de répartition $F$ continue et de densité $f$. Notons $M=\max X_i$, $m=\min X_i$, $W=M-m$.
+\begin{enumerate}[nosep,label=(\alph*)]
+\item $\P(M\le x)=F(x)^n$ et $\P(m>x)=\big(1-F(x)\big)^n$.
+\item $\displaystyle\E(W)=\int_{-\infty}^{+\infty}\Big[1-F(x)^n-\big(1-F(x)\big)^n\Big]\dd x$.
+\item $\displaystyle\P(W\le w)=n\int_{-\infty}^{+\infty}f(x)\big[F(x+w)-F(x)\big]^{n-1}\dd x$ pour $w\ge0$.
+\item Le couple $(m,M)$ a pour densité $g(x,y)=n(n-1)f(x)f(y)\big[F(y)-F(x)\big]^{n-2}$ pour $x<y$.
+\end{enumerate}
+\end{lem}
+\begin{proof}
+(a) $\{M\le x\}=\bigcap_i\{X_i\le x\}$, et l'indépendance donne le produit. De même pour $\{m>x\}$.
+
+(b) Par le lemme~\ref{lem:queues}, $\E(M)-\E(m)=\int_{\R}\big[\P(M>t)-\P(m>t)\big]\dd t$ : sur $t<0$, les termes « $1$ » des deux formules se compensent. Or $\P(M>t)=1-F^n$ et $\P(m>t)=(1-F)^n$.
+
+(c) Les égalités entre deux $X_i$ ont une probabilité nulle ($F$ continue). L'événement $\{W\le w\}$ est la réunion disjointe, pour $i=1,\dots,n$, des événements « $X_i$ est le minimum et les $n-1$ autres sont dans $[X_i,X_i+w]$ ». En conditionnant par $X_i=x$ et par indépendance, chacun a pour probabilité $\int f(x)\big[F(x+w)-F(x)\big]^{n-1}\dd x$. On somme les $n$ termes égaux.
+
+(d) Pour $x<y$ : $\P(m>x,\,M\le y)=\big[F(y)-F(x)\big]^n$, donc $\P(m\le x,\,M\le y)=F(y)^n-\big[F(y)-F(x)\big]^n$. On dérive en $x$ puis en $y$.
+\end{proof}
+
+\begin{lem}[Effet d'échelle]\label{lem:echelle}
+Si $X_i=\mu+\sigma Z_i$, l'étendue vaut $W=\sigma W_Z$, où $W_Z$ est l'étendue de $Z_1,\dots,Z_n$. Elle ne dépend pas de $\mu$. Donc $\E(W)=d_2(n)\,\sigma$ et $\sqrt{\V(W)}=d_3(n)\,\sigma$, où
+\[
+d_2(n)=\E(W_Z)=\int_{\R}\big[1-\Phi^n-(1-\Phi)^n\big]\dd x,\qquad d_3(n)=\sqrt{\E(W_Z^2)-d_2(n)^2}
+\]
+ne dépendent que de $n$.
+\end{lem}
+\begin{proof}
+$\max(\mu+\sigma Z_i)-\min(\mu+\sigma Z_i)=\sigma(\max Z_i-\min Z_i)$ car $\sigma>0$ ; $\mu$ disparaît dans la différence. Puis lemme~\ref{lem:etendue}(b) avec $F=\Phi$.
+\end{proof}
+
+\begin{lem}[Intégrale bêta et rangs d'une loi uniforme]\label{lem:beta}
+(a) Pour $a,b$ entiers naturels : $\displaystyle\int_0^1u^a(1-u)^b\dd u=\frac{a!\,b!}{(a+b+1)!}$.\\
+(b) Si $U_1,\dots,U_n$ sont indépendantes de loi uniforme sur $[0,1]$ et $U_{(k)}$ est la $k$-ième plus petite, alors $U_{(k)}$ a pour densité $\frac{n!}{(k-1)!(n-k)!}u^{k-1}(1-u)^{n-k}$ et $\E(U_{(k)})=\frac{k}{n+1}$.\\
+(c) Si $X$ a une fonction de répartition $F$ continue, $F(X)$ suit la loi uniforme sur $[0,1]$.
+\end{lem}
+\begin{proof}
+(a) Notons $B(a,b)$ l'intégrale. Par parties, en intégrant $u^a$ et dérivant $(1-u)^b$ : $B(a,b)=\frac{b}{a+1}B(a+1,b-1)$. En itérant $b$ fois : $B(a,b)=\frac{b!}{(a+1)\cdots(a+b)}B(a+b,0)=\frac{b!\,a!}{(a+b)!}\cdot\frac{1}{a+b+1}$.
+
+(b) $\{U_{(k)}\le u\}$ signifie « au moins $k$ des $U_i$ sont $\le u$ ». Le nombre de $U_i\le u$ suit une loi binomiale $\mathcal B(n,u)$ :
+$G(u)=\sum_{j=k}^n\binom nj u^j(1-u)^{n-j}$. On dérive et on utilise $j\binom nj=n\binom{n-1}{j-1}$ et $(n-j)\binom nj=n\binom{n-1}{j}$ :
+\[
+G'(u)=n\sum_{j=k}^n\Big[\tbinom{n-1}{j-1}u^{j-1}(1-u)^{n-j}-\tbinom{n-1}{j}u^{j}(1-u)^{n-1-j}\Big].
+\]
+La somme est télescopique et $\binom{n-1}{n}=0$ : il reste $G'(u)=n\binom{n-1}{k-1}u^{k-1}(1-u)^{n-k}$, qui est la densité annoncée. Alors, par (a),
+$\E(U_{(k)})=\frac{n!}{(k-1)!(n-k)!}\int_0^1u^k(1-u)^{n-k}\dd u=\frac{n!}{(k-1)!(n-k)!}\cdot\frac{k!(n-k)!}{(n+1)!}=\frac{k}{n+1}$.
+
+(c) Pour $u\in\,]0,1[$, l'ensemble $\{x : F(x)\le u\}$ est un intervalle $]-\infty,x_u]$ : il est fermé ($F$ continue), non vide et majoré ($F\to0$ en $-\infty$, $F\to1$ en $+\infty$), et $F(x_u)=u$ par le théorème des valeurs intermédiaires. Donc $\{F(X)\le u\}=\{X\le x_u\}$ et $\P(F(X)\le u)=F(x_u)=u$.
+\end{proof}
+
+\begin{lem}[Variance d'une loi uniforme]\label{lem:unif}
+Si $E$ est uniforme sur $[-\delta/2,\delta/2]$, alors $\E(E)=0$ et $\V(E)=\delta^2/12$.
+\end{lem}
+\begin{proof}
+$\E(E^2)=\frac1\delta\int_{-\delta/2}^{\delta/2}x^2\dd x=\frac1\delta\cdot\frac{2}{3}\Big(\frac\delta2\Big)^3=\frac{\delta^2}{12}$, et $\E(E)=0$ par symétrie.
+\end{proof}
+
+\begin{lem}[Lois binomiale et de Poisson]\label{lem:binpois}
+(a) Si $D\sim\mathcal B(n,p)$, alors $\E(D)=np$ et $\V(D)=np(1-p)$.\\
+(b) Si $C\sim\mathcal P(\lambda)$, c'est-à-dire $\P(C=k)=e^{-\lambda}\lambda^k/k!$, alors $\E(C)=\V(C)=\lambda$.
+\end{lem}
+\begin{proof}
+(a) $D$ a la loi de $\sum_{i=1}^nB_i$, où les $B_i$ sont des variables de Bernoulli indépendantes ($B_i=1$ si la pièce $i$ est non conforme, avec probabilité $p$). $\E(B_i)=p$ et $\E(B_i^2)=p$, donc $\V(B_i)=p-p^2$. Le lemme~\ref{lem:var} conclut.
+
+(b) $\E(C)=\sum_{k\ge1}k\,e^{-\lambda}\frac{\lambda^k}{k!}=\lambda e^{-\lambda}\sum_{k\ge1}\frac{\lambda^{k-1}}{(k-1)!}=\lambda$. De même $\E\big(C(C-1)\big)=\lambda^2e^{-\lambda}\sum_{k\ge2}\frac{\lambda^{k-2}}{(k-2)!}=\lambda^2$, d'où $\V(C)=\lambda^2+\lambda-\lambda^2=\lambda$.
+\end{proof}
+
+\begin{lem}[Inégalité de Bienaymé-Tchebychev]\label{lem:BT}
+Pour toute variable $X$ d'espérance $\mu$ et d'écart-type $\sigma>0$, et tout $k>0$ : $\P(|X-\mu|\ge k\sigma)\le 1/k^2$.
+\end{lem}
+\begin{proof}
+$\sigma^2=\E\big[(X-\mu)^2\big]\ge\E\big[(X-\mu)^2\mathbf 1_{\{|X-\mu|\ge k\sigma\}}\big]\ge k^2\sigma^2\,\P(|X-\mu|\ge k\sigma)$.
+\end{proof}
+
+\begin{lem}[Invariance par rotation]\label{lem:rot}
+Soit $G=(G_1,\dots,G_m)$ un vecteur de variables indépendantes de loi $\N(0,1)$ et $Q$ une matrice orthogonale. Alors $QG$ a la même loi que $G$. En particulier, pour deux vecteurs unitaires orthogonaux $e_1,e_2$, les variables $\langle e_1,G\rangle$ et $\langle e_2,G\rangle$ sont indépendantes de loi $\N(0,1)$.
+\end{lem}
+\begin{proof}
+$G$ a pour densité $(2\pi)^{-m/2}e^{-\|g\|^2/2}$. Le changement de variable $h=Qg$ a un jacobien de valeur absolue $|\det Q|=1$ et conserve la norme : $QG$ a la même densité. Pour la seconde affirmation, on complète $(e_1,e_2)$ en base orthonormée, dont les vecteurs forment les lignes d'une matrice $Q$ : les deux premières coordonnées de $QG$ sont $\langle e_1,G\rangle$ et $\langle e_2,G\rangle$.
+\end{proof}
+
+\begin{lem}[Probabilités d'orthant, formules de Sheppard]\label{lem:orthant}
+Soit $G$ comme ci-dessus et $a_1,a_2,a_3$ des vecteurs unitaires de $\R^m$, deux à deux non colinéaires. Posons $U_i=\langle a_i,G\rangle$ (donc $U_i\sim\N(0,1)$) et $\rho_{ij}=\langle a_i,a_j\rangle$, la corrélation de $U_i$ et $U_j$. Alors
+\begin{align*}
+&\text{(a)}\quad \P(U_1>0,U_2>0)=\frac14+\frac{\arcsin\rho_{12}}{2\pi},\\
+&\text{(b)}\quad \P(U_1>0,U_2>0,U_3>0)=\frac18+\frac{\arcsin\rho_{12}+\arcsin\rho_{13}+\arcsin\rho_{23}}{4\pi}.
+\end{align*}
+Les mêmes formules valent avec des inégalités $<0$, car $-G$ a la même loi que $G$.
+\end{lem}
+\begin{proof}
+(a) Soit $(e_1,e_2)$ une base orthonormée du plan engendré par $a_1$ et $a_2$. Comme $a_1,a_2$ sont dans ce plan, $U_i=\langle a_i,H\rangle$ où $H=\langle e_1,G\rangle e_1+\langle e_2,G\rangle e_2$. Par le lemme~\ref{lem:rot}, les coordonnées de $H$ sont indépendantes de loi $\N(0,1)$ : sa densité en polaires est $\frac1{2\pi}e^{-r^2/2}\,r\dd r\dd\theta$ (calcul du lemme~\ref{lem:gauss}). Son angle $\Theta$ est donc uniforme sur $[0,2\pi[$, et $H=0$ a une probabilité nulle. La condition $U_i>0$ signifie que la direction de $H$ est dans le demi-plan ouvert centré sur $a_i$ : un arc de longueur $\pi$. Si $\alpha=\arccos\rho_{12}\in\,]0,\pi[$ est l'angle entre $a_1$ et $a_2$, les deux arcs se recouvrent sur une longueur $\pi-\alpha$. Donc
+\[
+\P(U_1>0,U_2>0)=\frac{\pi-\alpha}{2\pi}=\frac12-\frac{\arccos\rho_{12}}{2\pi}=\frac14+\frac{\arcsin\rho_{12}}{2\pi},
+\]
+car $\arccos\rho=\frac\pi2-\arcsin\rho$.
+
+(b) Les événements $\{U_i=0\}$ ont une probabilité nulle. Notons $q_k$ la probabilité que exactement $k$ des trois $U_i$ soient positifs. Comme $-G$ a la même loi que $G$, $q_k=q_{3-k}$ ; posons $p=q_3=q_0$, d'où $q_1=q_2=\frac12-p$. Comptons les paires d'indices positifs : trois $U_i$ positifs donnent trois paires, deux en donnent une. Donc
+\[
+\sum_{i<j}\P(U_i>0,U_j>0)=3q_3+q_2=3p+\tfrac12-p=2p+\tfrac12 .
+\]
+On remplace chaque terme par (a) : $\frac34+\frac{1}{2\pi}\sum_{i<j}\arcsin\rho_{ij}=2p+\frac12$, d'où la formule.
+\end{proof}
+
+%======================================================================
+\section{Fiche B : décrire le lot}\label{sec:B}
+
+\subsection{Moyenne, écart-type, étendue \liv{4 et 18}}
+\[
+\bar x=\frac1n\sum_{i=1}^nx_i,\qquad s=\sqrt{\frac{1}{n-1}\sum_{i=1}^n(x_i-\bar x)^2},\qquad R=x_{\max}-x_{\min}.
+\]
+\textbf{Statut.} Définitions. Le diviseur $n-1$ est un \thm{} : c'est celui qui rend $s^2$ sans biais (lemme~\ref{lem:s2}), sans hypothèse de normalité. Excel : \texttt{ECARTYPE.STANDARD} divise par $n-1$, \texttt{ECARTYPE.PEARSON} par $n$.
+
+\subsection{Pourquoi $n-1$ : les degrés de liberté \liv{4 et 18}}
+\begin{cle}[Pour les stagiaires]
+On a $n$ écarts $x_i-\bar x$, mais leur somme est toujours nulle. Si je connais $n-1$ écarts, le dernier est imposé. On ne dispose donc que de $n-1$ informations libres sur la dispersion : on divise par $n-1$.
+\begin{itemize}[nosep,leftmargin=1.2em]
+\item $n=1$ : aucune information sur la dispersion. $s$ n'est pas défini (division par 0). Diviser par $n$ donnerait $0$, une dispersion nulle : absurde.
+\item $n=2$ : les deux écarts valent $+d$ et $-d$. Une seule information.
+\end{itemize}
+Autre façon de le dire : $\bar x$ est calculé sur les mêmes valeurs, il « colle » aux données, et les écarts à $\bar x$ sont un peu trop petits. Diviser par $n-1$ compense exactement ce défaut, en moyenne.
+\end{cle}
+
+\begin{prop}[Les degrés de liberté comme dimension]\thm{}
+Soit $P=I_n-\frac1n\mathbf 1\mathbf 1^{\top}$. Alors $P$ est la projection orthogonale de $\R^n$ sur l'hyperplan $H=\{v : \sum v_i=0\}$, de dimension $n-1$, et le vecteur des écarts est $e=(x_i-\bar x)_i=Px$. Si $X_1,\dots,X_n$ sont indépendantes, de même espérance $\mu$ et de même variance $\sigma^2$ (loi quelconque),
+\[
+\E\Big(\sum_{i=1}^n(X_i-\Xb)^2\Big)=\E\|PX\|^2=\sigma^2\operatorname{tr}P=(n-1)\,\sigma^2 .
+\]
+\end{prop}
+\begin{proof}
+\emph{$P$ est la projection sur $H$.} $(Px)_i=x_i-\bar x$, donc $Px\in H$ ; si $x\in H$, $\bar x=0$ et $Px=x$ ; enfin $P$ est symétrique et $P^2=P$ (car $\mathbf 1^{\top}\mathbf 1=n$). Une projection symétrique est orthogonale. $H$ est le noyau de la forme linéaire non nulle $v\mapsto\sum v_i$ : il est de dimension $n-1$.
+
+\emph{Espérance.} Comme $P\mathbf 1=0$, $PX=PY$ avec $Y=X-\mu\mathbf 1$, et $\|PY\|^2=Y^{\top}P^{\top}PY=Y^{\top}PY=\sum_{i,j}P_{ij}Y_iY_j$. Par indépendance, $\E(Y_iY_j)=\sigma^2$ si $i=j$ et $0$ sinon (lemme~\ref{lem:var}). Donc $\E\|PY\|^2=\sigma^2\sum_iP_{ii}=\sigma^2\operatorname{tr}P$. Enfin $\operatorname{tr}P=n-\frac1n\operatorname{tr}(\mathbf 1\mathbf 1^{\top})=n-1$.
+\end{proof}
+\textbf{Lecture.} Le « nombre de degrés de liberté » est exactement $\operatorname{tr}P=\dim H=n-1$ : chaque direction libre de l'espace des écarts apporte en moyenne $\sigma^2$. C'est une seconde preuve du lemme~\ref{lem:s2}. Sous l'hypothèse de normalité, la rotation de la section~\ref{sec:L} précise le résultat : $\sum(X_i-\Xb)^2=\sigma^2\sum_{j=2}^nV_j^2$, somme de $n-1$ carrés indépendants de loi $\N(0,\sigma^2)$ chacun, c'est-à-dire une loi du khi-deux à $n-1$ degrés de liberté, multipliée par $\sigma^2$.
+
+\textbf{Le même décompte ailleurs dans le dossier.}
+\begin{itemize}[nosep,leftmargin=1.2em]
+\item Écart-type groupé sur $k$ échantillons de $n$ : chaque échantillon apporte $n-1$ degrés de liberté, soit $k(n-1)=24$ pour nos $6\times5$ valeurs. C'est le $c_4(25)$ de la section~\ref{sec:L}.
+\item Décomposition intra / inter de la section~\ref{sec:PpCp} : les degrés de liberté se décomposent comme les sommes de carrés, $N-1=(N-k)+(k-1)$, soit $29=24+5$. C'est le tableau de l'ANOVA de la \emph{Synthèse écarts-types court et long terme}.
+\end{itemize}
+
+\begin{alerte}[Deux mises en garde]
+\begin{enumerate}[nosep,leftmargin=1.2em]
+\item L'argument rend $s^2$ sans biais, pas $s$ : $\E(s)=c_4\,\sigma<\sigma$ (section~\ref{sec:L}).
+\item La règle « on perd un degré de liberté par paramètre estimé » est exacte ici parce que l'estimation de $\mu$ par $\bar x$ est une projection linéaire. Elle ne s'applique pas telle quelle aux estimateurs non linéaires, comme les étendues : $\Rb/d_2$ n'a pas de « degrés de liberté » au sens de la trace.
+\end{enumerate}
+\end{alerte}
+
+\subsection{« Environ 99,7 \% des valeurs dans $\bar x\pm3s$ » \liv{18}}
+\begin{prop}
+Si $X\sim\N(\mu,\sigma^2)$, alors $\P(|X-\mu|\le3\sigma)=1-2\Phi(-3)=0{,}99730$.
+\end{prop}
+\begin{proof}
+Par le lemme~\ref{lem:moments}, $\P(|X-\mu|\le3\sigma)=\P(|Z|\le3)=\Phi(3)-\Phi(-3)$, et $\Phi(3)=1-\Phi(-3)$ par symétrie de $\varphi$. Valeur : $\Phi(-3)=0{,}0013499$ \num{} ($\Phi$ n'a pas de forme close).
+\end{proof}
+\textbf{Statut.} \thm{} pour $\mu$ et $\sigma$ vrais ; \appr{} avec $\bar x$ et $s$ estimés : la proportion réelle dépend de l'erreur d'estimation, faible pour 50 valeurs. Sans normalité, on ne peut garantir que $1-1/9\approx88{,}9\,\%$ (lemme~\ref{lem:BT} avec $k=3$). C'est la vraie raison d'être de la fiche H : le « 99,7 \% » repose sur la forme en cloche.
+
+\subsection{« Largeur du procédé : $6s$ » \liv{4}}
+\conv{}. Elle découle de la proposition précédente : sous normalité, $\mu\pm3\sigma$ contient 99,73 \% de la production. C'est cette convention qui fixe le $6$ de Cp et le $3$ de Cpk (section~\ref{sec:C}).
+
+\subsection{Bornes de classes à 11,825 ; 11,835… \liv{4, question 2}}
+\textbf{Justification.} Les échantillons 1 à 6 sont lus au $0{,}01$ : leurs valeurs sont des multiples de $0{,}01$. Une borne placée à mi-chemin entre deux valeurs lisibles ne peut jamais être atteinte : aucune valeur ne tombe sur une borne, et le classement ne dépend pas de la convention « $\le$ » ou « $<$ ».
+
+\textbf{Point de vigilance.} Nos mesures au micromètre ont 3 décimales : une valeur comme $11{,}875$ \emph{peut} tomber sur une borne. \texttt{NB.SI.ENS} avec \texttt{">="} et \texttt{"<"} compte la classe $[a;b[$ ; \texttt{FREQUENCE} compte $]a;b]$. Une telle valeur change donc de classe d'une méthode à l'autre : c'est exactement ce que la fiche demande de constater en comparant les colonnes L et M.
+
+\subsection{Mélanger des valeurs au 0,01 et au 0,001 \liv{4, question 3}}
+\textbf{Modèle.} Lire au pas $\delta$ revient à arrondir : $X_{\text{lu}}=X+E$. Si $\delta$ est petit devant $\sigma$, on modélise $E$ comme uniforme sur $[-\delta/2,\delta/2]$ et indépendante de $X$ \appr{} (c'est l'hypothèse de Sheppard). Alors, par les lemmes~\ref{lem:var} et~\ref{lem:unif},
+\[
+\sigma_{\text{lu}}=\sqrt{\sigma^2+\delta^2/12}.
+\]
+\textbf{Application.} Avec $\sigma\approx0{,}0215$ mm et $\delta=0{,}01$ mm : $\delta/\sqrt{12}=0{,}0029$ mm et $\sigma_{\text{lu}}/\sigma=1{,}009$. L'arrondi au $0{,}01$ gonfle l'écart-type d'environ 1 \% : négligeable devant les autres sources. Il crée en revanche les « marches » de la droite de Henry (fiche H).
+
+%======================================================================
+\section{Fiche H : la droite de Henry}\label{sec:H}
+
+\subsection{Pourquoi des points alignés \liv{5}}
+\begin{prop}
+Si $X\sim\N(\mu,\sigma^2)$, le quantile d'ordre $p$ de $X$ vaut $x_p=\mu+\sigma\,\Phi^{-1}(p)$. Les points $\big(x_p,\Phi^{-1}(p)\big)$ sont sur la droite $z=\frac{x-\mu}{\sigma}$, de pente $1/\sigma$, qui coupe $z=0$ en $x=\mu$.
+\end{prop}
+\begin{proof}
+Par le lemme~\ref{lem:moments}, $\P(X\le x)=\Phi\big(\frac{x-\mu}\sigma\big)$. Cette quantité vaut $p$ si et seulement si $\frac{x-\mu}{\sigma}=\Phi^{-1}(p)$ ($\Phi$ est continue et strictement croissante).
+\end{proof}
+La fiche remplace le quantile théorique $x_p$ par la $k$-ième plus petite mesure $x_{(k)}$, et $p$ par une proportion $p_k$ (colonne C). Si la loi est normale, les points $\big(x_{(k)},\Phi^{-1}(p_k)\big)$ sont donc proches d'une droite. \textbf{Lecture bonus pour le formateur :} la pente de la droite de tendance estime $1/\sigma$, et son intersection avec l'axe $z=0$ estime $\mu$.
+
+\subsection{Pourquoi $p_k=(k-0{,}5)/n$ \liv{5, cellule C2}}
+\conv{}, justifiée ainsi.
+\begin{itemize}[nosep,leftmargin=1.2em]
+\item $p_k=k/n$ est impossible : pour $k=n$, $p_n=1$ et $\Phi^{-1}(1)=+\infty$.
+\item Par le lemme~\ref{lem:beta}(c), $F(X_{(k)})$ a la loi de $U_{(k)}$, d'espérance $\frac{k}{n+1}$ (lemme~\ref{lem:beta}(b)). Le choix $p_k=\frac{k}{n+1}$ (Weibull) est donc naturel aussi.
+\item Le choix $(k-0{,}5)/n$ (Hazen) place chaque point au milieu de sa « tranche » de $1/n$. D'autres usages existent, par exemple $(k-0{,}3)/(n+0{,}4)$, approximation de la médiane de $U_{(k)}$.
+\end{itemize}
+Ces choix diffèrent de moins de $1/n$ en $p$. Pour $n=50$ et $k=1$ : $p_1=0{,}010$ (Hazen), $0{,}0139$ (médiane), $0{,}0196$ (Weibull), soit $z=-2{,}33$, $-2{,}20$, $-2{,}06$. Les extrémités bougent un peu, le centre du nuage presque pas. Le verdict « aligné ou non » n'en dépend pas.
+
+\subsection{Les marches d'escalier \liv{5, question 2}}
+Les valeurs au $0{,}01$ forment des paquets de valeurs égales : plusieurs rangs $k$ ont le même $x_{(k)}$. Sur le graphique (abscisse = mesure), ces points s'empilent à la même abscisse, puis le paquet suivant est décalé de $0{,}01$ : le nuage prend l'allure d'un escalier. Il traduit la résolution de lecture, pas un défaut de normalité. Les 20 valeurs au $0{,}001$ n'en forment presque pas.
+
+%======================================================================
+\section{Fiches C et V : capabilité}\label{sec:C}
+
+\subsection{$\hat\sigma_i=\Rb/d_2$ \liv{6, 18 et 19}}
+\textbf{Modèle.} L'échantillon $j$ ($j=1,\dots,k$) est formé de $n$ valeurs indépendantes de loi $\N(\mu_j,\sigma^2)$. La moyenne $\mu_j$ peut changer d'un échantillon à l'autre (réglage, dérive), l'écart-type « court terme » $\sigma$ est le même.
+
+\begin{prop}\thm{}
+$\E\big(\Rb/d_2(n)\big)=\sigma$, quelles que soient les moyennes $\mu_1,\dots,\mu_k$.
+\end{prop}
+\begin{proof}
+Par le lemme~\ref{lem:echelle}, $\E(R_j)=d_2(n)\,\sigma$ pour chaque $j$, et $\mu_j$ n'intervient pas. Par linéarité, $\E(\Rb)=\frac1k\sum\E(R_j)=d_2(n)\,\sigma$.
+\end{proof}
+\begin{cle}[Le point clé pour les stagiaires]
+L'étendue d'un échantillon ne voit pas où se trouve l'échantillon : décaler les 5 pièces de la même quantité ne change pas $R$. C'est pour cela que $\Rb/d_2$ mesure la dispersion « à l'intérieur » des échantillons, et elle seule. Les dérives entre échantillons lui échappent. Elles n'échappent pas à $s$ global (section~\ref{sec:PpCp}).
+\end{cle}
+
+\subsection{La constante $d_2$ : $n=2$ et $n=3$ en forme exacte}
+\begin{prop}\thm{}
+$d_2(2)=\dfrac{2}{\sqrt\pi}\approx1{,}1284$ \quad et \quad $d_2(3)=\dfrac{3}{\sqrt\pi}\approx1{,}6926$.
+\end{prop}
+\begin{proof}[Preuve pour $n=2$, par $\E|Z|$]
+Pour $n=2$, $W=|X_1-X_2|$. Par le lemme~\ref{lem:stab}, $X_1-X_2\sim\N(0,2\sigma^2)$, c'est-à-dire $X_1-X_2=\sigma\sqrt2\,Z$. Par le lemme~\ref{lem:EZ} :
+\[
+\E(W)=\sigma\sqrt2\;\E|Z|=\sigma\sqrt2\sqrt{\frac2\pi}=\frac{2}{\sqrt\pi}\,\sigma .
+\]
+\end{proof}
+\begin{proof}[Preuve pour $n=3$, par le maximum]
+Par symétrie de la loi normale, $-\min Z_i$ a la même loi que $\max Z_i$, donc $d_2(n)=2\,\E(M_n)$ où $M_n=\max(Z_1,\dots,Z_n)$. Par le lemme~\ref{lem:etendue}(a), $M_n$ a pour densité $n\varphi\Phi^{n-1}$.
+
+\emph{Étape 1 (parties).} Comme $(-\varphi)'=x\varphi$, avec $u=\Phi^{n-1}$ :
+\[
+\E(M_n)=n\int_{\R}x\varphi(x)\Phi(x)^{n-1}\dd x=n\Big[-\varphi\Phi^{n-1}\Big]_{-\infty}^{+\infty}+n(n-1)\int_{\R}\varphi(x)^2\Phi(x)^{n-2}\dd x .
+\]
+Le crochet est nul. Donc $\E(M_n)=n(n-1)\displaystyle\int_{\R}\varphi^2\Phi^{n-2}\dd x$.
+
+\emph{Étape 2 (le carré de $\varphi$).} $\varphi(x)^2=\frac{1}{2\pi}e^{-x^2}=\frac{1}{2\sqrt\pi}\,\psi(x)$, où $\psi(x)=\frac{1}{\sqrt\pi}e^{-x^2}$ est la densité de $\N(0,\tfrac12)$ (lemme~\ref{lem:moments} avec $\sigma^2=1/2$).
+
+\emph{Étape 3.} Pour $n=2$ : $\int\psi=1$, donc $\E(M_2)=2\cdot\frac{1}{2\sqrt\pi}=\frac1{\sqrt\pi}$ et $d_2(2)=\frac2{\sqrt\pi}$ (seconde preuve). Pour $n=3$ : soient $Y\sim\N(0,\frac12)$ et $Z\sim\N(0,1)$ indépendantes. En conditionnant par $Y$ (Fubini) :
+\[
+\int_{\R}\psi(y)\Phi(y)\dd y=\P(Z\le Y)=\P(Z-Y\le0)=\tfrac12,
+\]
+car $Z-Y\sim\N(0,\tfrac32)$ est symétrique (lemme~\ref{lem:stab}). D'où $\E(M_3)=6\cdot\frac{1}{2\sqrt\pi}\cdot\frac12=\frac{3}{2\sqrt\pi}$, et $d_2(3)=\frac{3}{\sqrt\pi}$.
+\end{proof}
+
+\subsection{$d_2(4)$ et $d_2(5)$ en forme exacte}
+\begin{prop}\thm{}
+\[
+d_2(4)=\frac{3}{\sqrt\pi}\Big(1+\frac2\pi\arcsin\frac13\Big)\approx2{,}0588,\qquad
+d_2(5)=\frac{5}{2\sqrt\pi}\Big(1+\frac6\pi\arcsin\frac13\Big)\approx2{,}3259 .
+\]
+\end{prop}
+\begin{proof}
+Les étapes 1 et 2 de la preuve précédente donnent, pour tout $n\ge2$,
+\[
+d_2(n)=2\,\E(M_n)=\frac{n(n-1)}{\sqrt\pi}\,I_{n-2},\qquad I_k=\int_{\R}\psi(y)\,\Phi(y)^k\dd y .
+\]
+\emph{Sens probabiliste de $I_k$.} Soient $Y\sim\N(0,\tfrac12)$ et $Z_1,\dots,Z_k\sim\N(0,1)$, toutes indépendantes. Sachant $Y=y$, la probabilité que les $k$ variables $Z_i$ soient toutes $\le y$ vaut $\Phi(y)^k$. En intégrant contre la densité $\psi$ de $Y$ (Fubini) : $I_k=\P(Z_1\le Y,\dots,Z_k\le Y)$.
+
+\emph{Réduction à un orthant.} Posons $U_i=(Z_i-Y)/\sqrt{3/2}$. Avec $G=(Z_1,\dots,Z_k,\sqrt2\,Y)$, vecteur de $k+1$ normales centrées réduites indépendantes, on a $U_i=\langle a_i,G\rangle$ où $a_i=\big(e_i-e_{k+1}/\sqrt2\big)/\sqrt{3/2}$. Ces vecteurs sont unitaires ($\|a_i\|^2=\frac{1+1/2}{3/2}=1$), deux à deux non colinéaires, et $\rho_{ij}=\langle a_i,a_j\rangle=\frac{1/2}{3/2}=\frac13$. Donc $I_k=\P(U_1\le0,\dots,U_k\le0)$, probabilité d'orthant de corrélations toutes égales à $\frac13$.
+
+\emph{Calcul.} Par le lemme~\ref{lem:orthant} :
+$I_2=\frac14+\frac{\arcsin(1/3)}{2\pi}$ et $I_3=\frac18+\frac{3\arcsin(1/3)}{4\pi}$. Alors
+\[
+d_2(4)=\frac{12}{\sqrt\pi}I_2=\frac{3}{\sqrt\pi}\Big(1+\frac2\pi\arcsin\frac13\Big),\qquad
+d_2(5)=\frac{20}{\sqrt\pi}I_3=\frac{5}{2\sqrt\pi}\Big(1+\frac6\pi\arcsin\frac13\Big).
+\]
+\end{proof}
+\textbf{Contrôle numérique.} Les formes exactes et la quadrature de la formule intégrale du lemme~\ref{lem:echelle} coïncident à $10^{-9}$ près :
+\begin{center}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+$n$ & 2 & 3 & 4 & 5\\
+\midrule
+$d_2(n)$ exact & $2/\sqrt\pi$ & $3/\sqrt\pi$ & formule ci-dessus & formule ci-dessus\\
+valeur & 1,12838 & 1,69257 & 2,05875 & 2,32593\\
+livret & 1,128 & 1,693 & 2,059 & 2,326\\
+\bottomrule
+\end{tabular}
+\end{center}
+Pour $n\ge6$, la même méthode conduit à des probabilités d'orthant en dimension 4 et plus, qui n'ont pas en général d'expression élémentaire : on reste au calcul numérique. Le livret n'en a pas besoin.
+
+\subsection{Peut-on écrire $d_2(n)=n/\sqrt\pi$ ?}
+\textbf{Non.} La formule est juste pour $n=2$ et $n=3$, fausse ensuite :
+\begin{center}\small
+\begin{tabular}{@{}lccccccccc@{}}
+\toprule
+$n$ & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
+\midrule
+$d_2(n)$ & 1,128 & 1,693 & 2,059 & 2,326 & 2,534 & 2,704 & 2,847 & 2,970 & 3,078\\
+$n/\sqrt\pi$ & 1,128 & 1,693 & 2,257 & 2,821 & 3,385 & 3,949 & 4,514 & 5,078 & 5,642\\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Pourquoi la coïncidence.} D'après la proposition précédente, $d_2(n)=\frac{n(n-1)}{\sqrt\pi}I_{n-2}$ avec $I_k=\P(Z_1\le Y,\dots,Z_k\le Y)$.
+\begin{itemize}[nosep,leftmargin=1.2em]
+\item Si $Y$ avait la même loi $\N(0,1)$ que les $Z_i$, les $k+1$ variables seraient interchangeables : chacune aurait la même chance d'être la plus grande, donc $I_k=\frac{1}{k+1}$, et l'on aurait exactement $d_2(n)=\frac{n(n-1)}{\sqrt\pi}\cdot\frac1{n-1}=\frac{n}{\sqrt\pi}$.
+\item Mais $Y$ a pour variance $\frac12$ : moins dispersée que les $Z_i$, elle a moins de chances de les dépasser toutes.
+\item Pour $k=0$ et $k=1$, cette différence ne compte pas : $I_0=1$, et $I_1=\P(Z_1-Y\le0)=\frac12$ par symétrie, quelle que soit la variance de $Y$. D'où $n=2$ et $n=3$.
+\item Dès $k=2$, elle compte : $I_2=\frac14+\frac{\arcsin(1/3)}{2\pi}=0{,}3041<\frac13$.
+\end{itemize}
+Plus généralement, $d_2(n)$ est équivalent à $2\sqrt{2\ln n}$ quand $n\to\infty$ (résultat classique sur le maximum de normales, admis ici ; la convergence est lente) : il croît beaucoup plus lentement que $n$.
+
+\subsection{Cp, Cpk, Pp, Ppk : les définitions \liv{6, 19 et 20}}
+\begin{gather*}
+C_p=\frac{TS-TI}{6\hat\sigma_i},\qquad C_{pk}=\frac{\min(TS-\Xbb\,;\,\Xbb-TI)}{3\hat\sigma_i},\\
+P_p=\frac{TS-TI}{6s},\qquad P_{pk}=\frac{\min(TS-\bar x\,;\,\bar x-TI)}{3s}.
+\end{gather*}
+\textbf{Statut.} \conv{} : on compare la tolérance à la largeur $6\sigma$ (section~\ref{sec:B}). Cp/Cpk utilisent la dispersion court terme, Pp/Ppk la dispersion globale : c'est l'usage des logiciels et des référentiels automobiles. Ce qui suit est démontré à partir de ces définitions.
+
+\begin{prop}[Ce que dit Cpk sur les pièces hors tolérance]\thm{}
+Si $X\sim\N(\mu,\sigma^2)$, posons $C_{\text{sup}}=\frac{TS-\mu}{3\sigma}$, $C_{\text{inf}}=\frac{\mu-TI}{3\sigma}$ et $C_{pk}=\min(C_{\text{sup}},C_{\text{inf}})$. La proportion hors tolérance vaut
+\[
+p_{\text{HT}}=\Phi(-3C_{\text{sup}})+\Phi(-3C_{\text{inf}}),\qquad\text{et}\qquad \Phi(-3C_{pk})\le p_{\text{HT}}\le2\,\Phi(-3C_{pk}).
+\]
+\end{prop}
+\begin{proof}
+$\P(X>TS)=1-\Phi\big(\frac{TS-\mu}\sigma\big)=\Phi(-3C_{\text{sup}})$ et $\P(X<TI)=\Phi\big(\frac{TI-\mu}{\sigma}\big)=\Phi(-3C_{\text{inf}})$. Les deux événements sont disjoints. Comme $\Phi$ est croissante, chaque terme est compris entre $0$ et $\Phi(-3C_{pk})$, et l'un des deux lui est égal.
+\end{proof}
+\begin{center}\small
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Cpk & 1 & 1,33 & 1,67 & 2\\
+Côté le plus proche, $10^6\,\Phi(-3C_{pk})$ (ppm) & 1\,350 & 33 & 0,27 & 0,001\\
+Distance de $\mu$ à la limite la plus proche & $3\sigma$ & $4\sigma$ & $5\sigma$ & $6\sigma$\\
+\bottomrule
+\end{tabular}
+\end{center}
+C'est la justification chiffrée de la table de lecture de l'aide-mémoire \liv{19} : les seuils eux-mêmes restent une \conv{} contractuelle. « $C_{pk}\ge1{,}33$ » signifie : la limite la plus proche est à au moins $4\sigma$ de la moyenne.
+
+\begin{prop}[Cpk et Cp]\thm{}
+Soit $m=\frac{TI+TS}2$ le milieu de la tolérance et $T=TS-TI$. Alors
+\[
+C_{pk}=C_p-\frac{|\mu-m|}{3\sigma}=C_p\,(1-k),\qquad k=\frac{|\mu-m|}{T/2}.
+\]
+En particulier $C_{pk}\le C_p$, avec égalité si et seulement si le procédé est centré.
+\end{prop}
+\begin{proof}
+Pour deux réels, $\min(a,b)=\frac{a+b}2-\frac{|a-b|}2$. Avec $a=TS-\mu$ et $b=\mu-TI$ : $a+b=T$ et $a-b=TS+TI-2\mu=2(m-\mu)$. Donc $\min(a,b)=\frac T2-|\mu-m|$. On divise par $3\sigma$ : $C_{pk}=\frac{T}{6\sigma}-\frac{|\mu-m|}{3\sigma}$. Enfin $\frac{|\mu-m|}{3\sigma}=\frac{T}{6\sigma}\cdot\frac{|\mu-m|}{T/2}=C_p\,k$.
+\end{proof}
+\textbf{Usages dans le livret.} Fiche V, question 2 \liv{20} : recentrer sur $m=50{,}05$ donne $k=0$, donc $C_{pk}=C_p$. La règle « Cp bon, Cpk faible : on règle ; Cp faible : régler ne suffit pas » \liv{20} est exactement cette égalité : le réglage agit sur $k$, jamais sur $C_p$. Si $\mu$ sort de la tolérance, $k>1$ et $C_{pk}<0$.
+
+\subsection{Pourquoi Pp est en général plus petit que Cp}\label{sec:PpCp}
+\liv{6, question 1 et « À retenir »} Avec $k$ échantillons de taille $n$ ($N=kn$), notons $\bar x_j$ la moyenne de l'échantillon $j$ et $\bar x$ la moyenne générale.
+\begin{prop}[Décomposition de la somme des carrés]\thm{}
+\[
+\underbrace{\sum_{j,i}(x_{ij}-\bar x)^2}_{(N-1)\,s^2}=\underbrace{\sum_{j,i}(x_{ij}-\bar x_j)^2}_{\text{intra}}+\underbrace{n\sum_j(\bar x_j-\bar x)^2}_{\text{inter}} .
+\]
+\end{prop}
+\begin{proof}
+On écrit $x_{ij}-\bar x=(x_{ij}-\bar x_j)+(\bar x_j-\bar x)$ et on développe. Le double produit vaut $2\sum_j(\bar x_j-\bar x)\sum_i(x_{ij}-\bar x_j)=0$, car chaque somme intérieure est nulle.
+\end{proof}
+Le terme intra ne voit que la dispersion court terme. Le terme inter grossit dès que les moyennes d'échantillons bougent. $s$ global contient les deux, $\hat\sigma_i$ seulement le premier. En espérance, sous le modèle à effets aléatoires $x_{ij}=\mu+\alpha_j+\varepsilon_{ij}$, on obtient $\E(s^2)=\sigma_w^2+\frac{n(k-1)}{N-1}\sigma_b^2$ : la preuve et l'application aux butées sont dans la \emph{Synthèse écarts-types court et long terme} (même dossier).
+
+\textbf{Butées (30 valeurs de référence).} $\hat\sigma_i=0{,}0215$, $s=0{,}0264$ : $C_p=1{,}16$, $P_p=0{,}95$. L'écart vient du terme inter : les moyennes d'échantillons bougent. La carte de la fiche D le montre.
+
+%======================================================================
+\section{Fiche D : les limites de la carte $\bar X$/R}\label{sec:D}
+
+\subsection{Carte $\bar X$ à 3 sigmas : $\Xbb\pm A_2\Rb$, $A_2=\dfrac{3}{d_2\sqrt n}$ \liv{7 et 18}}
+\begin{prop}\thm{}
+Si le procédé est stable ($\mu_j=\mu$ pour tout $j$), alors $\Xb_j\sim\N(\mu,\sigma^2/n)$ et
+\[
+\P\Big(\Xb_j>\mu+\tfrac{3\sigma}{\sqrt n}\Big)=\P\Big(\Xb_j<\mu-\tfrac{3\sigma}{\sqrt n}\Big)=\Phi(-3)\approx1{,}35\text{ pour }1\,000 .
+\]
+\end{prop}
+\begin{proof}
+Lemme~\ref{lem:stab} pour la loi, lemme~\ref{lem:var} pour la variance $\sigma^2/n$, puis $\P(\Xb_j>\mu+3\sigma/\sqrt n)=\P(Z>3)=\Phi(-3)$.
+\end{proof}
+On remplace $\mu$ par $\Xbb$ et $\sigma$ par $\Rb/d_2$ (section~\ref{sec:C}) :
+$\mu\pm\frac{3\sigma}{\sqrt n}\approx\Xbb\pm\frac{3}{d_2\sqrt n}\Rb=\Xbb\pm A_2\Rb$. L'algèbre est un \thm{}, le remplacement des paramètres par leurs estimations une \appr{} : les limites sont elles-mêmes aléatoires, d'où l'intérêt de les calculer sur au moins 20 à 25 échantillons en pratique.
+
+\textbf{Pourquoi $\sqrt n$.} La carte porte des moyennes, dont l'écart-type est $\sigma/\sqrt n$ : c'est la raison pour laquelle on n'y écrit jamais les tolérances, qui portent sur des pièces \liv{8 et diapo 23}.
+
+\subsection{Carte $\bar X$ AFNOR : 3,09 et 1,96 \liv{7 et 18}}
+\conv{} sur le niveau de risque, \thm{} sur les coefficients une fois le risque choisi. AFNOR fixe le risque de fausse alarme à $1/1\,000$ de chaque côté pour les limites de contrôle et à $2{,}5\,\%$ de chaque côté pour les limites de surveillance. Alors
+\[
+\P\Big(\Xb_j>\mu+u\tfrac{\sigma}{\sqrt n}\Big)=1-\Phi(u)=\alpha\iff u=\Phi^{-1}(1-\alpha),
+\]
+avec $\Phi^{-1}(0{,}999)=3{,}0902$ et $\Phi^{-1}(0{,}975)=1{,}9600$ \num{}. D'où $A_c=\frac{3{,}09}{\sqrt n}$, $A_s=\frac{1{,}96}{\sqrt n}$ (procédé connu) et $A'_c=\frac{3{,}09}{d_2\sqrt n}$, $A'_s=\frac{1{,}96}{d_2\sqrt n}$ ($\sigma$ estimé par $\Rb/d_2$).
+
+\begin{center}\small
+\begin{tabular}{@{}c cccc cccc@{}}
+\toprule
+& \multicolumn{4}{c}{recalculé} & \multicolumn{4}{c}{livret}\\
+\cmidrule(lr){2-5}\cmidrule(l){6-9}
+$n$ & $A_c$ & $A_s$ & $A'_c$ & $A'_s$ & $A_c$ & $A_s$ & $A'_c$ & $A'_s$\\
+\midrule
+2 & 2,185 & 1,386 & 1,936 & 1,228 & 2,185 & 1,386 & 1,937 & 1,229\\
+3 & 1,784 & 1,132 & 1,054 & 0,669 & 1,784 & 1,132 & 1,054 & 0,668\\
+4 & 1,545 & 0,980 & 0,751 & 0,476 & 1,545 & 0,980 & 0,750 & 0,476\\
+5 & 1,382 & 0,877 & 0,594 & 0,377 & 1,382 & 0,876 & 0,594 & 0,377\\
+\bottomrule
+\end{tabular}
+\end{center}
+Les écarts d'une unité sur la dernière décimale viennent de l'arrondi de $d_2$ à trois décimales dans les tables (par exemple $1{,}96/(1{,}693\sqrt3)=0{,}668$) ou d'un arrondi par défaut ($1{,}96/\sqrt5=0{,}8765$, écrit $0{,}876$). Ils sont sans conséquence.
+
+\textbf{3 sigmas contre AFNOR.} $3{,}09$ contre $3$ : les limites AFNOR de contrôle sont $3\,\%$ plus écartées que les limites à 3 sigmas, avec un risque de $1$ au lieu de $1{,}35$ pour mille de chaque côté. C'est le « très proches » de la fiche D.
+
+\subsection{Carte R à 3 sigmas : $D_3$, $D_4$ \liv{7 et 18}}
+\begin{prop}\thm{}
+Si $\sigma$ est connu, les limites « moyenne $\pm3$ écarts-types » de $R$ sont $D_1\sigma$ et $D_2\sigma$ avec $D_2=d_2+3d_3$ et $D_1=\max(0,d_2-3d_3)$. Avec $\sigma$ estimé par $\Rb/d_2$, elles deviennent $D_3\Rb$ et $D_4\Rb$ avec
+\[
+D_4=1+3\frac{d_3}{d_2},\qquad D_3=\max\Big(0\,;\,1-3\frac{d_3}{d_2}\Big).
+\]
+\end{prop}
+\begin{proof}
+Par le lemme~\ref{lem:echelle}, $\E(R)=d_2\sigma$ et l'écart-type de $R$ vaut $d_3\sigma$, d'où $d_2\sigma\pm3d_3\sigma$. On remplace $\sigma$ par $\Rb/d_2$ : $\Rb\big(1\pm3d_3/d_2\big)$. Une étendue est positive : une limite basse négative n'a pas de sens et on la remplace par 0.
+\end{proof}
+La constante $d_3$ se calcule avec la densité du couple $(m,M)$ (lemme~\ref{lem:etendue}(d)) : $\E(W_Z^2)=\iint_{x<y}(y-x)^2g(x,y)\dd x\dd y$. Pour $n=2$ elle est exacte (section~\ref{sec:E}) : $d_3(2)=\sqrt{2-4/\pi}$.
+\begin{center}\small
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+$n$ & 2 & 3 & 4 & 5\\
+\midrule
+$d_3(n)$ \num{} & 0,8525 & 0,8884 & 0,8798 & 0,8641\\
+$D_4=1+3d_3/d_2$ & 3,267 & 2,575 & 2,282 & 2,114\\
+$D_4$ du livret & 3,267 & 2,574 & 2,282 & 2,114\\
+$1-3d_3/d_2$ & $-1{,}27$ & $-0{,}57$ & $-0{,}28$ & $-0{,}11$\\
+\bottomrule
+\end{tabular}
+\end{center}
+D'où $D_3=0$ pour $n\le6$.
+
+\begin{alerte}[Ce que « 3 sigmas » ne garantit pas sur la carte R]
+$R$ n'est pas normale : sa loi est dissymétrique, avec une queue à droite. La règle « moyenne $+3$ écarts-types » ne donne donc pas $1{,}35$ pour mille. Pour $n=5$ et $\sigma$ connu, le calcul exact (lemme~\ref{lem:etendue}(c)) donne $\P(W>D_2\sigma)=0{,}46\,\%$, soit environ 3,4 fois plus \num{}. La carte R de Shewhart est une \appr{} ; la carte R AFNOR, elle, est construite sur la vraie loi de $R$.
+\end{alerte}
+
+\subsection{Carte R AFNOR : $D'_{c2}$, $D'_{s2}$, $D'_{c1}$, $D'_{s1}$ \liv{7 et 18}}
+\textbf{Définition.} Notons $w_q(n)$ le quantile d'ordre $q$ de l'étendue réduite $W_Z$, défini par $\P\big(W_Z\le w_q(n)\big)=q$, avec la formule du lemme~\ref{lem:etendue}(c) pour $F=\Phi$. AFNOR prend les mêmes risques que pour la carte $\bar X$ :
+\[
+D_{c2}=w_{0{,}999},\quad D_{s2}=w_{0{,}975},\quad D_{s1}=w_{0{,}025},\quad D_{c1}=w_{0{,}001},\qquad D'=\frac{D}{d_2}.
+\]
+\begin{proof}[Justification]
+Par le lemme~\ref{lem:echelle}, $\P\big(R>w_{0{,}999}\,\sigma\big)=\P\big(W_Z>w_{0{,}999}\big)=0{,}001$ : c'est le risque voulu, pour $\sigma$ connu. Avec $\sigma\approx\Rb/d_2$, la limite devient $\frac{w_{0{,}999}}{d_2}\Rb=D'_{c2}\Rb$. Les autres limites sont identiques avec leur quantile.
+\end{proof}
+\begin{center}\small
+\begin{tabular}{@{}c cccc cccc@{}}
+\toprule
+& \multicolumn{4}{c}{quantiles $w_q(n)$ \num{}} & \multicolumn{4}{c}{$D'=w_q/d_2$ : recalculé (livret)}\\
+\cmidrule(lr){2-5}\cmidrule(l){6-9}
+$n$ & $0{,}001$ & $0{,}025$ & $0{,}975$ & $0{,}999$ & $D'_{c1}$ & $D'_{s1}$ & $D'_{s2}$ & $D'_{c2}$\\
+\midrule
+2 & 0,002 & 0,044 & 3,170 & 4,654 & & & 2,809 (2,81) & 4,124 (4,12)\\
+3 & 0,060 & 0,303 & 3,682 & 5,064 & & & 2,176 (2,17) & 2,992 (2,99)\\
+4 & 0,199 & 0,595 & 3,984 & 5,309 & & & 1,935 (1,93) & 2,579 (2,58)\\
+5 & 0,367 & 0,850 & 4,197 & 5,484 & 0,158 (0,16) & 0,365 (0,37) & 1,804 (1,81) & 2,358 (2,36)\\
+\bottomrule
+\end{tabular}
+\end{center}
+Trois valeurs du livret diffèrent de $0{,}01$ ($D'_{s2}$ pour $n=3,4,5$). Elles s'obtiennent \emph{exactement} en arrondissant d'abord le quantile à deux décimales, puis en divisant par $d_2$ arrondi : $4{,}20/2{,}326=1{,}806$, $3{,}98/2{,}059=1{,}933$, $3{,}68/1{,}693=2{,}174$. C'est vraisemblablement ainsi qu'ont été construites les tables d'origine (hypothèse, non vérifiée sur le texte de la norme). L'effet sur une limite est inférieur à $0{,}5\,\%$.
+
+\subsection{Les règles d'alarme \liv{8, 19 et 21}}
+Sous l'hypothèse de stabilité, les points successifs sont indépendants et de même loi continue, symétrique autour de la ligne centrale.
+\begin{prop}\thm{}
+\begin{enumerate}[nosep,label=(\alph*)]
+\item R1 : un point donné sort des limites à 3 sigmas avec la probabilité $2\Phi(-3)=0{,}27\,\%$ ; des limites AFNOR de contrôle avec $0{,}2\,\%$.
+\item R2 : 7 points donnés sont tous du même côté de la ligne centrale avec la probabilité $2\cdot(1/2)^7=1/64\approx1{,}6\,\%$.
+\item R3 : 6 points donnés sont strictement croissants avec la probabilité $1/6!=1/720$ ; croissants ou décroissants avec $2/720\approx0{,}28\,\%$.
+\item R4 (AFNOR) : un point donné tombe entre limite de surveillance et limite de contrôle avec la probabilité $2(0{,}025-0{,}001)=4{,}8\,\%$. Que le point suivant soit à son tour dans cette zone ou au-delà, du même côté, a la probabilité $2\times0{,}024\times0{,}025=0{,}12\,\%$ ; de n'importe quel côté, $0{,}048\times0{,}05=0{,}24\,\%$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+(a) Voir les deux premières sous-sections de cette section. (b) Chaque point est au-dessus avec la probabilité $1/2$, indépendamment : $(1/2)^7$ pour « tous au-dessus », autant pour « tous au-dessous ». (c) Les variables étant indépendantes et de même loi, le vecteur $(X_1,\dots,X_6)$ a la même loi que $(X_{\tau(1)},\dots,X_{\tau(6)})$ pour toute permutation $\tau$. Les $6!$ ordres possibles sont donc équiprobables, et les égalités ont une probabilité nulle. Un seul ordre est croissant. (d) Produit des probabilités de deux points indépendants.
+\end{proof}
+\textbf{Lecture pour le formateur.}
+\begin{itemize}[nosep,leftmargin=1.2em]
+\item La règle R4 avec confirmation a un risque de fausse alarme du même ordre que la limite de contrôle ($0{,}1\,\%$ par côté) : c'est ce qui la justifie. Elle réagit plus tôt à un décalage modéré, puisqu'elle utilise une zone plus proche du centre.
+\item R2 est la plus « bavarde » : $1{,}6\,\%$ par série de 7 points. D'autres référentiels retiennent 8 ou 9 points. Le livret suit l'usage de la formation ; à vérifier dans la règle écrite de chaque entreprise, comme la fiche D le demande.
+\item Ces probabilités valent pour une fenêtre donnée. Sur une longue série, les fenêtres se chevauchent et les fausses alarmes s'accumulent : la grandeur adaptée est la période opérationnelle moyenne (ARL), non calculée ici.
+\end{itemize}
+
+%======================================================================
+\section{Fiche E : la carte XmR}\label{sec:E}
+
+\subsection{Pourquoi des étendues mobiles \liv{9}}
+Avec une seule valeur par lot, il n'y a pas d'échantillon pour estimer la dispersion court terme. On forme le plus petit échantillon possible : deux lots voisins. Leur écart $mR_i=|x_i-x_{i-1}|$ ne contient presque que la variation de court terme, car un décalage ou une dérive lente se compense largement d'un lot au suivant. Prendre $s$ sur toutes les valeurs absorberait ces dérives et élargirait les limites : la carte deviendrait aveugle.
+
+\subsection{$1{,}128$, $2{,}66$ et $3{,}267$ \liv{9 et 18}}
+\begin{prop}\thm{}
+Si les $x_i$ sont indépendants de loi $\N(\mu,\sigma^2)$, alors pour tout $i$ :
+\[
+\E(mR_i)=\frac{2}{\sqrt\pi}\,\sigma\approx1{,}128\,\sigma,\qquad \sqrt{\V(mR_i)}=\sqrt{2-\tfrac4\pi}\;\sigma\approx0{,}853\,\sigma .
+\]
+Donc $\hat\sigma=\mRb/1{,}128$ est sans biais, les limites de la carte X sont $\bar x\pm\frac{3}{1{,}128}\mRb=\bar x\pm2{,}66\,\mRb$, et la limite haute de la carte mR est $D_4(2)\,\mRb$ avec $D_4(2)=1+3\sqrt{\tfrac\pi2-1}\approx3{,}267$.
+\end{prop}
+\begin{proof}
+\emph{Espérance.} $x_i-x_{i-1}\sim\N(0,2\sigma^2)$ (lemme~\ref{lem:stab}), donc $x_i-x_{i-1}=\sigma\sqrt2\,Z$ et, par le lemme~\ref{lem:EZ}, $\E(mR_i)=\sigma\sqrt2\sqrt{2/\pi}=\frac{2}{\sqrt\pi}\sigma$. C'est $d_2(2)$.
+
+\emph{Sans biais malgré la dépendance.} Deux étendues mobiles voisines partagent une valeur : elles ne sont pas indépendantes. Mais la linéarité de l'espérance ne demande pas l'indépendance (lemme~\ref{lem:var}) : $\E(\mRb)=\frac{1}{N-1}\sum\E(mR_i)=\frac{2}{\sqrt\pi}\sigma$.
+
+\emph{Variance.} $\E(mR_i^2)=\E\big[(x_i-x_{i-1})^2\big]=2\sigma^2$, d'où $\V(mR_i)=2\sigma^2-\frac4\pi\sigma^2$. C'est $d_3(2)=\sqrt{2-4/\pi}$.
+
+\emph{Limites.} Carte X : on trace des valeurs individuelles, donc $\bar x\pm3\hat\sigma$ sans $\sqrt n$, et $3/d_2(2)=\frac{3\sqrt\pi}{2}=2{,}6587$. Carte mR : $D_4(2)=1+3\frac{d_3(2)}{d_2(2)}=1+3\sqrt{\big(2-\tfrac4\pi\big)\tfrac\pi4}=1+3\sqrt{\tfrac\pi2-1}=3{,}2665$. La limite basse $1-3\sqrt{\pi/2-1}=-1{,}27$ est négative : pas de limite basse.
+\end{proof}
+\textbf{Application E2 \liv{9}.} $\mRb=2{,}357$ : $\hat\sigma=2{,}089$ ; $2{,}66\times2{,}357=6{,}27$, d'où les limites $32{,}06$ et $44{,}60$ ; limite mR $3{,}267\times2{,}357=7{,}70$. Conforme au corrigé.
+
+\textbf{Limites de l'argument.}
+\begin{itemize}[nosep,leftmargin=1.2em]
+\item $\mRb$ est sans biais, mais moins précis que $s$ quand le procédé est stable, à cause de la dépendance.
+\item Un saut de réglage ne touche qu'une seule étendue mobile : c'est ce qui rend $\mRb$ robuste aux causes spéciales, et c'est pour cela qu'on le préfère à $s$.
+\item La normalité pèse plus ici que sur une carte de moyennes, où le théorème central limite aide. Les limites restent une règle pratique.
+\end{itemize}
+
+\subsection{Corriger à chaque écart augmente la dispersion \liv{11, E5}}
+\begin{prop}\thm{}
+Soit un procédé stable $y_t=a_t+\varepsilon_t$, où $a_t$ est le réglage et les $\varepsilon_t$ sont indépendants de variance $\sigma^2$. Si l'opérateur corrige \emph{à chaque pièce} le réglage de tout l'écart à la cible $c$, c'est-à-dire $a_{t+1}=a_t-(y_t-c)$, alors $\V(y_t)=2\sigma^2$ pour $t\ge2$ : l'écart-type est multiplié par $\sqrt2\approx1{,}41$.
+\end{prop}
+\begin{proof}
+$a_{t+1}=a_t-(a_t+\varepsilon_t-c)=c-\varepsilon_t$. Donc $y_{t+1}=c-\varepsilon_t+\varepsilon_{t+1}$ et $\V(y_{t+1})=2\sigma^2$ par le lemme~\ref{lem:var}.
+\end{proof}
+La politique de E5 ne corrige que les valeurs hors tolérance. Elle n'est pas démontrée ici, mais elle relève du même mécanisme : on ajoute au procédé un bruit tiré de son propre bruit. Les données du fichier le confirment : $s$ passe de $1{,}82$ à $2{,}43$ ($+34\,\%$), et les valeurs hors tolérance de 16 à 32.
+
+%======================================================================
+\section{Fiche I : capabilité de l'instrument}\label{sec:I}
+
+\subsection{Cg et Cgk \liv{13, 14 et 19}}
+\[
+C_g=\frac{0{,}2\,T}{6s},\qquad C_{gk}=\frac{0{,}1\,T-|\bar x-x_{\text{réf}}|}{3s},\qquad\text{exigence : }C_g\ge1{,}33\text{ et }C_{gk}\ge1{,}33 .
+\]
+\textbf{Statut.} \conv{} : méthode Bosch, procédure 1 (part de $20\,\%$ de la tolérance accordée à l'instrument, 25 mesures au moins, seuil $1{,}33$). Les propriétés suivantes en découlent.
+
+\begin{prop}\thm{}
+\begin{enumerate}[nosep,label=(\alph*)]
+\item $C_{gk}=C_g-\dfrac{|b|}{3s}$ où $b=\bar x-x_{\text{réf}}$ est le biais. Donc $C_{gk}\le C_g$, avec égalité si et seulement si $b=0$.
+\item $C_g\ge\frac43\iff s\le\dfrac{T}{40}$ \quad et \quad $C_{gk}\ge\frac43\iff|b|+4s\le0{,}1\,T$.
+\item Si les lectures suivent $\N(x_{\text{réf}}+b,\sigma^2)$ et si $C_{gk}\ge\frac43$ avec $s=\sigma$, une lecture tombe hors de $x_{\text{réf}}\pm0{,}1\,T$ avec une probabilité au plus $2\Phi(-4)=6{,}3\times10^{-5}$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+(a) $\frac{0{,}1T}{3s}=\frac{0{,}2T}{6s}=C_g$. (b) $\frac{0{,}2T}{6s}\ge\frac43\iff s\le\frac{0{,}2T}{8}=\frac{T}{40}$ ; $\frac{0{,}1T-|b|}{3s}\ge\frac43\iff0{,}1T-|b|\ge4s$. (c) Par (b), chaque limite $x_{\text{réf}}\pm0{,}1T$ est à au moins $4\sigma$ de la moyenne $x_{\text{réf}}+b$ ; chaque côté contribue au plus $\Phi(-4)$.
+\end{proof}
+Le seuil du livret est $1{,}33$ ; l'équivalence exacte vaut pour $4/3$. Pour les butées, $T=0{,}15$ mm : $C_g\ge1{,}33$ demande $s\le0{,}0038$ mm. Fiche I, question 3 \liv{14} : $0{,}1\,T=0{,}015$ mm est la marge totale que le biais et la dispersion se partagent.
+
+\subsection{Résolution : 5 \%, 10 \% et règle du 1/10 \liv{13, 14 et 19}}
+\textbf{Statut.} \conv{} (Bosch pour 5 \% et 10 \%, usage d'atelier pour 1/10). Le lemme~\ref{lem:unif} donne un ordre de grandeur \appr{} : lire au pas $\delta$ ajoute, quand $\delta$ n'est pas grand devant la dispersion vraie, une variance d'arrondi $\delta^2/12$.
+\begin{itemize}[nosep,leftmargin=1.2em]
+\item Micromètre : $\delta=0{,}001$ mm, soit $0{,}7\,\%$ de $T$ ; $\delta/\sqrt{12}=0{,}0003$ mm, négligeable.
+\item Pied à coulisse : $\delta=0{,}02$ mm, soit $13\,\%$ de $T$ ; $\delta/\sqrt{12}=0{,}0058$ mm. Ce seul arrondi limiterait $C_g$ à environ $\frac{0{,}03}{6\times0{,}0058}=0{,}87$ : le pied ne peut pas être capable ici, même dans les mains d'un opérateur parfait.
+\end{itemize}
+
+\textbf{Fiche I, question 2 \liv{14}.} Si les 25 lectures sont identiques, $s=0$ et $C_g$ est infini. Ce n'est pas un instrument parfait : la dispersion vraie est cachée sous le pas de lecture. Le modèle d'arrondi uniforme ne s'applique plus (l'erreur n'est plus aléatoire mais fixée), et $s$ n'a plus de sens. C'est exactement ce que la règle de résolution prévient.
+
+\subsection{La mesure gonfle la dispersion du procédé \liv{14, question 5}}
+\begin{prop}\thm{}
+Si la valeur lue est $X=Y+E$, avec $Y$ la vraie cote (écart-type $\sigma_p$) et $E$ l'erreur de mesure (écart-type $\sigma_m$) indépendantes, alors
+\[
+\sigma_X=\sqrt{\sigma_p^2+\sigma_m^2}\qquad\text{et}\qquad C_{p,\text{observé}}=\frac{C_{p,\text{vrai}}}{\sqrt{1+(\sigma_m/\sigma_p)^2}}\le C_{p,\text{vrai}} .
+\]
+\end{prop}
+\begin{proof}
+Lemme~\ref{lem:var}, puis $C_p=T/(6\sigma)$ avec $\sigma_X=\sigma_p\sqrt{1+(\sigma_m/\sigma_p)^2}$.
+\end{proof}
+\textbf{Ordre de grandeur (valeurs hypothétiques).} Si $\sigma_X=0{,}0215$ mm et $\sigma_m=0{,}005$ mm, alors $\sigma_p=0{,}0209$ mm et $C_p$ passe de $1{,}16$ à $1{,}20$. La correction est faible tant que $\sigma_m$ reste petit devant $\sigma_p$, car les variances s'ajoutent, pas les écarts-types. Le vrai $\sigma_m$ sort de la mise en commun du 25 novembre.
+
+%======================================================================
+\section{Fiche G : cartes aux attributs}\label{sec:G}
+
+\subsection{Cartes p et np \liv{15, 16 et 19}}
+\textbf{Modèle.} Dans un lot de $n_i$ unités, chaque unité est non conforme avec la même probabilité $p$, indépendamment des autres. Le nombre de non conformes $D_i$ suit alors la loi binomiale $\mathcal B(n_i,p)$.
+\begin{prop}\thm{}
+$\E(D_i/n_i)=p$ et $\V(D_i/n_i)=\dfrac{p(1-p)}{n_i}$. L'estimateur $\bar p=\dfrac{\sum D_i}{\sum n_i}$ vérifie $\E(\bar p)=p$.
+\end{prop}
+\begin{proof}
+Lemme~\ref{lem:binpois}(a) et $\V(aX)=a^2\V(X)$. Puis $\E\big(\sum D_i\big)=\sum n_ip$.
+\end{proof}
+D'où les limites « moyenne $\pm3$ écarts-types » : $\bar p\pm3\sqrt{\bar p(1-\bar p)/n_i}$ pour la carte p, et, en multipliant par $n$ (taille fixe), $n\bar p\pm3\sqrt{n\bar p(1-\bar p)}$ pour la carte np.
+
+\textbf{Statut.} \thm{} pour la moyenne et la variance ; \appr{} pour le « 1,35 pour mille », qui supposerait une loi normale (approximation de de Moivre-Laplace, admise ici). La binomiale est dissymétrique quand $np$ est petit. Exemple de la fiche G2 : $n=150$, $\bar p=0{,}07$, LCS $=19{,}87$ ; le calcul exact donne $\P(D\ge20)=0{,}42\,\%$ \num{}, environ trois fois plus que $0{,}135\,\%$.
+
+\textbf{Pourquoi $\bar p=\sum D_i/\sum n_i$ (cellule G2) et pas la moyenne des $p_i$.} C'est la proportion globale : chaque lot pèse selon sa taille. Avec des tailles égales, les deux coïncident.
+
+\subsection{Cartes c et u \liv{15 et 19}}
+\textbf{Modèle.} \conv{} de modélisation : des défauts nombreux possibles, chacun rare et indépendant des autres, donnent un nombre de défauts de loi de Poisson (loi des événements rares, admise). Si une unité porte en moyenne $u$ défauts, un échantillon de $n_i$ unités en porte $c_i\sim\mathcal P(un_i)$.
+\begin{prop}\thm{}
+Pour une unité de contrôle de taille fixe, $\E(c)=\V(c)=\lambda$, d'où les limites $\bar c\pm3\sqrt{\bar c}$. Pour des tailles variables, $\E(c_i/n_i)=u$ et $\V(c_i/n_i)=u/n_i$, d'où $\bar u\pm3\sqrt{\bar u/n_i}$ avec $\bar u=\sum c_i/\sum n_i$, sans biais.
+\end{prop}
+\begin{proof}
+Lemme~\ref{lem:binpois}(b) avec $\lambda=un_i$, puis $\V(c_i/n_i)=un_i/n_i^2$. Enfin $\E\big(\sum c_i\big)=u\sum n_i$.
+\end{proof}
+
+\subsection{Pourquoi la limite basse vaut souvent 0 \liv{15 et 16, question c}}
+\begin{prop}\thm{}
+La limite basse de la carte p est positive si et seulement si $n\bar p>9(1-\bar p)$, c'est-à-dire $\bar p>\frac{9}{n+9}$. Celle de la carte c est positive si et seulement si $\bar c>9$.
+\end{prop}
+\begin{proof}
+$\bar p-3\sqrt{\bar p(1-\bar p)/n}>0\iff\bar p^2>9\bar p(1-\bar p)/n\iff n\bar p>9(1-\bar p)$ (on a divisé par $\bar p>0$). Pour c : $\bar c>3\sqrt{\bar c}\iff\bar c>9$.
+\end{proof}
+Pour des lots de 150 : la limite basse n'existe que si $\bar p>9/159=5{,}7\,\%$. Un nombre négatif de non conformes n'a pas de sens : on remplace la limite par 0 \conv{}.
+
+\subsection{Contrôle du tableau de révision G2 \liv{16}}
+\begin{center}\small
+\begin{tabular}{@{}llccc@{}}
+\toprule
+Carte & Données & LC & LCS & LCI\\
+\midrule
+p & $n=100$ ; $\bar p=0{,}05$ & 0,05 & $0{,}05+3\sqrt{0{,}05\times0{,}95/100}=0{,}115$ & $-0{,}015\to0$\\
+np & $n=150$ ; $\bar p=0{,}07$ & 10,5 & $10{,}5+3\sqrt{10{,}5\times0{,}93}=19{,}87$ & 1,13\\
+c & $\bar c=4$ & 4 & $4+3\times2=10$ & $-2\to0$\\
+$\bar X$ & $n=4$ ; $\Xbb=15$ ; $\Rb=6$ & 15 & $15+0{,}729\times6=19{,}37$ & 10,63\\
+XmR & $\bar x=35$ ; $\mRb=5{,}5$ & 35 & $35+2{,}66\times5{,}5=49{,}63$ & 20,37\\
+\bottomrule
+\end{tabular}
+\end{center}
+Recalculé en Python : conforme au corrigé.
+
+%======================================================================
+\section{Fiche P : une moyenne qui en dit long}\label{sec:P}
+
+\begin{prop}[Encadrement des extrêmes par la moyenne et l'étendue]\thm{}
+Pour $n$ valeurs de moyenne $\bar x$ et d'étendue $R$ :
+\[
+x_{\max}\ge\bar x+\frac Rn\qquad\text{et}\qquad x_{\min}\le\bar x-\frac Rn .
+\]
+\end{prop}
+\begin{proof}
+Chaque valeur est au plus $x_{\max}$, et l'une d'elles vaut $x_{\min}$ : $n\bar x\le x_{\min}+(n-1)x_{\max}=nx_{\max}-R$. On divise par $n$. L'autre inégalité est symétrique.
+\end{proof}
+\textbf{Application \liv{22, question 1}.} Sous-groupe 9 : $\bar x=20{,}093$, $R=0{,}052$, $n=5$, donc $x_{\max}\ge20{,}093+0{,}0104=20{,}1034>20{,}10$. Au moins une pièce est hors tolérance, sans connaître les cinq valeurs. C'est la forme générale de l'argument du corrigé.
+
+\textbf{Cohérence des données de la fiche.} Avec $D_4=2{,}114$, la limite R $=0{,}104$ correspond à $\Rb=0{,}0492$, et $A_2\Rb=0{,}577\times0{,}0492=0{,}0284$. On retrouve à l'arrondi près les écarts $\text{LCS}-\Xbb=0{,}029$ et $\Xbb-\text{LCI}=0{,}028$. Le retour sous contrôle donne $\bar x=20{,}0088$ et $R=0{,}025$ : dans les limites.
+
+%======================================================================
+\section{Fiche L : les estimateurs des logiciels}\label{sec:L}
+
+\subsection{La constante $c_4$ : $\E(s)=c_4\,\sigma$ \liv{23}}
+\begin{prop}\thm{}
+Si $X_1,\dots,X_n$ sont indépendantes de loi $\N(\mu,\sigma^2)$, alors
+\[
+\E(s)=c_4(n)\,\sigma,\qquad c_4(n)=\sqrt{\frac{2}{n-1}}\;\frac{\Gamma(n/2)}{\Gamma\big((n-1)/2\big)} .
+\]
+\end{prop}
+\begin{proof}
+\emph{Étape 1 (rotation).} Soit $Q$ une matrice orthogonale $n\times n$ dont la première ligne est $\big(\frac1{\sqrt n},\dots,\frac1{\sqrt n}\big)$ (on complète en base orthonormée). Écrivons $X=\mu\mathbf 1+\sigma Z$ avec $Z$ de densité $(2\pi)^{-n/2}e^{-\|z\|^2/2}$. Cette densité ne dépend que de $\|z\|$ et $|\det Q|=1$ : par changement de variable, $V=QZ$ a la même loi que $Z$, ses coordonnées sont indépendantes de loi $\N(0,1)$.
+
+\emph{Étape 2.} $Q\mathbf 1=(\sqrt n,0,\dots,0)$, donc $(QX)_1=\sqrt n\,\Xb$ et $(QX)_j=\sigma V_j$ pour $j\ge2$. Comme $Q$ conserve la norme :
+\[
+(n-1)s^2=\sum X_i^2-n\Xb^2=\|QX\|^2-(QX)_1^2=\sigma^2\sum_{j=2}^nV_j^2 .
+\]
+Donc $s=\frac{\sigma}{\sqrt{n-1}}\|V'\|$, où $V'=(V_2,\dots,V_n)$ suit la loi normale standard de $\R^k$, $k=n-1$.
+
+\emph{Étape 3 (rayon moyen).} Pour une fonction $h$ positive, $\int_{\R^k}h(\|v\|)\dd v=A_k\int_0^{+\infty}h(r)r^{k-1}\dd r$, où $A_k$ est l'aire de la sphère unité (coordonnées sphériques, admis). Donc
+\[
+\E\|V'\|=\frac{\int_0^\infty r\cdot r^{k-1}e^{-r^2/2}\dd r}{\int_0^\infty r^{k-1}e^{-r^2/2}\dd r}=\frac{J(k)}{J(k-1)},\qquad J(m)=\int_0^{+\infty}r^me^{-r^2/2}\dd r .
+\]
+Avec $t=r^2/2$, $r=\sqrt{2t}$, $\dd r=\dd t/\sqrt{2t}$ : $J(m)=2^{(m-1)/2}\,\Gamma\big(\tfrac{m+1}{2}\big)$. Donc $\E\|V'\|=\sqrt2\,\frac{\Gamma((k+1)/2)}{\Gamma(k/2)}$, et avec $k=n-1$ on obtient la formule.
+\end{proof}
+\textbf{Contrôles.} $n=2$ : $\Gamma(1)=1$ et $\Gamma(\frac12)=\sqrt\pi$ (lemme~\ref{lem:gauss} avec $t=x^2/2$), d'où $c_4(2)=\sqrt{2/\pi}=0{,}7979$. C'est encore $\E|Z|$, car pour $n=2$, $s=|X_1-X_2|/\sqrt2$. $n=5$ : $c_4=\sqrt{\tfrac12}\,\frac{\Gamma(5/2)}{\Gamma(2)}=\sqrt{\tfrac12}\cdot\frac{3\sqrt\pi}{4}=0{,}9400$.
+
+\subsection{Écart-type groupé, $\bar S/c_4$ et étendues mobiles \liv{23}}
+\begin{itemize}[leftmargin=1.2em]
+\item \textbf{Écart-type groupé} ($k$ échantillons de même taille $n$) : $s_p^2=\frac1k\sum_js_j^2$. Chaque $s_j^2$ est sans biais pour $\sigma^2$ et ne dépend pas de $\mu_j$ (lemme~\ref{lem:s2} appliqué à l'échantillon $j$), donc $\E(s_p^2)=\sigma^2$ \thm{}. Le même raisonnement que pour $c_4$, avec $k(n-1)$ carrés au lieu de $n-1$, donne $\E(s_p)=c_4\big(k(n-1)+1\big)\sigma$, soit $c_4(25)$ pour nos $6\times5$ valeurs.
+\item \textbf{$\bar S/c_4(n)$} : sans biais par linéarité, puisque $\E(s_j)=c_4(n)\sigma$ pour chaque $j$ \thm{}.
+\item \textbf{Étendues mobiles sur des sous-groupes non déclarés} : le logiciel enchaîne les pièces. Entre la dernière pièce d'un échantillon et la première du suivant, $\E\big[(x_i-x_{i-1})^2\big]=2\sigma^2+(\mu_{j+1}-\mu_j)^2$ (lemme~\ref{lem:var}) : ces étendues-là contiennent le saut de réglage, et leur espérance $\E|x_i-x_{i-1}|$ croît avec la taille du saut. En moyenne, l'estimateur surestime donc un peu $\sigma$ ; la valeur basse trouvée sur nos 30 valeurs ($0{,}0193$) relève de l'aléa d'échantillonnage. Le résultat dépend en outre de l'ordre des lignes.
+\end{itemize}
+Tableau complet des estimations sur les butées et intervalles de confiance : \emph{Synthèse écarts-types court et long terme}, même dossier.
+
+%======================================================================
+\section{Les hypothèses à l'épreuve}\label{sec:hyp}
+
+Les constantes $d_2$, $d_3$, $c_4$ et les coefficients des cartes reposent sur deux hypothèses : des mesures \emph{normales} et \emph{indépendantes}. Cette section mesure ce qui se passe quand l'une d'elles manque, puis compare la précision des deux estimateurs de $\sigma$.
+
+\subsection{Si la loi n'est pas normale : $d_2$ change}\label{sec:d2lois}
+\begin{prop}\thm{}
+Notons $d_2^{\text{loi}}(n)=\E(R)/\sigma$ pour un échantillon de $n$ valeurs indépendantes de la loi indiquée.
+\begin{enumerate}[nosep,label=(\alph*)]
+\item Loi uniforme sur $[a,b]$ : $\sigma=\frac{b-a}{\sqrt{12}}$ et $d_2^{\text{unif}}(n)=\sqrt{12}\,\dfrac{n-1}{n+1}$.
+\item Loi exponentielle de paramètre $\lambda$ (densité $\lambda e^{-\lambda x}$ sur $[0,+\infty[$) : $\sigma=\frac1\lambda$ et $d_2^{\text{exp}}(n)=1+\frac12+\dots+\frac1{n-1}$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+(a) Écrivons $X_i=a+(b-a)V_i$ avec $V_i$ uniformes sur $[0,1]$. Alors $R=(b-a)\big(V_{(n)}-V_{(1)}\big)$ et, par le lemme~\ref{lem:beta}(b), $\E(R)=(b-a)\big(\frac{n}{n+1}-\frac{1}{n+1}\big)=(b-a)\frac{n-1}{n+1}$. Le lemme~\ref{lem:unif} donne $\sigma=(b-a)/\sqrt{12}$.
+
+(b) \emph{Écart-type.} Par parties, $\E(X)=\int_0^\infty\lambda xe^{-\lambda x}\dd x=\frac1\lambda$ et $\E(X^2)=\int_0^\infty\lambda x^2e^{-\lambda x}\dd x=\frac2\lambda\E(X)=\frac{2}{\lambda^2}$, d'où $\V(X)=\frac1{\lambda^2}$.
+
+\emph{Étendue.} Ici $F(x)=1-e^{-\lambda x}$ pour $x\ge0$ et $F=0$ avant ; l'intégrande du lemme~\ref{lem:etendue}(b) est nulle pour $x<0$. Avec $u=1-e^{-\lambda x}$, $\dd x=\frac{\dd u}{\lambda(1-u)}$ :
+\[
+\E(R)=\int_0^{+\infty}\Big[1-F^n-(1-F)^n\Big]\dd x=\frac1\lambda\int_0^1\frac{1-u^n-(1-u)^n}{1-u}\dd u
+\]
+\[
+\phantom{\E(R)}=\frac1\lambda\Big[\int_0^1\sum_{k=0}^{n-1}u^k\dd u-\int_0^1(1-u)^{n-1}\dd u\Big].
+\]
+Le premier terme vaut $1+\frac12+\dots+\frac1n$, le second $\frac1n$. D'où $\E(R)=\frac1\lambda\big(1+\frac12+\dots+\frac1{n-1}\big)$.
+\end{proof}
+
+\begin{center}\small
+\begin{tabular}{@{}lccccccccc@{}}
+\toprule
+$n$ & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
+\midrule
+$d_2$ normale & 1,128 & 1,693 & 2,059 & 2,326 & 2,534 & 2,704 & 2,847 & 2,970 & 3,078\\
+$d_2$ uniforme & 1,155 & 1,732 & 2,078 & 2,309 & 2,474 & 2,598 & 2,694 & 2,771 & 2,834\\
+$d_2$ exponentielle & 1,000 & 1,500 & 1,833 & 2,083 & 2,283 & 2,450 & 2,593 & 2,718 & 2,829\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Conséquence.} Si l'on applique la table normale à une autre loi, $\E\big(\Rb/d_2^{\text{norm}}\big)=\frac{d_2^{\text{loi}}}{d_2^{\text{norm}}}\,\sigma$. Pour $n=5$ :
+\begin{itemize}[nosep,leftmargin=1.2em]
+\item loi uniforme : $2{,}309/2{,}326=0{,}993$. L'erreur est négligeable : l'estimateur est peu sensible à une loi aplatie et symétrique.
+\item loi exponentielle : $2{,}083/2{,}326=0{,}896$. $\sigma$ est sous-estimé d'environ 10 \%, donc Cp surestimé d'environ 12 \%.
+\end{itemize}
+Les caractéristiques bornées par zéro (planéité, faux-rond, battement, rugosité) ont souvent une loi dissymétrique de ce type. Pour elles, le Cp « classique » est doublement fragile : $d_2$ est faux, et la correspondance $6\sigma\leftrightarrow99{,}73\,\%$ aussi. La droite de Henry (fiche H) sert précisément à le détecter avant de calculer.
+
+\subsection{Précision des estimateurs : $\Rb/d_2$ contre $\bar S/c_4$}\label{sec:efficacite}
+\begin{prop}\thm{}
+Pour un échantillon de $n$ valeurs normales :
+\[
+\V\Big(\frac{s}{c_4}\Big)=\sigma^2\,\frac{1-c_4^2}{c_4^2},\qquad \V\Big(\frac{R}{d_2}\Big)=\sigma^2\,\frac{d_3^2}{d_2^2}.
+\]
+Pour $k$ échantillons indépendants, ces variances sont divisées par $k$ pour $\bar S/c_4$ et $\Rb/d_2$.
+\end{prop}
+\begin{proof}
+$\V(s)=\E(s^2)-\big(\E(s)\big)^2=\sigma^2-c_4^2\sigma^2$ (lemme~\ref{lem:s2} et section~\ref{sec:L}). L'écart-type de $R$ vaut $d_3\sigma$ (lemme~\ref{lem:echelle}). On divise par $c_4^2$ et $d_2^2$. Pour $k$ échantillons, lemme~\ref{lem:var}.
+\end{proof}
+
+\begin{center}\small
+\begin{tabular}{@{}lccccccccc@{}}
+\toprule
+$n$ & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
+\midrule
+$\V(R/d_2)/\sigma^2$ & 0,571 & 0,276 & 0,183 & 0,138 & 0,112 & 0,095 & 0,083 & 0,074 & 0,067\\
+$\V(s/c_4)/\sigma^2$ & 0,571 & 0,273 & 0,178 & 0,132 & 0,105 & 0,087 & 0,074 & 0,064 & 0,057\\
+rapport $s$ / $R$ & 1 & 0,99 & 0,98 & 0,955 & 0,93 & 0,91 & 0,89 & 0,87 & 0,85\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Lecture.}
+\begin{itemize}[nosep,leftmargin=1.2em]
+\item Pour $n=2$, les deux estimateurs sont \emph{le même} : $s=|x_1-x_2|/\sqrt2=R/\sqrt2$, et $R/d_2(2)=s/c_4(2)=R\sqrt\pi/2$.
+\item Pour $n=5$, l'étendue perd moins de 5 \% de précision. Elle se calcule sans calculatrice : c'est la raison usuellement avancée de la carte $\bar X$/R. Au-delà d'une dizaine de pièces, la perte devient sensible et la carte $\bar X$/S est préférable.
+\item \textbf{Ordre de grandeur pour la fiche C.} Avec 10 échantillons de 5, le coefficient de variation de $\Rb/d_2$ vaut $\sqrt{0{,}138/10}\approx12\,\%$. Comme $C_p$ est proportionnel à $1/\hat\sigma$, son incertitude relative est du même ordre \appr{} (linéarisation). Un $C_p$ de $1{,}16$ se lit donc « entre 1,0 et 1,3 environ ». Les intervalles exacts sont dans la \emph{Synthèse écarts-types court et long terme}.
+\end{itemize}
+
+\subsection{Si les mesures ne sont pas indépendantes : la carte XmR se trompe}\label{sec:autocorr}
+\textbf{Modèle.} On prend le modèle le plus simple d'une mesure qui « se souvient » de la précédente (autorégressif d'ordre 1) :
+\[
+X_1\sim\N(\mu,\sigma^2),\qquad X_t-\mu=\rho\,(X_{t-1}-\mu)+\varepsilon_t,\quad \varepsilon_t\sim\N\big(0,\sigma^2(1-\rho^2)\big),
+\]
+avec $|\rho|<1$ et $X_1,\varepsilon_2,\varepsilon_3,\dots$ indépendantes.
+\begin{prop}\thm{}
+Pour tout $t$, $X_t\sim\N(\mu,\sigma^2)$ et la corrélation entre deux valeurs successives vaut $\rho$. De plus
+\[
+\E(mR_t^2)=2\sigma^2(1-\rho),\qquad \E(mR_t)=\frac{2}{\sqrt\pi}\,\sigma\sqrt{1-\rho},\qquad\text{donc}\qquad \E\Big(\frac{\mRb}{1{,}128}\Big)=\sigma\sqrt{1-\rho}.
+\]
+\end{prop}
+\begin{proof}
+Par récurrence, $X_t$ est une combinaison linéaire de $X_1,\varepsilon_2,\dots,\varepsilon_t$, normales indépendantes : elle est normale (lemme~\ref{lem:stab}). Si $\V(X_{t-1})=\sigma^2$, alors $\V(X_t)=\rho^2\sigma^2+\sigma^2(1-\rho^2)=\sigma^2$, car $\varepsilon_t$ est indépendante de $X_{t-1}$. Et $\operatorname{Cov}(X_t,X_{t-1})=\rho\,\V(X_{t-1})=\rho\sigma^2$.
+
+$X_t-X_{t-1}=(\rho-1)(X_{t-1}-\mu)+\varepsilon_t$ est normale, centrée, de variance $(1-\rho)^2\sigma^2+\sigma^2(1-\rho^2)=2\sigma^2(1-\rho)$. Le lemme~\ref{lem:EZ} donne $\E|X_t-X_{t-1}|=\sqrt{2\sigma^2(1-\rho)}\sqrt{2/\pi}=\frac{2}{\sqrt\pi}\sigma\sqrt{1-\rho}$. On conclut par linéarité, comme en section~\ref{sec:E}.
+\end{proof}
+
+\textbf{Conséquences pour la carte XmR.}
+\begin{itemize}[nosep,leftmargin=1.2em]
+\item $\rho>0$ (lots successifs semblables : inertie thermique, même coulée, même bain) : $\mRb/1{,}128$ sous-estime $\sigma$. Avec $\rho=0{,}5$, le facteur vaut $\sqrt{0{,}5}=0{,}71$ : des limites 29 \% trop serrées, et de fausses alarmes.
+\item $\rho<0$ (valeurs qui alternent) : $\mRb/1{,}128$ surestime $\sigma$. C'est la signature du sur-réglage : dans la politique « corriger tout l'écart à chaque pièce » de la section~\ref{sec:E}, $y_t-c=\varepsilon_t-\varepsilon_{t-1}$, donc $\operatorname{Cov}(y_t,y_{t-1})=-\sigma^2$ pour une variance $2\sigma^2$ : $\rho=-\frac12$ et le facteur vaut $\sqrt{1{,}5}=1{,}22$.
+\item \textbf{Test pratique} : comparer $\mRb/1{,}128$ à $s$. Le rapport estime $\sqrt{1-\rho}$ (\appr{}, pour une série longue et stable). Enquête E5 \liv{11} : série X, $1{,}75/1{,}82=0{,}96$, compatible avec l'indépendance ; série Y, $2{,}70/2{,}43=1{,}11$, valeurs qui alternent : la trace du sur-réglage. La politique de E5 ne corrige que hors tolérance, d'où un effet plus faible que le cas extrême $1{,}22$.
+\end{itemize}
+
+%======================================================================
+\section{Annexe : calculer soi-même les constantes}\label{sec:code}
+
+Les trois codes ci-dessous ont été exécutés le 30 octobre 2026 et redonnent les valeurs du livret. Pour $n=2$ à $5$ :
+\begin{center}\small
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+$n$ & $d_2$ & $d_3$ & $c_4$ & $D_4$ & $w_{0{,}999}$ & $w_{0{,}975}$\\
+\midrule
+2 & 1,1284 & 0,8525 & 0,7979 & 3,267 & 4,654 & 3,170\\
+3 & 1,6926 & 0,8884 & 0,8862 & 2,575 & 5,063 & 3,682\\
+4 & 2,0588 & 0,8798 & 0,9213 & 2,282 & 5,309 & 3,984\\
+5 & 2,3259 & 0,8641 & 0,9400 & 2,114 & 5,484 & 4,197\\
+\bottomrule
+\end{tabular}
+\end{center}
+$d_3$ utilise $\E(W^2)=\int_0^{+\infty}2w\,\P(W>w)\dd w$ : c'est le lemme~\ref{lem:queues} appliqué à $W^2$, avec le changement de variable $t=w^2$.
+
+\subsection{R}
+La loi de l'étendue de $n$ normales est la loi de l'étendue studentisée avec une infinité de degrés de liberté : \texttt{ptukey(w, nmeans = n, df = Inf)}.
+\begin{tcolorbox}[colback=gray!4,colframe=gray!40,boxrule=0.5pt,arc=1pt,left=4pt,right=4pt,top=2pt,bottom=2pt]
+\small
+\begin{verbatim}
+d2 <- function(n) integrate(function(x) 1 - pnorm(x)^n - (1 - pnorm(x))^n,
+                            -Inf, Inf)$value
+c4 <- function(n) sqrt(2/(n - 1)) * exp(lgamma(n/2) - lgamma((n - 1)/2))
+wq <- function(q, n) qtukey(q, nmeans = n, df = Inf)    # quantile de W
+d3 <- function(n) {
+  EW2 <- integrate(function(w) sapply(w, function(v)
+           2 * v * (1 - ptukey(v, nmeans = n, df = Inf))), 0, Inf)$value
+  sqrt(EW2 - d2(n)^2)
+}
+c(d2(5), d3(5), c4(5), wq(0.999, 5))   # 2.3259 0.8641 0.9400 5.4838
+\end{verbatim}
+\end{tcolorbox}
+\begin{alerte}[Correction du code de 2019]
+Dans le document « Estimation » (2019), la seconde fonction \texttt{d2}, « en utilisant la fonction Gamma », calcule en réalité $c_4$. Si elle est définie après la version \texttt{integrate}, elle la remplace et \texttt{d2(3)} renvoie $0{,}886$ au lieu de $1{,}693$. Il n'existe pas de formule en $\Gamma$ pour $d_2$. Les formes exactes s'arrêtent à $n=5$ (section~\ref{sec:C}).
+\end{alerte}
+
+\subsection{Python (SciPy)}
+\begin{tcolorbox}[colback=gray!4,colframe=gray!40,boxrule=0.5pt,arc=1pt,left=4pt,right=4pt,top=2pt,bottom=2pt]
+\small
+\begin{verbatim}
+import numpy as np
+from scipy import integrate, optimize, special, stats
+Phi, phi = stats.norm.cdf, stats.norm.pdf
+
+def d2(n):
+    return integrate.quad(lambda x: 1 - Phi(x)**n - (1 - Phi(x))**n,
+                          -np.inf, np.inf)[0]
+def c4(n):
+    return np.sqrt(2/(n-1)) * np.exp(special.gammaln(n/2)
+                                     - special.gammaln((n-1)/2))
+def cdf_W(w, n):                       # P(W <= w), lemme 8 (c)
+    f = lambda x: phi(x) * (Phi(x + w) - Phi(x))**(n - 1)
+    return n * integrate.quad(f, -np.inf, np.inf)[0]
+def wq(q, n):                          # quantile de W
+    return optimize.brentq(lambda w: cdf_W(w, n) - q, 1e-9, 20)
+def d3(n):
+    EW2 = integrate.quad(lambda w: 2*w*(1 - cdf_W(w, n)), 0, np.inf)[0]
+    return np.sqrt(EW2 - d2(n)**2)
+\end{verbatim}
+\end{tcolorbox}
+
+\subsection{Excel}
+\textbf{$c_4$ en une formule} (taille $n$ en A2). Les fonctions \texttt{LNGAMMA} et \texttt{GAMMA} sont documentées sous ces noms dans l'aide Microsoft en français ; l'aide de \texttt{GAMMA} la donne pour Excel 2016 et les versions suivantes.
+\begin{center}
+\texttt{=RACINE(2/(A2-1))*EXP(LNGAMMA(A2/2)-LNGAMMA((A2-1)/2))}
+\end{center}
+\textbf{$d_2$ par une somme} (méthode des rectangles sur la formule du lemme~\ref{lem:echelle}). Taille $n$ en B1 ; colonne A de $-8$ à $8$ par pas de $0{,}01$ (lignes 3 à 1603) ; en B3, à recopier :
+\begin{center}\small
+\texttt{=1-LOI.NORMALE.STANDARD.N(A3;VRAI)\^{}\$B\$1-(1-LOI.NORMALE.STANDARD.N(A3;VRAI))\^{}\$B\$1}
+\end{center}
+puis \texttt{=SOMME(B3:B1603)*0,01}. Pour $n=5$, on obtient $2{,}32593$, la valeur de la quadrature : l'intégrande est très régulière et négligeable au-delà de $\pm8$. C'est une activité possible avec des stagiaires curieux : retrouver la table au lieu de la recopier.
+
+%======================================================================
+\section{Récapitulatif}
+
+\begin{center}\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{5.4cm}p{1.6cm}p{3.6cm}p{4.2cm}@{}}
+\toprule
+Formule & Page livret & Statut & Où \\
+\midrule
+$s$ en $n-1$, degrés de liberté & 4, 18 & Théorème & lemme~\ref{lem:s2}, §\ref{sec:B}\\
+$\bar x\pm3s$, 99,7 \% & 18 & Théorème + approx. & §\ref{sec:B}\\
+Bornes de classes, mélange des résolutions & 4 & Justification + approx. & §\ref{sec:B}, lemme~\ref{lem:unif}\\
+Droite de Henry, $(k-0{,}5)/n$ & 5 & Théorème + convention & §\ref{sec:H}, lemme~\ref{lem:beta}\\
+$\hat\sigma_i=\Rb/d_2$ ; $d_2(2)$, $d_2(3)$ & 6, 18 & Théorème & §\ref{sec:C}, lemmes~\ref{lem:EZ}, \ref{lem:echelle}\\
+$d_2(4)$, $d_2(5)$ ; $d_2(n)\neq n/\sqrt\pi$ & 18 & Théorème & §\ref{sec:C}, lemme~\ref{lem:orthant}\\
+$d_3(n)$ pour $n\ge3$ & 18 & Calcul numérique & §\ref{sec:D}\\
+Cp, Cpk, Pp, Ppk & 6, 19, 20 & Convention & §\ref{sec:C}\\
+$C_{pk}=C_p(1-k)$, ppm, $P_p$ contre $C_p$ & 6, 19, 20 & Théorème & §\ref{sec:C}\\
+$A_2$, $D_3$, $D_4$ & 7, 18 & Théorème + approx. & §\ref{sec:D}\\
+$A_c$, $A_s$, $A'_c$, $A'_s$ (3,09 ; 1,96) & 7, 18 & Convention + théorème & §\ref{sec:D}\\
+$D'_{c1}$, $D'_{s1}$, $D'_{s2}$, $D'_{c2}$ & 7, 18 & Calcul numérique & §\ref{sec:D}, lemme~\ref{lem:etendue}\\
+Règles R1 à R4 & 8, 19, 21 & Convention + théorème & §\ref{sec:D}\\
+XmR : 1,128 ; 2,66 ; 3,267 & 9, 18 & Théorème & §\ref{sec:E}\\
+Sur-réglage & 11 & Théorème (cas simple) & §\ref{sec:E}\\
+Cg, Cgk, résolution & 13, 14, 19 & Convention + théorème & §\ref{sec:I}\\
+Cartes p, np, c, u ; LCI à 0 & 15, 16, 19 & Théorème + approx. & §\ref{sec:G}\\
+Pièce hors tolérance au sous-groupe 9 & 22 & Théorème & §\ref{sec:P}\\
+$c_4$, écart-type groupé, étendues mobiles & 23 & Théorème & §\ref{sec:L}\\
+$d_2$ hors loi normale, précision de $\Rb/d_2$ et $\bar S/c_4$, autocorrélation & 6, 9, 18 & Théorème & §\ref{sec:hyp}\\
+Calcul des constantes (R, Python, Excel) & 18 & Calcul numérique & §\ref{sec:code}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{alerte}[Ce qui est admis dans ce document]
+Les coordonnées sphériques dans $\R^k$ (section~\ref{sec:L}), la loi des événements rares (Poisson) et l'approximation normale de la binomiale (section~\ref{sec:G}), la croissance de $d_2(n)$ en $2\sqrt{2\ln n}$ (section~\ref{sec:C}). Les valeurs de $\Phi$, de $\Phi^{-1}$ et des quantiles de l'étendue sont numériques. Tout le reste est démontré à partir des lemmes de la section~\ref{sec:outils}.
+\end{alerte}
+
+\end{document}
