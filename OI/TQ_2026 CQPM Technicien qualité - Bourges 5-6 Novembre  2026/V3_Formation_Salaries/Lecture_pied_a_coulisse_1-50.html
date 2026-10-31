@@ -84,6 +84,7 @@ legend{font-size:.8rem;color:var(--muted);padding:0 .3rem}
 .fb.ko{background:var(--koBg);color:var(--ko);padding:.4rem .8rem}
 .fb.warn{background:var(--warnBg);color:var(--warn);padding:.6rem .8rem}
 .fb.info{background:var(--scene);color:var(--ink);padding:.6rem .8rem}
+[hidden]{display:none !important}
 .fb .dec{color:var(--ink)}
 #prenom{width:9em;padding:.45rem .6rem;border:1px solid var(--line);border-radius:10px;background:var(--scene);color:var(--ink)}
 .prog{font-weight:600;color:var(--pri)}
@@ -552,7 +553,6 @@ footer{margin-top:14px;font-size:.8rem;color:var(--muted)}
   function serieUI() {
     const on = !!serie;
     $('mode').disabled = on;
-    $('prenom').disabled = on;
     $('serieBtn').textContent = on ? 'Abandonner la série' : 'Série de 10 avec bilan';
     $('serieProg').hidden = !on;
     if (on) {
@@ -613,6 +613,7 @@ footer{margin-top:14px;font-size:.8rem;color:var(--muted)}
     const d = S.date;
     const quand = d.toLocaleDateString('fr-FR') + ' à ' + d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
     const b = $('bilan');
+    S.prenom = $('prenom').value.trim();
     b.innerHTML = `<h3>Bilan de la série${S.prenom ? ' : ' + esc(S.prenom) : ''}</h3>`
       + `<p class="meta">${tet ? 'Contrôle du téton, tolérance 11,85 / 12,00 mm' : 'Lecture libre, 0 à 100 mm'} · pied à coulisse au 1/50 · ${quand}</p>`
       + `<div class="kpi">${kpi}</div>`
