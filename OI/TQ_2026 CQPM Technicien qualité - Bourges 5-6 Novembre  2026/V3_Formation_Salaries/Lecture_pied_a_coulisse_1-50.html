@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture au pied à coulisse</title>
+<style>
+:root{
+  --bg:#eef0ec; --panel:#ffffff; --ink:#1c2226; --muted:#5a6570; --line:#d6dad4;
+  --scene:#f7f8f6; --accent:#c2410c; --pri:#1f4e79; --priInk:#ffffff;
+  --okBg:#e8f5ec; --ok:#166534; --koBg:#fdecec; --ko:#991b1b; --warnBg:#fff6e0; --warn:#8a5a00;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#14181b; --panel:#1d2327; --ink:#e7eaec; --muted:#9aa5ae; --line:#323a40;
+    --scene:#252c31; --accent:#fb923c; --pri:#7fb3e6; --priInk:#0f1a24;
+    --okBg:#123321; --ok:#86efac; --koBg:#3a1616; --ko:#fca5a5; --warnBg:#3a2d10; --warn:#fcd34d;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14181b; --panel:#1d2327; --ink:#e7eaec; --muted:#9aa5ae; --line:#323a40;
+  --scene:#252c31; --accent:#fb923c; --pri:#7fb3e6; --priInk:#0f1a24;
+  --okBg:#123321; --ok:#86efac; --koBg:#3a1616; --ko:#fca5a5; --warnBg:#3a2d10; --warn:#fcd34d;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:1440px;margin:0 auto;padding:16px}
+header.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.kicker{margin:0;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+h1{margin:.1rem 0 .15rem;font-size:clamp(1.35rem,2.6vw,1.9rem);line-height:1.2}
+.sub{margin:0;color:var(--muted)}
+h2{margin:0;font-size:1.15rem;line-height:1.3}
+button,select,input{font:inherit}
+button{cursor:pointer;border-radius:10px;padding:.5rem .9rem;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+button:disabled{opacity:.4;cursor:default}
+button.primary{background:var(--pri);color:var(--priInk);border-color:var(--pri);font-weight:600}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.tabs{display:flex;gap:6px;margin:14px 0 12px;flex-wrap:wrap}
+.tabs button{border-radius:999px;padding:.5rem 1rem}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.layout{display:block}
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px}
+svg{display:block;width:100%;height:auto}
+#overview text{font-family:inherit}
+.ovLbl{fill:var(--muted);font-size:13px}
+.ovPartLbl{fill:var(--ink);font-size:12px;font-weight:600}
+.ovZone{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:6 4}
+.detailHead{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:.85rem;color:var(--muted);margin:8px 4px 6px}
+#detail{border-radius:10px;touch-action:pan-y;cursor:crosshair}
+#detail text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.sceneBg{fill:var(--scene)}
+.tk{stroke:#1a1f23;stroke-width:1.3;vector-effect:non-scaling-stroke}
+.lb{fill:#1a1f23}
+.hA{stroke:#c2410c;stroke-width:3;vector-effect:non-scaling-stroke}
+.hG{stroke:#15803d;stroke-width:3;vector-effect:non-scaling-stroke}
+.lRing{fill:none;stroke:var(--ink);stroke-width:2.5}
+.side{margin-top:12px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.panel p{margin:.5rem 0}
+.panel ul{margin:.5rem 0;padding-left:1.2rem}
+.panel li{margin:.3rem 0}
+.badge{display:inline-block;font-size:.78rem;color:var(--muted);margin-bottom:.25rem}
+.note{color:var(--muted);font-size:.93rem;border-left:3px solid var(--line);padding-left:.6rem}
+.big{font-size:1.3rem}
+.row{display:flex;gap:8px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.chk{display:flex;gap:.45rem;align-items:center;cursor:pointer}
+input[type=range]{width:100%;margin-top:12px;accent-color:var(--pri)}
+.readout{font-size:1.05rem;min-height:3em}
+.q{font-weight:500}
+#ans{width:7.5em;padding:.45rem .6rem;border:1px solid var(--line);border-radius:10px;background:var(--scene);color:var(--ink);font-size:1.1rem}
+select{padding:.45rem .6rem;border:1px solid var(--line);border-radius:10px;background:var(--scene);color:var(--ink);max-width:100%}
+fieldset{border:1px solid var(--line);border-radius:10px;padding:.3rem .7rem .45rem;margin:0;display:flex;gap:.9rem}
+legend{font-size:.8rem;color:var(--muted);padding:0 .3rem}
+.score{margin-left:auto;font-weight:600}
+.fb{margin-top:12px;border-radius:10px;padding:0}
+.fb:empty{display:none}
+.fb.ok{background:var(--okBg);color:var(--ok);padding:.4rem .8rem}
+.fb.ko{background:var(--koBg);color:var(--ko);padding:.4rem .8rem}
+.fb.warn{background:var(--warnBg);color:var(--warn);padding:.6rem .8rem}
+.fb.info{background:var(--scene);color:var(--ink);padding:.6rem .8rem}
+.fb .dec{color:var(--ink)}
+footer{margin-top:14px;font-size:.8rem;color:var(--muted)}
+@media (min-width:1050px){
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) 370px;gap:14px;align-items:start}
+  .side{margin-top:0}
+}
+@media (max-width:520px){ .wrap{padding:10px} .panel{padding:14px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div>
+    <p class="kicker">Capabilité et SPC · Métrologie</p>
+    <h1>Lire un pied à coulisse au 1/50</h1>
+    <p class="sub">Résolution 0,02 mm : 50 divisions de vernier réparties sur 49 mm.</p>
+  </div>
+  <button id="themeBtn" type="button" aria-label="Changer de thème">Thème</button>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button role="tab" data-tab="learn" aria-selected="true">1. Comprendre</button>
+  <button role="tab" data-tab="play" aria-selected="false">2. Manipuler</button>
+  <button role="tab" data-tab="train" aria-selected="false">3. S'entraîner</button>
+</nav>
+
+<div class="layout">
+<section class="stage" aria-label="Pied à coulisse">
+  <svg id="overview" viewBox="0 0 1100 200" role="img" aria-label="Vue d'ensemble du pied à coulisse">
+    <defs>
+      <linearGradient id="oBeam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6eaed"/><stop offset="1" stop-color="#b7bfc6"/></linearGradient>
+      <linearGradient id="oBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d6dce1"/><stop offset="1" stop-color="#9ca6ae"/></linearGradient>
+      <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="#7d8b98"/><line x1="0" y1="0" x2="0" y2="7" stroke="#5a6774" stroke-width="2.5"/></pattern>
+    </defs>
+    <rect x="60" y="50" width="1010" height="34" rx="3" fill="url(#oBeam)" stroke="#6f7a83"/>
+    <g id="ovTicks"></g>
+    <polygon points="70,84 130,84 130,172 119,172 86,120 70,112" fill="url(#oBody)" stroke="#6f7a83"/>
+    <polygon points="112,50 130,50 130,16 121,26" fill="url(#oBody)" stroke="#6f7a83"/>
+    <rect id="ovPart" x="130" y="118" height="44" width="0" fill="url(#hatch)" stroke="#45515c" style="display:none"/>
+    <text id="ovPartLbl" class="ovPartLbl" x="130" y="112" text-anchor="middle" style="display:none"></text>
+    <g id="ovMob">
+      <rect x="128" y="40" width="122" height="54" rx="4" fill="url(#oBody)" stroke="#6f7a83"/>
+      <rect x="136" y="70" width="106" height="14" fill="#eef1f3" stroke="#8b959d"/>
+      <polygon points="130,94 188,94 168,122 142,172 130,172" fill="url(#oBody)" stroke="#6f7a83"/>
+      <polygon points="130,40 147,40 139,26 130,16" fill="url(#oBody)" stroke="#6f7a83"/>
+      <circle cx="205" cy="103" r="9" fill="url(#oBody)" stroke="#6f7a83"/>
+      <text class="ovLbl" x="152" y="33">Coulisseau et vernier</text>
+      <text class="ovLbl" x="172" y="193" text-anchor="middle">Bec mobile</text>
+    </g>
+    <rect id="ovZone" class="ovZone" x="106" y="44" width="366.7" height="46" rx="4"/>
+    <text class="ovLbl" x="95" y="193" text-anchor="middle">Bec fixe</text>
+    <text class="ovLbl" x="1000" y="40" text-anchor="middle">Règle graduée</text>
+  </svg>
+
+  <div class="detailHead">
+    <span>Vue de détail des échelles (zone en pointillés)</span>
+    <label class="chk"><input type="checkbox" id="loupeChk" checked> Loupe au survol</label>
+  </div>
+
+  <svg id="detail" viewBox="0 0 1100 320" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Échelles de la règle et du vernier">
+    <defs>
+      <linearGradient id="gBeam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3e7ea"/><stop offset="1" stop-color="#c4cbd1"/></linearGradient>
+      <linearGradient id="gVern" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1f3f5"/><stop offset="1" stop-color="#d4d9dd"/></linearGradient>
+      <linearGradient id="gBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9c1c8"/><stop offset="1" stop-color="#8e98a1"/></linearGradient>
+      <clipPath id="lc"><circle id="lcC" cx="0" cy="0" r="95"/></clipPath>
+    </defs>
+    <g id="scene">
+      <rect class="sceneBg" x="0" y="0" width="1100" height="320"/>
+      <g id="cam">
+        <g id="beam"></g>
+        <g id="vern"></g>
+        <g id="hl"></g>
+      </g>
+    </g>
+    <g id="loupe" style="display:none">
+      <g clip-path="url(#lc)">
+        <rect id="lBg" class="sceneBg" x="0" y="0" width="190" height="190"/>
+        <use id="lUse" href="#scene" xlink:href="#scene"/>
+      </g>
+      <circle id="lRing" class="lRing" cx="0" cy="0" r="95"/>
+    </g>
+  </svg>
+</section>
+
+<div class="side">
+  <section class="panel" id="p-learn" role="tabpanel">
+    <span id="stepNum" class="badge"></span>
+    <h2 id="stepTitle"></h2>
+    <div id="stepText"></div>
+    <div class="row">
+      <button id="prev" type="button">Précédent</button>
+      <button id="replay" type="button">Rejouer</button>
+      <button id="next" type="button" class="primary">Suivant</button>
+    </div>
+  </section>
+
+  <section class="panel" id="p-play" role="tabpanel" hidden>
+    <h2>Déplace le coulisseau</h2>
+    <p>Fais glisser le curseur, lis la cote, puis vérifie.</p>
+    <input type="range" id="rng" min="0" max="5000" step="1" value="1173" aria-label="Position du coulisseau">
+    <div class="row">
+      <button type="button" data-d="-50">-1 mm</button>
+      <button type="button" data-d="-1">-0,02</button>
+      <button type="button" data-d="1">+0,02</button>
+      <button type="button" data-d="50">+1 mm</button>
+    </div>
+    <div class="row"><label class="chk"><input type="checkbox" id="aide"> Afficher la lecture</label></div>
+    <p id="playRead" class="readout"></p>
+  </section>
+
+  <section class="panel" id="p-train" role="tabpanel" hidden>
+    <div class="row" style="margin-top:0">
+      <select id="mode" aria-label="Type d'exercice">
+        <option value="libre">Lecture libre (0 à 100 mm)</option>
+        <option value="teton">Contrôle du téton de la butée</option>
+      </select>
+      <span id="score" class="score">Score : 0 / 0</span>
+    </div>
+    <p id="exQ" class="q"></p>
+    <div class="row">
+      <label>Lecture <input id="ans" inputmode="decimal" autocomplete="off" placeholder="ex. 23,46"> mm</label>
+    </div>
+    <div class="row" id="confRow" hidden>
+      <fieldset><legend>Décision</legend>
+        <label class="chk"><input type="radio" name="conf" value="1"> Conforme</label>
+        <label class="chk"><input type="radio" name="conf" value="0"> Non conforme</label>
+      </fieldset>
+    </div>
+    <div class="row">
+      <button id="check" type="button" class="primary">Valider</button>
+      <button id="hint" type="button">Indice</button>
+      <button id="newEx" type="button">Nouvelle mesure</button>
+    </div>
+    <div id="fb" class="fb" aria-live="polite"></div>
+  </section>
+</div>
+</div>
+
+<footer>Animation pédagogique. Vernier 1/50 dessiné selon son principe : 50 divisions sur 49 mm, une division vaut 0,98 mm.</footer>
+</div>
+
+<script>
+(() => {
+  const NS = 'http://www.w3.org/2000/svg';
+  const S = 18;                 // px par mm dans la vue de détail
+  const VIEW = 1100 / S;        // largeur visible en mm
+  const MAIN_MAX = 170;         // longueur dessinée de la règle (mm)
+  const OVS = 6, OVX = 130;     // vue d'ensemble : px par mm, abscisse du bec fixe
+  const ACC = '#c2410c', GRN = '#15803d';
+  const $ = id => document.getElementById(id);
+  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function el(tag, attrs, parent) {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function txt(tag, attrs, parent, s) { const e = el(tag, attrs, parent); e.textContent = s; return e; }
+  const fmt = c => (c / 100).toFixed(2).replace('.', ',');
+  const parts = c => ({ n: Math.floor(c / 100), k: (c % 100) / 2 });
+  const mainLen = i => i % 10 === 0 ? 3.6 : (i % 5 === 0 ? 2.6 : 1.7);
+  const vernLen = k => k % 10 === 0 ? 3.1 : (k % 5 === 0 ? 2.6 : 1.7);
+
+  /* ---------- Construction de la vue de détail (unités : mm) ---------- */
+  const camG = $('cam'), beam = $('beam'), vern = $('vern'), hl = $('hl');
+  el('rect', { x: -14, y: 1.4, width: MAIN_MAX + 26, height: 7.6, fill: 'url(#gBeam)' }, beam);
+  for (let i = 0; i <= MAIN_MAX; i++) {
+    el('line', { x1: i, y1: 9, x2: i, y2: 9 - mainLen(i), class: 'tk', 'vector-effect': 'non-scaling-stroke' }, beam);
+    if (i % 10 === 0) txt('text', { x: i, y: 4.7, 'font-size': 1.5, class: 'lb', 'text-anchor': 'middle' }, beam, String(i / 10));
+  }
+  el('rect', { x: -8, y: 9, width: 66, height: 8.9, fill: 'url(#gBody)' }, vern);
+  el('rect', { x: -5, y: 9, width: 59, height: 7.4, fill: 'url(#gVern)' }, vern);
+  for (let k = 0; k <= 50; k++) {
+    const x = k * 0.98;
+    el('line', { x1: x, y1: 9, x2: x, y2: 9 + vernLen(k), class: 'tk', 'vector-effect': 'non-scaling-stroke' }, vern);
+    if (k % 5 === 0) txt('text', { x, y: 13.7, 'font-size': 1.35, class: 'lb', 'text-anchor': 'middle' }, vern, String(k / 5));
+  }
+  txt('text', { x: -2.6, y: 13.7, 'font-size': 0.95, class: 'lb', 'text-anchor': 'middle' }, vern, '1/50');
+  txt('text', { x: 51.7, y: 13.7, 'font-size': 0.85, class: 'lb', 'text-anchor': 'middle' }, vern, '0,02 mm');
+
+  /* ---------- Vue d'ensemble ---------- */
+  const ovT = $('ovTicks');
+  for (let i = 0; i <= 150; i += 5) {
+    const x = OVX + i * OVS;
+    el('line', { x1: x, y1: 50, x2: x, y2: 50 + (i % 10 === 0 ? 8 : 5), stroke: '#4b555e', 'stroke-width': 1 }, ovT);
+  }
+  const ovMob = $('ovMob'), ovZone = $('ovZone'), ovPart = $('ovPart'), ovPartLbl = $('ovPartLbl');
+
+  /* ---------- Rendu ---------- */
+  let vDisp = 0;
+  const camAt = v => Math.min(Math.max(v - 6, -4), MAIN_MAX - VIEW);
+  function render(v) {
+    vDisp = v;
+    vern.setAttribute('transform', `translate(${v.toFixed(4)} 0)`);
+    const c = camAt(v);
+    camG.setAttribute('transform', `scale(${S}) translate(${(-c).toFixed(4)} 0)`);
+    ovMob.setAttribute('transform', `translate(${(v * OVS).toFixed(2)} 0)`);
+    ovZone.setAttribute('x', (OVX + c * OVS).toFixed(2));
+  }
+  function setPart(c, label) {
+    if (c == null) { ovPart.style.display = 'none'; ovPartLbl.style.display = 'none'; return; }
+    const w = c / 100 * OVS;
+    ovPart.setAttribute('width', w.toFixed(2));
+    ovPart.style.display = '';
+    ovPartLbl.setAttribute('x', (OVX + w / 2).toFixed(2));
+    ovPartLbl.textContent = label || 'Pièce';
+    ovPartLbl.style.display = '';
+  }
+  function pill(x, y, s, col, p) {
+    const w = s.length * 0.6 + 1;
+    el('rect', { x: x - w / 2, y: y - 1.15, width: w, height: 1.6, rx: 0.4, fill: col }, p);
+    txt('text', { x, y: y, 'font-size': 1.05, 'text-anchor': 'middle', fill: '#fff', 'font-weight': 600 }, p, s);
+  }
+  function drawHL(c, f) {
+    hl.replaceChildren();
+    if (typeof f === 'function') f = f();
+    if (!f) return;
+    const v = c / 100, { n, k } = parts(c);
+    if (f.int) {
+      el('line', { x1: n, y1: 9, x2: n, y2: 9 - mainLen(n), class: 'hA', 'vector-effect': 'non-scaling-stroke' }, hl);
+      pill(n, 3.0, n + ' mm', ACC, hl);
+    }
+    if (f.zero) {
+      el('line', { x1: v, y1: 9, x2: v, y2: 9 + vernLen(0), class: 'hA', 'vector-effect': 'non-scaling-stroke' }, hl);
+      el('rect', { x: v - 0.6, y: 12.5, width: 1.2, height: 1.5, fill: '#e9ecef' }, hl);
+      txt('text', { x: v, y: 13.7, 'font-size': 1.4, 'text-anchor': 'middle', fill: ACC, 'font-weight': 700 }, hl, '0');
+    }
+    const list = f.coinc === true ? [k] : (f.coinc || []);
+    for (const kk of list) {
+      const xv = v + 0.98 * kk, m = Math.round(xv);
+      el('line', { x1: m, y1: 9, x2: m, y2: 9 - mainLen(m), class: 'hG', 'vector-effect': 'non-scaling-stroke' }, hl);
+      el('line', { x1: xv, y1: 9, x2: xv, y2: 9 + vernLen(kk), class: 'hG', 'vector-effect': 'non-scaling-stroke' }, hl);
+      if (kk < 50) pill(xv, 16.4, fmt(kk * 2) + ' mm', GRN, hl);
+    }
+  }
+
+  /* ---------- Animation ---------- */
+  let animId = 0, animating = false;
+  function animateTo(list, onLast, done) {
+    const id = ++animId; let i = 0; animating = true;
+    const next = () => {
+      if (id !== animId) return;
+      if (i >= list.length) { animating = false; if (done) done(); return; }
+      const from = vDisp, to = list[i];
+      if (i === list.length - 1 && onLast) onLast();
+      i++;
+      const d = (reduce || Math.abs(to - from) < 1e-9) ? 0 : Math.min(1500, 380 + Math.abs(to - from) * 16);
+      if (d === 0) { render(to); next(); return; }
+      const t0 = performance.now();
+      const step = t => {
+        if (id !== animId) return;
+        const u = Math.min(1, (t - t0) / d);
+        const e = u < 0.5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
+        render(from + (to - from) * e);
+        if (u < 1) requestAnimationFrame(step); else next();
+      };
+      requestAnimationFrame(step);
+    };
+    next();
+  }
+  let partC = null;
+  function show(c, f, part, label, force) {
+    hl.replaceChildren();
+    const v = c / 100;
+    if (!part) { partC = null; setPart(null); animateTo([v], null, () => drawHL(c, f)); return; }
+    if (!force && partC === c && Math.abs(vDisp - v) < 1e-9) {
+      animId++; animating = false; setPart(c, label); drawHL(c, f); return;
+    }
+    partC = c; setPart(null);
+    const list = vDisp < v + 0.005 ? [v + Math.max(3, v * 0.12), v] : [v];
+    animateTo(list, () => setPart(c, label), () => drawHL(c, f));
+  }
+
+  /* ---------- Onglet 1 : Comprendre ---------- */
+  const T = 1188;
+  const steps = [
+    { t: "L'instrument", v: T, part: true, f: null, h:
+      `<p>Le pied à coulisse comporte une <b>règle</b> graduée en millimètres, solidaire du <b>bec fixe</b>, et un <b>coulisseau</b> qui porte le <b>bec mobile</b> et le <b>vernier</b>.</p>
+       <p>La cote est la distance entre les deux becs. On la lit en deux temps : les millimètres entiers sur la règle, puis les centièmes sur le vernier.</p>
+       <p class="note">La vue du bas agrandit les échelles. Survole-la : la loupe grossit les traits.</p>` },
+    { t: 'Le principe du vernier', v: 0, f: { coinc: [0, 50] }, h:
+      `<p>Becs fermés, le 0 du vernier est en face du 0 de la règle.</p>
+       <p>Le vernier compte <b>50 divisions</b> réparties sur <b>49 mm</b>. Une division du vernier vaut donc 49 / 50 = <b>0,98 mm</b>, soit <b>0,02 mm</b> de moins qu'un millimètre de la règle.</p>
+       <p>Conséquence : le dernier trait du vernier, repéré 10, tombe en face du trait 49 mm.</p>` },
+    { t: 'Un déplacement de 0,02 mm', v: 2, f: { zero: true, coinc: [1] }, h:
+      `<p>Ouvre les becs de 0,02 mm. Le 0 du vernier a à peine bougé. Le <b>1er trait</b> du vernier rattrape le trait 1 mm de la règle : c'est lui qui coïncide.</p>
+       <p>Règle : le rang du trait qui coïncide, multiplié par 0,02 mm, donne la partie décimale.</p>` },
+    { t: 'Les chiffres du vernier', v: 10, f: { zero: true, coinc: [5] }, h:
+      `<p>Les chiffres 1, 2, ..., 9 du vernier sont placés tous les 5 traits, donc tous les <b>0,10 mm</b>.</p>
+       <p>Ici le trait repéré <b>1</b> coïncide : la cote vaut 0,10 mm. Le chiffre du vernier se lit directement en dixièmes de millimètre.</p>` },
+    { t: 'Lecture, temps 1 : les millimètres', v: T, f: { zero: true, int: true }, h:
+      `<p>Repère le <b>0 du vernier</b>. Le dernier trait de la règle situé à sa gauche donne les millimètres entiers.</p>
+       <p>Ici le 0 est entre 11 et 12 mm : on retient <b>11 mm</b>. On n'arrondit jamais au millimètre supérieur.</p>
+       <p class="note">Sur ce modèle, les chiffres de la règle sont des centimètres : le « 1 » vaut 10 mm, le « 2 » vaut 20 mm. D'autres modèles sont chiffrés directement en millimètres.</p>` },
+    { t: 'Lecture, temps 2 : la coïncidence', v: T, f: { zero: true, int: true, coinc: [44] }, h:
+      `<p>Cherche le trait du vernier qui est <b>exactement dans le prolongement</b> d'un trait de la règle.</p>
+       <p>Ici c'est le 4e trait après le chiffre 8. Le chiffre 8 vaut 0,80 mm. Les 4 traits valent 4 × 0,02 = 0,08 mm. Partie décimale : <b>0,88 mm</b>.</p>
+       <p class="note">Contrôle : de part et d'autre de la coïncidence, les traits voisins sont décalés de façon symétrique.</p>` },
+    { t: 'Résultat', v: T, part: true, f: { zero: true, int: true, coinc: [44] }, h:
+      `<p class="big">11 mm + 0,88 mm = <b>11,88 mm</b></p>
+       <p>Au 1/50, le chiffre des centièmes est <b>toujours pair</b>. Une lecture qui finit par 1, 3, 5, 7 ou 9 est forcément fausse.</p>` },
+    { t: 'Bonnes pratiques', v: T, part: true, f: null, h:
+      `<ul>
+         <li>Vérifier le zéro, becs fermés et propres, avant une série de mesures.</li>
+         <li>Serrer avec un effort léger et constant. Trop serrer fausse la mesure.</li>
+         <li>Mesurer avec la partie des becs la plus proche de la règle, pièce bien perpendiculaire aux becs.</li>
+         <li>Lire l'œil en face de la coïncidence, perpendiculaire aux échelles, pour éviter l'erreur de parallaxe.</li>
+       </ul>
+       <p class="note">Lien avec le TP butée : l'IT du téton vaut 11,96 − 11,80 = 0,16 mm, soit 8 échelons de 0,02 mm. La règle pratique courante demande une résolution au plus égale à IT / 10. Point à garder en tête pour l'étude du moyen de mesure.</p>` }
+  ];
+  let si = 0;
+  function goStep(i, force) {
+    si = Math.max(0, Math.min(steps.length - 1, i));
+    const s = steps[si];
+    $('stepNum').textContent = `Étape ${si + 1} / ${steps.length}`;
+    $('stepTitle').textContent = s.t;
+    $('stepText').innerHTML = s.h;
+    $('prev').disabled = si === 0;
+    $('next').textContent = si === steps.length - 1 ? 'Passer à la manipulation' : 'Suivant';
+    show(s.v, s.f, !!s.part, 'Téton', force);
+  }
+  $('prev').addEventListener('click', () => goStep(si - 1));
+  $('next').addEventListener('click', () => { if (si === steps.length - 1) setTab('play'); else goStep(si + 1); });
+  $('replay').addEventListener('click', () => {
+    const s = steps[si];
+    if (!s.part) { partC = null; setPart(null); render(Math.max(0, s.v / 100 - 3)); }
+    goStep(si, true);
+  });
+
+  /* ---------- Onglet 2 : Manipuler ---------- */
+  const rng = $('rng'), aide = $('aide');
+  function playUpdate(anim) {
+    const c = +rng.value * 2, { n, k } = parts(c);
+    const f = aide.checked ? { zero: true, int: true, coinc: true } : null;
+    partC = null; setPart(null);
+    if (anim) { animateTo([c / 100], null, () => drawHL(c, f)); }
+    else { animId++; animating = false; render(c / 100); drawHL(c, f); }
+    $('playRead').innerHTML = aide.checked
+      ? `Lecture : <b>${n} mm</b> + <b>${k}</b> × 0,02 mm = <b>${fmt(c)} mm</b>`
+      : 'Lecture masquée. Lis la cote, puis coche « Afficher la lecture » pour vérifier.';
+  }
+  rng.addEventListener('input', () => playUpdate(false));
+  aide.addEventListener('change', () => playUpdate(false));
+  document.querySelectorAll('[data-d]').forEach(b => b.addEventListener('click', () => {
+    rng.value = Math.min(5000, Math.max(0, +rng.value + +b.dataset.d));
+    playUpdate(true);
+  }));
+
+  /* ---------- Onglet 3 : S'entraîner ---------- */
+  const FULL = { zero: true, int: true, coinc: true }, HINT = { zero: true };
+  const rint = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
+  let ex = { c: null }, score = { ok: 0, tot: 0 };
+  const exF = () => ex.done ? FULL : (ex.hint ? HINT : null);
+  function newEx() {
+    const m = $('mode').value; let c;
+    if (m === 'teton') { do { c = 1172 + 2 * rint(0, 16); } while (c === ex.c); }
+    else { do { c = rint(0, 99) * 100 + 2 * rint(0, 49); } while (c === ex.c); }
+    ex = { c, mode: m, done: false, hint: false, label: m === 'teton' ? 'Téton' : 'Pièce' };
+    $('ans').value = '';
+    document.querySelectorAll('input[name=conf]').forEach(r => { r.checked = false; });
+    $('confRow').hidden = m !== 'teton';
+    $('exQ').innerHTML = m === 'teton'
+      ? 'Mesure le diamètre du téton, puis décide. Conforme si <b>11,80 ≤ Ø ≤ 11,96 mm</b>. On néglige ici l\u2019incertitude de mesure.'
+      : 'Lis la cote affichée par le pied à coulisse.';
+    const fb = $('fb'); fb.className = 'fb'; fb.innerHTML = '';
+    show(c, exF, true, ex.label, true);
+  }
+  function check() {
+    if (ex.c == null) return;
+    const fb = $('fb');
+    const raw = $('ans').value.trim().replace(',', '.');
+    const x = Number(raw);
+    if (raw === '' || !isFinite(x)) { fb.className = 'fb warn'; fb.innerHTML = 'Saisis une valeur en millimètres, par exemple 23,46.'; return; }
+    let sel = null;
+    if (ex.mode === 'teton') {
+      sel = document.querySelector('input[name=conf]:checked');
+      if (!sel) { fb.className = 'fb warn'; fb.innerHTML = 'Choisis aussi une décision : conforme ou non conforme.'; return; }
+    }
+    const xc = Math.round(x * 100), { n, k } = parts(ex.c);
+    const okV = xc === ex.c;
+    let okAll = okV, html = '';
+    if (okV) html += `<p><b>Lecture juste : ${fmt(ex.c)} mm.</b></p>`;
+    else {
+      html += `<p><b>Lecture fausse.</b> Tu as lu ${fmt(xc)} mm. La bonne lecture est <b>${fmt(ex.c)} mm</b>.</p>`;
+      if (Math.abs(xc) % 2 === 1) html += '<p>Au 1/50, le chiffre des centièmes est toujours pair.</p>';
+      if (Math.floor(xc / 100) !== n) html += `<p>Erreur sur les millimètres : le 0 du vernier est entre ${n} et ${n + 1} mm.</p>`;
+      else html += '<p>Millimètres justes. L\u2019erreur porte sur le trait qui coïncide.</p>';
+    }
+    html += `<p class="dec">Décomposition : ${n} mm + ${k} × 0,02 mm = ${fmt(ex.c)} mm</p>`;
+    if (ex.mode === 'teton') {
+      const conf = ex.c >= 1180 && ex.c <= 1196;
+      const okC = (sel.value === '1') === conf;
+      okAll = okV && okC;
+      html += `<p>Décision attendue : <b>${conf ? 'conforme' : 'non conforme'}</b>, car ${fmt(ex.c)} mm ${conf ? 'est dans' : 'est hors de'} l'intervalle [11,80 ; 11,96]. ${okC ? 'Ta décision est juste.' : 'Ta décision est fausse.'}</p>`;
+    }
+    if (!ex.done) {
+      score.tot++; if (okAll) score.ok++;
+      $('score').textContent = `Score : ${score.ok} / ${score.tot}`;
+    }
+    ex.done = true;
+    fb.className = 'fb ' + (okAll ? 'ok' : 'ko');
+    fb.innerHTML = html;
+    if (!animating) drawHL(ex.c, exF);
+  }
+  function hint() {
+    if (ex.c == null || ex.done) return;
+    ex.hint = true;
+    const fb = $('fb'); fb.className = 'fb info';
+    fb.innerHTML = 'Indice : le 0 du vernier est repéré en orange. Le trait de règle juste à sa gauche donne les millimètres. Cherche ensuite le trait du vernier aligné avec un trait de la règle (la loupe aide).';
+    if (!animating) drawHL(ex.c, exF);
+  }
+  $('check').addEventListener('click', check);
+  $('hint').addEventListener('click', hint);
+  $('newEx').addEventListener('click', newEx);
+  $('mode').addEventListener('change', newEx);
+  $('ans').addEventListener('keydown', e => { if (e.key === 'Enter') check(); });
+
+  /* ---------- Onglets ---------- */
+  const tabs = [...document.querySelectorAll('[role=tab]')];
+  let current = 'learn';
+  function setTab(name) {
+    current = name;
+    tabs.forEach(b => b.setAttribute('aria-selected', String(b.dataset.tab === name)));
+    ['learn', 'play', 'train'].forEach(n => { $('p-' + n).hidden = n !== name; });
+    if (name === 'learn') goStep(si);
+    if (name === 'play') playUpdate(true);
+    if (name === 'train') { if (ex.c == null) newEx(); else show(ex.c, exF, true, ex.label); }
+  }
+  tabs.forEach(b => b.addEventListener('click', () => setTab(b.dataset.tab)));
+  document.addEventListener('keydown', e => {
+    const tag = (e.target.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'select' || tag === 'textarea') return;
+    if (current === 'learn') {
+      if (e.key === 'ArrowRight') { if (si < steps.length - 1) goStep(si + 1); }
+      if (e.key === 'ArrowLeft') { if (si > 0) goStep(si - 1); }
+    } else if (current === 'play') {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        rng.value = Math.min(5000, Math.max(0, +rng.value + (e.key === 'ArrowRight' ? 1 : -1)));
+        playUpdate(false);
+      }
+    }
+  });
+
+  /* ---------- Loupe ---------- */
+  const det = $('detail'), lp = $('loupe'), lcC = $('lcC'), ring = $('lRing'), lUse = $('lUse'), lBg = $('lBg');
+  const Z = 3.5, R = 95;
+  function toSvg(e) {
+    const p = det.createSVGPoint(); p.x = e.clientX; p.y = e.clientY;
+    return p.matrixTransform(det.getScreenCTM().inverse());
+  }
+  det.addEventListener('pointermove', e => {
+    if (!$('loupeChk').checked) { lp.style.display = 'none'; return; }
+    const p = toSvg(e);
+    lcC.setAttribute('cx', p.x); lcC.setAttribute('cy', p.y);
+    ring.setAttribute('cx', p.x); ring.setAttribute('cy', p.y);
+    lBg.setAttribute('x', p.x - R); lBg.setAttribute('y', p.y - R);
+    lUse.setAttribute('transform', `translate(${p.x} ${p.y}) scale(${Z}) translate(${-p.x} ${-p.y})`);
+    lp.style.display = '';
+  });
+  det.addEventListener('pointerleave', () => { lp.style.display = 'none'; });
+  $('loupeChk').addEventListener('change', () => { if (!$('loupeChk').checked) lp.style.display = 'none'; });
+
+  /* ---------- Thème ---------- */
+  $('themeBtn').addEventListener('click', () => {
+    const root = document.documentElement;
+    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+  });
+
+  render(0);
+  goStep(0);
+})();
+</script>
+</body>
+</html>
