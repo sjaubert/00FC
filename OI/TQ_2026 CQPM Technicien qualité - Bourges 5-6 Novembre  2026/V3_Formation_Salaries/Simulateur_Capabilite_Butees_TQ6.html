@@ -127,7 +127,7 @@ footer{text-align:center;font-size:12px;color:#777;padding:14px 20px 24px;border
   </div>
   <div class="graph"><h3>Vue de dessus : la voiture et le garage</h3>
     <svg id="g2" viewBox="0 0 900 400"></svg>
-    <div class="leg">Comme dans les diapos 12 et 13. La largeur du garage, c'est la tolérance (le client). La largeur de la voiture, rétroviseurs compris, c'est 6σ (le procédé) ; son milieu est la moyenne m. Cp compare les deux largeurs. Cpk mesure la distance du milieu de la voiture au mur le plus proche, en nombre de 3σ.</div>
+    <div class="leg">Comme dans les diapos 20 et 21. La largeur du garage, c'est la tolérance (le client). La largeur de la voiture, rétroviseurs compris, c'est 6σ (le procédé) ; son milieu est la moyenne m. Cp compare les deux largeurs. Cpk mesure la distance du milieu de la voiture au mur le plus proche, en nombre de 3σ.</div>
   </div>
 </div>
 </div>
@@ -322,7 +322,7 @@ function draw1(){
   [[ti,'TI = '+fr(ti,3)],[ts,'TS = '+fr(ts,3)]].forEach(([x,t])=>{el('line',{x1:X(x),y1:T-6,x2:X(x),y2:H-B,stroke:C.rouge,'stroke-width':2.5},g);el('text',{x:X(x),y:H-B+34,'text-anchor':'middle','font-size':12,'font-weight':'bold',fill:C.rouge},g,t);});
   el('line',{x1:X(m),y1:Y(dens(m,m,s)),x2:X(m),y2:H-B,stroke:C.bleu,'stroke-width':1.5},g);
   el('text',{x:X(m),y:Y(dens(m,m,s))-6,'text-anchor':'middle','font-size':12,'font-weight':'bold',fill:C.bleu},g,'m = '+fr(m,3));
-  // ---- voiture et garage (vue de dessus, comme les diapos 12 et 13)
+  // ---- voiture et garage (vue de dessus, comme les diapos 20 et 21)
   const g2=$('g2');clear(g2);const W2=900,H2=400,top=40,bot=H2-48;
   const sig=G?'s':'σ';
   const mid=(ti+ts)/2,CAR_R=656/384,MIR=0.335;
