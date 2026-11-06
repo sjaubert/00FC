@@ -597,6 +597,7 @@ function detail(d){
 /* ---------- impression ---------- */
 var cibleImpression=null;
 function pc(x){ return Math.round(100*x); }
+function prenom(t){ return String(t||"").toLowerCase().replace(/(^|[\s-])([a-zà-ÿ])/g,function(m,a,c){ return a+c.toUpperCase(); }); }
 function jauge(t){ return '<div class="jauge"><i style="width:'+pc(t)+'%"></i></div>'; }
 function bandeau(){ return '<div class="bandeau"><span><b>Test SPC</b> · Capabilité et cartes de contrôle</span><span>Pôle Formation UIMM Centre-Val de Loire · imprimé le '+new Date().toLocaleDateString("fr-FR")+'</span></div>'; }
 function competences(d){
@@ -616,7 +617,7 @@ function feuilleGroupe(liste){
   h+='<div class="chiffres">'+[["Note moyenne",T.fr(moy,1)+" / 20"],["Note la plus basse",T.fr(Math.min.apply(null,notes),1)],["Note la plus haute",T.fr(Math.max.apply(null,notes),1)]].map(function(c){return '<div class="chiffre"><span>'+c[0]+'</span><b>'+c[1]+'</b></div>';}).join("")+'</div>';
   h+='<h2>Notes</h2><table><thead><tr><th>Stagiaire</th><th>Entreprise</th><th>Date</th><th class="n">Durée</th><th class="n">Cours /'+r0.max.qcm+'</th><th class="n">Capa. /'+r0.max.cap+'</th><th class="n">Cartes /'+r0.max.cartes+'</th><th class="n">Note /20</th><th>Fichier</th></tr></thead><tbody>';
   liste.forEach(function(d){ var r=d._r, s=d.stagiaire;
-    h+='<tr><td>'+UI.esc(s.nom.toUpperCase()+" "+s.prenom)+'</td><td>'+UI.esc(s.entreprise)+'</td><td>'+(d.fin?new Date(d.fin).toLocaleDateString("fr-FR"):"non terminé")+'</td><td class="n">'+duree(d)+'</td><td class="n">'+r.pts.qcm+'</td><td class="n">'+r.pts.cap+'</td><td class="n">'+r.pts.cartes+'</td><td class="n"><b>'+T.fr(r.note20,1)+'</b></td><td>'+(d._integre?'conforme':'<span class="alerte">modifié</span>')+'</td></tr>'; });
+    h+='<tr><td>'+UI.esc(s.nom.toUpperCase()+" "+prenom(s.prenom))+'</td><td>'+UI.esc(s.entreprise)+'</td><td>'+(d.fin?new Date(d.fin).toLocaleDateString("fr-FR"):"non terminé")+'</td><td class="n">'+duree(d)+'</td><td class="n">'+r.pts.qcm+'</td><td class="n">'+r.pts.cap+'</td><td class="n">'+r.pts.cartes+'</td><td class="n"><b>'+T.fr(r.note20,1)+'</b></td><td>'+(d._integre?'conforme':'<span class="alerte">modifié</span>')+'</td></tr>'; });
   h+='</tbody></table>';
   h+='<h2>Ce que le groupe maîtrise, et ce qu\'il faut reprendre</h2><table><thead><tr><th>Question ou compétence</th><th class="n">Réussite</th><th style="width:22%"></th></tr></thead><tbody>'+
     lignesAnalyse(liste).map(function(l){ return '<tr'+(l.taux<0.5?' class="faible"':'')+'><td>'+UI.esc(l.lib)+'</td><td class="n">'+pc(l.taux)+' %</td><td>'+jauge(l.taux)+'</td></tr>'; }).join("")+'</tbody></table>';
@@ -626,7 +627,7 @@ function feuilleGroupe(liste){
 function feuilleStagiaire(d){
   var r=d._r, s=d.stagiaire, comp=competences(d), faibles=comp.filter(function(c){return c.ok/c.n<0.5;});
   var h='<section class="feuille">'+bandeau();
-  h+='<div class="ident"><div><h1>'+UI.esc(s.prenom+" "+s.nom.toUpperCase())+'</h1><p class="sous">'+(s.entreprise?UI.esc(s.entreprise)+' · ':'')+(d.fin?'test terminé le '+new Date(d.fin).toLocaleDateString("fr-FR"):'test non terminé')+' · durée '+duree(d)+'</p></div><div class="note20">'+T.fr(r.note20,1)+' / 20</div></div>';
+  h+='<div class="ident"><div><h1>'+UI.esc(prenom(s.prenom)+" "+s.nom.toUpperCase())+'</h1><p class="sous">'+(s.entreprise?UI.esc(s.entreprise)+' · ':'')+(d.fin?'test terminé le '+new Date(d.fin).toLocaleDateString("fr-FR"):'test non terminé')+' · durée '+duree(d)+'</p></div><div class="note20">'+T.fr(r.note20,1)+' / 20</div></div>';
   if(!d._integre) h+='<p class="alerte">Fichier modifié après la fin du test. Notes recalculées à partir des réponses qu\'il contient.</p>';
   h+='<h2>Résultats par partie</h2><table><thead><tr><th>Partie</th><th class="n">Points</th><th style="width:30%">Réussite</th></tr></thead><tbody>'+
     [["1. Questions de cours",r.pts.qcm,r.max.qcm],["2. Capabilité",r.pts.cap,r.max.cap],["3. Cartes de contrôle",r.pts.cartes,r.max.cartes]].map(function(l){ return '<tr><td>'+l[0]+'</td><td class="n">'+l[1]+' / '+l[2]+'</td><td>'+jauge(l[1]/l[2])+'</td></tr>'; }).join("")+
