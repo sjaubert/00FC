@@ -202,7 +202,7 @@ var CTX_CARTE = [
 ];
 var VERDICTS=["Normal","Alarme"];
 var REGLES=["Aucune","1 point hors des limites","7 points du même côté","6 points qui montent ou descendent","Carte R : point au-dessus de la limite"];
-var REACTIONS=["Ne toucher à rien","Arrêter et appliquer le plan de réaction","Chercher pourquoi le réglage a bougé, puis recentrer","Prévoir l'intervention : usure ou échauffement","Chercher ce qui a changé la dispersion"];
+var REACTIONS=["Ne toucher à rien","Appliquer le plan de réaction du poste","Chercher pourquoi le réglage a bougé, puis recentrer","Prévoir l'intervention : usure ou échauffement","Chercher ce qui a changé la dispersion"];
 function analyse(xb,R){
   var res={R1:[],R2:[],R3:[],RR:[]}, i, run=[0], up=[0], dn=[0];
   xb.forEach(function(v,i){ if(v>LSC||v<LIC) res.R1.push([i]); });

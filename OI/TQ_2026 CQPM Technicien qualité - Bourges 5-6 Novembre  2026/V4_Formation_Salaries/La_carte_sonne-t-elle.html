@@ -157,7 +157,7 @@ th{font-family:var(--f-titre);font-weight:600;font-size:.95rem}
       <thead><tr><th>Ce qu'on voit</th><th>Ce que ça veut dire</th><th>Ce qu'on fait</th></tr></thead>
       <tbody>
         <tr><td>Aucune règle déclenchée</td><td>Le procédé ne varie que par le hasard.</td><td>On ne touche à rien. Régler sans raison augmente la dispersion.</td></tr>
-        <tr><td>1 point hors des limites de la carte X̄</td><td>Cause spéciale probable : quelque chose a changé.</td><td>On arrête et on applique le plan de réaction.</td></tr>
+        <tr><td>1 point hors des limites de la carte X̄</td><td>Cause spéciale probable : quelque chose a changé.</td><td>On applique le plan de réaction du poste : isoler les pièces, vérifier la mesure, chercher la cause. Arrêter ou non la machine dépend de l'entreprise.</td></tr>
         <tr><td>7 points de suite du même côté de la ligne centrale</td><td>Le réglage a probablement bougé.</td><td>On cherche pourquoi, puis on recentre.</td></tr>
         <tr><td>6 points de suite qui montent (ou qui descendent)</td><td>Dérive : usure d'outil, échauffement.</td><td>On prévoit l'intervention avant de sortir des limites.</td></tr>
         <tr><td>Carte R : 1 point au-dessus de sa limite</td><td>La dispersion a changé : outil, matière, bridage, mesure.</td><td>On cherche ce qui a changé la dispersion. Régler ne suffit pas.</td></tr>
@@ -182,7 +182,7 @@ var CONTEXTES = [
   {nom:"Épaisseur de tôle", unite:"mm", c0:2, k:0.005, dec:3, info:"5 mesures par bobine"}
 ];
 var REGLES = ["Aucune", "1 point hors des limites", "7 points du même côté", "6 points qui montent ou descendent", "Carte R : point au-dessus de la limite"];
-var REACTIONS = ["Ne toucher à rien", "Arrêter et appliquer le plan de réaction", "Chercher pourquoi le réglage a bougé, puis recentrer",
+var REACTIONS = ["Ne toucher à rien", "Appliquer le plan de réaction du poste", "Chercher pourquoi le réglage a bougé, puis recentrer",
                  "Prévoir l'intervention : usure ou échauffement", "Chercher ce qui a changé la dispersion"];
 var VERDICTS = ["Normal", "Alarme"];
 var TYPES = ["normal","R1h","R1b","R2h","R2b","R3m","R3d","RR","pPres","p5","p6"];
@@ -368,7 +368,7 @@ function explication(){
   var n1=function(i){return "le prélèvement "+(i+1);};
   switch(t){
     case "normal": return "Aucune règle n'est déclenchée : tous les points sont entre LIC ("+aff(LIC)+") et LSC ("+aff(LSC)+"), pas de série de 7 du même côté, pas de série de 6 qui montent ou descendent, et la carte R reste sous sa limite. Le procédé ne varie que par le hasard : on ne touche à rien.";
-    case "R1h": case "R1b": var i=an.R1[0][0]; return "Pour "+n1(i)+", la moyenne vaut "+aff(xb[i])+" "+ctx.unite+", "+(xb[i]>LSC?"au-dessus de la LSC ("+aff(LSC)+")":"au-dessous de la LIC ("+aff(LIC)+")")+". Un seul point hors des limites suffit : cause spéciale probable. On arrête et on applique le plan de réaction.";
+    case "R1h": case "R1b": var i=an.R1[0][0]; return "Pour "+n1(i)+", la moyenne vaut "+aff(xb[i])+" "+ctx.unite+", "+(xb[i]>LSC?"au-dessus de la LSC ("+aff(LSC)+")":"au-dessous de la LIC ("+aff(LIC)+")")+". Un seul point hors des limites suffit : cause spéciale probable. On applique le plan de réaction du poste : isoler les pièces produites depuis le dernier point sûr, vérifier la mesure, chercher la cause. Arrêter ou non la machine, c'est le plan de réaction de l'entreprise qui le dit.";
     case "R2h": case "R2b": var z=an.R2[0]; return "Les prélèvements "+(z[0]+1)+" à "+(z[z.length-1]+1)+" sont tous "+(xb[z[0]]>LC?"au-dessus":"au-dessous")+" de la ligne centrale : "+z.length+" points de suite (la règle demande 7). Aucun n'est hors limites, mais le réglage a probablement bougé. On cherche pourquoi, puis on recentre.";
     case "R3m": case "R3d": var z3=an.R3[0]; return "Les prélèvements "+(z3[0]+1)+" à "+(z3[z3.length-1]+1)+" "+(xb[z3[1]]>xb[z3[0]]?"montent":"descendent")+" sans interruption : "+z3.length+" points de suite. C'est une dérive (usure, échauffement). On prévoit l'intervention avant que la carte ne sorte des limites.";
     case "RR": var j=an.RR[0][0]; return "La carte X̄ est calme, mais sur la carte R l'étendue du prélèvement "+(j+1)+" vaut "+affR(R[j])+" "+ctx.unite+", au-dessus de sa limite ("+affR(LSCR)+"). Les 5 pièces de ce prélèvement sont trop différentes entre elles : la dispersion a changé. Régler ne suffit pas, on cherche ce qui a changé (outil, matière, bridage, mesure).";
