@@ -450,7 +450,7 @@ return {resume:resume, correction:correction, esc:esc};
   <section class="panneau" id="secGroupe" hidden>
     <div class="entete-groupe">
       <h2>Le groupe</h2>
-      <div class="actions no-print"><button class="btn vide" id="btnCsv">Exporter en CSV</button><button class="btn danger" id="btnVider">Vider la liste</button></div>
+      <div class="actions no-print"><button class="btn plein" id="btnImprimer">Imprimer : groupe et fiches</button><button class="btn vide" id="btnCsv">Exporter en CSV</button><button class="btn danger" id="btnVider">Vider la liste</button></div>
     </div>
     <div class="chiffres" id="chiffres"></div>
     <div class="tableau"><table id="tabGroupe"></table></div>
@@ -463,11 +463,12 @@ return {resume:resume, correction:correction, esc:esc};
   </section>
 
   <section class="panneau" id="secDetail" hidden>
-    <h2 id="titreDetail"></h2>
+    <div class="entete-groupe"><h2 id="titreDetail"></h2><div class="actions no-print"><button class="btn vide" id="btnImprimerFiche">Imprimer cette fiche</button></div></div>
     <div class="tableau" id="resumeDetail"></div>
     <div id="corrDetail" style="margin-top:12px"></div>
   </section>
 </main>
+<div id="impression" aria-hidden="true"></div>
 
 <style>
 .depot{border:2px dashed var(--line);border-radius:8px;padding:22px;text-align:center;background:var(--paper)}
@@ -481,6 +482,38 @@ return {resume:resume, correction:correction, esc:esc};
 .chiffre b{font-family:var(--f-mono);font-size:1.4rem;font-weight:600}
 .lien{background:none;border:none;color:var(--accent);font:inherit;cursor:pointer;text-decoration:underline;padding:0;text-align:left}
 .alerte{color:var(--bad);font-weight:600}
+#impression{display:none}
+#tabGroupe td.n{white-space:nowrap}
+@media print{
+  @page{size:A4 portrait;margin:14mm 14mm 16mm}
+  .barre,main{display:none!important}
+  #impression{display:block;color:#000;background:#fff;font-family:"Segoe UI",Calibri,Arial,sans-serif;font-size:10.5pt;line-height:1.35;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #impression .feuille{break-after:page;page-break-after:always}
+  #impression .feuille:last-child{break-after:auto;page-break-after:auto}
+  #impression .bandeau{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #1F4E79;padding-bottom:4px;margin-bottom:10px;font-size:9pt;color:#444}
+  #impression .bandeau b{color:#1F4E79;font-size:10pt}
+  #impression h1{font-size:16pt;margin:0 0 2px;color:#1F4E79}
+  #impression h2{font-size:12pt;margin:14px 0 6px;color:#1F4E79;break-after:avoid;page-break-after:avoid}
+  #impression .sous{color:#444;margin:0 0 8px}
+  #impression table{width:100%;border-collapse:collapse;font-size:9.5pt}
+  #impression th,#impression td{border-bottom:1px solid #bbb;padding:4px 6px;text-align:left;vertical-align:top}
+  #impression th{font-size:8.5pt;text-transform:uppercase;letter-spacing:.03em;color:#333;background:#EEF2F6}
+  #impression td.n,#impression th.n{text-align:right;white-space:nowrap;font-family:Consolas,"Courier New",monospace}
+  #impression tr{break-inside:avoid;page-break-inside:avoid}
+  #impression .chiffres{display:flex;gap:8px;margin:6px 0 4px}
+  #impression .chiffre{flex:1;border:1px solid #bbb;border-radius:4px;padding:5px 8px;background:#fff}
+  #impression .chiffre span{display:block;font-size:8pt;text-transform:uppercase;color:#444;letter-spacing:.04em}
+  #impression .chiffre b{font-family:Consolas,"Courier New",monospace;font-size:13pt}
+  #impression .jauge{height:7px;background:#ddd;border-radius:3px;overflow:hidden;min-width:60px}
+  #impression .jauge i{display:block;height:100%;background:#1F4E79}
+  #impression .faible td{background:#FBE5E3}
+  #impression .note20{font-size:20pt;font-weight:700;color:#1F4E79;font-family:Consolas,"Courier New",monospace}
+  #impression .ident{display:grid;grid-template-columns:1fr auto;gap:4px 16px;align-items:end;margin-bottom:6px}
+  #impression .ident p{margin:0}
+  #impression .cadre{border:1px solid #999;border-radius:4px;min-height:32mm;padding:6px 8px;margin-top:4px}
+  #impression .alerte{color:#B3261E;font-weight:600}
+  #impression .petit{font-size:8.5pt;color:#444}
+}
 </style>
 
 <script>
@@ -535,8 +568,8 @@ function afficher(){
   $("tabGroupe").querySelectorAll("button.lien").forEach(function(b){ b.addEventListener("click",function(){ detail(dossiers[+b.getAttribute("data-i")]); }); });
   analyse();
 }
-function analyse(){
-  var lignes=[];
+function lignesAnalyse(liste){
+  var lignes=[], dossiers=liste;
   T.QCM.forEach(function(q,k){ var n=0, ok=0;
     dossiers.forEach(function(d){ d._r.qcm.forEach(function(x){ if(x.id===q.id){ n++; if(x.ok) ok++; } }); });
     if(n) lignes.push({lib:"Cours "+(k+1)+" · "+q.q, theme:q.theme, taux:ok/n, n:n}); });
@@ -547,16 +580,72 @@ function analyse(){
   var agr={}; dossiers.forEach(function(d){ d._r.cartes.forEach(function(x){ var f=familles[x.it.type]; agr[f]=agr[f]||{n:0,ok:0}; agr[f].n++; if(x.pts===3) agr[f].ok++; }); });
   Object.keys(agr).forEach(function(f){ lignes.push({lib:"Carte : "+f+" (3 réponses justes)", theme:"Cartes de contrôle", taux:agr[f].ok/agr[f].n, n:agr[f].n}); });
   lignes.sort(function(a,b){ return a.taux-b.taux; });
+  return lignes;
+}
+function analyse(){
+  var lignes=lignesAnalyse(dossiers);
   $("tabAnalyse").innerHTML='<thead><tr><th>Question ou compétence</th><th>Thème</th><th class="n">Réussite</th><th></th></tr></thead><tbody>'+
     lignes.map(function(l){ var p=Math.round(100*l.taux); return '<tr><td>'+UI.esc(l.lib)+'</td><td class="muted">'+UI.esc(l.theme)+'</td><td class="n">'+p+' %</td><td style="width:22%"><div class="jauge"><i style="width:'+p+'%"></i></div></td></tr>'; }).join("")+'</tbody>';
 }
 function detail(d){
-  var s=d.stagiaire; $("secDetail").hidden=false;
+  var s=d.stagiaire; dossierAffiche=d; $("secDetail").hidden=false;
   $("titreDetail").textContent=s.prenom+" "+s.nom+(s.entreprise?" · "+s.entreprise:"")+" · "+T.fr(d._r.note20,1)+" / 20";
   $("resumeDetail").innerHTML=UI.resume(d._r)+(d._integre?"":'<p class="alerte">Attention : ce fichier a été modifié après la fin du test. Les notes ci-dessus sont recalculées à partir des réponses qu\'il contient.</p>');
   UI.correction(d, d._r, $("corrDetail"));
   $("secDetail").scrollIntoView({behavior:"smooth"});
 }
+/* ---------- impression ---------- */
+var cibleImpression=null;
+function pc(x){ return Math.round(100*x); }
+function jauge(t){ return '<div class="jauge"><i style="width:'+pc(t)+'%"></i></div>'; }
+function bandeau(){ return '<div class="bandeau"><span><b>Test SPC</b> · Capabilité et cartes de contrôle</span><span>Pôle Formation UIMM Centre-Val de Loire · imprimé le '+new Date().toLocaleDateString("fr-FR")+'</span></div>'; }
+function competences(d){
+  var r=d._r, l=[], th={};
+  r.qcm.forEach(function(x){ var t=x.q.theme; th[t]=th[t]||{n:0,ok:0}; th[t].n++; if(x.ok) th[t].ok++; });
+  Object.keys(th).forEach(function(t){ l.push({lib:"Cours : "+t, ok:th[t].ok, n:th[t].n}); });
+  [["okCp","Capabilité : calcul de Cp"],["okCpk","Capabilité : calcul de Cpk"],["okDiag","Capabilité : diagnostic"],["okDec","Capabilité : décision"]].forEach(function(c){
+    var n=0, ok=0; r.cap.forEach(function(x){ n++; if(x.ok[c[0]]) ok++; }); if(n) l.push({lib:c[1], ok:ok, n:n}); });
+  var nv=0, okv=0, nr=0, okr=0, na=0, oka=0;
+  r.cartes.forEach(function(x){ nv++; if(x.ok[0]) okv++; nr++; if(x.ok[1]) okr++; na++; if(x.ok[2]) oka++; });
+  if(nv){ l.push({lib:"Cartes : la carte sonne-t-elle ?", ok:okv, n:nv}); l.push({lib:"Cartes : identifier la règle", ok:okr, n:nr}); l.push({lib:"Cartes : choisir la réaction", ok:oka, n:na}); }
+  return l;
+}
+function feuilleGroupe(liste){
+  var notes=liste.map(function(d){return d._r.note20;}), moy=notes.reduce(function(a,b){return a+b;},0)/notes.length, r0=liste[0]._r;
+  var h='<section class="feuille">'+bandeau()+'<h1>Résultats du groupe</h1><p class="sous">'+liste.length+' stagiaire'+(liste.length>1?'s':'')+'. Notes recalculées à partir des réponses.</p>';
+  h+='<div class="chiffres">'+[["Note moyenne",T.fr(moy,1)+" / 20"],["Note la plus basse",T.fr(Math.min.apply(null,notes),1)],["Note la plus haute",T.fr(Math.max.apply(null,notes),1)]].map(function(c){return '<div class="chiffre"><span>'+c[0]+'</span><b>'+c[1]+'</b></div>';}).join("")+'</div>';
+  h+='<h2>Notes</h2><table><thead><tr><th>Stagiaire</th><th>Entreprise</th><th>Date</th><th class="n">Durée</th><th class="n">Cours /'+r0.max.qcm+'</th><th class="n">Capa. /'+r0.max.cap+'</th><th class="n">Cartes /'+r0.max.cartes+'</th><th class="n">Note /20</th><th>Fichier</th></tr></thead><tbody>';
+  liste.forEach(function(d){ var r=d._r, s=d.stagiaire;
+    h+='<tr><td>'+UI.esc(s.nom.toUpperCase()+" "+s.prenom)+'</td><td>'+UI.esc(s.entreprise)+'</td><td>'+(d.fin?new Date(d.fin).toLocaleDateString("fr-FR"):"non terminé")+'</td><td class="n">'+duree(d)+'</td><td class="n">'+r.pts.qcm+'</td><td class="n">'+r.pts.cap+'</td><td class="n">'+r.pts.cartes+'</td><td class="n"><b>'+T.fr(r.note20,1)+'</b></td><td>'+(d._integre?'conforme':'<span class="alerte">modifié</span>')+'</td></tr>'; });
+  h+='</tbody></table>';
+  h+='<h2>Ce que le groupe maîtrise, et ce qu\'il faut reprendre</h2><table><thead><tr><th>Question ou compétence</th><th class="n">Réussite</th><th style="width:22%"></th></tr></thead><tbody>'+
+    lignesAnalyse(liste).map(function(l){ return '<tr'+(l.taux<0.5?' class="faible"':'')+'><td>'+UI.esc(l.lib)+'</td><td class="n">'+pc(l.taux)+' %</td><td>'+jauge(l.taux)+'</td></tr>'; }).join("")+'</tbody></table>';
+  h+='<p class="petit">Lignes surlignées : moins de 50 % de réussite dans le groupe.</p></section>';
+  return h;
+}
+function feuilleStagiaire(d){
+  var r=d._r, s=d.stagiaire, comp=competences(d), faibles=comp.filter(function(c){return c.ok/c.n<0.5;});
+  var h='<section class="feuille">'+bandeau();
+  h+='<div class="ident"><div><h1>'+UI.esc(s.prenom+" "+s.nom.toUpperCase())+'</h1><p class="sous">'+(s.entreprise?UI.esc(s.entreprise)+' · ':'')+(d.fin?'test terminé le '+new Date(d.fin).toLocaleDateString("fr-FR"):'test non terminé')+' · durée '+duree(d)+'</p></div><div class="note20">'+T.fr(r.note20,1)+' / 20</div></div>';
+  if(!d._integre) h+='<p class="alerte">Fichier modifié après la fin du test. Notes recalculées à partir des réponses qu\'il contient.</p>';
+  h+='<h2>Résultats par partie</h2><table><thead><tr><th>Partie</th><th class="n">Points</th><th style="width:30%">Réussite</th></tr></thead><tbody>'+
+    [["1. Questions de cours",r.pts.qcm,r.max.qcm],["2. Capabilité",r.pts.cap,r.max.cap],["3. Cartes de contrôle",r.pts.cartes,r.max.cartes]].map(function(l){ return '<tr><td>'+l[0]+'</td><td class="n">'+l[1]+' / '+l[2]+'</td><td>'+jauge(l[1]/l[2])+'</td></tr>'; }).join("")+
+    '<tr><td><b>Total</b></td><td class="n"><b>'+r.total+' / '+r.totalMax+'</b></td><td><b>'+T.fr(r.note20,1)+' / 20</b></td></tr></tbody></table>';
+  h+='<h2>Détail par compétence</h2><table><thead><tr><th>Compétence</th><th class="n">Juste</th><th style="width:30%">Réussite</th></tr></thead><tbody>'+
+    comp.map(function(c){ return '<tr'+(c.ok/c.n<0.5?' class="faible"':'')+'><td>'+UI.esc(c.lib)+'</td><td class="n">'+c.ok+' / '+c.n+'</td><td>'+jauge(c.ok/c.n)+'</td></tr>'; }).join("")+'</tbody></table>';
+  h+='<h2>À retravailler</h2><p>'+(faibles.length ? faibles.map(function(c){return UI.esc(c.lib);}).join(" ; ")+'.' : 'Aucune compétence sous 50 % de réussite.')+'</p>';
+  h+='<h2>Observations du formateur</h2><div class="cadre"></div></section>';
+  return h;
+}
+function construireImpression(){
+  var box=$("impression"); if(!dossiers.length){ box.innerHTML=""; return; }
+  box.innerHTML = cibleImpression ? feuilleStagiaire(cibleImpression) : feuilleGroupe(dossiers)+dossiers.map(feuilleStagiaire).join("");
+}
+window.addEventListener("beforeprint", construireImpression);
+window.addEventListener("afterprint", function(){ cibleImpression=null; });
+$("btnImprimer").addEventListener("click",function(){ cibleImpression=null; construireImpression(); window.print(); });
+$("btnImprimerFiche").addEventListener("click",function(){ cibleImpression=dossierAffiche; construireImpression(); window.print(); });
+var dossierAffiche=null;
 $("btnVider").addEventListener("click",function(){ dossiers=[]; $("msgImport").textContent="Liste vidée."; afficher(); });
 $("btnCsv").addEventListener("click",function(){
   var q=function(x){ return '"'+String(x===undefined||x===null?"":x).replace(/"/g,'""')+'"'; };
@@ -567,7 +656,7 @@ $("btnCsv").addEventListener("click",function(){
   var blob=new Blob(["﻿"+l.join("\r\n")],{type:"text/csv;charset=utf-8"}), a=document.createElement("a");
   a.href=URL.createObjectURL(blob); a.download="Resultats_Test_SPC_"+new Date().toISOString().slice(0,10)+".csv"; document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); },500);
 });
-window.__formateur={charger:function(objs){ objs.forEach(function(d){ d._fichier="test"; d._integre=(d.code===T.sceller(d)); d._r=T.corriger(d); dossiers.push(d); }); afficher(); }};
+window.__formateur={impression:function(cible){ cibleImpression=cible===undefined?null:dossiers[cible]; construireImpression(); }, charger:function(objs){ objs.forEach(function(d){ d._fichier="test"; d._integre=(d.code===T.sceller(d)); d._r=T.corriger(d); dossiers.push(d); }); afficher(); }};
 })();
 </script>
 
