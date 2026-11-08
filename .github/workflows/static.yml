@@ -31,6 +31,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Clean unused and oversized files before Pages packaging
+        run: |
+          rm -rf .agent .agents .claude .gemini
+          rm -f index_sauvegarde_*.html
+          rm -rf "OI/a5_mrprb/Ressources/Methodologie_de_resolution_de_probleme"
+          rm -rf "OI/a7_flexsim/Supports_Enseignement_FlexSim_24.0"
+          rm -f "OI/a7_flexsim/AppliedSimulationEdition5.pdf"
+          rm -rf "OI/jeu_puissance_7/Clé USB Puissance 7"
+          rm -f "OI/jeu_puissance_7/Project_P7/Puissance 7/Guide d'animation PUISSANCE 7.pptx"
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
@@ -41,3 +50,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          timeout: 1200000
