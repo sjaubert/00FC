@@ -1,0 +1,54 @@
+\documentclass[10pt,a4paper]{article}
+\input{charte.tex}
+\pied{TP1 · L'instrument est-il capable ? · guide formateur}
+\begin{document}
+\thispagestyle{fancy}
+\bandeau{Guide formateur · ne pas distribuer · TP en réserve}{TP1 · L'instrument est-il capable ?}{Étude de type 1, procédure 1 du livret Bosch n° 10}
+
+\titre{1. Préparation}
+\begin{itemize}
+\item \textbf{Cale de référence} : de valeur certifiée proche du milieu de la tolérance (11,925 mm), comme le recommande le livret (§ 4.1). Si besoin, composer la valeur avec plusieurs cales adhérées ; la valeur de référence est alors la somme des valeurs certifiées.
+\item \textbf{Incertitude d'étalonnage} : le livret demande $U_{cal} < 0{,}1\,T = 0{,}015$ mm (idéalement $0{,}01\,T$). Une cale certifiée est très en dessous.
+\item Laisser la cale et les instruments à température de la salle au moins une heure avant. Vérifier le zéro du micromètre et du pied à coulisse.
+\item Ouvrir la page « L'instrument est-il capable ? ». Garder la fiche « Le moyen de mesure est-il capable ? » à portée.
+\end{itemize}
+
+\titre{2. Déroulé (45 à 60 min)}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule
+\textbf{Durée} & \textbf{Étape} & \textbf{Points d'attention}\\\midrule
+5 min & Question, rappel & Fiche stagiaire p. 1, § 1 et 2. Faire noter la valeur certifiée.\\
+15 min & Partie A, micromètre & Cliquet, cale retirée puis remise à chaque mesure, toutes les valeurs notées.\\
+10 min & Partie B, pied à coulisse & Même protocole. Les valeurs vont souvent se répéter : c'est l'effet de la résolution.\\
+10 min & Saisie, calculs & Une saisie par série dans la page, avec la bonne résolution.\\
+10 min & Questions, bilan & Fiche stagiaire p. 2, § 6. Sylvain traite le défi.\\
+\bottomrule
+\end{tabularx}
+
+\titre{3. Repères chiffrés pour la butée ($T = 0{,}15$ mm)}
+\begin{itemize}
+\item \textbf{Résolution} : micromètre $0{,}001/0{,}15 = 0{,}67$ \% ; pied à coulisse $0{,}02/0{,}15 = 13{,}3$ \%. Le pied à coulisse est écarté avant tout calcul (livret, fig. 3).
+\item \textbf{Seuil de dispersion} : $C_g \ge 1{,}33 \iff s \le \dfrac{0{,}2 \times 0{,}15}{6 \times 1{,}33} \approx 0{,}0038$ mm.
+\item \textbf{Biais toléré} : $C_{gk} \ge 1{,}33 \iff \lvert\bar x - x_m\rvert \le 0{,}015 - 3{,}99\,s$. Par exemple, avec $s = 0{,}002$ mm, le biais doit rester sous 0,007 mm.
+\item \textbf{Contrôle de la page} : le livret donne $T = 0{,}060$ ; $s = 0{,}00099488$ ; biais $= 0{,}0011$, d'où $C_g = 2{,}01$ et $C_{gk} = 1{,}64$ (§ 4.1, p. 11). La page retrouve ces valeurs.
+\end{itemize}
+
+\titre{4. Réponses attendues}
+\begin{description}[leftmargin=0pt,style=nextline,itemsep=3pt]
+\item[Q1 (fiche stagiaire p. 2)] Micromètre 0,67 \% : passe. Pied à coulisse 13,3 \% : ne passe pas (critère des 5 \%, livret fig. 3).
+\item[Q2 (p. 2)] Lecture de $C_g$ et $C_{gk}$ dans la page ; capable si les deux sont au moins égaux à 1,33 (livret § 4.1). Faire justifier par les deux indices, pas par un seul.
+\item[Q3 (p. 2)] Le pied à coulisse est écarté par sa résolution, quel que soit $C_g$. Si toutes les mesures sont identiques, $s = 0$ et la page affiche un $C_g$ infini : ce n'est pas un instrument parfait, c'est un instrument trop grossier pour voir la dispersion. La page le signale.
+\item[Q4 (p. 2)] Mesures groupées mais décalées de la vraie valeur : problème de \textbf{justesse}. Vérifier le zéro, l'étalonnage, la propreté des touches, la façon de poser la cale, la température.
+\item[Q5 (p. 2)] Le micromètre, si $C_g$ et $C_{gk}$ passent. Le pied à coulisse ne convient pas pour cette tolérance, ce qui ne l'empêche pas de convenir pour une tolérance plus large.
+\item[Défi a (p. 2)] Calculer $\lvert\bar x - x_m\rvert / s$ et comparer à 0,413 (25 mesures). Équivalence :
+$C_g - C_{gk} = \dfrac{0{,}1\,T}{3s} - \dfrac{0{,}1\,T - \lvert\bar x - x_m\rvert}{3s} = \dfrac{1}{3}\,\dfrac{\lvert\bar x - x_m\rvert}{s} \le \dfrac{0{,}413}{3} \approx 0{,}138$ (livret, annexe C.1).
+Le livret ajoute qu'avec un étalon et un instrument de très bonne qualité ($s$ très petit), ce test peut rejeter un biais techniquement négligeable : il ne remplace pas le jugement.
+\item[Défi b (p. 2)] $C_g \ge 1{,}33 \iff T \ge 39{,}9\,s$ ; $C_{gk} \ge 1{,}33 \iff T \ge 10\,\lvert\bar x - x_m\rvert + 39{,}9\,s$. La seconde condition contient la première :
+$T_{\min} = 10\,\lvert\bar x - x_m\rvert + 39{,}9\,s$. Vérification sur l'exemple du livret : $T_{\min} = 0{,}011 + 0{,}0397 = 0{,}0507 < 0{,}060$, cohérent avec $C_{gk} = 1{,}64$.
+\item[Défi c (p. 2)] Si le biais change nettement d'un bout à l'autre de la tolérance, l'instrument n'est pas linéaire sur cette plage. Le livret précise que cette méthode (type 1 répété) ne renseigne que sur les points testés, pas entre eux (§ 4.4, note 1).
+\end{description}
+
+\vfill
+{\footnotesize\color{uimm}\textbf{Sources.} Robert Bosch GmbH, \emph{Booklet 10 : Capability of Measurement and Test Processes}, édition novembre 2019 : § 4.1 et exemple p. 11, fig. 3, § 4.4, annexe C.1. Calculs de ce guide vérifiés indépendamment.}
+\end{document}

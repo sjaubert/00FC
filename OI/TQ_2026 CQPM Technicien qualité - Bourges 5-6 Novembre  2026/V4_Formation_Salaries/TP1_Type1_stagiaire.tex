@@ -1,0 +1,94 @@
+\documentclass[10pt,a4paper]{article}
+\input{charte.tex}
+\pied{TP1 · L'instrument est-il capable ? · fiche stagiaire}
+\begin{document}
+\thispagestyle{fancy}
+\bandeau{Travaux pratiques · Capabilité du moyen de mesure}{TP1 · L'instrument est-il capable ?}{Étude de type 1 sur cale étalon, méthode Bosch}
+
+\begin{tcolorbox}[boite]
+\textbf{La question.} Pour contrôler le diamètre de la butée (tolérance $T = 0{,}15$ mm), peut-on se fier au \textbf{micromètre} ? Et au \textbf{pied à coulisse} ?
+On mesure plusieurs fois une cale étalon dont on connaît la vraie valeur, puis on calcule Cg et Cgk.
+\end{tcolorbox}
+
+\titre{1. Le rappel}
+\begin{minipage}[c]{0.52\linewidth}
+\[C_g=\frac{0{,}2\,T}{6\,s}\qquad C_{gk}=\frac{0{,}1\,T-\lvert\bar x-x_m\rvert}{3\,s}\]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.45\linewidth}\small
+$\bar x$ : moyenne des mesures ; $s$ : écart-type ;\\ $x_m$ : valeur certifiée de la cale.\\
+\textbf{Capable si $C_g \ge 1{,}33$ et $C_{gk} \ge 1{,}33$.}
+\end{minipage}
+
+{\small Avant tout calcul : la résolution de l'instrument doit rester sous 5 \% de $T$. Voir la fiche « Le moyen de mesure est-il capable ? ».}
+
+\titre{2. Le matériel}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Cale étalon & Valeur certifiée $x_m$ = \rule{25mm}{0.3pt} mm \quad Certificat n° \rule{25mm}{0.3pt}\\
+Micromètre & Résolution : 0,001 mm \quad N° \rule{25mm}{0.3pt}\\
+Pied à coulisse & Résolution : 0,02 mm (au 1/50) \quad N° \rule{25mm}{0.3pt}\\
+Calculs & Page web « L'instrument est-il capable ? »\\
+\end{tabularx}
+
+\titre{3. Le protocole}
+\begin{enumerate}[label=\textcolor{cyan}{\textbf{\arabic*.}},leftmargin=15pt]
+\item En binôme : l'un mesure, l'autre note. On échange les rôles en changeant d'instrument.
+\item Nettoyer la cale. La tenir par les bords, sans la serrer dans la main : la chaleur des doigts la dilate.
+\item \textbf{Partie A : micromètre.} Mesurer la cale \textbf{25 fois} (le livret Bosch demande 50 mesures, au moins 25). Utiliser le cliquet. \textbf{Retirer puis remettre} la cale avant chaque mesure.
+\item \textbf{Partie B : pied à coulisse.} Même chose, 25 mesures.
+\item Noter toutes les valeurs, \textbf{n'en supprimer aucune}, même « bizarre ».
+\item Saisir chaque série dans la page, avec $T = 0{,}15$, la valeur certifiée et la résolution de l'instrument.
+\end{enumerate}
+
+\titre{4. Les relevés (mm)}
+\renewcommand{\arraystretch}{1.6}
+\textbf{Partie A : micromètre}\hfill Mesuré par \rule{30mm}{0.3pt}\\[2pt]
+\begin{tabularx}{\linewidth}{|*{10}{>{\centering\arraybackslash}X|}}\hline
+\scriptsize 1 & & \scriptsize 2 & & \scriptsize 3 & & \scriptsize 4 & & \scriptsize 5 & \\\hline
+\scriptsize 6 & & \scriptsize 7 & & \scriptsize 8 & & \scriptsize 9 & & \scriptsize 10 & \\\hline
+\scriptsize 11 & & \scriptsize 12 & & \scriptsize 13 & & \scriptsize 14 & & \scriptsize 15 & \\\hline
+\scriptsize 16 & & \scriptsize 17 & & \scriptsize 18 & & \scriptsize 19 & & \scriptsize 20 & \\\hline
+\scriptsize 21 & & \scriptsize 22 & & \scriptsize 23 & & \scriptsize 24 & & \scriptsize 25 & \\\hline
+\end{tabularx}
+
+\vspace{6pt}
+\textbf{Partie B : pied à coulisse}\hfill Mesuré par \rule{30mm}{0.3pt}\\[2pt]
+\begin{tabularx}{\linewidth}{|*{10}{>{\centering\arraybackslash}X|}}\hline
+\scriptsize 1 & & \scriptsize 2 & & \scriptsize 3 & & \scriptsize 4 & & \scriptsize 5 & \\\hline
+\scriptsize 6 & & \scriptsize 7 & & \scriptsize 8 & & \scriptsize 9 & & \scriptsize 10 & \\\hline
+\scriptsize 11 & & \scriptsize 12 & & \scriptsize 13 & & \scriptsize 14 & & \scriptsize 15 & \\\hline
+\scriptsize 16 & & \scriptsize 17 & & \scriptsize 18 & & \scriptsize 19 & & \scriptsize 20 & \\\hline
+\scriptsize 21 & & \scriptsize 22 & & \scriptsize 23 & & \scriptsize 24 & & \scriptsize 25 & \\\hline
+\end{tabularx}
+
+\newpage
+\titre{5. Les résultats}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabularx}{\linewidth}{|l|*{6}{>{\centering\arraybackslash}X|}}\hline
+ & \textbf{Résolution en \% de T} & \textbf{$\bar x$} & \textbf{$s$} & \textbf{Biais $\bar x - x_m$} & \textbf{$C_g$} & \textbf{$C_{gk}$}\\\hline
+Micromètre & & & & & & \\\hline
+Pied à coulisse & & & & & & \\\hline
+\end{tabularx}
+
+\titre{6. Les questions}
+\begin{enumerate}[label=\textcolor{cyan}{\textbf{Q\arabic*.}},leftmargin=22pt]
+\item Calculez la résolution de chaque instrument en pourcentage de $T$. Lequel passe le critère des 5 \% ?\reponse
+\item Le micromètre est-il capable pour la butée ? Justifiez avec $C_g$ et $C_{gk}$.\reponse
+\item Le pied à coulisse est-il capable ? Que penser de son résultat si toutes ses mesures sont identiques (que vaut alors $s$) ?\reponse[2]
+\item Pour l'un des instruments, $C_g \ge 1{,}33$ mais $C_{gk} < 1{,}33$. Que se passe-t-il ? Que faut-il vérifier ?\reponse[2]
+\item Quel instrument choisir pour contrôler la butée au poste ? Pourquoi ?\reponse
+\end{enumerate}
+
+\begin{tcolorbox}[defi]
+\begin{enumerate}[label=\textbf{\alph*.},leftmargin=14pt]
+\item \textbf{Le biais est-il réel ?} Le livret (annexe C.1) considère le biais comme négligeable, au niveau de confiance de 95 \%, si
+\[\frac{\lvert\bar x-x_m\rvert}{s}\le 0{,}413\ \text{pour 25 mesures}\qquad(0{,}284\ \text{pour 50 mesures}).\]
+Appliquez ce test au micromètre. Montrez qu'il revient à vérifier $C_g - C_{gk} \le 0{,}138$ pour 25 mesures.
+\item \textbf{La plus petite tolérance contrôlable.} À partir des formules de $C_g$ et $C_{gk}$, exprimez la plus petite tolérance $T_{\min}$ pour laquelle le micromètre reste capable, en fonction de $s$ et du biais. Calculez-la avec vos mesures.
+\item \textbf{Aux deux bouts de la tolérance.} Si des cales le permettent, refaites la partie A avec une cale proche de 11,85 mm puis de 12,00 mm. Le biais est-il le même aux deux bouts ? (Le livret, § 4.4, recommande ces deux points quand on ne dispose que de deux étalons.)
+\end{enumerate}
+\end{tcolorbox}
+
+\vfill
+{\footnotesize\color{uimm}\textbf{Source.} Robert Bosch GmbH, \emph{Booklet 10 : Capability of Measurement and Test Processes}, édition novembre 2019 : § 4.1 (procédure 1), fig. 3 (résolution), § 4.4 (linéarité) et annexe C.1 (signification du biais).}
+\end{document}
