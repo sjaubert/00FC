@@ -35,6 +35,7 @@ jobs:
         run: |
           rm -rf .agent .agents .claude .gemini
           rm -f index_sauvegarde_*.html
+          find . -type f -name "*Outlook*.pdf" -delete
           rm -rf "OI/a5_mrprb/Ressources/Methodologie_de_resolution_de_probleme"
           rm -rf "OI/a7_flexsim/Supports_Enseignement_FlexSim_24.0"
           rm -f "OI/a7_flexsim/AppliedSimulationEdition5.pdf"
@@ -50,5 +51,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          timeout: 1200000
