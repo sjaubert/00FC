@@ -1,0 +1,271 @@
+\documentclass[10pt,a4paper]{article}
+\input{commun.tex}
+\pied{Ellistat Data Analysis · six séances · livret stagiaire}
+\begin{document}
+\thispagestyle{fancy}
+\bandeau{Travaux pratiques · Maîtrise statistique des procédés}{Six séances sur Ellistat}{Cartes de contrôle, capabilité et moyen de mesure avec Ellistat Data Analysis (version web)}
+
+\begin{tcolorbox}[boite]
+\textbf{La règle des six séances : prédire, faire, comparer.} Avant chaque calcul, vous écrivez ce que vous attendez. Ellistat calcule. Vous comparez avec un calcul à la main ou avec une page web de la formation. Quand les chiffres diffèrent, on cherche pourquoi : c'est là qu'on apprend. Aucune séance ne demande Excel : les fichiers sont prêts à importer.
+\end{tcolorbox}
+
+\titre{Le programme}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\linewidth}{@{}l X l@{}}
+\toprule
+\textbf{Séance} & \textbf{La question} & \textbf{Page}\\\midrule
+S0 & Une grille, des lignes, des sous-groupes : comment Ellistat lit-il nos mesures ? & \pageref{s0}\\
+S1 & La carte d'Ellistat dit-elle la même chose que la nôtre ? & \pageref{s1}\\
+S2 & La carte sonne : que se passe-t-il, que fait-on ? & \pageref{s2}\\
+S3 & On ne mesure pas, on compte : quelle carte, quelles limites ? & \pageref{s3}\\
+S4 & Peut-on faire confiance à l'instrument et aux opérateurs ? & \pageref{s4}\\
+S5 & Du moyen de mesure à la décision : un dossier complet & \pageref{s5}\\
+\bottomrule
+\end{tabularx}
+
+\titre{Trois idées à garder}
+\begin{itemize}
+\item \textbf{Une ligne de la grille = un sous-groupe}, c'est-à-dire des pièces prélevées ensemble. Les pièces d'un sous-groupe sont rangées sur plusieurs colonnes côte à côte.
+\item \textbf{« Répétition »} : réglage de la première de ces colonnes. Il indique combien de colonnes forment le sous-groupe. Le mot est trompeur : il a été pensé pour plusieurs mesures d'une même pièce, mais le calcul est le même pour 5 pièces consécutives.
+\item \textbf{Court terme et global.} La dispersion à l'intérieur des sous-groupes donne Cp et Cpk. La dispersion de toutes les mesures donne Pp et Ppk. L'écart entre les deux révèle les dérives.
+\end{itemize}
+
+\titre{Les fichiers}
+{\small Tous dans le dossier \fichier{donnees} de la page « Six séances sur Ellistat ». Format Excel, une feuille par fichier, importés directement dans Ellistat sans les ouvrir.}\par
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.56\linewidth} X@{}}
+\fichier{S0\_S1\_Butees\_6x5.xlsx} & 30 butées, 6 sous-groupes de 5 (S0, S1)\\
+\fichier{S1\_Butees\_mauvais\_decoupage.xlsx} & les mêmes 30 butées, regroupées autrement (S1)\\
+\fichier{S1\_S5\_Butees\_10x5.xlsx} & 50 butées, 10 sous-groupes de 5 (S1, S5)\\
+\fichier{S2\_Pression.xlsx}, \fichier{S2\_Dimension.xlsx}, \fichier{S2\_Liquide.xlsx} & trois enquêtes (S2)\\
+\fichier{S3\_Inspection.xlsx} & 120 lots de 150 pièces contrôlées (S3)\\
+\fichier{S4\_Justesse\_Bosch\_p11.xlsx}, \fichier{S4\_RR\_Bosch\_p14.xlsx} & exemples du livret Bosch n° 10 (S4)\\
+\fichier{S4\_Linearite\_simule.xlsx} & 5 cales, 10 mesures chacune, données simulées (S4)\\
+\fichier{S5\_Justesse\_cale12\_simule.xlsx}, \fichier{S5\_RR\_butees\_simule.xlsx} & dossier de synthèse, données simulées (S5)\\
+\end{tabularx}
+
+% ------------------------------------------------------------------ S0
+\newpage
+\label{s0}
+\seance{S0}{Prise en main}{Une grille, des lignes, des sous-groupes}
+
+\textbf{Objectif.} Importer les butées dans un projet, régler la grille pour qu'Ellistat lise 6 sous-groupes de 5 pièces, et saisir la tolérance 11,85 / 12,00 mm.
+
+\begin{tcolorbox}[pas]
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=14pt]
+\item Page des projets : créer un projet à votre nom, par exemple « Butées Dupont ».
+\item Ouvrir la grille du projet. Dans le menu en haut à droite de la grille : \menu{Importer depuis Excel}, puis choisir \fichier{S0\_S1\_Butees\_6x5.xlsx}.
+\item Vérifier la grille : 6 lignes, 6 colonnes (Echantillon, P1 à P5). Chaque colonne porte un badge de type : les mesures doivent être numériques.
+\item Ouvrir le panneau de la colonne \textbf{P1} : régler \menu{Répétition} sur 5, puis saisir tolérance min 11,85 et tolérance max 12,00.
+\item \menu{Statistique descriptive} > \menu{Détail} : cocher la caractéristique. Ne pas cocher la colonne « Echantillon » : ce n'est qu'un numéro.
+\end{enumerate}
+\end{tcolorbox}
+
+\textbf{Prédire avant d'ouvrir l'écran Détail}
+\begin{enumerate}[label=\textcolor{cyan}{\textbf{Q\arabic*.}},leftmargin=22pt]
+\item Combien de points doit compter la carte des moyennes ? Combien de pièces derrière chaque point ?\reponse
+\item Dans cette grille, que représente une ligne ? Que représente une colonne ?\reponse
+\end{enumerate}
+\textbf{Constater}
+\begin{enumerate}[label=\textcolor{cyan}{\textbf{Q\arabic*.}},leftmargin=22pt,resume]
+\item La carte compte-t-elle le nombre de points prévu ? Relevez la moyenne générale affichée.\reponse
+\item Remettez \menu{Répétition} à 1 sur P1. Que devient la carte ? Pourquoi ? Puis remettez 5.\reponse[2]
+\item Le mot « Répétition » désigne d'habitude plusieurs mesures d'une même pièce. Pourquoi peut-on l'utiliser ici pour 5 pièces différentes ?\reponse[2]
+\end{enumerate}
+
+\begin{tcolorbox}[piege]
+Un fichier qui contient des lignes vides (prévues pour des mesures futures) crée des sous-groupes vides dans la grille. Vérifiez toujours le nombre de lignes après l'import.
+\end{tcolorbox}
+
+% ------------------------------------------------------------------ S1
+\newpage
+\label{s1}
+\seance{S1}{Comparer}{La carte d'Ellistat dit-elle la même chose que la nôtre ?}
+
+\textbf{Objectif.} Calculer à la main les limites de la carte $\bar X / R$ des 30 butées, puis les comparer à celles d'Ellistat. Lire Cp, Cpk, Pp et Ppk. Comprendre pourquoi les chiffres diffèrent un peu, et pourquoi la décision ne change pas.
+
+\textbf{A. À la main (calculatrice).} Complétez le tableau à partir de \fichier{S0\_S1\_Butees\_6x5.xlsx} (valeurs affichées dans la grille d'Ellistat).
+
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\linewidth}{|l|*{6}{>{\centering\arraybackslash}X|}}\hline
+\textbf{Sous-groupe} & 1 & 2 & 3 & 4 & 5 & 6\\\hline
+Moyenne $\bar x$ & & & & & & \\\hline
+Étendue $R$ & & & & & & \\\hline
+\end{tabularx}
+
+\vspace{3pt}
+$\bar{\bar X}$ = \champ{20mm} \qquad $\bar R$ = \champ{20mm}\par\vspace{4pt}
+$LCS_{\bar X} = \bar{\bar X} + 0{,}577\,\bar R$ = \champ{20mm} \quad $LCI_{\bar X}$ = \champ{20mm}\par\vspace{4pt}
+$LCS_R = 2{,}114\,\bar R$ = \champ{18mm}
+
+{\small Coefficients pour des sous-groupes de 5 pièces : $A_2 = 0{,}577$, $D_4 = 2{,}114$, $d_2 = 2{,}326$ (limites à 3 écarts-types).}
+
+\textbf{B. Dans Ellistat.} Écran \menu{Détail} de la séance S0, référentiel \menu{Centré Moyenne}.
+
+\renewcommand{\arraystretch}{1.4}
+\begin{tabularx}{\linewidth}{|X|c|c|}\hline
+ & \textbf{Votre calcul} & \textbf{Ellistat}\\\hline
+Limite supérieure de la carte des moyennes & & \\\hline
+Limite inférieure de la carte des moyennes & & \\\hline
+Limite supérieure de la carte des étendues & & \\\hline
+Écart-type court terme & $\bar R / d_2$ = & \\\hline
+Cp = $(TS - TI) / (6\,\sigma_{\text{court terme}})$ & & \\\hline
+Cpk & & \\\hline
+Pp \quad / \quad Ppk & & \\\hline
+\end{tabularx}
+
+\begin{enumerate}[label=\textcolor{cyan}{\textbf{Q\arabic*.}},leftmargin=22pt]
+\item Les limites diffèrent un peu. Les mêmes points sortent-ils des limites dans les deux calculs ?\reponse
+\item Ellistat estime l'écart-type court terme autrement que $\bar R / d_2$. Lequel des deux utilise toutes les mesures du sous-groupe, et pas seulement la plus grande et la plus petite ?\reponse[2]
+\item Cp = 1,22 mais Cpk est bien plus faible. Que dit l'histogramme sur le centrage ? Passez en \menu{Centré Cible} : que montre la carte ?\reponse[2]
+\item Pp est plus petit que Cp. Que s'est-il passé entre les sous-groupes ?\reponse
+\end{enumerate}
+
+\textbf{C. Le mauvais découpage} (pour aller plus loin). Importez \fichier{S1\_Butees\_mauvais\_decoupage.xlsx} dans une nouvelle grille. Ce sont les mêmes 30 valeurs, mais chaque ligne regroupe la 1\textsuperscript{re} pièce (puis la 2\textsuperscript{e}…) de chacun des 6 prélèvements : des pièces fabriquées à des moments différents. Réglez \menu{Répétition} sur 6.
+\begin{enumerate}[label=\textcolor{cyan}{\textbf{Q\arabic*.}},leftmargin=22pt,resume]
+\item Prédiction : Cp va-t-il monter ou baisser ? Pp va-t-il changer ?\reponse
+\item Relevez Cp et Pp. Expliquez avec la phrase : « la dérive est entrée dans le court terme ».\reponse[2]
+\end{enumerate}
+
+\newpage
+\textbf{D. Cinquante butées.} Importez \fichier{S1\_S5\_Butees\_10x5.xlsx} (10 sous-groupes, Répétition = 5, même tolérance).
+\begin{enumerate}[label=\textcolor{cyan}{\textbf{Q\arabic*.}},leftmargin=22pt,resume]
+\item Quels sous-groupes sortent des limites ? Quelle forme a la courbe des moyennes ? Quelle cause peut-on imaginer au poste ?\reponse[2]
+\item Comparez Cp, Cpk, Pp et Ppk. Lequel faut-il annoncer au client ? Pourquoi ne peut-on pas annoncer de capabilité tant que la carte n'est pas sous contrôle ?\reponse[2]
+\item Sous les capabilités, Ellistat affiche Rs et Rr. Calculez Pp / Cp et Ppk / Pp. Que mesure chacun de ces deux rapports : la stabilité du procédé ou son réglage ?\reponse[2]
+\end{enumerate}
+
+\begin{tcolorbox}[boite]
+\textbf{À retenir.} Cp dit ce que la machine sait faire à court terme. Pp dit ce qu'elle a fait sur toute la période. Ppk ajoute le centrage. Une capabilité ne s'annonce que sur un procédé sous contrôle.
+\end{tcolorbox}
+
+% ------------------------------------------------------------------ S2
+\newpage
+\label{s2}
+\seance{S2}{Lire et décider}{La carte sonne : que se passe-t-il, que fait-on ?}
+
+\textbf{Objectif.} En binôme, mener une enquête sur des données réelles, tracer la carte dans Ellistat, repérer les alertes, choisir une réaction, puis présenter au groupe en 5 minutes.
+
+\textbf{E1 · La pression du réservoir} (\fichier{S2\_Pression.xlsx}). La pression d'un réservoir d'eau de refroidissement est relevée les 5 premières heures de chaque jour, du 1\textsuperscript{er} décembre au 13 janvier : 24 jours, une ligne par jour. Répétition = 5.
+
+\textbf{E2 · Une dimension usinée} (\fichier{S2\_Dimension.xlsx}). Dimension critique d'une pièce usinée, en valeurs codées. 5 pièces consécutives toutes les heures, 27 sous-groupes. Répétition = 5.
+
+\textbf{E3 · Un liquide fabriqué par lots} (\fichier{S2\_Liquide.xlsx}). Chaque lot est homogène : une seule valeur par lot, 17 lots. Ici, pas de sous-groupe : Répétition = 1. Ellistat trace une carte des valeurs individuelles.
+
+\begin{tcolorbox}[pas]
+Importer le fichier, régler la Répétition sur la première colonne de mesure, puis \menu{Statistique descriptive} > \menu{Détail}, référentiel \menu{Centré Moyenne}. Les points signalés par une règle portent le repère « Alerte » : tendance, même côté, proche des limites, mouvement alternatif.
+\end{tcolorbox}
+
+\begin{enumerate}[label=\textcolor{cyan}{\textbf{Q\arabic*.}},leftmargin=22pt]
+\item Avant d'ouvrir la carte : dans la grille, quelles valeurs vous semblent anormales ?\reponse
+\item Quels points sortent des limites ? Quels points portent une alerte, et laquelle ?\reponse[2]
+\item Racontez ce qui s'est passé : un événement ponctuel, un changement durable, une dérive ?\reponse[2]
+\item Les limites sont calculées sur toutes les données, y compris les périodes perturbées. Est-ce honnête ? Que faudrait-il faire pour surveiller la suite ?\reponse[2]
+\item Quelle réaction proposez-vous au poste ? (ne rien toucher, plan de réaction, recentrer, prévoir une intervention, chercher ce qui a changé la dispersion)\reponse[2]
+\end{enumerate}
+
+\textbf{Présentation (5 minutes) :} la situation, la carte, ce qui sonne, votre décision.
+
+% ------------------------------------------------------------------ S3
+\newpage
+\label{s3}
+\seance{S3}{Compter les défauts}{On ne mesure pas, on compte : quelle carte, quelles limites ?}
+
+\textbf{Objectif.} Choisir la carte aux attributs adaptée, la tracer dans Ellistat, vérifier ses limites à la main, et comprendre le rôle de la période de référence.
+
+\textbf{La situation} (\fichier{S3\_Inspection.xlsx}). À la sortie d'une ligne, on contrôle des lots de 150 pièces. Pour chaque lot, on note le nombre de pièces non conformes : 120 lots.
+
+\begin{enumerate}[label=\textcolor{cyan}{\textbf{Q\arabic*.}},leftmargin=22pt]
+\item Compte-t-on des pièces défectueuses ou des défauts ? La taille des lots est-elle fixe ? Quelles cartes conviennent : p, np, c, u ?\reponse[2]
+\end{enumerate}
+
+\begin{tcolorbox}[pas]
+\menu{Statistique descriptive} > \menu{Cartes de contrôle aux attributs}. Choisir la carte p, indiquer la taille de lot (150, ou la colonne Taille\_lot) et la colonne des non-conformes. Laisser d'abord la « Phase I (zone d'observation) » sur toutes les données.
+\end{tcolorbox}
+
+\begin{enumerate}[label=\textcolor{cyan}{\textbf{Q\arabic*.}},leftmargin=22pt,resume]
+\item À la main : $\bar p = \dfrac{\text{total des non-conformes}}{\text{total des pièces}}$ = \champ{20mm}, puis $LCS = \bar p + 3\sqrt{\dfrac{\bar p(1-\bar p)}{n}}$ = \champ{20mm} avec $n = 150$. Comparez avec Ellistat.\reponse
+\item Quels lots sortent ? Combien de non-conformes cela représente-t-il dans un lot ?\reponse
+\item Tracez maintenant la carte np. Les mêmes lots sortent-ils ? Laquelle est la plus parlante pour un opérateur ?\reponse[2]
+\item Réglez la Phase I sur les lots 1 à 20 seulement. Combien de lots sortent maintenant ? La période 1 à 20 était-elle représentative ?\reponse[2]
+\end{enumerate}
+
+\begin{tcolorbox}[defi]
+\textbf{Carte P' de Laney.} Sur de gros lots, les limites classiques deviennent si serrées que trop de points sortent, alors que le procédé n'a pas changé : la variation entre lots dépasse ce que prévoit le modèle. Tracez la carte P' de Laney et comparez le nombre de lots hors limites. Laquelle des deux cartes croyez-vous ? Pourquoi ?
+\end{tcolorbox}
+
+{\small La page « Compter les défauts » de la formation aide à choisir la bonne carte (partie « Quelle carte pour quelle situation ? »).}
+
+% ------------------------------------------------------------------ S4
+\newpage
+\label{s4}
+\seance{S4}{Le moyen de mesure}{Peut-on faire confiance à l'instrument et aux opérateurs ?}
+
+\textbf{Objectif.} Mener dans Ellistat les trois études du moyen de mesure : justesse (Cg, Cgk), linéarité, R\&R. Comparer avec les pages web de la formation, qui appliquent la méthode du livret Bosch n° 10.
+
+\textbf{A. Justesse} (\fichier{S4\_Justesse\_Bosch\_p11.xlsx}). Une cale de valeur certifiée 6,002 mm, mesurée 50 fois. La cote contrôlée a une tolérance de 5,970 à 6,030 mm ; résolution 0,001 mm.
+\begin{tcolorbox}[pas]
+\menu{Gage R\&R} > \menu{Justesse} : valeur vraie $X_0$ = 6,002 ; tolérance min 5,970 et max 6,030 ; résolution 0,001 ; mesures prises dans la grille.
+\end{tcolorbox}
+\begin{enumerate}[label=\textcolor{cyan}{\textbf{Q\arabic*.}},leftmargin=22pt]
+\item Relevez : écart de justesse \champ{18mm}, Cg \champ{14mm}, Cgk \champ{14mm}, tolérance minimale \champ{18mm}. Les voyants sont-ils verts ?\reponse
+\item Collez les 50 mesures dans la page « L'instrument est-il capable ? » ($T = 0{,}060$, $x_m = 6{,}002$). Trouvez-vous les mêmes Cg et Cgk ? Sinon, quel facteur les sépare ?\reponse[2]
+\item Cg est bon et Cgk plus faible : quel défaut l'instrument a-t-il ? Peut-on le corriger ?\reponse
+\end{enumerate}
+
+\textbf{B. Linéarité} (\fichier{S4\_Linearite\_simule.xlsx}, données simulées). Un micromètre 0-25 mm mesure 10 fois chacune de 5 cales : 5, 10, 15, 20 et 25 mm.
+\begin{tcolorbox}[pas]
+\menu{Gage R\&R} > \menu{Linéarité} : 5 produits, 10 valeurs par produit ; pour chaque cale, saisir sa valeur vraie puis ses 10 mesures (copier-coller depuis la page des séances).
+\end{tcolorbox}
+\begin{enumerate}[label=\textcolor{cyan}{\textbf{Q\arabic*.}},leftmargin=22pt,resume]
+\item Prédiction : regardez les moyennes des 5 cales. Le biais est-il constant, ou change-t-il avec la longueur ?\reponse
+\item Ellistat juge-t-il la pente significative ? Et la justesse ? Que faut-il faire de ce micromètre pour contrôler une cote de 12 mm ?\reponse[2]
+\end{enumerate}
+
+\textbf{C. R\&R} (\fichier{S4\_RR\_Bosch\_p14.xlsx}). 10 pièces, 3 opérateurs (A, B, C), 2 séries ; tolérance 5,970 à 6,030 mm.
+\begin{tcolorbox}[pas]
+\menu{Gage R\&R} > \menu{Mesures} > créer à partir de la grille. Une ligne par pièce, une colonne par couple opérateur et série (A\_r1 … C\_r2). Ne pas prendre la colonne « Piece » comme mesure. Méthode \textbf{ANOVA}.
+\end{tcolorbox}
+\begin{enumerate}[label=\textcolor{cyan}{\textbf{Q\arabic*.}},leftmargin=22pt,resume]
+\item Relevez : répétabilité \champ{16mm}, reproductibilité \champ{16mm}, interaction \champ{16mm}, \%GRR \champ{14mm}, ndc \champ{10mm}.\reponse
+\item Le livret Bosch annonce \%GRR = 17,95 \%, comme la page « L'opérateur compte-t-il ? » (bouton « Exemple du livret Bosch »). Trouvez-vous la même valeur ? Sinon, d'où vient l'écart ?\reponse[2]
+\item Le système de mesure est-il capable, capable sous conditions ou non capable ? Qui pèse le plus : l'instrument ou les opérateurs ?\reponse[2]
+\end{enumerate}
+
+% ------------------------------------------------------------------ S5
+\newpage
+\label{s5}
+\seance{S5}{Synthèse}{Du moyen de mesure à la décision : un dossier complet}
+
+\textbf{La situation.} Une butée de diamètre 11,85 / 12,00 mm. Le responsable qualité vous confie trois fichiers et une question : « Peut-on piloter ce poste avec une carte de contrôle, et le procédé est-il capable ? » Les données des études de mesure sont simulées.
+
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule
+\textbf{Étape} & \textbf{Fichier} & \textbf{Ce qu'il contient}\\\midrule
+1. Justesse & \fichier{S5\_Justesse\_cale12\_simule.xlsx} & 50 mesures d'une cale de 12,000 mm composée de deux cales (10 + 2), micromètre au 0,001 mm\\
+2. R\&R & \fichier{S5\_RR\_butees\_simule.xlsx} & 10 butées, 3 opérateurs, 2 séries\\
+3. Production & \fichier{S1\_S5\_Butees\_10x5.xlsx} & 50 butées, 10 sous-groupes de 5\\
+\bottomrule
+\end{tabularx}
+
+\textbf{La consigne.} Un projet à votre nom avec trois grilles. Respectez l'ordre : on ne juge pas une machine avec un instrument qu'on n'a pas validé. Partagez le projet avec le formateur (\menu{utilisateurs autorisés}).
+
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\linewidth}{|l|X|X|}\hline
+\textbf{Étape} & \textbf{Résultats clés} & \textbf{Conclusion}\\\hline
+1. Justesse & Cg = \hspace{14mm} Cgk = & \\\hline
+2. R\&R & \%GRR = \hspace{9mm} ndc = & \\\hline
+3a. Carte & points hors limites : & \\\hline
+3b. Capabilité & Cp = \hspace{6mm} Cpk = \hspace{6mm} Pp = \hspace{6mm} Ppk = & \\\hline
+\end{tabularx}
+
+\textbf{Votre décision} (5 lignes, à présenter au groupe) : le moyen de mesure, l'état du procédé, la capabilité que l'on peut annoncer, l'action à mener en premier.\reponse[5]
+
+\begin{tcolorbox}[piege]
+Les données d'entreprise que vous mettriez dans Ellistat partent sur un serveur extérieur. Ne le faites qu'avec l'accord écrit de votre entreprise, dans un projet personnel ni public ni partagé.
+\end{tcolorbox}
+
+\vfill
+{\footnotesize\color{uimm}\textbf{Sources.} Ellistat, guide utilisateur de Data Analysis (pages consultées le 30/10/2026) et réponse d'Ellistat du 10/11/2026 sur les sous-groupes. Robert Bosch GmbH, \emph{Booklet 10 : Capability of Measurement and Test Processes}, édition novembre 2019, exemples p. 11 et p. 14. Données S2 et S3 : jeux SPC-2, SPC-3, SPC-10 et SPC-1 de la formation. Données simulées signalées comme telles.}
+\end{document}

@@ -1,0 +1,133 @@
+\documentclass[10pt,a4paper]{article}
+\input{commun.tex}
+\pied{Ellistat Data Analysis · six séances · guide formateur}
+\begin{document}
+\thispagestyle{fancy}
+\bandeau{Guide formateur · ne pas distribuer}{Six séances sur Ellistat}{Déroulé, pièges et corrigés · à utiliser avec le livret stagiaire}
+
+\titre{1. Le principe et la préparation}
+\begin{itemize}
+\item \textbf{Sans Excel.} Les stagiaires n'ouvrent jamais Excel : les fichiers du dossier \fichier{donnees} sont déjà au format d'Ellistat (une ligne par sous-groupe) et s'importent par \menu{Importer depuis Excel}. Les comparaisons se font à la calculatrice ou avec les pages web de la formation.
+\item \textbf{Comptes.} Un compte Ellistat par stagiaire. Créer un projet formateur avec les données de démonstration et y ajouter les stagiaires en « utilisateurs autorisés ». Chacun travaille ensuite dans son propre projet.
+\item \textbf{Données d'entreprise.} Elles partent sur un serveur extérieur : accord écrit de l'entreprise, projet personnel ni public ni partagé. Un projet « public » serait vu par tous les comptes de l'organisme (à vérifier).
+\item \textbf{Règle d'animation.} Prédire avant de calculer, justifier à voix haute, comparer. Les écarts entre deux calculs sont le sujet de la séance, pas un défaut.
+\end{itemize}
+
+\titre{2. Ce qu'on sait des calculs d'Ellistat}
+{\small Établi le 10/11/2026 en comparant une copie d'écran de l'écran \menu{Détail} (50 butées) à un recalcul en Python.}
+\begin{itemize}
+\item \textbf{Écart-type court terme = écart-type groupé} : racine de la moyenne des variances des sous-groupes, sans correction $c_4$. Il sert à Cp, Cpk et aux limites.
+\item \textbf{Limites de la carte des moyennes} : $\bar{\bar X} \pm 3\,\sigma_{ct}/\sqrt n$ (référentiel « centré moyenne »). Carte des étendues : limite compatible avec $3\sigma$ calculée à partir de $\sigma_{ct}$ (lecture graphique, probable).
+\item \textbf{Pp, Ppk} : écart-type de toutes les valeurs ($n-1$). Colonne « MIN (95 \%) » : bornes inférieures unilatérales (χ² pour Pp, Bissell pour Ppk). \textbf{Rs = Pp / Cp} et \textbf{Rr = Ppk / Pp}.
+\item \textbf{Sous-groupes} : une ligne de la grille ; champ « Répétition » de la première colonne = nombre de colonnes du sous-groupe (réponse d'Ellistat du 10/11/2026).
+\end{itemize}
+
+\begin{tcolorbox}[verif]
+\begin{itemize}
+\item R\&R : facteur 6 ou 5,15, regroupement de l'interaction ; justesse : Cg en 6\,s ou 4\,s. Mail envoyé à Ellistat ; tests prêts (\fichier{Ellistat\_tests\_conventions.pdf}). \textbf{Les corrigés de S4 seront complétés après ces tests.}
+\item Nombre de points des règles d'alerte (tendance, même côté…).
+\item Répétition = 1 : carte des valeurs individuelles par étendues mobiles ou par écart-type global ?
+\item Cartes aux mesures : peut-on fixer les limites sur une période (comme la « Phase I » des cartes aux attributs) ?
+\item Carte P' de Laney : présente et calculée comme ci-dessous ? Import CSV : point-virgule et virgule décimale acceptés ?
+\end{itemize}
+\end{tcolorbox}
+
+\titre{3. Selon le public}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{@{}l X l@{}}
+\toprule
+\textbf{Public} & \textbf{Séances} & \textbf{Durée indicative}\\\midrule
+Opérateurs, exécutants & S0, S1 parties A, B et D (sans le mauvais découpage), S3 sans Laney & 3 h 30\\
+Techniciens & S0 à S4 & 6 h 30\\
+Groupe solide & S0 à S5, S5 en évaluation & 8 h 30\\
+\bottomrule
+\end{tabularx}
+{\small Repères de durée : S0 environ 40 min, S1 1 h 30, S2 1 h 30, S3 1 h, S4 2 h, S5 2 h. À ajuster au groupe.}
+
+% ------------------------------------------------------------- S0
+\titre{4. S0 · Prise en main (livret p. 2)}
+\textbf{Animation.} Faire l'import ensemble, vidéoprojecteur allumé, puis laisser chacun refaire seul dans son projet. Insister sur le panneau de colonne : c'est là que tout se règle.
+\begin{tcolorbox}[corr]
+\textbf{Q1} 6 points, 5 pièces derrière chaque point. \textbf{Q2} Une ligne = un sous-groupe (5 pièces prélevées ensemble) ; une colonne = le rang de la pièce dans le prélèvement. \textbf{Q3} Moyenne générale 11,8867 mm. \textbf{Q4} Avec Répétition = 1, P1 redevient une caractéristique seule : 6 valeurs individuelles au lieu de 6 moyennes de 5 (comportement exact à confirmer à l'écran). \textbf{Q5} Le calcul est le même : moyenne et dispersion à l'intérieur de la ligne. Ce qui compte est que les pièces aient été prélevées ensemble.
+\end{tcolorbox}
+{\small Piège réel : le fichier \fichier{Butees\_diametre.csv} de la formation contient 4 lignes vides (sous-groupes 7 à 10 prévus pour de futures mesures). Le fichier du dossier \fichier{donnees} n'en a pas.}
+
+% ------------------------------------------------------------- S1
+\titre{5. S1 · Comparer (livret p. 3 et 4)}
+\textbf{Animation.} Partie A en binôme à la calculatrice (6 moyennes, 6 étendues). Faire annoncer les limites au tableau avant d'ouvrir Ellistat. La partie C ne se fait qu'avec un groupe à l'aise.
+\begin{tcolorbox}[corr]
+\textbf{A.} Moyennes : 11,864 ; 11,862 ; 11,884 ; 11,898 ; 11,910 ; 11,902. Étendues : 0,04 ; 0,05 ; 0,05 ; 0,04 ; 0,04 ; 0,08.
+$\bar{\bar X} = 11{,}8867$ ; $\bar R = 0{,}050$ ; $LCS = 11{,}9155$ ; $LCI = 11{,}8578$ ; $LCS_R = 0{,}1057$.
+
+\textbf{B.}\par\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}lcc@{}}
+ & à la main ($\bar R/d_2$) & Ellistat (écart-type groupé)\\
+LCS / LCI des moyennes & 11,9155 / 11,8578 & 11,9142 / 11,8592\\
+LCS des étendues & 0,1057 & environ 0,101\\
+Écart-type court terme & 0,02150 & 0,02049\\
+Cp / Cpk & 1,16 / 0,57 & \textbf{1,22 / 0,60}\\
+Pp / Ppk & \multicolumn{2}{c}{0,95 / 0,46 (écart-type global 0,02644)}\\
+\end{tabular}
+
+\textbf{Q1} Aucun point hors limites dans les deux calculs : même décision. \textbf{Q2} L'écart-type groupé utilise toutes les mesures ; l'étendue n'en utilise que deux par sous-groupe. \textbf{Q3} La moyenne (11,887) est loin du milieu de la tolérance (11,925) : décentrage vers la limite basse. En « centré cible », la carte est centrée sur la cible (le milieu de la tolérance si aucun nominal n'est saisi, à vérifier) et toutes les moyennes sont en dessous. \textbf{Q4} Les moyennes montent de 11,862 à 11,910 : une dérive entre les prélèvements, que Pp voit et que Cp ignore.
+
+\textbf{C. Q5-Q6} Cp tombe à \textbf{0,89} (écart-type groupé 0,02812), Pp reste à 0,95. Cp $<$ Pp est le signe d'un mauvais découpage : des pièces de moments différents dans un même sous-groupe font entrer la dérive dans le court terme.
+
+\textbf{D. Q7} Sous-groupes 1 et 2 sous la LCI, 8, 9 et 10 au-dessus de la LCS (limites 11,8836 / 11,9336). Les moyennes montent régulièrement : usure d'outil, dérive thermique, réglage qui glisse. \textbf{Q8} Cp = 1,34 ; Cpk = 1,05 ; Pp = 0,70 ; Ppk = 0,54. On ne peut rien annoncer : le procédé n'est pas sous contrôle, donc son comportement futur n'est pas prévisible. Ppk décrit ce qui a été livré (Ellistat estime 5,1 \% de la population sous la limite basse). \textbf{Q9} Rs = 0,52 : la moitié de la capabilité potentielle est perdue par instabilité. Rr = 0,78 : perte due au décentrage.
+\end{tcolorbox}
+
+% ------------------------------------------------------------- S2
+\titre{6. S2 · Lire et décider (livret p. 5)}
+\textbf{Animation.} Une enquête par binôme (E1 et E2 pour tous les groupes, E3 en plus pour les plus rapides). Présentation de 5 minutes : situation, carte, ce qui sonne, décision. Le formateur relie chaque présentation au plan de réaction.
+\begin{tcolorbox}[corr]
+\textbf{E1 · Pression.} Ellistat, limites sur 24 jours : $\bar{\bar X} = 57{,}30$ ; LCS 63,16 ; LCI 51,44. Hors limites : jours 15 (69,8), 16 (68,4) et 19 (46,6). Aucune étendue hors limites. À la main ($A_2$, 24 jours) : 62,73 / 51,87, hors limites 15, 16, 18, 19, 23. Avec une période de référence sur les 12 premiers jours ($A_2$) : 62,88 / 52,78, hors limites 15 à 20 et 23, et l'étendue du jour 23. \textbf{Q4} Les jours perturbés élargissent les limites et cachent une partie des problèmes : on calcule les limites sur une période stable, puis on les fige. \textbf{Q5} Événements ponctuels puis instabilité : chercher ce qui s'est passé à partir du jour 15.
+
+\textbf{E2 · Dimension.} Ellistat, 27 sous-groupes : LCS 2670,7 ; LCI 2169,0. Hors limites : 2, 12, 20, 21, 22, 24, 25, 26 ; étendue du sous-groupe 2 (1072) hors limite. La valeur 1421 du sous-groupe 2 est aberrante : erreur de saisie ou pièce défectueuse, à vérifier avant tout. Le niveau monte durablement : les sous-groupes 19 à 27 sont tous au-dessus de la moyenne générale (9 points de suite). Limites calculées sur les sous-groupes 1 à 20 : à la main ($A_2$) 2561,9 / 2066,4, hors limites 2 et 20 à 27 ; avec l'écart-type groupé 2571,8 / 2056,5, hors limites 2, 20, 21, 22, 24, 25, 26. \textbf{Q5} Chercher pourquoi le réglage a bougé, puis recentrer.
+
+\textbf{E3 · Liquide.} Carte XmR sur les 15 premiers lots : $\bar X = 38{,}33$ ; LCS 44,60 ; LCI 32,06 ; limite des étendues mobiles 7,70. Le lot 17 (44) reste dans les limites mais son étendue mobile vaut 10 : alarme sur la carte mR seule. Sur 17 lots : 45,89 / 30,93 et 9,19, l'alarme demeure. Si Ellistat utilise l'écart-type global : 46,14 / 30,69 (17 lots). Comparer à l'écran.
+\end{tcolorbox}
+{\small Les alertes affichées dépendent du nombre de points retenu par Ellistat pour chaque règle : relever ce que l'écran signale et le discuter, sans imposer un chiffre.}
+
+% ------------------------------------------------------------- S3
+\titre{7. S3 · Compter les défauts (livret p. 6)}
+\textbf{Animation.} Commencer par la question Q1 au tableau, avec des exemples des entreprises du groupe. La page « Compter les défauts » sert au choix de la carte ; elle ne prend pas de jeu de données.
+\begin{tcolorbox}[corr]
+\textbf{Q1} Des pièces défectueuses, lots de taille fixe : carte p ou np. \textbf{Q2} $\bar p = 851 / 18\,000 = 4{,}73\ \%$ ; $LCS = 9{,}93\ \%$ ; $LCI = 0$ (négative). \textbf{Q3} Lots 59, 68 et 112 (15, 16 et 17 non-conformes). \textbf{Q4} Carte np : $n\bar p = 7{,}09$, LCS = 14,89 : les mêmes lots. Plus parlante au poste : on compte des pièces, pas des pourcentages. \textbf{Q5} Phase I sur les lots 1 à 20 : $\bar p = 3{,}43\ \%$, LCS = 7,89 \% : 17 lots sortent. Cette période était plus calme que la suite : des limites trop serrées déclenchent de fausses alarmes. La période de référence doit être stable \emph{et} représentative.
+
+\textbf{Défi Laney.} $\sigma_z$ (étendues mobiles des écarts réduits, divisées par 1,128) = 1,37 : la variation entre lots dépasse de 37 \% le modèle binomial. Limite P' : 11,86 \%, aucun lot ne sort. Les deux cartes se défendent : la carte p signale trois lots à examiner, la carte P' dit que cette variation entre lots est habituelle. On examine quand même les trois lots. Calcul de référence en Python, à comparer à l'écran.
+\end{tcolorbox}
+
+% ------------------------------------------------------------- S4
+\titre{8. S4 · Le moyen de mesure (livret p. 7)}
+\textbf{Animation.} L'ordre compte : justesse, puis linéarité, puis R\&R (le livret Bosch impose l'étude de type 1 avant le R\&R). Les pages « L'instrument est-il capable ? » et « L'opérateur compte-t-il ? » servent de référence : elles appliquent les formules du livret.
+\begin{tcolorbox}[corr]
+\textbf{Corrigé à compléter après les tests de conventions.} Valeurs de référence (méthode du livret Bosch, pages de la formation) ; la colonne Ellistat reste à remplir.
+
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}lll@{}}
+\textbf{Étude} & \textbf{Référence} & \textbf{Ellistat}\\
+Justesse : biais, Cg, Cgk & $-0{,}0011$ ; 2,01 ; 1,64 & \champ{35mm}\\
+Linéarité : biais moyen par cale (µm) & $-2{,}7$ ; $-1{,}0$ ; $+1{,}3$ ; $+3{,}2$ ; $+3{,}7$ & \\
+Linéarité : pente (régression, MSA) & 0,000340 mm/mm, $p \approx 8 \cdot 10^{-14}$ & \champ{35mm}\\
+R\&R : EV, AV, \%GRR, ndc & 0,001535 ; 0,000932 ; 17,95 \% ; 15 & \champ{35mm}\\
+\end{tabular}
+
+Indépendant des conventions : \textbf{Q3} problème de justesse (décalage de 1,1 µm), corrigeable par réglage ou étalonnage. \textbf{Q4} Le biais change avec la longueur. \textbf{Q5} Pente très significative : défaut de linéarité. Le biais s'annule vers 12,4 mm : pour une cote de 12 mm, étalonner près de cette longueur ou restreindre la plage d'usage. \textbf{Q8} Selon le livret : 17,95 \%, capable sous conditions ; la répétabilité (instrument) pèse plus que la reproductibilité (opérateurs).
+\end{tcolorbox}
+
+% ------------------------------------------------------------- S5
+\titre{9. S5 · Synthèse (livret p. 8)}
+\textbf{Animation.} Travail individuel ou en binôme, projet partagé avec le formateur. Restitution de 5 minutes. En évaluation : noter l'ordre suivi, la justesse des lectures et la décision.
+\begin{tcolorbox}[corr]
+\textbf{1. Justesse} (cale 12,000, simulée) : $\bar x = 12{,}00076$ ; $s = 0{,}000716$ ; biais $+0{,}00076$ mm, significatif ($\lvert b\rvert/s = 1{,}06 > 0{,}284$) mais négligeable devant $T$. Cg $\approx 7{,}0$ et Cgk $\approx 6{,}6$ avec la convention Bosch (valeurs Ellistat à confirmer). Instrument capable.
+
+\textbf{2. R\&R} (simulé) : interaction non significative ($F = 0{,}57$) ; EV 0,00108 ; AV 0,00090 ; GRR 0,00140 ; \%GRR 5,6 \% avec le facteur 6 (4,8 \% avec 5,15) ; ndc 34. Système de mesure capable, quelle que soit la convention.
+
+\textbf{3. Production} : voir S1, partie D. Carte hors contrôle (sous-groupes 1, 2, 8, 9, 10), dérive montante ; Cp 1,34 ; Cpk 1,05 ; Pp 0,70 ; Ppk 0,54.
+
+\textbf{Décision attendue.} Le moyen de mesure est validé : les points hors limites viennent du procédé, pas de la mesure. Le procédé n'est pas sous contrôle : aucune capabilité ne peut être annoncée. Ce qui a été livré correspond à Ppk = 0,54 : Ellistat estime 5,1 \% de la population sous la limite basse. Action : trouver et supprimer la cause de la dérive (usure, réglage), recentrer, puis refaire une étude de capabilité sur une production sous contrôle.
+\end{tcolorbox}
+
+\vfill
+{\footnotesize\color{uimm}\textbf{Sources.} Ellistat, guide utilisateur de Data Analysis (consulté le 30/10/2026) et manuel du formateur Ellistat (30/10/2026) ; réponse d'Ellistat du 10/11/2026 ; copie d'écran de l'écran Détail (50 butées) du 10/11/2026. Robert Bosch GmbH, \emph{Booklet 10 : Capability of Measurement and Test Processes}, édition novembre 2019, p. 11, p. 14, annexes C et D. Guide formateur TQ6 V3 (enquêtes E1 à E4). Tous les nombres recalculés en Python (NumPy, SciPy) ; les données simulées sont produites avec des graines fixées (2027, 2611).}
+\end{document}
