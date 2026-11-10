@@ -114,7 +114,7 @@ td.oui{color:var(--ko);font-weight:600} td.non{color:var(--ok)}
       <div><b>Atelier 2 · cales 10 et 20</b>Mon micromètre est-il juste ?<br><small>Le biais de chaque micromètre 0-25, à deux longueurs.</small></div>
       <div><b>Atelier 3 · cale 30</b>Et si c'était moi ?<br><small>Même instrument, même cale : les opérateurs se distinguent-ils ?</small></div>
     </div>
-    <div class="formules"><span>Cg = 0,2 T / (6 s)</span><span>Cgk = (0,1 T − |x̄ − x<sub>m</sub>|) / (3 s)</span><span>Capable si Cg ≥ 1,33 et Cgk ≥ 1,33</span></div>
+    <div class="formules"><span>D'abord : résolution / T × 100 &lt; 5 %</span><span>Cg = 0,2 T / (6 s)</span><span>Cgk = (0,1 T − |x̄ − x<sub>m</sub>|) / (3 s)</span><span>Capable si Cg ≥ 1,33 et Cgk ≥ 1,33</span></div>
   </section>
 
   <section class="panneau" aria-label="Réglages">
@@ -202,6 +202,7 @@ td.oui{color:var(--ko);font-weight:600} td.non{color:var(--ok)}
   <details class="memo">
     <summary>Lire les résultats</summary>
     <ul>
+      <li><b>Résolution</b> : le plus petit pas affiché par l'instrument, rapporté à la tolérance. Résolution / T × 100 doit rester sous 5 % (livret, fig. 3), avant tout calcul. Micromètre au 0,001 mm et T = 0,15 mm : 0,001 / 0,15 × 100 = 0,67 %. Pied à coulisse au 1/50 : 0,02 / 0,15 × 100 = 13,3 %, il est écarté.</li>
       <li><b>Cg</b> regarde si les mesures sont groupées (fidélité). <b>Cgk</b> regarde en plus si elles tombent sur la vraie valeur (justesse). Les deux doivent atteindre 1,33.</li>
       <li><b>Biais significatif</b> : le livret compare |x̄ − x<sub>m</sub>| / s à un seuil qui dépend du nombre de mesures (0,715 pour 10 mesures, 0,284 pour 50). Au-dessus, le décalage n'est pas dû au hasard. Il peut rester sans importance pour la tolérance : c'est Cgk qui le dit.</li>
       <li><b>T min</b> : la plus petite tolérance que l'instrument peut contrôler avec Cg et Cgk ≥ 1,33. T min = 10 |biais| + 39,9 s.</li>
@@ -417,7 +418,7 @@ function calculer(){
   if(r1){
     var okG=r1.cg>=1.33, okGk=r1.cgk>=1.33, okR=pRes<5, sig=r1.ratio>r1.seuil;
     $("a1Chiffres").innerHTML=carte("Mesures",r1.n)+carte("Moyenne x̄",fr(r1.m,dec+1)+" mm")+carte("Écart-type s",fr(r1.s,dec+2)+" mm")+carte("Biais x̄ − xm",frS(r1.b,dec+1)+" mm")
-      +carte("Résolution",fr(pRes,1)+" % de T",okR?"bon":"mauvais")+carte("Cg",affC(r1.cg),"fort "+(okG?"bon":"mauvais"))+carte("Cgk",affC(r1.cgk),"fort "+(okGk?"bon":"mauvais"))+carte("T min",fr(r1.tmin,3)+" mm");
+      +carte("Résolution / T",fr(pRes,2)+" %",okR?"bon":"mauvais")+carte("Cg",affC(r1.cg),"fort "+(okG?"bon":"mauvais"))+carte("Cgk",affC(r1.cgk),"fort "+(okGk?"bon":"mauvais"))+carte("T min",fr(r1.tmin,3)+" mm");
     var a=[]; if(r1.n<25) a.push("Seulement "+r1.n+" mesures : le livret en demande 50, au moins 25. Résultat indicatif.");
     if(!okR) a.push("Résolution au-dessus de 5 % de T : instrument trop grossier pour cette tolérance, quel que soit Cg.");
     if(r1.s===0) a.push("Toutes les mesures sont identiques : la résolution masque la dispersion.");
